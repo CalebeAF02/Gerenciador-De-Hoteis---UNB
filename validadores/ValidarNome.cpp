@@ -15,8 +15,7 @@ void ValidarNome::validar(string nome) {
     // lógica de validação do nome
     int nomeTamanho = nome.length();
     if (nomeTamanho < 5 || nomeTamanho > 20) {
-        cout << "Erro: Nome com tamanho invalido\n";
-        return ;
+        throw invalid_argument ("Erro: Nome com tamanho invalido");
     }
 
     bool primeiraLetraCaixaAlta = true;
@@ -27,23 +26,19 @@ void ValidarNome::validar(string nome) {
             primeiraLetraCaixaAlta = true;
             contEspaco++;
             if (contEspaco > 1) {
-                cout << "Erro: Espaco em branco seguido por outro espaco\n";
-                return ;
+                throw invalid_argument ("Erro: Espaco em branco seguido por outro espaco");
             }
         } else if (isalpha(nome[i])) {
             contEspaco = 0;
             if (primeiraLetraCaixaAlta && !isupper(nome[i])) {
-                cout << "Erro: Primeira letra de cada termo deve ser maiuscula\n";
-                return ;
+                throw invalid_argument ("Erro: Primeira letra de cada termo deve ser maiuscula");
             }
             primeiraLetraCaixaAlta = false;
         } else {
-            cout << "Erro: Nome com caracter invalido\n";
-            return ;
+            throw invalid_argument ("Erro: Nome com caracter invalido");
         }
     }
     if (nome[nomeTamanho - 1] == ' ') {
-        cout << "Erro: Nome nao pode terminar com espaco\n";
-        return ;
+        throw invalid_argument ("Erro: Nome nao pode terminar com espaco");
     }
 }

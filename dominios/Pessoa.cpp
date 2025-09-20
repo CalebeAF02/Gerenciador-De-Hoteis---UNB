@@ -26,20 +26,17 @@ void Pessoa::validarEmail(string email) {
     // lógica de validação do email
     int posicaoArroba = email.find("@");
     if (posicaoArroba == string::npos) {
-        cout << "Erro: Email invalido (sem @)\n";
-        return ;
+        throw invalid_argument ("Erro: Email invalido (sem @)");
     }
 
     string parteLocal = email.substr(0, posicaoArroba);
     string parteDominio = email.substr(posicaoArroba + 1);
 
     if (parteLocal.empty() || parteLocal.length() > 64) {
-        cout << "Erro: Parte local invalida\n";
-        return ;
+        throw invalid_argument ("Erro: Parte local invalida");
     }
     if (parteDominio.empty() || parteDominio.length() > 255) {
-        cout << "Erro: Parte dominio invalida\n";
-        return ;
+        throw invalid_argument ("Erro: Parte dominio invalida");
     }
 
     int contSimboloParteLocal = 0;
@@ -49,8 +46,7 @@ void Pessoa::validarEmail(string email) {
             // Regra 2
             if (i == 0 || i == parteLocal.length() - 1) {
                 if (parteLocal[i] == '.' || parteLocal[i] == '-') {
-                    cout << "Erro: Email nao pode comecar com '.' ou '-' !" << endl;
-                    return ;
+                    throw invalid_argument ("Erro: Email nao pode comecar com '.' ou '-' !");
                 }
             }
             //Regra 1 - Se a letra é minuscula
@@ -66,12 +62,10 @@ void Pessoa::validarEmail(string email) {
                 contSimboloParteLocal += 1;
                 //cout << "Esta caracter e '.' ou '-' ? " << parteLocal[i] << " Sim!" << endl;
                 if (contSimboloParteLocal > 1) {
-                    cout << "Erro: Email nao pode ter dois simbolos seguidos" << endl;
-                    return ;
+                    throw invalid_argument ("Erro: Email nao pode ter dois simbolos seguidos");
                 }
             } else {
-                cout << "Erro: Esta letra nao e miniscula! " << parteLocal[i] << endl;
-                return ;
+                throw invalid_argument ("Erro: Esta letra nao e miniscula! ");
             }
         }
     }
@@ -79,8 +73,7 @@ void Pessoa::validarEmail(string email) {
     //cout <<"parteLocal percoeu por completo e esta ok: "<< parteLocal << endl;
 
     if (parteDominio.length() > 255) {
-        cout << "Erro: parteDominio do Email com tamanho INVALIDO" << endl;
-        return ;
+        throw invalid_argument ("Erro: parteDominio do Email com tamanho INVALIDO");
     }
     int contSimboloParteDominio = 0;
     for (int i = 0; i < parteDominio.length(); i++) {
@@ -89,8 +82,7 @@ void Pessoa::validarEmail(string email) {
             // Regra 2
             if (i == 0 || i == parteDominio.length() - 1) {
                 if (parteDominio[i] == '.' || parteDominio[i] == '-') {
-                    cout << "Erro: Email nao pode comecar com '.' ou '-' !" << endl;
-                    return ;
+                    throw invalid_argument ("Erro: Email nao pode comecar com '.' ou '-' !");
                 }
             }
             //Regra 1 - Se a letra é minuscula
@@ -106,12 +98,11 @@ void Pessoa::validarEmail(string email) {
                 contSimboloParteDominio += 1;
                 //cout << "Esta caracter e '.' ou '-' ? " << parteDominio[i] << " Sim!" << endl;
                 if (contSimboloParteDominio > 1) {
-                    cout << "Erro: Email nao pode ter dois simbolos seguidos" << endl;
-                    return ;
+                    throw invalid_argument ("Erro: Email nao pode ter dois simbolos seguidos");
                 }
             } else {
-                cout << "Erro: Esta letra nao e miniscula! " << parteDominio[i] << endl;
-                return ;
+
+                throw invalid_argument ("Erro: Esta letra nao e miniscula! ");
             }
         }
     }

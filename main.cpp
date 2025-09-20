@@ -8,6 +8,7 @@
 #include "dominios/Gerente.h"
 #include "dominios/Hotel.h"
 #include "dominios/Quarto.h"
+#include "testes/testes_validadores.h"
 #include "validadores/ValidarString.h"
 #include "validadores/ValidarInt.h"
 #include "validadores/ValidarDouble.h"
@@ -18,7 +19,11 @@
 using namespace std;
 
 int main() {
+    TesteValidadores::testarEntradas();
 
+
+    //-----------------------------------------------------------------------------------------------------------------
+    /*
     cout << "Cadastrando Class Pessoa :" << endl;
     Pessoa pessoa;
 
@@ -46,7 +51,7 @@ int main() {
     } else {
         cout << "Erro: Email invalido!\n";
     }
-    */
+    #1#
 
     //cout << "Imprimindo a pessoa 1" << endl;
     cout << "Segue o resultado da Class Pessoa abaixo:" << endl;
@@ -82,7 +87,7 @@ int main() {
     } else {
         cout << "Erro: cartao Invalido!\n";
     }
-    */
+    #1#
 
     //cout << "Imprimindo o hospede 1" << endl;
     cout << "Segue o resultado da Class Hospede abaixo:" << endl;
@@ -118,7 +123,7 @@ int main() {
     } else {
         cout << "Erro: Senha invalida!\n";
     }
-    */
+    #1#
     //cout << "Imprimindo o gerente 1" << endl;
     cout << "Segue o resultado de Class Gerente abaixo:" << endl;
     cout << "O Ramal e: " << gerente.getRamal() << endl;
@@ -163,7 +168,7 @@ int main() {
     } else {
         cout << "Erro: Telefone invalido!\n";
     }
-    */
+    #1#
     //cout << "Imprimindo o hotel 1" << endl;
     cout << "Segue o resultado da Class Hotel abaixo:" << endl;
     cout << "O Nome do Hotel  e: " << hotel.getNome() << endl;
@@ -222,7 +227,7 @@ int main() {
     } else {
         cout << "Erro: Ramal invalido!\n";
     }
-    */
+    #1#
 
     //cout << "Imprimindo o quarto 1" << endl;
     cout << "Segue o resultado da Class Quarto abaixo:" << endl;
@@ -238,7 +243,11 @@ int main() {
     cout << "Gerente valido? " << gerente.validar(gerente.getEmail()) << endl;
     cout << "Hotel valido? " << hotel.validar("Hotel Bom Sono") << endl;
     cout << "Quarto valido? " << quarto.validar("101") << endl;
-    */
+    #1#
+    #1#*/
+
+    //-----------------------------------------------------------------------------------------------------------------
+
     system("pause");
     return 0;
 }
