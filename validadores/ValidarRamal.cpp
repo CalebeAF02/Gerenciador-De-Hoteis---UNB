@@ -8,6 +8,6 @@
 
 using namespace std;
 
-void ValidarRamal::validarRamal(int ramal) {
+void ValidarRamal::validar(int ramal) {
     throw invalid_argument("Ramal invalido");
 };

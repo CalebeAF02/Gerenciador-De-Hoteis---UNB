@@ -14,10 +14,7 @@ using namespace std;
 class ValidarEndereco: public exception{
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    static void validarEndereco(string endereco);
-
-    // Sempre que tiver métodos virtuais, destrutor deve ser virtual também
-    virtual ~ValidarEndereco() = default;
+    static void validar(string endereco);
 
 };
 

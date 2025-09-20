@@ -96,13 +96,13 @@ int main() {
 
     //cout << "Configurando a ramal 1" << endl;
     //cout << "Digite o Ramal:";
-    string ramal_1 = "Qd:56,Conj:D,Cs:01,Cid:Itapoa2";
+    int ramal_1 = 5555;
     //getline(cin, Ramal_1);
     gerente.setRamal(ramal_1);
 
     //cout << "Configurando a senha 1" << endl;
     //cout << "Digite a senha:";
-    string senha_1 = "54321";
+    int senha_1 = 54321;
     //getline(cin, senha_1);
     gerente.setSenha(senha_1);
 
@@ -239,7 +239,6 @@ int main() {
     cout << "Hotel valido? " << hotel.validar("Hotel Bom Sono") << endl;
     cout << "Quarto valido? " << quarto.validar("101") << endl;
     */
-
     system("pause");
     return 0;
 }

@@ -12,10 +12,8 @@ using namespace std;
 class ValidarInt: public exception {
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    virtual void validarInt(int valor) = 0;
+    virtual void validar(int tipo, int valor) = 0;
 
-    // Sempre que tiver métodos virtuais, destrutor deve ser virtual também
-    virtual ~ValidarInt() = default;
 };
 
 

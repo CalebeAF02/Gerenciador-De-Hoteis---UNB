@@ -31,7 +31,6 @@ public:
     void validarNome(string nome);
     void validarTelefone(string telefone);
 
-    Hotel();
 
     void setNome(string nome) {
         validar(TIPO_NOME, nome);

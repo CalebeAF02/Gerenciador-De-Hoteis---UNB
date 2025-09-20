@@ -7,17 +7,14 @@
 #include "../validadores/ValidarNome.h"
 
 
-Hotel::Hotel() {
-    // Inicialize atributos se necessário
-};
 void Hotel::validar(int tipo, string valor) {
     switch (tipo) {
         case TIPO_NOME: {
-            ValidarNome::validarNome(valor);
+            ValidarNome::validar(valor);
             break;
         };
         case TIPO_ENDERECO: {
-            validarEndereco(valor);
+            ValidarEndereco::validar(valor);
             break;
         };
         case TIPO_TELEFONE: {

@@ -3,4 +3,15 @@ project(projetos_cpp_unb_7)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(projetos_cpp_unb_7 main.cpp)
+add_executable(projetos_cpp_unb_7 main.cpp
+        dominios/Quarto.cpp
+        dominios/Pessoa.cpp
+        dominios/Hotel.cpp
+        dominios/Hospede.cpp
+        dominios/Gerente.cpp
+        validadores/ValidarDouble.cpp
+        validadores/ValidarEndereco.cpp
+        validadores/ValidarInt.cpp
+        validadores/ValidarNome.cpp
+        validadores/ValidarRamal.cpp
+        validadores/ValidarString.cpp)

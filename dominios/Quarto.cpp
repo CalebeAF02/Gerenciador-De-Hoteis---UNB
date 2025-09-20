@@ -8,9 +8,6 @@
 
 using namespace std;
 
-Quarto::Quarto() {
-
-};
 void Quarto::validar(int tipo, int valor){
     switch (tipo) {
         case TIPO_NUMERO: {
@@ -21,25 +18,28 @@ void Quarto::validar(int tipo, int valor){
             validarCapacidade(valor);
             break;
         };
-        case TIPO_DIARIA: {
-            validarDiaria(valor);
-            break;
-        };
         case TIPO_RAMAL: {
-            ValidarRamal::validarRamal(valor);
+            ValidarRamal::validar(valor);
             break;
         };
     };
 };
+void Quarto::validar(int tipo, double valor) {
+    switch (tipo) {
+        case TIPO_DIARIA: {
+            validarDiaria(valor);
+        }
+    }
+}
 
 void Quarto::validarNumero(int valor) {
-    throw invalid_argument("Numero invalido");
+    //throw invalid_argument("Numero invalido");
 };
 
 void Quarto::validarCapacidade(int valor) {
-    throw invalid_argument("Capacidade invalido");
+    //throw invalid_argument("Capacidade invalido");
 };
 
 void Quarto::validarDiaria(double valor) {
-    throw invalid_argument("Diaria invalido");
+    //throw invalid_argument("Diaria invalido");
 };

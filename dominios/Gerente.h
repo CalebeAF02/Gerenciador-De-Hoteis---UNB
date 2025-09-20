@@ -11,51 +11,42 @@
 #include "../validadores/ValidarInt.h"
 
 #include<string>
-#include<stdexcept>
 using namespace std;
 
-class Gerente : public Pessoa, ValidarInt, ValidarNome, ValidarRamal, exception {
+class Gerente : public Pessoa, ValidarInt, ValidarRamal {
 private:
-    string nome;
-    string ramal;
-    string senha;
+    int ramal;
+    int senha;
 
 public:
     static int const TIPO_RAMAL = 1;
     static int const TIPO_SENHA = 2;
 
-    void validarInt(int tipo, string valor) override;
-    void validarString(int tipo, int valor) override;
+    void validar(int tipo, int valor) override;
     void validarRamal(int ramal);
     void validarSenha(int senha);
 
-    Gerente();
 
-    void setNome(string nome) {
-        validar(TIPO_NOME, nome);
-        this->nome = nome;
-    }
-    void setRamal(string ramal) {
+    void setRamal(int ramal) {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
-    void setSenha(string senha) {
+    void setSenha(int senha) {
         validar(TIPO_SENHA, senha);
         this->senha = senha;
     }
 
     //Get
-    string getNome();
-    string getRamal();
-    string getSenha();
+    int getRamal();
+    int getSenha();
 
     // Regras específicas de validação do gerente
 
 };
-inline string Gerente::getRamal() {
+inline int Gerente::getRamal() {
     return ramal;
 };
-inline string Gerente::getSenha() {
+inline int Gerente::getSenha() {
     return senha;
 };
 

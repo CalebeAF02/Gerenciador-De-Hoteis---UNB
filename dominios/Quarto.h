@@ -13,7 +13,7 @@
 #include<stdexcept>
 using namespace std;
 
-class Quarto : public ValidarInt, ValidarDouble, ValidarRamal, exception {
+class Quarto : public ValidarInt, ValidarDouble, ValidarRamal {
 private:
     int numero;
     int capacidade;
@@ -34,9 +34,6 @@ public:
     void validarNumero(int numero);
     void validarCapacidade(int capacidade);
     void validarDiaria(double diaria);
-
-
-    Quarto();
 
     void setNumero(int numero) {
         validar(TIPO_NUMERO, numero);

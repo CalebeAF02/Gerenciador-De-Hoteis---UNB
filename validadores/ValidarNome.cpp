@@ -11,7 +11,7 @@ using namespace std;
 //     throw invalid_argument("Endereco invalido");
 // implementar nos COUT
 
-void ValidarNome::validarNome(string nome) {
+void ValidarNome::validar(string nome) {
     // lógica de validação do nome
     int nomeTamanho = nome.length();
     if (nomeTamanho < 5 || nomeTamanho > 20) {

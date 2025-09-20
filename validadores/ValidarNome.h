@@ -14,11 +14,7 @@ using namespace std;
 class ValidarNome: public exception {
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    static void validarNome(string nome);
-
-    // Sempre que tiver métodos virtuais, destrutor deve ser virtual também
-    virtual ~ValidarNome() = default;
-
+    static void validar(string nome);
 };
 
 

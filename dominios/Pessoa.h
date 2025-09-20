@@ -6,8 +6,6 @@
 #include "../validadores/ValidarString.h"
 #include "../validadores/ValidarNome.h"
 
-#include <string>
-#include<stdexcept>
 using namespace std;
 
 class Pessoa : public ValidarString,ValidarNome, exception {

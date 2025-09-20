@@ -8,6 +8,6 @@
 
 using namespace std;
 
-void ValidarEndereco::validarEndereco(string endereco) {
+void ValidarEndereco::validar(string endereco) {
     throw invalid_argument("Endereco invalido");
 };

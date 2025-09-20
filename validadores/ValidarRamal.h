@@ -13,10 +13,6 @@ using namespace std;
 class ValidarRamal: public exception{
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    static void validarRamal(int endereco);
-
-    // Sempre que tiver métodos virtuais, destrutor deve ser virtual também
-    virtual ~ValidarRamal() = default;
-
+    static void validar(int endereco);
 };
 #endif //CODIGOS_CLION_TP1_IML_VALIDARRAMAL_H
