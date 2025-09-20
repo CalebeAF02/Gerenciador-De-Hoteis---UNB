@@ -3,10 +3,6 @@
 //
 #include <iostream>
 #include "../dominios/Gerente.h"
-#include "../validadores/ValidarRamal.h"
-
-using namespace std;
-
 
 void Gerente::validar(int tipo, int valor) {
     switch (tipo) {

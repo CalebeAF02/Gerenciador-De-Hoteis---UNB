@@ -16,4 +16,6 @@ add_executable(projetos_cpp_unb_7 main.cpp
         validadores/ValidarRamal.cpp
         validadores/ValidarString.cpp
         testes/testes_validadores.cpp
-        testes/testes_validadores.h)
+        testes/testes_validadores.h
+        testes/Teste.cpp
+        testes/Teste.h)

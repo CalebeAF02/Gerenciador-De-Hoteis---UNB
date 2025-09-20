@@ -5,15 +5,14 @@
 #ifndef CODIGOS_CLION_TP1_IML_GERENTE_H
 #define CODIGOS_CLION_TP1_IML_GERENTE_H
 
+#include "stdexcept"
 #include "../dominios/Pessoa.h"
-
 #include "../validadores/ValidarRamal.h"
 #include "../validadores/ValidarInt.h"
 
-#include<string>
 using namespace std;
 
-class Gerente : public Pessoa, ValidarInt, ValidarRamal {
+class Gerente : public Pessoa, ValidarInt, ValidarRamal, exception {
 private:
     int ramal;
     int senha;

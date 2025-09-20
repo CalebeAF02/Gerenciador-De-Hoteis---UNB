@@ -53,10 +53,10 @@ void Pessoa::validarEmail(string email) {
             if (islower(parteLocal[i])) {
                 contSimboloParteLocal = 0;
                 //cout << "Esta letra e minuscula? " << parteLocal[i] << " Sim!" << endl;
-                //Regra 1 - Se a letra é numero
+                //Regra 1 - Se o Caracter é numero
             } else if (isdigit(parteLocal[i])) {
                 contSimboloParteLocal = 0;
-                //cout << "Esta caracter e um numero? " << parteLocal[i] << " Sim!" << endl;
+                //cout << "Este Caracter e um numero? " << parteLocal[i] << " Sim!" << endl;
                 // Regra 3
             } else if (parteLocal[i] == '.' || parteLocal[i] == '-') {
                 contSimboloParteLocal += 1;
@@ -65,15 +65,17 @@ void Pessoa::validarEmail(string email) {
                     throw invalid_argument ("Erro: Email nao pode ter dois simbolos seguidos");
                 }
             } else {
-                throw invalid_argument ("Erro: Esta letra nao e miniscula! ");
+                throw invalid_argument ("Erro: Caracter invalido! ");
             }
+        }else {
+            throw invalid_argument ("Erro: Caracter invalido! ");
         }
     }
     // print se parteLocal OK
     //cout <<"parteLocal percoeu por completo e esta ok: "<< parteLocal << endl;
 
     if (parteDominio.length() > 255) {
-        throw invalid_argument ("Erro: parteDominio do Email com tamanho INVALIDO");
+        throw invalid_argument ("Erro: parteDominio do Email com tamanho invalido");
     }
     int contSimboloParteDominio = 0;
     for (int i = 0; i < parteDominio.length(); i++) {
@@ -89,10 +91,10 @@ void Pessoa::validarEmail(string email) {
             if (islower(parteDominio[i])) {
                 contSimboloParteDominio = 0;
                 //cout << "Esta letra e minuscula? " << parteDominio[i] << " Sim!" << endl;
-                //Regra 1 - Se a letra é numero
+                //Regra 1 - Se o Caracter é numero
             } else if (isdigit(parteDominio[i])) {
                 contSimboloParteDominio = 0;
-                //cout << "Esta caracter e um numero? " << parteDominio[i] << " Sim!" << endl;
+                //cout << "Este Caracter e um numero? " << parteDominio[i] << " Sim!" << endl;
                 // Regra 3
             } else if (parteDominio[i] == '.' || parteDominio[i] == '-') {
                 contSimboloParteDominio += 1;
@@ -101,9 +103,11 @@ void Pessoa::validarEmail(string email) {
                     throw invalid_argument ("Erro: Email nao pode ter dois simbolos seguidos");
                 }
             } else {
-
-                throw invalid_argument ("Erro: Esta letra nao e miniscula! ");
+                throw invalid_argument ("Erro: Caracter invalido! ");
             }
+        }
+        else {
+            throw invalid_argument ("Erro: Caracter invalido! ");
         }
     }
 }
