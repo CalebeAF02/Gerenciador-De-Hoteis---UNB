@@ -5,10 +5,11 @@
 #ifndef CODIGOS_CLION_TP1_IML_GERENTE_H
 #define CODIGOS_CLION_TP1_IML_GERENTE_H
 
-#include "stdexcept"
 #include "../dominios/Pessoa.h"
 #include "../validadores/ValidarRamal.h"
 #include "../validadores/ValidarInt.h"
+
+#include "stdexcept"
 
 using namespace std;
 

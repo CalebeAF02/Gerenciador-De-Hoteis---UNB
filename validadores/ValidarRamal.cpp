@@ -4,8 +4,6 @@
 
 #include "../validadores/ValidarRamal.h"
 
-#include <string>
-
 using namespace std;
 
 void ValidarRamal::validar(int ramal) {

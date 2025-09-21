@@ -5,19 +5,17 @@
 #ifndef CODIGOS_CLION_TP1_IML_QUARTO_H
 #define CODIGOS_CLION_TP1_IML_QUARTO_H
 
-
-#include "../validadores/ValidarDouble.h"
 #include "../validadores/ValidarInt.h"
 #include "../validadores/ValidarRamal.h"
-
 #include<stdexcept>
+
 using namespace std;
 
-class Quarto : public ValidarInt, ValidarDouble, ValidarRamal {
+class Quarto : public ValidarInt, ValidarRamal, exception {
 private:
     int numero;
     int capacidade;
-    double diaria;
+    int diaria;
     int ramal;
 
 public:
@@ -29,24 +27,28 @@ public:
     // Regras específicas de validação do gerente
 
     void validar(int tipo, int valor) override;
-    void validar(int tipo, double valor) override;
 
     void validarNumero(int numero);
+
     void validarCapacidade(int capacidade);
-    void validarDiaria(double diaria);
+
+    void validarDiaria(int diaria);
 
     void setNumero(int numero) {
         validar(TIPO_NUMERO, numero);
         this->numero = numero;
     }
+
     void setCapacidade(int capacidade) {
         validar(TIPO_CAPACIDADE, capacidade);
         this->capacidade = capacidade;
     }
-    void setDiaria(double diaria) {
+
+    void setDiaria(int diaria) {
         validar(TIPO_DIARIA, diaria);
         this->diaria = diaria;
     }
+
     void setRamal(int ramal) {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
@@ -54,23 +56,26 @@ public:
 
     //Get
     int getNumero();
+
     int getCapacidade();
-    double getDiaria();
+
+    int getDiaria();
+
     int getRamal();
-
-
-
 };
 
 inline int Quarto::getNumero() {
     return numero;
 };
+
 inline int Quarto::getCapacidade() {
     return capacidade;
 };
-inline double Quarto::getDiaria() {
+
+inline int Quarto::getDiaria() {
     return diaria;
 };
+
 inline int Quarto::getRamal() {
     return ramal;
 }

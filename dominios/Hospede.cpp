@@ -3,8 +3,6 @@
 //
 
 #include "../dominios/Hospede.h"
-#include "../validadores/ValidarEndereco.h"
-
 
 void Hospede::validar(int tipo, string valor) {
     switch (tipo) {
@@ -18,6 +16,7 @@ void Hospede::validar(int tipo, string valor) {
             throw invalid_argument("Tipo inválido para validação de string.");
     }
 }
+
 void Hospede::validarCartao(string valor) {
-    //throw invalid_argument("Cartao invalido");
+    throw invalid_argument("Cartao invalido");
 }

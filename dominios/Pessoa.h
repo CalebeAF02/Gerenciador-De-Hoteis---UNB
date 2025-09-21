@@ -1,14 +1,20 @@
 #ifndef CODIGOS_CLION_TP1_PESSOA_H
 #define CODIGOS_CLION_TP1_PESSOA_H
 
-#include <string>
-#include <stdexcept>
 #include "../validadores/ValidarString.h"
 #include "../validadores/ValidarNome.h"
 
+#include <iostream>
+#include <sstream>
+#include <cctype>
+#include <string>
+
+#include <stdexcept>
+
+
 using namespace std;
 
-class Pessoa : public ValidarString,ValidarNome, exception {
+class Pessoa : public ValidarString, ValidarNome, exception {
 private:
     //Atributos
     string nome;
@@ -39,8 +45,8 @@ public:
 
     // Implementação do método abstrato
     void validar(int tipo, string valor) override;
-    void validarEmail(string email);
 
+    void validarEmail(string email);
 };
 
 //Inline Atribui em tempo de execucao o valor aos atributos

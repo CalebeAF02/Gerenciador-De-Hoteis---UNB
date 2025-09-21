@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <ostream>
+#include <string>
 #include "../dominios/Hotel.h"
 #include "../dominios/Gerente.h"
 #include "../dominios/Pessoa.h"
@@ -21,7 +22,10 @@ public:
     static const int DEVE_DAR_CERTO = 1;
 
     static void checaResultado(int esperando_resultado, int resultado_teste);
+
     static void apresentacaoTeste(string valor);
+    static void apresentacaoTeste(int valor);
+
     static int apresentacaoSucesso();
     static int apresentacaoErro(invalid_argument erro);
 

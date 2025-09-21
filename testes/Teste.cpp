@@ -24,14 +24,19 @@ void Teste::checaResultado(int esperando_resultado, int resultado_teste ) {
 void Teste::apresentacaoTeste(string valor) {
     cout << "Teste Para Validar " << endl << "Entrada: " << valor << endl;
     contTodalTestes += 1;
-
 }
+void Teste::apresentacaoTeste(int valor) {
+    cout << "Teste Para Validar " << endl << "Entrada: " << valor << endl;
+    contTodalTestes += 1;
+}
+//-----------------------------------------------------------------------------------------------------------
 int Teste::apresentacaoSucesso() {
     cout << "----------------------OK----------------------" << endl;
     cout << "Entrada Valida! "<< endl;
     cout << "----------------------------------------------" << endl;
     return DEVE_DAR_CERTO;
 }
+//-----------------------------------------------------------------------------------------------------------
 int Teste::apresentacaoErro(invalid_argument erro) {
     cout << "---------------------ERRO---------------------" << endl;
     cout << erro.what() << endl;
@@ -39,7 +44,6 @@ int Teste::apresentacaoErro(invalid_argument erro) {
     return DEVE_DAR_ERRADO;
 }
 //-------------------------------------------------------------------
-
 int Teste::getTestes() {
     return contTodalTestes;
 }
@@ -49,3 +53,4 @@ int Teste::getTestesOk() {
 int Teste::getTestesProblema() {
     return contTodalTestesProblema;
 }
+//-----------------------------------------------------------------------------------------------------------

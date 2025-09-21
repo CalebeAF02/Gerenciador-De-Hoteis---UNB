@@ -3,9 +3,6 @@
 //
 
 #include "../dominios/Hotel.h"
-#include "../validadores/ValidarEndereco.h"
-#include "../validadores/ValidarNome.h"
-
 
 void Hotel::validar(int tipo, string valor) {
     switch (tipo) {
@@ -25,5 +22,26 @@ void Hotel::validar(int tipo, string valor) {
 };
 
 void Hotel::validarTelefone(string valor) {
-    throw invalid_argument("Telefone invalido");
-}
+    string ddi = "";
+    string ddd = "";
+    string numero = "";
+
+    for (int i = 0; i < valor.length(); i++) {
+        if (i == 0) {
+            if (valor[i] != '+') {
+                throw invalid_argument("Erro: Caracter não é caracterunico de ddi '+'");
+            }
+        }
+        if (valor[i] < 1 || valor[i] > 9) {
+            if (i < 3) {
+                ddi += valor[i];
+            } else if (i < 5) {
+                ddd += valor[i];
+            } else if (i < valor.length()) {
+                numero += valor[i];
+            }
+        } else {
+            throw invalid_argument("Erro: Caracter não é numero");
+        }
+    }
+};

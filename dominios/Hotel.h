@@ -5,16 +5,17 @@
 #ifndef CODIGOS_CLION_TP1_IML_HOTEL_H
 #define CODIGOS_CLION_TP1_IML_HOTEL_H
 
-
 #include "../validadores/ValidarString.h"
 #include "../validadores/ValidarEndereco.h"
 #include "../validadores/ValidarNome.h"
 
 #include <string>
+
 #include<stdexcept>
+
 using namespace std;
 
-class Hotel : public ValidarString, ValidarEndereco,ValidarNome, exception{
+class Hotel : public ValidarString, ValidarEndereco, ValidarNome, exception {
 private:
     string nome;
     string endereco;
@@ -28,7 +29,7 @@ public:
 
 
     void validar(int tipo, string valor) override;
-    void validarNome(string nome);
+
     void validarTelefone(string telefone);
 
 
@@ -40,13 +41,16 @@ public:
     void setEndereco(string endereco) {
         this->endereco = endereco;
     };
+
     void setTelefone(string telefone) {
         this->telefone = telefone;
     };
 
     //Get
     string getNome();
+
     string getEndereco();
+
     string getTelefone();
 
 
@@ -64,9 +68,11 @@ public:
 inline string Hotel::getNome() {
     return nome;
 };
+
 inline string Hotel::getEndereco() {
     return endereco;
 };
+
 inline string Hotel::getTelefone() {
     return telefone;
 };

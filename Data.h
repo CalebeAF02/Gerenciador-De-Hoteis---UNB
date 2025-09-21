@@ -22,10 +22,22 @@ public:
     int mes;
     int ano;
 
+    static int const JAN = 1;
+    static int const FEV = 2;
+    static int const MAR = 3;
+    static int const ABR = 4;
+    static int const MAI = 5;
+    static int const JUN = 6;
+    static int const JUL = 7;
+    static int const AGO = 8;
+    static int const SET = 9;
+    static int const OUT = 10;
+    static int const NOV = 11;
+    static int const DEZ = 12;
+
     void validar(int tipo, int valor) override;
 
-    //Construtor
-    Data() = default;
+    //Construtor - Não tem
 
     // Metodo de Impressao
     string toString() {

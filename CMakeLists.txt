@@ -18,4 +18,9 @@ add_executable(projetos_cpp_unb_7 main.cpp
         testes/testes_validadores.cpp
         testes/testes_validadores.h
         testes/Teste.cpp
-        testes/Teste.h)
+        testes/Teste.h
+        Data.cpp
+        dominios/Reserva.cpp
+        dominios/Reserva.h
+        validadores/ValidarDinheiro.cpp
+        validadores/ValidarDinheiro.h)

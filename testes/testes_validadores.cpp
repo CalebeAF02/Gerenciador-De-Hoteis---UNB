@@ -2,10 +2,9 @@
 // Created by caleb on 20/09/2025.
 //
 
-#include <iostream>
-#include <ostream>
-
 #include "testes_validadores.h"
+
+#include "../dominios/Hospede.h"
 
 void TesteValidadores::testarEntradas() {
     cout << "              ----------------              " << endl;
@@ -57,10 +56,48 @@ void TesteValidadores::testarEntradas() {
     testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &h1, "");// Vai dar errado
     testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &h1, "Quadra 52, Casa 02, Comercial Del Lago");
 
+
+    cout << "                ----------------          " << endl;
+    cout << "                | Testes Datas |          " << endl;
+    cout << "                ----------------          " << endl << endl;
+
+    Data d1;
+
+    testarValidadorDia(Teste::DEVE_DAR_ERRADO, &d1, 40);
+    testarValidadorMes(Teste::DEVE_DAR_ERRADO, &d1, 22);
+    testarValidadorAno(Teste::DEVE_DAR_ERRADO, &d1, 5000);
+
+    testarValidadorDia(Teste::DEVE_DAR_CERTO, &d1, 23);
+    testarValidadorMes(Teste::DEVE_DAR_CERTO, &d1, 3);
+    testarValidadorAno(Teste::DEVE_DAR_CERTO, &d1, 2002);
+
+    cout << "                ----------------          " << endl;
+    cout << "                | Testes Cartao |          " << endl;
+    cout << "                ----------------          " << endl << endl;
+
+    Hospede hospede1;
+
+    //testarValidadorCartao(Teste::DEVE_DAR_ERRADO, &hospede1, "40");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     cout << "Total de Testes: " << Teste::getTestes() << endl;
     cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
     cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl;
-
 
 }
 
@@ -97,6 +134,43 @@ void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hotel *p
     int resultado_teste = 0;
     try {
         ptr->setEndereco(endereco);
+        resultado_teste = Teste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = Teste::apresentacaoErro(erro);
+    }
+    Teste::checaResultado(esperando_resultado, resultado_teste);
+
+}
+//-----------------------------------------------------------------------------------------------------------
+void TesteValidadores::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
+    Teste::apresentacaoTeste(dia);
+    int resultado_teste = 0;
+    try {
+        ptr->setData(dia, Data::JAN, 2000); //(valor, padrao , padrao)
+        resultado_teste = Teste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = Teste::apresentacaoErro(erro);
+    }
+    Teste::checaResultado(esperando_resultado, resultado_teste);
+
+}
+void TesteValidadores::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
+    Teste::apresentacaoTeste(mes);
+    int resultado_teste = 0;
+    try {
+        ptr->setData(1, mes, 2000); //(padrao,valor, padrao)
+        resultado_teste = Teste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = Teste::apresentacaoErro(erro);
+    }
+    Teste::checaResultado(esperando_resultado, resultado_teste);
+
+}
+void TesteValidadores::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
+    Teste::apresentacaoTeste(ano);
+    int resultado_teste = 0;
+    try {
+        ptr->setData(1, Data::JAN, ano); //(padrao, padrao , valor)
         resultado_teste = Teste::apresentacaoSucesso();
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);

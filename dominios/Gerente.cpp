@@ -18,9 +18,17 @@ void Gerente::validar(int tipo, int valor) {
 };
 
 void Gerente::validarRamal(int valor) {
-    //throw invalid_argument("Ramal invalido");
+    if (valor <0 || valor > 50) {
+        throw invalid_argument("Erro: Formato de Ramal invalido! Digite um valor entre 00 e 50");
+    }else {
+        //cou << "Senha: Valida! " << endl;
+    }
 }
 
 void Gerente::validarSenha(int valor) {
-    //throw invalid_argument("Senha invalido");
+    if (valor <0 || valor > 50) {
+        throw invalid_argument("Erro: Formato de Senha invalido! Digite um valor entre 00 e 50");
+    }else {
+        //cou << "Senha: Valida! " << endl;
+    }
 }

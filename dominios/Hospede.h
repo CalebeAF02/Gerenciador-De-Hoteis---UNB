@@ -8,14 +8,16 @@
 
 #include "../dominios/Pessoa.h"
 #include "../validadores/ValidarEndereco.h"
-#include "../validadores/ValidarInt.h"
+#include "../validadores/ValidarString.h"
 
 #include <iostream>
 #include <string>
 
+#include <stdexcept>
+
 using namespace std;
 
-class Hospede : public Pessoa, ValidarEndereco {
+class Hospede : public Pessoa, ValidarString, ValidarEndereco, exception {
 private:
     string endereco;
     string cartao;
@@ -26,12 +28,14 @@ public:
 
     // Regras específicas de validação do hóspede
     void validar(int tipo, string valor) override;
-    void validarCartao(string telefone);
+
+    void validarCartao(string cartao);
 
     void setEndereco(string endereco) {
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
+
     void setCartao(string cartao) {
         validar(TIPO_CARTAO, cartao);
         this->cartao = cartao;
@@ -39,13 +43,14 @@ public:
 
     //Get
     string getEndereco();
+
     string getCartao();
-
-
 };
+
 inline string Hospede::getEndereco() {
     return endereco;
 };
+
 inline string Hospede::getCartao() {
     return cartao;
 };

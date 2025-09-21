@@ -4,9 +4,7 @@
 
 #include "../dominios/Pessoa.h"
 #include "../validadores/ValidarNome.h"
-#include <iostream>
-#include <sstream>
-#include <cctype>
+
 
 using namespace std;
 
