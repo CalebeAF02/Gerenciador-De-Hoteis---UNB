@@ -10,6 +10,7 @@
 #include "../validadores/ValidarInt.h"
 #include "../validadores/ValidarCodigo.h"
 #include "../validadores/ValidarDinheiro.h"
+#include "../Data.h"
 
 
 #include <stdexcept>
@@ -19,8 +20,8 @@ using namespace std;
 
 class Reserva : public exception, ValidarString, ValidarInt, ValidarDinheiro, ValidarCodigo {
 private:
-    string chegada = "dia-mes-ano";
-    string partida = "dia-mes-ano";
+    Data chegada;
+    Data partida;
     int dinheiro;
     string codigo;
 
@@ -33,51 +34,53 @@ public:
     // Regras específicas de validação do hóspede
 
     void validar(int tipo, string valor) override;
-    void validarChegada(string chegada);
-    void validarPartida(string partida);
 
     void validar(int tipo, int valor) override;
 
-    void setChegada(string chegada) {
-        validar(TIPO_CHEGADA, chegada);
+    void setChegada(int dia, int mes, int ano) {
+        chegada.setData(dia, mes, ano);
         this->chegada = chegada;
     };
-    void setPartida(string partida) {
-        validar(TIPO_CHEGADA, partida);
+
+    void setPartida(int dia, int mes, int ano) {
+        partida.setData(dia, mes, ano);
         this->partida = partida;
     };
+
     void setDinheiro(int dinheiro) {
         validar(TIPO_DINHEIRO, dinheiro);
         this->dinheiro = dinheiro;
     };
+
     void setCodigo(string codigo) {
         validar(TIPO_PARTIDA, codigo);
         this->codigo = codigo;
     };
 
 
-
     //Get
-    string getChegada();
+    Data getChegada();
 
-    string getPartida();
+    Data getPartida();
 
     int getDinheiro();
 
     string getCodigo();
 };
 
-inline string Reserva::getChegada() {
+inline Data Reserva::getChegada() {
     return chegada;
 };
-inline string Reserva::getPartida() {
+
+inline Data Reserva::getPartida() {
     return partida;
 };
+
 inline int Reserva::getDinheiro() {
     return dinheiro;
 }
+
 inline string Reserva::getCodigo() {
     return codigo;
 };
 #endif //PROJETOS_CPP_UNB_7_IML_RESERVA_H
-

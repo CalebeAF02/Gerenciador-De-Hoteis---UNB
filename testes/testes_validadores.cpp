@@ -58,7 +58,10 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Ramal  |" << endl;
     cout << "                -------------------" << endl << endl;
 
+    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &gerente1, -1);
+
     testarValidadorRamal(Teste::DEVE_DAR_CERTO, &gerente1, 00);
+    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &gerente1, 50);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -116,10 +119,12 @@ void TesteValidadores::testarEntradas() {
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
     cout << "                |     Hospede     |" << endl;
-    cout << "                | Testes Endereço |" << endl;
+    cout << "                | Testes Endereco |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
+    testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+
+    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hospede1, "Quadra 52, Casa 02, Comercial Del Lago");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -127,7 +132,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Cartao  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorCartao(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
+    testarValidadorCartao(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+
+    testarValidadorCartao(Teste::DEVE_DAR_CERTO, &hospede1, "1234567890123456");
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -139,7 +146,18 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Cb");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe@alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves ");
+
     testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Luan Freitas");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -148,7 +166,7 @@ void TesteValidadores::testarEntradas() {
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hotel1, "");// Vai dar errado
+    testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hotel1, "");
     testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
 
     cout << "                -------------------" << endl;
@@ -157,7 +175,11 @@ void TesteValidadores::testarEntradas() {
     cout << "                | Testes Telefone |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorTelefone(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
+    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "+123456789987654321");
+
+    testarValidadorTelefone(Teste::DEVE_DAR_CERTO, &hotel1, "+5161993009537");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -165,7 +187,12 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Codigo  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
+    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "abcdedghij9987654321");
+
+    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &hotel1, "1234567890");
+    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &hotel1, "abcde12345");
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -178,7 +205,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Numero  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNumero(Teste::DEVE_DAR_CERTO, &quarto1, 000);// Vai dar errado
+    testarValidadorNumero(Teste::DEVE_DAR_ERRADO, &quarto1, -300);
+
+    testarValidadorNumero(Teste::DEVE_DAR_CERTO, &quarto1, 000);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -197,9 +226,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                | Testes Dinheiro |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &quarto1, -50);// Vai dar errado
+    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &quarto1, -50);
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 1000);// Vai dar errado
+    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 1000);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -207,9 +236,10 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Ramal  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &quarto1, 100);// Vai dar errado
+    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &quarto1, 0);
+    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &quarto1, 100);
 
-    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &quarto1, 10);// Vai dar errado
+    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &quarto1, 10);
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -221,9 +251,11 @@ void TesteValidadores::testarEntradas() {
     cout << "                |     Chegada     |" << endl;
     cout << "                |  Testes Resreva |" << endl;
     cout << "                -------------------" << endl << endl;
-    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "");
+    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
+    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, -20, -30, -1000);
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
+
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, 23, 03, 2002);
 
 
     cout << "                -------------------" << endl;
@@ -232,9 +264,10 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Resreva |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "50/77/5000");
+    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
+    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, -20, -30, -1000);
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "01/10/2999");
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, 01, 03, 2022);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -242,9 +275,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Resreva |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &reserva1, -70);// Vai dar errado
+    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &reserva1, -70);
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &reserva1, 2000);// Vai dar errado
+    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &reserva1, 2000);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -506,11 +539,11 @@ void TesteValidadores::testarValidadorRamal(int esperando_resultado, Quarto *ptr
     Teste::checaResultado(esperando_resultado, resultado_teste);
 
 }//-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *ptr, string chegada) {
-    Teste::apresentacaoTeste(chegada);
+void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+    Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
     try {
-        ptr->setChegada(chegada);
+        ptr->setChegada(dia, mes, ano);
         resultado_teste = Teste::apresentacaoSucesso();
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
@@ -518,11 +551,11 @@ void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *ptr, string partida) {
-    Teste::apresentacaoTeste(partida);
+void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+    Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
     try {
-        ptr->setPartida(partida);
+        ptr->setPartida(dia, mes, ano);
         resultado_teste = Teste::apresentacaoSucesso();
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);

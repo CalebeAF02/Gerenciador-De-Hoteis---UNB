@@ -7,5 +7,7 @@
 using namespace std;
 
 void ValidarRamal::validar(int ramal) {
-    throw invalid_argument("Ramal invalido");
+    if (ramal < 0 || ramal > 50) {
+        throw invalid_argument("Erro: Ramal invalido");
+    }
 };
