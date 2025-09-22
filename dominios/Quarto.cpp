@@ -16,8 +16,8 @@ void Quarto::validar(int tipo, int valor) {
             validarCapacidade(valor);
             break;
         };
-        case TIPO_DIARIA: {
-            validarDiaria(valor);
+        case TIPO_DINHEIRO: {
+            validarDinheiro(valor);
         }
         case TIPO_RAMAL: {
             ValidarRamal::validar(valor);
@@ -42,7 +42,7 @@ void Quarto::validarCapacidade(int valor) {
     }
 };
 
-void Quarto::validarDiaria(int valor) {
+void Quarto::validarDinheiro(int valor) {
     if (valor == 800) {
         // tipo 1 de quarto
     } else if (valor == 1200) {

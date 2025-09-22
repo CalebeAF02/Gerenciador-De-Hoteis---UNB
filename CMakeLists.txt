@@ -23,4 +23,6 @@ add_executable(projetos_cpp_unb_7 main.cpp
         dominios/Reserva.cpp
         dominios/Reserva.h
         validadores/ValidarDinheiro.cpp
-        validadores/ValidarDinheiro.h)
+        validadores/ValidarDinheiro.h
+        validadores/ValidarCodigo.cpp
+        validadores/ValidarCodigo.h)

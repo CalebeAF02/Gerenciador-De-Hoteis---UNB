@@ -13,9 +13,7 @@ using namespace std;
 // Funcao estatica para validar endereco em hotel e hospede
 class ValidarEndereco: public exception{
 public:
-    // Método abstrato: toda classe filha PRECISA implementar
     static void validar(string endereco);
-
 };
 
 

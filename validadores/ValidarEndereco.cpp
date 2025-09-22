@@ -9,5 +9,5 @@
 using namespace std;
 
 void ValidarEndereco::validar(string endereco) {
-    throw invalid_argument("Endereco invalido");
+    throw invalid_argument("Erro: Endereco invalido");
 };

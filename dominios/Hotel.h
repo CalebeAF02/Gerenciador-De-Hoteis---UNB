@@ -8,6 +8,7 @@
 #include "../validadores/ValidarString.h"
 #include "../validadores/ValidarEndereco.h"
 #include "../validadores/ValidarNome.h"
+#include "../validadores/ValidarCodigo.h"
 
 #include <string>
 
@@ -15,17 +16,19 @@
 
 using namespace std;
 
-class Hotel : public ValidarString, ValidarEndereco, ValidarNome, exception {
+class Hotel : public ValidarString, ValidarEndereco, ValidarNome,ValidarCodigo, exception {
 private:
     string nome;
     string endereco;
     string telefone;
-    //Codigo
+    string codigo;
 
 public:
     static int const TIPO_NOME = 1;
     static int const TIPO_ENDERECO = 2;
     static int const TIPO_TELEFONE = 3;
+    static int const TIPO_CODIGO = 4;
+
 
 
     void validar(int tipo, string valor) override;
@@ -46,12 +49,18 @@ public:
         this->telefone = telefone;
     };
 
+    void setCodigo(string codigo) {
+        this->codigo = codigo;
+    };
+
     //Get
     string getNome();
 
     string getEndereco();
 
     string getTelefone();
+
+    string getCodigo();
 
 
     /*
@@ -77,4 +86,7 @@ inline string Hotel::getTelefone() {
     return telefone;
 };
 
+inline string Hotel::getCodigo() {
+    return codigo;
+};
 #endif //CODIGOS_CLION_TP1_IML_HOTEL_H

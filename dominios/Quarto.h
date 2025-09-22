@@ -7,6 +7,8 @@
 
 #include "../validadores/ValidarInt.h"
 #include "../validadores/ValidarRamal.h"
+#include "../validadores/ValidarDinheiro.h"
+
 #include<stdexcept>
 
 using namespace std;
@@ -15,13 +17,13 @@ class Quarto : public ValidarInt, ValidarRamal, exception {
 private:
     int numero;
     int capacidade;
-    int diaria;
+    int dinheiro;
     int ramal;
 
 public:
     static int const TIPO_NUMERO = 1;
     static int const TIPO_CAPACIDADE = 2;
-    static int const TIPO_DIARIA = 3;
+    static int const TIPO_DINHEIRO = 3;
     static int const TIPO_RAMAL = 4;
 
     // Regras específicas de validação do gerente
@@ -32,7 +34,7 @@ public:
 
     void validarCapacidade(int capacidade);
 
-    void validarDiaria(int diaria);
+    void validarDinheiro(int diaria);
 
     void setNumero(int numero) {
         validar(TIPO_NUMERO, numero);
@@ -44,9 +46,9 @@ public:
         this->capacidade = capacidade;
     }
 
-    void setDiaria(int diaria) {
-        validar(TIPO_DIARIA, diaria);
-        this->diaria = diaria;
+    void setDinheiro(int diaria) {
+        validar(TIPO_DINHEIRO, dinheiro);
+        this->dinheiro = dinheiro;
     }
 
     void setRamal(int ramal) {
@@ -59,7 +61,7 @@ public:
 
     int getCapacidade();
 
-    int getDiaria();
+    int getDinheiro();
 
     int getRamal();
 };
@@ -72,8 +74,8 @@ inline int Quarto::getCapacidade() {
     return capacidade;
 };
 
-inline int Quarto::getDiaria() {
-    return diaria;
+inline int Quarto::getDinheiro() {
+    return dinheiro;
 };
 
 inline int Quarto::getRamal() {

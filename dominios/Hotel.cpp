@@ -18,6 +18,10 @@ void Hotel::validar(int tipo, string valor) {
             validarTelefone(valor);
             break;
         };
+        case TIPO_CODIGO: {
+            ValidarCodigo::validar(valor);
+            break;
+        };
     };
 };
 

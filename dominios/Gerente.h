@@ -8,15 +8,17 @@
 #include "../dominios/Pessoa.h"
 #include "../validadores/ValidarRamal.h"
 #include "../validadores/ValidarInt.h"
+#include "../validadores/ValidarString.h"
 
+#include <string>
 #include "stdexcept"
 
 using namespace std;
 
-class Gerente : public Pessoa, ValidarInt, ValidarRamal, exception {
+class Gerente : public Pessoa, ValidarInt,ValidarString, ValidarRamal, exception {
 private:
     int ramal;
-    int senha;
+    string senha;
 
 public:
     static int const TIPO_RAMAL = 1;
@@ -24,21 +26,23 @@ public:
 
     void validar(int tipo, int valor) override;
     void validarRamal(int ramal);
-    void validarSenha(int senha);
+
+    void validar(int tipo, string valor) override;
+    void validarSenha(string senha);
 
 
     void setRamal(int ramal) {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
-    void setSenha(int senha) {
+    void setSenha(string senha) {
         validar(TIPO_SENHA, senha);
         this->senha = senha;
     }
 
     //Get
     int getRamal();
-    int getSenha();
+    string getSenha();
 
     // Regras específicas de validação do gerente
 
@@ -46,7 +50,7 @@ public:
 inline int Gerente::getRamal() {
     return ramal;
 };
-inline int Gerente::getSenha() {
+inline string Gerente::getSenha() {
     return senha;
 };
 

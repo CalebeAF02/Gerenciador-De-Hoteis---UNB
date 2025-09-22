@@ -35,7 +35,6 @@ public:
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
-
     void setCartao(string cartao) {
         validar(TIPO_CARTAO, cartao);
         this->cartao = cartao;

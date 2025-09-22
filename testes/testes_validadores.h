@@ -13,40 +13,58 @@
 #include "../Data.h"
 #include "Teste.h"
 
+#include "../validadores/ValidarInt.h"
+#include "../validadores/ValidarString.h"
+#include "../validadores/ValidarNome.h"
+#include "../validadores/ValidarEndereco.h"
+#include "../validadores/ValidarRamal.h"
+#include "../validadores/ValidarDinheiro.h"
+#include "../validadores/ValidarCodigo.h"
+
 #include <iostream>
 #include <ostream>
 
+using namespace std;
 
 class TesteValidadores {
 public:
     static void testarEntradas ();
 ;
-
+    // Pessoa: Gerente ou Hospede
     static void testarValidadorNome(int esperando_resultado, Pessoa* ptr, string nome);
     static void testarValidadorEmail(int esperando_resultado, Pessoa* ptr, string email);
 
+    //Gerente
+    static void testarValidadorNome(int esperando_resultado, Gerente* ptr, string nome);
+    static void testarValidadorEmail(int esperando_resultado, Gerente* ptr, string email);
+    static void testarValidadorRamal(int esperando_res, Gerente* ptr, int ramal);
+    static void testarValidadorSenha(int esperando_resultado, Gerente* ptr, string senha);
+
+    //Hospede
+    static void testarValidadorNome(int esperando_resultado, Hospede* ptr, string nome);
+    static void testarValidadorEmail(int esperando_resultado, Hospede* ptr, string email);
     static void testarValidadorCartao(int esperando_res, Hospede* ptr, string Cartao);
     static void testarValidadorEndereco(int esperando_resultado, Hospede* ptr, string endereco);
 
-    static void testarValidadorRamal(int esperando_res, Gerente* ptr, string Cartao);
-    static void testarValidadorSenha(int esperando_resultado, Gerente* ptr, string endereco);
-
-    static void testarValidadorNome(int esperando_resultado, Hotel* ptr, string endereco);
+    //Hotel
+    static void testarValidadorNome(int esperando_resultado, Hotel* ptr, string nome);
     static void testarValidadorEndereco(int esperando_resultado, Hotel* ptr, string endereco);
-    static void testarValidadorTelefone(int esperando_resultado, Hotel* ptr, string endereco);
-    static void testarValidadorCodigo(int esperando_resultado, Hotel* ptr, string endereco);
+    static void testarValidadorTelefone(int esperando_resultado, Hotel* ptr, string telefone);
+    static void testarValidadorCodigo(int esperando_resultado, Hotel* ptr, string codigo);
 
-    static void testarValidadorNumero(int esperando_resultado, Quarto* ptr, string endereco);
-    static void testarValidadorCapacidade(int esperando_resultado, Quarto* ptr, string endereco);
-    static void testarValidadorDinheiro(int esperando_resultado, Quarto* ptr, string endereco);
-    static void testarValidadorRamal(int esperando_resultado, Quarto* ptr, string endereco);
+    //Quarto
+    static void testarValidadorNumero(int esperando_resultado, Quarto* ptr, int numero);
+    static void testarValidadorCapacidade(int esperando_resultado, Quarto* ptr, int capacidade);
+    static void testarValidadorDinheiro(int esperando_resultado, Quarto* ptr, int dinheiro);
+    static void testarValidadorRamal(int esperando_resultado, Quarto* ptr, int ramal);
 
-    static void testarValidadorCegada(int esperando_resultado, Reserva* ptr, string endereco);
-    static void testarValidadorPartida(int esperando_resultado, Reserva* ptr, string endereco);
-    static void testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, string endereco);
-    static void testarValidadorCodigo(int esperando_resultado, Reserva* ptr, string endereco);
+    //Reserva
+    static void testarValidadorChegada(int esperando_resultado, Reserva* ptr, string chegada);
+    static void testarValidadorPartida(int esperando_resultado, Reserva* ptr, string partida);
+    static void testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, int dinheiro);
+    static void testarValidadorCodigo(int esperando_resultado, Reserva* ptr, string codigo);
 
-
+    // Data
     static void testarValidadorDia(int esperando_resultado, Data* ptr, int dia);
     static void testarValidadorMes(int esperando_resultado, Data* ptr, int mes);
     static void testarValidadorAno(int esperando_resultado, Data* ptr, int ano);

@@ -3,8 +3,6 @@
 //
 
 #include "../dominios/Pessoa.h"
-#include "../validadores/ValidarNome.h"
-
 
 using namespace std;
 
