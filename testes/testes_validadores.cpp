@@ -221,8 +221,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                |     Chegada     |" << endl;
     cout << "                |  Testes Resreva |" << endl;
     cout << "                -------------------" << endl << endl;
+    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "");
 
-    //testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, 40);
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
 
 
     cout << "                -------------------" << endl;
@@ -231,7 +232,9 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Resreva |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    //testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, 40);
+    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "50/77/5000");
+
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "01/10/2999");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
