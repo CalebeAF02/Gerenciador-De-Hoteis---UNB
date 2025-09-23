@@ -48,8 +48,6 @@ public:
     int getRamal();
 
     string getSenha();
-
-    // Regras específicas de validação do gerente
 };
 
 inline int Gerente::getRamal() {
