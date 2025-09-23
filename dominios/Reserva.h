@@ -18,7 +18,8 @@
 
 using namespace std;
 
-class Reserva : public exception, ValidarString, ValidarInt, ValidarDinheiro, ValidarCodigo {
+class Reserva : public exception, public ValidarString, public ValidarInt, public ValidarDinheiro,
+                public ValidarCodigo {
 private:
     Data chegada;
     Data partida;

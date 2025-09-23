@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Quarto : public ValidarInt, ValidarRamal, exception {
+class Quarto : public ValidarInt, public ValidarRamal, public exception {
 private:
     int numero;
     int capacidade;

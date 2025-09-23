@@ -9,29 +9,38 @@
 using namespace std;
 
 void ValidarEndereco::validar(string endereco) {
+    int cont_branco = 0;
+
     int enderecoTamanho = endereco.length();
     if (enderecoTamanho < 5 || enderecoTamanho > 30) {
         throw invalid_argument("Erro: Endereco com tamanho invalido");
     }
 
     bool primeiraLetraCaixaAlta = true;
-    int contEspaco = 0;
+    int caracteres_brancos = 0;
+    int contCaracter = 0;
+    int contLetra = 0;
 
     for (int i = 0; i < enderecoTamanho; i++) {
-        if (endereco[i] == ' ') {
+        if (endereco[i] == ',' || endereco[i] == '.') {
             primeiraLetraCaixaAlta = true;
-            contEspaco++;
-            if (contEspaco > 1) {
-                throw invalid_argument("Erro: Espaco em branco seguido por outro espaco");
+            contCaracter++;
+            if (contCaracter > 1) {
+                throw invalid_argument("Erro: Simbolo seguido por outro simbolo");
             }
+        } else if (endereco[i] == ' ') {
+            caracteres_brancos += 1;
+            cont_branco += 1;
+            if (cont_branco > 1) {
+                throw invalid_argument("Erro: Espaco em branco seguido por outro espaco em branco");
+            }
+        } else if (cont_branco == 1 && endereco[i] != (isalpha(endereco[i]))) {
+            throw invalid_argument("Erro: Espaco em branco seguido por caracter invalido");
+        } else if (cont_branco == 1 && isalpha(endereco[i])) {
+            cont_branco = 0;
+            contLetra += 1;
         } else if (isalpha(endereco[i])) {
-            contEspaco = 0;
-            if (primeiraLetraCaixaAlta && !isupper(endereco[i])) {
-                throw invalid_argument("Erro: Primeira letra de cada termo deve ser maiuscula");
-            }
-            primeiraLetraCaixaAlta = false;
-        } else {
-            throw invalid_argument("Erro: Endereco com caracter invalido");
+            contLetra += 1;
         }
     }
     if (endereco[enderecoTamanho - 1] == ' ') {

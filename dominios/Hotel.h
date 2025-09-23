@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class Hotel : public ValidarString, ValidarEndereco, ValidarNome,ValidarCodigo, exception {
+class Hotel : public ValidarString, public ValidarEndereco, public ValidarNome, public ValidarCodigo, public exception {
 private:
     string nome;
     string endereco;
@@ -28,7 +28,6 @@ public:
     static int const TIPO_ENDERECO = 2;
     static int const TIPO_TELEFONE = 3;
     static int const TIPO_CODIGO = 4;
-
 
 
     void validar(int tipo, string valor) override;

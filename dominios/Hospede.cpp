@@ -13,10 +13,12 @@ void Hospede::validar(int tipo, string valor) {
             validarCartao(valor);
             break;
         default:
-            throw invalid_argument("Tipo inválido para validação de string.");
+            throw invalid_argument("Erro: Tipo inválido para validação de string.");
     }
 }
 
 void Hospede::validarCartao(string valor) {
-    throw invalid_argument("Cartao invalido");
+    if (valor.length() < 0 || valor.length() > 16) {
+        throw invalid_argument("Erro: Tamanho invalido");
+    } // implementar algoritimo de lunn
 }

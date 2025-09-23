@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, ValidarString, ValidarEndereco, exception {
+class Hospede : public Pessoa, public ValidarString, public ValidarEndereco, public exception {
 private:
     string endereco;
     string cartao;
@@ -35,6 +35,7 @@ public:
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
+
     void setCartao(string cartao) {
         validar(TIPO_CARTAO, cartao);
         this->cartao = cartao;

@@ -5,16 +5,12 @@
 #include "testes_validadores.h"
 
 void TesteValidadores::testarEntradas() {
-
     Pessoa pessoa1, pessoa2;
-
     //------------------------------------------------------------------------------------------------------------------
-
-    Gerente gerente1;
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
+    cout << "                |     Pessoa     |" << endl;
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -32,16 +28,18 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
+    cout << "                |     Pessoa     |" << endl;
     cout << "                |  Testes Emails  |" << endl;
     cout << "                -------------------" << endl << endl;
 
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,"1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
+                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe clves@gmail.com");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,"calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
+                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".cb@gmail.com");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".-cb@gmail.com");
     testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "c--b@gmail.com");
@@ -51,6 +49,53 @@ void TesteValidadores::testarEntradas() {
     testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "cb@gmail.com");
     testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "luanfreitas@gmai.com");
     testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "kaiorodrigues@gmail.com");
+
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    Gerente gerente1;
+
+    cout << "                -------------------" << endl;
+    cout << "                |     Testes      |" << endl;
+    cout << "                |     Gerente     |" << endl;
+    cout << "                |   Testes Nome   |" << endl;
+    cout << "                -------------------" << endl << endl;
+
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves ");
+
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Luan Freitas");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Kaio Rodrigues");
+
+    cout << "                -------------------" << endl;
+    cout << "                |     Testes      |" << endl;
+    cout << "                |     Gerente     |" << endl;
+    cout << "                |  Testes Emails  |" << endl;
+    cout << "                -------------------" << endl << endl;
+
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe  clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".-cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c--b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c..b@gmail.com");
+
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "luanfreitas@gmai.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -68,8 +113,15 @@ void TesteValidadores::testarEntradas() {
     cout << "                |     Gerente     |" << endl;
     cout << "                |   Testes Senha  |" << endl;
     cout << "                -------------------" << endl << endl;
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "AA1#2");
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "Aa1#2");
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "A12#3");
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "1#2#3");
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "A#B#C");
+    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "a#b#c");
 
-    testarValidadorSenha(Teste::DEVE_DAR_CERTO, &gerente1, "A1#a2$");
+    testarValidadorSenha(Teste::DEVE_DAR_CERTO, &gerente1, "A#b#3");
+    testarValidadorSenha(Teste::DEVE_DAR_CERTO, &gerente1, "A1#a2");
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -81,17 +133,17 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe Alves ");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe@alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa2, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa2, "Kaio Rodrigues");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Luan Freitas");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -100,21 +152,23 @@ void TesteValidadores::testarEntradas() {
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2,"1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2,"calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "c..b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe  clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".-cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c--b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c..b@gmail.com");
 
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "kaiorodrigues@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "luanfreitas@gmai.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -124,7 +178,7 @@ void TesteValidadores::testarEntradas() {
 
     testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hospede1, "");
 
-    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hospede1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hospede1, "Qd 52, Cs 02, Comercial Del Lago");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -142,7 +196,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |      Hotel      |" << endl;
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -155,23 +209,23 @@ void TesteValidadores::testarEntradas() {
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe@alves");
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Qd 52, Cs 02, Comercial Del Lago");
     testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Luan Freitas");
     testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |      Hotel      |" << endl;
     cout << "                | Testes Endereço |" << endl;
     cout << "                -------------------" << endl << endl;
 
 
     testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hotel1, "");
-    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hotel1, "Quadra 52, Casa 02, Comercial Del Lago");
+    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hotel1, "Qd.52 Cs.02 Comercial Del Lago");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |      Hotel      |" << endl;
     cout << "                | Testes Telefone |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -183,7 +237,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |      Hotel      |" << endl;
     cout << "                |  Testes Codigo  |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -201,7 +255,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |     Quarto      |" << endl;
     cout << "                |  Testes Numero  |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -211,7 +265,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |     Quarto      |" << endl;
     cout << "                | Testes Capacidade |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -222,7 +276,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |     Quarto      |" << endl;
     cout << "                | Testes Dinheiro |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -232,7 +286,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
+    cout << "                |     Quarto      |" << endl;
     cout << "                |   Testes Ramal  |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -248,8 +302,8 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Chegada     |" << endl;
-    cout << "                |  Testes Resreva |" << endl;
+    cout << "                |     Resreva     |" << endl;
+    cout << "                |  Testes Chegada |" << endl;
     cout << "                -------------------" << endl << endl;
     testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
     testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, -20, -30, -1000);
@@ -260,8 +314,8 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Partida     |" << endl;
-    cout << "                |  Testes Resreva |" << endl;
+    cout << "                |     Resreva     |" << endl;
+    cout << "                |  Testes Partida |" << endl;
     cout << "                -------------------" << endl << endl;
 
     testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
@@ -271,8 +325,8 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Dinheiro    |" << endl;
-    cout << "                |  Testes Resreva |" << endl;
+    cout << "                |     Resreva     |" << endl;
+    cout << "                | Testes Dinheiro |" << endl;
     cout << "                -------------------" << endl << endl;
 
     testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &reserva1, -70);
@@ -281,8 +335,8 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Codigo      |" << endl;
-    cout << "                |  Testes Resreva |" << endl;
+    cout << "                |     Resreva     |" << endl;
+    cout << "                |  Testes Codigo  |" << endl;
     cout << "                -------------------" << endl << endl;
 
     testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &reserva1, "");
@@ -312,7 +366,6 @@ void TesteValidadores::testarEntradas() {
     cout << "Total de Testes: " << Teste::getTestes() << endl;
     cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
     cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl;
-
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -322,13 +375,12 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Pessoa *ptr,
     try {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorEmail(int esperando_resultado, Pessoa *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
@@ -338,21 +390,22 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Pessoa *ptr
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
-   Teste::checaResultado(esperando_resultado, resultado_teste);
+    Teste::checaResultado(esperando_resultado, resultado_teste);
 }
+
+//-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorNome(int esperando_resultado, Gerente *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
     try {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
@@ -364,7 +417,7 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Gerente *pt
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorRamal(int esperando_resultado, Gerente *ptr, int ramal) {
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
@@ -375,9 +428,8 @@ void TesteValidadores::testarValidadorRamal(int esperando_resultado, Gerente *pt
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha) {
     Teste::apresentacaoTeste(senha);
     int resultado_teste = 0;
@@ -388,8 +440,8 @@ void TesteValidadores::testarValidadorSenha(int esperando_resultado, Gerente *pt
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorNome(int esperando_resultado, Hospede *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
@@ -397,13 +449,12 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Hospede *ptr
     try {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorEmail(int esperando_resultado, Hospede *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
@@ -415,7 +466,7 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Hospede *pt
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorCartao(int esperando_resultado, Hospede *ptr, string cartao) {
     Teste::apresentacaoTeste(cartao);
     int resultado_teste = 0;
@@ -426,9 +477,8 @@ void TesteValidadores::testarValidadorCartao(int esperando_resultado, Hospede *p
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hospede *ptr, string endereco) {
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
@@ -440,6 +490,7 @@ void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hospede 
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorNome(int esperando_resultado, Hotel *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
@@ -447,13 +498,12 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Hotel *ptr, 
     try {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-
     } catch (invalid_argument &erro) {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hotel *ptr, string endereco) {
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
@@ -465,7 +515,7 @@ void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hotel *p
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorTelefone(int esperando_resultado, Hotel *ptr, string telefone) {
     Teste::apresentacaoTeste(telefone);
     int resultado_teste = 0;
@@ -476,9 +526,8 @@ void TesteValidadores::testarValidadorTelefone(int esperando_resultado, Hotel *p
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo) {
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
@@ -490,6 +539,7 @@ void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Hotel *ptr
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorNumero(int esperando_resultado, Quarto *ptr, int numero) {
     Teste::apresentacaoTeste(numero);
@@ -502,7 +552,7 @@ void TesteValidadores::testarValidadorNumero(int esperando_resultado, Quarto *pt
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade) {
     Teste::apresentacaoTeste(capacidade);
     int resultado_teste = 0;
@@ -514,7 +564,7 @@ void TesteValidadores::testarValidadorCapacidade(int esperando_resultado, Quarto
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int diaria) {
     Teste::apresentacaoTeste(diaria);
     int resultado_teste = 0;
@@ -526,7 +576,7 @@ void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Quarto *
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorRamal(int esperando_resultado, Quarto *ptr, int ramal) {
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
@@ -537,8 +587,7 @@ void TesteValidadores::testarValidadorRamal(int esperando_resultado, Quarto *ptr
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
-}//-----------------------------------------------------------------------------------------------------------
+} //-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
@@ -550,7 +599,7 @@ void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
@@ -562,7 +611,7 @@ void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Reserva *ptr, int dinheiro) {
     Teste::apresentacaoTeste(dinheiro);
     int resultado_teste = 0;
@@ -574,7 +623,7 @@ void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Reserva 
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
-//-----------------------------------------------------------------------------------------------------------
+
 void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Reserva *ptr, string codigo) {
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
@@ -585,8 +634,8 @@ void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Reserva *p
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void TesteValidadores::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
     Teste::apresentacaoTeste(dia);
@@ -598,8 +647,8 @@ void TesteValidadores::testarValidadorDia(int esperando_resultado, Data *ptr, in
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
+
 void TesteValidadores::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
     Teste::apresentacaoTeste(mes);
     int resultado_teste = 0;
@@ -610,8 +659,8 @@ void TesteValidadores::testarValidadorMes(int esperando_resultado, Data *ptr, in
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
-
 }
+
 void TesteValidadores::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
     Teste::apresentacaoTeste(ano);
     int resultado_teste = 0;
@@ -623,4 +672,5 @@ void TesteValidadores::testarValidadorAno(int esperando_resultado, Data *ptr, in
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
+
 //-----------------------------------------------------------------------------------------------------------

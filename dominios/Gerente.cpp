@@ -1,7 +1,6 @@
 //
 // Created by caleb on 10/09/2025.
 //
-#include <iostream>
 #include "../dominios/Gerente.h"
 
 void Gerente::validar(int tipo, int valor) {
@@ -32,33 +31,54 @@ void Gerente::validarRamal(int valor) {
 
 void Gerente::validarSenha(string senha) {
     // Deve ser editado ainda
+    // ! " # $ % & ?
+    int caixa_alta = 0;
+    int caixa_baixa = 0;
+    int caracter_especial = 0;
+    int num = 0;
+
+    int cont_letra = 0;
+    int cont_num = 0;
+
+    int letra = 0;
 
     int senhaTamanho = senha.length();
-    if (senhaTamanho < 5 || senhaTamanho > 20) {
+    if (senhaTamanho != 5) {
         throw invalid_argument("Erro: Senha com tamanho invalido");
     }
-
-    bool primeiraLetraCaixaAlta = true;
-    int contEspaco = 0;
-
     for (int i = 0; i < senhaTamanho; i++) {
-        if (senha[i] == ' ') {
-            primeiraLetraCaixaAlta = true;
-            contEspaco++;
-            if (contEspaco > 1) {
-                throw invalid_argument("Erro: Espaco em branco seguido por outro espaco");
+        if (isalpha(senha[i])) {
+            if (islower(senha[i])) {
+                letra += 1;
+                caixa_baixa += 1;
+                cont_letra += 1;
+                if (cont_letra > 1) {
+                    throw invalid_argument("Erro: + de 1 caracter caixa baixa");
+                }
+            } else if (isupper(senha[i])) {
+                letra += 1;
+                caixa_alta += 1;
+                cont_letra += 1;
+                if (cont_letra > 1) {
+                    throw invalid_argument("Erro: + de 1 caracter caixa alta");
+                }
             }
-        } else if (isalpha(senha[i])) {
-            contEspaco = 0;
-            if (primeiraLetraCaixaAlta && !isupper(senha[i])) {
-                throw invalid_argument("Erro: Primeira letra de cada termo deve ser maiuscula");
+        } else if (isdigit(senha[i])) {
+            cont_letra = 0;
+            num += 1;
+            cont_num += 1;
+            if (cont_num > 1) {
+                throw invalid_argument("Erro: Senha com numeros 2 seguidos");
             }
-            primeiraLetraCaixaAlta = false;
+        } else if (senha[i] == '!' || senha[i] == '"' || senha[i] == '#' || senha[i] == '$' || senha[i] == '%' || senha[
+                       i] == '&' || senha[i] == '?') {
+            cont_num = 0;
+            caracter_especial += 1;
         } else {
-            throw invalid_argument("Erro: Senha com caracter invalido");
+            throw invalid_argument("Erro: Caracter invalido");
         }
     }
-    if (senha[senhaTamanho - 1] == ' ') {
-        throw invalid_argument("Erro: Senha nao pode terminar com espaco");
+    if (caixa_baixa < 1 || caixa_alta < 1 || num < 1 || caracter_especial < 1) {
+        throw invalid_argument("Erro: Senha invalida");
     }
 };

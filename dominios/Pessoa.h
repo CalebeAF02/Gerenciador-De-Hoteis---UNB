@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class Pessoa : public ValidarString, ValidarNome, exception {
+class Pessoa : public ValidarString, public ValidarNome, public exception {
 private:
     //Atributos
     string nome;
