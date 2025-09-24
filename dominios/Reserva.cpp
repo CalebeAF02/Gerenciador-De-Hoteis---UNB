@@ -4,7 +4,7 @@
 
 #include "Reserva.h"
 
-void Reserva::validar(int tipo, string valor) {
+void Reserva::validar(int tipo, const string valor) {
     switch (tipo) {
         case TIPO_CODIGO: {
             ValidarCodigo::validar(valor);
@@ -13,7 +13,7 @@ void Reserva::validar(int tipo, string valor) {
     };
 };
 
-void Reserva::validar(int tipo, int valor) {
+void Reserva::validar(int tipo, const int valor) {
     switch (tipo) {
         case TIPO_DINHEIRO: {
             ValidarDinheiro::validar(valor);

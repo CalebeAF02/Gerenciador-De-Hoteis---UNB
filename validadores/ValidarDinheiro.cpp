@@ -6,14 +6,9 @@
 
 using namespace std;
 
-void ValidarDinheiro::validar(int valor) {
-    if (valor == 800) {
-        // tipo 1 de quarto
-    } else if (valor == 1200) {
-        // tipo 2 de quarto
-    }  else if (valor<=0 || valor>=1000000) {
-        // tipo 2 de quarto
+void ValidarDinheiro::validar(const int valor) {
+    if (valor >= 1 && valor <= 100000000) {
     }else {
-        throw invalid_argument("Erro: Valor invalido! Digite o valor R$ 800 ou R$ 1200 !");
+        throw invalid_argument("Erro: Valor invalido! Digite o valor entre R$ 1 e R$ 100000000 !");
     }
 };

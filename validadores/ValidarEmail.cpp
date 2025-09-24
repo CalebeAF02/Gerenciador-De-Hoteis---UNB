@@ -5,7 +5,7 @@
 #include "../validadores/ValidarEmail.h"
 
 
-void ValidarEmail::validar(string email) {
+void ValidarEmail::validar(const string email) {
     // lógica de validação do email
     int posicaoArroba = email.find("@");
     if (posicaoArroba == string::npos) {

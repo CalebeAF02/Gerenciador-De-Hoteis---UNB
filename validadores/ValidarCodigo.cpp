@@ -4,14 +4,16 @@
 
 #include "ValidarCodigo.h"
 
+#include <iostream>
+#include <ostream>
 #include <string>
 
 using namespace std;
 
-void ValidarCodigo::validar(string codigo) {
+void ValidarCodigo::validar(const string codigo) {
     int cont_baixo = 0;
     int cont_num = 0;
-    if (codigo.length() < 0 || codigo.length() > 10) {
+    if (codigo.length() == 10) {
         for (int i = 0; i < codigo.length(); i++) {
             if (islower(codigo[i])) {
                 cont_baixo += 1;
@@ -21,5 +23,7 @@ void ValidarCodigo::validar(string codigo) {
                 throw invalid_argument("Erro: Caracter invalido");
             }
         }
+    } else {
+        throw invalid_argument("Erro: Quantidade de caracteres invalida. Quantidade: 10 ");
     }
 };

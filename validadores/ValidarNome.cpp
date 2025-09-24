@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void ValidarNome::validar(string nome) {
+void ValidarNome::validar(const string nome) {
     int cont_alta = 0;
     int cont_baixa = 0;
     // lógica de validação do nome

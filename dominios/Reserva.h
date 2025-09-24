@@ -36,23 +36,23 @@ public:
 
     void validar(int tipo, int valor) override;
 
-    void setChegada(int dia, int mes, int ano) {
+    void setChegada(const int dia, const int mes, const int ano) {
         chegada.setData(dia, mes, ano);
         this->chegada = chegada;
     };
 
-    void setPartida(int dia, int mes, int ano) {
+    void setPartida(const int dia, const int mes, const int ano) {
         partida.setData(dia, mes, ano);
         this->partida = partida;
     };
 
-    void setDinheiro(int dinheiro) {
+    void setDinheiro(const int dinheiro) {
         validar(TIPO_DINHEIRO, dinheiro);
         this->dinheiro = dinheiro;
     };
 
-    void setCodigo(string codigo) {
-        validar(TIPO_PARTIDA, codigo);
+    void setCodigo(const string codigo) {
+        validar(TIPO_CODIGO, codigo);
         this->codigo = codigo;
     };
 

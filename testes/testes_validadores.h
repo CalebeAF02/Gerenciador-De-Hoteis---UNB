@@ -41,7 +41,7 @@ public:
 
     static void testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email);
 
-    static void testarValidadorRamal(int esperando_res, Gerente *ptr, int ramal);
+    static void testarValidadorRamal(int esperando_res, Gerente *ptr, string ramal);
 
     static void testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha);
 
@@ -64,13 +64,13 @@ public:
     static void testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo);
 
     //Quarto
-    static void testarValidadorNumero(int esperando_resultado, Quarto *ptr, int numero);
+    static void testarValidadorNumero(int esperando_resultado, Quarto *ptr, string numero);
 
     static void testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade);
 
     static void testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int dinheiro);
 
-    static void testarValidadorRamal(int esperando_resultado, Quarto *ptr, int ramal);
+    static void testarValidadorRamal(int esperando_resultado, Quarto *ptr, string ramal);
 
     //Reserva
     static void testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano);

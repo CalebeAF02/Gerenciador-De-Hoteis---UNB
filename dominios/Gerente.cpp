@@ -3,23 +3,10 @@
 //
 #include "../dominios/Gerente.h"
 
-void Gerente::validar(int tipo, int valor) {
+void Gerente::validar(int tipo, const string valor) {
     switch (tipo) {
         case TIPO_RAMAL: {
             ValidarRamal::validar(valor);
-            break;
-        };
-    };
-};
-
-void Gerente::validar(int tipo, string valor) {
-    switch (tipo) {
-        case TIPO_NOME: {
-            ValidarNome (valor);
-            break;
-        };
-        case TIPO_EMAIL: {
-            ValidarEmail (valor);
             break;
         };
         case TIPO_SENHA: {
@@ -29,7 +16,7 @@ void Gerente::validar(int tipo, string valor) {
     };
 };
 
-void Gerente::validarSenha(string senha) {
+void Gerente::validarSenha(const string senha) {
     // Deve ser editado ainda
     // ! " # $ % & ?
     int caixa_alta = 0;
@@ -40,7 +27,7 @@ void Gerente::validarSenha(string senha) {
     int cont_letra = 0;
     int cont_num = 0;
 
-    int letra = 0;
+    int Totlaletras = 0;
 
     int senhaTamanho = senha.length();
     if (senhaTamanho != 5) {
@@ -49,14 +36,14 @@ void Gerente::validarSenha(string senha) {
     for (int i = 0; i < senhaTamanho; i++) {
         if (isalpha(senha[i])) {
             if (islower(senha[i])) {
-                letra += 1;
+                Totlaletras += 1;
                 caixa_baixa += 1;
                 cont_letra += 1;
                 if (cont_letra > 1) {
                     throw invalid_argument("Erro: + de 1 caracter caixa baixa");
                 }
             } else if (isupper(senha[i])) {
-                letra += 1;
+                Totlaletras += 1;
                 caixa_alta += 1;
                 cont_letra += 1;
                 if (cont_letra > 1) {
@@ -72,6 +59,7 @@ void Gerente::validarSenha(string senha) {
             }
         } else if (senha[i] == '!' || senha[i] == '"' || senha[i] == '#' || senha[i] == '$' || senha[i] == '%' || senha[
                        i] == '&' || senha[i] == '?') {
+            cont_letra = 0;
             cont_num = 0;
             caracter_especial += 1;
         } else {

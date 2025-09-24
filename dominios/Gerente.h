@@ -7,57 +7,53 @@
 
 #include "../dominios/Pessoa.h"
 #include "../validadores/ValidarRamal.h"
-#include "../validadores/ValidarInt.h"
 
 #include <string>
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarInt, public ValidarRamal {
+class Gerente : public Pessoa, public ValidarRamal {
 private:
-    int ramal;
+    string ramal;
     string senha;
 
 public:
     static int const TIPO_RAMAL = 3;
     static int const TIPO_SENHA = 4;
 
-    void validar(int tipo, int valor) override;
-
-    void validarRamal(int ramal);
 
     void validar(int tipo, string valor) override;
 
     void validarSenha(string senha);
 
 
-    void setNome(string nome) {
-        validar(TIPO_NOME, nome);
+    void setNome(const string nome) {
+        Pessoa::validar(TIPO_NOME, nome);
         this->nome = nome;
     }
 
-    void setEmail(string email) {
-        validar(TIPO_EMAIL, email);
+    void setEmail(const string email) {
+        Pessoa::validar(TIPO_EMAIL, email);
         this->email = email;
     }
 
-    void setRamal(int ramal) {
+    void setRamal(const string ramal) {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
 
-    void setSenha(string senha) {
+    void setSenha(const string senha) {
         validar(TIPO_SENHA, senha);
         this->senha = senha;
     }
 
     //Get
-    int getRamal();
+    string getRamal();
 
     string getSenha();
 };
 
-inline int Gerente::getRamal() {
+inline string Gerente::getRamal() {
     return ramal;
 };
 

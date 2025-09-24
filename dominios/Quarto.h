@@ -5,68 +5,71 @@
 #ifndef CODIGOS_CLION_TP1_IML_QUARTO_H
 #define CODIGOS_CLION_TP1_IML_QUARTO_H
 
+#include "../validadores/ValidarString.h"
 #include "../validadores/ValidarInt.h"
 #include "../validadores/ValidarRamal.h"
 #include "../validadores/ValidarDinheiro.h"
 
+#include <string>
 #include<stdexcept>
 
 using namespace std;
 
-class Quarto : public ValidarInt, public ValidarRamal, public exception {
+class Quarto : public ValidarString, public ValidarInt, public ValidarRamal, public ValidarDinheiro, public exception {
 private:
-    int numero;
+    string numero;
     int capacidade;
-    int dinheiro;
-    int ramal;
+    int diaria;
+    string ramal;
 
 public:
     static int const TIPO_NUMERO = 1;
     static int const TIPO_CAPACIDADE = 2;
-    static int const TIPO_DINHEIRO = 3;
+    static int const TIPO_DIARIA = 3;
     static int const TIPO_RAMAL = 4;
 
     // Regras específicas de validação do gerente
+    void validar(int tipo, string valor) override;
 
     void validar(int tipo, int valor) override;
 
-    void validarNumero(int numero);
+    void validarNumero(string numero);
 
     void validarCapacidade(int capacidade);
 
-    void validarDinheiro(int diaria);
+    void validarDiaria(int diaria);
 
-    void setNumero(int numero) {
+    void setNumero(const string numero) {
         validar(TIPO_NUMERO, numero);
         this->numero = numero;
     }
 
-    void setCapacidade(int capacidade) {
+    void setCapacidade(const int capacidade) {
         validar(TIPO_CAPACIDADE, capacidade);
         this->capacidade = capacidade;
     }
 
-    void setDinheiro(int diaria) {
-        validar(TIPO_DINHEIRO, dinheiro);
-        this->dinheiro = dinheiro;
+    void setDiaria(const int diaria) {
+        validar(TIPO_DIARIA, diaria);
+        this->diaria = diaria;
     }
 
-    void setRamal(int ramal) {
+    void setRamal(const string ramal) {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
 
     //Get
-    int getNumero();
+    string getNumero();
 
     int getCapacidade();
 
     int getDinheiro();
 
-    int getRamal();
+    string getRamal();
 };
 
-inline int Quarto::getNumero() {
+inline string Quarto::getNumero() {
     return numero;
 };
 
@@ -75,10 +78,10 @@ inline int Quarto::getCapacidade() {
 };
 
 inline int Quarto::getDinheiro() {
-    return dinheiro;
+    return diaria;
 };
 
-inline int Quarto::getRamal() {
+inline string Quarto::getRamal() {
     return ramal;
 }
 

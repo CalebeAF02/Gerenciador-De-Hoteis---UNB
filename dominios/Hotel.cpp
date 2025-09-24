@@ -4,7 +4,7 @@
 
 #include "../dominios/Hotel.h"
 
-void Hotel::validar(int tipo, string valor) {
+void Hotel::validar(int tipo, const string valor) {
     switch (tipo) {
         case TIPO_NOME: {
             ValidarNome::validar(valor);
@@ -25,15 +25,17 @@ void Hotel::validar(int tipo, string valor) {
     };
 };
 
-void Hotel::validarTelefone(string valor) {
+void Hotel::validarTelefone(const string valor) {
     string ddi = "";
     string ddd = "";
     string numero = "";
-
+    if (valor.length() != 14) {
+        throw invalid_argument("Erro: Sem caracteres suficientes ou acima do esperado ");
+    }
     for (int i = 0; i < valor.length(); i++) {
         if (i == 0) {
             if (valor[i] != '+') {
-                throw invalid_argument("Erro: Caracter não é caracterunico de ddi '+'");
+                throw invalid_argument("Erro: Caracter nao e caracter unico de ddi '+'");
             }
         }
         if (valor[i] < 1 || valor[i] > 9) {
@@ -45,7 +47,7 @@ void Hotel::validarTelefone(string valor) {
                 numero += valor[i];
             }
         } else {
-            throw invalid_argument("Erro: Caracter não é numero");
+            throw invalid_argument("Erro: Caracter nao e numero");
         }
     }
 };

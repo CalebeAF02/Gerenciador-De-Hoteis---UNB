@@ -4,7 +4,7 @@
 
 #include "../dominios/Hospede.h"
 
-void Hospede::validar(int tipo, string valor) {
+void Hospede::validar(int tipo, const string valor) {
     switch (tipo) {
         case TIPO_ENDERECO:
             ValidarEndereco::validar(valor);
@@ -15,8 +15,8 @@ void Hospede::validar(int tipo, string valor) {
     }
 }
 
-void Hospede::validarCartao(string valor) {
-    if (valor.length() < 0 || valor.length() > 16) {
+void Hospede::validarCartao(const string valor) {
+    if (valor.length() != 16) {
         throw invalid_argument("Erro: Tamanho invalido");
     } // implementar algoritimo de lunn
 }

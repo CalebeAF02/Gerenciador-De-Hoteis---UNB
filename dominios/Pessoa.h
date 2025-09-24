@@ -26,12 +26,12 @@ public:
     void validar(int tipo, string valor) override;
 
     //Entra Com os valores e tenta validalos
-    void setNome(string nome) {
+    void setNome(const string nome) {
         validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEmail(string email) {
+    void setEmail(const string email) {
         validar(TIPO_EMAIL, email);
         this->email = email;
     };
@@ -40,7 +40,6 @@ public:
     string getNome();
 
     string getEmail();
-
 };
 
 //Inline Atribui em tempo de execucao o valor aos atributos

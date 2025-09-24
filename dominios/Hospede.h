@@ -18,7 +18,7 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString, public ValidarNome, public ValidarEndereco {
+class Hospede : public Pessoa, public ValidarString {
 private:
     string endereco;
     string cartao;
@@ -32,7 +32,17 @@ public:
 
     void validarCartao(string cartao);
 
-    void setEndereco(string endereco) {
+    void setNome(const string nome) {
+        Pessoa::validar(TIPO_NOME, nome);
+        this->nome = nome;
+    };
+
+    void setEmail(const string email) {
+        Pessoa::validar(TIPO_EMAIL, email);
+        this->email = email;
+    };
+
+    void setEndereco(const string endereco) {
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };

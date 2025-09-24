@@ -6,15 +6,15 @@
 #define CODIGOS_CLION_TP1_IML_HOTEL_H
 
 #include "../validadores/ValidarString.h"
-#include "../validadores/ValidarEndereco.h"
 #include "../validadores/ValidarNome.h"
+#include "../validadores/ValidarEndereco.h"
 #include "../validadores/ValidarCodigo.h"
 
 #include <string>
 
 using namespace std;
 
-class Hotel : public ValidarString, public ValidarEndereco, public ValidarCodigo {
+class Hotel : public ValidarString, public ValidarNome, public ValidarEndereco, public ValidarCodigo {
 private:
     string nome;
     string endereco;
@@ -33,20 +33,23 @@ public:
     void validarTelefone(string telefone);
 
 
-    void setNome(string nome) {
+    void setNome(const string nome) {
         validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEndereco(string endereco) {
+    void setEndereco(const string endereco) {
+        validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
 
-    void setTelefone(string telefone) {
+    void setTelefone(const string telefone) {
+        validar(TIPO_TELEFONE, telefone);
         this->telefone = telefone;
     };
 
-    void setCodigo(string codigo) {
+    void setCodigo(const string codigo) {
+        validar(TIPO_CODIGO, codigo);
         this->codigo = codigo;
     };
 

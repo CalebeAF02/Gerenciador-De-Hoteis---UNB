@@ -10,9 +10,9 @@
 using namespace std;
 
 // Funcao estatica para validar endereco em hotel e hospede
-class ValidarRamal: public exception{
+class ValidarRamal : public exception {
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    static void validar(int endereco);
+    static void validar(string ramal);
 };
 #endif //CODIGOS_CLION_TP1_IML_VALIDARRAMAL_H
