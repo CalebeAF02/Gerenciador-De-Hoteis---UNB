@@ -3,6 +3,7 @@
 
 #include "../validadores/ValidarString.h"
 #include "../validadores/ValidarNome.h"
+#include "../validadores/ValidarEmail.h"
 
 #include <iostream>
 #include <sstream>
@@ -14,7 +15,7 @@
 
 using namespace std;
 
-class Pessoa : public ValidarString, public ValidarNome, public exception {
+class Pessoa : public ValidarString, public ValidarNome, public ValidarEmail, public exception {
 private:
     //Atributos
     string nome;
@@ -45,8 +46,6 @@ public:
 
     // Implementação do método abstrato
     void validar(int tipo, string valor) override;
-
-    void validarEmail(string email);
 };
 
 //Inline Atribui em tempo de execucao o valor aos atributos

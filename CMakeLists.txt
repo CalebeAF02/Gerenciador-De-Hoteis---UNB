@@ -9,7 +9,7 @@ add_executable(projetos_cpp_unb_7 main.cpp
         dominios/Hotel.cpp
         dominios/Hospede.cpp
         dominios/Gerente.cpp
-        validadores/ValidarDouble.cpp
+        validadores/ValidarEmail.cpp
         validadores/ValidarEndereco.cpp
         validadores/ValidarInt.cpp
         validadores/ValidarNome.cpp

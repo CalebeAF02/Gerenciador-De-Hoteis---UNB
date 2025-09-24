@@ -16,7 +16,7 @@
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarInt, public ValidarString, public ValidarRamal, public exception {
+class Gerente : public Pessoa, public ValidarInt, public ValidarString, public ValidarRamal {
 private:
     int ramal;
     string senha;

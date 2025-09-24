@@ -13,7 +13,6 @@ using namespace std;
 // Funcao estatica para validar nome em hotel e pessoa
 class ValidarNome: public exception {
 public:
-    // Método abstrato: toda classe filha PRECISA implementar
     static void validar(string nome);
 };
 

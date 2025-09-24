@@ -11,7 +11,7 @@
 #include "testes/testes_validadores.h"
 #include "validadores/ValidarString.h"
 #include "validadores/ValidarInt.h"
-#include "validadores/ValidarDouble.h"
+#include "validadores/ValidarEmail.h"
 #include "validadores/ValidarNome.h"
 #include "validadores/ValidarRamal.h"
 #include "validadores/ValidarEndereco.h"

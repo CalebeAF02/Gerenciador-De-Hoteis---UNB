@@ -9,5 +9,17 @@
 using namespace std;
 
 void ValidarCodigo::validar(string codigo) {
-    throw invalid_argument("Erro: Codigo invalido");
+    int cont_baixo = 0;
+    int cont_num = 0;
+    if (codigo.length() < 0 || codigo.length() > 10) {
+        for (int i = 0; i < codigo.length(); i++) {
+            if (islower(codigo[i])) {
+                cont_baixo += 1;
+            } else if (isdigit(codigo[i])) {
+                cont_num += 1;
+            } else {
+                throw invalid_argument("Erro: Caracter invalido");
+            }
+        }
+    }
 };

@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString, public ValidarEndereco, public exception {
+class Hospede : public Pessoa, public ValidarString, public ValidarEndereco {
 private:
     string endereco;
     string cartao;

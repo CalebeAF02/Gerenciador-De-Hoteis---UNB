@@ -10,12 +10,9 @@
 using namespace std;
 
 
-class ValidarDouble: public exception {
-
+class ValidarEmail : public exception {
 public:
-    // Método abstrato: toda classe filha PRECISA implementar
-    virtual void validar(int tipo, double valor) = 0 ;
-
+    virtual void validar(string valor);
 };
 
 #endif //CODIGOS_CLION_TP1_IML_VALIDARDOUBLE_H

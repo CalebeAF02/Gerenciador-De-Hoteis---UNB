@@ -10,7 +10,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Pessoa     |" << endl;
+    cout << "                |     Pessoa      |" << endl;
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -28,7 +28,7 @@ void TesteValidadores::testarEntradas() {
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
-    cout << "                |     Pessoa     |" << endl;
+    cout << "                |     Pessoa      |" << endl;
     cout << "                |  Testes Emails  |" << endl;
     cout << "                -------------------" << endl << endl;
 
@@ -52,7 +52,6 @@ void TesteValidadores::testarEntradas() {
 
 
     //------------------------------------------------------------------------------------------------------------------
-
     Gerente gerente1;
 
     cout << "                -------------------" << endl;
@@ -61,17 +60,17 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves ");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Cb");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe@alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Kaio Rodrigues");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa1, "Luan Freitas");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -79,23 +78,23 @@ void TesteValidadores::testarEntradas() {
     cout << "                |  Testes Emails  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "Cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
                          "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe  clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
                          "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c..b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".-cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "c--b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "c..b@gmail.com");
 
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "kaiorodrigues@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "luanfreitas@gmai.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -133,17 +132,17 @@ void TesteValidadores::testarEntradas() {
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves ");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Cb");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe@alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa2, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Kaio Rodrigues");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa2, "Luan Freitas");
+    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa2, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -152,23 +151,23 @@ void TesteValidadores::testarEntradas() {
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "Cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2,
                          "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "calebe  clves@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2,
                          "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c..b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, ".cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, ".-cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "c--b@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa2, "c..b@gmail.com");
 
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "kaiorodrigues@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "cb@gmail.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "luanfreitas@gmai.com");
+    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa2, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
