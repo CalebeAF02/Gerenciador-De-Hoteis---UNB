@@ -12,8 +12,6 @@ void Hospede::validar(int tipo, string valor) {
         case TIPO_CARTAO:
             validarCartao(valor);
             break;
-        default:
-            throw invalid_argument("Erro: Tipo inválido para validação de string.");
     }
 }
 

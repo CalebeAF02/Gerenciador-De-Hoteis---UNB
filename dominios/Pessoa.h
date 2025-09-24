@@ -5,18 +5,13 @@
 #include "../validadores/ValidarNome.h"
 #include "../validadores/ValidarEmail.h"
 
-#include <iostream>
 #include <sstream>
-#include <cctype>
 #include <string>
-
-#include <stdexcept>
-
 
 using namespace std;
 
-class Pessoa : public ValidarString, public ValidarNome, public ValidarEmail, public exception {
-private:
+class Pessoa : public ValidarString {
+protected:
     //Atributos
     string nome;
     string email;
@@ -26,6 +21,9 @@ public:
     static int const TIPO_NOME = 1;
     static int const TIPO_EMAIL = 2;
 
+
+    // Implementação do método abstrato
+    void validar(int tipo, string valor) override;
 
     //Entra Com os valores e tenta validalos
     void setNome(string nome) {
@@ -43,9 +41,6 @@ public:
 
     string getEmail();
 
-
-    // Implementação do método abstrato
-    void validar(int tipo, string valor) override;
 };
 
 //Inline Atribui em tempo de execucao o valor aos atributos

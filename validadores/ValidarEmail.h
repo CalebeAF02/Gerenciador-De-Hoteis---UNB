@@ -5,14 +5,15 @@
 #ifndef CODIGOS_CLION_TP1_IML_VALIDARDOUBLE_H
 #define CODIGOS_CLION_TP1_IML_VALIDARDOUBLE_H
 
-#include<stdexcept>
+#include <string>
+#include <stdexcept>
 
 using namespace std;
 
-
+// Funcao estatica para validar email em hotel e pessoa
 class ValidarEmail : public exception {
 public:
-    virtual void validar(string valor);
+    static void validar(string valor);
 };
 
 #endif //CODIGOS_CLION_TP1_IML_VALIDARDOUBLE_H

@@ -15,6 +15,10 @@
 #include "../dominios/Quarto.h"
 #include "../dominios/Reserva.h"
 
+#include "testes_validadores.h"
+
+using namespace std;
+
 class Teste {
 private:
     static int contTodalTestes;

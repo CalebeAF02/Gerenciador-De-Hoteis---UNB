@@ -12,11 +12,9 @@
 
 #include <string>
 
-#include<stdexcept>
-
 using namespace std;
 
-class Hotel : public ValidarString, public ValidarEndereco, public ValidarNome, public ValidarCodigo, public exception {
+class Hotel : public ValidarString, public ValidarEndereco, public ValidarCodigo {
 private:
     string nome;
     string endereco;

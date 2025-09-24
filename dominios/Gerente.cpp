@@ -14,20 +14,20 @@ void Gerente::validar(int tipo, int valor) {
 
 void Gerente::validar(int tipo, string valor) {
     switch (tipo) {
+        case TIPO_NOME: {
+            ValidarNome (valor);
+            break;
+        };
+        case TIPO_EMAIL: {
+            ValidarEmail (valor);
+            break;
+        };
         case TIPO_SENHA: {
             validarSenha(valor);
             break;
         };
     };
 };
-
-void Gerente::validarRamal(int valor) {
-    if (valor < 0 || valor > 50) {
-        throw invalid_argument("Erro: Formato de Ramal invalido! Digite um valor entre 00 e 50");
-    } else {
-        //cou << "Senha: Valida! " << endl;
-    }
-}
 
 void Gerente::validarSenha(string senha) {
     // Deve ser editado ainda

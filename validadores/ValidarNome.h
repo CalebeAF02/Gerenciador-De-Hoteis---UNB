@@ -5,7 +5,9 @@
 #ifndef CODIGOS_CLION_TP1_IML_VALIDARNOME_H
 #define CODIGOS_CLION_TP1_IML_VALIDARNOME_H
 
+#include <iostream>
 #include <string>
+
 #include <stdexcept>
 
 using namespace std;

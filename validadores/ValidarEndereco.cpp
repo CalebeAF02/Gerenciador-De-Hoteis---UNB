@@ -4,10 +4,6 @@
 
 #include "../validadores/ValidarEndereco.h"
 
-#include <string>
-
-using namespace std;
-
 void ValidarEndereco::validar(string endereco) {
     int cont_branco = 0;
 

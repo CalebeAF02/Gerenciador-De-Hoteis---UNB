@@ -2,7 +2,6 @@
 // Created by caleb on 20/09/2025.
 //
 #include "Teste.h"
-#include "testes_validadores.h"
 
 //-----------------------------------------------------------------------------------------------------------
 void Teste::checaResultado(int esperando_resultado, int resultado_teste) {

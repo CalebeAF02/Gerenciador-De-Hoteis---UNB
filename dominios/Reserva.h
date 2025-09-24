@@ -12,13 +12,11 @@
 #include "../validadores/ValidarDinheiro.h"
 #include "../Data.h"
 
-
-#include <stdexcept>
 #include <string>
 
 using namespace std;
 
-class Reserva : public exception, public ValidarString, public ValidarInt, public ValidarDinheiro,
+class Reserva : public ValidarString, public ValidarInt, public ValidarDinheiro,
                 public ValidarCodigo {
 private:
     Data chegada;

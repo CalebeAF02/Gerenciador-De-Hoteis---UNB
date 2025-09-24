@@ -1,15 +1,9 @@
 //
 // Created by caleb on 19/09/2025.
 //
-#include <iostream>
 #include "../validadores/ValidarNome.h"
 
-#include <string>
-
 using namespace std;
-
-//     throw invalid_argument("Endereco invalido");
-// implementar nos COUT
 
 void ValidarNome::validar(string nome) {
     int cont_alta = 0;

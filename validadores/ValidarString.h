@@ -9,17 +9,16 @@
 
 using namespace std;
 
-class ValidarString: public exception {
+class ValidarString : public exception {
 public:
     // Método abstrato: toda classe filha PRECISA implementar
-    virtual void validar(int tipo, string valor) = 0;
+    virtual void validar(int tipo, string valor) = 0; // interface pura
     /*
      * Criar
      * Ler
      * Editar
      * Excluir
      */
-
 };
 
 #endif //CODIGOS_CLION_TP1_IML_DOMINIO_H

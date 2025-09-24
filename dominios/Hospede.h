@@ -7,6 +7,7 @@
 
 
 #include "../dominios/Pessoa.h"
+#include "../validadores/ValidarNome.h"
 #include "../validadores/ValidarEndereco.h"
 #include "../validadores/ValidarString.h"
 
@@ -17,7 +18,7 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString, public ValidarEndereco {
+class Hospede : public Pessoa, public ValidarString, public ValidarNome, public ValidarEndereco {
 private:
     string endereco;
     string cartao;
