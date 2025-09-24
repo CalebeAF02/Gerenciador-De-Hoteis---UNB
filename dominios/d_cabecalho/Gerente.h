@@ -5,8 +5,8 @@
 #ifndef CODIGOS_CLION_TP1_IML_GERENTE_H
 #define CODIGOS_CLION_TP1_IML_GERENTE_H
 
-#include "../dominios/Pessoa.h"
-#include "../validadores/ValidarRamal.h"
+#include "Pessoa.h"
+#include "../../validadores/val_abstratos/ValidarRamal.h"
 
 #include <string>
 

@@ -6,10 +6,10 @@
 #define CODIGOS_CLION_TP1_IML_HOSPEDE_H
 
 
-#include "../dominios/Pessoa.h"
-#include "../validadores/ValidarNome.h"
-#include "../validadores/ValidarEndereco.h"
-#include "../validadores/ValidarString.h"
+#include "Pessoa.h"
+#include "../../validadores/val_abstratos/ValidarNome.h"
+#include "../../validadores/val_abstratos/ValidarEndereco.h"
+#include "../../validadores/val_principais/ValidarString.h"
 
 #include <iostream>
 #include <string>

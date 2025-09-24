@@ -1,9 +1,10 @@
 //
 // Created by caleb on 10/09/2025.
 //
-#include "../dominios/Quarto.h"
+#include "../d_cabecalho/Quarto.h"
 
 using namespace std;
+
 void Quarto::validar(int tipo, const string valor) {
     switch (tipo) {
         case TIPO_NUMERO: {

@@ -7,7 +7,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "validadores/ValidarInt.h"
+#include "validadores/val_principais/ValidarInt.h"
 
 using namespace std;
 
@@ -61,7 +61,6 @@ public:
     int getMes();
 
     int getAno();
-
 };
 
 inline int Data::getDia() {

@@ -6,11 +6,11 @@
 #define PROJETOS_CPP_UNB_7_IML_RESERVA_H
 
 #include <iostream>
-#include "../validadores/ValidarString.h"
-#include "../validadores/ValidarInt.h"
-#include "../validadores/ValidarCodigo.h"
-#include "../validadores/ValidarDinheiro.h"
-#include "../Data.h"
+#include "../../validadores/val_principais/ValidarString.h"
+#include "../../validadores/val_principais/ValidarInt.h"
+#include "../../validadores/val_abstratos/ValidarCodigo.h"
+#include "../../validadores/val_abstratos/ValidarDinheiro.h"
+#include "../../Data.h"
 
 #include <string>
 

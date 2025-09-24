@@ -5,10 +5,10 @@
 #ifndef CODIGOS_CLION_TP1_IML_QUARTO_H
 #define CODIGOS_CLION_TP1_IML_QUARTO_H
 
-#include "../validadores/ValidarString.h"
-#include "../validadores/ValidarInt.h"
-#include "../validadores/ValidarRamal.h"
-#include "../validadores/ValidarDinheiro.h"
+#include "../../validadores/val_principais/ValidarString.h"
+#include "../../validadores/val_principais/ValidarInt.h"
+#include "../../validadores/val_abstratos/ValidarRamal.h"
+#include "../../validadores/val_abstratos/ValidarDinheiro.h"
 
 #include <string>
 #include<stdexcept>

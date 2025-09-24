@@ -1,9 +1,9 @@
 #ifndef CODIGOS_CLION_TP1_PESSOA_H
 #define CODIGOS_CLION_TP1_PESSOA_H
 
-#include "../validadores/ValidarString.h"
-#include "../validadores/ValidarNome.h"
-#include "../validadores/ValidarEmail.h"
+#include "../../validadores/val_principais/ValidarString.h"
+#include "../../validadores/val_abstratos/ValidarNome.h"
+#include "../../validadores/val_abstratos/ValidarEmail.h"
 
 #include <sstream>
 #include <string>

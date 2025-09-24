@@ -5,10 +5,10 @@
 #ifndef CODIGOS_CLION_TP1_IML_HOTEL_H
 #define CODIGOS_CLION_TP1_IML_HOTEL_H
 
-#include "../validadores/ValidarString.h"
-#include "../validadores/ValidarNome.h"
-#include "../validadores/ValidarEndereco.h"
-#include "../validadores/ValidarCodigo.h"
+#include "../../validadores/val_principais/ValidarString.h"
+#include "../../validadores/val_abstratos/ValidarNome.h"
+#include "../../validadores/val_abstratos/ValidarEndereco.h"
+#include "../../validadores/val_abstratos/ValidarCodigo.h"
 
 #include <string>
 

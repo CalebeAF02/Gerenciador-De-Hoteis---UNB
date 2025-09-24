@@ -1,7 +1,7 @@
 //
 // Created by caleb on 10/09/2025.
 //
-#include "../dominios/Gerente.h"
+#include "../d_cabecalho/Gerente.h"
 
 void Gerente::validar(int tipo, const string valor) {
     switch (tipo) {

@@ -5,21 +5,21 @@
 #ifndef PROJETOS_CPP_UNB_7_IML_TESTES_VALIDADORES_H
 #define PROJETOS_CPP_UNB_7_IML_TESTES_VALIDADORES_H
 
-#include "../dominios/Gerente.h"
-#include "../dominios/Hospede.h"
-#include "../dominios/Hotel.h"
-#include "../dominios/Quarto.h"
-#include "../dominios/Reserva.h"
-#include "../Data.h"
-#include "Teste.h"
+#include "../../dominios/d_cabecalho/Gerente.h"
+#include "../../dominios/d_cabecalho/Hospede.h"
+#include "../../dominios/d_cabecalho/Hotel.h"
+#include "../../dominios/d_cabecalho/Quarto.h"
+#include "../../dominios/d_cabecalho/Reserva.h"
+#include "../../Data.h"
+#include "../testes/Teste.h"
 
-#include "../validadores/ValidarInt.h"
-#include "../validadores/ValidarString.h"
-#include "../validadores/ValidarNome.h"
-#include "../validadores/ValidarEndereco.h"
-#include "../validadores/ValidarRamal.h"
-#include "../validadores/ValidarDinheiro.h"
-#include "../validadores/ValidarCodigo.h"
+#include "../val_principais/ValidarInt.h"
+#include "../val_principais/ValidarString.h"
+#include "../val_abstratos//ValidarNome.h"
+#include "../val_abstratos/ValidarEndereco.h"
+#include "../val_abstratos/ValidarRamal.h"
+#include "../val_abstratos//ValidarDinheiro.h"
+#include "../val_abstratos/ValidarCodigo.h"
 
 #include <iostream>
 #include <ostream>

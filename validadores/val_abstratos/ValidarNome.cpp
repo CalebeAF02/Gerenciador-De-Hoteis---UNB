@@ -1,7 +1,7 @@
 //
 // Created by caleb on 19/09/2025.
 //
-#include "../validadores/ValidarNome.h"
+#include "ValidarNome.h"
 
 using namespace std;
 

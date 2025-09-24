@@ -2,7 +2,7 @@
 // Created by caleb on 10/09/2025.
 //
 
-#include "../dominios/Hospede.h"
+#include "../d_cabecalho/Hospede.h"
 
 void Hospede::validar(int tipo, const string valor) {
     switch (tipo) {

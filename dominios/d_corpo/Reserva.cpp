@@ -2,7 +2,7 @@
 // Created by caleb on 21/09/2025.
 //
 
-#include "Reserva.h"
+#include "../d_cabecalho/Reserva.h"
 
 void Reserva::validar(int tipo, const string valor) {
     switch (tipo) {

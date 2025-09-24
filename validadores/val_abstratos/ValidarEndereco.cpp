@@ -2,7 +2,7 @@
 // Created by caleb on 19/09/2025.
 //
 
-#include "../validadores/ValidarEndereco.h"
+#include "ValidarEndereco.h"
 
 void ValidarEndereco::validar(const string endereco) {
     int enderecoTamanho = endereco.length();

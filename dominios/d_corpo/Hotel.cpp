@@ -2,7 +2,7 @@
 // Created by caleb on 10/09/2025.
 //
 
-#include "../dominios/Hotel.h"
+#include "../d_cabecalho/Hotel.h"
 
 void Hotel::validar(int tipo, const string valor) {
     switch (tipo) {

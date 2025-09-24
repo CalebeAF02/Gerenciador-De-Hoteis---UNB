@@ -2,7 +2,7 @@
 // Created by caleb on 19/09/2025.
 //
 
-#include "../validadores/ValidarEmail.h"
+#include "ValidarEmail.h"
 
 
 void ValidarEmail::validar(const string email) {
