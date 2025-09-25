@@ -19,6 +19,7 @@
 
 using namespace std;
 
+
 int Teste::contTodalTestes = 0;
 int Teste::contTodalTestesOk = 0;
 int Teste::contTodalTestesProblema = 0;
