@@ -1,8 +1,9 @@
-#pragma once
+#ifndef PESSOA_INCLUDE
+#define PESSOA_INCLUDE
 
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresAbstratos/ValidarNome.h"
-#include "validadoresAbstratos/ValidarEmail.h"
+#include "../validadoresPrincipais/ValidarString.h"
+#include "../validadoresAbstratos/ValidarNome.h"
+#include "../validadoresAbstratos/ValidarEmail.h"
 
 #include <sstream>
 #include <string>
@@ -49,3 +50,4 @@ inline string Pessoa::getNome() {
 inline string Pessoa::getEmail() {
     return email;
 };
+#endif

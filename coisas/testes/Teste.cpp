@@ -1,5 +1,9 @@
 #include "Teste.h"
 
+int Teste::contTodalTestes = 0;
+int Teste::contTodalTestesOk = 0;
+int Teste::contTodalTestesProblema = 0;
+
 //-----------------------------------------------------------------------------------------------------------
 void Teste::checaResultado(int esperando_resultado, int resultado_teste) {
     if (esperando_resultado == DEVE_DAR_CERTO) {

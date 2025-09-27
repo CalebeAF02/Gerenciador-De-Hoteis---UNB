@@ -1,7 +1,8 @@
-#pragma once
+#ifndef GERENTE_INCLUDE
+#define GERENTE_INCLUDE
 
 #include "Pessoa.h"
-#include "validadoresAbstratos/ValidarRamal.h"
+#include "../validadoresAbstratos/ValidarRamal.h"
 
 #include <string>
 
@@ -55,3 +56,4 @@ inline string Gerente::getRamal() {
 inline string Gerente::getSenha() {
     return senha;
 };
+#endif

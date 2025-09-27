@@ -1,16 +1,15 @@
-#pragma once
+#ifndef TESTE_INCLUDE
+#define TESTE_INCLUDE
 
 #include <iostream>
 #include <ostream>
 #include <string>
-#include "../include/dominios/Pessoa.h"
-#include "../include/dominios/Gerente.h"
-#include "../include/dominios/Hospede.h"
-#include "../include/dominios/Hotel.h"
-#include "../include/dominios/Quarto.h"
-#include "../include/dominios/Reserva.h"
-
-#include "TestesValidates.h"
+#include "../dominios/Pessoa.h"
+#include "../dominios/Gerente.h"
+#include "../dominios/Hospede.h"
+#include "../dominios/Hotel.h"
+#include "../dominios/Quarto.h"
+#include "../dominios/Reserva.h"
 
 using namespace std;
 
@@ -48,3 +47,4 @@ public:
 
     static int getTestesProblema();
 };
+#endif

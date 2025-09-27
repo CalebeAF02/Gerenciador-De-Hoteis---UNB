@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_INT_INCLUDE
+#define VALIDAR_INT_INCLUDE
 
 #include <stdexcept>
 
@@ -9,3 +10,4 @@ public:
     // Método abstrato: toda classe filha PRECISA implementar
     virtual void validar(int tipo, int valor) = 0; // interface pura
 };
+#endif

@@ -7,7 +7,7 @@
 #include "dominios/Hospede.h"
 #include "dominios/Hotel.h"
 #include "dominios/Quarto.h"
-#include "../testes/TestesValidates.h"
+#include "testes/Smoke_Tests.h"
 #include "validadoresPrincipais/ValidarString.h"
 #include "validadoresPrincipais/ValidarInt.h"
 #include "validadoresAbstratos/ValidarNome.h"
@@ -16,16 +16,42 @@
 #include "validadoresAbstratos/ValidarDinheiro.h"
 #include "validadoresAbstratos/ValidarCodigo.h"
 #include "validadoresAbstratos/ValidarRamal.h"
-
+#include "utilitarios/TextoApresentacao.h"
+#include "utilitarios/Servicos.h"
 using namespace std;
 
-int Teste::contTodalTestes = 0;
-int Teste::contTodalTestesOk = 0;
-int Teste::contTodalTestesProblema = 0;
+#define TESTANDO 0
+
+#define PRODUCAO 1
+
+#define ESTOU_TESTANDO PRODUCAO
 
 int main() {
-    TesteValidadores::testarEntradas();
 
-    system("pause");
+    #if ESTOU_TESTANDO == TESTANDO
+        SmokeTest::testarEntradas();
+    #endif
+
+
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
+
+    TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
+
+    TextoApresentacao::MostrarOpcao("Criar gerente",1);
+    TextoApresentacao::MostrarOpcao("Fazer Login",2);
+
+    string opcao = "";
+
+    do {
+        opcao = TextoApresentacao::RecebeOpcao();
+        if (opcao == "1"){
+            Servicos servicos;
+            servicos.criarGerente();
+        }else if(opcao == "2"){
+            cout<<"Insira seu Email!"<<endl;
+        }else{
+            cout<<"Opcao Invalida!"<<endl;
+        }
+    }while(opcao != "1" && opcao != "2");
     return 0;
 }

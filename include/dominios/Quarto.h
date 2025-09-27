@@ -1,9 +1,10 @@
-#pragma once
+#ifndef QUARTO_INCLUDE
+#define QUARTO_INCLUDE
 
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresPrincipais/ValidarInt.h"
-#include "validadoresAbstratos/ValidarRamal.h"
-#include "validadoresAbstratos/ValidarDinheiro.h"
+#include "../validadoresPrincipais/ValidarString.h"
+#include "../validadoresPrincipais/ValidarInt.h"
+#include "../validadoresAbstratos/ValidarRamal.h"
+#include "../validadoresAbstratos/ValidarDinheiro.h"
 
 #include <string>
 #include <stdexcept>
@@ -79,3 +80,4 @@ inline int Quarto::getDinheiro() {
 inline string Quarto::getRamal() {
     return ramal;
 }
+#endif

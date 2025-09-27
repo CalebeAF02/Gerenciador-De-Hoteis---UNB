@@ -1,4 +1,4 @@
-#include "dominios/Pessoa.h"
+#include "../dominios/Pessoa.h"
 
 
 using namespace std;

@@ -1,30 +1,30 @@
-#pragma once
+#ifndef SMOKE_TESTS_INCLUDE
+#define SMOKE_TESTS_INCLUDE
 
-#include "../include/dominios/Gerente.h"
-#include "../include/dominios/Hospede.h"
-#include "../include/dominios/Hotel.h"
-#include "../include/dominios/Quarto.h"
-#include "../include/dominios/Reserva.h"
-#include "../include/dominios/Data.h"
-#include "Teste.h"
+#include "../dominios/Gerente.h"
+#include "../dominios/Hospede.h"
+#include "../dominios/Hotel.h"
+#include "../dominios/Quarto.h"
+#include "../dominios/Reserva.h"
+#include "../dominios/Data.h"
+#include "../testes/Teste.h"
 
-#include "validadoresPrincipais/ValidarInt.h"
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresAbstratos/ValidarNome.h"
-#include "validadoresAbstratos/ValidarEndereco.h"
-#include "validadoresAbstratos/ValidarRamal.h"
-#include "validadoresAbstratos/ValidarDinheiro.h"
-#include "validadoresAbstratos/ValidarCodigo.h"
+#include "../validadoresPrincipais/ValidarInt.h"
+#include "../validadoresPrincipais/ValidarString.h"
+#include "../validadoresAbstratos/ValidarNome.h"
+#include "../validadoresAbstratos/ValidarEndereco.h"
+#include "../validadoresAbstratos/ValidarRamal.h"
+#include "../validadoresAbstratos/ValidarDinheiro.h"
+#include "../validadoresAbstratos/ValidarCodigo.h"
 
 #include <iostream>
 #include <ostream>
 
 using namespace std;
 
-class TesteValidadores {
+class SmokeTest {
 public:
     static void testarEntradas();
-    ;
 
     // Pessoa: Gerente ou Hospede
     static void testarValidadorNome(int esperando_resultado, Pessoa *ptr, string nome);
@@ -83,3 +83,4 @@ public:
 
     static void testarValidadorAno(int esperando_resultado, Data *ptr, int ano);
 };
+#endif

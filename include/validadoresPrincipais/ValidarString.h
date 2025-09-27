@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_STRING_INCLUDE
+#define VALIDAR_STRING_INCLUDE
 
 #include <string>
 
@@ -15,3 +16,4 @@ public:
      * Excluir
      */
 };
+#endif

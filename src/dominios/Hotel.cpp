@@ -1,4 +1,4 @@
-#include "dominios/Hotel.h"
+#include "../dominios/Hotel.h"
 
 void Hotel::validar(int tipo, const string valor) {
     switch (tipo) {

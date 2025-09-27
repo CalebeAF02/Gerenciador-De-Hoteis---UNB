@@ -1,8 +1,9 @@
-#pragma once
+#ifndef DATA_INCLUDE
+#define DATA_INCLUDE
 
 #include <string>
 #include <stdexcept>
-#include "validadoresPrincipais/ValidarInt.h"
+#include "../validadoresPrincipais/ValidarInt.h"
 
 using namespace std;
 
@@ -69,3 +70,4 @@ inline int Data::getMes() {
 inline int Data::getAno() {
     return ano;
 }
+#endif

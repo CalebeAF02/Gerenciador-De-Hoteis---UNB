@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_DINHEIRO_INCLUDE
+#define VALIDAR_DINHEIRO_INCLUDE
 
 #include <stdexcept>
 
@@ -9,3 +10,4 @@ class ValidarDinheiro: public exception{
 public:
     static void validar(int dinheiro);
 };
+#endif

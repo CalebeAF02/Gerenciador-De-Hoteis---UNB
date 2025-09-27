@@ -1,6 +1,7 @@
-#include "TestesValidates.h"
+#include "Smoke_Tests.h"
 
-void TesteValidadores::testarEntradas() {
+void SmokeTest::testarEntradas() {
+
     Pessoa pessoa1;
     //------------------------------------------------------------------------------------------------------------------
 
@@ -368,7 +369,7 @@ void TesteValidadores::testarEntradas() {
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorNome(int esperando_resultado, Pessoa *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
     try {
@@ -380,7 +381,7 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Pessoa *ptr,
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorEmail(int esperando_resultado, Pessoa *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Pessoa *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
     try {
@@ -393,7 +394,7 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Pessoa *ptr
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorNome(int esperando_resultado, Gerente *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
     try {
@@ -405,7 +406,7 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Gerente *ptr
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
     try {
@@ -417,7 +418,7 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Gerente *pt
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorRamal(int esperando_resultado, Gerente *ptr, string ramal) {
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente *ptr, string ramal) {
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
     try {
@@ -429,7 +430,7 @@ void TesteValidadores::testarValidadorRamal(int esperando_resultado, Gerente *pt
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha) {
+void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha) {
     Teste::apresentacaoTeste(senha);
     int resultado_teste = 0;
     try {
@@ -442,7 +443,7 @@ void TesteValidadores::testarValidadorSenha(int esperando_resultado, Gerente *pt
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorNome(int esperando_resultado, Hospede *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
     try {
@@ -454,7 +455,7 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Hospede *ptr
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorEmail(int esperando_resultado, Hospede *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede *ptr, string email) {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
     try {
@@ -466,7 +467,7 @@ void TesteValidadores::testarValidadorEmail(int esperando_resultado, Hospede *pt
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorCartao(int esperando_resultado, Hospede *ptr, string cartao) {
+void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede *ptr, string cartao) {
     Teste::apresentacaoTeste(cartao);
     int resultado_teste = 0;
     try {
@@ -478,7 +479,7 @@ void TesteValidadores::testarValidadorCartao(int esperando_resultado, Hospede *p
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hospede *ptr, string endereco) {
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede *ptr, string endereco) {
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
     try {
@@ -491,7 +492,7 @@ void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hospede 
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorNome(int esperando_resultado, Hotel *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel *ptr, string nome) {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
     try {
@@ -503,7 +504,7 @@ void TesteValidadores::testarValidadorNome(int esperando_resultado, Hotel *ptr, 
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hotel *ptr, string endereco) {
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel *ptr, string endereco) {
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
     try {
@@ -515,7 +516,7 @@ void TesteValidadores::testarValidadorEndereco(int esperando_resultado, Hotel *p
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorTelefone(int esperando_resultado, Hotel *ptr, string telefone) {
+void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel *ptr, string telefone) {
     Teste::apresentacaoTeste(telefone);
     int resultado_teste = 0;
     try {
@@ -527,7 +528,7 @@ void TesteValidadores::testarValidadorTelefone(int esperando_resultado, Hotel *p
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo) {
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo) {
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
     try {
@@ -540,7 +541,7 @@ void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Hotel *ptr
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorNumero(int esperando_resultado, Quarto *ptr, string numero) {
+void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto *ptr, string numero) {
     Teste::apresentacaoTeste(numero);
     int resultado_teste = 0;
     try {
@@ -552,7 +553,7 @@ void TesteValidadores::testarValidadorNumero(int esperando_resultado, Quarto *pt
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade) {
+void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade) {
     Teste::apresentacaoTeste(capacidade);
     int resultado_teste = 0;
     try {
@@ -564,7 +565,7 @@ void TesteValidadores::testarValidadorCapacidade(int esperando_resultado, Quarto
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int diaria) {
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int diaria) {
     Teste::apresentacaoTeste(diaria);
     int resultado_teste = 0;
     try {
@@ -576,7 +577,7 @@ void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Quarto *
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorRamal(int esperando_resultado, Quarto *ptr, string ramal) {
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto *ptr, string ramal) {
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
     try {
@@ -587,7 +588,7 @@ void TesteValidadores::testarValidadorRamal(int esperando_resultado, Quarto *ptr
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 } //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
     try {
@@ -599,7 +600,7 @@ void TesteValidadores::testarValidadorChegada(int esperando_resultado, Reserva *
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
     try {
@@ -611,7 +612,7 @@ void TesteValidadores::testarValidadorPartida(int esperando_resultado, Reserva *
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Reserva *ptr, int dinheiro) {
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva *ptr, int dinheiro) {
     Teste::apresentacaoTeste(dinheiro);
     int resultado_teste = 0;
     try {
@@ -623,7 +624,7 @@ void TesteValidadores::testarValidadorDinheiro(int esperando_resultado, Reserva 
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Reserva *ptr, string codigo) {
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva *ptr, string codigo) {
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
     try {
@@ -636,7 +637,7 @@ void TesteValidadores::testarValidadorCodigo(int esperando_resultado, Reserva *p
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void TesteValidadores::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
+void SmokeTest::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
     Teste::apresentacaoTeste(dia);
     int resultado_teste = 0;
     try {
@@ -648,7 +649,7 @@ void TesteValidadores::testarValidadorDia(int esperando_resultado, Data *ptr, in
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
+void SmokeTest::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
     Teste::apresentacaoTeste(mes);
     int resultado_teste = 0;
     try {
@@ -660,7 +661,7 @@ void TesteValidadores::testarValidadorMes(int esperando_resultado, Data *ptr, in
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void TesteValidadores::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
+void SmokeTest::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
     Teste::apresentacaoTeste(ano);
     int resultado_teste = 0;
     try {

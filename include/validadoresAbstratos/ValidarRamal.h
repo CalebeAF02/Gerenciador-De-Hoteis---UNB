@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_RAMAL_INCLUDE
+#define VALIDAR_RAMAL_INCLUDE
 
 #include <stdexcept>
 
@@ -10,3 +11,4 @@ public:
     // Método abstrato: toda classe filha PRECISA implementar
     static void validar(string ramal);
 };
+#endif

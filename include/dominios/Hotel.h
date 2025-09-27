@@ -1,9 +1,10 @@
-#pragma once
+#ifndef HOTEL_INCLUDE
+#define HOTEL_INCLUDE
 
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresAbstratos/ValidarNome.h"
-#include "validadoresAbstratos/ValidarEndereco.h"
-#include "validadoresAbstratos/ValidarCodigo.h"
+#include "../validadoresPrincipais/ValidarString.h"
+#include "../validadoresAbstratos/ValidarNome.h"
+#include "../validadoresAbstratos/ValidarEndereco.h"
+#include "../validadoresAbstratos/ValidarCodigo.h"
 
 #include <string>
 
@@ -84,3 +85,4 @@ inline string Hotel::getTelefone() {
 inline string Hotel::getCodigo() {
     return codigo;
 };
+#endif

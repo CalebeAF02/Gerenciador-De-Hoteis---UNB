@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_NOME_INCLUDE
+#define VALIDAR_NOME_INCLUDE
 
 #include <iostream>
 #include <string>
@@ -12,3 +13,4 @@ class ValidarNome : public exception {
 public:
     static void validar(const string nome);
 };
+#endif

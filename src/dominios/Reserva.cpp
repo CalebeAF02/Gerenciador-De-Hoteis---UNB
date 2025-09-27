@@ -1,4 +1,4 @@
-#include "dominios/Reserva.h"
+#include "../dominios/Reserva.h"
 
 void Reserva::validar(int tipo, const string valor) {
     switch (tipo) {

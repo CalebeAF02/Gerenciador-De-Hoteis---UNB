@@ -1,11 +1,12 @@
-#pragma once
+#ifndef RESERVA_INCLUDE
+#define RESERVA_INCLUDE
 
 #include <iostream>
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresPrincipais/ValidarInt.h"
-#include "validadoresAbstratos/ValidarCodigo.h"
-#include "validadoresAbstratos/ValidarDinheiro.h"
-#include "Data.h"
+#include "../validadoresPrincipais/ValidarString.h"
+#include "../validadoresPrincipais/ValidarInt.h"
+#include "../validadoresAbstratos/ValidarCodigo.h"
+#include "../validadoresAbstratos/ValidarDinheiro.h"
+#include "../dominios/Data.h"
 
 #include <string>
 
@@ -77,3 +78,4 @@ inline int Reserva::getDinheiro() {
 inline string Reserva::getCodigo() {
     return codigo;
 };
+#endif

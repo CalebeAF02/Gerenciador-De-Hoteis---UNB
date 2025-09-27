@@ -1,9 +1,10 @@
-#pragma once
+#ifndef HOSPEDE_INCLUDE
+#define HOSPEDE_INCLUDE
 
-#include "Pessoa.h"
-#include "validadoresAbstratos/ValidarNome.h"
-#include "validadoresAbstratos/ValidarEndereco.h"
-#include "validadoresPrincipais/ValidarString.h"
+#include "../dominios/Pessoa.h"
+#include "../validadoresAbstratos/ValidarNome.h"
+#include "../validadoresAbstratos/ValidarEndereco.h"
+#include "../validadoresPrincipais/ValidarString.h"
 
 #include <iostream>
 #include <string>
@@ -59,3 +60,4 @@ inline string Hospede::getEndereco() {
 inline string Hospede::getCartao() {
     return cartao;
 };
+#endif

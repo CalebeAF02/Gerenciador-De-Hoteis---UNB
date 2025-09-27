@@ -1,4 +1,4 @@
-#include "validadoresAbstratos/ValidarCodigo.h"
+#include "../validadoresAbstratos/ValidarCodigo.h"
 
 #include <iostream>
 #include <ostream>

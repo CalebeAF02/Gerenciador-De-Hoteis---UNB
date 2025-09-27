@@ -1,4 +1,5 @@
-#include "dominios/Gerente.h"
+#include "../dominios/Gerente.h"
+
 
 void Gerente::validar(int tipo, const string valor) {
     switch (tipo) {

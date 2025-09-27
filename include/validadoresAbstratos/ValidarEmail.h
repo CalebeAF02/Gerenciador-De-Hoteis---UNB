@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_EMAIL_INCLUDE
+#define VALIDAR_EMAIL_INCLUDE
 
 #include <string>
 #include <stdexcept>
@@ -10,3 +11,4 @@ class ValidarEmail : public exception {
 public:
     static void validar(string valor);
 };
+#endif

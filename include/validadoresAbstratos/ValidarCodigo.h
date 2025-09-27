@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VALIDAR_CODIGO_INCLUDE
+#define VALIDAR_CODIGO_INCLUDE
 
 #include <string>
 #include <stdexcept>
@@ -10,3 +11,4 @@ class ValidarCodigo: public exception{
 public:
     static void validar(string codigo);
 };
+#endif
