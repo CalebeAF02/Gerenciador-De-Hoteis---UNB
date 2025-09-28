@@ -365,25 +365,64 @@ void SmokeTest::testarEntradas()
     testarValidadorMes(Teste::DEVE_DAR_CERTO, &data1, 3);
     testarValidadorAno(Teste::DEVE_DAR_CERTO, &data1, 2002);
 
-    cout << "Total de Testes: " << Teste::getTestes() << endl;
-    cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
-    cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl << endl;
-
+    //------------------------------------------------------------------------------------------------------------------
 
     Gerente g1;
+
+    cout << "                -------------------" << endl;
+    cout << "                |     Testes      |" << endl;
+    cout << "                |       TSV       |" << endl;
+    cout << "                | Testes Gerente  |" << endl;
+    cout << "                -------------------" << endl << endl;
 
     g1.setNome("Calebe Alves");
     g1.setEmail("calebe.2324@gmail.com");
     g1.setRamal("22");
     g1.setSenha("A1#a2");
 
-    string dadosGerente = g1.getTSV();
-    cout << "g1 =" << dadosGerente << endl;
-
+    //cout << "g1 =" << dadosGerente << endl;
+    testarValidadorString(Teste::DEVE_DAR_CERTO, g1.getTSV(),
+                          "GERENTE\tCalebe Alves\tcalebe.2324@gmail.com\t22\tA1#a2");
     Gerente g2;
+    string dadosGerente = g1.getTSV();
     g2.setTSV(dadosGerente);
-    cout << "g2 =" << g2.getTSV() << endl;
+    //cout << "g2 =" << g2.getTSV() << endl;
+    testarValidadorString(Teste::DEVE_DAR_CERTO, g1.getTSV(), g2.getTSV());
+
+    Gerente g3;
+
+    g3.setNome("Luan Freitas");
+    g3.setEmail("luan.dkg@gmail.com");
+    g3.setRamal("49");
+    g3.setSenha("C4$c5");
+
+
+    cout << "                -------------------" << endl;
+    cout << "                |    Resultado    |" << endl;
+    cout << "                |       TSV       |" << endl;
+    cout << "                -------------------" << endl << endl;
+
+    cout << "Total de Testes: " << Teste::getTestes() << endl;
+    cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
+    cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl << endl;
 }
+
+//-----------------------------------------------------------------------------------------------------------
+void SmokeTest::testarValidadorString(int esperando_resultado, string s1, string s2)
+{
+    Teste::apresentacaoTeste(s1);
+    int resultado_teste = 0;
+    if (s1 == s2)
+    {
+        resultado_teste = Teste::apresentacaoSucesso();
+    }
+    else
+    {
+        resultado_teste = Teste::apresentacaoErro("Erro: Strings sao diferentes");
+    }
+    Teste::checaResultado(esperando_resultado, resultado_teste);
+}
+
 
 //-----------------------------------------------------------------------------------------------------------
 void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa* ptr, string nome)

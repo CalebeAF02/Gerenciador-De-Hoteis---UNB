@@ -35,6 +35,7 @@ public:
     static int apresentacaoSucesso();
 
     static int apresentacaoErro(invalid_argument erro);
+    static int apresentacaoErro(string erro);
 
     static void setTestes(int contTodalTestes);
 

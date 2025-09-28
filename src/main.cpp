@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+
 #include "dominios/Data.h"
 #include "dominios/Pessoa.h"
 #include "dominios/Gerente.h"
@@ -24,7 +25,7 @@ using namespace std;
 
 #define PRODUCAO 1
 
-#define ESTOU_TESTANDO TESTANDO
+#define ESTOU_TESTANDO PRODUCAO
 
 int main()
 {

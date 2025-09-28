@@ -63,7 +63,14 @@ int Teste::apresentacaoErro(invalid_argument erro)
     cout << "----------------------------------------------" << endl;
     return DEVE_DAR_ERRADO;
 }
-
+//-----------------------------------------------------------------------------------------------------------
+int Teste::apresentacaoErro(string erro)
+{
+    cout << "---------------------ERRO---------------------" << endl;
+    cout << erro<< endl;
+    cout << "----------------------------------------------" << endl;
+    return DEVE_DAR_ERRADO;
+}
 //-------------------------------------------------------------------
 int Teste::getTestes()
 {

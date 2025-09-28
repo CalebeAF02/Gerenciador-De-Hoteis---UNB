@@ -90,12 +90,12 @@ void Gerente::validarSenha(const string senha)
     }
 };
 
-string Gerente::getTSV()
+string Gerente::getTSV() // Transforma Gerente em uma linha de texto
 {
     return string("GERENTE") + "\t" + nome + "\t" + email + "\t" + ramal + "\t" + senha;
 }
 
-void Gerente::setTSV(string dados)
+void Gerente::setTSV(string dados) // Transforma uma linha de texto em um Gerente
 {
     int posicaoGerente = dados.find("\t");
 
@@ -138,9 +138,12 @@ void Gerente::setTSV(string dados)
     setEmail(parteEmail);
     setRamal(parteRamal);
     setSenha(parteResto);
+
+    /*
     cout << "tipo :" << parteGerente << endl;
     cout << "nome :" << parteNome << endl;
     cout << "email :" << parteEmail << endl;
     cout << "ramal :" << parteRamal << endl;
-    cout << "senha :" << parteResto << endl;
-}
+    cout << "senha :" << parteResto << endl<<endl;;
+    */
+};
