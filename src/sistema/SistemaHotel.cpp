@@ -18,7 +18,6 @@ void SistemaHotel::rodandoSistema()
     TextoApresentacao::MostrarOpcao("Fazer Login", 2);
 
     string opcao = "";
-    Servicos servicos;
 
     do
     {
@@ -49,3 +48,12 @@ void SistemaHotel::rodandoSistema()
     while (opcao != "1" && opcao != "2");
 };
 
+bool SistemaHotel::fazerLogin(string copiaLogin, string senhaLogin)
+{
+    return servicos.fazerLogin(copiaLogin, senhaLogin);
+};
+
+void SistemaHotel::menuSistema()
+{
+    servicos.exibirCentralDeServicos();
+};

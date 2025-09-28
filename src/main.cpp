@@ -26,12 +26,19 @@ using namespace std;
 
 #define PRODUCAO 1
 
-#define ESTOU_TESTANDO PRODUCAO
+#define ESTOU_TESTANDO TESTANDO
 
 int main()
 {
 #if ESTOU_TESTANDO == TESTANDO
     SmokeTest::testarEntradas();
+    SistemaHotel sistema;
+
+    if (sistema.fazerLogin("calebe.2324@gmail.com", "A1#a2"))
+    {
+        sistema.menuSistema();
+    };
+
 #endif
 
 #if ESTOU_TESTANDO == PRODUCAO

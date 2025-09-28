@@ -31,6 +31,8 @@ public:
     void exibirCentralDeServicos();
 
     void sairDosServicos();
+
+    bool fazerLogin(string copiaLogin, string senhaLogin);
 };
 
 inline bool Servicos::getGerenteEstaLogado()

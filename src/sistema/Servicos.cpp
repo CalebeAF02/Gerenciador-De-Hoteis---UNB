@@ -142,27 +142,14 @@ void Servicos::loginGerente()
         if (tudoOK)
         {
             lacoLogin = true;
-            vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
-            //cout<<"-------------------"<<endl;
-            bool loginOK = false;
-            for (int i = 0; i < gerentes.size(); i++)
+
+            if (fazerLogin(emailCopia, senhaCopia))
             {
-                if (gerentes[i].getEmail() == emailCopia)
-                {
-                    if (gerentes[i].getSenha() == senhaCopia)
-                    {
-                        cout << "Login Realizado com Sucesso" << endl;
-                        loginOK = true;
-                        lacoLogin = true;
-                        this->gerenteEstaLogado = true;
-                        this->gerenteLogado = gerentes[i];
-                    }
-                    break;
-                }
+                lacoLogin = true;
             }
-            if (!loginOK)
+            else
             {
-                cout << "Erro: Usuario nao encontrado ou senha incorreta!" << endl;
+                lacoLogin = false;
             }
         }
         else
@@ -215,4 +202,31 @@ void Servicos::sairDosServicos()
 {
     this->gerenteEstaLogado = false;
     cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
+};
+
+bool Servicos::fazerLogin(string emailCopia, string senhaCopia)
+{
+    vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
+    //cout<<"-------------------"<<endl;
+    bool loginOK = false;
+    for (int i = 0; i < gerentes.size(); i++)
+    {
+        if (gerentes[i].getEmail() == emailCopia)
+        {
+            if (gerentes[i].getSenha() == senhaCopia)
+            {
+                cout << "Login Realizado com Sucesso" << endl;
+                loginOK = true;
+                this->gerenteEstaLogado = true;
+                this->gerenteLogado = gerentes[i];
+                return true;
+            }
+            break;
+        }
+    }
+    if (!loginOK)
+    {
+        cout << "Erro: Usuario nao encontrado ou senha incorreta!" << endl;
+    }
+    return false;
 };

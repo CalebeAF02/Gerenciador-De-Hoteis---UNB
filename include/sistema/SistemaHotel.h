@@ -7,15 +7,22 @@
 
 #include <iostream>
 
+#include "Servicos.h"
+
 class SistemaHotel
 {
 private:
     bool executando = true;
+    Servicos servicos;
 
 public:
     void rodandoSistema();
 
     bool getExecutando();
+
+    bool fazerLogin(string copiaLogin, string senhaLogin);
+
+    void menuSistema();
 };
 
 inline bool SistemaHotel::getExecutando()
