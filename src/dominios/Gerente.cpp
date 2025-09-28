@@ -98,18 +98,25 @@ string Gerente::getTSV() // Transforma Gerente em uma linha de texto
 void Gerente::setTSV(string dados) // Transforma uma linha de texto em um Gerente
 {
     string parteGerente = "";
-    string parteResto = "";
-
     string parteNome = "";
     string parteEmail = "";
     string parteRamal = "";
+    string parteResto = "";
+
 
     // Extrai cada atribulto
     extrairAtributo(dados, parteGerente, parteResto);
-    extrairAtributo(dados, parteNome, parteResto);
-    extrairAtributo(dados, parteEmail, parteResto);
-    extrairAtributo(dados, parteRamal, parteResto);
+    extrairAtributo(parteResto, parteNome, parteResto);
+    extrairAtributo(parteResto, parteEmail, parteResto);
+    extrairAtributo(parteResto, parteRamal, parteResto);
 
+    /* Debuguer
+    cout << "|"<< parteGerente << "|"<< endl;
+    cout << "|"<< parteNome << "|"<< endl;
+    cout << "|"<< parteEmail << "|"<< endl;
+    cout << "|"<< parteRamal << "|"<< endl;
+    cout << "|"<< parteResto << "|"<< endl;
+    */
 
     //Repassa os atribultos
     setNome(parteNome);

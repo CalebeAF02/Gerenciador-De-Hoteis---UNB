@@ -42,17 +42,18 @@ int main()
     TextoApresentacao::MostrarOpcao("Fazer Login", 2);
 
     string opcao = "";
+    Servicos servicos;
 
     do
     {
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "1")
         {
-            Servicos servicos;
             servicos.criarGerente();
         }
         else if (opcao == "2")
         {
+            servicos.loginGerente();
             cout << "Insira seu Email!" << endl;
         }
         else

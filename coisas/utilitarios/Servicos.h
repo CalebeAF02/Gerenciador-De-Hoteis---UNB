@@ -19,6 +19,8 @@ public:
     vector<Gerente> lerGerentes();
 
     void armazenarGerentes(vector<Gerente> gerentes);
+
+    void loginGerente();
 };
 
 #endif

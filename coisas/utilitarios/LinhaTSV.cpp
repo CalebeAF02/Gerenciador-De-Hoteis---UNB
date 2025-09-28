@@ -14,4 +14,3 @@ void LinhaTSV::extrairAtributo(string valor, string& parte, string& parteResto)
     parte = valor.substr(0, posicaoTab);
     parteResto = valor.substr(posicaoTab + 1);
 }
-

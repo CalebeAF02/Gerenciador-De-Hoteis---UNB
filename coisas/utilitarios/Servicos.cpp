@@ -93,7 +93,7 @@ vector<Gerente> Servicos::lerGerentes()
         string linha;
         while (getline(arquivoLendo, linha)) // ler linha , do aqruivo e guarda na linha .
         {
-            cout << linha << endl;
+            //cout << "|"<< linha << "|"<< endl; // Debuguer linha
             Gerente g4;
             g4.setTSV(linha);
             listaGerentes.push_back(g4);
@@ -101,7 +101,7 @@ vector<Gerente> Servicos::lerGerentes()
         arquivoLendo.close();
     }
 
-    cout << "Quantidade de Gerrentes na listaGerentes :" << listaGerentes.size() << endl;
+    //cout << "Quantidade de Gerrentes na listaGerentes :" << listaGerentes.size() << endl; // Apresenta a qntd da lista
     return listaGerentes;
 }
 
@@ -117,3 +117,55 @@ void Servicos::armazenarGerentes(vector<Gerente> gerentes)
         arquivo.close();
     }
 }
+
+
+void Servicos::loginGerente()
+{
+    TextoApresentacao::MostrarTituloEmCaixa("Logue com Gerente");
+    bool lacoLogin = false;
+    string emailCopia = "";
+    string senhaCopia = "";
+
+    while (!lacoLogin) // Enquanto craido esta falso , ele repete
+    {
+        bool tudoOK = true;
+        if (tudoOK)
+        {
+            cout << "Informe o Email: " << endl;
+            emailCopia = TextoApresentacao::LerLinha();
+        }
+        if (tudoOK)
+        {
+            cout << "Informe o Senha: " << endl;
+            senhaCopia = TextoApresentacao::LerLinha();
+        }
+        if (tudoOK)
+        {
+            lacoLogin = true;
+            vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
+            //cout<<"-------------------"<<endl;
+            bool loginOK = false;
+            for (int i = 0; i < gerentes.size(); i++)
+            {
+                if (gerentes[i].getEmail() == emailCopia)
+                {
+                    if (gerentes[i].getSenha() == senhaCopia)
+                    {
+                        cout << "Login Realizado com Sucesso" << endl;
+                        loginOK = true;
+                        lacoLogin = true;
+                    }
+                    break;
+                }
+            }
+            if (!loginOK)
+            {
+                cout << "Erro: Usuario nao encontrado ou senha incorreta!" << endl;
+            }
+        }
+        else
+        {
+            cout << "Gerente nao cadastrado" << endl;
+        }
+    }
+};
