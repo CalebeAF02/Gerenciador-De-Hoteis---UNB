@@ -51,4 +51,6 @@ add_executable(gerenciador_hotel_unb
         #utilitarios
         coisas/utilitarios/Servicos.cpp
         coisas/utilitarios/TextoApresentacao.cpp
+        coisas/utilitarios/LinhaTSV.cpp
+        coisas/utilitarios/LinhaTSV.h
 )

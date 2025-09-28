@@ -72,8 +72,9 @@ void Servicos::criarGerente()
             cout << "Gerente Cadastrado" << endl;
             criado = true;
             vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
-            gerentes.push_back(gerente);  //  coloca o novo na listaGerentes.
-            armazenarGerentes(gerentes); // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
+            gerentes.push_back(gerente); //  coloca o novo na listaGerentes.
+            armazenarGerentes(gerentes);
+            // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
         }
         else
         {
@@ -84,7 +85,6 @@ void Servicos::criarGerente()
 
 vector<Gerente> Servicos::lerGerentes()
 {
-
     vector<Gerente> listaGerentes; // Vetor para COnstruir OBJETOS - GERENTE
 
     ifstream arquivoLendo("Dados_Gerentes.txt");

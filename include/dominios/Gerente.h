@@ -3,12 +3,13 @@
 
 #include "Pessoa.h"
 #include "../validadoresAbstratos/ValidarRamal.h"
+#include "../coisas/utilitarios/LinhaTSV.h"
 
 #include <string>
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarRamal
+class Gerente : public Pessoa, public ValidarRamal, public LinhaTSV
 {
 private:
     string ramal;
@@ -53,8 +54,8 @@ public:
 
     string getSenha();
 
-    string getTSV();
-    void setTSV(string dados);
+    string getTSV() override;
+    void setTSV(string dados) override;
 };
 
 inline string Gerente::getRamal()
