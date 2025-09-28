@@ -97,53 +97,23 @@ string Gerente::getTSV() // Transforma Gerente em uma linha de texto
 
 void Gerente::setTSV(string dados) // Transforma uma linha de texto em um Gerente
 {
-    int posicaoGerente = dados.find("\t");
+    string parteGerente = "";
+    string parteResto = "";
 
-    if (posicaoGerente == string::npos)
-    {
-        throw invalid_argument("Erro: Dados invalida");
-    }
-    string parteGerente = dados.substr(0, posicaoGerente);
-    string parteResto = dados.substr(posicaoGerente + 1);
+    string parteNome = "";
+    string parteEmail = "";
+    string parteRamal = "";
+
+    // Extrai cada atribulto
+    extrairAtributo(dados, parteGerente, parteResto);
+    extrairAtributo(dados, parteNome, parteResto);
+    extrairAtributo(dados, parteEmail, parteResto);
+    extrairAtributo(dados, parteRamal, parteResto);
 
 
-    int posicaoNome = parteResto.find("\t");
-
-    if (posicaoNome == string::npos)
-    {
-        throw invalid_argument("Erro: Dados invalida");
-    }
-    string parteNome = parteResto.substr(0, posicaoNome);
-    parteResto = parteResto.substr(posicaoNome + 1);
-
-    int posicaoEmail = parteResto.find("\t");
-
-    if (posicaoEmail == string::npos)
-    {
-        throw invalid_argument("Erro: Dados invalida");
-    }
-    string parteEmail = parteResto.substr(0, posicaoEmail);
-    parteResto = parteResto.substr(posicaoEmail + 1);
-
-    int posicaoRamal = parteResto.find("\t");
-
-    if (posicaoRamal == string::npos)
-    {
-        throw invalid_argument("Erro: Dados invalida");
-    }
-    string parteRamal = parteResto.substr(0, posicaoRamal);
-    parteResto = parteResto.substr(posicaoRamal + 1);
-
+    //Repassa os atribultos
     setNome(parteNome);
     setEmail(parteEmail);
     setRamal(parteRamal);
     setSenha(parteResto);
-
-    /*
-    cout << "tipo :" << parteGerente << endl;
-    cout << "nome :" << parteNome << endl;
-    cout << "email :" << parteEmail << endl;
-    cout << "ramal :" << parteRamal << endl;
-    cout << "senha :" << parteResto << endl<<endl;;
-    */
 };
