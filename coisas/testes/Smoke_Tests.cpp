@@ -367,7 +367,22 @@ void SmokeTest::testarEntradas()
 
     cout << "Total de Testes: " << Teste::getTestes() << endl;
     cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
-    cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl;
+    cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl << endl;
+
+
+    Gerente g1;
+
+    g1.setNome("Calebe Alves");
+    g1.setEmail("calebe.2324@gmail.com");
+    g1.setRamal("22");
+    g1.setSenha("A1#a2");
+
+    string dadosGerente = g1.getTSV();
+    cout << "g1 =" << dadosGerente << endl;
+
+    Gerente g2;
+    g2.setTSV(dadosGerente);
+    cout << "g2 =" << g2.getTSV() << endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------

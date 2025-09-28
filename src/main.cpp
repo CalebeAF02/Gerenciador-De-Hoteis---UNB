@@ -24,7 +24,7 @@ using namespace std;
 
 #define PRODUCAO 1
 
-#define ESTOU_TESTANDO PRODUCAO
+#define ESTOU_TESTANDO TESTANDO
 
 int main()
 {
@@ -32,7 +32,7 @@ int main()
     SmokeTest::testarEntradas();
 #endif
 
-
+#if ESTOU_TESTANDO == PRODUCAO
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
 
     TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
@@ -60,5 +60,8 @@ int main()
         }
     }
     while (opcao != "1" && opcao != "2");
+#endif
+
+
     return 0;
 }

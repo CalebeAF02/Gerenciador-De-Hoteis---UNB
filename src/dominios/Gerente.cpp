@@ -89,3 +89,58 @@ void Gerente::validarSenha(const string senha)
         throw invalid_argument("Erro: Senha invalida");
     }
 };
+
+string Gerente::getTSV()
+{
+    return string("GERENTE") + "\t" + nome + "\t" + email + "\t" + ramal + "\t" + senha;
+}
+
+void Gerente::setTSV(string dados)
+{
+    int posicaoGerente = dados.find("\t");
+
+    if (posicaoGerente == string::npos)
+    {
+        throw invalid_argument("Erro: Dados invalida");
+    }
+    string parteGerente = dados.substr(0, posicaoGerente);
+    string parteResto = dados.substr(posicaoGerente + 1);
+
+
+    int posicaoNome = parteResto.find("\t");
+
+    if (posicaoNome == string::npos)
+    {
+        throw invalid_argument("Erro: Dados invalida");
+    }
+    string parteNome = parteResto.substr(0, posicaoNome);
+    parteResto = parteResto.substr(posicaoNome + 1);
+
+    int posicaoEmail = parteResto.find("\t");
+
+    if (posicaoEmail == string::npos)
+    {
+        throw invalid_argument("Erro: Dados invalida");
+    }
+    string parteEmail = parteResto.substr(0, posicaoEmail);
+    parteResto = parteResto.substr(posicaoEmail + 1);
+
+    int posicaoRamal = parteResto.find("\t");
+
+    if (posicaoRamal == string::npos)
+    {
+        throw invalid_argument("Erro: Dados invalida");
+    }
+    string parteRamal = parteResto.substr(0, posicaoRamal);
+    parteResto = parteResto.substr(posicaoRamal + 1);
+
+    setNome(parteNome);
+    setEmail(parteEmail);
+    setRamal(parteRamal);
+    setSenha(parteResto);
+    cout << "tipo :" << parteGerente << endl;
+    cout << "nome :" << parteNome << endl;
+    cout << "email :" << parteEmail << endl;
+    cout << "ramal :" << parteRamal << endl;
+    cout << "senha :" << parteResto << endl;
+}

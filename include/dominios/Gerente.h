@@ -52,6 +52,9 @@ public:
     string getRamal();
 
     string getSenha();
+
+    string getTSV();
+    void setTSV(string dados);
 };
 
 inline string Gerente::getRamal()
