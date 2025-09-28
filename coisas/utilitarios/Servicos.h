@@ -5,7 +5,8 @@
 
 #include "TextoApresentacao.h"
 
-class Servicos{
+class Servicos
+{
 public:
     void criarGerente();
 };

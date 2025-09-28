@@ -1,17 +1,21 @@
 #include "../validadoresAbstratos/ValidarEndereco.h"
 
-void ValidarEndereco::validar(const string endereco) {
+void ValidarEndereco::validar(const string endereco)
+{
     int enderecoTamanho = endereco.length();
-    if (enderecoTamanho < 5 || enderecoTamanho > 30) {
+    if (enderecoTamanho < 5 || enderecoTamanho > 30)
+    {
         throw invalid_argument("Erro: Endereco com tamanho invalido");
     }
 
-    if (endereco[0] == ' ' || endereco[0] == ',' || endereco[0] == '.') {
+    if (endereco[0] == ' ' || endereco[0] == ',' || endereco[0] == '.')
+    {
         throw invalid_argument("Erro: Endereco nao pode comecar com ' ' ou ',' ou '.' !");
     }
 
     if (endereco[enderecoTamanho - 1] == ' ' || endereco[enderecoTamanho - 1] == ',' || endereco[enderecoTamanho - 1] ==
-        '.') {
+        '.')
+    {
         throw invalid_argument("Erro: Endereco nao pode terminar com ' ' ou ',' ou '.' !");
     }
 
@@ -21,37 +25,54 @@ void ValidarEndereco::validar(const string endereco) {
     int contCaracter = 0;
     int contLetra = 0;
 
-    for (int i = 0; i < enderecoTamanho; i++) {
-        if (endereco[i] == ',' || endereco[i] == '.') {
+    for (int i = 0; i < enderecoTamanho; i++)
+    {
+        if (endereco[i] == ',' || endereco[i] == '.')
+        {
             cont_branco = 0;
             contCaracter += 1;
-            if (contCaracter > 1) {
+            if (contCaracter > 1)
+            {
                 throw invalid_argument("Erro: Simbolo seguido por outro simbolo");
             }
-        } else if (endereco[i] == ' ') {
+        }
+        else if (endereco[i] == ' ')
+        {
             contCaracter = 0;
             caracteres_brancos += 1;
             cont_branco += 1;
-            if (cont_branco > 1) {
+            if (cont_branco > 1)
+            {
                 throw invalid_argument("Erro: Espaco em branco seguido por outro espaco em branco");
             }
-        } else if (cont_branco == 1) {
-            if (isalpha(endereco[i])) {
+        }
+        else if (cont_branco == 1)
+        {
+            if (isalpha(endereco[i]))
+            {
                 contCaracter = 0;
                 cont_branco = 0;
                 contLetra += 1;
-            } else {
+            }
+            else
+            {
                 throw invalid_argument("Erro: Espaco em branco seguido por outro caracter");
             }
-        } else if (isalpha(endereco[i])) {
+        }
+        else if (isalpha(endereco[i]))
+        {
             contCaracter = 0;
             cont_branco = 0;
             contLetra += 1;
-        } else if (isalpha(endereco[i])) {
+        }
+        else if (isalpha(endereco[i]))
+        {
             contCaracter = 0;
             cont_branco = 0;
             contLetra += 1;
-        } else if (isdigit(endereco[i])) {
+        }
+        else if (isdigit(endereco[i]))
+        {
             contCaracter = 0;
             cont_branco = 0;
             contNumeros += 1;

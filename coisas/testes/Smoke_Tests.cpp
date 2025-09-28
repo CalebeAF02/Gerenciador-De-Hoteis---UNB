@@ -1,7 +1,7 @@
 #include "Smoke_Tests.h"
 
-void SmokeTest::testarEntradas() {
-
+void SmokeTest::testarEntradas()
+{
     Pessoa pessoa1;
     //------------------------------------------------------------------------------------------------------------------
 
@@ -61,6 +61,8 @@ void SmokeTest::testarEntradas() {
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb");
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
+    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe   ");
+
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
     testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
@@ -369,305 +371,405 @@ void SmokeTest::testarEntradas() {
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa* ptr, string nome)
+{
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Pessoa *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Pessoa* ptr, string email)
+{
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setEmail(email);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente* ptr, string nome)
+{
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente* ptr, string email)
+{
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setEmail(email);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente *ptr, string ramal) {
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente* ptr, string ramal)
+{
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setRamal(ramal);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha) {
+void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente* ptr, string senha)
+{
     Teste::apresentacaoTeste(senha);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setSenha(senha);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede* ptr, string nome)
+{
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede *ptr, string email) {
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede* ptr, string email)
+{
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setEmail(email);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede *ptr, string cartao) {
+void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede* ptr, string cartao)
+{
     Teste::apresentacaoTeste(cartao);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setCartao(cartao);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede *ptr, string endereco) {
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede* ptr, string endereco)
+{
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setEndereco(endereco);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel *ptr, string nome) {
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel* ptr, string nome)
+{
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setNome(nome);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel *ptr, string endereco) {
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel* ptr, string endereco)
+{
     Teste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setEndereco(endereco);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel *ptr, string telefone) {
+void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel* ptr, string telefone)
+{
     Teste::apresentacaoTeste(telefone);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setTelefone(telefone);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo) {
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel* ptr, string codigo)
+{
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setCodigo(codigo);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto *ptr, string numero) {
+void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto* ptr, string numero)
+{
     Teste::apresentacaoTeste(numero);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setNumero(numero);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade) {
+void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto* ptr, int capacidade)
+{
     Teste::apresentacaoTeste(capacidade);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setCapacidade(capacidade);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int diaria) {
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto* ptr, int diaria)
+{
     Teste::apresentacaoTeste(diaria);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setDiaria(diaria);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto *ptr, string ramal) {
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto* ptr, string ramal)
+{
     Teste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setRamal(ramal);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 } //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano)
+{
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setChegada(dia, mes, ano);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva *ptr, int dia, int mes, int ano) {
+void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano)
+{
     Teste::apresentacaoTesteData(dia, mes, ano);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setPartida(dia, mes, ano);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva *ptr, int dinheiro) {
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, int dinheiro)
+{
     Teste::apresentacaoTeste(dinheiro);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setDinheiro(dinheiro);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva *ptr, string codigo) {
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva* ptr, string codigo)
+{
     Teste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setCodigo(codigo);
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
+void SmokeTest::testarValidadorDia(int esperando_resultado, Data* ptr, int dia)
+{
     Teste::apresentacaoTeste(dia);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setData(dia, Data::JAN, 2000); //(valor, padrao , padrao)
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
+void SmokeTest::testarValidadorMes(int esperando_resultado, Data* ptr, int mes)
+{
     Teste::apresentacaoTeste(mes);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setData(1, mes, 2000); //(padrao,valor, padrao)
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
+void SmokeTest::testarValidadorAno(int esperando_resultado, Data* ptr, int ano)
+{
     Teste::apresentacaoTeste(ano);
     int resultado_teste = 0;
-    try {
+    try
+    {
         ptr->setData(1, Data::JAN, ano); //(padrao, padrao , valor)
         resultado_teste = Teste::apresentacaoSucesso();
-    } catch (invalid_argument &erro) {
+    }
+    catch (invalid_argument& erro)
+    {
         resultado_teste = Teste::apresentacaoErro(erro);
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);

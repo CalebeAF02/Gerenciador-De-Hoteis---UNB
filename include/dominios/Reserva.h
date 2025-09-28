@@ -13,7 +13,8 @@
 using namespace std;
 
 class Reserva : public ValidarString, public ValidarInt, public ValidarDinheiro,
-                public ValidarCodigo {
+                public ValidarCodigo
+{
 private:
     Data chegada;
     Data partida;
@@ -32,22 +33,26 @@ public:
 
     void validar(int tipo, int valor) override;
 
-    void setChegada(const int dia, const int mes, const int ano) {
+    void setChegada(const int dia, const int mes, const int ano)
+    {
         chegada.setData(dia, mes, ano);
         this->chegada = chegada;
     };
 
-    void setPartida(const int dia, const int mes, const int ano) {
+    void setPartida(const int dia, const int mes, const int ano)
+    {
         partida.setData(dia, mes, ano);
         this->partida = partida;
     };
 
-    void setDinheiro(const int dinheiro) {
+    void setDinheiro(const int dinheiro)
+    {
         validar(TIPO_DINHEIRO, dinheiro);
         this->dinheiro = dinheiro;
     };
 
-    void setCodigo(const string codigo) {
+    void setCodigo(const string codigo)
+    {
         validar(TIPO_CODIGO, codigo);
         this->codigo = codigo;
     };
@@ -63,19 +68,23 @@ public:
     string getCodigo();
 };
 
-inline Data Reserva::getChegada() {
+inline Data Reserva::getChegada()
+{
     return chegada;
 };
 
-inline Data Reserva::getPartida() {
+inline Data Reserva::getPartida()
+{
     return partida;
 };
 
-inline int Reserva::getDinheiro() {
+inline int Reserva::getDinheiro()
+{
     return dinheiro;
 }
 
-inline string Reserva::getCodigo() {
+inline string Reserva::getCodigo()
+{
     return codigo;
 };
 #endif

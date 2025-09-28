@@ -6,7 +6,8 @@
 using namespace std;
 
 // Funcao estatica para validar endereco em hotel e hospede
-class ValidarDinheiro: public exception{
+class ValidarDinheiro : public exception
+{
 public:
     static void validar(int dinheiro);
 };

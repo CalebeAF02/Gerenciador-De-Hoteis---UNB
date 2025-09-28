@@ -8,7 +8,8 @@
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarRamal {
+class Gerente : public Pessoa, public ValidarRamal
+{
 private:
     string ramal;
     string senha;
@@ -23,22 +24,26 @@ public:
     void validarSenha(string senha);
 
 
-    void setNome(const string nome) {
+    void setNome(const string nome)
+    {
         Pessoa::validar(TIPO_NOME, nome);
         this->nome = nome;
     }
 
-    void setEmail(const string email) {
+    void setEmail(const string email)
+    {
         Pessoa::validar(TIPO_EMAIL, email);
         this->email = email;
     }
 
-    void setRamal(const string ramal) {
+    void setRamal(const string ramal)
+    {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
 
-    void setSenha(const string senha) {
+    void setSenha(const string senha)
+    {
         validar(TIPO_SENHA, senha);
         this->senha = senha;
     }
@@ -49,11 +54,13 @@ public:
     string getSenha();
 };
 
-inline string Gerente::getRamal() {
+inline string Gerente::getRamal()
+{
     return ramal;
 };
 
-inline string Gerente::getSenha() {
+inline string Gerente::getSenha()
+{
     return senha;
 };
 #endif

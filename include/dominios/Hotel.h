@@ -10,7 +10,8 @@
 
 using namespace std;
 
-class Hotel : public ValidarString, public ValidarNome, public ValidarEndereco, public ValidarCodigo {
+class Hotel : public ValidarString, public ValidarNome, public ValidarEndereco, public ValidarCodigo
+{
 private:
     string nome;
     string endereco;
@@ -29,22 +30,26 @@ public:
     void validarTelefone(string telefone);
 
 
-    void setNome(const string nome) {
+    void setNome(const string nome)
+    {
         validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEndereco(const string endereco) {
+    void setEndereco(const string endereco)
+    {
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
 
-    void setTelefone(const string telefone) {
+    void setTelefone(const string telefone)
+    {
         validar(TIPO_TELEFONE, telefone);
         this->telefone = telefone;
     };
 
-    void setCodigo(const string codigo) {
+    void setCodigo(const string codigo)
+    {
         validar(TIPO_CODIGO, codigo);
         this->codigo = codigo;
     };
@@ -70,19 +75,23 @@ public:
     */
 };
 
-inline string Hotel::getNome() {
+inline string Hotel::getNome()
+{
     return nome;
 };
 
-inline string Hotel::getEndereco() {
+inline string Hotel::getEndereco()
+{
     return endereco;
 };
 
-inline string Hotel::getTelefone() {
+inline string Hotel::getTelefone()
+{
     return telefone;
 };
 
-inline string Hotel::getCodigo() {
+inline string Hotel::getCodigo()
+{
     return codigo;
 };
 #endif

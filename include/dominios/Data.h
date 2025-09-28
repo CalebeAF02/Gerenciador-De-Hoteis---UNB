@@ -7,7 +7,8 @@
 
 using namespace std;
 
-class Data : ValidarInt, exception {
+class Data : ValidarInt, exception
+{
 private:
     static const int TIPO_DIA = 1;
     static const int TIPO_MES = 2;
@@ -36,12 +37,14 @@ public:
     //Construtor - Não tem
 
     // Metodo de Impressao
-    string toString() {
+    string toString()
+    {
         return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
     }
 
     //metodo Setar - Entrada
-    void setData(int d, int m, int a) {
+    void setData(int d, int m, int a)
+    {
         validar(TIPO_DIA, d);
         validar(TIPO_MES, m);
         validar(TIPO_ANO, a);
@@ -59,15 +62,18 @@ public:
     int getAno();
 };
 
-inline int Data::getDia() {
+inline int Data::getDia()
+{
     return dia;
 }
 
-inline int Data::getMes() {
+inline int Data::getMes()
+{
     return mes;
 }
 
-inline int Data::getAno() {
+inline int Data::getAno()
+{
     return ano;
 }
 #endif

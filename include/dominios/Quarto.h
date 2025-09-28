@@ -11,7 +11,8 @@
 
 using namespace std;
 
-class Quarto : public ValidarString, public ValidarInt, public ValidarRamal, public ValidarDinheiro, public exception {
+class Quarto : public ValidarString, public ValidarInt, public ValidarRamal, public ValidarDinheiro, public exception
+{
 private:
     string numero;
     int capacidade;
@@ -35,22 +36,26 @@ public:
 
     void validarDiaria(int diaria);
 
-    void setNumero(const string numero) {
+    void setNumero(const string numero)
+    {
         validar(TIPO_NUMERO, numero);
         this->numero = numero;
     }
 
-    void setCapacidade(const int capacidade) {
+    void setCapacidade(const int capacidade)
+    {
         validar(TIPO_CAPACIDADE, capacidade);
         this->capacidade = capacidade;
     }
 
-    void setDiaria(const int diaria) {
+    void setDiaria(const int diaria)
+    {
         validar(TIPO_DIARIA, diaria);
         this->diaria = diaria;
     }
 
-    void setRamal(const string ramal) {
+    void setRamal(const string ramal)
+    {
         validar(TIPO_RAMAL, ramal);
         this->ramal = ramal;
     }
@@ -65,19 +70,23 @@ public:
     string getRamal();
 };
 
-inline string Quarto::getNumero() {
+inline string Quarto::getNumero()
+{
     return numero;
 };
 
-inline int Quarto::getCapacidade() {
+inline int Quarto::getCapacidade()
+{
     return capacidade;
 };
 
-inline int Quarto::getDinheiro() {
+inline int Quarto::getDinheiro()
+{
     return diaria;
 };
 
-inline string Quarto::getRamal() {
+inline string Quarto::getRamal()
+{
     return ramal;
 }
 #endif

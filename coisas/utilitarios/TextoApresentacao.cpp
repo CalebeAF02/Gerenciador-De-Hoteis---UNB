@@ -1,55 +1,68 @@
 #include "TextoApresentacao.h"
 
-void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c){
-    int i =0;
-    while(i<(qntCaracteres)){
+#include <algorithm>
+#include <limits>
 
-        cout<<c;
+
+void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c)
+{
+    int i = 0;
+    while (i < (qntCaracteres))
+    {
+        cout << c;
 
         i++;
     }
 };
 
 
-void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao){
+void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao)
+{
+    RepetirCaracter(apresentacao.length() + 2 + (2 * 4), '-');
 
-
-    RepetirCaracter(apresentacao.length()+2+(2*4),'-');
-
-    cout<<endl<<"|";
+    cout << endl << "|";
     RepetirCaracter(4, ' ');
-    RepetirCaracter(apresentacao.length(),' ');
+    RepetirCaracter(apresentacao.length(), ' ');
     RepetirCaracter(4, ' ');
-    cout<<"|"<<endl;
+    cout << "|" << endl;
 
-    RepetirCaracter(1,'|');
+    RepetirCaracter(1, '|');
     RepetirCaracter(4, ' ');
-    cout<<apresentacao;
+    cout << apresentacao;
     RepetirCaracter(4, ' ');
-    RepetirCaracter(1,'|');
+    RepetirCaracter(1, '|');
 
-    cout<<endl<<"|";
+    cout << endl << "|";
     RepetirCaracter(4, ' ');
-    RepetirCaracter(apresentacao.length(),' ');
+    RepetirCaracter(apresentacao.length(), ' ');
     RepetirCaracter(4, ' ');
-    cout<<"|"<<endl;
+    cout << "|" << endl;
 
-    RepetirCaracter(apresentacao.length()+2+(2*4),'-');
+    RepetirCaracter(apresentacao.length() + 2 + (2 * 4), '-');
 
-    cout<<endl;
+    cout << endl;
 };
 
-void TextoApresentacao::MostrarTituloPergunta(string pergunta){
-    cout<<pergunta<<endl;
-
+void TextoApresentacao::MostrarTituloPergunta(string pergunta)
+{
+    cout << pergunta << endl;
 };
 
-void TextoApresentacao::MostrarOpcao(string opcao, int valor){
-    cout<<"\t"<<opcao<<": "<<valor<<"\t"<<endl;
+void TextoApresentacao::MostrarOpcao(string opcao, int valor)
+{
+    cout << "\t" << opcao << ": " << valor << "\t" << endl;
 };
-string TextoApresentacao::RecebeOpcao(){
-    cout<<endl<<"Opcao: ";
-    string opcao = "";
-    cin>>opcao;
+
+string TextoApresentacao::RecebeOpcao()
+{
+    cout << endl << "Opcao: ";
+    string opcao = LerLinha();
     return opcao;
+};
+
+string TextoApresentacao::LerLinha()
+{
+    string valor = "";
+    getline(cin, valor);
+    return valor;
 };

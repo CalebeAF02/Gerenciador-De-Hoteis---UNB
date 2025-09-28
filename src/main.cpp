@@ -26,32 +26,39 @@ using namespace std;
 
 #define ESTOU_TESTANDO PRODUCAO
 
-int main() {
-
-    #if ESTOU_TESTANDO == TESTANDO
-        SmokeTest::testarEntradas();
-    #endif
+int main()
+{
+#if ESTOU_TESTANDO == TESTANDO
+    SmokeTest::testarEntradas();
+#endif
 
 
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
 
     TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
 
-    TextoApresentacao::MostrarOpcao("Criar gerente",1);
-    TextoApresentacao::MostrarOpcao("Fazer Login",2);
+    TextoApresentacao::MostrarOpcao("Criar gerente", 1);
+    TextoApresentacao::MostrarOpcao("Fazer Login", 2);
 
     string opcao = "";
 
-    do {
+    do
+    {
         opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "1"){
+        if (opcao == "1")
+        {
             Servicos servicos;
             servicos.criarGerente();
-        }else if(opcao == "2"){
-            cout<<"Insira seu Email!"<<endl;
-        }else{
-            cout<<"Opcao Invalida!"<<endl;
         }
-    }while(opcao != "1" && opcao != "2");
+        else if (opcao == "2")
+        {
+            cout << "Insira seu Email!" << endl;
+        }
+        else
+        {
+            cout << "Opcao Invalida!" << endl;
+        }
+    }
+    while (opcao != "1" && opcao != "2");
     return 0;
 }

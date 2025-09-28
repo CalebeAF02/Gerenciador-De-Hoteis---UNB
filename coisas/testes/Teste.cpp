@@ -5,39 +5,50 @@ int Teste::contTodalTestesOk = 0;
 int Teste::contTodalTestesProblema = 0;
 
 //-----------------------------------------------------------------------------------------------------------
-void Teste::checaResultado(int esperando_resultado, int resultado_teste) {
-    if (esperando_resultado == DEVE_DAR_CERTO) {
+void Teste::checaResultado(int esperando_resultado, int resultado_teste)
+{
+    if (esperando_resultado == DEVE_DAR_CERTO)
+    {
         cout << "Esperando: Validacao CORRETA" << endl;
-    } else if (esperando_resultado == DEVE_DAR_ERRADO) {
+    }
+    else if (esperando_resultado == DEVE_DAR_ERRADO)
+    {
         cout << "Esperando: Validacao ERRADA" << endl;
     }
 
-    if (esperando_resultado == resultado_teste) {
+    if (esperando_resultado == resultado_teste)
+    {
         cout << "Resultado: OK" << endl << endl;
         contTodalTestesOk += 1;
-    } else {
+    }
+    else
+    {
         cout << "Resultado: PROBLEMA NA VALIDACAO DO PROGRAMADOR" << endl << endl;
         contTodalTestesProblema += 1;
     }
 };
 //-----------------------------------------------------------------------------------------------------------
-void Teste::apresentacaoTeste(string valor) {
+void Teste::apresentacaoTeste(string valor)
+{
     cout << "Teste Para Validar " << endl << "Entrada: " << valor << endl;
     contTodalTestes += 1;
 }
 
-void Teste::apresentacaoTeste(int valor) {
+void Teste::apresentacaoTeste(int valor)
+{
     cout << "Teste Para Validar " << endl << "Entrada: " << valor << endl;
     contTodalTestes += 1;
 }
 
-void Teste::apresentacaoTesteData(int dia, int mes, int ano) {
+void Teste::apresentacaoTesteData(int dia, int mes, int ano)
+{
     cout << "Teste Para Validar " << endl << "Entrada: " << dia << "/" << mes << "/" << ano << endl;
     contTodalTestes += 1;
 }
 
 //-----------------------------------------------------------------------------------------------------------
-int Teste::apresentacaoSucesso() {
+int Teste::apresentacaoSucesso()
+{
     cout << "----------------------OK----------------------" << endl;
     cout << "Entrada Valida! " << endl;
     cout << "----------------------------------------------" << endl;
@@ -45,7 +56,8 @@ int Teste::apresentacaoSucesso() {
 }
 
 //-----------------------------------------------------------------------------------------------------------
-int Teste::apresentacaoErro(invalid_argument erro) {
+int Teste::apresentacaoErro(invalid_argument erro)
+{
     cout << "---------------------ERRO---------------------" << endl;
     cout << erro.what() << endl;
     cout << "----------------------------------------------" << endl;
@@ -53,15 +65,18 @@ int Teste::apresentacaoErro(invalid_argument erro) {
 }
 
 //-------------------------------------------------------------------
-int Teste::getTestes() {
+int Teste::getTestes()
+{
     return contTodalTestes;
 }
 
-int Teste::getTestesOk() {
+int Teste::getTestesOk()
+{
     return contTodalTestesOk;
 }
 
-int Teste::getTestesProblema() {
+int Teste::getTestesProblema()
+{
     return contTodalTestesProblema;
 }
 

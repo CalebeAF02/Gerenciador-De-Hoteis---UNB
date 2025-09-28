@@ -13,7 +13,8 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString {
+class Hospede : public Pessoa, public ValidarString
+{
 private:
     string endereco;
     string cartao;
@@ -27,22 +28,26 @@ public:
 
     void validarCartao(string cartao);
 
-    void setNome(const string nome) {
+    void setNome(const string nome)
+    {
         Pessoa::validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEmail(const string email) {
+    void setEmail(const string email)
+    {
         Pessoa::validar(TIPO_EMAIL, email);
         this->email = email;
     };
 
-    void setEndereco(const string endereco) {
+    void setEndereco(const string endereco)
+    {
         validar(TIPO_ENDERECO, endereco);
         this->endereco = endereco;
     };
 
-    void setCartao(string cartao) {
+    void setCartao(string cartao)
+    {
         validar(TIPO_CARTAO, cartao);
         this->cartao = cartao;
     };
@@ -53,11 +58,13 @@ public:
     string getCartao();
 };
 
-inline string Hospede::getEndereco() {
+inline string Hospede::getEndereco()
+{
     return endereco;
 };
 
-inline string Hospede::getCartao() {
+inline string Hospede::getCartao()
+{
     return cartao;
 };
 #endif

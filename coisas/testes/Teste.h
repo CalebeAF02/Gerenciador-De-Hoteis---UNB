@@ -13,7 +13,8 @@
 
 using namespace std;
 
-class Teste {
+class Teste
+{
 private:
     static int contTodalTestes;
     static int contTodalTestesOk;

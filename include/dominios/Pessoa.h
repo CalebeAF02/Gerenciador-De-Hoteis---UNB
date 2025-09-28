@@ -10,7 +10,8 @@
 
 using namespace std;
 
-class Pessoa : public ValidarString {
+class Pessoa : public ValidarString
+{
 protected:
     //Atributos
     string nome;
@@ -26,12 +27,14 @@ public:
     void validar(int tipo, string valor) override;
 
     //Entra Com os valores e tenta validalos
-    void setNome(const string nome) {
+    void setNome(const string nome)
+    {
         validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEmail(const string email) {
+    void setEmail(const string email)
+    {
         validar(TIPO_EMAIL, email);
         this->email = email;
     };
@@ -43,11 +46,13 @@ public:
 };
 
 //Inline Atribui em tempo de execucao o valor aos atributos
-inline string Pessoa::getNome() {
+inline string Pessoa::getNome()
+{
     return nome;
 };
 
-inline string Pessoa::getEmail() {
+inline string Pessoa::getEmail()
+{
     return email;
 };
 #endif
