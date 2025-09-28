@@ -21,6 +21,9 @@
 #include "utilitarios/Servicos.h"
 using namespace std;
 
+void sistema();
+bool executando = true;
+
 #define TESTANDO 0
 
 #define PRODUCAO 1
@@ -34,10 +37,23 @@ int main()
 #endif
 
 #if ESTOU_TESTANDO == PRODUCAO
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
+    while (executando)
+    {
+        sistema();
+    }
+#endif
 
+
+    return 0;
+}
+
+void sistema()
+{
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
     TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
 
+    TextoApresentacao::MostrarOpcao("Sair", 0);
+    cout << endl;
     TextoApresentacao::MostrarOpcao("Criar gerente", 1);
     TextoApresentacao::MostrarOpcao("Fazer Login", 2);
 
@@ -47,14 +63,23 @@ int main()
     do
     {
         opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "1")
+        if (opcao == "0")
+        {
+            executando = false;
+            break;
+        }
+        else if (opcao == "1")
         {
             servicos.criarGerente();
         }
         else if (opcao == "2")
         {
             servicos.loginGerente();
-            cout << "Insira seu Email!" << endl;
+            if (servicos.getGerenteEstaLogado())
+            {
+                cout << "Agora Voce Possui Super-Poderes" << endl;
+                servicos.exibirCentralDeServicos();
+            }
         }
         else
         {
@@ -62,8 +87,4 @@ int main()
         }
     }
     while (opcao != "1" && opcao != "2");
-#endif
-
-
-    return 0;
-}
+};

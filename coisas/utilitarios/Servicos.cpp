@@ -154,6 +154,8 @@ void Servicos::loginGerente()
                         cout << "Login Realizado com Sucesso" << endl;
                         loginOK = true;
                         lacoLogin = true;
+                        this->gerenteEstaLogado = true;
+                        this->gerenteLogado = gerentes[i];
                     }
                     break;
                 }
@@ -168,4 +170,49 @@ void Servicos::loginGerente()
             cout << "Gerente nao cadastrado" << endl;
         }
     }
+};
+
+void Servicos::exibirCentralDeServicos()
+{
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
+    while (this->getGerenteEstaLogado())
+    {
+        string opcao = "";
+        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
+
+        TextoApresentacao::MostrarOpcao("Sair", 0);
+        cout << endl;
+        TextoApresentacao::MostrarOpcao("Criar gerente", 1);
+        TextoApresentacao::MostrarOpcao("Editar gerente", 2);
+        TextoApresentacao::MostrarOpcao("Listar gerente", 3);
+        TextoApresentacao::MostrarOpcao("Excluir gerente", 4);
+
+        opcao = TextoApresentacao::RecebeOpcao();
+        if (opcao == "0")
+        {
+            this->sairDosServicos();
+        }
+        else if (opcao == "1")
+        {
+        }
+        else if (opcao == "2")
+        {
+        }
+        else if (opcao == "3")
+        {
+        }
+        else if (opcao == "4")
+        {
+        }
+        else
+        {
+            cout << "Opcao Invalida!" << endl;
+        }
+    };
+}
+
+void Servicos::sairDosServicos()
+{
+    this->gerenteEstaLogado = false;
+    cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
 };

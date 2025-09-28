@@ -13,6 +13,10 @@ using namespace std;
 
 class Servicos
 {
+private:
+    bool gerenteEstaLogado = false;
+    Gerente gerenteLogado;
+
 public:
     void criarGerente();
 
@@ -21,6 +25,16 @@ public:
     void armazenarGerentes(vector<Gerente> gerentes);
 
     void loginGerente();
+
+    bool getGerenteEstaLogado();
+
+    void exibirCentralDeServicos();
+
+    void sairDosServicos();
 };
 
+inline bool Servicos::getGerenteEstaLogado()
+{
+    return gerenteEstaLogado;
+};
 #endif
