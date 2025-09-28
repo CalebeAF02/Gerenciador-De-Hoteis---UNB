@@ -2,7 +2,7 @@
 #define UTILITARIOS_SERVICOS_INCLUDE
 
 #include "../dominios/Gerente.h"
-#include "TextoApresentacao.h"
+#include "../../coisas/utilitarios/TextoApresentacao.h"
 
 #include "Gerente.h"
 #include <iostream>

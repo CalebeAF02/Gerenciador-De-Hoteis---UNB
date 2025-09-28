@@ -24,7 +24,7 @@ add_executable(gerenciador_hotel_unb
         src/main.cpp
 
         # Domínios
-        src/dominios/Data.cpp
+        coisas/utilitarios/Data.cpp
         src/dominios/Gerente.cpp
         src/dominios/Hospede.cpp
         src/dominios/Hotel.cpp
@@ -49,8 +49,10 @@ add_executable(gerenciador_hotel_unb
         coisas/testes/Smoke_Tests.cpp
 
         #utilitarios
-        coisas/utilitarios/Servicos.cpp
+        src/sistema/Servicos.cpp
         coisas/utilitarios/TextoApresentacao.cpp
         coisas/utilitarios/LinhaTSV.cpp
         coisas/utilitarios/LinhaTSV.h
+        src/sistema/SistemaHotel.cpp
+        include/sistema/SistemaHotel.h
 )

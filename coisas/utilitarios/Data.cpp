@@ -1,4 +1,4 @@
-#include "../dominios/Data.h"
+#include "Data.h"
 
 using namespace std;
 

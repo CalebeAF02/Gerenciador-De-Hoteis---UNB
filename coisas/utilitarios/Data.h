@@ -3,7 +3,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "../validadoresPrincipais/ValidarInt.h"
+#include "../../include/validadoresPrincipais/ValidarInt.h"
 
 using namespace std;
 

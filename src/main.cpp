@@ -2,7 +2,7 @@
 #include <string>
 
 
-#include "dominios/Data.h"
+#include "../coisas/utilitarios/Data.h"
 #include "dominios/Pessoa.h"
 #include "dominios/Gerente.h"
 #include "dominios/Hospede.h"
@@ -18,11 +18,9 @@
 #include "validadoresAbstratos/ValidarCodigo.h"
 #include "validadoresAbstratos/ValidarRamal.h"
 #include "utilitarios/TextoApresentacao.h"
-#include "utilitarios/Servicos.h"
+#include "../include/sistema/Servicos.h"
+#include "sistema/SistemaHotel.h"
 using namespace std;
-
-void sistema();
-bool executando = true;
 
 #define TESTANDO 0
 
@@ -37,9 +35,10 @@ int main()
 #endif
 
 #if ESTOU_TESTANDO == PRODUCAO
-    while (executando)
+    SistemaHotel sistema;
+    while (sistema.getExecutando())
     {
-        sistema();
+        sistema.rodandoSistema();
     }
 #endif
 
@@ -47,44 +46,3 @@ int main()
     return 0;
 }
 
-void sistema()
-{
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
-    TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
-
-    TextoApresentacao::MostrarOpcao("Sair", 0);
-    cout << endl;
-    TextoApresentacao::MostrarOpcao("Criar gerente", 1);
-    TextoApresentacao::MostrarOpcao("Fazer Login", 2);
-
-    string opcao = "";
-    Servicos servicos;
-
-    do
-    {
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
-        {
-            executando = false;
-            break;
-        }
-        else if (opcao == "1")
-        {
-            servicos.criarGerente();
-        }
-        else if (opcao == "2")
-        {
-            servicos.loginGerente();
-            if (servicos.getGerenteEstaLogado())
-            {
-                cout << "Agora Voce Possui Super-Poderes" << endl;
-                servicos.exibirCentralDeServicos();
-            }
-        }
-        else
-        {
-            cout << "Opcao Invalida!" << endl;
-        }
-    }
-    while (opcao != "1" && opcao != "2");
-};

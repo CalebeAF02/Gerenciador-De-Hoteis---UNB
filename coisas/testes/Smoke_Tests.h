@@ -6,7 +6,7 @@
 #include "../dominios/Hotel.h"
 #include "../dominios/Quarto.h"
 #include "../dominios/Reserva.h"
-#include "../dominios/Data.h"
+#include "../utilitarios/Data.h"
 #include "../testes/Teste.h"
 
 #include "../validadoresPrincipais/ValidarInt.h"
