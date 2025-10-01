@@ -1,11 +1,11 @@
 #ifndef SMOKE_TESTS_INCLUDE
 #define SMOKE_TESTS_INCLUDE
 
-#include "../dominios/Gerente.h"
-#include "../dominios/Hospede.h"
-#include "../dominios/Hotel.h"
-#include "../dominios/Quarto.h"
-#include "../dominios/Reserva.h"
+#include "../Entidades/Gerente.h"
+#include "../Entidades/Hospede.h"
+#include "../Entidades/Hotel.h"
+#include "../Entidades/Quarto.h"
+#include "../Entidades/Reserva.h"
 #include "../utilitarios/Data.h"
 #include "../testes/Teste.h"
 
