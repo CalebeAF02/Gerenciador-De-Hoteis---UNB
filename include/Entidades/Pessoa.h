@@ -1,58 +1,27 @@
 #ifndef PESSOA_INCLUDE
 #define PESSOA_INCLUDE
 
-#include "../validadoresPrincipais/ValidarString.h"
-#include "../validadoresAbstratos/ValidarNome.h"
-#include "../validadoresAbstratos/ValidarEmail.h"
+#include "../Dominios/Nome.h"
+#include "../Dominios/Email.h"
 
 #include <sstream>
 #include <string>
 
 using namespace std;
 
-class Pessoa : public ValidarString
+class Pessoa
 {
 protected:
-    //Atributos
-    string nome;
-    string email;
+    Nome nome;
+    Email email;
 
 public:
-    //Switch para validar
-    static int const TIPO_NOME = 1;
-    static int const TIPO_EMAIL = 2;
+    void setNome(const Nome& nome);
 
+    void setEmail(const Email& email);
 
-    // Implementação do método abstrato
-    void validar(int tipo, string valor) override;
+    string getNome() const;
 
-    //Entra Com os valores e tenta validalos
-    void setNome(const string nome)
-    {
-        validar(TIPO_NOME, nome);
-        this->nome = nome;
-    };
-
-    void setEmail(const string email)
-    {
-        validar(TIPO_EMAIL, email);
-        this->email = email;
-    };
-
-    // Atribui aos Atributos o valor
-    string getNome();
-
-    string getEmail();
+    string getEmail() const;
 };
-
-//Inline Atribui em tempo de execucao o valor aos atributos
-inline string Pessoa::getNome()
-{
-    return nome;
-};
-
-inline string Pessoa::getEmail()
-{
-    return email;
-};
-#endif
+#endif;

@@ -1,21 +1,20 @@
 #include "../Entidades/Pessoa.h"
-
-
-using namespace std;
-
-void Pessoa::validar(int tipo, string valor)
+void Pessoa::setNome(const Nome& nome)
 {
-    switch (tipo)
-    {
-    case TIPO_NOME:
-        {
-            ValidarNome::validar(valor);
-            break;
-        };
-    case TIPO_EMAIL:
-        {
-            ValidarEmail::validar(valor);;
-            break;
-        };
-    }
+    this->nome = nome;
+}
+
+void Pessoa::setEmail(const Email& email)
+{
+    this->email = email;
+}
+
+string Pessoa::getNome() const
+{
+    return nome.getValor();
+}
+
+string Pessoa::getEmail() const
+{
+    return email.getValor();
 }
