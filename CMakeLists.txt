@@ -5,17 +5,14 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Diretórios de headers
 include_directories(
+        #includes
         include
         include/Entidades
         include/validadorAbstratos
         include/validadorPrincipais
-)
 
-include_directories(
+        #outros
         coisas
-)
-#
-include_directories(
         coisas/utilitarios
 )
 
@@ -23,14 +20,26 @@ include_directories(
 add_executable(gerenciador_hotel_unb
         src/main.cpp
 
-        # Domínios
-        coisas/utilitarios/Data.cpp
+        # Entidades
         src/Entidades/Gerente.cpp
         src/Entidades/Hospede.cpp
         src/Entidades/Hotel.cpp
         src/Entidades/Pessoa.cpp
         src/Entidades/Quarto.cpp
         src/Entidades/Reserva.cpp
+
+        # Dominios
+        src/Dominios/Nome.cpp
+        src/Dominios/Email.cpp
+        src/Dominios/Ramal.cpp
+        src/Dominios/Senha.cpp
+        src/Dominios/Endereco.cpp
+        src/Dominios/Cartao.cpp
+        src/Dominios/Telefone.cpp
+        src/Dominios/Codigo.cpp
+        src/Dominios/Numero.cpp
+        src/Dominios/Capacidade.cpp
+        src/Dominios/Dinheiro.cpp
 
         # ValidadoresAbstratos
         src/validadoresAbstratos/ValidarCodigo.cpp
@@ -49,32 +58,9 @@ add_executable(gerenciador_hotel_unb
         coisas/testes/Smoke_Tests.cpp
 
         #utilitarios
-        src/sistema/Servicos.cpp
+        coisas/utilitarios/Data.cpp
         coisas/utilitarios/TextoApresentacao.cpp
         coisas/utilitarios/LinhaTSV.cpp
-        coisas/utilitarios/LinhaTSV.h
         src/sistema/SistemaHotel.cpp
-        include/sistema/SistemaHotel.h
-        src/Dominios/Nome.cpp
-        include/Dominios/Nome.h
-        src/Dominios/Email.cpp
-        include/Dominios/Email.h
-        src/Dominios/Ramal.cpp
-        include/Dominios/Ramal.h
-        src/Dominios/Senha.cpp
-        include/Dominios/Senha.h
-        src/Dominios/Endereco.cpp
-        include/Dominios/Endereco.h
-        src/Dominios/Cartao.cpp
-        include/Dominios/Cartao.h
-        src/Dominios/Telefone.cpp
-        include/Dominios/Telefone.h
-        src/Dominios/Codigo.cpp
-        include/Dominios/Codigo.h
-        src/Dominios/Numero.cpp
-        include/Dominios/Numero.h
-        src/Dominios/Capacidade.cpp
-        include/Dominios/Capacidade.h
-        src/Dominios/Dinheiro.cpp
-        include/Dominios/Dinheiro.h
+        src/sistema/Servicos.cpp
 )

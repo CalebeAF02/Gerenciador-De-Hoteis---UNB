@@ -15,10 +15,11 @@ void Servicos::criarGerente()
 
         bool tudoOK = true;
         cout << "Informe o Nome: " << endl;
-        string nome = TextoApresentacao::LerLinha();
+        string nomeStr = TextoApresentacao::LerLinha();
         try
         {
-            gerente.setNome(nome);
+            Nome nomeObj(nomeStr);
+            gerente.setNome(nomeObj);
         }
         catch (invalid_argument& erro)
         {
@@ -28,10 +29,11 @@ void Servicos::criarGerente()
         if (tudoOK)
         {
             cout << "Informe o Email: " << endl;
-            string email = TextoApresentacao::LerLinha();
+            string emailStr = TextoApresentacao::LerLinha();
             try
             {
-                gerente.setEmail(email);
+                Email emailObj(emailStr);
+                gerente.setEmail(emailObj);
             }
             catch (invalid_argument& erro)
             {
@@ -94,9 +96,9 @@ vector<Gerente> Servicos::lerGerentes()
         while (getline(arquivoLendo, linha)) // ler linha , do aqruivo e guarda na linha .
         {
             //cout << "|"<< linha << "|"<< endl; // Debuguer linha
-            Gerente g4;
-            g4.setTSV(linha);
-            listaGerentes.push_back(g4);
+            Gerente gDados;
+            gDados.setTSV(linha);
+            listaGerentes.push_back(gDados);
         }
         arquivoLendo.close();
     }

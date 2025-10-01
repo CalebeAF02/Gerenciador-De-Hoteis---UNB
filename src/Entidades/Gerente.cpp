@@ -1,4 +1,18 @@
-#include "../Entidades/Gerente.h"
+#include "../Entidades//Gerente.h"
+
+// Construtor padrão
+Gerente::Gerente() : Pessoa()
+{
+    ramal = "0000";
+    senha = "Aa1!";
+}
+
+// Construtor com nome e email
+Gerente::Gerente(Nome nome, Email email) : Pessoa()
+{
+    setNome(nome);
+    setEmail(email);
+}
 
 
 void Gerente::validar(int tipo, const string valor)
@@ -92,7 +106,7 @@ void Gerente::validarSenha(const string senha)
 
 string Gerente::getTSV() // Transforma Gerente em uma linha de texto
 {
-    return string("GERENTE") + "\t" + nome + "\t" + email + "\t" + ramal + "\t" + senha;
+    return string("GERENTE") + "\t" + getNome() + "\t" + getEmail() + "\t" + ramal + "\t" + senha;
 }
 
 void Gerente::setTSV(string dados) // Transforma uma linha de texto em um Gerente
@@ -119,8 +133,8 @@ void Gerente::setTSV(string dados) // Transforma uma linha de texto em um Gerent
     */
 
     //Repassa os atribultos
-    setNome(parteNome);
-    setEmail(parteEmail);
+    setNome(Nome(parteNome));
+    setEmail(Email(parteEmail));
     setRamal(parteRamal);
     setSenha(parteResto);
 };

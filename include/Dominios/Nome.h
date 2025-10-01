@@ -14,11 +14,13 @@ class Nome
 private:
     string valor;
 
-    void validar(const string& nome)
+    void validar(const string& nome);
+
+public:
+    Nome() : valor(" :) ")
     {
     }
 
-public:
     Nome(const string& nome)
     {
         validar(nome);

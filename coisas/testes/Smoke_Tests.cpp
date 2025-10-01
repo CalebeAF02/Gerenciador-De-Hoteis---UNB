@@ -2,52 +2,6 @@
 
 void SmokeTest::testarEntradas()
 {
-    Pessoa pessoa1;
-    //------------------------------------------------------------------------------------------------------------------
-
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Pessoa      |" << endl;
-    cout << "                |   Testes Nome   |" << endl;
-    cout << "                -------------------" << endl << endl;
-
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &pessoa1, "Calebe Alves ");
-
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &pessoa1, "Kaio Rodrigues");
-
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Pessoa      |" << endl;
-    cout << "                |  Testes Emails  |" << endl;
-    cout << "                -------------------" << endl << endl;
-
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
-                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1,
-                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &pessoa1, "c..b@gmail.com");
-
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &pessoa1, "kaiorodrigues@gmail.com");
-
-
     //------------------------------------------------------------------------------------------------------------------
     Gerente gerente1;
 
@@ -367,7 +321,7 @@ void SmokeTest::testarEntradas()
 
     //------------------------------------------------------------------------------------------------------------------
 
-    Gerente g1;
+    Gerente g_teste;
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -375,24 +329,24 @@ void SmokeTest::testarEntradas()
     cout << "                | Testes Gerente  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    g1.setNome("Calebe Alves");
-    g1.setEmail("calebe.2324@gmail.com");
-    g1.setRamal("22");
-    g1.setSenha("A1#a2");
+    g_teste.setNome(Nome("Calebe Alves"));
+    g_teste.setEmail(Email("calebe.2324@gmail.com"));
+    g_teste.setRamal("22");
+    g_teste.setSenha("A1#a2");
 
     //cout << "g1 =" << dadosGerente << endl;
-    testarValidadorString(Teste::DEVE_DAR_CERTO, g1.getTSV(),
+    testarValidadorString(Teste::DEVE_DAR_CERTO, g_teste.getTSV(),
                           "GERENTE\tCalebe Alves\tcalebe.2324@gmail.com\t22\tA1#a2");
     Gerente g2;
-    string dadosGerente = g1.getTSV();
+    string dadosGerente = g_teste.getTSV();
     g2.setTSV(dadosGerente);
     //cout << "g2 =" << g2.getTSV() << endl;
-    testarValidadorString(Teste::DEVE_DAR_CERTO, g1.getTSV(), g2.getTSV());
+    testarValidadorString(Teste::DEVE_DAR_CERTO, g_teste.getTSV(), g2.getTSV());
 
     Gerente g3;
 
-    g3.setNome("Luan Freitas");
-    g3.setEmail("luan.dkg@gmail.com");
+    g3.setNome(Nome("Luan Freitas"));
+    g3.setEmail(Email("luan.dkg@gmail.com"));
     g3.setRamal("49");
     g3.setSenha("C4$c5");
 
@@ -423,9 +377,8 @@ void SmokeTest::testarValidadorString(int esperando_resultado, string s1, string
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa* ptr, string nome)
+void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente* ptr, string nome)
 {
     Teste::apresentacaoTeste(nome);
     int resultado_teste = 0;
@@ -441,46 +394,13 @@ void SmokeTest::testarValidadorNome(int esperando_resultado, Pessoa* ptr, string
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Pessoa* ptr, string email)
-{
-    Teste::apresentacaoTeste(email);
-    int resultado_teste = 0;
-    try
-    {
-        ptr->setNome(Nome(email));
-        resultado_teste = Teste::apresentacaoSucesso();
-    }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
-}
-
-//-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente* ptr, string nome)
-{
-    Teste::apresentacaoTeste(nome);
-    int resultado_teste = 0;
-    try
-    {
-        ptr->setNome(nome);
-        resultado_teste = Teste::apresentacaoSucesso();
-    }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
-}
-
 void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente* ptr, string email)
 {
     Teste::apresentacaoTeste(email);
     int resultado_teste = 0;
     try
     {
-        ptr->setEmail(email);
+        ptr->setEmail(Email(email));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -529,7 +449,7 @@ void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede* ptr, strin
     int resultado_teste = 0;
     try
     {
-        ptr->setNome(nome);
+        ptr->setNome(Nome(nome));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -545,7 +465,7 @@ void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setEmail(email);
+        ptr->setEmail(Email(email));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)

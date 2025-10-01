@@ -16,6 +16,10 @@ protected:
     Email email;
 
 public:
+    Pessoa() : nome(Nome()), email(Email())
+    {
+    };
+
     void setNome(const Nome& nome);
 
     void setEmail(const Email& email);

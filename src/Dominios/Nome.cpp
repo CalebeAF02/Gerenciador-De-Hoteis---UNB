@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void validar(const string& nome)
+void Nome::validar(const string& nome)
 {
     int cont_alta = 0;
     int cont_baixa = 0;

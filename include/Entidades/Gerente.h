@@ -2,22 +2,29 @@
 #define GERENTE_INCLUDE
 
 #include "Pessoa.h"
+#include "validadoresPrincipais/ValidarString.h"
 #include "../validadoresAbstratos/ValidarRamal.h"
 #include "../coisas/utilitarios/LinhaTSV.h"
+
+#include "Dominios/Email.h"
+#include "Dominios/Nome.h"
 
 #include <string>
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarRamal, public LinhaTSV
+class Gerente : public Pessoa, public ValidarString, public ValidarRamal, public LinhaTSV
 {
 private:
     string ramal;
     string senha;
 
 public:
-    static int const TIPO_RAMAL = 3;
-    static int const TIPO_SENHA = 4;
+    Gerente();
+
+    Gerente(Nome nome, Email email);
+    static int const TIPO_RAMAL = 1;
+    static int const TIPO_SENHA = 2;
 
 
     void validar(int tipo, string valor) override;
@@ -25,16 +32,14 @@ public:
     void validarSenha(string senha);
 
 
-    void setNome(const string nome)
+    void setNome(const Nome& nome)
     {
-        Pessoa::validar(TIPO_NOME, nome);
-        this->nome = nome;
+        Pessoa::setNome(nome);
     }
 
-    void setEmail(const string email)
+    void setEmail(const Email& email)
     {
-        Pessoa::validar(TIPO_EMAIL, email);
-        this->email = email;
+        Pessoa::setEmail(email);
     }
 
     void setRamal(const string ramal)
@@ -50,21 +55,17 @@ public:
     }
 
     //Get
-    string getRamal();
+    string getRamal() const
+    {
+        return ramal;
+    };
 
-    string getSenha();
+    string getSenha() const
+    {
+        return senha;
+    };
 
     string getTSV() override;
     void setTSV(string dados) override;
-};
-
-inline string Gerente::getRamal()
-{
-    return ramal;
-};
-
-inline string Gerente::getSenha()
-{
-    return senha;
 };
 #endif

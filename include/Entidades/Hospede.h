@@ -2,8 +2,7 @@
 #define HOSPEDE_INCLUDE
 
 #include "Entidades/Pessoa.h"
-#include "../validadoresAbstratos/ValidarNome.h"
-#include "../validadoresAbstratos/ValidarEndereco.h"
+#include "validadoresAbstratos/ValidarEndereco.h"
 #include "../validadoresPrincipais/ValidarString.h"
 
 #include <iostream>
@@ -13,7 +12,7 @@
 
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString
+class Hospede : public Pessoa, public ValidarString, public ValidarEndereco
 {
 private:
     string endereco;
@@ -28,15 +27,13 @@ public:
 
     void validarCartao(string cartao);
 
-    void setNome(const string nome)
+    void setNome(const Nome& nome)
     {
-        Pessoa::validar(TIPO_NOME, nome);
         this->nome = nome;
     };
 
-    void setEmail(const string email)
+    void setEmail(const Email& email)
     {
-        Pessoa::validar(TIPO_EMAIL, email);
         this->email = email;
     };
 
@@ -53,18 +50,14 @@ public:
     };
 
     //Get
-    string getEndereco();
+    string getEndereco() const
+    {
+        return endereco;
+    };
 
-    string getCartao();
-};
-
-inline string Hospede::getEndereco()
-{
-    return endereco;
-};
-
-inline string Hospede::getCartao()
-{
-    return cartao;
+    string getCartao() const
+    {
+        return cartao;
+    };
 };
 #endif

@@ -4,10 +4,9 @@
 
 #include "../../include/Dominios/Email.h"
 
-#include "../validadoresAbstratos/ValidarEmail.h"
+using namespace std;
 
-
-void validar(const string email)
+void Email::validar(const string& email)
 {
     // lógica de validação do email
     int posicaoArroba = email.find("@");
