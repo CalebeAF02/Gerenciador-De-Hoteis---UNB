@@ -1,7 +1,7 @@
 #ifndef HOSPEDE_INCLUDE
 #define HOSPEDE_INCLUDE
 
-#include "../dominios/Pessoa.h"
+#include "Entidades/Pessoa.h"
 #include "../validadoresAbstratos/ValidarNome.h"
 #include "../validadoresAbstratos/ValidarEndereco.h"
 #include "../validadoresPrincipais/ValidarString.h"

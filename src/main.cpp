@@ -3,11 +3,11 @@
 
 
 #include "../coisas/utilitarios/Data.h"
-#include "dominios/Pessoa.h"
-#include "dominios/Gerente.h"
-#include "dominios/Hospede.h"
-#include "dominios/Hotel.h"
-#include "dominios/Quarto.h"
+#include "Entidades/Pessoa.h"
+#include "Entidades/Gerente.h"
+#include "Entidades/Hospede.h"
+#include "Entidades/Hotel.h"
+#include "Entidades/Quarto.h"
 #include "testes/Smoke_Tests.h"
 #include "validadoresPrincipais/ValidarString.h"
 #include "validadoresPrincipais/ValidarInt.h"
@@ -52,4 +52,3 @@ int main()
 
     return 0;
 }
-

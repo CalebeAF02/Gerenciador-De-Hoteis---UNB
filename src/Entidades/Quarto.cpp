@@ -1,4 +1,4 @@
-#include "../dominios/Quarto.h"
+#include "../Entidades/Quarto.h"
 
 using namespace std;
 

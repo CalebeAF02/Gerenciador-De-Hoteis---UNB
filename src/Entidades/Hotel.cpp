@@ -1,4 +1,4 @@
-#include "../dominios/Hotel.h"
+#include "../Entidades/Hotel.h"
 
 void Hotel::validar(int tipo, const string valor)
 {

@@ -1,4 +1,4 @@
-#include "../dominios/Gerente.h"
+#include "../Entidades/Gerente.h"
 
 
 void Gerente::validar(int tipo, const string valor)

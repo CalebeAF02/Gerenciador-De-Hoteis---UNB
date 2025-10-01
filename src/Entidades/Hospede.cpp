@@ -1,4 +1,4 @@
-#include "../dominios/Hospede.h"
+#include "../Entidades/Hospede.h"
 
 void Hospede::validar(int tipo, const string valor)
 {
