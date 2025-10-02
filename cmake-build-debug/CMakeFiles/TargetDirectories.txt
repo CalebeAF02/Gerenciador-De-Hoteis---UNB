@@ -1,3 +1,0 @@
-C:/Users/caleb/OneDrive/Desktop/repositorios/antigo_projeto_hotel_Clion-main/cmake-build-debug/CMakeFiles/gerenciador_hotel_unb.dir
-C:/Users/caleb/OneDrive/Desktop/repositorios/antigo_projeto_hotel_Clion-main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/caleb/OneDrive/Desktop/repositorios/antigo_projeto_hotel_Clion-main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
