@@ -16,16 +16,35 @@ protected:
     Email email;
 
 public:
+    // Construcutor ----------
     Pessoa() : nome(Nome()), email(Email())
     {
     };
 
-    void setNome(const Nome& nome);
+    // seters ----------------
+    void setNome(const Nome& valor)
+    {
+        this->nome = valor;
+    };
 
-    void setEmail(const Email& email);
+    void setEmail(const Email& valor)
+    {
+        this->email = valor;
+    };
 
+    // geters ----------------
     string getNome() const;
 
     string getEmail() const;
 };
-#endif;
+
+inline string Pessoa::getNome() const
+{
+    return nome.getValor();
+}
+
+inline string Pessoa::getEmail() const
+{
+    return email.getValor();
+}
+#endif

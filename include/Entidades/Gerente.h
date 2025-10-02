@@ -3,69 +3,78 @@
 
 #include "Pessoa.h"
 #include "validadoresPrincipais/ValidarString.h"
-#include "../validadoresAbstratos/ValidarRamal.h"
+
+#include "Dominios/Nome.h"
+#include "Dominios/Email.h"
+#include "Dominios/Ramal.h"
+#include "Dominios/Senha.h"
+
 #include "../coisas/utilitarios/LinhaTSV.h"
 
-#include "Dominios/Email.h"
-#include "Dominios/Nome.h"
-
+#include <iostream>
+#include <istream>
 #include <string>
 
 using namespace std;
 
-class Gerente : public Pessoa, public ValidarString, public ValidarRamal, public LinhaTSV
+class Gerente : public Pessoa, public LinhaTSV
 {
 private:
-    string ramal;
-    string senha;
+    Ramal ramal;
+    Senha senha;
 
 public:
-    Gerente();
+    // Construcutor -----------
+    Gerente() = default;
 
-    Gerente(Nome nome, Email email);
-    static int const TIPO_RAMAL = 1;
-    static int const TIPO_SENHA = 2;
-
-
-    void validar(int tipo, string valor) override;
-
-    void validarSenha(string senha);
-
-
-    void setNome(const Nome& nome)
+    Gerente(Nome nome, Email email)
     {
-        Pessoa::setNome(nome);
-    }
-
-    void setEmail(const Email& email)
-    {
-        Pessoa::setEmail(email);
-    }
-
-    void setRamal(const string ramal)
-    {
-        validar(TIPO_RAMAL, ramal);
-        this->ramal = ramal;
-    }
-
-    void setSenha(const string senha)
-    {
-        validar(TIPO_SENHA, senha);
-        this->senha = senha;
-    }
-
-    //Get
-    string getRamal() const
-    {
-        return ramal;
+        setNome(nome);
+        setEmail(email);
     };
 
-    string getSenha() const
+    // seters -----------------
+    void setNome(const Nome& valor)
     {
-        return senha;
-    };
+        Pessoa::setNome(valor);
+    }
+
+    void setEmail(const Email& valor)
+    {
+        Pessoa::setEmail(valor);
+    }
+
+    void setRamal(const string valor)
+    {
+        ramal.setValor(valor);
+    }
+
+    void setSenha(const string valor)
+    {
+        senha.setValor(valor);
+    }
+
+    void setTSV(string dados) override;
+
+    // geters -----------------
+    string getRamal() const;
+
+    string getSenha() const;
 
     string getTSV() override;
-    void setTSV(string dados) override;
 };
+inline string Gerente::getTSV() // Transforma Gerente em uma linha de texto
+{
+    return string("GERENTE") + "\t" + getNome() + "\t" + getEmail() + "\t" + getRamal() + "\t" + getSenha();
+}
+
+inline string Gerente::getRamal() const
+{
+    return ramal.getValor();
+}
+
+inline string Gerente::getSenha() const
+{
+    return senha.getValor();
+}
 #endif

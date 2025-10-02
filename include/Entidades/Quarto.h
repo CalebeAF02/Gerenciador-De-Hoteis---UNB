@@ -3,90 +3,68 @@
 
 #include "../validadoresPrincipais/ValidarString.h"
 #include "../validadoresPrincipais/ValidarInt.h"
-#include "../validadoresAbstratos/ValidarRamal.h"
-#include "../validadoresAbstratos/ValidarDinheiro.h"
+#include "Dominios/Numero.h"
+#include "Dominios/Capacidade.h"
+#include "Dominios/Dinheiro.h"
+#include "Dominios/Ramal.h"
 
 #include <string>
 #include <stdexcept>
 
+
 using namespace std;
 
-class Quarto : public ValidarString, public ValidarInt, public ValidarRamal, public ValidarDinheiro, public exception
+class Quarto
 {
 private:
-    string numero;
-    int capacidade;
-    int diaria;
-    string ramal;
+    Numero numero;
+    Capacidade capacidade;
+    Dinheiro diaria;
+    Ramal ramal;
 
 public:
-    static int const TIPO_NUMERO = 1;
-    static int const TIPO_CAPACIDADE = 2;
-    static int const TIPO_DIARIA = 3;
-    static int const TIPO_RAMAL = 4;
+    Quarto() = default;
 
-    // Regras específicas de validação do gerente
-    void validar(int tipo, string valor) override;
-
-    void validar(int tipo, int valor) override;
-
-    void validarNumero(string numero);
-
-    void validarCapacidade(int capacidade);
-
-    void validarDiaria(int diaria);
-
-    void setNumero(const string numero)
+    void setNumero(const string valor)
     {
-        validar(TIPO_NUMERO, numero);
-        this->numero = numero;
+        numero.setValor(valor);
     }
 
-    void setCapacidade(const int capacidade)
+    void setCapacidade(const int valor)
     {
-        validar(TIPO_CAPACIDADE, capacidade);
-        this->capacidade = capacidade;
+        capacidade.setValor(valor);
     }
 
-    void setDiaria(const int diaria)
+    void setDiaria(const int valor)
     {
-        validar(TIPO_DIARIA, diaria);
-        this->diaria = diaria;
+        diaria.setValor(valor);
     }
 
-    void setRamal(const string ramal)
+    void setRamal(const string valor)
     {
-        validar(TIPO_RAMAL, ramal);
-        this->ramal = ramal;
+        ramal.setValor(valor);
     }
 
     //Get
-    string getNumero();
+    string getNumero() const
+    {
+        return numero.getValor();
+    }
 
-    int getCapacidade();
+    int getCapacidade() const
+    {
+        return capacidade.getValor();
+    }
 
-    int getDinheiro();
+    int getDinheiro() const
+    {
+        diaria.getValor();
+    }
 
-    string getRamal();
+    string getRamal() const
+    {
+        return ramal.getValor();
+    }
 };
 
-inline string Quarto::getNumero()
-{
-    return numero;
-};
-
-inline int Quarto::getCapacidade()
-{
-    return capacidade;
-};
-
-inline int Quarto::getDinheiro()
-{
-    return diaria;
-};
-
-inline string Quarto::getRamal()
-{
-    return ramal;
-}
 #endif

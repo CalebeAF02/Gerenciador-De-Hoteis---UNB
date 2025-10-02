@@ -5,10 +5,36 @@
 #ifndef GERENCIADOR_HOTEL_UNB_CODIGO_H
 #define GERENCIADOR_HOTEL_UNB_CODIGO_H
 
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 class Codigo
 {
-};
+private:
+    string valor;
 
+    void validar(string codigo); // Metodo de validação
+
+public:
+    Codigo() = default;
+
+    explicit Codigo(string& codigo)
+    {
+        setValor(codigo);
+    };
+
+    void setValor(const string& codigo)
+    {
+        validar(codigo);
+        this->valor = codigo;
+    }
+
+    string getValor() const
+    {
+        return valor;
+    }
+};
 
 #endif //GERENCIADOR_HOTEL_UNB_CODIGO_H

@@ -34,7 +34,7 @@ int main()
     SmokeTest::testarEntradas();
     SistemaHotel sistema;
 
-    if (sistema.fazerLogin("calebe.2324@gmail.com", "A1#a2"))
+    if (sistema.fazerLogin("calebe@gmail.com", "A1#a1"))
     {
         sistema.menuSistema();
     };

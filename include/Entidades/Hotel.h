@@ -2,66 +2,65 @@
 #define HOTEL_INCLUDE
 
 #include "../validadoresPrincipais/ValidarString.h"
-#include "../validadoresAbstratos/ValidarNome.h"
-#include "../validadoresAbstratos/ValidarEndereco.h"
-#include "../validadoresAbstratos/ValidarCodigo.h"
-
+#include "Dominios/Nome.h"
+#include "Dominios/Endereco.h"
+#include "Dominios/Telefone.h"
+#include "Dominios/Codigo.h"
 #include <string>
 
 using namespace std;
 
-class Hotel : public ValidarString, public ValidarNome, public ValidarEndereco, public ValidarCodigo
+class Hotel
 {
 private:
-    string nome;
-    string endereco;
-    string telefone;
-    string codigo;
+    Nome nome;
+    Endereco endereco;
+    Telefone telefone;
+    Codigo codigo;
 
 public:
-    static int const TIPO_NOME = 1;
-    static int const TIPO_ENDERECO = 2;
-    static int const TIPO_TELEFONE = 3;
-    static int const TIPO_CODIGO = 4;
+    Hotel() = default;
 
-
-    void validar(int tipo, string valor) override;
-
-    void validarTelefone(string telefone);
-
-
-    void setNome(const string nome)
+    void setNome(const string valor)
     {
-        validar(TIPO_NOME, nome);
-        this->nome = nome;
+        nome.setValor(valor);
     };
 
-    void setEndereco(const string endereco)
+    void setEndereco(const string valor)
     {
-        validar(TIPO_ENDERECO, endereco);
-        this->endereco = endereco;
+        endereco.setValor(valor);
     };
 
-    void setTelefone(const string telefone)
+    void setTelefone(const string valor)
     {
-        validar(TIPO_TELEFONE, telefone);
-        this->telefone = telefone;
+        telefone.setValor(valor);
     };
 
-    void setCodigo(const string codigo)
+    void setCodigo(const string valor)
     {
-        validar(TIPO_CODIGO, codigo);
-        this->codigo = codigo;
+        codigo.setValor(valor);
     };
 
     //Get
-    string getNome();
+    string getNome() const
+    {
+        return nome.getValor();
+    };
 
-    string getEndereco();
+    string getEndereco() const
+    {
+        return endereco.getValor();
+    };
 
-    string getTelefone();
+    string getTelefone() const
+    {
+        return telefone.getValor();
+    };
 
-    string getCodigo();
+    string getCodigo() const
+    {
+        return codigo.getValor();
+    };
 
 
     /*
@@ -75,23 +74,4 @@ public:
     */
 };
 
-inline string Hotel::getNome()
-{
-    return nome;
-};
-
-inline string Hotel::getEndereco()
-{
-    return endereco;
-};
-
-inline string Hotel::getTelefone()
-{
-    return telefone;
-};
-
-inline string Hotel::getCodigo()
-{
-    return codigo;
-};
 #endif

@@ -5,9 +5,35 @@
 #ifndef GERENCIADOR_HOTEL_UNB_CARTAO_H
 #define GERENCIADOR_HOTEL_UNB_CARTAO_H
 
+#include "iostream"
+
+using namespace std;
 
 class Cartao
 {
+private:
+    string valor;
+
+    void validar(string valor);
+
+public:
+    Cartao() = default;
+
+    explicit Cartao(string& cartao)
+    {
+        setValor(cartao);
+    }
+
+    void setValor(const string& cartao)
+    {
+        validar(cartao);
+        this->valor = cartao;
+    }
+
+    string getValor() const
+    {
+        return valor;
+    }
 };
 
 

@@ -9,6 +9,18 @@
 #include "../utilitarios/Data.h"
 #include "../testes/Teste.h"
 
+#include "Dominios/Capacidade.h"
+#include "Dominios/Cartao.h"
+#include "Dominios/Codigo.h"
+#include "Dominios/Dinheiro.h"
+#include "Dominios/Email.h"
+#include "Dominios/Endereco.h"
+#include "Dominios/Nome.h"
+#include "Dominios/Numero.h"
+#include "Dominios/Ramal.h"
+#include "Dominios/Senha.h"
+#include "Dominios/Telefone.h"
+
 #include "../validadoresPrincipais/ValidarInt.h"
 #include "../validadoresPrincipais/ValidarString.h"
 #include "../validadoresAbstratos/ValidarNome.h"
@@ -21,6 +33,7 @@
 #include <ostream>
 #include <vector>
 #include <fstream>
+#include <string>
 
 using namespace std;
 

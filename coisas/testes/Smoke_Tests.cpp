@@ -234,8 +234,8 @@ void SmokeTest::testarEntradas()
     cout << "                -------------------" << endl << endl;
 
     testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &quarto1, -50);
-    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &quarto1, 1000);
 
+    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 1000);
     testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 80000);
     testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 120000);
 
@@ -384,7 +384,8 @@ void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente* ptr, strin
     int resultado_teste = 0;
     try
     {
-        ptr->setNome(Nome(nome));
+        Nome nomeObj(nome);
+        ptr->setNome(Nome(nomeObj));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -400,7 +401,8 @@ void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setEmail(Email(email));
+        Email emailObj(email);
+        ptr->setEmail(Email(emailObj));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)

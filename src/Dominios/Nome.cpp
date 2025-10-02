@@ -3,9 +3,6 @@
 //
 
 #include "../../include/Dominios/Nome.h"
-#include <iostream>
-
-using namespace std;
 
 void Nome::validar(const string& nome)
 {

@@ -4,7 +4,6 @@
 #include "Entidades/Gerente.h"
 #include "../../coisas/utilitarios/TextoApresentacao.h"
 
-#include "Gerente.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

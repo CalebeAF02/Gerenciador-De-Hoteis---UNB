@@ -6,7 +6,7 @@
 #define GERENCIADOR_HOTEL_UNB_EMAIL_H
 
 #include "../validadoresAbstratos/ValidarEmail.h"
-#include "iostream"
+#include <string>
 
 using namespace std;
 
@@ -18,21 +18,26 @@ private:
     void validar(const string& email);
 
 public:
-    Email() : valor(" :) ")
+    Email() = default;
+
+    explicit Email(const string& email)
     {
+        setValor(email);
     }
 
-    Email(const string& email)
+    void setValor(const string& email)
     {
         validar(email);
         this->valor = email;
     }
 
-    string getValor() const
-    {
-        return valor;
-    }
+    string getValor() const;
 };
+
+inline string Email::getValor() const
+{
+    return valor;
+}
 
 
 #endif //GERENCIADOR_HOTEL_UNB_EMAIL_H

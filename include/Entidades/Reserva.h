@@ -4,34 +4,25 @@
 #include <iostream>
 #include "../validadoresPrincipais/ValidarString.h"
 #include "../validadoresPrincipais/ValidarInt.h"
-#include "../validadoresAbstratos/ValidarCodigo.h"
-#include "../validadoresAbstratos/ValidarDinheiro.h"
 #include "../../coisas/utilitarios/Data.h"
+#include "Dominios/Dinheiro.h"
+#include "Dominios/Codigo.h"
 
 #include <string>
 
 using namespace std;
 
-class Reserva : public ValidarString, public ValidarInt, public ValidarDinheiro,
-                public ValidarCodigo
+class Reserva
 {
 private:
     Data chegada;
     Data partida;
-    int dinheiro;
-    string codigo;
+    Dinheiro dinheiro;
+    Codigo codigo;
 
 public:
-    static int const TIPO_CHEGADA = 1;
-    static int const TIPO_PARTIDA = 2;
-    static int const TIPO_DINHEIRO = 3;
-    static int const TIPO_CODIGO = 4;
+    Reserva() = default;
 
-    // Regras específicas de validação do hóspede
-
-    void validar(int tipo, string valor) override;
-
-    void validar(int tipo, int valor) override;
 
     void setChegada(const int dia, const int mes, const int ano)
     {
@@ -45,46 +36,34 @@ public:
         this->partida = partida;
     };
 
-    void setDinheiro(const int dinheiro)
+    void setDinheiro(const int valor)
     {
-        validar(TIPO_DINHEIRO, dinheiro);
-        this->dinheiro = dinheiro;
+        dinheiro.setValor(valor);
     };
 
-    void setCodigo(const string codigo)
+    void setCodigo(const string valor)
     {
-        validar(TIPO_CODIGO, codigo);
+        codigo.setValor(valor);
         this->codigo = codigo;
     };
 
 
     //Get
-    Data getChegada();
+    Data getChegada() const
+    {
+        return chegada;
+    };
 
-    Data getPartida();
+    Data getPartida() const
+    {
+        return partida;
+    };
 
-    int getDinheiro();
+    int getDinheiro() const
+    {
+        return dinheiro.getValor();
+    };
 
     string getCodigo();
-};
-
-inline Data Reserva::getChegada()
-{
-    return chegada;
-};
-
-inline Data Reserva::getPartida()
-{
-    return partida;
-};
-
-inline int Reserva::getDinheiro()
-{
-    return dinheiro;
-}
-
-inline string Reserva::getCodigo()
-{
-    return codigo;
 };
 #endif

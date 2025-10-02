@@ -5,7 +5,8 @@
 #ifndef GERENCIADOR_HOTEL_UNB_NOME_H
 #define GERENCIADOR_HOTEL_UNB_NOME_H
 
-#include "iostream"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -14,22 +15,28 @@ class Nome
 private:
     string valor;
 
-    void validar(const string& nome);
+    void validar(const string& nome); // Metodo de validação
 
 public:
-    Nome() : valor(" :) ")
-    {
-    }
+    Nome() = default;
 
-    Nome(const string& nome)
+    explicit Nome(const string& nome)
+    {
+        setValor(nome);
+    };
+
+    void setValor(const string& nome)
     {
         validar(nome);
         this->valor = nome;
     }
 
-    string getValor() const
-    {
-        return valor;
-    }
+    string getValor() const;
 };
+
+inline string Nome::getValor() const
+{
+    return valor;
+}
+
 #endif //GERENCIADOR_HOTEL_UNB_NOME_H

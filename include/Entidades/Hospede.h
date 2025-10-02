@@ -10,54 +10,55 @@
 
 #include <stdexcept>
 
+#include "Dominios/Cartao.h"
+#include "Dominios/Endereco.h"
+
 using namespace std;
 
-class Hospede : public Pessoa, public ValidarString, public ValidarEndereco
+class Hospede : public Pessoa, public ValidarEndereco
 {
 private:
-    string endereco;
-    string cartao;
+    Endereco endereco;
+    Cartao cartao;
 
 public:
-    static int const TIPO_ENDERECO = 1;
-    static int const TIPO_CARTAO = 2;
+    Hospede() = default;
 
-    // Regras específicas de validação do hóspede
-    void validar(int tipo, string valor) override;
-
-    void validarCartao(string cartao);
-
-    void setNome(const Nome& nome)
+    Hospede(Nome nome, Email email)
     {
-        this->nome = nome;
+        setNome(nome);
+        setEmail(email);
     };
 
-    void setEmail(const Email& email)
+    void setNome(const Nome& valor)
     {
-        this->email = email;
+        Pessoa::setNome(valor);
     };
 
-    void setEndereco(const string endereco)
+    void setEmail(const Email& valor)
     {
-        validar(TIPO_ENDERECO, endereco);
-        this->endereco = endereco;
+        Pessoa::setEmail(valor);
     };
 
-    void setCartao(string cartao)
+    void setEndereco(const string valor)
     {
-        validar(TIPO_CARTAO, cartao);
-        this->cartao = cartao;
+        endereco.setValor(valor);
+    };
+
+    void setCartao(string valor)
+    {
+        endereco.setValor(valor);
     };
 
     //Get
     string getEndereco() const
     {
-        return endereco;
+        return endereco.getValor();
     };
 
     string getCartao() const
     {
-        return cartao;
+        return cartao.getValor();
     };
 };
 #endif

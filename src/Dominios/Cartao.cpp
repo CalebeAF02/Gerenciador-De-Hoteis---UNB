@@ -3,3 +3,11 @@
 //
 
 #include "../../include/Dominios/Cartao.h"
+
+void Cartao::validar(const string valor)
+{
+    if (valor.length() != 16)
+    {
+        throw invalid_argument("Erro: Tamanho invalido");
+    } // implementar algoritimo de lunn
+}
