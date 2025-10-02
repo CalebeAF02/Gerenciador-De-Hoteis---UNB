@@ -1,0 +1,1 @@
+#include "../validadores_principais/ValidarString.h"

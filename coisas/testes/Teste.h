@@ -4,12 +4,12 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include "../Entidades/Pessoa.h"
-#include "../Entidades/Gerente.h"
-#include "../Entidades/Hospede.h"
-#include "../Entidades/Hotel.h"
-#include "../Entidades/Quarto.h"
-#include "../Entidades/Reserva.h"
+#include "../entidades/Pessoa.h"
+#include "../entidades/Gerente.h"
+#include "../entidades/Hospede.h"
+#include "../entidades/Hotel.h"
+#include "../entidades/Quarto.h"
+#include "../entidades/Reserva.h"
 
 using namespace std;
 

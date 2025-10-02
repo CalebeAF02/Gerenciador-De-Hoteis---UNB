@@ -1,8 +1,7 @@
 #ifndef UTILITARIOS_SERVICOS_INCLUDE
 #define UTILITARIOS_SERVICOS_INCLUDE
 
-#include "Entidades/Gerente.h"
-#include "../../coisas/utilitarios/TextoApresentacao.h"
+#include "Gerente.h"
 
 #include <iostream>
 #include <fstream>

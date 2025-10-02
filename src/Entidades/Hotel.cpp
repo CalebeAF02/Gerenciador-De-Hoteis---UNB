@@ -1,2 +1,0 @@
-#include "../Entidades/Hotel.h"
-

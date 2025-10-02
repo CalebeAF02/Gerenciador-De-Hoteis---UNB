@@ -7,13 +7,16 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(
         #includes
         include
-        include/Entidades
+        include/dominios
+        include/entidades
+        include/sistema
         include/validadorAbstratos
         include/validadorPrincipais
 
         #outros
         coisas
         coisas/utilitarios
+        coisas/testes
 )
 
 # Fontes principais
@@ -21,38 +24,41 @@ add_executable(gerenciador_hotel_unb
         src/main.cpp
 
         # Entidades
-        src/Entidades/Gerente.cpp
-        src/Entidades/Hospede.cpp
-        src/Entidades/Hotel.cpp
-        src/Entidades/Pessoa.cpp
-        src/Entidades/Quarto.cpp
-        src/Entidades/Reserva.cpp
+        src/entidades/Gerente.cpp
+        src/entidades/Hospede.cpp
+        src/entidades/Hotel.cpp
+        src/entidades/Pessoa.cpp
+        src/entidades/Quarto.cpp
+        src/entidades/Reserva.cpp
 
         # Dominios
-        src/Dominios/Nome.cpp
-        src/Dominios/Email.cpp
-        src/Dominios/Ramal.cpp
-        src/Dominios/Senha.cpp
-        src/Dominios/Endereco.cpp
-        src/Dominios/Cartao.cpp
-        src/Dominios/Telefone.cpp
-        src/Dominios/Codigo.cpp
-        src/Dominios/Numero.cpp
-        src/Dominios/Capacidade.cpp
-        src/Dominios/Dinheiro.cpp
+        src/dominios/Nome.cpp
+        src/dominios/Email.cpp
+        src/dominios/Ramal.cpp
+        src/dominios/Senha.cpp
+        src/dominios/Endereco.cpp
+        src/dominios/Cartao.cpp
+        src/dominios/Telefone.cpp
+        src/dominios/Codigo.cpp
+        src/dominios/Numero.cpp
+        src/dominios/Capacidade.cpp
+        src/dominios/Dinheiro.cpp
 
         # ValidadoresAbstratos
-        src/validadoresAbstratos/ValidarCodigo.cpp
-        src/validadoresAbstratos/ValidarDinheiro.cpp
-        src/validadoresAbstratos/ValidarEmail.cpp
-        src/validadoresAbstratos/ValidarEndereco.cpp
-        src/validadoresAbstratos/ValidarNome.cpp
-        src/validadoresAbstratos/ValidarRamal.cpp
+        src/validadores_abstratos/ValidarCodigo.cpp
+        src/validadores_abstratos/ValidarDinheiro.cpp
+        src/validadores_abstratos/ValidarEmail.cpp
+        src/validadores_abstratos/ValidarEndereco.cpp
+        src/validadores_abstratos/ValidarNome.cpp
+        src/validadores_abstratos/ValidarRamal.cpp
 
         # ValidadoresPrincipais
-        src/validadoresPrincipais/ValidarInt.cpp
-        src/validadoresPrincipais/ValidarString.cpp
+        src/validadores_principais/ValidarInt.cpp
+        src/validadores_principais/ValidarString.cpp
 
+        #Sistamas
+        src/sistema/SistemaHotel.cpp
+        src/sistema/Servicos.cpp
         # Testes
         coisas/testes/Teste.cpp
         coisas/testes/Smoke_Tests.cpp
@@ -61,6 +67,5 @@ add_executable(gerenciador_hotel_unb
         coisas/utilitarios/Data.cpp
         coisas/utilitarios/TextoApresentacao.cpp
         coisas/utilitarios/LinhaTSV.cpp
-        src/sistema/SistemaHotel.cpp
-        src/sistema/Servicos.cpp
+
 )

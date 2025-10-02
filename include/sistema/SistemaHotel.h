@@ -5,9 +5,9 @@
 #ifndef GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 #define GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 
-#include <iostream>
-
 #include "Servicos.h"
+
+#include <iostream>
 
 class SistemaHotel
 {

@@ -451,7 +451,8 @@ void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede* ptr, strin
     int resultado_teste = 0;
     try
     {
-        ptr->setNome(Nome(nome));
+        Nome nomeObj(nome);
+        ptr->setNome(Nome(nomeObj));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -467,7 +468,8 @@ void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setEmail(Email(email));
+        Email emailObj(email);
+        ptr->setEmail(Email(emailObj));
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
