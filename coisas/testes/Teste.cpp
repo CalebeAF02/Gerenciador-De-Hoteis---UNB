@@ -40,9 +40,9 @@ void Teste::apresentacaoTeste(int valor)
     contTodalTestes += 1;
 }
 
-void Teste::apresentacaoTesteData(int dia, int mes, int ano)
+void Teste::apresentacaoTesteData(string valor)
 {
-    cout << "Teste Para Validar " << endl << "Entrada: " << dia << "/" << mes << "/" << ano << endl;
+    cout << "Teste Para Validar " << endl << "Entrada: " << valor << endl;
     contTodalTestes += 1;
 }
 

@@ -30,7 +30,7 @@ public:
 
     static void apresentacaoTeste(int valor);
 
-    static void apresentacaoTesteData(int dia, int mes, int ano);
+    static void apresentacaoTesteData(string valor);
 
     static int apresentacaoSucesso();
 

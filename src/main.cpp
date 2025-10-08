@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#include "TextoApresentacao.h"
+
 using namespace std;
 
 #define TESTANDO 0
@@ -37,8 +39,11 @@ int main()
     SmokeTest::testarEntradas();
     SistemaHotel sistema;
 
+    TextoApresentacao::MostrarTituloEmCaixa("Login Programado");
+    cout<<"Entrada :"<<"calebe@gmail.com"<<endl<<"Senha :"<<"A1#a1"<<endl<<endl;
     if (sistema.fazerLogin("calebe@gmail.com", "A1#a1"))
     {
+        cout<<endl;
         sistema.menuSistema();
     };
 

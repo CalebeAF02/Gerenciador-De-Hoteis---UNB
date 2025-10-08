@@ -16,21 +16,27 @@ private:
     Gerente gerenteLogado;
 
 public:
+    // Metodos CRUD -> CRIAR, LER, EDITAR, DELETAR  (ARMAZENAR DADOS GERENTE)
     void criarGerente();
 
     vector<Gerente> lerGerentes();
 
     void armazenarGerentes(vector<Gerente> gerentes);
 
+    // deletarGerente
+
+    // Metodos Programados de Login
     void loginGerente();
 
     bool getGerenteEstaLogado();
 
+    bool fazerLogin(string copiaLogin, string senhaLogin);
+
+    // Metodos de Servicos
     void exibirCentralDeServicos();
 
     void sairDosServicos();
 
-    bool fazerLogin(string copiaLogin, string senhaLogin);
 };
 
 inline bool Servicos::getGerenteEstaLogado()

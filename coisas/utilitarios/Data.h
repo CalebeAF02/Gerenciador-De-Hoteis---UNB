@@ -1,6 +1,7 @@
 #ifndef DATA_INCLUDE
 #define DATA_INCLUDE
 
+#include <sstream>
 #include <string>
 #include <stdexcept>
 #include "validadores_principais/ValidarInt.h"
@@ -34,7 +35,22 @@ public:
 
     void validar(int tipo, int valor) override;
 
-    //Construtor - Não tem
+    //Construtores
+    Data () = default;
+
+    explicit Data(const string& dataStr) {
+        int d, m, a;
+        char sepMes, sepAno;
+        istringstream sepDia(dataStr);
+
+        sepDia >> d >> sepMes >> m >> sepAno >> a;
+
+        if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
+            throw invalid_argument("Formato de data inválido. Use DD/MM/AAAA.");
+        }
+
+        setData(d, m, a); // valida e seta
+    }
 
     // Metodo de Impressao
     string toString()

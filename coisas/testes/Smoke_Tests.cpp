@@ -3,6 +3,11 @@
 void SmokeTest::testarEntradas()
 {
     //------------------------------------------------------------------------------------------------------------------
+
+    cout << "----------------------------------------------" << endl;
+    cout << "##############################################" << endl;
+    cout << "----------------------------------------------" << endl;
+
     Gerente gerente1;
 
     cout << "                -------------------" << endl;
@@ -261,11 +266,11 @@ void SmokeTest::testarEntradas()
     cout << "                |     Reserva     |" << endl;
     cout << "                |  Testes Chegada |" << endl;
     cout << "                -------------------" << endl << endl;
-    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
-    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, -20, -30, -1000);
+    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
+    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
 
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, 23, 03, 2002);
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
 
 
     cout << "                -------------------" << endl;
@@ -274,10 +279,10 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Partida |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, 33, 55, 5000);
-    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, -20, -30, -1000);
+    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
+    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, 01, 03, 2022);
+    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "01/03/2022");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -359,6 +364,10 @@ void SmokeTest::testarEntradas()
     cout << "Total de Testes: " << Teste::getTestes() << endl;
     cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
     cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl << endl;
+
+    cout << "----------------------------------------------" << endl;
+    cout << "##############################################" << endl;
+    cout << "----------------------------------------------" << endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -652,13 +661,14 @@ void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto* ptr, strin
     }
     Teste::checaResultado(esperando_resultado, resultado_teste);
 } //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano)
+void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva* ptr, string chegada)
 {
-    Teste::apresentacaoTesteData(dia, mes, ano);
+    Teste::apresentacaoTesteData(chegada);
     int resultado_teste = 0;
     try
     {
-        ptr->setChegada(dia, mes, ano);
+        Data chegadaObj(chegada);
+        ptr->setChegada(chegadaObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -668,13 +678,14 @@ void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva* ptr, in
     Teste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano)
+void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva* ptr, string partida)
 {
-    Teste::apresentacaoTesteData(dia, mes, ano);
+    Teste::apresentacaoTesteData(partida);
     int resultado_teste = 0;
     try
     {
-        ptr->setPartida(dia, mes, ano);
+        Data partidaObj(partida);
+        ptr->setPartida(partidaObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -690,7 +701,8 @@ void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, i
     int resultado_teste = 0;
     try
     {
-        ptr->setDinheiro(dinheiro);
+        Dinheiro dinheiroObj(dinheiro);
+        ptr->setDinheiro(dinheiroObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -706,7 +718,8 @@ void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva* ptr, str
     int resultado_teste = 0;
     try
     {
-        ptr->setCodigo(codigo);
+        Codigo codigoObj(codigo);
+        ptr->setCodigo(codigoObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)

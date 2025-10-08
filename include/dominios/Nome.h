@@ -20,9 +20,9 @@ private:
 public:
     Nome() = default;
 
-    explicit Nome(const string& nome)
+    explicit Nome(const string& nomeStr)
     {
-        setValor(nome);
+        setValor(nomeStr);
     };
 
     void setValor(const string& nome)

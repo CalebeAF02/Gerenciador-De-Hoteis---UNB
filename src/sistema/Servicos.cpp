@@ -131,7 +131,7 @@ void Servicos::loginGerente()
     string emailCopia = "";
     string senhaCopia = "";
 
-    while (!lacoLogin) // Enquanto craido esta falso , ele repete
+    while (!lacoLogin) // Enquanto esta falso , ele repete
     {
         bool tudoOK = true;
         if (tudoOK)

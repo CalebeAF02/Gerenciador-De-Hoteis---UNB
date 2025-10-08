@@ -16,13 +16,14 @@ private:
     Servicos servicos;
 
 public:
+    void menuSistema();
+
     void rodandoSistema();
 
     bool getExecutando();
 
-    bool fazerLogin(string copiaLogin, string senhaLogin);
-
-    void menuSistema();
+    // Metodo Para Fazer um login pre-programado)
+    bool fazerLogin(string emailLoginProgramado, string senhaLoginProgramada);
 };
 
 inline bool SistemaHotel::getExecutando()

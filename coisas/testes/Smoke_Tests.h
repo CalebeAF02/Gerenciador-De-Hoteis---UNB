@@ -88,9 +88,9 @@ public:
     static void testarValidadorRamal(int esperando_resultado, Quarto* ptr, string ramal);
 
     //Reserva
-    static void testarValidadorChegada(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano);
+    static void testarValidadorChegada(int esperando_resultado, Reserva* ptr, string chegada);
 
-    static void testarValidadorPartida(int esperando_resultado, Reserva* ptr, int dia, int mes, int ano);
+    static void testarValidadorPartida(int esperando_resultado, Reserva* ptr, string partida);
 
     static void testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, int dinheiro);
 

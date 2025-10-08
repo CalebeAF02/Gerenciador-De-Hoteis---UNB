@@ -48,9 +48,9 @@ void SistemaHotel::rodandoSistema()
     while (opcao != "1" && opcao != "2");
 };
 
-bool SistemaHotel::fazerLogin(string copiaLogin, string senhaLogin)
+bool SistemaHotel::fazerLogin(string emailLoginProgramado, string senhaLoginProgramada)
 {
-    return servicos.fazerLogin(copiaLogin, senhaLogin);
+    return servicos.fazerLogin(emailLoginProgramado, senhaLoginProgramada);
 };
 
 void SistemaHotel::menuSistema()

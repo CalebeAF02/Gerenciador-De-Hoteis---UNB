@@ -53,14 +53,14 @@ public:
         this->senha=newSenha;
     }
 
-    void setTSV(string dados) override;
+    void setTSV(string dados) override;// Altera o setTSV do linhaTSV
 
     // geters -----------------
     string getRamal() const;
 
     string getSenha() const;
 
-    string getTSV() override;
+    string getTSV() override;// Altera o getTSV do linhaTSV
 };
 
 inline string Gerente::getTSV() // Transforma Gerente em uma linha de texto

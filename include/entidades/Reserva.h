@@ -22,35 +22,32 @@ public:
     Reserva() = default;
 
     Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo)
-    {/*
+    {
         setChegada(chegada);
         setPartida(partida);
         setDinheiro(dinheiro);
         setCodigo(codigo);
-        */
+
     };
 
-    void setChegada(const int dia, const int mes, const int ano)
+    void setChegada(const Data& newChegada)
     {
-        chegada.setData(dia, mes, ano);
-        this->chegada = chegada;
+        this->chegada = newChegada;
     };
 
-    void setPartida(const int dia, const int mes, const int ano)
+    void setPartida(const Data& newPartida)
     {
-        partida.setData(dia, mes, ano);
-        this->partida = partida;
+        this->partida = newPartida;
     };
 
-    void setDinheiro(const int valor)
+    void setDinheiro(const Dinheiro& newDinheiro)
     {
-        dinheiro.setValor(valor);
+        this->dinheiro=newDinheiro;
     };
 
-    void setCodigo(const string valor)
+    void setCodigo(const Codigo& newCodigo)
     {
-        codigo.setValor(valor);
-        this->codigo = codigo;
+        this->codigo = newCodigo;
     };
 
 
