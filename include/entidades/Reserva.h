@@ -21,6 +21,14 @@ private:
 public:
     Reserva() = default;
 
+    Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo)
+    {/*
+        setChegada(chegada);
+        setPartida(partida);
+        setDinheiro(dinheiro);
+        setCodigo(codigo);
+        */
+    };
 
     void setChegada(const int dia, const int mes, const int ano)
     {

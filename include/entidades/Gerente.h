@@ -24,31 +24,33 @@ public:
     // Construcutor -----------
     Gerente() = default;
 
-    Gerente(Nome nome, Email email)
+    Gerente(Nome nome, Email email, Ramal ramal, Senha senha)
     {
         setNome(nome);
         setEmail(email);
+        setRamal(ramal);
+        setSenha(senha);
     };
 
     // seters -----------------
-    void setNome(const Nome& valor)
+    void setNome(const Nome& newNome)
     {
-        Pessoa::setNome(valor);
+        Pessoa::setPessoaNome(newNome);
     }
 
-    void setEmail(const Email& valor)
+    void setEmail(const Email& newEmail)
     {
-        Pessoa::setEmail(valor);
+        Pessoa::setPessoaEmail(newEmail);
     }
 
-    void setRamal(const string valor)
+    void setRamal(const Ramal& newRamal)
     {
-        ramal.setValor(valor);
+        this->ramal=newRamal;
     }
 
-    void setSenha(const string valor)
+    void setSenha(const Senha& newSenha)
     {
-        senha.setValor(valor);
+        this->senha=newSenha;
     }
 
     void setTSV(string dados) override;

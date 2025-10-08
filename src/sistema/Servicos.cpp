@@ -48,7 +48,8 @@ void Servicos::criarGerente()
             string ramal = TextoApresentacao::LerLinha();
             try
             {
-                gerente.setRamal(ramal);
+                Ramal ramalObj(ramal);
+                gerente.setRamal(ramalObj);
             }
             catch (invalid_argument& erro)
             {
@@ -62,7 +63,8 @@ void Servicos::criarGerente()
             string senha = TextoApresentacao::LerLinha();
             try
             {
-                gerente.setSenha(senha);
+                Senha senhaObj(senha);
+                gerente.setSenha(senhaObj);
             }
             catch (invalid_argument& erro)
             {

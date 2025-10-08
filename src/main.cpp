@@ -1,25 +1,9 @@
+#include "testes/Smoke_Tests.h"
+#include "sistema/SistemaHotel.h"
+
 #include <iostream>
 #include <string>
 
-
-#include "../coisas/utilitarios/Data.h"
-#include "../include/entidades/Pessoa.h"
-#include "../include/entidades/Gerente.h"
-#include "../include/entidades/Hospede.h"
-#include "../include/entidades/Hotel.h"
-#include "../include/entidades/Quarto.h"
-#include "testes/Smoke_Tests.h"
-#include "validadores_principais/ValidarString.h"
-#include "validadores_principais/ValidarInt.h"
-#include "../include/validadores_abstratos/ValidarNome.h"
-#include "../include/validadores_abstratos/ValidarEmail.h"
-#include "../include/validadores_abstratos/ValidarEndereco.h"
-#include "../include/validadores_abstratos/ValidarDinheiro.h"
-#include "../include/validadores_abstratos/ValidarCodigo.h"
-#include "../include/validadores_abstratos/ValidarRamal.h"
-#include "utilitarios/TextoApresentacao.h"
-#include "../include/sistema/Servicos.h"
-#include "sistema/SistemaHotel.h"
 using namespace std;
 
 #define TESTANDO 0
@@ -30,6 +14,25 @@ using namespace std;
 
 int main()
 {
+
+    /*
+     * Edições a fazer :
+     *
+     * Funcionalidades do sistema
+     *
+     * Conta = LER; EDITAR; EXCLUIR;
+     * Hotel = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hoteis;
+     * Quarto = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os quartos;
+     * Reserva = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos as reservas;
+     * Hospede = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hospedes;
+     *
+     * 1) Não pode haver conflitos nas reservas!
+     *
+     * 2) Não pode editar as informações em CODIGO, que apresenta chave de registro "PK"!
+     *
+     * 3) Não permite exclusões que gerem inconcistencias!
+     *
+     */
 #if ESTOU_TESTANDO == TESTANDO
     SmokeTest::testarEntradas();
     SistemaHotel sistema;

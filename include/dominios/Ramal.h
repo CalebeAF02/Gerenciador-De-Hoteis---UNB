@@ -20,7 +20,7 @@ private:
 public:
     Ramal() = default;
 
-    explicit Ramal(string& ramal)
+    explicit Ramal(const string& ramal)
     {
         setValor(ramal);
     };

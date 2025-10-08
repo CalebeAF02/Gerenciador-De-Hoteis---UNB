@@ -21,24 +21,32 @@ private:
 public:
     Hotel() = default;
 
-    void setNome(const string valor)
+    Hotel(Nome nome, Endereco endereco,Telefone telefone, Codigo codigo)
     {
-        nome.setValor(valor);
+        setNome(nome);
+        setEndereco(endereco);
+        setTelefone(telefone);
+        setCodigo(codigo);
     };
 
-    void setEndereco(const string valor)
+    void setNome(const Nome& newNome)
     {
-        endereco.setValor(valor);
+        this->nome=newNome;
     };
 
-    void setTelefone(const string valor)
+    void setEndereco(const Endereco& newEndereco)
     {
-        telefone.setValor(valor);
+        this->endereco=newEndereco;
     };
 
-    void setCodigo(const string valor)
+    void setTelefone(const Telefone& newTelefone)
     {
-        codigo.setValor(valor);
+        this->telefone=newTelefone;
+    };
+
+    void setCodigo(const Codigo& newCodigo)
+    {
+        this->codigo=newCodigo;
     };
 
     //Get

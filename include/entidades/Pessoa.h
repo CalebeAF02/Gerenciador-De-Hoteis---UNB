@@ -21,12 +21,12 @@ public:
     };
 
     // seters ----------------
-    void setNome(const Nome& valor)
+    void setPessoaNome(const Nome& valor)
     {
         this->nome = valor;
     };
 
-    void setEmail(const Email& valor)
+    void setPessoaEmail(const Email& valor)
     {
         this->email = valor;
     };

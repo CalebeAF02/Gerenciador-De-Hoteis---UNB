@@ -21,30 +21,33 @@ private:
 public:
     Hospede() = default;
 
-    Hospede(Nome nome, Email email)
+    Hospede(Nome nome, Email email, Endereco endereco, Cartao cartao)
     {
         setNome(nome);
         setEmail(email);
+        setEndereco(endereco);
+        setCartao(cartao);
+
     };
 
-    void setNome(const Nome& valor)
+    void setNome(const Nome& newNome)
     {
-        Pessoa::setNome(valor);
+        Pessoa::setPessoaNome(newNome);
     };
 
-    void setEmail(const Email& valor)
+    void setEmail(const Email& newEmail)
     {
-        Pessoa::setEmail(valor);
+        Pessoa::setPessoaEmail(newEmail);
     };
 
-    void setEndereco(const string valor)
+    void setEndereco(const Endereco& newEndereco)
     {
-        endereco.setValor(valor);
+        this->endereco=newEndereco;
     };
 
-    void setCartao(string valor)
+    void setCartao(const Cartao& newCartao)
     {
-        endereco.setValor(valor);
+        this->cartao=newCartao;
     };
 
     //Get

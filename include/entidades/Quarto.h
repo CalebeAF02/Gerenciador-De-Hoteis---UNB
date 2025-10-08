@@ -22,24 +22,32 @@ private:
 public:
     Quarto() = default;
 
-    void setNumero(const string valor)
+    Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal)
     {
-        numero.setValor(valor);
+        setNumero(numero);
+        setCapacidade(capacidade);
+        setDiaria(diaria);
+        setRamal(ramal);
     }
 
-    void setCapacidade(const int valor)
+    void setNumero(const Numero& newNumero)
     {
-        capacidade.setValor(valor);
+        this->numero=newNumero;
     }
 
-    void setDiaria(const int valor)
+    void setCapacidade(const Capacidade& newCapacidade)
     {
-        diaria.setValor(valor);
+        this->capacidade=newCapacidade;
     }
 
-    void setRamal(const string valor)
+    void setDiaria(const Dinheiro& newDiaria)
     {
-        ramal.setValor(valor);
+        this->diaria=newDiaria;
+    }
+
+    void setRamal(const Ramal& newRamal)
+    {
+        this->ramal=newRamal;
     }
 
     //Get

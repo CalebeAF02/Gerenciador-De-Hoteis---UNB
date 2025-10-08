@@ -331,8 +331,8 @@ void SmokeTest::testarEntradas()
 
     g_teste.setNome(Nome("Calebe Alves"));
     g_teste.setEmail(Email("calebe.2324@gmail.com"));
-    g_teste.setRamal("22");
-    g_teste.setSenha("A1#a2");
+    g_teste.setRamal(Ramal("22"));
+    g_teste.setSenha(Senha("A1#a2"));
 
     //cout << "g1 =" << dadosGerente << endl;
     testarValidadorString(Teste::DEVE_DAR_CERTO, g_teste.getTSV(),
@@ -347,8 +347,8 @@ void SmokeTest::testarEntradas()
 
     g3.setNome(Nome("Luan Freitas"));
     g3.setEmail(Email("luan.dkg@gmail.com"));
-    g3.setRamal("49");
-    g3.setSenha("C4$c5");
+    g3.setRamal(Ramal("49"));
+    g3.setSenha(Senha("C4$c5"));
 
 
     cout << "                -------------------" << endl;
@@ -418,7 +418,8 @@ void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setRamal(ramal);
+        Ramal ramalObj(ramal);
+        ptr->setRamal(ramalObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -434,7 +435,8 @@ void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setSenha(senha);
+        Senha senhaObj(senha);
+        ptr->setSenha(senhaObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -485,7 +487,8 @@ void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede* ptr, str
     int resultado_teste = 0;
     try
     {
-        ptr->setCartao(cartao);
+        Cartao cartaoObj(cartao);
+        ptr->setCartao(cartaoObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -501,7 +504,8 @@ void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede* ptr, s
     int resultado_teste = 0;
     try
     {
-        ptr->setEndereco(endereco);
+        Endereco enderecoObj(endereco);
+        ptr->setEndereco(enderecoObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -518,7 +522,8 @@ void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel* ptr, string 
     int resultado_teste = 0;
     try
     {
-        ptr->setNome(nome);
+        Nome nomeObj(nome);
+        ptr->setNome(nomeObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -534,7 +539,8 @@ void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel* ptr, str
     int resultado_teste = 0;
     try
     {
-        ptr->setEndereco(endereco);
+        Endereco enderecoObj(endereco);
+        ptr->setEndereco(enderecoObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -550,7 +556,8 @@ void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel* ptr, str
     int resultado_teste = 0;
     try
     {
-        ptr->setTelefone(telefone);
+        Telefone telefoneObj(telefone);
+        ptr->setTelefone(telefoneObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -566,7 +573,8 @@ void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel* ptr, strin
     int resultado_teste = 0;
     try
     {
-        ptr->setCodigo(codigo);
+        Codigo codigoObj(codigo);
+        ptr->setCodigo(codigoObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -583,7 +591,8 @@ void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto* ptr, stri
     int resultado_teste = 0;
     try
     {
-        ptr->setNumero(numero);
+        Numero numeroObj(numero);
+        ptr->setNumero(numeroObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -599,7 +608,8 @@ void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto* ptr, 
     int resultado_teste = 0;
     try
     {
-        ptr->setCapacidade(capacidade);
+        Capacidade capacidadeObj(capacidade);
+        ptr->setCapacidade(capacidadeObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -615,7 +625,8 @@ void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto* ptr, in
     int resultado_teste = 0;
     try
     {
-        ptr->setDiaria(diaria);
+        Dinheiro diariaObj(diaria);
+        ptr->setDiaria(diariaObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
@@ -631,7 +642,8 @@ void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto* ptr, strin
     int resultado_teste = 0;
     try
     {
-        ptr->setRamal(ramal);
+        Ramal ramalObj(ramal);
+        ptr->setRamal(ramalObj);
         resultado_teste = Teste::apresentacaoSucesso();
     }
     catch (invalid_argument& erro)
