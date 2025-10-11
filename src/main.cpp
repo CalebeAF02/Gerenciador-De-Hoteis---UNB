@@ -1,5 +1,5 @@
 #include "testes/Smoke_Tests.h"
-#include "sistema/SistemaHotel.h"
+#include "sistema/Sistema.h"
 
 #include <iostream>
 #include <string>
@@ -16,7 +16,6 @@ using namespace std;
 
 int main()
 {
-
     /*
      * Edições a fazer :
      *
@@ -37,21 +36,26 @@ int main()
      */
 #if ESTOU_TESTANDO == TESTANDO
     SmokeTest::testarEntradas();
-    SistemaHotel sistema;
+    Sistema sistema;
 
+    cout << endl;
+    sistema.menuSistema();
+
+    /*
     TextoApresentacao::MostrarTituloEmCaixa("Login Programado");
-    cout<<"Entrada :"<<"calebe@gmail.com"<<endl<<"Senha :"<<"A1#a1"<<endl<<endl;
-    if (sistema.fazerLogin("calebe@gmail.com", "A1#a1"))
+    cout << "Entrada :" << "calebe@gmail.com" << endl << "Senha :" << "A1#a1" << endl << endl;
+
+    if (sistema.fazerLoginSistema("calebe@gmail.com", "A1#a1"))
     {
-        cout<<endl;
+        cout << endl;
         sistema.menuSistema();
     };
-
+    */
 #endif
 
 #if ESTOU_TESTANDO == PRODUCAO
-    SistemaHotel sistema;
-    while (sistema.getExecutando())
+    Sistema sistema;
+    while (sistema.getExecutandoSistema())
     {
         sistema.rodandoSistema();
     }

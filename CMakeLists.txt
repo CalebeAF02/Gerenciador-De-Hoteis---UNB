@@ -10,6 +10,7 @@ include_directories(
         include/dominios
         include/entidades
         include/sistema
+        include/sistema/servicos
         include/validadorAbstratos
         include/validadorPrincipais
 
@@ -17,6 +18,7 @@ include_directories(
         coisas
         coisas/utilitarios
         coisas/testes
+
 )
 
 # Fontes principais
@@ -57,8 +59,13 @@ add_executable(gerenciador_hotel_unb
         src/validadores_principais/ValidarString.cpp
 
         #Sistamas
-        src/sistema/SistemaHotel.cpp
-        src/sistema/Servicos.cpp
+        src/sistema/Sistema.cpp
+        src/sistema/servicos/ServicosGerente.cpp
+        src/sistema/servicos/ServicosHospede.cpp
+        src/sistema/servicos/ServicosHotel.cpp
+        src/sistema/servicos/ServicosQuarto.cpp
+        src/sistema/servicos/ServicosReserva.cpp
+
         # Testes
         coisas/testes/Teste.cpp
         coisas/testes/Smoke_Tests.cpp

@@ -10,9 +10,11 @@
 
 #include <string>
 
+#include "LinhaTSV.h"
+
 using namespace std;
 
-class Hospede : public Pessoa
+class Hospede : public Pessoa, public LinhaTSV
 {
 private:
     Endereco endereco;
@@ -27,7 +29,6 @@ public:
         setEmail(email);
         setEndereco(endereco);
         setCartao(cartao);
-
     };
 
     void setNome(const Nome& newNome)
@@ -42,13 +43,15 @@ public:
 
     void setEndereco(const Endereco& newEndereco)
     {
-        this->endereco=newEndereco;
+        this->endereco = newEndereco;
     };
 
     void setCartao(const Cartao& newCartao)
     {
-        this->cartao=newCartao;
+        this->cartao = newCartao;
     };
+
+    void setTSV(string dados) override; // Altera o setTSV do linhaTSV
 
     //Get
     string getEndereco() const
@@ -60,5 +63,12 @@ public:
     {
         return cartao.getValor();
     };
+
+    string getTSV() override; // Altera o getTSV do linhaTSV
 };
+
+inline string Hospede::getTSV() // Transforma Gerente em uma linha de texto
+{
+    return string("HOSPEDE") + "\t" + getNome() + "\t" + getEmail() + "\t" + getEndereco() + "\t" + getCartao();
+}
 #endif
