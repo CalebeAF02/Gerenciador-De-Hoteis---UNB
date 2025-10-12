@@ -50,7 +50,7 @@ void TextoApresentacao::MostrarTituloPergunta(string pergunta)
 
 void TextoApresentacao::MostrarOpcao(string opcao, int valor)
 {
-    cout << "\t" << opcao << ": " << valor << "\t" << endl;
+    cout << "\t" << valor << " - " << opcao << "\t" << endl;
 };
 
 string TextoApresentacao::RecebeOpcao()

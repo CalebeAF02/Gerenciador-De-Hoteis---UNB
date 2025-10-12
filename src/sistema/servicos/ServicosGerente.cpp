@@ -6,22 +6,22 @@
 
 void ServicosGerente::acessandoGerente()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
-
-    TextoApresentacao::MostrarOpcao("Voltar", 0);
-
-    TextoApresentacao::MostrarOpcao("Criar Gerente", 1);
-    TextoApresentacao::MostrarOpcao("Fazer Login", 2);
-
     string opcao = "";
 
-    do
+    while (executando == true)
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
+
+        TextoApresentacao::MostrarOpcao("Voltar", 0);
+
+        TextoApresentacao::MostrarOpcao("Criar Gerente", 1);
+        TextoApresentacao::MostrarOpcao("Fazer Login", 2);
+
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
         {
-            this->executando = false;
-            break;
+            executando = false;
+            cout << "Voltando a selecao de usuario!" << endl;
         }
         else if (opcao == "1")
         {
@@ -33,7 +33,7 @@ void ServicosGerente::acessandoGerente()
             if (getGerenteEstaLogado())
             {
                 cout << "Agora Voce Possui Super-Poderes" << endl;
-                exibirCentralDeServicosGerente();
+                exibirCentralDeServicos();
             }
         }
         else
@@ -41,19 +41,16 @@ void ServicosGerente::acessandoGerente()
             cout << "Opcao Invalida!" << endl;
         }
     }
-    while (opcao != "1" && opcao != "2");
 };
-
 
 void ServicosGerente::criarGerente()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
-
-
     bool criado = false;
 
     while (!criado) // Enquanto craido esta falso , ele repete
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
+
         Gerente gerente;
 
         bool tudoOK = true;
@@ -195,13 +192,14 @@ bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
 
 void ServicosGerente::logandoGerente()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Logando com Gerente");
     bool lacoLogin = false;
     string emailCopia = "";
     string senhaCopia = "";
 
     while (!lacoLogin) // Enquanto esta falso , ele repete
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Logando com Gerente");
+
         bool tudoOK = true;
         if (tudoOK)
         {
@@ -234,11 +232,58 @@ void ServicosGerente::logandoGerente()
 };
 
 
-void ServicosGerente::exibirCentralDeServicosGerente()
+void ServicosGerente::exibirCentralDeServicos()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
     while (this->getGerenteEstaLogado())
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
+
+        string opcao = "";
+        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
+
+        TextoApresentacao::MostrarOpcao("Sair", 0);
+        cout << endl;
+        TextoApresentacao::MostrarOpcao("Gerencie Gerentes", 1);
+        TextoApresentacao::MostrarOpcao("Gerencie Hospedes", 2);
+        TextoApresentacao::MostrarOpcao("Gerencie Hoteis", 3);
+        TextoApresentacao::MostrarOpcao("Gerencie Quartos", 4);
+        TextoApresentacao::MostrarOpcao("Gerencie Reservas", 5);
+
+        opcao = TextoApresentacao::RecebeOpcao();
+        if (opcao == "0")
+        {
+            this->gerenteEstaLogado = false;
+            cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
+        }
+        else if (opcao == "1")
+        {
+            exibirCentralDeServicosGerentes();
+        }
+        else if (opcao == "2")
+        {
+        }
+        else if (opcao == "3")
+        {
+        }
+        else if (opcao == "4")
+        {
+        }
+        else if (opcao == "5")
+        {
+        }
+        else
+        {
+            cout << "Opcao Invalida!" << endl;
+        }
+    };
+}
+
+void ServicosGerente::exibirCentralDeServicosGerentes()
+{
+    while (this->getGerenteEstaLogado())
+    {
+        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
+
         string opcao = "";
         TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
 
@@ -252,10 +297,12 @@ void ServicosGerente::exibirCentralDeServicosGerente()
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
         {
-            this->sairDosServicosGerente();
+            this->gerenteEstaLogado = false;
+            cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
         }
         else if (opcao == "1")
         {
+            criarGerente();
         }
         else if (opcao == "2")
         {
@@ -272,10 +319,3 @@ void ServicosGerente::exibirCentralDeServicosGerente()
         }
     };
 }
-
-
-void ServicosGerente::sairDosServicosGerente()
-{
-    this->gerenteEstaLogado = false;
-    cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
-};

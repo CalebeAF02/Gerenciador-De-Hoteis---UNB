@@ -19,7 +19,7 @@ class ServicosGerente
 {
 private:
     bool gerenteEstaLogado = false;
-    bool executando = false;
+    bool executando = true;
     Gerente logGerente;
 
 public:
@@ -40,15 +40,13 @@ public:
     void acessandoGerente();
 
     // Acessando servicos
-    void exibirCentralDeServicosGerente();
+    void exibirCentralDeServicos();
+    void exibirCentralDeServicosGerentes();
 
     // Metodos Programados de Login
     void logandoGerente();
     bool fazerLoginGerente(string emailCopia, string senhaCopia);
     bool getGerenteEstaLogado();
-
-    // Metodo para sair dos Servicos de Gerente
-    void sairDosServicosGerente();
 };
 
 inline bool ServicosGerente::getGerenteEstaLogado()

@@ -20,7 +20,7 @@ class ServicosHospede
 {
 private:
     bool hospedeEstaLogado = false;
-    bool executando = false;
+    bool executando = true;
     Hospede logHospede;
 
 public:
@@ -45,11 +45,8 @@ public:
 
     // Metodos Programados de Login
     void logandoHospede();
-    bool fazerLoginHospede(string emailCopia, string senhaCopia);
+    bool fazerLoginHospede(string emailCopia);
     bool getHospedeEstaLogado();
-
-    // Metodo para sair dos Servicos de Hospede
-    void sairDosServicosHospede();
 };
 
 inline bool ServicosHospede::getHospedeEstaLogado()

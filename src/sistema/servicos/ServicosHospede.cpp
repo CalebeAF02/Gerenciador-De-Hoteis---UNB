@@ -7,22 +7,22 @@
 
 void ServicosHospede::acessandoHospede()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
-
-    TextoApresentacao::MostrarOpcao("Voltar", 0);
-
-    TextoApresentacao::MostrarOpcao("Criar Hospede", 1);
-    TextoApresentacao::MostrarOpcao("Fazer Login", 2);
-
     string opcao = "";
 
-    do
+    while (executando == true)
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
+
+        TextoApresentacao::MostrarOpcao("Voltar", 0);
+
+        TextoApresentacao::MostrarOpcao("Criar Hospede", 1);
+        TextoApresentacao::MostrarOpcao("Fazer Login", 2);
+
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
         {
-            this->executando = false;
-            break;
+            executando = false;
+            cout << "Voltando a selecao de usuario!" << endl;
         }
         else if (opcao == "1")
         {
@@ -42,19 +42,17 @@ void ServicosHospede::acessandoHospede()
             cout << "Opcao Invalida!" << endl;
         }
     }
-    while (opcao != "1" && opcao != "2");
 };
 
 
 void ServicosHospede::criarHospede()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Hospede");
-
-
     bool criado = false;
 
     while (!criado) // Enquanto craido esta falso , ele repete
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Hospede");
+
         Hospede hospede;
 
         bool tudoOK = true;
@@ -117,25 +115,25 @@ void ServicosHospede::criarHospede()
         }
         if (tudoOK)
         {
-            cout << "Gerente Cadastrado" << endl;
+            cout << "Hospede Cadastrado" << endl;
             criado = true;
-            vector<Hospede> gerentes = lerHospede(); // criar o vetor gerentes e armazena na listaGerentes .
-            gerentes.push_back(hospede); //  coloca o novo na listaGerentes.
-            armazenarHospedes(gerentes);
-            // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
+            vector<Hospede> hospedes = lerHospede(); // criar o vetor Hospedes e armazena na listaHospedes .
+            hospedes.push_back(hospede); //  coloca o novo na listaHospedes.
+            armazenarHospedes(hospedes);
+            // coloca os Hospedes da listaHospedes que esta na memoria para o arquivo Dados_Usuarios.tsv .
         }
         else
         {
-            cout << "Gerente nao cadastrado" << endl;
+            cout << "Hospede nao cadastrado" << endl;
         }
     }
 };
 
 vector<Hospede> ServicosHospede::lerHospede()
 {
-    vector<Hospede> listaGerentes; // Vetor para COnstruir OBJETOS - GERENTE
+    vector<Hospede> listaHospedes; // Vetor para Construir OBJETOS - HOSPEDE
 
-    ifstream arquivoLendo("Dados_Gerentes.txt");
+    ifstream arquivoLendo("Dados_Hospedes.txt");
     if (arquivoLendo.is_open())
     {
         string linha;
@@ -144,18 +142,18 @@ vector<Hospede> ServicosHospede::lerHospede()
             //cout << "|"<< linha << "|"<< endl; // Debuguer linha
             Hospede gDados;
             gDados.setTSV(linha);
-            listaGerentes.push_back(gDados);
+            listaHospedes.push_back(gDados);
         }
         arquivoLendo.close();
     }
 
-    //cout << "Quantidade de Gerrentes na listaGerentes :" << listaGerentes.size() << endl; // Apresenta a qntd da lista
-    return listaGerentes;
+    //cout << "Quantidade de Hospedes na listaHospedes :" << listaHospedes.size() << endl; // Apresenta a qntd da lista
+    return listaHospedes;
 }
 
 void ServicosHospede::armazenarHospedes(vector<Hospede> hospedes)
 {
-    ofstream arquivo("Dados_Hospede.txt");
+    ofstream arquivo("Dados_Hospedes.txt");
     if (arquivo.is_open())
     {
         for (int i = 0; i < hospedes.size(); i++)
@@ -167,7 +165,7 @@ void ServicosHospede::armazenarHospedes(vector<Hospede> hospedes)
 }
 
 
-bool ServicosHospede::fazerLoginHospede(string emailCopia, string senhaCopia)
+bool ServicosHospede::fazerLoginHospede(string emailCopia)
 {
     vector<Hospede> hospedes = lerHospede(); // criar o vetor gerentes e armazena na listaGerentes .
     //cout<<"-------------------"<<endl;
@@ -176,33 +174,30 @@ bool ServicosHospede::fazerLoginHospede(string emailCopia, string senhaCopia)
     {
         if (hospedes[i].getEmail() == emailCopia)
         {
-            if (hospedes[i].getCartao() == senhaCopia)
-            {
-                cout << "Login Realizado com Sucesso" << endl;
-                loginOK = true;
-                this->hospedeEstaLogado = true;
-                this->logHospede = hospedes[i];
-                return true;
-            }
-            break;
+            cout << "Login Realizado com Sucesso!" << endl;
+            loginOK = true;
+            this->hospedeEstaLogado = true;
+            this->logHospede = hospedes[i];
+            return true;
         }
+        break;
     }
     if (!loginOK)
     {
-        cout << "Erro: Usuario nao encontrado ou senha incorreta!" << endl;
+        cout << "Erro: Usuario nao encontrado!" << endl;
     }
     return false;
 };
 
 void ServicosHospede::logandoHospede()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Logando com Hospede");
     bool lacoLogin = false;
     string emailCopia = "";
-    string senhaCopia = "";
 
-    while (!lacoLogin) // Enquanto esta falso , ele repete
+    while (!lacoLogin)
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Logando com Hospede");
+
         bool tudoOK = true;
         if (tudoOK)
         {
@@ -211,14 +206,9 @@ void ServicosHospede::logandoHospede()
         }
         if (tudoOK)
         {
-            cout << "Informe o Senha: " << endl;
-            senhaCopia = TextoApresentacao::LerLinha();
-        }
-        if (tudoOK)
-        {
             lacoLogin = true;
 
-            if (fazerLoginHospede(emailCopia, senhaCopia))
+            if (fazerLoginHospede(emailCopia))
             {
                 lacoLogin = true;
             }
@@ -227,19 +217,16 @@ void ServicosHospede::logandoHospede()
                 lacoLogin = false;
             }
         }
-        else
-        {
-            cout << "Gerente nao cadastrado" << endl;
-        }
     }
-};
+}
 
 
 void ServicosHospede::exibirCentralDeServicosHospede()
 {
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
     while (this->getHospedeEstaLogado())
     {
+        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
+
         string opcao = "";
         TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
 
@@ -253,7 +240,8 @@ void ServicosHospede::exibirCentralDeServicosHospede()
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
         {
-            this->sairDosServicosHospede();
+            this->hospedeEstaLogado = false;
+            cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
         }
         else if (opcao == "1")
         {
@@ -273,10 +261,3 @@ void ServicosHospede::exibirCentralDeServicosHospede()
         }
     };
 }
-
-
-void ServicosHospede::sairDosServicosHospede()
-{
-    this->hospedeEstaLogado = false;
-    cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
-};

@@ -24,7 +24,10 @@ private:
 public:
     Sistema() = default;
 
-    void menuSistema();
+    void menuSistema()
+    {
+        Sistema::rodandoSistema();
+    };
 
     void rodandoSistema();
 
@@ -38,7 +41,7 @@ public:
 
     bool fazerLoginSistemaHospede(const string& emailLoginProgramado, const string& senhaLoginProgramada)
     {
-        return servicosHospede.fazerLoginHospede(emailLoginProgramado, senhaLoginProgramada);
+        return servicosHospede.fazerLoginHospede(emailLoginProgramado);
     };
 };
 
