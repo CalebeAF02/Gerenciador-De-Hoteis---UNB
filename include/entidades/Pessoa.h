@@ -20,6 +20,10 @@ public:
     {
     };
 
+    // Virtuais --------------
+    virtual void exibirInfo() const = 0;
+    virtual ~Pessoa() = default;
+
     // seters ----------------
     void setPessoaNome(const Nome& valor)
     {

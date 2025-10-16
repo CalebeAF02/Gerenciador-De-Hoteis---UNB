@@ -8,6 +8,12 @@
 #include "Gerente.h"
 
 #include "TextoApresentacao.h"
+#include "ServicosHospede.h"
+
+#include "Pessoa.h"
+#include "fabricas/FabricaPessoa.h"
+#include "fabricas/FabricaGerente.h"
+
 
 #include <vector>
 #include <limits>

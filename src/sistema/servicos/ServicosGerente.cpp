@@ -3,6 +3,13 @@
 //
 #include "ServicosGerente.h"
 
+#include "ServicosHospede.h"
+
+void criarPessoaComFactory(const FabricaPessoa& factory)
+{
+    Pessoa* p = factory.criarPessoa();
+    delete p;
+}
 
 void ServicosGerente::acessandoGerente()
 {
@@ -46,86 +53,99 @@ void ServicosGerente::acessandoGerente()
 void ServicosGerente::criarGerente()
 {
     bool criado = false;
+    bool tudoOK = true;
 
     while (!criado) // Enquanto craido esta falso , ele repete
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
+        //Gerente gerente;
 
-        Gerente gerente;
+        FabricaGerente fabrica;
 
-        bool tudoOK = true;
-        cout << "Informe o Nome: " << endl;
-        string nomeStr = TextoApresentacao::LerLinha();
-        try
+        Gerente* gerente = dynamic_cast<Gerente*>(fabrica.criarPessoa());
+
+        if (gerente)
         {
-            Nome nomeObj(nomeStr);
-            gerente.setNome(nomeObj);
-        }
-        catch (invalid_argument& erro)
-        {
-            cout << erro.what() << endl;
-            tudoOK = false;
-        }
-        if (tudoOK)
-        {
-            cout << "Informe o Email: " << endl;
-            string emailStr = TextoApresentacao::LerLinha();
+            //Preencher atribultos com validação
+            if (tudoOK == false)
+            {
+                cout<<"\nRetornando ao acesso de gerente!\n\n";
+                break;
+            }
+
+            TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
+
+            cout << "Informe o Nome: " << endl;
+            string nomeStr = TextoApresentacao::LerLinha();
             try
             {
-                Email emailObj(emailStr);
-                gerente.setEmail(emailObj);
+                gerente->setNome(Nome(nomeStr));
             }
             catch (invalid_argument& erro)
             {
                 cout << erro.what() << endl;
                 tudoOK = false;
             }
-        }
-        if (tudoOK)
-        {
-            cout << "Informe o Ramal: " << endl;
-            string ramal = TextoApresentacao::LerLinha();
-            try
+            if (tudoOK)
             {
-                Ramal ramalObj(ramal);
-                gerente.setRamal(ramalObj);
+                cout << "Informe o Email: " << endl;
+                string emailStr = TextoApresentacao::LerLinha();
+                try
+                {
+                    gerente->setEmail(Email(emailStr));
+                }
+                catch (invalid_argument& erro)
+                {
+                    cout << erro.what() << endl;
+                    tudoOK = false;
+                }
             }
-            catch (invalid_argument& erro)
+            if (tudoOK)
             {
-                cout << erro.what() << endl;
-                tudoOK = false;
+                cout << "Informe o Ramal: " << endl;
+                string ramalStr = TextoApresentacao::LerLinha();
+                try
+                {
+                    gerente->setRamal(Ramal(ramalStr));
+                }
+                catch (invalid_argument& erro)
+                {
+                    cout << erro.what() << endl;
+                    tudoOK = false;
+                }
             }
-        }
-        if (tudoOK)
-        {
-            cout << "Informe o Senha: " << endl;
-            string senha = TextoApresentacao::LerLinha();
-            try
+            if (tudoOK)
             {
-                Senha senhaObj(senha);
-                gerente.setSenha(senhaObj);
+                cout << "Informe o Senha: " << endl;
+                string senhaStr = TextoApresentacao::LerLinha();
+                try
+                {
+                    gerente->setSenha(Senha(senhaStr));
+                }
+                catch (invalid_argument& erro)
+                {
+                    cout << erro.what() << endl;
+                    tudoOK = false;
+                }
             }
-            catch (invalid_argument& erro)
+            if (tudoOK)
             {
-                cout << erro.what() << endl;
-                tudoOK = false;
+                cout << "Gerente Cadastrado" << endl;
+                criado = true;
+                vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
+                gerentes.push_back(*gerente); //  coloca o novo na listaGerentes.
+                armazenarGerentes(gerentes);
+                criado = true;
+                cout << "Gerente cadastrado\n";
+                // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
             }
+            else
+            {
+                cout << "Gerente nao cadastrado" << endl;
+            }
+            delete gerente; // Liberar o ponteiro da memoria.
         }
-        if (tudoOK)
-        {
-            cout << "Gerente Cadastrado" << endl;
-            criado = true;
-            vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
-            gerentes.push_back(gerente); //  coloca o novo na listaGerentes.
-            armazenarGerentes(gerentes);
-            // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
-        }
-        else
-        {
-            cout << "Gerente nao cadastrado" << endl;
-        }
-    }
-};
+    };
+}
 
 vector<Gerente> ServicosGerente::lerGerentes()
 {
@@ -261,6 +281,7 @@ void ServicosGerente::exibirCentralDeServicos()
         }
         else if (opcao == "2")
         {
+            //ServicosHospede::exibirCentralDeServicosHospedes();
         }
         else if (opcao == "3")
         {

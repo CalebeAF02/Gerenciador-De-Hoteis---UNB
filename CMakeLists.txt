@@ -11,6 +11,7 @@ include_directories(
         include/entidades
         include/sistema
         include/sistema/servicos
+        include/sistema/fabricas
         include/validadorAbstratos
         include/validadorPrincipais
 
@@ -65,6 +66,9 @@ add_executable(gerenciador_hotel_unb
         src/sistema/servicos/ServicosHotel.cpp
         src/sistema/servicos/ServicosQuarto.cpp
         src/sistema/servicos/ServicosReserva.cpp
+        src/sistema/fabricas/FabricaPessoa.cpp
+        src/sistema/fabricas/FabricaGerente.cpp
+        src/sistema/fabricas/FabricaHospede.cpp
 
         # Testes
         coisas/testes/Teste.cpp
@@ -74,5 +78,4 @@ add_executable(gerenciador_hotel_unb
         coisas/utilitarios/Data.cpp
         coisas/utilitarios/TextoApresentacao.cpp
         coisas/utilitarios/LinhaTSV.cpp
-
 )

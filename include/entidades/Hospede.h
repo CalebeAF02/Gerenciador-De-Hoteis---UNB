@@ -21,6 +21,7 @@ private:
     Cartao cartao;
 
 public:
+    // Construcutor -----------
     Hospede() = default;
 
     Hospede(Nome nome, Email email, Endereco endereco, Cartao cartao)
@@ -31,6 +32,13 @@ public:
         setCartao(cartao);
     };
 
+    // virtuais ----------------
+    void exibirInfo() const override
+    {
+        cout << "Sou um Gerente\n";
+    };
+
+    // seters -----------------
     void setNome(const Nome& newNome)
     {
         Pessoa::setPessoaNome(newNome);
@@ -53,7 +61,7 @@ public:
 
     void setTSV(string dados) override; // Altera o setTSV do linhaTSV
 
-    //Get
+    // geters -----------------
     string getEndereco() const
     {
         return endereco.getValor();

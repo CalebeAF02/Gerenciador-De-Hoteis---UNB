@@ -32,6 +32,12 @@ public:
         setSenha(senha);
     };
 
+    // virtuais ----------------
+    void exibirInfo() const override
+    {
+        cout << "Sou um Gerente\n";
+    };
+
     // seters -----------------
     void setNome(const Nome& newNome)
     {
@@ -45,22 +51,22 @@ public:
 
     void setRamal(const Ramal& newRamal)
     {
-        this->ramal=newRamal;
+        this->ramal = newRamal;
     }
 
     void setSenha(const Senha& newSenha)
     {
-        this->senha=newSenha;
+        this->senha = newSenha;
     }
 
-    void setTSV(string dados) override;// Altera o setTSV do linhaTSV
+    void setTSV(string dados) override; // Altera o setTSV do linhaTSV
 
     // geters -----------------
     string getRamal() const;
 
     string getSenha() const;
 
-    string getTSV() override;// Altera o getTSV do linhaTSV
+    string getTSV() override; // Altera o getTSV do linhaTSV
 };
 
 inline string Gerente::getTSV() // Transforma Gerente em uma linha de texto
