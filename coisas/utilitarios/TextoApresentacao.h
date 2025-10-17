@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <ostream>
+
 using namespace std;
 
 class TextoApresentacao
@@ -11,8 +12,10 @@ public:
     static void RepetirCaracter(int qntCaracteres, char c);
     static void MostrarTituloEmCaixa(string apresentcao);
     static void MostrarTituloPergunta(string pergunta);
+    static void MostrarOpcaoEmCaixa(const std::string& texto, int numero);
     static void MostrarOpcao(string opcao, int valor);
     static string RecebeOpcao();
     static string LerLinha();
 };
+
 #endif

@@ -11,12 +11,11 @@ void Sistema::rodandoSistema()
     while (executando == true)
     {
         TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
-        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao");
-        cout << endl;
-        TextoApresentacao::MostrarOpcao("Sair", 0);
-        cout << endl;
-        TextoApresentacao::MostrarOpcao("Entrar como Gerente", 1);
-        TextoApresentacao::MostrarOpcao("Entrar como Hospede", 2);
+
+        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao:");
+        TextoApresentacao::MostrarOpcaoEmCaixa("Sair", 0);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Entrar como Gerente", 1);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Entrar como Hospede", 2);
 
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")

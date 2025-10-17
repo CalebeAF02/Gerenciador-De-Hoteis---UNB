@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <limits>
 
-
 void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c)
 {
     int i = 0;
@@ -14,7 +13,6 @@ void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c)
         i++;
     }
 };
-
 
 void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao)
 {
@@ -48,9 +46,16 @@ void TextoApresentacao::MostrarTituloPergunta(string pergunta)
     cout << pergunta << endl;
 };
 
-void TextoApresentacao::MostrarOpcao(string opcao, int valor)
+void TextoApresentacao::MostrarOpcaoEmCaixa(const std::string& texto, int numero)
 {
-    cout << "\t" << valor << " - " << opcao << "\t" << endl;
+    std::cout << "------------------------------\n";
+    std::cout << "| [" << numero << "] " << texto << "\n";
+    std::cout << "------------------------------\n";
+};
+
+void TextoApresentacao::MostrarOpcao(string texto, int numero)
+{
+    cout << "[" << numero << "] " << texto << "\n";
 };
 
 string TextoApresentacao::RecebeOpcao()

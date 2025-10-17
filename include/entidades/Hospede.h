@@ -59,7 +59,7 @@ public:
         this->cartao = newCartao;
     };
 
-    void setTSV(string dados) override; // Altera o setTSV do linhaTSV
+    void setTSV(string dados); // Altera o setTSV do linhaTSV
 
     // geters -----------------
     string getEndereco() const
@@ -72,11 +72,12 @@ public:
         return cartao.getValor();
     };
 
-    string getTSV() override; // Altera o getTSV do linhaTSV
+    string getTSV(); // Altera o getTSV do linhaTSV
 };
 
 inline string Hospede::getTSV() // Transforma Gerente em uma linha de texto
 {
     return string("HOSPEDE") + "\t" + getNome() + "\t" + getEmail() + "\t" + getEndereco() + "\t" + getCartao();
 }
+
 #endif

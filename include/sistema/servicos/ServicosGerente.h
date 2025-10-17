@@ -5,19 +5,15 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSGERENTE_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSGERENTE_H
 
+#include "Pessoa.h"
 #include "Gerente.h"
 
 #include "TextoApresentacao.h"
+#include "InterfaceFabricaGerenciavel.h"
+#include "FabricaGerenteGerenciavel.h"
+#include "gerenciaveis/MenuGerenciavel.h"
+
 #include "ServicosHospede.h"
-
-#include "Pessoa.h"
-#include "fabricas/FabricaPessoa.h"
-#include "fabricas/FabricaGerente.h"
-
-
-#include <vector>
-#include <limits>
-#include <fstream>
 
 using namespace std;
 
@@ -31,16 +27,6 @@ private:
 public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
-
-    // Metodos CRUD -> CRIAR, LER, EDITAR, DELETAR  (ARMAZENAR DADOS GERENTE)
-    // Criar um Gerente
-    void criarGerente();
-    // Ler os Gerentes Gerente
-    vector<Gerente> lerGerentes();
-    // Armazenar um Gerente
-    void armazenarGerentes(vector<Gerente> gerentes);
-    // Deletar um Gerente
-    //deletarGerente
 
     // Confirmar que é um gerente
     void acessandoGerente();
@@ -59,6 +45,5 @@ inline bool ServicosGerente::getGerenteEstaLogado()
 {
     return gerenteEstaLogado;
 };
-
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSGERENTE_H

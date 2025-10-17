@@ -1,0 +1,22 @@
+//
+// Created by caleb on 16/10/2025.
+//
+
+#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H
+#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H
+
+#include "InterfaceGerenciavel.h"
+#include "PersistenciaHospede.h"
+
+class HospedeGerenciavel : public InterfaceGerenciavel
+{
+    PersistenciaHospede dao;
+
+public:
+    void criar() override;
+    void ler() override;
+    void atualizar() override;
+    void excluir() override;
+};
+
+#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H

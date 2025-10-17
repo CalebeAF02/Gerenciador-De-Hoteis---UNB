@@ -13,10 +13,7 @@ using namespace std;
 class LinhaTSV
 {
 public:
-    virtual string getTSV() = 0;
-    virtual void setTSV(string dados) = 0;
-
-    void extrairAtributo(string valor, string& parte, string& parteResto);
+    static void extrairAtributo(string valor, string& parte, string& parteResto);
 };
 
 

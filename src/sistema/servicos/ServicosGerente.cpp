@@ -1,15 +1,10 @@
 //
 // Created by caleb on 10/10/2025.
 //
+
 #include "ServicosGerente.h"
 
 #include "ServicosHospede.h"
-
-void criarPessoaComFactory(const FabricaPessoa& factory)
-{
-    Pessoa* p = factory.criarPessoa();
-    delete p;
-}
 
 void ServicosGerente::acessandoGerente()
 {
@@ -19,10 +14,10 @@ void ServicosGerente::acessandoGerente()
     {
         TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
 
-        TextoApresentacao::MostrarOpcao("Voltar", 0);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Voltar", 0);
 
-        TextoApresentacao::MostrarOpcao("Criar Gerente", 1);
-        TextoApresentacao::MostrarOpcao("Fazer Login", 2);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Criar Gerente", 1);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Fazer Login", 2);
 
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
@@ -32,7 +27,9 @@ void ServicosGerente::acessandoGerente()
         }
         else if (opcao == "1")
         {
-            criarGerente();
+            FabricaGerenteGerenciavel fabrica;
+            unique_ptr<InterfaceGerenciavel> objeto = fabrica.criar();
+            objeto->criar(); // apenas cria o gerente, sem abrir o menu
         }
         else if (opcao == "2")
         {
@@ -50,143 +47,13 @@ void ServicosGerente::acessandoGerente()
     }
 };
 
-void ServicosGerente::criarGerente()
-{
-    bool criado = false;
-    bool tudoOK = true;
-
-    while (!criado) // Enquanto craido esta falso , ele repete
-    {
-        //Gerente gerente;
-
-        FabricaGerente fabrica;
-
-        Gerente* gerente = dynamic_cast<Gerente*>(fabrica.criarPessoa());
-
-        if (gerente)
-        {
-            //Preencher atribultos com validação
-            if (tudoOK == false)
-            {
-                cout<<"\nRetornando ao acesso de gerente!\n\n";
-                break;
-            }
-
-            TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
-
-            cout << "Informe o Nome: " << endl;
-            string nomeStr = TextoApresentacao::LerLinha();
-            try
-            {
-                gerente->setNome(Nome(nomeStr));
-            }
-            catch (invalid_argument& erro)
-            {
-                cout << erro.what() << endl;
-                tudoOK = false;
-            }
-            if (tudoOK)
-            {
-                cout << "Informe o Email: " << endl;
-                string emailStr = TextoApresentacao::LerLinha();
-                try
-                {
-                    gerente->setEmail(Email(emailStr));
-                }
-                catch (invalid_argument& erro)
-                {
-                    cout << erro.what() << endl;
-                    tudoOK = false;
-                }
-            }
-            if (tudoOK)
-            {
-                cout << "Informe o Ramal: " << endl;
-                string ramalStr = TextoApresentacao::LerLinha();
-                try
-                {
-                    gerente->setRamal(Ramal(ramalStr));
-                }
-                catch (invalid_argument& erro)
-                {
-                    cout << erro.what() << endl;
-                    tudoOK = false;
-                }
-            }
-            if (tudoOK)
-            {
-                cout << "Informe o Senha: " << endl;
-                string senhaStr = TextoApresentacao::LerLinha();
-                try
-                {
-                    gerente->setSenha(Senha(senhaStr));
-                }
-                catch (invalid_argument& erro)
-                {
-                    cout << erro.what() << endl;
-                    tudoOK = false;
-                }
-            }
-            if (tudoOK)
-            {
-                cout << "Gerente Cadastrado" << endl;
-                criado = true;
-                vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
-                gerentes.push_back(*gerente); //  coloca o novo na listaGerentes.
-                armazenarGerentes(gerentes);
-                criado = true;
-                cout << "Gerente cadastrado\n";
-                // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
-            }
-            else
-            {
-                cout << "Gerente nao cadastrado" << endl;
-            }
-            delete gerente; // Liberar o ponteiro da memoria.
-        }
-    };
-}
-
-vector<Gerente> ServicosGerente::lerGerentes()
-{
-    vector<Gerente> listaGerentes; // Vetor para COnstruir OBJETOS - GERENTE
-
-    ifstream arquivoLendo("Dados_Gerentes.txt");
-    if (arquivoLendo.is_open())
-    {
-        string linha;
-        while (getline(arquivoLendo, linha)) // ler linha , do aqruivo e guarda na linha .
-        {
-            //cout << "|"<< linha << "|"<< endl; // Debuguer linha
-            Gerente gDados;
-            gDados.setTSV(linha);
-            listaGerentes.push_back(gDados);
-        }
-        arquivoLendo.close();
-    }
-
-    //cout << "Quantidade de Gerrentes na listaGerentes :" << listaGerentes.size() << endl; // Apresenta a qntd da lista
-    return listaGerentes;
-}
-
-void ServicosGerente::armazenarGerentes(vector<Gerente> gerentes)
-{
-    ofstream arquivo("Dados_Gerentes.txt");
-    if (arquivo.is_open())
-    {
-        for (int i = 0; i < gerentes.size(); i++)
-        {
-            arquivo << gerentes[i].getTSV() << endl;;
-        }
-        arquivo.close();
-    }
-}
-
-
 bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
 {
-    vector<Gerente> gerentes = lerGerentes(); // criar o vetor gerentes e armazena na listaGerentes .
+    PersistenciaGerente dao;
+    vector<Gerente> gerentes = dao.listar();
+
     //cout<<"-------------------"<<endl;
+
     bool loginOK = false;
     for (int i = 0; i < gerentes.size(); i++)
     {
@@ -223,12 +90,12 @@ void ServicosGerente::logandoGerente()
         bool tudoOK = true;
         if (tudoOK)
         {
-            cout << "Informe o Email: " << endl;
+            cout << "Informe o Email: \n";
             emailCopia = TextoApresentacao::LerLinha();
         }
         if (tudoOK)
         {
-            cout << "Informe o Senha: " << endl;
+            cout << "Informe o Senha: \n";
             senhaCopia = TextoApresentacao::LerLinha();
         }
         if (tudoOK)
@@ -251,7 +118,6 @@ void ServicosGerente::logandoGerente()
     }
 };
 
-
 void ServicosGerente::exibirCentralDeServicos()
 {
     while (this->getGerenteEstaLogado())
@@ -259,21 +125,20 @@ void ServicosGerente::exibirCentralDeServicos()
         TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
 
         string opcao = "";
-        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
+        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada:\n");
 
-        TextoApresentacao::MostrarOpcao("Sair", 0);
-        cout << endl;
-        TextoApresentacao::MostrarOpcao("Gerencie Gerentes", 1);
-        TextoApresentacao::MostrarOpcao("Gerencie Hospedes", 2);
-        TextoApresentacao::MostrarOpcao("Gerencie Hoteis", 3);
-        TextoApresentacao::MostrarOpcao("Gerencie Quartos", 4);
-        TextoApresentacao::MostrarOpcao("Gerencie Reservas", 5);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Sair", 0);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Gerentes", 1);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Hospedes", 2);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Hoteis", 3);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Quartos", 4);
+        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Reservas", 5);
 
         opcao = TextoApresentacao::RecebeOpcao();
         if (opcao == "0")
         {
             this->gerenteEstaLogado = false;
-            cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
+            cout << "Voce Saiu da Central de servicos e foi deslogado!\n";
         }
         else if (opcao == "1")
         {
@@ -301,42 +166,18 @@ void ServicosGerente::exibirCentralDeServicos()
 
 void ServicosGerente::exibirCentralDeServicosGerentes()
 {
+    bool status = true;
     while (this->getGerenteEstaLogado())
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
-
-        string opcao = "";
-        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada");
-
-        TextoApresentacao::MostrarOpcao("Sair", 0);
-        cout << endl;
-        TextoApresentacao::MostrarOpcao("Criar Gerente", 1);
-        TextoApresentacao::MostrarOpcao("Editar Gerente", 2);
-        TextoApresentacao::MostrarOpcao("Listar Gerente", 3);
-        TextoApresentacao::MostrarOpcao("Excluir Gerente", 4);
-
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
+        if (status)
         {
-            this->gerenteEstaLogado = false;
-            cout << "Voce Saiu da Central de servicos e foi deslogado!" << endl;
-        }
-        else if (opcao == "1")
-        {
-            criarGerente();
-        }
-        else if (opcao == "2")
-        {
-        }
-        else if (opcao == "3")
-        {
-        }
-        else if (opcao == "4")
-        {
+            TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
+            FabricaGerenteGerenciavel fabrica;
+            executarMenu(fabrica, status);
         }
         else
         {
-            cout << "Opcao Invalida!" << endl;
+            this->gerenteEstaLogado = false;
         }
     };
 }

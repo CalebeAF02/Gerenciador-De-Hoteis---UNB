@@ -7,17 +7,26 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(
         #includes
         include
+
         include/dominios
+
         include/entidades
+
         include/sistema
-        include/sistema/servicos
         include/sistema/fabricas
+        include/sistema/gerenciaveis
+        include/sistema/interfaces
+        include/sistema/persistencias
+        include/sistema/servicos
+
         include/validadorAbstratos
         include/validadorPrincipais
 
         #outros
         coisas
+
         coisas/utilitarios
+
         coisas/testes
 
 )
@@ -61,14 +70,26 @@ add_executable(gerenciador_hotel_unb
 
         #Sistamas
         src/sistema/Sistema.cpp
+
+        src/sistema/fabricas/FabricaGerenteGerenciavel.cpp
+        src/sistema/fabricas/FabricaHospedeGerenciavel.cpp
+
+        src/sistema/gerenciaveis/GerenteGerenciavel.cpp
+        src/sistema/gerenciaveis/HospedeGerenciavel.cpp
+        src/sistema/gerenciaveis/MenuGerenciavel.cpp
+
+        src/sistema/interfaces/InterfaceGerenciavel.cpp
+        src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
+
+        src/sistema/persistencias/PersistenciaGenerica.cpp
+        src/sistema/persistencias/PersistenciaGerente.cpp
+        src/sistema/persistencias/PersistenciaHospede.cpp
+
         src/sistema/servicos/ServicosGerente.cpp
         src/sistema/servicos/ServicosHospede.cpp
         src/sistema/servicos/ServicosHotel.cpp
         src/sistema/servicos/ServicosQuarto.cpp
         src/sistema/servicos/ServicosReserva.cpp
-        src/sistema/fabricas/FabricaPessoa.cpp
-        src/sistema/fabricas/FabricaGerente.cpp
-        src/sistema/fabricas/FabricaHospede.cpp
 
         # Testes
         coisas/testes/Teste.cpp
@@ -78,4 +99,6 @@ add_executable(gerenciador_hotel_unb
         coisas/utilitarios/Data.cpp
         coisas/utilitarios/TextoApresentacao.cpp
         coisas/utilitarios/LinhaTSV.cpp
+
+
 )
