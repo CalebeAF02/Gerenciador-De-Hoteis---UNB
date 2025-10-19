@@ -10,15 +10,17 @@
 #include <string>
 #include <algorithm>
 
+using namespace std;
+
 template <typename T>
 class PersistenciaGenerica
 {
 public:
-    std::vector<T> ler(const std::string& caminho)
+    vector<T> ler(const std::string& caminho)
     {
-        std::vector<T> lista;
-        std::ifstream arquivo(caminho);
-        std::string linha;
+        vector<T> lista;
+        ifstream arquivo(caminho);
+        string linha;
 
         while (getline(arquivo, linha))
         {
@@ -30,12 +32,12 @@ public:
         return lista;
     }
 
-    void salvar(const std::vector<T>& lista, const std::string& caminho)
+    void salvar(const vector<T>& lista, const string& caminho)
     {
-        std::ofstream arquivo(caminho);
+        ofstream arquivo(caminho);
         for (const T& obj : lista)
         {
-            arquivo << obj.getTSV() << std::endl;
+            arquivo << obj.getTSV() << endl;
         }
     }
 };

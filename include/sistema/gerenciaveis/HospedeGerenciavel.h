@@ -7,7 +7,7 @@
 
 #include "InterfaceGerenciavel.h"
 #include "PersistenciaHospede.h"
-#include "TextoApresentacao.h"
+#include "../../utilitarios/TextoApresentacao.h"
 
 class HospedeGerenciavel : public InterfaceGerenciavel
 {
@@ -17,7 +17,7 @@ public:
     void criar() override;
     void ler() override;
     void atualizar() override;
-    void excluir() override;
+    bool remover() override;
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H

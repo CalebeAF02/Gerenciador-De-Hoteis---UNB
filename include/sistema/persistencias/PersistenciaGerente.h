@@ -33,15 +33,23 @@ public:
         salvarTodos(lista);
     }
 
-    void excluirPorEmail(const string& email)
+    bool excluirPorEmail(const string& email)
     {
-        auto lista = listar();
-        lista.erase(
-            remove_if(lista.begin(), lista.end(),
-                      [&](const Gerente& g) { return g.getEmail() == email; }),
-            lista.end()
-        );
+        bool status = false;
+        vector<Gerente> lista = listar();
+        for (int i = 0; i < lista.size(); i++)
+        {
+            if (email == lista[i].getEmail())
+            {
+                // eras== apagar;
+                // begin == contador
+                lista.erase(lista.begin() + i);
+                status = true;
+                break;
+            }
+        }
         salvarTodos(lista);
+        return status;
     }
 
     void editarPorEmail(const string& email, const Gerente& atualizado)

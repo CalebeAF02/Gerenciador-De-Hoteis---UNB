@@ -4,41 +4,41 @@
 
 #include "ServicosHospede.h"
 
-#include "FabricaHospedeGerenciavel.h"
+#include "FabricaGerenciavel.h"
+#include "HospedeGerenciavel.h"
+#include "Menu.h"
 #include "PersistenciaHospede.h"
 
 
 void ServicosHospede::acessandoHospede()
 {
-    string opcao = "";
+    Menu menu;
+
+    const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
+    const int OPCAO_HOSPEDAGENS = menu.adcionarItens("Opcoes de Hospedagem");
+    const int OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Criar Solicitacao de Hospedagem");
+    const int OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Status da Solicitacao de Hospedagem");
 
     while (executando == true)
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
+        int opcao = menu.executa("Faca o acesso para liberar os servicos");
 
-        TextoApresentacao::MostrarOpcaoEmCaixa("Voltar", 0);
-
-        TextoApresentacao::MostrarOpcaoEmCaixa("Opcoes de Hospedagem", 1);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Criar Solicitacao de Hospedagem", 2);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Status da Solicitacao de Hospedagem", 3);
-
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
+        if (opcao == OPCAO_VOLTAR_AO_SISTEMA)
         {
             executando = false;
             cout << "Voltando a selecao de usuario!" << endl;
         }
-        else if (opcao == "1")
+        else if (opcao == OPCAO_HOSPEDAGENS)
         {
             cout << "\nEntrando em Opcoes de Hospedagem\n";
             opcoesDeHospedagem();
         }
-        else if (opcao == "2")
+        else if (opcao == OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM)
         {
             cout << "Crie uma Solicitacao de Hospedagem" << endl;
             solicitandoHospedagem();
         }
-        else if (opcao == "3")
+        else if (opcao == OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM)
         {
             cout << "Status da Solicitacao de Hospedagem" << endl;
             statusDaSolicitandoHospedagem();
@@ -120,8 +120,8 @@ void ServicosHospede::exibirCentralDeServicosHospedes()
         if (status)
         {
             TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
-            FabricaHospedeGerenciavel fabrica;
-            executarMenu(fabrica, status);
+            FabricaGerenciavel<HospedeGerenciavel> fabrica;
+            fabrica.executarMenu(status);
         }
         else
         {
@@ -129,6 +129,7 @@ void ServicosHospede::exibirCentralDeServicosHospedes()
         }
     };
 }
+
 void ServicosHospede::opcoesDeHospedagem()
 {
     return;

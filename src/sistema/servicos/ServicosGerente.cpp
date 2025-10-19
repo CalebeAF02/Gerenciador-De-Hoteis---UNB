@@ -4,34 +4,37 @@
 
 #include "ServicosGerente.h"
 
+#include "FabricaGerenciavel.h"
+#include "GerenteGerenciavel.h"
+#include "../../../include/utilitarios/Menu.h"
 #include "ServicosHospede.h"
+#include "ServicosHotel.h"
+#include "ServicosQuarto.h"
+#include "ServicosReserva.h"
 
 void ServicosGerente::acessandoGerente()
 {
-    string opcao = "";
+    Menu menu;
+
+    const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
+    const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
+    const int OPCAO_FAZER_LOGIN = menu.adcionarItens("Fazer Login");
 
     while (executando == true)
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Faca o acesso para liberar os servicos");
+        int opcao = menu.executa("Faca o acesso para liberar os servicos");
 
-        TextoApresentacao::MostrarOpcaoEmCaixa("Voltar", 0);
-
-        TextoApresentacao::MostrarOpcaoEmCaixa("Criar Gerente", 1);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Fazer Login", 2);
-
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
+        if (opcao == OPCAO_VOLTAR_AO_SISTEMA)
         {
             executando = false;
             cout << "Voltando a selecao de usuario!" << endl;
         }
-        else if (opcao == "1")
+        else if (opcao == OPCAO_CRIAR_UM_GERENTE)
         {
-            FabricaGerenteGerenciavel fabrica;
-            unique_ptr<InterfaceGerenciavel> objeto = fabrica.criar();
-            objeto->criar(); // apenas cria o gerente, sem abrir o menu
+            FabricaGerenciavel<GerenteGerenciavel> fabrica;
+            fabrica.criar(); // apenas cria o gerente, sem abrir o menu
         }
-        else if (opcao == "2")
+        else if (opcao == OPCAO_FAZER_LOGIN)
         {
             logandoGerente();
             if (getGerenteEstaLogado())
@@ -120,42 +123,44 @@ void ServicosGerente::logandoGerente()
 
 void ServicosGerente::exibirCentralDeServicos()
 {
+    Menu menu;
+
+    const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
+    const int OPCAO_GERENCIE_GERENTES = menu.adcionarItens("Gerencie Gerentes");
+    const int OPCAO_GERENCIE_HOSPEDES = menu.adcionarItens("Gerencie Hospedes");
+    const int OPCAO_GERENCIE_HOTEIS = menu.adcionarItens("Gerencie Hoteis");
+    const int OPCAO_GERENCIE_QUARTOS = menu.adcionarItens("Gerencie Quartos");
+    const int OPCAO_GERENCIE_RESERVAS = menu.adcionarItens("Gerencie Reservas");
+
     while (this->getGerenteEstaLogado())
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
+        int opcao = menu.executa("Seja bem vindo a central de servicos");
 
-        string opcao = "";
-        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao desejada:\n");
-
-        TextoApresentacao::MostrarOpcaoEmCaixa("Sair", 0);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Gerentes", 1);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Hospedes", 2);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Hoteis", 3);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Quartos", 4);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Gerencie Reservas", 5);
-
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
+        if (opcao == OPCAO_VOLTAR_AO_SISTEMA)
         {
             this->gerenteEstaLogado = false;
             cout << "Voce Saiu da Central de servicos e foi deslogado!\n";
         }
-        else if (opcao == "1")
+        else if (opcao == OPCAO_GERENCIE_GERENTES)
         {
             exibirCentralDeServicosGerentes();
         }
-        else if (opcao == "2")
+        else if (opcao == OPCAO_GERENCIE_HOSPEDES)
         {
-            //ServicosHospede::exibirCentralDeServicosHospedes();
+            ServicosHospede servicosHospede;
+            servicosHospede.exibirCentralDeServicosHospedes();
         }
-        else if (opcao == "3")
+        else if (opcao == OPCAO_GERENCIE_HOTEIS)
         {
+            //ServicosHotel::exibirCentralDeServicosHotel();
         }
-        else if (opcao == "4")
+        else if (opcao == OPCAO_GERENCIE_QUARTOS)
         {
+            //ServicosQuarto::exibirCentralDeServicosQuartos();
         }
-        else if (opcao == "5")
+        else if (opcao == OPCAO_GERENCIE_RESERVAS)
         {
+            //ServicosReserva::exibirCentralDeServicosReservas();
         }
         else
         {
@@ -169,15 +174,11 @@ void ServicosGerente::exibirCentralDeServicosGerentes()
     bool status = true;
     while (this->getGerenteEstaLogado())
     {
-        if (status)
+        FabricaGerenciavel<GerenteGerenciavel> fabrica;
+        fabrica.executarMenu(status);
+        if (status == false)
         {
-            TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
-            FabricaGerenteGerenciavel fabrica;
-            executarMenu(fabrica, status);
-        }
-        else
-        {
-            this->gerenteEstaLogado = false;
+            break;
         }
     };
 }

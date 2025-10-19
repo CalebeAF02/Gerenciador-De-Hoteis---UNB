@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "LinhaTSV.h"
+#include "../utilitarios/LinhaTSV.h"
 
 using namespace std;
 

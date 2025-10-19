@@ -122,11 +122,22 @@ void GerenteGerenciavel::ler()
 void GerenteGerenciavel::atualizar()
 {
     // TODO: implementar lógica de edição
-    std::cout << "Função atualizar ainda não implementada.\n";
+    cout << "Funcao atualizar ainda nao implementada.\n";
 }
 
-void GerenteGerenciavel::excluir()
+bool GerenteGerenciavel::remover()
 {
-    // TODO: implementar lógica de exclusão
-    std::cout << "Função excluir ainda não implementada.\n";
+    cout << "Informe o Email: \n";
+    string emailStr = TextoApresentacao::LerLinha();
+    bool status = dao.excluirPorEmail(emailStr);
+
+    if (status == true)
+    {
+        cout << "Foi excluido com sucesso!\n";
+    }
+    else
+    {
+        cout << "Gerente nao encontrado!\n";
+    }
+    return status;
 }

@@ -11,7 +11,7 @@ public:
     virtual void criar() = 0;
     virtual void ler() = 0;
     virtual void atualizar() = 0;
-    virtual void excluir() = 0;
+    virtual bool remover() = 0;
     virtual ~InterfaceGerenciavel() = default;
 };
 

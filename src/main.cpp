@@ -1,10 +1,11 @@
-#include "testes/Smoke_Tests.h"
+#include "Smoke_Tests.h"
 #include "sistema/Sistema.h"
 
 #include <iostream>
 #include <string>
+#include "sqlite/sqlite3.h"
 
-#include "TextoApresentacao.h"
+#include "../include/utilitarios/TextoApresentacao.h"
 
 using namespace std;
 
@@ -37,6 +38,20 @@ int main()
 #if ESTOU_TESTANDO == TESTANDO
     SmokeTest::testarEntradas();
     Sistema sistema;
+
+    sqlite3* db;
+    int rc = sqlite3_open("hotel.db", &db);
+
+    if (rc)
+    {
+        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+    }
+    else
+    {
+        std::cout << "Banco aberto com sucesso!" << std::endl;
+    }
+
+    sqlite3_close(db);
 
     cout << endl;
     sistema.menuSistema();

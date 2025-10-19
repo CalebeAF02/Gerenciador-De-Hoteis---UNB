@@ -7,6 +7,7 @@
 
 #include "ServicosGerente.h"
 #include "ServicosHospede.h"
+#include "../utilitarios/Menu.h"
 
 #include "TextoApresentacao.h"
 #include <iostream>

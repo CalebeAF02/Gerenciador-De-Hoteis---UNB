@@ -1,7 +1,7 @@
 #ifndef RESERVA_INCLUDE
 #define RESERVA_INCLUDE
 
-#include "Data.h"
+#include "../utilitarios/Data.h"
 #include "Dinheiro.h"
 #include "Codigo.h"
 
@@ -27,7 +27,6 @@ public:
         setPartida(partida);
         setDinheiro(dinheiro);
         setCodigo(codigo);
-
     };
 
     void setChegada(const Data& newChegada)
@@ -42,7 +41,7 @@ public:
 
     void setDinheiro(const Dinheiro& newDinheiro)
     {
-        this->dinheiro=newDinheiro;
+        this->dinheiro = newDinheiro;
     };
 
     void setCodigo(const Codigo& newCodigo)

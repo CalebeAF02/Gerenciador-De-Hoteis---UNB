@@ -19,16 +19,17 @@ include_directories(
         include/sistema/persistencias
         include/sistema/servicos
 
+        include/utilitarios
+
         include/validadorAbstratos
         include/validadorPrincipais
 
         #outros
-        coisas
+        libs
+        libs/testes
+        libs/sqlite
 
-        coisas/utilitarios
-
-        coisas/testes
-
+        testes
 )
 
 # Fontes principais
@@ -71,12 +72,11 @@ add_executable(gerenciador_hotel_unb
         #Sistamas
         src/sistema/Sistema.cpp
 
-        src/sistema/fabricas/FabricaGerenteGerenciavel.cpp
-        src/sistema/fabricas/FabricaHospedeGerenciavel.cpp
+        src/sistema/fabricas/FabricaGerenciavel.cpp
+
 
         src/sistema/gerenciaveis/GerenteGerenciavel.cpp
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
-        src/sistema/gerenciaveis/MenuGerenciavel.cpp
 
         src/sistema/interfaces/InterfaceGerenciavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
@@ -91,14 +91,16 @@ add_executable(gerenciador_hotel_unb
         src/sistema/servicos/ServicosQuarto.cpp
         src/sistema/servicos/ServicosReserva.cpp
 
-        # Testes
-        coisas/testes/Teste.cpp
-        coisas/testes/Smoke_Tests.cpp
+        # libs
+        libs/testes/Teste.cpp
+        libs/sqlite/sqlite3.c
 
         #utilitarios
-        coisas/utilitarios/Data.cpp
-        coisas/utilitarios/TextoApresentacao.cpp
-        coisas/utilitarios/LinhaTSV.cpp
+        src/utilitarios/Data.cpp
+        src/utilitarios/TextoApresentacao.cpp
+        src/utilitarios/LinhaTSV.cpp
+        src/utilitarios/Menu.cpp
+        src/utilitarios/MenuItem.cpp
 
-
+        testes/Smoke_Tests.cpp
 )

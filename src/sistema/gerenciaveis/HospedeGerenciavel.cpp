@@ -127,7 +127,7 @@ void HospedeGerenciavel::atualizar()
     std::cout << "Função atualizar ainda não implementada.\n";
 }
 
-void HospedeGerenciavel::excluir()
+bool HospedeGerenciavel::remover()
 {
     // TODO: implementar lógica de exclusão
     std::cout << "Função excluir ainda não implementada.\n";

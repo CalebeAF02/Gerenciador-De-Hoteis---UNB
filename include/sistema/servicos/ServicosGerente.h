@@ -8,10 +8,9 @@
 #include "Pessoa.h"
 #include "Gerente.h"
 
-#include "TextoApresentacao.h"
+#include "../../utilitarios/TextoApresentacao.h"
 #include "InterfaceFabricaGerenciavel.h"
-#include "FabricaGerenteGerenciavel.h"
-#include "gerenciaveis/MenuGerenciavel.h"
+#include "FabricaGerenciavel.h"
 
 #include "ServicosHospede.h"
 

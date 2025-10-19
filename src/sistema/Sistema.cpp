@@ -6,34 +6,28 @@
 
 void Sistema::rodandoSistema()
 {
-    string opcao = "";
+    Menu menu;
+
+    int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
+    int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
+    int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
 
     while (executando == true)
     {
-        TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo ao gerenciador de hoteis");
+        int opcao = menu.executa("Seja bem vindo ao gerenciador de hoteis");
 
-        TextoApresentacao::MostrarTituloPergunta("Selecione a opcao:");
-        TextoApresentacao::MostrarOpcaoEmCaixa("Sair", 0);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Entrar como Gerente", 1);
-        TextoApresentacao::MostrarOpcaoEmCaixa("Entrar como Hospede", 2);
-
-        opcao = TextoApresentacao::RecebeOpcao();
-        if (opcao == "0")
+        if (opcao == OPCAO_SAIR_DO_SISTEMA)
         {
             executando = false;
             cout << "Encerrando o sistema..." << endl;
         }
-        else if (opcao == "1")
+        else if (opcao == OPCAO_ENTRAR_COMO_GERENTE)
         {
             servicosGerente.acessandoGerente();
         }
-        else if (opcao == "2")
+        else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE)
         {
             servicosHospede.acessandoHospede();
-        }
-        else
-        {
-            cout << "Opcao Invalida!" << endl;
         }
     }
 };

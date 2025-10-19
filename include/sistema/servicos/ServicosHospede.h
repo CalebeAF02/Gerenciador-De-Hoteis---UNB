@@ -8,11 +8,10 @@
 
 #include "Hospede.h"
 
-#include "TextoApresentacao.h"
+#include "../../utilitarios/TextoApresentacao.h"
 
 #include "InterfaceFabricaGerenciavel.h"
-#include "FabricaHospedeGerenciavel.h"
-#include "gerenciaveis/MenuGerenciavel.h"
+#include "FabricaGerenciavel.h"
 
 #include <vector>
 #include <limits>
