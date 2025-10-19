@@ -72,10 +72,10 @@ public:
         return cartao.getValor();
     };
 
-    string getTSV(); // Altera o getTSV do linhaTSV
+    string getTSV() const; // Altera o getTSV do linhaTSV
 };
 
-inline string Hospede::getTSV() // Transforma Gerente em uma linha de texto
+inline string Hospede::getTSV() const // Transforma Gerente em uma linha de texto
 {
     return string("HOSPEDE") + "\t" + getNome() + "\t" + getEmail() + "\t" + getEndereco() + "\t" + getCartao();
 }

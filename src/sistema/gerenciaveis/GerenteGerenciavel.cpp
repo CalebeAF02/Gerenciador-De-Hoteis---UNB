@@ -4,7 +4,6 @@
 
 #include "../../../include/sistema/gerenciaveis/GerenteGerenciavel.h"
 
-
 void GerenteGerenciavel::criar()
 {
     bool criado = false;

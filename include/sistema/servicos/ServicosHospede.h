@@ -10,6 +10,10 @@
 
 #include "TextoApresentacao.h"
 
+#include "InterfaceFabricaGerenciavel.h"
+#include "FabricaHospedeGerenciavel.h"
+#include "gerenciaveis/MenuGerenciavel.h"
+
 #include <vector>
 #include <limits>
 #include <fstream>
@@ -27,21 +31,16 @@ public:
     // Construtor dos ServicosHospede
     ServicosHospede() = default;
 
-    // Metodos CRUD -> CRIAR, LER, EDITAR, DELETAR  (ARMAZENAR DADOS Hospede)
-    // Criar um Hospede
-    void criarHospede();
-    // Ler os Gerentes Hospede
-    vector<Hospede> lerHospede();
-    // Armazenar um Hospede
-    void armazenarHospedes(vector<Hospede> hospedes);
-    // Deletar um Hospede
-    //deletarGerente
+    // Solicitação de Hospedagem para Gerente
+    void opcoesDeHospedagem();
+    void solicitandoHospedagem();
+    void statusDaSolicitandoHospedagem();
 
-    // Confirmar que é um gerente
+    // Confirmar que é um Hospede
     void acessandoHospede();
 
     // Acessando servicos
-    void exibirCentralDeServicosHospede();
+    void exibirCentralDeServicosHospedes();
 
     // Metodos Programados de Login
     void logandoHospede();
