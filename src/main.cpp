@@ -40,6 +40,8 @@ int main()
     Sistema sistema;
 
     sqlite3* db;
+    char* mensagemErro = nullptr;
+
     int rc = sqlite3_open("hotel.db", &db);
 
     if (rc)
@@ -49,6 +51,27 @@ int main()
     else
     {
         std::cout << "Banco aberto com sucesso!" << std::endl;
+
+        const char* sql = R"(
+        CREATE TABLE IF NOT EXISTS gerentes (
+            gerente_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL DEFAULT '',
+            email TEXT NOT NULL DEFAULT '',
+            ramal TEXT NOT NULL DEFAULT '',
+            senha TEXT NOT NULL DEFAULT ''
+        );
+    )";
+
+        rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+
+        if (rc != SQLITE_OK) {
+            std::cerr << "Erro ao criar tabela: " << mensagemErro << std::endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            std::cout << "Tabela 'gerentes' criada com sucesso!" << std::endl;
+        }
+
+
     }
 
     sqlite3_close(db);

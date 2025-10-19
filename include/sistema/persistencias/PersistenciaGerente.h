@@ -65,6 +65,8 @@ public:
         }
         salvarTodos(lista);
     }
+
+    bool criar(Gerente& gerente);
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H

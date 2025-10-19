@@ -10,6 +10,8 @@
 #include <string>
 #include <algorithm>
 
+#include "Gerente.h"
+
 using namespace std;
 
 template <typename T>
@@ -40,6 +42,8 @@ public:
             arquivo << obj.getTSV() << endl;
         }
     }
+
 };
+
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGENERICA_H
