@@ -8,6 +8,7 @@
 #include "HospedeGerenciavel.h"
 #include "Menu.h"
 #include "PersistenciaHospede.h"
+#include "sqlite3.h"
 
 
 void ServicosHospede::acessandoHospede()
@@ -52,28 +53,62 @@ void ServicosHospede::acessandoHospede()
 
 bool ServicosHospede::fazerLoginHospede(string emailCopia)
 {
-    PersistenciaHospede dao;
-    vector<Hospede> hospedes = dao.listar();
+    //_________________________ABRE CONEXÂO_______________________________
+    sqlite3* db;
+    char* mensagemErro = nullptr;
 
-    //cout<<"-------------------"<<endl;
+    int rc = sqlite3_open("hotel.db", &db);
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+        return false;
+    }
+    //_________________________------------_______________________________
+
+    sqlite3_stmt* stmt = nullptr;
+
+    PersistenciaHospede dao;
+    vector<Hospede*> hospedes = dao.listar();
+
+    const char* sql = "SELECT nome, email, endereco, cartao FROM hospedes WHERE email = ?;";
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return false;
+    }
+
+    // Bind dos parâmetros
+    sqlite3_bind_text(stmt, 1, emailCopia.c_str(), -1, SQLITE_STATIC);
 
     bool loginOK = false;
-    for (int i = 0; i < hospedes.size(); i++)
+    if (sqlite3_step(stmt) == SQLITE_ROW)
     {
-        if (hospedes[i].getEmail() == emailCopia)
-        {
-            cout << "Login Realizado com Sucesso!" << endl;
-            loginOK = true;
-            this->hospedeEstaLogado = true;
-            this->logHospede = hospedes[i];
-            return true;
-        }
-        break;
+        std::string nome = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        std::string email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        std::string endereco = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        std::string cartao = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+
+        Hospede* hospedeLogado = new Hospede(Nome(nome), Email(email), Endereco(endereco), Cartao(cartao));
+
+        this->logHospede = hospedeLogado;
+        this->hospedeEstaLogado = true;
+        loginOK = true;
+
+        std::cout << "Login Realizado com Sucesso" << std::endl;
     }
+
     if (!loginOK)
     {
-        cout << "Erro: Usuario nao encontrado!" << endl;
+        std::cout << "Erro: Usuario nao encontrado ou senha incorreta!" << std::endl;
     }
+
+    sqlite3_finalize(stmt);
+
+    //_________________________FECHA CONEXÂO_______________________________
+    sqlite3_close(db);
+    //_________________________------------_______________________________
     return false;
 };
 
@@ -94,15 +129,23 @@ void ServicosHospede::logandoHospede()
         }
         if (tudoOK)
         {
-            lacoLogin = true;
-
             if (fazerLoginHospede(emailCopia))
             {
                 lacoLogin = true;
             }
             else
             {
-                lacoLogin = false;
+                TextoApresentacao::MostrarOpcao("Voltar", 0);
+                TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
+                string opcao = TextoApresentacao::LerLinha();
+                if (opcao == "0")
+                {
+                    break;
+                }
+                else if (opcao == "1")
+                {
+                    lacoLogin = false;
+                }
             }
         }
         else

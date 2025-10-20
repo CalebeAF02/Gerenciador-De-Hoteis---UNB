@@ -23,8 +23,6 @@ private:
     ServicosHospede servicosHospede;
 
 public:
-    Sistema() = default;
-
     void menuSistema()
     {
         Sistema::rodandoSistema();

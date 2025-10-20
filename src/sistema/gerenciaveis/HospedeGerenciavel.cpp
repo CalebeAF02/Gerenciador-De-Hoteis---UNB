@@ -84,7 +84,7 @@ void HospedeGerenciavel::criar()
                 criado = true;
 
                 PersistenciaHospede dao;
-                dao.adicionar(*hospede);
+                dao.criar(*hospede);
 
                 criado = true;
                 cout << "Hospede cadastrado!\n";
@@ -101,7 +101,7 @@ void HospedeGerenciavel::criar()
 
 void HospedeGerenciavel::ler()
 {
-    vector<Hospede> listaHospedes = dao.listar(); // Vetor para Construir OBJETOS - HOSPEDE
+    vector<Hospede*> listaHospedes = dao.listar(); // Vetor para Construir OBJETOS - HOSPEDE
 
     if (listaHospedes.empty())
     {
@@ -113,10 +113,10 @@ void HospedeGerenciavel::ler()
 
     for (const auto& g : listaHospedes)
     {
-        cout << "Nome: " << g.getNome() << endl;
-        cout << "Email: " << g.getEmail() << endl;
-        cout << "Endereco: " << g.getEndereco() << endl;
-        cout << "Cartao: " << g.getCartao() << endl;
+        cout << "Nome: " << g->getNome() << endl;
+        cout << "Email: " << g->getEmail() << endl;
+        cout << "Endereco: " << g->getEndereco() << endl;
+        cout << "Cartao: " << g->getCartao() << endl;
         cout << "-----------------------------\n";
     }
 }
@@ -129,6 +129,17 @@ void HospedeGerenciavel::atualizar()
 
 bool HospedeGerenciavel::remover()
 {
-    // TODO: implementar lógica de exclusão
-    std::cout << "Função excluir ainda não implementada.\n";
+    cout << "Informe o Email: \n";
+    string emailStr = TextoApresentacao::LerLinha();
+    bool status = true; //dao.excluirPorEmail(emailStr);
+
+    if (status == true)
+    {
+        cout << "Foi excluido com sucesso!\n";
+    }
+    else
+    {
+        cout << "Gerente nao encontrado!\n";
+    }
+    return status;
 }

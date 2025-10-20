@@ -23,11 +23,6 @@
 
 #include "../validadores_principais/ValidarInt.h"
 #include "../validadores_principais/ValidarString.h"
-#include "../validadores_abstratos/ValidarNome.h"
-#include "../validadores_abstratos/ValidarEndereco.h"
-#include "../validadores_abstratos/ValidarRamal.h"
-#include "../validadores_abstratos/ValidarDinheiro.h"
-#include "../validadores_abstratos/ValidarCodigo.h"
 
 #include <iostream>
 #include <ostream>

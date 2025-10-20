@@ -22,14 +22,13 @@ private:
 
 public:
     // Construcutor -----------
-    Gerente() = default;
-
-    Gerente(Nome nome, Email email, Ramal ramal, Senha senha)
+    Gerente() : Pessoa(Nome(), Email())
     {
-        setNome(nome);
-        setEmail(email);
-        setRamal(ramal);
-        setSenha(senha);
+    };
+
+    Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
+        ramal(ramal), senha(senha)
+    {
     };
 
     // virtuais ----------------

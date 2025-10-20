@@ -16,7 +16,7 @@ protected:
 
 public:
     // Construcutor ----------
-    Pessoa() : nome(Nome()), email(Email())
+    Pessoa(Nome nomeObj, Email emailObj) : nome(nomeObj), email(emailObj)
     {
     };
 

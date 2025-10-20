@@ -24,7 +24,7 @@ class ServicosHospede
 private:
     bool hospedeEstaLogado = false;
     bool executando = true;
-    Hospede logHospede;
+    Hospede* logHospede;
 
 public:
     // Construtor dos ServicosHospede

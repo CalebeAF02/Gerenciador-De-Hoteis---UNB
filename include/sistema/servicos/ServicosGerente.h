@@ -21,7 +21,7 @@ class ServicosGerente
 private:
     bool gerenteEstaLogado = false;
     bool executando = true;
-    Gerente logGerente;
+    Gerente* logGerente;
 
 public:
     // Construtor dos servicosGerente

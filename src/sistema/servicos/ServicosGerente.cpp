@@ -11,6 +11,7 @@
 #include "ServicosHotel.h"
 #include "ServicosQuarto.h"
 #include "ServicosReserva.h"
+#include "sqlite3.h"
 
 void ServicosGerente::acessandoGerente()
 {
@@ -52,32 +53,63 @@ void ServicosGerente::acessandoGerente()
 
 bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
 {
-    PersistenciaGerente dao;
-    vector<Gerente> gerentes = dao.listar();
+    //_________________________ABRE CONEXÂO_______________________________
+    sqlite3* db;
+    char* mensagemErro = nullptr;
 
-    //cout<<"-------------------"<<endl;
+    int rc = sqlite3_open("hotel.db", &db);
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+        return false;
+    }
+    //_________________________------------_______________________________
+    sqlite3_stmt* stmt = nullptr;
+
+    PersistenciaGerente dao;
+    vector<Gerente*> gerentes = dao.listar();
+
+    const char* sql = "SELECT nome, email, ramal, senha FROM gerentes WHERE email = ? AND senha = ?;";
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return false;
+    }
+
+    // Bind dos parâmetros
+    sqlite3_bind_text(stmt, 1, emailCopia.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, senhaCopia.c_str(), -1, SQLITE_STATIC);
 
     bool loginOK = false;
-    for (int i = 0; i < gerentes.size(); i++)
+    if (sqlite3_step(stmt) == SQLITE_ROW)
     {
-        if (gerentes[i].getEmail() == emailCopia)
-        {
-            if (gerentes[i].getSenha() == senhaCopia)
-            {
-                cout << "Login Realizado com Sucesso" << endl;
-                loginOK = true;
-                this->gerenteEstaLogado = true;
-                this->logGerente = gerentes[i];
-                return true;
-            }
-            break;
-        }
+        std::string nome = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        std::string email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        std::string ramal = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        std::string senha = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+
+        Gerente* gerenteLogado = new Gerente(Nome(nome), Email(email), Ramal(ramal), Senha(senha));
+
+        this->logGerente = gerenteLogado;
+        this->gerenteEstaLogado = true;
+        loginOK = true;
+
+        std::cout << "Login Realizado com Sucesso" << std::endl;
     }
+
     if (!loginOK)
     {
-        cout << "Erro: Usuario nao encontrado ou senha incorreta!" << endl;
+        std::cout << "Erro: Usuario nao encontrado ou senha incorreta!" << std::endl;
     }
-    return false;
+
+    sqlite3_finalize(stmt);
+
+    //_________________________FECHA CONEXÂO_______________________________
+    sqlite3_close(db);
+    //_________________________------------_______________________________
+    return loginOK;
 };
 
 void ServicosGerente::logandoGerente()
@@ -103,15 +135,23 @@ void ServicosGerente::logandoGerente()
         }
         if (tudoOK)
         {
-            lacoLogin = true;
-
             if (fazerLoginGerente(emailCopia, senhaCopia))
             {
                 lacoLogin = true;
             }
             else
             {
-                lacoLogin = false;
+                TextoApresentacao::MostrarOpcao("Voltar", 0);
+                TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
+                string opcao = TextoApresentacao::LerLinha();
+                if (opcao == "0")
+                {
+                    break;
+                }
+                else if (opcao == "1")
+                {
+                    lacoLogin = false;
+                }
             }
         }
         else

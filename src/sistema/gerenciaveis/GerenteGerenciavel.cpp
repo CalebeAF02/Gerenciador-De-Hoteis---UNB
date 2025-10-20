@@ -79,14 +79,11 @@ void GerenteGerenciavel::criar()
             }
             if (tudoOK)
             {
-                cout << "Gerente Cadastrado!\n";
-                criado = true;
-
                 PersistenciaGerente dao;
-                dao.adicionar(*gerente);
+                dao.criar(*gerente);
 
                 criado = true;
-                cout << "Gerente cadastrado!\n";
+                cout << "Gerente Cadastrado!\n";
                 // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
             }
             else
@@ -100,7 +97,7 @@ void GerenteGerenciavel::criar()
 
 void GerenteGerenciavel::ler()
 {
-    vector<Gerente> listaGerentes = dao.listar();
+    vector<Gerente*> listaGerentes = dao.listar();
 
     if (listaGerentes.empty())
     {
@@ -112,9 +109,9 @@ void GerenteGerenciavel::ler()
 
     for (const auto& g : listaGerentes)
     {
-        cout << "Nome: " << g.getNome() << endl;
-        cout << "Email: " << g.getEmail() << endl;
-        cout << "Ramal: " << g.getRamal() << endl;
+        cout << "Nome: " << g->getNome() << endl;
+        cout << "Email: " << g->getEmail() << endl;
+        cout << "Ramal: " << g->getRamal() << endl;
         cout << "-----------------------------\n";
     }
 }

@@ -21,7 +21,6 @@ include_directories(
 
         include/utilitarios
 
-        include/validadorAbstratos
         include/validadorPrincipais
 
         #outros
@@ -57,13 +56,6 @@ add_executable(gerenciador_hotel_unb
         src/dominios/Capacidade.cpp
         src/dominios/Dinheiro.cpp
 
-        # ValidadoresAbstratos
-        src/validadores_abstratos/ValidarCodigo.cpp
-        src/validadores_abstratos/ValidarDinheiro.cpp
-        src/validadores_abstratos/ValidarEmail.cpp
-        src/validadores_abstratos/ValidarEndereco.cpp
-        src/validadores_abstratos/ValidarNome.cpp
-        src/validadores_abstratos/ValidarRamal.cpp
 
         # ValidadoresPrincipais
         src/validadores_principais/ValidarInt.cpp
@@ -81,7 +73,6 @@ add_executable(gerenciador_hotel_unb
         src/sistema/interfaces/InterfaceGerenciavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
 
-        src/sistema/persistencias/PersistenciaGenerica.cpp
         src/sistema/persistencias/PersistenciaGerente.cpp
         src/sistema/persistencias/PersistenciaHospede.cpp
 

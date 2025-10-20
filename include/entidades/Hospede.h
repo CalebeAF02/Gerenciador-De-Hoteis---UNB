@@ -22,14 +22,13 @@ private:
 
 public:
     // Construcutor -----------
-    Hospede() = default;
-
-    Hospede(Nome nome, Email email, Endereco endereco, Cartao cartao)
+    Hospede() : Pessoa(Nome(), Email())
     {
-        setNome(nome);
-        setEmail(email);
-        setEndereco(endereco);
-        setCartao(cartao);
+    };
+
+    Hospede(Nome nomePessoaObj, Email emailPessoaObj, Endereco endereco, Cartao cartao) :
+        Pessoa(nomePessoaObj, emailPessoaObj), endereco(endereco), cartao(cartao)
+    {
     };
 
     // virtuais ----------------
