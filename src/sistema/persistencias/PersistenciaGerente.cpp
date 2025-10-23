@@ -4,27 +4,23 @@
 
 #include "../../../include/sistema/persistencias/PersistenciaGerente.h"
 
+#include "Sistema.h"
 #include "sqlite3.h"
 
-bool PersistenciaGerente::criar(Gerente& gerente)
+bool PersistenciaGerente::adicionarAoBD(Gerente& gerente)
 {
-    //_________________________ABRE CONEXÂO_______________________________
-    sqlite3* db;
-    char* mensagemErro = nullptr;
-
-    int rc = sqlite3_open("hotel.db", &db);
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+    Sistema sistema;
+    if (!sistema.abrindoConexao())
         return false;
-    }
-    //_________________________------------_______________________________
+
+    sqlite3* db = sistema.getConexao(); // método que retorna o ponteiro db
 
     std::string sql = "INSERT INTO gerentes (nome, email, ramal, senha) VALUES ('" +
         gerente.getNome() + "', '" + gerente.getEmail() + "', '" + gerente.getRamal() + "', '" + gerente.getSenha() +
         "');";
+    char* mensagemErro = nullptr;
 
-    rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
+    int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
     if (rc != SQLITE_OK)
     {
         std::cerr << "Erro ao inserir gerente: " << mensagemErro << std::endl;
@@ -32,35 +28,29 @@ bool PersistenciaGerente::criar(Gerente& gerente)
         sqlite3_close(db);
         return false;
     }
-    //_________________________FECHA CONEXÂO_______________________________
-    sqlite3_close(db);
+
+    sistema.fechandoConexao();
     return true;
-    //_________________________------------_______________________________
 }
 
-vector<Gerente*> PersistenciaGerente::listar()
+vector<Gerente*> PersistenciaGerente::listarBD()
 {
     vector<Gerente*> listaGerentes;
 
-    //_________________________ABRE CONEXÂO_______________________________
-    sqlite3* db;
-    char* mensagemErro = nullptr;
-
-    int rc = sqlite3_open("hotel.db", &db);
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+    Sistema sistema;
+    if (!sistema.abrindoConexao())
         return listaGerentes;
-    }
-    //_________________________------------_______________________________
+
+    sqlite3* db = sistema.getConexao(); // método que retorna o ponteiro db
+
 
     sqlite3_stmt* stmt = nullptr;
     const char* sql = "SELECT nome, email, ramal, senha FROM gerentes;";
-    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK)
     {
         std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
-        sqlite3_close(db);
+        sistema.fechandoConexao();
         return listaGerentes;
     }
 
@@ -77,36 +67,39 @@ vector<Gerente*> PersistenciaGerente::listar()
     }
 
     sqlite3_finalize(stmt);
-
-    //_________________________FECHA CONEXÂO_______________________________
-    sqlite3_close(db);
-    //_________________________------------_______________________________
+    sistema.fechandoConexao();
     return listaGerentes;
 }
 
-bool PersistenciaGerente::excluirPorEmail(const std::string& email)
+bool PersistenciaGerente::excluirPorEmailDoBD(Gerente* gerenteLogado)
 {
-    sqlite3* db;
-    char* mensagemErro = nullptr;
-
-    int rc = sqlite3_open("hotel.db", &db);
-    if (rc != SQLITE_OK)
+    if (gerenteLogado == nullptr)
     {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
+        std::cout << "Nenhum gerente está logado. Exclusão não permitida." << std::endl;
         return false;
     }
 
-    std::string sql = "DELETE FROM gerentes WHERE email = '" + email + "';";
+    std::string email = gerenteLogado->getEmail();
 
-    rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
+    Sistema sistema;
+    if (!sistema.abrindoConexao())
+        return false;
+
+    sqlite3* db = sistema.getConexao(); // método que retorna o ponteiro db
+
+    std::string sql = "DELETE FROM gerentes WHERE email = '" + email + "';";
+    char* mensagemErro = nullptr;
+
+    int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
     if (rc != SQLITE_OK)
     {
         std::cerr << "Erro ao excluir gerente: " << mensagemErro << std::endl;
         sqlite3_free(mensagemErro);
-        sqlite3_close(db);
+        sistema.fechandoConexao();
         return false;
     }
 
-    sqlite3_close(db);
+    sistema.fechandoConexao();
+    cout << "\nSeu cadastro foi excluído com sucesso. Sessão encerrada.\n";
     return true;
 }

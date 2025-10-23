@@ -67,7 +67,7 @@ bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
     sqlite3_stmt* stmt = nullptr;
 
     PersistenciaGerente dao;
-    vector<Gerente*> gerentes = dao.listar();
+    vector<Gerente*> gerentes = dao.listarBD();
 
     const char* sql = "SELECT nome, email, ramal, senha FROM gerentes WHERE email = ? AND senha = ?;";
     rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
@@ -221,4 +221,25 @@ void ServicosGerente::exibirCentralDeServicosGerentes()
             break;
         }
     };
+}
+void ServicosGerente::excluirMeuCadastro()
+{
+    if (!gerenteEstaLogado || logGerente == nullptr)
+    {
+        cout << "Você precisa estar logado para excluir seu cadastro.\n";
+        return;
+    }
+    PersistenciaGerente persistencia;
+    bool sucesso = persistencia.excluirPorEmailDoBD(logGerente);
+
+    if (sucesso)
+    {
+        gerenteEstaLogado = false;
+        logGerente = nullptr;
+        executando = false; // ou redireciona para menu principal
+    }
+    else
+    {
+        cout << "Não foi possível excluir seu cadastro.\n";
+    }
 }

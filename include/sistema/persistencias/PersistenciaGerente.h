@@ -8,17 +8,17 @@
 #include <vector>
 
 #include "Gerente.h"
+#include "ServicosGerente.h"
 
 using namespace std;
 
 class PersistenciaGerente
 {
 public:
-    vector<Gerente*> listar();
+    vector<Gerente*> listarBD();
 
-    bool criar(Gerente& gerente);
-
-    bool excluirPorEmail(const std::string& email);
+    bool adicionarAoBD(Gerente& gerente);
+    static bool excluirPorEmailDoBD(Gerente* gerenteLogado);
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H

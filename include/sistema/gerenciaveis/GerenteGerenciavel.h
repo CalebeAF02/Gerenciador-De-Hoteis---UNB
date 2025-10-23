@@ -11,6 +11,7 @@
 
 class GerenteGerenciavel : public InterfaceGerenciavel
 {
+    Gerente* gerenteLogado;
     PersistenciaGerente dao;
 
 public:

@@ -23,6 +23,7 @@ private:
     bool executando = true;
     ServicosGerente servicosGerente;
     ServicosHospede servicosHospede;
+    sqlite3* db = nullptr;
 
 public:
     void menuSistema()
@@ -32,7 +33,9 @@ public:
 
     void rodandoSistema();
 
-    void iniciandoBancoDeDados();
+    bool abrindoConexao();
+    bool fechandoConexao();
+    void criandoBancoDeDados();
 
     void criarTabelaGerentes(sqlite3* db);
     void criarTabelaHospedes(sqlite3* db);
@@ -42,6 +45,7 @@ public:
     void criarTabelaSolicitacoesHospedagem(sqlite3* db);
 
     bool getExecutandoSistema();
+    sqlite3* getConexao() const { return db; }
 
     // Metodo Para Fazer um login pre-programado)
     bool fazerLoginSistemaGerente(const string& emailLoginProgramado, const string& senhaLoginProgramada)

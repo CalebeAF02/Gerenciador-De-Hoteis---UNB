@@ -39,7 +39,7 @@ int main()
     SmokeTest::testarEntradas();
     Sistema sistema;
 
-    sistema.iniciandoBancoDeDados();
+    sistema.criandoBancoDeDados();
 
     sistema.menuSistema();
 

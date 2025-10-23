@@ -33,23 +33,43 @@ void Sistema::rodandoSistema()
         }
     }
 };
-
-void Sistema::iniciandoBancoDeDados()
+bool Sistema::abrindoConexao()
 {
-    sqlite3* db;
-    char* mensagemErro = nullptr;
-
+    //_________________________ABRE CONEXÂO_______________________________
     int rc = sqlite3_open("hotel.db", &db);
-
-    if (rc)
+    if (rc != SQLITE_OK)
     {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
-        return;
+        cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << endl;
+        return false;
+    }
+    char* mensagemErro = nullptr;
+    sqlite3_exec(db, "PRAGMA foreign_keys = ON;", nullptr, nullptr, &mensagemErro);
+
+    cout << "Banco aberto com sucesso!\n";
+    return true;
+    //_________________________------------_______________________________
+}
+
+bool Sistema::fechandoConexao()
+{
+    //_________________________FECHA CONEXÂO_______________________________
+    if (db)
+    {
+        sqlite3_close(db);
+        db = nullptr;
+        cout << "Conexao com o banco encerrada com sucesso!\n";
+        return true;
     }
 
-    cout << "\nBanco aberto com sucesso!\n" << endl;
+    cerr << "Nenhuma conexao ativa para fechar.\n";
+    return false;
+    //_________________________------------_______________________________
+}
 
-    sqlite3_exec(db, "PRAGMA foreign_keys = ON;", nullptr, nullptr, &mensagemErro);
+void Sistema::criandoBancoDeDados()
+{
+    if (!abrindoConexao())
+        return;
 
     criarTabelaGerentes(db);
     criarTabelaHospedes(db);
@@ -58,9 +78,7 @@ void Sistema::iniciandoBancoDeDados()
     criarTabelaReservas(db);
     criarTabelaSolicitacoesHospedagem(db);
 
-    sqlite3_close(db);
-
-    cout << endl;
+    fechandoConexao();
 };
 
 void Sistema::criarTabelaGerentes(sqlite3* db)

@@ -38,6 +38,9 @@ public:
     void logandoGerente();
     bool fazerLoginGerente(string emailCopia, string senhaCopia);
     bool getGerenteEstaLogado();
+
+    // metudo para excluir
+    void excluirMeuCadastro();
 };
 
 inline bool ServicosGerente::getGerenteEstaLogado()

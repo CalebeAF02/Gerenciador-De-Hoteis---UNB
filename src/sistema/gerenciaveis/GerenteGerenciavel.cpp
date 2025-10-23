@@ -80,11 +80,18 @@ void GerenteGerenciavel::criar()
             if (tudoOK)
             {
                 PersistenciaGerente dao;
-                dao.criar(*gerente);
+                bool sucesso = dao.adicionarAoBD(*gerente);
 
-                criado = true;
-                cout << "Gerente Cadastrado!\n";
-                // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
+                if (sucesso)
+                {
+                    criado = true;
+                    cout << "Gerente Cadastrado!\n";
+                    // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
+                }
+                else
+                {
+                    cout << "Erro ao cadastrar gerente no banco!\n";
+                }
             }
             else
             {
@@ -97,7 +104,7 @@ void GerenteGerenciavel::criar()
 
 void GerenteGerenciavel::ler()
 {
-    vector<Gerente*> listaGerentes = dao.listar();
+    vector<Gerente*> listaGerentes = dao.listarBD();
 
     if (listaGerentes.empty())
     {
@@ -126,7 +133,7 @@ bool GerenteGerenciavel::remover()
 {
     cout << "Informe o Email: \n";
     string emailStr = TextoApresentacao::LerLinha();
-    bool status = dao.excluirPorEmail(emailStr);
+    bool status = dao.excluirPorEmailDoBD(gerenteLogado);
 
     if (status == true)
     {
