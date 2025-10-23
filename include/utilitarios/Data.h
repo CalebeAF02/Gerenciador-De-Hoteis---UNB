@@ -36,16 +36,18 @@ public:
     void validar(int tipo, int valor) override;
 
     //Construtores
-    Data () = default;
+    Data() = default;
 
-    explicit Data(const string& dataStr) {
+    explicit Data(const string& dataStr)
+    {
         int d, m, a;
         char sepMes, sepAno;
         istringstream sepDia(dataStr);
 
         sepDia >> d >> sepMes >> m >> sepAno >> a;
 
-        if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
+        if (sepDia.fail() || sepMes != '/' || sepAno != '/')
+        {
             throw invalid_argument("Formato de data inválido. Use DD/MM/AAAA.");
         }
 

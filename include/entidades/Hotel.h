@@ -21,7 +21,7 @@ private:
 public:
     Hotel() = default;
 
-    Hotel(Nome nome, Endereco endereco,Telefone telefone, Codigo codigo)
+    Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo)
     {
         setNome(nome);
         setEndereco(endereco);
@@ -31,22 +31,22 @@ public:
 
     void setNome(const Nome& newNome)
     {
-        this->nome=newNome;
+        this->nome = newNome;
     };
 
     void setEndereco(const Endereco& newEndereco)
     {
-        this->endereco=newEndereco;
+        this->endereco = newEndereco;
     };
 
     void setTelefone(const Telefone& newTelefone)
     {
-        this->telefone=newTelefone;
+        this->telefone = newTelefone;
     };
 
     void setCodigo(const Codigo& newCodigo)
     {
-        this->codigo=newCodigo;
+        this->codigo = newCodigo;
     };
 
     //Get

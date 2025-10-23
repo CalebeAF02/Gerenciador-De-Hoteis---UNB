@@ -143,9 +143,9 @@ Algumas validações genéricas ainda são mantidas para entradas livres:
 
 - TesteValidadores: conjunto de testes unitários para verificar os domínios
 - Contadores estáticos para monitorar execução:
-  - contTotalTestes
-  - contTotalTestesOk
-  - contTotalTestesProblema
+    - contTotalTestes
+    - contTotalTestesOk
+    - contTotalTestesProblema
 
 ---
 

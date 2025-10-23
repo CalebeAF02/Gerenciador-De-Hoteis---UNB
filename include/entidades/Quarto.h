@@ -32,22 +32,22 @@ public:
 
     void setNumero(const Numero& newNumero)
     {
-        this->numero=newNumero;
+        this->numero = newNumero;
     }
 
     void setCapacidade(const Capacidade& newCapacidade)
     {
-        this->capacidade=newCapacidade;
+        this->capacidade = newCapacidade;
     }
 
     void setDiaria(const Dinheiro& newDiaria)
     {
-        this->diaria=newDiaria;
+        this->diaria = newDiaria;
     }
 
     void setRamal(const Ramal& newRamal)
     {
-        this->ramal=newRamal;
+        this->ramal = newRamal;
     }
 
     //Get

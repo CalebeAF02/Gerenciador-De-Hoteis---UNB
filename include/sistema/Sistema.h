@@ -13,6 +13,8 @@
 #include <iostream>
 #include <string>
 
+#include "sqlite3.h"
+
 using namespace std;
 
 class Sistema
@@ -29,6 +31,15 @@ public:
     };
 
     void rodandoSistema();
+
+    void iniciandoBancoDeDados();
+
+    void criarTabelaGerentes(sqlite3* db);
+    void criarTabelaHospedes(sqlite3* db);
+    void criarTabelaHoteis(sqlite3* db);
+    void criarTabelaQuartos(sqlite3* db);
+    void criarTabelaReservas(sqlite3* db);
+    void criarTabelaSolicitacoesHospedagem(sqlite3* db);
 
     bool getExecutandoSistema();
 
