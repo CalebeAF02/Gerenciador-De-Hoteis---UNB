@@ -5,54 +5,93 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Diretórios de headers
 include_directories(
+        #includes
         include
-        include/dominios
-        include/validadorAbstratos
-        include/validadorPrincipais
-)
 
-include_directories(
-        coisas
-)
-#
-include_directories(
-        coisas/utilitarios
+        include/dominios
+
+        include/entidades
+
+        include/sistema
+        include/sistema/fabricas
+        include/sistema/gerenciaveis
+        include/sistema/interfaces
+        include/sistema/persistencias
+        include/sistema/servicos
+
+        include/utilitarios
+
+        include/validadorPrincipais
+
+        #outros
+        libs
+        libs/testes
+        libs/sqlite
+
+        testes
 )
 
 # Fontes principais
 add_executable(gerenciador_hotel_unb
         src/main.cpp
 
-        # Domínios
-        coisas/utilitarios/Data.cpp
-        src/dominios/Gerente.cpp
-        src/dominios/Hospede.cpp
-        src/dominios/Hotel.cpp
-        src/dominios/Pessoa.cpp
-        src/dominios/Quarto.cpp
-        src/dominios/Reserva.cpp
+        # Entidades
+        src/entidades/Gerente.cpp
+        src/entidades/Hospede.cpp
+        src/entidades/Hotel.cpp
+        src/entidades/Pessoa.cpp
+        src/entidades/Quarto.cpp
+        src/entidades/Reserva.cpp
 
-        # ValidadoresAbstratos
-        src/validadoresAbstratos/ValidarCodigo.cpp
-        src/validadoresAbstratos/ValidarDinheiro.cpp
-        src/validadoresAbstratos/ValidarEmail.cpp
-        src/validadoresAbstratos/ValidarEndereco.cpp
-        src/validadoresAbstratos/ValidarNome.cpp
-        src/validadoresAbstratos/ValidarRamal.cpp
+        # Dominios
+        src/dominios/Nome.cpp
+        src/dominios/Email.cpp
+        src/dominios/Ramal.cpp
+        src/dominios/Senha.cpp
+        src/dominios/Endereco.cpp
+        src/dominios/Cartao.cpp
+        src/dominios/Telefone.cpp
+        src/dominios/Codigo.cpp
+        src/dominios/Numero.cpp
+        src/dominios/Capacidade.cpp
+        src/dominios/Dinheiro.cpp
+
 
         # ValidadoresPrincipais
-        src/validadoresPrincipais/ValidarInt.cpp
-        src/validadoresPrincipais/ValidarString.cpp
+        src/validadores_principais/ValidarInt.cpp
+        src/validadores_principais/ValidarString.cpp
 
-        # Testes
-        coisas/testes/Teste.cpp
-        coisas/testes/Smoke_Tests.cpp
+        #Sistamas
+        src/sistema/Sistema.cpp
+
+        src/sistema/fabricas/FabricaGerenciavel.cpp
+
+
+        src/sistema/gerenciaveis/GerenteGerenciavel.cpp
+        src/sistema/gerenciaveis/HospedeGerenciavel.cpp
+
+        src/sistema/interfaces/InterfaceGerenciavel.cpp
+        src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
+
+        src/sistema/persistencias/PersistenciaGerente.cpp
+        src/sistema/persistencias/PersistenciaHospede.cpp
+
+        src/sistema/servicos/ServicosGerente.cpp
+        src/sistema/servicos/ServicosHospede.cpp
+        src/sistema/servicos/ServicosHotel.cpp
+        src/sistema/servicos/ServicosQuarto.cpp
+        src/sistema/servicos/ServicosReserva.cpp
+
+        # libs
+        libs/testes/Teste.cpp
+        libs/sqlite/sqlite3.c
 
         #utilitarios
-        src/sistema/Servicos.cpp
-        coisas/utilitarios/TextoApresentacao.cpp
-        coisas/utilitarios/LinhaTSV.cpp
-        coisas/utilitarios/LinhaTSV.h
-        src/sistema/SistemaHotel.cpp
-        include/sistema/SistemaHotel.h
+        src/utilitarios/Data.cpp
+        src/utilitarios/TextoApresentacao.cpp
+        src/utilitarios/LinhaTSV.cpp
+        src/utilitarios/Menu.cpp
+        src/utilitarios/MenuItem.cpp
+
+        testes/Smoke_Tests.cpp
 )

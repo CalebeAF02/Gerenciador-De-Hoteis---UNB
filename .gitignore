@@ -1,3 +1,23 @@
-.idea/
+# Ignorar arquivos de compilação
+*.o
+*.obj
+*.exe
+*.out
+
+# Ignorar pastas de build
+build/
 cmake-build-debug/
-	
+dist/
+
+
+# Ignorar arquivos temporários
+*.log
+*.tmp
+
+# Ignorar configurações do CLion
+.idea/
+*.iml
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db

@@ -1,2 +1,15 @@
+# Forçar quebra de linha LF para código-fonte
+*.cpp text eol=lf
+*.h text eol=lf
+
+# Marcar arquivos binários
+*.png binary
+*.jpg binary
+*.pdf binary
+
+# Ignorar arquivos ao exportar
+.idea/ export-ignore
+cmake-build-debug/ export-ignore
+
 # Auto detect text files and perform LF normalization
 * text=auto

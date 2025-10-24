@@ -1,25 +1,12 @@
+#include "Smoke_Tests.h"
+#include "sistema/Sistema.h"
+
 #include <iostream>
 #include <string>
+#include "sqlite/sqlite3.h"
 
+#include "../include/utilitarios/TextoApresentacao.h"
 
-#include "../coisas/utilitarios/Data.h"
-#include "dominios/Pessoa.h"
-#include "dominios/Gerente.h"
-#include "dominios/Hospede.h"
-#include "dominios/Hotel.h"
-#include "dominios/Quarto.h"
-#include "testes/Smoke_Tests.h"
-#include "validadoresPrincipais/ValidarString.h"
-#include "validadoresPrincipais/ValidarInt.h"
-#include "validadoresAbstratos/ValidarNome.h"
-#include "validadoresAbstratos/ValidarEmail.h"
-#include "validadoresAbstratos/ValidarEndereco.h"
-#include "validadoresAbstratos/ValidarDinheiro.h"
-#include "validadoresAbstratos/ValidarCodigo.h"
-#include "validadoresAbstratos/ValidarRamal.h"
-#include "utilitarios/TextoApresentacao.h"
-#include "../include/sistema/Servicos.h"
-#include "sistema/SistemaHotel.h"
 using namespace std;
 
 #define TESTANDO 0
@@ -30,20 +17,47 @@ using namespace std;
 
 int main()
 {
+    /*
+     * Edições a fazer :
+     *
+     * Funcionalidades do sistema
+     *
+     * Conta = LER; EDITAR; EXCLUIR;
+     * Hotel = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hoteis;
+     * Quarto = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os quartos;
+     * Reserva = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos as reservas;
+     * Hospede = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hospedes;
+     *
+     * 1) Não pode haver conflitos nas reservas!
+     *
+     * 2) Não pode editar as informações em CODIGO, que apresenta chave de registro "PK"!
+     *
+     * 3) Não permite exclusões que gerem inconcistencias!
+     *
+     */
 #if ESTOU_TESTANDO == TESTANDO
     SmokeTest::testarEntradas();
-    SistemaHotel sistema;
+    Sistema sistema;
 
-    if (sistema.fazerLogin("calebe.2324@gmail.com", "A1#a2"))
+    sistema.criandoBancoDeDados();
+
+    sistema.menuSistema();
+
+    /*
+    TextoApresentacao::MostrarTituloEmCaixa("Login Programado");
+    cout << "Entrada :" << "calebe@gmail.com" << endl << "Senha :" << "A1#a1" << endl << endl;
+
+    if (sistema.fazerLoginSistema("calebe@gmail.com", "A1#a1"))
     {
+        cout << endl;
         sistema.menuSistema();
     };
-
+    */
 #endif
 
 #if ESTOU_TESTANDO == PRODUCAO
-    SistemaHotel sistema;
-    while (sistema.getExecutando())
+    Sistema sistema;
+    while (sistema.getExecutandoSistema())
     {
         sistema.rodandoSistema();
     }
@@ -52,4 +66,3 @@ int main()
 
     return 0;
 }
-
