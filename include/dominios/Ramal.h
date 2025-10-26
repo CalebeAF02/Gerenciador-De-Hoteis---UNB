@@ -15,7 +15,7 @@ class Ramal
 private:
     string valor;
 
-    void validar(const string& ramal); // Metodo de validação
+    void validar(const string& ramal); // Metodo de validacao
 
 public:
     Ramal() = default;

@@ -66,6 +66,9 @@ public:
         return dinheiro.getValor();
     };
 
-    string getCodigo();
+    string getCodigo() const
+    {
+        return codigo.getValor();
+    };
 };
 #endif

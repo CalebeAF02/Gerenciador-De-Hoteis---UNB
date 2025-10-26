@@ -46,6 +46,11 @@ void TextoApresentacao::MostrarTituloPergunta(string pergunta)
     cout << pergunta << endl;
 };
 
+void TextoApresentacao::MostrarTituloRetorno(string retorno)
+{
+    cout << retorno << endl;
+};
+
 void TextoApresentacao::MostrarOpcaoEmCaixa(const std::string& texto, int numero)
 {
     std::cout << "------------------------------\n";

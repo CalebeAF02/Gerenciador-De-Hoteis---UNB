@@ -27,7 +27,7 @@ public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
 
-    // Confirmar que é um gerente
+    // Confirmar que e um gerente
     void acessandoGerente();
 
     // Acessando servicos

@@ -12,6 +12,7 @@ public:
     static void RepetirCaracter(int qntCaracteres, char c);
     static void MostrarTituloEmCaixa(string apresentcao);
     static void MostrarTituloPergunta(string pergunta);
+    static void MostrarTituloRetorno(string pergunta);
     static void MostrarOpcaoEmCaixa(const string& texto, int numero);
     static void MostrarOpcaoEmCaixa(string texto, string numero);
     static void MostrarOpcao(string opcao, int valor);

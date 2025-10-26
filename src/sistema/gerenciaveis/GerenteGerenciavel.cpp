@@ -15,7 +15,7 @@ void GerenteGerenciavel::criar()
 
         if (gerente)
         {
-            //Preencher atribultos com validação
+            //Preencher atribultos com validacao
             if (tudoOK == false)
             {
                 cout << "\nRetornando...\n\n";
@@ -125,8 +125,88 @@ void GerenteGerenciavel::ler()
 
 void GerenteGerenciavel::atualizar()
 {
-    // TODO: implementar lógica de edição
-    cout << "Funcao atualizar ainda nao implementada.\n";
+    if (gerenteLogado == nullptr)
+    {
+        TextoApresentacao::MostrarTituloEmCaixa("Atualizacao de Cadastro");
+        std::cout << "\nVoce precisa estar logado para atualizar seu cadastro.\n\n";
+        return;
+    }
+
+    PersistenciaGerente dao;
+    bool alterado = false;
+
+    TextoApresentacao::MostrarTituloEmCaixa("Atualizacao de Cadastro");
+    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Nome", 1);
+    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Ramal", 2);
+    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Senha", 3);
+    TextoApresentacao::MostrarOpcaoEmCaixa("Cancelar", 0);
+
+    std::string opcaoStr = TextoApresentacao::RecebeOpcao();
+    int opcao = std::stoi(opcaoStr);
+
+    switch (opcao)
+    {
+    case 1:
+        {
+            TextoApresentacao::MostrarTituloPergunta("Novo nome:");
+            std::string novoNome = TextoApresentacao::LerLinha();
+            try
+            {
+                gerenteLogado->setNome(Nome(novoNome));
+                alterado = true;
+            }
+            catch (std::invalid_argument& erro)
+            {
+                std::cout << erro.what() << std::endl;
+            }
+            break;
+        }
+    case 2:
+        {
+            TextoApresentacao::MostrarTituloPergunta("Novo ramal:");
+            std::string novoRamal = TextoApresentacao::LerLinha();
+            try
+            {
+                gerenteLogado->setRamal(Ramal(novoRamal));
+                alterado = true;
+            }
+            catch (std::invalid_argument& erro)
+            {
+                std::cout << erro.what() << std::endl;
+            }
+            break;
+        }
+    case 3:
+        {
+            TextoApresentacao::MostrarTituloPergunta("Nova senha:");
+            std::string novaSenha = TextoApresentacao::LerLinha();
+            try
+            {
+                gerenteLogado->setSenha(Senha(novaSenha));
+                alterado = true;
+            }
+            catch (std::invalid_argument& erro)
+            {
+                std::cout << erro.what() << std::endl;
+            }
+            break;
+        }
+    case 0:
+        std::cout << "Atualizacao cancelada.\n";
+        return;
+    default:
+        std::cout << "Opcao invalida.\n";
+        return;
+    }
+
+    if (alterado)
+    {
+        bool sucesso = dao.atualizarGerenteNoBD(*gerenteLogado);
+        if (sucesso)
+            TextoApresentacao::MostrarTituloRetorno("Cadastro atualizado com sucesso!");
+        else
+            TextoApresentacao::MostrarTituloRetorno("Erro ao atualizar cadastro no banco.");
+    }
 }
 
 bool GerenteGerenciavel::remover()

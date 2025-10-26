@@ -15,7 +15,7 @@ class Numero
 private:
     string valor;
 
-    void validar(string valor); // Metodo de validação
+    void validar(string valor); // Metodo de validacao
 
 public:
     Numero() = default;

@@ -15,7 +15,7 @@ class Dinheiro
 private:
     int valor;
 
-    void validar(int valor); // Metodo de validação
+    void validar(int valor); // Metodo de validacao
 
 public:
     Dinheiro() = default;

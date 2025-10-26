@@ -48,7 +48,7 @@ public:
 
         if (sepDia.fail() || sepMes != '/' || sepAno != '/')
         {
-            throw invalid_argument("Formato de data inválido. Use DD/MM/AAAA.");
+            throw invalid_argument("Formato de data invalido. Use DD/MM/AAAA.");
         }
 
         setData(d, m, a); // valida e seta

@@ -15,9 +15,14 @@ using namespace std;
 class PersistenciaGerente
 {
 public:
+    bool adicionarAoBD(Gerente& gerente);
+
     vector<Gerente*> listarBD();
 
-    bool adicionarAoBD(Gerente& gerente);
+    Gerente* autenticarGerentePeloBD(const std::string& email, const std::string& senha);
+
+    bool atualizarGerenteNoBD(const Gerente& gerente);
+
     static bool excluirPorEmailDoBD(Gerente* gerenteLogado);
 };
 

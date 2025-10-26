@@ -33,6 +33,7 @@ void Sistema::rodandoSistema()
         }
     }
 };
+
 bool Sistema::abrindoConexao()
 {
     //_________________________ABRE CONEXÂO_______________________________
@@ -71,6 +72,7 @@ void Sistema::criandoBancoDeDados()
     if (!abrindoConexao())
         return;
 
+    // Comandos SQL para criar cada tabela
     criarTabelaGerentes(db);
     criarTabelaHospedes(db);
     criarTabelaHoteis(db);
@@ -218,12 +220,21 @@ void Sistema::criarTabelaReservas(sqlite3* db)
 
 void Sistema::criarTabelaSolicitacoesHospedagem(sqlite3* db)
 {
+    // Comando SQL para criar a tabela
     const char* sql = R"(
         CREATE TABLE IF NOT EXISTS solicitacoes_hospedagem (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email_hospede TEXT NOT NULL DEFAULT '',
-            status TEXT DEFAULT '',
-            FOREIGN KEY (email_hospede) REFERENCES hospedes(email)
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        codigo TEXT NOT NULL UNIQUE,
+        email_hospede TEXT NOT NULL,
+        id_hotel TEXT NOT NULL,
+        id_quarto TEXT NOT NULL,
+        chegada TEXT NOT NULL,
+        partida TEXT NOT NULL,
+        status INTEGER NOT NULL,
+        motivo_recusa TEXT,
+        FOREIGN KEY (email_hospede) REFERENCES hospedes(email),
+        FOREIGN KEY (id_hotel) REFERENCES hoteis(id),
+        FOREIGN KEY (id_quarto) REFERENCES quartos(id)
         );
     )";
 

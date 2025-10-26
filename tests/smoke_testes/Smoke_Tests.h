@@ -6,8 +6,8 @@
 #include "../entidades/Hotel.h"
 #include "../entidades/Quarto.h"
 #include "../entidades/Reserva.h"
-#include "../include/utilitarios/Data.h"
-#include "../libs/testes/Teste.h"
+#include "../../include/utilitarios/Data.h"
+#include "interface_tests/InterfaceDeTeste.h"
 
 #include "dominios/Capacidade.h"
 #include "dominios/Cartao.h"

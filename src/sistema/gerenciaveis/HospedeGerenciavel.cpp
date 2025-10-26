@@ -15,7 +15,7 @@ void HospedeGerenciavel::criar()
 
         if (hospede)
         {
-            //Preencher atribultos com validação
+            //Preencher atribultos com validacao
             if (tudoOK == false)
             {
                 cout << "\nRetornando...\n\n";
@@ -123,8 +123,8 @@ void HospedeGerenciavel::ler()
 
 void HospedeGerenciavel::atualizar()
 {
-    // TODO: implementar lógica de edição
-    std::cout << "Função atualizar ainda não implementada.\n";
+    // TODO: implementar logica de edicao
+    std::cout << "Funcao atualizar ainda nao implementada.\n";
 }
 
 bool HospedeGerenciavel::remover()
@@ -142,4 +142,52 @@ bool HospedeGerenciavel::remover()
         cout << "Gerente nao encontrado!\n";
     }
     return status;
+}
+
+void HospedeGerenciavel::avaliarSolicitacoes()
+{
+    TextoApresentacao::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
+
+    auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
+
+    if (pendentes.empty())
+    {
+        TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao pendente.");
+        return;
+    }
+
+    for (auto& solicitacao : pendentes)
+    {
+        std::cout << "\nCodigo da Solicitacao: " << solicitacao.getCodigo().getValor()
+            << "\nHospede: " << solicitacao.getHospedeId()
+            << "\nHotel: " << solicitacao.getHotelId()
+            << "\nQuarto: " << solicitacao.getQuartoId()
+            << "\nChegada: " << solicitacao.getChegada().toString()
+            << "\nPartida: " << solicitacao.getPartida().toString()
+            << "\nStatus atual: Pendente\n";
+
+        TextoApresentacao::MostrarTituloPergunta("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
+        std::string escolha = TextoApresentacao::RecebeOpcao();
+
+        if (escolha == "A" || escolha == "a")
+        {
+            solicitacao.setStatus(1); // aprovada
+            solicitacao.setMotivoRecusa(""); // limpa motivo
+            PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+            TextoApresentacao::MostrarTituloRetorno("Solicitacao aprovada com sucesso.");
+        }
+        else if (escolha == "R" || escolha == "r")
+        {
+            TextoApresentacao::MostrarTituloPergunta("Informe o motivo da recusa:");
+            std::string motivo = TextoApresentacao::LerLinha();
+            solicitacao.setStatus(2); // recusada
+            solicitacao.setMotivoRecusa(motivo);
+            PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+            TextoApresentacao::MostrarTituloRetorno("Solicitacao recusada.");
+        }
+        else
+        {
+            TextoApresentacao::MostrarTituloRetorno("Opcao invalida. Solicitacao nao foi alterada.");
+        }
+    }
 }

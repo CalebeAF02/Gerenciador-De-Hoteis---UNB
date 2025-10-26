@@ -8,7 +8,7 @@ using namespace std;
 
 void Email::validar(const string& email)
 {
-    // lógica de validação do email
+    // logica de validacao do email
     int posicaoArroba = email.find("@");
     if (posicaoArroba == string::npos)
     {
@@ -41,12 +41,12 @@ void Email::validar(const string& email)
                     throw invalid_argument("Erro: Email nao pode comecar com '.' ou '-' !");
                 }
             }
-            //Regra 1 - Se a letra é minuscula
+            //Regra 1 - Se a letra e minuscula
             if (islower(parteLocal[i]))
             {
                 contSimboloParteLocal = 0;
                 //cout << "Esta letra e minuscula? " << parteLocal[i] << " Sim!" << endl;
-                //Regra 1 - Se o Caracter é numero
+                //Regra 1 - Se o Caracter e numero
             }
             else if (isdigit(parteLocal[i]))
             {
@@ -94,12 +94,12 @@ void Email::validar(const string& email)
                     throw invalid_argument("Erro: Email nao pode comecar com '.' ou '-' !");
                 }
             }
-            //Regra 1 - Se a letra é minuscula
+            //Regra 1 - Se a letra e minuscula
             if (islower(parteDominio[i]))
             {
                 contSimboloParteDominio = 0;
                 //cout << "Esta letra e minuscula? " << parteDominio[i] << " Sim!" << endl;
-                //Regra 1 - Se o Caracter é numero
+                //Regra 1 - Se o Caracter e numero
             }
             else if (isdigit(parteDominio[i]))
             {

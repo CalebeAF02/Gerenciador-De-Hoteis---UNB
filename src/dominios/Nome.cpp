@@ -8,7 +8,7 @@ void Nome::validar(const string& nome)
 {
     int cont_alta = 0;
     int cont_baixa = 0;
-    // lógica de validação do nome
+    // logica de validacao do nome
     int nomeTamanho = nome.length();
     if (nomeTamanho < 5 || nomeTamanho > 20)
     {

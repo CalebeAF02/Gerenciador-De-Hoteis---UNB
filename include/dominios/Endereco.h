@@ -15,7 +15,7 @@ class Endereco
 private:
     string valor;
 
-    void validar(string endereco); // Metodo de validação
+    void validar(string endereco); // Metodo de validacao
 
 public:
     Endereco() = default;

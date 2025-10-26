@@ -20,7 +20,7 @@ private:
 public:
     Telefone() = default;
 
-    explicit Telefone(string& telefone)
+    explicit Telefone(const string& telefone)
     {
         setValor(telefone);
     }

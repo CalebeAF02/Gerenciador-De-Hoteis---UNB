@@ -20,7 +20,7 @@ private:
 public:
     Cartao() = default;
 
-    explicit Cartao(string& cartao)
+    explicit Cartao(const string& cartao)
     {
         setValor(cartao);
     }

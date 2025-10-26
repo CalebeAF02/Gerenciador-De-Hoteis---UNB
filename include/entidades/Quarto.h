@@ -61,7 +61,7 @@ public:
         return capacidade.getValor();
     }
 
-    int getDinheiro() const
+    int getDiaria() const
     {
         diaria.getValor();
     }

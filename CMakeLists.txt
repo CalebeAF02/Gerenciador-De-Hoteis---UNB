@@ -3,7 +3,7 @@ project(gerenciador_hotel_unb)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Diretórios de headers
+# Diretorios de headers
 include_directories(
         #includes
         include
@@ -18,6 +18,9 @@ include_directories(
         include/sistema/interfaces
         include/sistema/persistencias
         include/sistema/servicos
+        include/sistema/Modelagem_E_LogicaDeServico/apresentacao
+        include/sistema/Modelagem_E_LogicaDeServico/interfaces
+        include/sistema/Modelagem_E_LogicaDeServico/servicos_-_
 
         include/utilitarios
 
@@ -25,10 +28,13 @@ include_directories(
 
         #outros
         libs
-        libs/testes
         libs/sqlite
 
-        testes
+        tests
+        tests/interface_tests
+        tests/smoke_testes
+        tests/tests_dominios
+        tests/tests_entidades
 )
 
 # Fontes principais
@@ -71,6 +77,7 @@ add_executable(gerenciador_hotel_unb
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
         src/sistema/interfaces/InterfaceGerenciavel.cpp
+        src/sistema/interfaces/InterfaceAutenticavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
 
         src/sistema/persistencias/PersistenciaGerente.cpp
@@ -83,8 +90,12 @@ add_executable(gerenciador_hotel_unb
         src/sistema/servicos/ServicosReserva.cpp
 
         # libs
-        libs/testes/Teste.cpp
         libs/sqlite/sqlite3.c
+
+        # Modelagem_E_LogicaServico
+        src/sistema/Modelagem_E_LogicaDeServico/apresentacao/ApresentacaoAutenticavel.cpp
+        src/sistema/Modelagem_E_LogicaDeServico/interfaces/InterfaceServicoAutenticacao.cpp
+        src/sistema/Modelagem_E_LogicaDeServico/servicos_-_/ServicoAutenticacao.cpp
 
         #utilitarios
         src/utilitarios/Data.cpp
@@ -92,6 +103,35 @@ add_executable(gerenciador_hotel_unb
         src/utilitarios/LinhaTSV.cpp
         src/utilitarios/Menu.cpp
         src/utilitarios/MenuItem.cpp
+        src/utilitarios/SolicitacaoHospedagem.cpp
+        src/utilitarios/PersistenciaSolicitacaoHospedagem.cpp
+        src/utilitarios/GeradorCodigo.cpp
 
-        testes/Smoke_Tests.cpp
+        # Tests
+        tests/smoke_testes/Smoke_Tests.cpp
+        tests/interface_tests/InterfaceDeTeste.cpp
+        tests/interface_tests/TestsModulares.cpp
+
+        # Tests_Entidades
+        tests/tests_entidades/TestsGerente.cpp
+        tests/tests_entidades/TestsHospede.cpp
+        tests/tests_entidades/TestsHotel.cpp
+        tests/tests_entidades/TestsQuarto.cpp
+        tests/tests_entidades/TestsReserva.cpp
+        tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
+
+        # Tests_Dominios
+        tests/tests_dominios/TestsCapacidade.cpp
+        tests/tests_dominios/TestsCartao.cpp
+        tests/tests_dominios/TestsCodigo.cpp
+        tests/tests_dominios/TestsDinheiro.cpp
+        tests/tests_dominios/TestsEmail.cpp
+        tests/tests_dominios/TestsEndereco.cpp
+        tests/tests_dominios/TestsNome.cpp
+        tests/tests_dominios/TestsNumero.cpp
+        tests/tests_dominios/TestsRamal.cpp
+        tests/tests_dominios/TestsSenha.cpp
+        tests/tests_dominios/TestsTelefone.cpp
+        tests/tests_dominios/TestsData.cpp
+
 )

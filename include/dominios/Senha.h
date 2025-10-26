@@ -15,7 +15,7 @@ class Senha
 private:
     string valor;
 
-    void validar(string senha); // Metodo de validação
+    void validar(string senha); // Metodo de validacao
 
 public:
     Senha() = default;

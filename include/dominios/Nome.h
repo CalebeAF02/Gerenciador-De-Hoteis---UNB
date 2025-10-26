@@ -15,7 +15,7 @@ class Nome
 private:
     string valor;
 
-    void validar(const string& nome); // Metodo de validação
+    void validar(const string& nome); // Metodo de validacao
 
 public:
     Nome() = default;

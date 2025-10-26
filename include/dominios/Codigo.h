@@ -15,12 +15,12 @@ class Codigo
 private:
     string valor;
 
-    void validar(string codigo); // Metodo de validação
+    void validar(string codigo); // Metodo de validacao
 
 public:
     Codigo() = default;
 
-    explicit Codigo(string& codigo)
+    explicit Codigo(const string& codigo)
     {
         setValor(codigo);
     };

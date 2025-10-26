@@ -1,4 +1,4 @@
-#include "Teste.h"
+#include "InterfaceDeTeste.h"
 
 int Teste::contTodalTestes = 0;
 int Teste::contTodalTestesOk = 0;
