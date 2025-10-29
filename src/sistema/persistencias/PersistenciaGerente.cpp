@@ -35,7 +35,7 @@ bool PersistenciaGerente::adicionarAoBD(Gerente& gerente)
         }
         else
         {
-            std::cout << "\nErro ao inserir gerente: " << erroStr << std::endl<<endl;
+            std::cout << "\nErro ao inserir gerente: " << erroStr << std::endl << endl;
         }
 
         sqlite3_free(mensagemErro);
