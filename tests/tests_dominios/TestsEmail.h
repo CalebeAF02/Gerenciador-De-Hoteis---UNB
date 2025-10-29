@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSEMAIL_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSEMAIL_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Email.h"
+#include "TestsBase.h"
+#include "Email.h"
 #include <vector>
 #include <string>
 

@@ -1,28 +1,28 @@
 #ifndef SMOKE_TESTS_INCLUDE
 #define SMOKE_TESTS_INCLUDE
 
-#include "../entidades/Gerente.h"
-#include "../entidades/Hospede.h"
-#include "../entidades/Hotel.h"
-#include "../entidades/Quarto.h"
-#include "../entidades/Reserva.h"
-#include "../../include/utilitarios/Data.h"
-#include "interface_tests/InterfaceDeTeste.h"
+#include "Gerente.h"
+#include "Hospede.h"
+#include "Hotel.h"
+#include "Quarto.h"
+#include "Reserva.h"
+#include "Data.h"
+#include "InterfaceDeTeste.h"
 
-#include "dominios/Capacidade.h"
-#include "dominios/Cartao.h"
-#include "dominios/Codigo.h"
-#include "dominios/Dinheiro.h"
-#include "dominios/Email.h"
-#include "dominios/Endereco.h"
-#include "dominios/Nome.h"
-#include "dominios/Numero.h"
-#include "dominios/Ramal.h"
-#include "dominios/Senha.h"
-#include "dominios/Telefone.h"
+#include "Capacidade.h"
+#include "Cartao.h"
+#include "Codigo.h"
+#include "Dinheiro.h"
+#include "Email.h"
+#include "Endereco.h"
+#include "Nome.h"
+#include "Numero.h"
+#include "Ramal.h"
+#include "Senha.h"
+#include "Telefone.h"
 
-#include "../validadores_principais/ValidarInt.h"
-#include "../validadores_principais/ValidarString.h"
+#include "sistema/validadores_principais/ValidarInt.h"
+#include "sistema/validadores_principais/ValidarString.h"
 
 #include <iostream>
 #include <ostream>

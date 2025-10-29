@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDINHEIRO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDINHEIRO_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Dinheiro.h"
+#include "TestsBase.h"
+#include "Dinheiro.h"
 #include <vector>
 
 class TestsDinheiro : public TestsBase

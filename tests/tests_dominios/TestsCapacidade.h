@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCAPACIDADE_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCAPACIDADE_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Capacidade.h"
+#include "TestsBase.h"
+#include "Capacidade.h"
 #include <vector>
 
 class TestsCapacidade : public TestsBase

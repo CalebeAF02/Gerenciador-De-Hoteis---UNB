@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNUMERO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNUMERO_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Numero.h"
+#include "TestsBase.h"
+#include "Numero.h"
 #include <vector>
 #include <string>
 

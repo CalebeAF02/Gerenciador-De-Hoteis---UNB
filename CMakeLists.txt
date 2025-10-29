@@ -8,25 +8,18 @@ include_directories(
         #includes
         include
 
-        include/dominios
-
-        include/entidades
-
         include/sistema
+        include/sistema/apresentacao
+        include/sistema/dominios
+        include/sistema/entidades
         include/sistema/fabricas
         include/sistema/gerenciaveis
         include/sistema/interfaces
         include/sistema/persistencias
         include/sistema/servicos
-        include/sistema/Modelagem_E_LogicaDeServico/apresentacao
-        include/sistema/Modelagem_E_LogicaDeServico/interfaces
-        include/sistema/Modelagem_E_LogicaDeServico/servicos_-_
+        include/sistema/utilitarios
+        include/sistema/validadorPrincipais
 
-        include/utilitarios
-
-        include/validadorPrincipais
-
-        #outros
         libs
         libs/sqlite
 
@@ -35,90 +28,91 @@ include_directories(
         tests/smoke_testes
         tests/tests_dominios
         tests/tests_entidades
+
+        confiruracoes
+        docs
+        imagens
+
 )
 
 # Fontes principais
 add_executable(gerenciador_hotel_unb
         src/main.cpp
 
-        # Entidades
-        src/entidades/Gerente.cpp
-        src/entidades/Hospede.cpp
-        src/entidades/Hotel.cpp
-        src/entidades/Pessoa.cpp
-        src/entidades/Quarto.cpp
-        src/entidades/Reserva.cpp
-
-        # Dominios
-        src/dominios/Nome.cpp
-        src/dominios/Email.cpp
-        src/dominios/Ramal.cpp
-        src/dominios/Senha.cpp
-        src/dominios/Endereco.cpp
-        src/dominios/Cartao.cpp
-        src/dominios/Telefone.cpp
-        src/dominios/Codigo.cpp
-        src/dominios/Numero.cpp
-        src/dominios/Capacidade.cpp
-        src/dominios/Dinheiro.cpp
-
-
-        # ValidadoresPrincipais
-        src/validadores_principais/ValidarInt.cpp
-        src/validadores_principais/ValidarString.cpp
-
         #Sistamas
         src/sistema/Sistema.cpp
 
+        # Apresentacao
+        src/sistema/apresentacao/ApresentacaoAutenticavel.cpp
+
+        # Dominios
+        src/sistema/dominios/Nome.cpp
+        src/sistema/dominios/Email.cpp
+        src/sistema/dominios/Ramal.cpp
+        src/sistema/dominios/Senha.cpp
+        src/sistema/dominios/Endereco.cpp
+        src/sistema/dominios/Cartao.cpp
+        src/sistema/dominios/Telefone.cpp
+        src/sistema/dominios/Codigo.cpp
+        src/sistema/dominios/Numero.cpp
+        src/sistema/dominios/Capacidade.cpp
+        src/sistema/dominios/Dinheiro.cpp
+
+        # Entidades
+        src/sistema/entidades/Gerente.cpp
+        src/sistema/entidades/Hospede.cpp
+        src/sistema/entidades/Hotel.cpp
+        src/sistema/entidades/Pessoa.cpp
+        src/sistema/entidades/Quarto.cpp
+        src/sistema/entidades/Reserva.cpp
+
+        # Fabricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
-
+        # Gerenciaveis
         src/sistema/gerenciaveis/GerenteGerenciavel.cpp
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
+        # interfaces
         src/sistema/interfaces/InterfaceGerenciavel.cpp
         src/sistema/interfaces/InterfaceAutenticavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
+        src/sistema/interfaces/InterfaceServicoAutenticacao.cpp
 
+        # Persistencias
         src/sistema/persistencias/PersistenciaGerente.cpp
         src/sistema/persistencias/PersistenciaHospede.cpp
 
+        # Servicos
         src/sistema/servicos/ServicosGerente.cpp
         src/sistema/servicos/ServicosHospede.cpp
         src/sistema/servicos/ServicosHotel.cpp
         src/sistema/servicos/ServicosQuarto.cpp
         src/sistema/servicos/ServicosReserva.cpp
+        src/sistema/servicos/ServicosAutenticacao.cpp
+
+        #utilitarios
+        src/sistema/utilitarios/Data.cpp
+        src/sistema/utilitarios/TextoApresentacao.cpp
+        src/sistema/utilitarios/LinhaTSV.cpp
+        src/sistema/utilitarios/Menu.cpp
+        src/sistema/utilitarios/MenuItem.cpp
+        src/sistema/utilitarios/SolicitacaoHospedagem.cpp
+        src/sistema/utilitarios/PersistenciaSolicitacaoHospedagem.cpp
+        src/sistema/utilitarios/GeradorCodigo.cpp
+
+        # ValidadoresPrincipais
+        src/sistema/validadores_principais/ValidarInt.cpp
+        src/sistema/validadores_principais/ValidarString.cpp
 
         # libs
         libs/sqlite/sqlite3.c
 
-        # Modelagem_E_LogicaServico
-        src/sistema/Modelagem_E_LogicaDeServico/apresentacao/ApresentacaoAutenticavel.cpp
-        src/sistema/Modelagem_E_LogicaDeServico/interfaces/InterfaceServicoAutenticacao.cpp
-        src/sistema/Modelagem_E_LogicaDeServico/servicos_-_/ServicoAutenticacao.cpp
-
-        #utilitarios
-        src/utilitarios/Data.cpp
-        src/utilitarios/TextoApresentacao.cpp
-        src/utilitarios/LinhaTSV.cpp
-        src/utilitarios/Menu.cpp
-        src/utilitarios/MenuItem.cpp
-        src/utilitarios/SolicitacaoHospedagem.cpp
-        src/utilitarios/PersistenciaSolicitacaoHospedagem.cpp
-        src/utilitarios/GeradorCodigo.cpp
-
         # Tests
-        tests/smoke_testes/Smoke_Tests.cpp
         tests/interface_tests/InterfaceDeTeste.cpp
         tests/interface_tests/TestsModulares.cpp
 
-        # Tests_Entidades
-        tests/tests_entidades/TestsGerente.cpp
-        tests/tests_entidades/TestsHospede.cpp
-        tests/tests_entidades/TestsHotel.cpp
-        tests/tests_entidades/TestsQuarto.cpp
-        tests/tests_entidades/TestsReserva.cpp
-        tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
+        tests/smoke_testes/Smoke_Tests.cpp
 
         # Tests_Dominios
         tests/tests_dominios/TestsCapacidade.cpp
@@ -134,4 +128,11 @@ add_executable(gerenciador_hotel_unb
         tests/tests_dominios/TestsTelefone.cpp
         tests/tests_dominios/TestsData.cpp
 
+        # Tests_Entidades
+        tests/tests_entidades/TestsGerente.cpp
+        tests/tests_entidades/TestsHospede.cpp
+        tests/tests_entidades/TestsHotel.cpp
+        tests/tests_entidades/TestsQuarto.cpp
+        tests/tests_entidades/TestsReserva.cpp
+        tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
 )

@@ -8,7 +8,7 @@
 #include "Pessoa.h"
 #include "Gerente.h"
 
-#include "../../utilitarios/TextoApresentacao.h"
+#include "../utilitarios/TextoApresentacao.h"
 #include "InterfaceFabricaGerenciavel.h"
 #include "FabricaGerenciavel.h"
 

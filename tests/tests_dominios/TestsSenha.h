@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSSENHA_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSSENHA_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Senha.h"
+#include "TestsBase.h"
+#include "Senha.h"
 #include <vector>
 #include <string>
 

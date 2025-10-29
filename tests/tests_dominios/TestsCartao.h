@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCARTAO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCARTAO_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Cartao.h"
+#include "TestsBase.h"
+#include "Cartao.h"
 #include <vector>
 #include <string>
 

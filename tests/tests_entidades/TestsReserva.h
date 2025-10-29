@@ -5,11 +5,11 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRESERVAS_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRESERVAS_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../utilitarios/Data.h"
-#include "../../dominios/Dinheiro.h"
-#include "../../dominios/Codigo.h"
-#include "../../entidades/Reserva.h"
+#include "TestsBase.h"
+#include "Data.h"
+#include "Dinheiro.h"
+#include "Codigo.h"
+#include "Reserva.h"
 
 class TestsReserva : public TestsBase
 {

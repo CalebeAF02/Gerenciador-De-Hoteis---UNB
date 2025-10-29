@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSENDERECO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSENDERECO_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Endereco.h"
+#include "TestsBase.h"
+#include "Endereco.h"
 #include <vector>
 #include <string>
 

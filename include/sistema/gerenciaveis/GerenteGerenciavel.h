@@ -7,7 +7,7 @@
 
 #include "InterfaceGerenciavel.h"
 #include "PersistenciaGerente.h"
-#include "../../utilitarios/TextoApresentacao.h"
+#include "../utilitarios/TextoApresentacao.h"
 
 class GerenteGerenciavel : public InterfaceGerenciavel
 {

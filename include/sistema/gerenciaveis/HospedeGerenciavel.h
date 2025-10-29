@@ -7,8 +7,8 @@
 
 #include "InterfaceGerenciavel.h"
 #include "PersistenciaHospede.h"
-#include "utilitarios/PersistenciaSolicitacaoHospedagem.h"
-#include "../../utilitarios/TextoApresentacao.h"
+#include "PersistenciaSolicitacaoHospedagem.h"
+#include "TextoApresentacao.h"
 
 class HospedeGerenciavel : public InterfaceGerenciavel
 {

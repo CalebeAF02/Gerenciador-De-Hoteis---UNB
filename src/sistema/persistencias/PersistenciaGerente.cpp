@@ -13,17 +13,31 @@ bool PersistenciaGerente::adicionarAoBD(Gerente& gerente)
     if (!sistema.abrindoConexao())
         return false;
 
-    sqlite3* db = sistema.getConexao(); // metodo que retorna o ponteiro db
+    sqlite3* db = sistema.getConexao(); // método que retorna o ponteiro db
 
     std::string sql = "INSERT INTO gerentes (nome, email, ramal, senha) VALUES ('" +
         gerente.getNome() + "', '" + gerente.getEmail() + "', '" + gerente.getRamal() + "', '" + gerente.getSenha() +
         "');";
+
     char* mensagemErro = nullptr;
 
     int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
     if (rc != SQLITE_OK)
     {
-        std::cerr << "Erro ao inserir gerente: " << mensagemErro << std::endl;
+        std::string erroStr = mensagemErro ? mensagemErro : "Erro desconhecido";
+
+        // Verifica se o erro é de violação de UNIQUE no campo email
+        if (erroStr.find("UNIQUE constraint failed: gerentes.email") != std::string::npos)
+        {
+            // não esta apresentando a menssagem
+
+            std::cout << "\nErro: Este email ja esta cadastrado no sistema!" << std::endl;
+        }
+        else
+        {
+            std::cout << "\nErro ao inserir gerente: " << erroStr << std::endl<<endl;
+        }
+
         sqlite3_free(mensagemErro);
         sqlite3_close(db);
         return false;

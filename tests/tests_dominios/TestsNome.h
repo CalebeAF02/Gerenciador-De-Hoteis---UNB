@@ -5,8 +5,8 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNOME_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNOME_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Nome.h"
+#include "TestsBase.h"
+#include "Nome.h"
 
 class TestsNome : public TestsBase
 {

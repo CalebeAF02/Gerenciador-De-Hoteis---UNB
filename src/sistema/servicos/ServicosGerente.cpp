@@ -7,7 +7,7 @@
 #include "FabricaGerenciavel.h"
 #include "GerenteGerenciavel.h"
 #include "HospedeGerenciavel.h"
-#include "../../../include/utilitarios/Menu.h"
+#include "Menu.h"
 #include "ServicosHospede.h"
 #include "ServicosHotel.h"
 #include "ServicosQuarto.h"

@@ -6,11 +6,11 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSHOTEIS_H
 
 #include "../interface_tests/TestsBase.h"
-#include "../../dominios/Nome.h"
-#include "../../dominios/Endereco.h"
-#include "../../dominios/Telefone.h"
-#include "../../dominios/Codigo.h"
-#include "../../entidades/Hotel.h"
+#include "Nome.h"
+#include "Endereco.h"
+#include "Telefone.h"
+#include "Codigo.h"
+#include "Hotel.h"
 
 class TestsHotel : public TestsBase
 {

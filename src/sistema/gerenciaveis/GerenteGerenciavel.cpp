@@ -88,19 +88,21 @@ void GerenteGerenciavel::criar()
                     cout << "Gerente Cadastrado!\n";
                     // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
                 }
-                else
-                {
+                else {
                     cout << "Erro ao cadastrar gerente no banco!\n";
+                    cout << "Retornando ao menu de acesso...\n";
+                    break; // ← Aqui você interrompe o loop e volta ao menu anterior
                 }
-            }
-            else
-            {
-                cout << "Ops* Gerente nao cadastrado!\n";
+            } else {
+                cout << "Ops* Gerente não cadastrado!\n";
+                cout << "Retornando ao menu de acesso...\n";
+                break; // ← Também retorna se houver erro de validação
+
             }
             delete gerente; // Liberar o ponteiro da memoria.
         }
-    };
-}
+    }
+};
 
 void GerenteGerenciavel::ler()
 {

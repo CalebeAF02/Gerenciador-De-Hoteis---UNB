@@ -5,12 +5,12 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSQUARTOS_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSQUARTOS_H
 
-#include "../interface_tests/TestsBase.h"
-#include "../../dominios/Numero.h"
-#include "../../dominios/Capacidade.h"
-#include "../../dominios/Dinheiro.h"
-#include "../../dominios/Ramal.h"
-#include "../../entidades/Quarto.h"
+#include "TestsBase.h"
+#include "Numero.h"
+#include "Capacidade.h"
+#include "Dinheiro.h"
+#include "Ramal.h"
+#include "Quarto.h"
 
 class TestsQuarto : public TestsBase
 {

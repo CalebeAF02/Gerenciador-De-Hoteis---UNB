@@ -5,7 +5,7 @@
 #include <string>
 #include "sqlite/sqlite3.h"
 
-#include "../include/utilitarios/TextoApresentacao.h"
+#include "TextoApresentacao.h"
 #include "interface_tests/TestsModulares.h"
 
 #include "interface_tests/InterfaceDeTeste.h"
