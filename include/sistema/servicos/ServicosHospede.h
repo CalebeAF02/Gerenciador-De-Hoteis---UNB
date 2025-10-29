@@ -8,7 +8,7 @@
 
 #include "Hospede.h"
 
-#include "../../utilitarios/TextoApresentacao.h"
+#include "../utilitarios/TextoApresentacao.h"
 
 #include "InterfaceFabricaGerenciavel.h"
 #include "FabricaGerenciavel.h"
@@ -30,12 +30,12 @@ public:
     // Construtor dos ServicosHospede
     ServicosHospede() = default;
 
-    // Solicitação de Hospedagem para Gerente
+    // Solicitacao de Hospedagem para Gerente
     void opcoesDeHospedagem();
     void solicitandoHospedagem();
     void statusDaSolicitandoHospedagem();
 
-    // Confirmar que é um Hospede
+    // Confirmar que e um Hospede
     void acessandoHospede();
 
     // Acessando servicos

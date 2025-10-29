@@ -45,7 +45,11 @@ public:
     void criarTabelaSolicitacoesHospedagem(sqlite3* db);
 
     bool getExecutandoSistema();
-    sqlite3* getConexao() const { return db; }
+
+    sqlite3* getConexao() const
+    {
+        return db;
+    }
 
     // Metodo Para Fazer um login pre-programado)
     bool fazerLoginSistemaGerente(const string& emailLoginProgramado, const string& senhaLoginProgramada)

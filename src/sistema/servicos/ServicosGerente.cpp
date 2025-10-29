@@ -6,7 +6,8 @@
 
 #include "FabricaGerenciavel.h"
 #include "GerenteGerenciavel.h"
-#include "../../../include/utilitarios/Menu.h"
+#include "HospedeGerenciavel.h"
+#include "Menu.h"
 #include "ServicosHospede.h"
 #include "ServicosHotel.h"
 #include "ServicosQuarto.h"
@@ -53,6 +54,23 @@ void ServicosGerente::acessandoGerente()
 
 bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
 {
+    PersistenciaGerente dao;
+    Gerente* gerenteLogado = dao.autenticarGerentePeloBD(emailCopia, senhaCopia);
+
+    if (gerenteLogado != nullptr)
+    {
+        this->logGerente = gerenteLogado;
+        this->gerenteEstaLogado = true;
+        std::cout << "Login realizado com sucesso!\n";
+        return true;
+    }
+    else
+    {
+        std::cout << "Erro: Usuario nao encontrado ou senha incorreta!\n";
+        return false;
+    }
+
+    /*
     //_________________________ABRE CONEXÂO_______________________________
     sqlite3* db;
     char* mensagemErro = nullptr;
@@ -110,6 +128,7 @@ bool ServicosGerente::fazerLoginGerente(string emailCopia, string senhaCopia)
     sqlite3_close(db);
     //_________________________------------_______________________________
     return loginOK;
+    */
 };
 
 void ServicosGerente::logandoGerente()
@@ -171,6 +190,7 @@ void ServicosGerente::exibirCentralDeServicos()
     const int OPCAO_GERENCIE_HOTEIS = menu.adcionarItens("Gerencie Hoteis");
     const int OPCAO_GERENCIE_QUARTOS = menu.adcionarItens("Gerencie Quartos");
     const int OPCAO_GERENCIE_RESERVAS = menu.adcionarItens("Gerencie Reservas");
+    const int OPCAO_AVALIAR_SOLICITACOES = menu.adcionarItens("Avaliar Solicitacoes de Hospedagem");
 
     while (this->getGerenteEstaLogado())
     {
@@ -192,15 +212,23 @@ void ServicosGerente::exibirCentralDeServicos()
         }
         else if (opcao == OPCAO_GERENCIE_HOTEIS)
         {
-            //ServicosHotel::exibirCentralDeServicosHotel();
+            ServicosHotel servicosHotel;
+            servicosHotel.exibirCentralDeServicosHotel();
         }
         else if (opcao == OPCAO_GERENCIE_QUARTOS)
         {
-            //ServicosQuarto::exibirCentralDeServicosQuartos();
+            ServicosQuarto servicosQuarto;
+            servicosQuarto.exibirCentralDeServicosQuartos();
         }
         else if (opcao == OPCAO_GERENCIE_RESERVAS)
         {
-            //ServicosReserva::exibirCentralDeServicosReservas();
+            ServicosReserva servicosReserva;
+            servicosReserva.exibirCentralDeServicosReservas();
+        }
+        else if (opcao == OPCAO_AVALIAR_SOLICITACOES)
+        {
+            HospedeGerenciavel crud;
+            crud.avaliarSolicitacoes();
         }
         else
         {
@@ -222,11 +250,12 @@ void ServicosGerente::exibirCentralDeServicosGerentes()
         }
     };
 }
+
 void ServicosGerente::excluirMeuCadastro()
 {
     if (!gerenteEstaLogado || logGerente == nullptr)
     {
-        cout << "Você precisa estar logado para excluir seu cadastro.\n";
+        cout << "Voce precisa estar logado para excluir seu cadastro.\n";
         return;
     }
     PersistenciaGerente persistencia;
@@ -240,6 +269,6 @@ void ServicosGerente::excluirMeuCadastro()
     }
     else
     {
-        cout << "Não foi possível excluir seu cadastro.\n";
+        cout << "Nao foi possivel excluir seu cadastro.\n";
     }
 }

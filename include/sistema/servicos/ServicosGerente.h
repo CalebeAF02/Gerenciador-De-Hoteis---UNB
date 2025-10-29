@@ -8,7 +8,7 @@
 #include "Pessoa.h"
 #include "Gerente.h"
 
-#include "../../utilitarios/TextoApresentacao.h"
+#include "../utilitarios/TextoApresentacao.h"
 #include "InterfaceFabricaGerenciavel.h"
 #include "FabricaGerenciavel.h"
 
@@ -27,7 +27,7 @@ public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
 
-    // Confirmar que é um gerente
+    // Confirmar que e um gerente
     void acessandoGerente();
 
     // Acessando servicos

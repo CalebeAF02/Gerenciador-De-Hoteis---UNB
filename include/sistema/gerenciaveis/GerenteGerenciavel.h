@@ -7,7 +7,7 @@
 
 #include "InterfaceGerenciavel.h"
 #include "PersistenciaGerente.h"
-#include "../../utilitarios/TextoApresentacao.h"
+#include "../utilitarios/TextoApresentacao.h"
 
 class GerenteGerenciavel : public InterfaceGerenciavel
 {
@@ -19,6 +19,11 @@ public:
     void ler() override;
     void atualizar() override;
     bool remover() override;
+
+    void setGerenteLogado(Gerente* gerente)
+    {
+        this->gerenteLogado = gerente;
+    }
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_GERENTEGERENCIAVEL_H

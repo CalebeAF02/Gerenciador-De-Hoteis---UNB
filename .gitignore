@@ -1,4 +1,4 @@
-# Ignorar arquivos de compilação
+# Ignorar arquivos de compilacao
 *.o
 *.obj
 *.exe
@@ -10,11 +10,11 @@ cmake-build-debug/
 dist/
 
 
-# Ignorar arquivos temporários
+# Ignorar arquivos temporarios
 *.log
 *.tmp
 
-# Ignorar configurações do CLion
+# Ignorar configuracoes do CLion
 .idea/
 *.iml
 

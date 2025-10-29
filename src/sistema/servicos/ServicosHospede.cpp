@@ -9,7 +9,7 @@
 #include "Menu.h"
 #include "PersistenciaHospede.h"
 #include "sqlite3.h"
-
+#include "GeradorCodigo.h"
 
 void ServicosHospede::acessandoHospede()
 {
@@ -31,17 +31,14 @@ void ServicosHospede::acessandoHospede()
         }
         else if (opcao == OPCAO_HOSPEDAGENS)
         {
-            cout << "\nEntrando em Opcoes de Hospedagem\n";
             opcoesDeHospedagem();
         }
         else if (opcao == OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM)
         {
-            cout << "Crie uma Solicitacao de Hospedagem" << endl;
             solicitandoHospedagem();
         }
         else if (opcao == OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM)
         {
-            cout << "Status da Solicitacao de Hospedagem" << endl;
             statusDaSolicitandoHospedagem();
         }
         else
@@ -175,15 +172,94 @@ void ServicosHospede::exibirCentralDeServicosHospedes()
 
 void ServicosHospede::opcoesDeHospedagem()
 {
+    TextoApresentacao::MostrarTituloEmCaixa("Opcoes de Hospedagem");
+    TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
     return;
 }
 
 void ServicosHospede::solicitandoHospedagem()
 {
-    return;
+    TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
+
+    if (!logHospede)
+    {
+        TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
+        return;
+    }
+
+    std::string codigoSolicitacao = GeradorCodigo::gerar("SOL");
+    std::string emailHospede = logHospede->getEmail();
+
+    TextoApresentacao::MostrarTituloPergunta("Codigo do hotel desejado:");
+    std::string idHotel = TextoApresentacao::LerLinha();
+
+    TextoApresentacao::MostrarTituloPergunta("Codigo do quarto desejado:");
+    std::string idQuarto = TextoApresentacao::LerLinha();
+
+    TextoApresentacao::MostrarTituloPergunta("Data de chegada (dd/mm/aaaa):");
+    std::string chegadaStr = TextoApresentacao::LerLinha();
+
+    TextoApresentacao::MostrarTituloPergunta("Data de partida (dd/mm/aaaa):");
+    std::string partidaStr = TextoApresentacao::LerLinha();
+
+    try
+    {
+        Data chegada(chegadaStr);
+        Data partida(partidaStr);
+
+        SolicitacaoHospedagem solicitacao(
+            Codigo(codigoSolicitacao),
+            emailHospede,
+            idHotel,
+            idQuarto,
+            chegada,
+            partida,
+            0 // pendente
+        );
+
+        PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
+        TextoApresentacao::MostrarTituloRetorno("Solicitacao registrada com sucesso!");
+    }
+    catch (std::exception& e)
+    {
+        TextoApresentacao::MostrarTituloRetorno("Erro ao criar solicitacao: " + std::string(e.what()));
+    }
 }
 
 void ServicosHospede::statusDaSolicitandoHospedagem()
 {
-    return;
+    TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
+
+    if (!logHospede)
+    {
+        TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
+        return;
+    }
+
+    std::string email = logHospede->getEmail();
+    auto lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
+
+    if (lista.empty())
+    {
+        TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao encontrada.");
+        return;
+    }
+
+    for (const auto& s : lista)
+    {
+        std::string statusStr = (s.getStatus() == 0) ? "Pendente" : (s.getStatus() == 1) ? "Aprovada" : "Recusada";
+
+        std::cout << "----------------------------------------\n";
+        std::cout << "Codigo: " << s.getCodigo().getValor() << "\n";
+        std::cout << "Hotel: " << s.getHotelId() << "\n";
+        std::cout << "Quarto: " << s.getQuartoId() << "\n";
+        std::cout << "Chegada: " << s.getChegada().toString() << "\n";
+        std::cout << "Partida: " << s.getPartida().toString() << "\n";
+        std::cout << "Status: " << statusStr;
+
+        if (s.getStatus() == 2)
+            std::cout << " | Motivo: " << s.getMotivoRecusa();
+
+        std::cout << "\n----------------------------------------\n";
+    }
 }
