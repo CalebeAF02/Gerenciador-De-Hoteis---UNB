@@ -1,3 +1,29 @@
+<<<<<<< HEAD
 .idea/
 cmake-build-debug/
 	
+=======
+# Ignorar arquivos de compilacao
+*.o
+*.obj
+*.exe
+*.out
+
+# Ignorar pastas de build
+build/
+cmake-build-debug/
+dist/
+
+
+# Ignorar arquivos temporarios
+*.log
+*.tmp
+
+# Ignorar configuracoes do CLion
+.idea/
+*.iml
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+>>>>>>> antigo/main
