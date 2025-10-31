@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "sqlite/sqlite3.h"
+#include "sqlite3.h"
 
 #include "TextoApresentacao.h"
 #include "interface_tests/TestsModulares.h"
