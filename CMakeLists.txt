@@ -106,7 +106,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/validadores_principais/ValidarString.cpp
 
         # libs
-        libs/sqlite/sqlite3.c
+        libs/sqlite/sqlite3.cpp
 
         # Tests
         tests/interface_tests/InterfaceDeTeste.cpp
