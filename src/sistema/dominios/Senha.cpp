@@ -1,78 +1,43 @@
-//
-// Created by caleb on 01/10/2025.
-//
-
 #include "Senha.h"
+#include <stdexcept>
+#include <cctype>
 
-
-void Senha::validar(const string senha)
-{
-    // Deve ser editado ainda
-    // ! " # $ % & ?
-    int caixa_alta = 0;
-    int caixa_baixa = 0;
-    int caracter_especial = 0;
-    int num = 0;
-
-    int cont_letra = 0;
-    int cont_num = 0;
-
-    int Totlaletras = 0;
-
-    int senhaTamanho = senha.length();
-    if (senhaTamanho != 5)
-    {
-        throw invalid_argument("Erro: Senha com tamanho invalido");
+void Senha::validar(const std::string senha) {
+    if (senha.length() != 5) {
+        throw std::invalid_argument("Erro: Senha com tamanho invalido");
     }
-    for (int i = 0; i < senhaTamanho; i++)
-    {
-        if (isalpha(senha[i]))
-        {
-            if (islower(senha[i]))
-            {
-                Totlaletras += 1;
-                caixa_baixa += 1;
-                cont_letra += 1;
-                if (cont_letra > 1)
-                {
-                    throw invalid_argument("Erro: + de 1 caracter caixa baixa");
-                }
+
+    bool tem_maiuscula = false;
+    bool tem_minuscula = false;
+    bool tem_digito = false;
+    bool tem_especial = false;
+
+    for (size_t i = 0; i < senha.length(); ++i) {
+        char atual = senha[i];
+        char anterior = (i > 0) ? senha[i - 1] : '\0';
+
+        if (std::isalpha(atual)) {
+            if (std::islower(atual)) tem_minuscula = true;
+            if (std::isupper(atual)) tem_maiuscula = true;
+
+            if (std::isalpha(anterior)) {
+                throw std::invalid_argument("Erro: letra seguida por letra");
             }
-            else if (isupper(senha[i]))
-            {
-                Totlaletras += 1;
-                caixa_alta += 1;
-                cont_letra += 1;
-                if (cont_letra > 1)
-                {
-                    throw invalid_argument("Erro: + de 1 caracter caixa alta");
-                }
+        } else if (std::isdigit(atual)) {
+            tem_digito = true;
+
+            if (std::isdigit(anterior)) {
+                throw std::invalid_argument("Erro: digito seguido por digito");
             }
-        }
-        else if (isdigit(senha[i]))
-        {
-            cont_letra = 0;
-            num += 1;
-            cont_num += 1;
-            if (cont_num > 1)
-            {
-                throw invalid_argument("Erro: Senha com numeros 2 seguidos");
-            }
-        }
-        else if (senha[i] == '!' || senha[i] == '"' || senha[i] == '#' || senha[i] == '$' || senha[i] == '%' || senha[
-            i] == '&' || senha[i] == '?')
-        {
-            cont_letra = 0;
-            cont_num = 0;
-            caracter_especial += 1;
-        }
-        else
-        {
-            throw invalid_argument("Erro: Caracter invalido");
+        } else if (atual == '\'' || atual == '!' || atual == '?' || atual == '$' ||
+                   atual == '%' || atual == '&' || atual == '*' || atual == '.') {
+            tem_especial = true;
+        } else {
+            throw std::invalid_argument("Erro: caracter invalido");
         }
     }
-    if (caixa_baixa < 1 || caixa_alta < 1 || num < 1 || caracter_especial < 1)
-    {
-        throw invalid_argument("Erro: Senha invalida");
+
+    if (!tem_maiuscula || !tem_minuscula || !tem_digito || !tem_especial) {
+        throw std::invalid_argument("Erro: senha deve conter letra maiúscula, minúscula, número e especial");
     }
-};
+}

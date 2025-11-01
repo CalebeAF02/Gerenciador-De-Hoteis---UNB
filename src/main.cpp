@@ -43,6 +43,7 @@ void executarSmokeTests() {
 void executarSistema() {
     BancoDeDados banco;
     banco.criandoBancoDeDados();
+
     Sistema sistema;
     sistema.menuSistema();
 }
@@ -86,6 +87,7 @@ int main() {
                 sistema.menuSistema();
             };
             */
+            break;
         }
         case MODO_TESTES: {
             executarTestsModulares();

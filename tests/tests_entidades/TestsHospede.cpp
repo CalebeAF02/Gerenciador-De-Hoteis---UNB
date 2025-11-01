@@ -1,11 +1,7 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsHospede.h"
+#include <iostream>
 
-void TestsHospede::executar()
-{
+void TestsHospede::executar() {
     testarNome();
     testarNomeInvalido();
     testarEmail();
@@ -19,158 +15,129 @@ void TestsHospede::executar()
     testarGetters();
 }
 
-void TestsHospede::testarNome()
-{
-    try
-    {
+void TestsHospede::testarNome() {
+    apresentacaoTeste("Maria Clara");
+    try {
         Hospede h;
         h.setNome(Nome("Maria Clara"));
-        checar(true, "Nome valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Nome valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarNomeInvalido()
-{
-    try
-    {
+void TestsHospede::testarNomeInvalido() {
+    apresentacaoTeste("Maria@Clara");
+    try {
         Hospede h;
         h.setNome(Nome("Maria@Clara"));
-        checar(false, "Nome invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Nome invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarEmail()
-{
-    try
-    {
+void TestsHospede::testarEmail() {
+    apresentacaoTeste("maria@exemplo.com");
+    try {
         Hospede h;
         h.setEmail(Email("maria@exemplo.com"));
-        checar(true, "Email valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Email valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarEmailInvalido()
-{
-    try
-    {
+void TestsHospede::testarEmailInvalido() {
+    apresentacaoTeste("maria@.com");
+    try {
         Hospede h;
         h.setEmail(Email("maria@.com"));
-        checar(false, "Email invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Email invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarEndereco()
-{
-    try
-    {
+void TestsHospede::testarEndereco() {
+    apresentacaoTeste("Rua Central,123");
+    try {
         Hospede h;
-        h.setEndereco(Endereco("Rua das Flores, 123"));
-        checar(true, "Endereco valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Endereco valido rejeitado");
+        h.setEndereco(Endereco("Rua Central,123")); // ✅ válido
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarEnderecoInvalido()
-{
-    try
-    {
+void TestsHospede::testarEnderecoInvalido() {
+    apresentacaoTeste("rua central @ 123");
+    try {
         Hospede h;
-        h.setEndereco(Endereco("Rua das Flores @ 123"));
-        checar(false, "Endereco invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Endereco invalido rejeitado");
+        h.setEndereco(Endereco("rua central @ 123")); // ❌ inválido
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarCartao()
-{
-    try
-    {
+void TestsHospede::testarCartao() {
+    apresentacaoTeste("4111111111111111");
+    try {
         Hospede h;
-        h.setCartao(Cartao("4111111111111111")); // Exemplo valido
-        checar(true, "Cartao valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Cartao valido rejeitado");
-    }
-}
-
-void TestsHospede::testarCartaoInvalido()
-{
-    try
-    {
-        Hospede h;
-        h.setCartao(Cartao("4111-1111-1111-1111")); // simbolo invalido
-        checar(false, "Cartao invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Cartao invalido rejeitado");
-    }
-}
-
-void TestsHospede::testarConstrucaoCompleta()
-{
-    try
-    {
-        Hospede h;
-        h.setNome(Nome("Maria Clara"));
-        h.setEmail(Email("maria@exemplo.com"));
-        h.setEndereco(Endereco("Rua das Flores, 123"));
         h.setCartao(Cartao("4111111111111111"));
-        checar(true, "Hospede construido com todos os dados validos");
-    }
-    catch (...)
-    {
-        checar(false, "Falha ao construir hospede completo");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarConstrucaoInvalida()
-{
-    try
-    {
+void TestsHospede::testarCartaoInvalido() {
+    apresentacaoTeste("4111-1111-1111-1111");
+    try {
+        Hospede h;
+        h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
+    }
+}
+
+void TestsHospede::testarConstrucaoCompleta() {
+    apresentacaoTeste("Hospede completo valido");
+    try {
         Hospede h;
         h.setNome(Nome("Maria Clara"));
         h.setEmail(Email("maria@exemplo.com"));
-        h.setEndereco(Endereco("Rua das Flores, 123"));
-        h.setCartao(Cartao("4111-1111-1111-1111")); // invalido
-        checar(false, "Hospede construido com cartao invalido");
-    }
-    catch (...)
-    {
-        checar(true, "Falha esperada ao construir hospede com dado invalido");
+        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ válido
+        h.setCartao(Cartao("4111111111111111"));
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHospede::testarGetters()
-{
+void TestsHospede::testarConstrucaoInvalida() {
+    apresentacaoTeste("Hospede com cartao invalido");
+    try {
+        Hospede h;
+        h.setNome(Nome("Maria Clara"));
+        h.setEmail(Email("maria@exemplo.com"));
+        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ corrigido
+        h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
+    }
+}
+
+void TestsHospede::testarGetters() {
+    apresentacaoTeste("Testando getters de Hospede");
+
     Hospede h;
     Nome nome("Maria Clara");
     Email email("maria@exemplo.com");
-    Endereco endereco("Rua das Flores, 123");
+    Endereco endereco("Rua Central,123"); // ✅ corrigido
     Cartao cartao("4111111111111111");
 
     h.setNome(nome);
@@ -178,8 +145,8 @@ void TestsHospede::testarGetters()
     h.setEndereco(endereco);
     h.setCartao(cartao);
 
-    checar(h.getNome() == nome.getValor(), "Getter de nome funcionando");
-    checar(h.getEmail() == email.getValor(), "Getter de email funcionando");
-    checar(h.getEndereco() == endereco.getValor(), "Getter de endereco funcionando");
-    checar(h.getCartao() == cartao.getValor(), "Getter de cartao funcionando");
+    checaResultado(DEVE_DAR_CERTO, h.getNome() == nome.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getEmail() == email.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getEndereco() == endereco.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getCartao() == cartao.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
 }

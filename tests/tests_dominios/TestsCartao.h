@@ -5,23 +5,29 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCARTAO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCARTAO_H
 
-#include "TestsBase.h"
 #include "Cartao.h"
 #include <vector>
 #include <string>
 
-class TestsCartao : public TestsBase
-{
+#include "InterfaceDeTeste.h"
+
+class TestsCartao : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsCartao"; }
+
+    string nomeDoTeste() const override { return "TestsCartao"; }
 
 private:
     void testarCartoesValidos();
+
     void testarCartoesComMenosDigitos();
+
     void testarCartoesComMaisDigitos();
+
     void testarCartoesComLetras();
+
     void testarCartoesComSimbolos();
+
     void testarCartoesComEspacos();
 };
 

@@ -54,19 +54,19 @@ void ControladorInterfaceHospede::solicitandoHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
     TextoApresentacao::MostrarTituloPergunta("Informe o Email");
-    std::string email = TextoApresentacao::LerLinha();
+    string email = TextoApresentacao::LerLinha();
 
     TextoApresentacao::MostrarTituloPergunta("Codigo do hotel desejado:");
-    std::string idHotel = TextoApresentacao::LerLinha();
+    string idHotel = TextoApresentacao::LerLinha();
 
     TextoApresentacao::MostrarTituloPergunta("Codigo do quarto desejado:");
-    std::string idQuarto = TextoApresentacao::LerLinha();
+    string idQuarto = TextoApresentacao::LerLinha();
 
     TextoApresentacao::MostrarTituloPergunta("Data de chegada (dd/mm/aaaa):");
-    std::string chegadaStr = TextoApresentacao::LerLinha();
+    string chegadaStr = TextoApresentacao::LerLinha();
 
     TextoApresentacao::MostrarTituloPergunta("Data de partida (dd/mm/aaaa):");
-    std::string partidaStr = TextoApresentacao::LerLinha();
+    string partidaStr = TextoApresentacao::LerLinha();
 
     cout << idHotel.length() << " e " << idQuarto.length();
     try {
@@ -86,8 +86,8 @@ void ControladorInterfaceHospede::solicitandoHospedagem() {
 
         PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
         TextoApresentacao::MostrarTituloRetorno("Solicitacao registrada com sucesso!");
-    } catch (std::exception &e) {
-        TextoApresentacao::MostrarTituloRetorno("Erro ao criar solicitacao: " + std::string(e.what()));
+    } catch (exception &e) {
+        TextoApresentacao::MostrarTituloRetorno("Erro ao criar solicitacao: " + string(e.what()));
     }
 }
 
@@ -95,7 +95,7 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
     TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
 
     TextoApresentacao::MostrarTituloPergunta("Informe o Email");
-    std::string email = TextoApresentacao::LerLinha();
+    string email = TextoApresentacao::LerLinha();
 
     const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
@@ -105,23 +105,23 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
     }
 
     for (const SolicitacaoHospedagem &s: lista) {
-        std::string statusStr = (s.getStatus() == StatusSolicitacaoHospedagem::PENDENTE)
-                                    ? "Pendente"
-                                    : (s.getStatus() == StatusSolicitacaoHospedagem::APROVADO)
-                                          ? "Aprovada"
-                                          : "Recusada";
+        string statusStr = (s.getStatus() == StatusSolicitacaoHospedagem::PENDENTE)
+                               ? "Pendente"
+                               : (s.getStatus() == StatusSolicitacaoHospedagem::APROVADO)
+                                     ? "Aprovada"
+                                     : "Recusada";
 
-        std::cout << "----------------------------------------\n";
-        std::cout << "Hotel: " << s.getHotelId() << "\n";
-        std::cout << "Quarto: " << s.getQuartoId() << "\n";
-        std::cout << "Chegada: " << s.getChegada().toString() << "\n";
-        std::cout << "Partida: " << s.getPartida().toString() << "\n";
-        std::cout << "Status: " << statusStr;
+        cout << "----------------------------------------\n";
+        cout << "Hotel: " << s.getHotelId() << "\n";
+        cout << "Quarto: " << s.getQuartoId() << "\n";
+        cout << "Chegada: " << s.getChegada().toString() << "\n";
+        cout << "Partida: " << s.getPartida().toString() << "\n";
+        cout << "Status: " << statusStr;
 
         if (s.getStatus() == StatusSolicitacaoHospedagem::RECUSADO)
-            std::cout << " | Motivo: " << s.getMotivoRecusa();
+            cout << " | Motivo: " << s.getMotivoRecusa();
 
-        std::cout << "\n----------------------------------------\n";
+        cout << "\n----------------------------------------\n";
     }
 }
 
@@ -144,7 +144,7 @@ void ControladorInterfaceHospede::avaliarSolicitacoes() {
                 << "\nStatus atual: Pendente\n";
 
         TextoApresentacao::MostrarTituloPergunta("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
-        std::string escolha = TextoApresentacao::RecebeOpcao();
+        string escolha = TextoApresentacao::RecebeOpcao();
 
         if (escolha == "A" || escolha == "a") {
             solicitacao.setStatus(StatusSolicitacaoHospedagem::APROVADO); // aprovada
@@ -153,7 +153,7 @@ void ControladorInterfaceHospede::avaliarSolicitacoes() {
             TextoApresentacao::MostrarTituloRetorno("Solicitacao aprovada com sucesso.");
         } else if (escolha == "R" || escolha == "r") {
             TextoApresentacao::MostrarTituloPergunta("Informe o motivo da recusa:");
-            std::string motivo = TextoApresentacao::LerLinha();
+            string motivo = TextoApresentacao::LerLinha();
             solicitacao.setStatus(StatusSolicitacaoHospedagem::RECUSADO); // recusada
             solicitacao.setMotivoRecusa(motivo);
             PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
@@ -259,7 +259,7 @@ void ControladorInterfaceHospede::ler() {
 }
 
 void ControladorInterfaceHospede::atualizar() {
-    std::cout << "Funcao atualizar ainda nao implementada.\n";
+    cout << "Funcao atualizar ainda nao implementada.\n";
 }
 
 bool ControladorInterfaceHospede::remover() {

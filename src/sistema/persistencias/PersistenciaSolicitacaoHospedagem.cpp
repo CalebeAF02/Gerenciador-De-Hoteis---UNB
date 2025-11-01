@@ -38,7 +38,7 @@ void PersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
     banco.fechandoConexao();
 }
 
-std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorEmail(const std::string &email) {
+vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorEmail(const string &email) {
     sqlite3 *db;
     sqlite3_open(DB_PATH, &db);
 
@@ -52,17 +52,17 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorE
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     sqlite3_bind_text(stmt, 1, email.c_str(), -1, SQLITE_STATIC);
 
-    std::vector<SolicitacaoHospedagem> lista;
+    vector<SolicitacaoHospedagem> lista;
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        std::string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
-        std::string hotelId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-        std::string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-        std::string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
-        std::string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+        string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
+        string hotelId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
         StatusSolicitacaoHospedagem status = EnumConversor::InteiroParaStatusSolicitacaoHospedagem(
             sqlite3_column_int(stmt, 5));
-        std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 6));
+        string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 6));
 
         lista.emplace_back(
             email,
@@ -80,7 +80,7 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorE
     return lista;
 }
 
-std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorStatus(int statusFiltro) {
+vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorStatus(int statusFiltro) {
     sqlite3 *db;
     sqlite3_open(DB_PATH, &db);
 
@@ -94,18 +94,18 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorS
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     sqlite3_bind_int(stmt, 1, statusFiltro);
 
-    std::vector<SolicitacaoHospedagem> lista;
+    vector<SolicitacaoHospedagem> lista;
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        std::string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
-        std::string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-        std::string hotelId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-        std::string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
-        std::string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
-        std::string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 5));
+        string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
+        string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string hotelId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+        string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 5));
         StatusSolicitacaoHospedagem status = EnumConversor::InteiroParaStatusSolicitacaoHospedagem(
             sqlite3_column_int(stmt, 6));
-        std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 7));
+        string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 7));
 
         lista.emplace_back(
             email,

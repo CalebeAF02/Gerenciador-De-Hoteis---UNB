@@ -108,13 +108,13 @@ O sistema simula um **gerenciador de hotel**, permitindo:
 ## 🔹 Validação Embutida nos Domínios
 
 A validação de dados agora é feita diretamente dentro das classes de domínio. Cada classe é responsável por garantir sua
-própria integridade, lançando exceções (`std::invalid_argument`) quando os dados são inválidos.
+própria integridade, lançando exceções (`invalid_argument`) quando os dados são invalidos.
 
 Exemplos:
 
-Nome nome("Calebe"); // válido  
+Nome nome("Calebe"); // valido  
 Email email("email@invalido"); // lança exceção  
-Senha senha("123"); // lança exceção se não atender aos critérios
+Senha senha("123"); // lança exceção se nao atender aos critérios
 
 ### 🔹 Utilitários Genéricos
 

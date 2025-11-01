@@ -5,20 +5,24 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDINHEIRO_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDINHEIRO_H
 
-#include "TestsBase.h"
 #include "Dinheiro.h"
 #include <vector>
 
-class TestsDinheiro : public TestsBase
-{
+#include "InterfaceDeTeste.h"
+
+class TestsDinheiro : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsDinheiro"; }
+
+    string nomeDoTeste() const override { return "TestsDinheiro"; }
 
 private:
     void testarValoresValidos();
+
     void testarValoresNegativos();
+
     void testarValoresZero();
+
     void testarValoresMuitoAltos();
 };
 

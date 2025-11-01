@@ -1,11 +1,8 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsData.h"
+#include <iostream>
+#include <vector>
 
-void TestsData::executar()
-{
+void TestsData::executar() {
     testarDatasValidas();
     testarDatasComFormatoInvalido();
     testarDatasComDiaInvalido();
@@ -14,141 +11,118 @@ void TestsData::executar()
     testarDatasBissextas();
 }
 
-void TestsData::testarDatasValidas()
-{
-    std::vector<std::string> datas = {
-        "01/01/2000",
-        "15/06/2025",
-        "31/12/2099",
-        "30/04/2023",
-        "28/02/2024"
-    };
+void TestsData::testarDatasValidas() {
+    std::vector<std::string> datas;
+    datas.push_back("01/01/2000");
+    datas.push_back("15/06/2025");
+    datas.push_back("31/12/2099");
+    datas.push_back("30/04/2023");
+    datas.push_back("28/02/2024");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
-            checar(true, "Data valida aceita: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(false, "Data valida rejeitada: " + dataStr);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsData::testarDatasComFormatoInvalido()
-{
-    std::vector<std::string> datas = {
-        "01-01-2000", // separador errado
-        "01012000", // sem separador
-        "01/01/00", // ano incompleto
-        "1/1/2000", // sem zeros
-        "01/01/2000 " // espaco extra
-    };
+void TestsData::testarDatasComFormatoInvalido() {
+    std::vector<std::string> datas;
+    datas.push_back("01-01-2000");
+    datas.push_back("01012000");
+    datas.push_back("01/01/00");
+    datas.push_back("1/1/2000");
+    datas.push_back("01/01/2000 ");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
-            checar(false, "Data com formato invalido aceita: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(true, "Data com formato invalido rejeitada: " + dataStr);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsData::testarDatasComDiaInvalido()
-{
-    std::vector<std::string> datas = {
-        "32/01/2025", // dia > 31
-        "00/05/2025", // dia 0
-        "31/04/2025", // abril tem 30
-        "29/02/2023" // nao e bissexto
-    };
+void TestsData::testarDatasComDiaInvalido() {
+    std::vector<std::string> datas;
+    datas.push_back("32/01/2025");
+    datas.push_back("00/05/2025");
+    datas.push_back("31/04/2025");
+    datas.push_back("29/02/2023");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
-            checar(false, "Data com dia invalido aceita: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(true, "Data com dia invalido rejeitada: " + dataStr);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsData::testarDatasComMesInvalido()
-{
-    std::vector<std::string> datas = {
-        "15/00/2025", // mes 0
-        "10/13/2025", // mes > 12
-        "01/-1/2025" // mes negativo
-    };
+void TestsData::testarDatasComMesInvalido() {
+    std::vector<std::string> datas;
+    datas.push_back("15/00/2025");
+    datas.push_back("10/13/2025");
+    datas.push_back("01/-1/2025");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
-            checar(false, "Data com mes invalido aceita: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(true, "Data com mes invalido rejeitada: " + dataStr);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsData::testarDatasComAnoInvalido()
-{
-    std::vector<std::string> datas = {
-        "01/01/1999", // abaixo do limite
-        "31/12/2100", // acima do limite
-        "15/06/0000" // ano invalido
-    };
+void TestsData::testarDatasComAnoInvalido() {
+    std::vector<std::string> datas;
+    datas.push_back("01/01/1999");
+    datas.push_back("31/12/2100");
+    datas.push_back("15/06/0000");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
-            checar(false, "Data com ano invalido aceita: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(true, "Data com ano invalido rejeitada: " + dataStr);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsData::testarDatasBissextas()
-{
-    std::vector<std::string> datas = {
-        "29/02/2024", // valido
-        "29/02/2020", // valido
-        "29/02/2023", // invalido
-        "29/02/2100" // invalido (ano nao bissexto)
-    };
+void TestsData::testarDatasBissextas() {
+    std::vector<std::string> datas;
+    datas.push_back("29/02/2024");
+    datas.push_back("29/02/2020");
+    datas.push_back("29/02/2023");
+    datas.push_back("29/02/2100");
 
-    for (const auto& dataStr : datas)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < datas.size(); ++i) {
+        std::string dataStr = datas[i];
+        apresentacaoTesteData(dataStr);
+        try {
             Data d(dataStr);
             bool isBissexto = (dataStr == "29/02/2024" || dataStr == "29/02/2020");
-            checar(isBissexto, "Teste de bissexto: " + dataStr);
-        }
-        catch (...)
-        {
-            checar(dataStr == "29/02/2023" || dataStr == "29/02/2100", "Data bissexta invalida rejeitada: " + dataStr);
+            checaResultado(isBissexto ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            bool esperadoErro = (dataStr == "29/02/2023" || dataStr == "29/02/2100");
+            checaResultado(esperadoErro ? DEVE_DAR_ERRADO : DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }

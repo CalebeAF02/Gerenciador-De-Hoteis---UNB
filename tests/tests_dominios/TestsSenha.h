@@ -1,29 +1,33 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSSENHA_H
+#define TESTSSENHA_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSSENHA_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSSENHA_H
-
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
 #include "Senha.h"
 #include <vector>
 #include <string>
 
-class TestsSenha : public TestsBase
-{
+class TestsSenha : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsSenha"; }
+
+    std::string nomeDoTeste() const override { return "TestsSenha"; }
 
 private:
     void testarSenhasValidas();
+
     void testarSenhasMuitoCurtas();
+
     void testarSenhasSemMaiuscula();
+
     void testarSenhasSemMinuscula();
+
     void testarSenhasSemDigito();
+
     void testarSenhasSemEspecial();
-    void testarSenhasComInicioInvalido();
+
+    void testarSenhasComSequenciaDeLetras();
+
+    void testarSenhasComSequenciaDeDigitos();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSSENHA_H
+#endif // TESTSSENHA_H

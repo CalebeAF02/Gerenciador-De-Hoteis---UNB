@@ -5,23 +5,28 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDATA_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDATA_H
 
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
 #include "Data.h"
 #include <vector>
 #include <string>
 
-class TestsData : public TestsBase
-{
+class TestsData : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsData"; }
+
+    string nomeDoTeste() const override { return "TestsData"; }
 
 private:
     void testarDatasValidas();
+
     void testarDatasComFormatoInvalido();
+
     void testarDatasComDiaInvalido();
+
     void testarDatasComMesInvalido();
+
     void testarDatasComAnoInvalido();
+
     void testarDatasBissextas();
 };
 

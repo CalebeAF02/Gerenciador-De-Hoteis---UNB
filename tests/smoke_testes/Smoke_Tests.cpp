@@ -1,7 +1,6 @@
 #include "Smoke_Tests.h"
 
-void SmokeTest::testarEntradas()
-{
+void SmokeTest::testarEntradas() {
     //------------------------------------------------------------------------------------------------------------------
 
     cout << "----------------------------------------------" << endl;
@@ -16,19 +15,19 @@ void SmokeTest::testarEntradas()
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe   ");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Cb");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe   ");
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves ");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &gerente1, "Kaio Rodrigues");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "Luan Freitas");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -36,23 +35,23 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Emails  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1,
                          "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1,
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe clves@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe  clves@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1,
                          "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &gerente1, "c..b@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, ".cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, ".-cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "c--b@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "c..b@gmail.com");
 
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &gerente1, "kaiorodrigues@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "luanfreitas@gmai.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -60,25 +59,25 @@ void SmokeTest::testarEntradas()
     cout << "                |   Testes Ramal  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &gerente1, "-1");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "-1");
 
-    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &gerente1, "00");
-    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &gerente1, "50");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "00");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "50");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
     cout << "                |     Gerente     |" << endl;
     cout << "                |   Testes Senha  |" << endl;
     cout << "                -------------------" << endl << endl;
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "AA1#2");
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "Aa1#2");
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "A12#3");
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "1#2#3");
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "A#B#C");
-    testarValidadorSenha(Teste::DEVE_DAR_ERRADO, &gerente1, "a#b#c");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "AA1#2");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Aa1#2");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "A12#3");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "1#2#3");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "A#B#C");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "a#b#c");
 
-    testarValidadorSenha(Teste::DEVE_DAR_CERTO, &gerente1, "A#b#3");
-    testarValidadorSenha(Teste::DEVE_DAR_CERTO, &gerente1, "A1#a2");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "A#b#3");
+    testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "A1#a2");
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -90,17 +89,17 @@ void SmokeTest::testarEntradas()
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves ");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Cb");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe  Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe@alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hospede1, "Kaio Rodrigues");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Luan Freitas");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -109,23 +108,23 @@ void SmokeTest::testarEntradas()
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "Cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1,
                          "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "calebe  clves@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1,
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe clves@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe  clves@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1,
                          "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, ".-cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c--b@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_ERRADO, &hospede1, "c..b@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, ".cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, ".-cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "c--b@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "c..b@gmail.com");
 
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "calebeclves@citex.eb.mil.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "cb@gmail.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "luanfreitas@gmai.com");
-    testarValidadorEmail(Teste::DEVE_DAR_CERTO, &hospede1, "kaiorodrigues@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "calebeclves@citex.eb.mil.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "cb@gmail.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "luanfreitas@gmai.com");
+    testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "kaiorodrigues@gmail.com");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -133,9 +132,9 @@ void SmokeTest::testarEntradas()
     cout << "                | Testes Endereco |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
 
-    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hospede1, "Qd.52 Cs.02 Comercial DelLago");
+    testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Qd.52 Cs.02 Comercial DelLago");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -143,9 +142,9 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Cartao  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorCartao(Teste::DEVE_DAR_ERRADO, &hospede1, "");
+    testarValidadorCartao(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
 
-    testarValidadorCartao(Teste::DEVE_DAR_CERTO, &hospede1, "1234567890123456");
+    testarValidadorCartao(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "1234567890123456");
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -157,17 +156,17 @@ void SmokeTest::testarEntradas()
     cout << "                |   Testes Nome   |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Cb");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves Freitas Madeira Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe  Alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe@alves");
-    testarValidadorNome(Teste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves ");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Cb");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves Freitas Madeira Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe  Alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe@alves");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves ");
 
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Luan Freitas");
-    testarValidadorNome(Teste::DEVE_DAR_CERTO, &hotel1, "Kaio Rodrigues");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Luan Freitas");
+    testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Kaio Rodrigues");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -176,8 +175,8 @@ void SmokeTest::testarEntradas()
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorEndereco(Teste::DEVE_DAR_ERRADO, &hotel1, "");
-    testarValidadorEndereco(Teste::DEVE_DAR_CERTO, &hotel1, "Qd.52 Cs.02 Comercial DelLago");
+    testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Qd.52 Cs.02 Comercial DelLago");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -185,11 +184,11 @@ void SmokeTest::testarEntradas()
     cout << "                | Testes Telefone |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "");
-    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
-    testarValidadorTelefone(Teste::DEVE_DAR_ERRADO, &hotel1, "+123456789987654321");
+    testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
+    testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "+123456789987654321");
 
-    testarValidadorTelefone(Teste::DEVE_DAR_CERTO, &hotel1, "+5161993009537");
+    testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "+5161993009537");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -197,12 +196,12 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Codigo  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "");
-    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
-    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &hotel1, "abcdedghij9987654321");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "abcdedghij9987654321");
 
-    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &hotel1, "1234567890");
-    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &hotel1, "abcde12345");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "1234567890");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "abcde12345");
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -215,11 +214,11 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Numero  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorNumero(Teste::DEVE_DAR_ERRADO, &quarto1, "-300");
-    testarValidadorNumero(Teste::DEVE_DAR_ERRADO, &quarto1, "000");
-    testarValidadorNumero(Teste::DEVE_DAR_ERRADO, &quarto1, "Ab$");
+    testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "-300");
+    testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "000");
+    testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "Ab$");
 
-    testarValidadorNumero(Teste::DEVE_DAR_CERTO, &quarto1, "001");
+    testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, "001");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -228,9 +227,9 @@ void SmokeTest::testarEntradas()
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorCapacidade(Teste::DEVE_DAR_ERRADO, &quarto1, 5);
+    testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, 5);
 
-    testarValidadorCapacidade(Teste::DEVE_DAR_CERTO, &quarto1, 1);
+    testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 1);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -238,11 +237,11 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Diaria  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &quarto1, -50);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, -50);
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 1000);
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 80000);
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &quarto1, 120000);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 1000);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 80000);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 120000);
 
 
     cout << "                -------------------" << endl;
@@ -251,10 +250,10 @@ void SmokeTest::testarEntradas()
     cout << "                |   Testes Ramal  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &quarto1, "0");
-    testarValidadorRamal(Teste::DEVE_DAR_ERRADO, &quarto1, "100");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "0");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "100");
 
-    testarValidadorRamal(Teste::DEVE_DAR_CERTO, &quarto1, "10");
+    testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, "10");
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -266,11 +265,11 @@ void SmokeTest::testarEntradas()
     cout << "                |     Reserva     |" << endl;
     cout << "                |  Testes Chegada |" << endl;
     cout << "                -------------------" << endl << endl;
-    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
-    testarValidadorChegada(Teste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
+    testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
+    testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
 
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
+    testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
 
 
     cout << "                -------------------" << endl;
@@ -279,10 +278,10 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Partida |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
-    testarValidadorPartida(Teste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
+    testarValidadorPartida(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
+    testarValidadorPartida(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
 
-    testarValidadorChegada(Teste::DEVE_DAR_CERTO, &reserva1, "01/03/2022");
+    testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "01/03/2022");
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -290,9 +289,9 @@ void SmokeTest::testarEntradas()
     cout << "                | Testes Dinheiro |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_ERRADO, &reserva1, -70);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, -70);
 
-    testarValidadorDinheiro(Teste::DEVE_DAR_CERTO, &reserva1, 2000);
+    testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, 2000);
 
     cout << "                -------------------" << endl;
     cout << "                |     Testes      |" << endl;
@@ -300,10 +299,10 @@ void SmokeTest::testarEntradas()
     cout << "                |  Testes Codigo  |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &reserva1, "");
-    testarValidadorCodigo(Teste::DEVE_DAR_ERRADO, &reserva1, "12345678901215168468");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "12345678901215168468");
 
-    testarValidadorCodigo(Teste::DEVE_DAR_CERTO, &reserva1, "1234567890");
+    testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "1234567890");
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -316,13 +315,13 @@ void SmokeTest::testarEntradas()
     cout << "                -------------------" << endl << endl;
 
 
-    testarValidadorDia(Teste::DEVE_DAR_ERRADO, &data1, 40);
-    testarValidadorMes(Teste::DEVE_DAR_ERRADO, &data1, 22);
-    testarValidadorAno(Teste::DEVE_DAR_ERRADO, &data1, 5000);
+    testarValidadorDia(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 40);
+    testarValidadorMes(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 22);
+    testarValidadorAno(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 5000);
 
-    testarValidadorDia(Teste::DEVE_DAR_CERTO, &data1, 23);
-    testarValidadorMes(Teste::DEVE_DAR_CERTO, &data1, 3);
-    testarValidadorAno(Teste::DEVE_DAR_CERTO, &data1, 2002);
+    testarValidadorDia(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 23);
+    testarValidadorMes(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 3);
+    testarValidadorAno(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 2002);
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -340,13 +339,13 @@ void SmokeTest::testarEntradas()
     g_teste.setSenha(Senha("A1#a2"));
 
     //cout << "g1 =" << dadosGerente << endl;
-    testarValidadorString(Teste::DEVE_DAR_CERTO, g_teste.getTSV(),
+    testarValidadorString(InterfaceDeTeste::DEVE_DAR_CERTO, g_teste.getTSV(),
                           "GERENTE\tCalebe Alves\tcalebe.2324@gmail.com\t22\tA1#a2");
     Gerente g2;
     string dadosGerente = g_teste.getTSV();
     g2.setTSV(dadosGerente);
     //cout << "g2 =" << g2.getTSV() << endl;
-    testarValidadorString(Teste::DEVE_DAR_CERTO, g_teste.getTSV(), g2.getTSV());
+    testarValidadorString(InterfaceDeTeste::DEVE_DAR_CERTO, g_teste.getTSV(), g2.getTSV());
 
     Gerente g3;
 
@@ -361,9 +360,9 @@ void SmokeTest::testarEntradas()
     cout << "                |       TSV       |" << endl;
     cout << "                -------------------" << endl << endl;
 
-    cout << "Total de Testes: " << Teste::getTestes() << endl;
-    cout << "Total de Testes Ok: " << Teste::getTestesOk() << endl;
-    cout << "Total de Testes Problema: " << Teste::getTestesProblema() << endl << endl;
+    cout << "Total de Testes: " << InterfaceDeTeste::getTestes() << endl;
+    cout << "Total de Testes Ok: " << InterfaceDeTeste::getTestesOk() << endl;
+    cout << "Total de Testes Problema: " << InterfaceDeTeste::getTestesProblema() << endl << endl;
 
     cout << "----------------------------------------------" << endl;
     cout << "##############################################" << endl;
@@ -371,411 +370,315 @@ void SmokeTest::testarEntradas()
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorString(int esperando_resultado, string s1, string s2)
-{
-    Teste::apresentacaoTeste(s1);
+void SmokeTest::testarValidadorString(int esperando_resultado, string s1, string s2) {
+    InterfaceDeTeste::apresentacaoTeste(s1);
     int resultado_teste = 0;
-    if (s1 == s2)
-    {
-        resultado_teste = Teste::apresentacaoSucesso();
+    if (s1 == s2) {
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } else {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro("Erro: Strings sao diferentes");
     }
-    else
-    {
-        resultado_teste = Teste::apresentacaoErro("Erro: Strings sao diferentes");
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente* ptr, string nome)
-{
-    Teste::apresentacaoTeste(nome);
+void SmokeTest::testarValidadorNome(int esperando_resultado, Gerente *ptr, string nome) {
+    InterfaceDeTeste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Nome nomeObj(nome);
         ptr->setNome(Nome(nomeObj));
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente* ptr, string email)
-{
-    Teste::apresentacaoTeste(email);
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Gerente *ptr, string email) {
+    InterfaceDeTeste::apresentacaoTeste(email);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Email emailObj(email);
         ptr->setEmail(Email(emailObj));
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente* ptr, string ramal)
-{
-    Teste::apresentacaoTeste(ramal);
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Gerente *ptr, string ramal) {
+    InterfaceDeTeste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Ramal ramalObj(ramal);
         ptr->setRamal(ramalObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente* ptr, string senha)
-{
-    Teste::apresentacaoTeste(senha);
+void SmokeTest::testarValidadorSenha(int esperando_resultado, Gerente *ptr, string senha) {
+    InterfaceDeTeste::apresentacaoTeste(senha);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Senha senhaObj(senha);
         ptr->setSenha(senhaObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede* ptr, string nome)
-{
-    Teste::apresentacaoTeste(nome);
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hospede *ptr, string nome) {
+    InterfaceDeTeste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Nome nomeObj(nome);
         ptr->setNome(Nome(nomeObj));
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede* ptr, string email)
-{
-    Teste::apresentacaoTeste(email);
+void SmokeTest::testarValidadorEmail(int esperando_resultado, Hospede *ptr, string email) {
+    InterfaceDeTeste::apresentacaoTeste(email);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Email emailObj(email);
         ptr->setEmail(Email(emailObj));
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede* ptr, string cartao)
-{
-    Teste::apresentacaoTeste(cartao);
+void SmokeTest::testarValidadorCartao(int esperando_resultado, Hospede *ptr, string cartao) {
+    InterfaceDeTeste::apresentacaoTeste(cartao);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Cartao cartaoObj(cartao);
         ptr->setCartao(cartaoObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede* ptr, string endereco)
-{
-    Teste::apresentacaoTeste(endereco);
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hospede *ptr, string endereco) {
+    InterfaceDeTeste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Endereco enderecoObj(endereco);
         ptr->setEndereco(enderecoObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel* ptr, string nome)
-{
-    Teste::apresentacaoTeste(nome);
+void SmokeTest::testarValidadorNome(int esperando_resultado, Hotel *ptr, string nome) {
+    InterfaceDeTeste::apresentacaoTeste(nome);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Nome nomeObj(nome);
         ptr->setNome(nomeObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel* ptr, string endereco)
-{
-    Teste::apresentacaoTeste(endereco);
+void SmokeTest::testarValidadorEndereco(int esperando_resultado, Hotel *ptr, string endereco) {
+    InterfaceDeTeste::apresentacaoTeste(endereco);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Endereco enderecoObj(endereco);
         ptr->setEndereco(enderecoObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel* ptr, string telefone)
-{
-    Teste::apresentacaoTeste(telefone);
+void SmokeTest::testarValidadorTelefone(int esperando_resultado, Hotel *ptr, string telefone) {
+    InterfaceDeTeste::apresentacaoTeste(telefone);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Telefone telefoneObj(telefone);
         ptr->setTelefone(telefoneObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel* ptr, string codigo)
-{
-    Teste::apresentacaoTeste(codigo);
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Hotel *ptr, string codigo) {
+    InterfaceDeTeste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Codigo codigoObj(codigo);
         ptr->setCodigo(codigoObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto* ptr, string numero)
-{
-    Teste::apresentacaoTeste(numero);
+void SmokeTest::testarValidadorNumero(int esperando_resultado, Quarto *ptr, string numero) {
+    InterfaceDeTeste::apresentacaoTeste(numero);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Numero numeroObj(numero);
         ptr->setNumero(numeroObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto* ptr, int capacidade)
-{
-    Teste::apresentacaoTeste(capacidade);
+void SmokeTest::testarValidadorCapacidade(int esperando_resultado, Quarto *ptr, int capacidade) {
+    InterfaceDeTeste::apresentacaoTeste(capacidade);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Capacidade capacidadeObj(capacidade);
         ptr->setCapacidade(capacidadeObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto* ptr, int diaria)
-{
-    Teste::apresentacaoTeste(diaria);
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Quarto *ptr, int diaria) {
+    InterfaceDeTeste::apresentacaoTeste(diaria);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Dinheiro diariaObj(diaria);
         ptr->setDiaria(diariaObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto* ptr, string ramal)
-{
-    Teste::apresentacaoTeste(ramal);
+void SmokeTest::testarValidadorRamal(int esperando_resultado, Quarto *ptr, string ramal) {
+    InterfaceDeTeste::apresentacaoTeste(ramal);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Ramal ramalObj(ramal);
         ptr->setRamal(ramalObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 } //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva* ptr, string chegada)
-{
-    Teste::apresentacaoTesteData(chegada);
+void SmokeTest::testarValidadorChegada(int esperando_resultado, Reserva *ptr, string chegada) {
+    InterfaceDeTeste::apresentacaoTesteData(chegada);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Data chegadaObj(chegada);
         ptr->setChegada(chegadaObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva* ptr, string partida)
-{
-    Teste::apresentacaoTesteData(partida);
+void SmokeTest::testarValidadorPartida(int esperando_resultado, Reserva *ptr, string partida) {
+    InterfaceDeTeste::apresentacaoTesteData(partida);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Data partidaObj(partida);
         ptr->setPartida(partidaObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva* ptr, int dinheiro)
-{
-    Teste::apresentacaoTeste(dinheiro);
+void SmokeTest::testarValidadorDinheiro(int esperando_resultado, Reserva *ptr, int dinheiro) {
+    InterfaceDeTeste::apresentacaoTeste(dinheiro);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Dinheiro dinheiroObj(dinheiro);
         ptr->setDinheiro(dinheiroObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva* ptr, string codigo)
-{
-    Teste::apresentacaoTeste(codigo);
+void SmokeTest::testarValidadorCodigo(int esperando_resultado, Reserva *ptr, string codigo) {
+    InterfaceDeTeste::apresentacaoTeste(codigo);
     int resultado_teste = 0;
-    try
-    {
+    try {
         Codigo codigoObj(codigo);
         ptr->setCodigo(codigoObj);
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTest::testarValidadorDia(int esperando_resultado, Data* ptr, int dia)
-{
-    Teste::apresentacaoTeste(dia);
+void SmokeTest::testarValidadorDia(int esperando_resultado, Data *ptr, int dia) {
+    InterfaceDeTeste::apresentacaoTeste(dia);
     int resultado_teste = 0;
-    try
-    {
+    try {
         ptr->setData(dia, Data::JAN, 2000); //(valor, padrao , padrao)
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorMes(int esperando_resultado, Data* ptr, int mes)
-{
-    Teste::apresentacaoTeste(mes);
+void SmokeTest::testarValidadorMes(int esperando_resultado, Data *ptr, int mes) {
+    InterfaceDeTeste::apresentacaoTeste(mes);
     int resultado_teste = 0;
-    try
-    {
+    try {
         ptr->setData(1, mes, 2000); //(padrao,valor, padrao)
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
-void SmokeTest::testarValidadorAno(int esperando_resultado, Data* ptr, int ano)
-{
-    Teste::apresentacaoTeste(ano);
+void SmokeTest::testarValidadorAno(int esperando_resultado, Data *ptr, int ano) {
+    InterfaceDeTeste::apresentacaoTeste(ano);
     int resultado_teste = 0;
-    try
-    {
+    try {
         ptr->setData(1, Data::JAN, ano); //(padrao, padrao , valor)
-        resultado_teste = Teste::apresentacaoSucesso();
+        resultado_teste = InterfaceDeTeste::apresentacaoSucesso();
+    } catch (invalid_argument &erro) {
+        resultado_teste = InterfaceDeTeste::apresentacaoErro(erro);
     }
-    catch (invalid_argument& erro)
-    {
-        resultado_teste = Teste::apresentacaoErro(erro);
-    }
-    Teste::checaResultado(esperando_resultado, resultado_teste);
+    InterfaceDeTeste::checaResultado(esperando_resultado, resultado_teste);
 }
 
 //-----------------------------------------------------------------------------------------------------------

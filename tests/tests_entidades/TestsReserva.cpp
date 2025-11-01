@@ -1,11 +1,7 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsReserva.h"
+#include <iostream>
 
-void TestsReserva::executar()
-{
+void TestsReserva::executar() {
     testarChegada();
     testarChegadaInvalida();
     testarPartida();
@@ -19,156 +15,127 @@ void TestsReserva::executar()
     testarGetters();
 }
 
-void TestsReserva::testarChegada()
-{
-    try
-    {
+void TestsReserva::testarChegada() {
+    apresentacaoTeste("01/11/2025");
+    try {
         Reserva r;
         r.setChegada(Data("01/11/2025"));
-        checar(true, "Data de chegada valida aceita");
-    }
-    catch (...)
-    {
-        checar(false, "Data de chegada valida rejeitada");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarChegadaInvalida()
-{
-    try
-    {
+void TestsReserva::testarChegadaInvalida() {
+    apresentacaoTeste("32/11/2025");
+    try {
         Reserva r;
-        r.setChegada(Data("32/11/2025")); // dia invalido
-        checar(false, "Data de chegada invalida aceita");
-    }
-    catch (...)
-    {
-        checar(true, "Data de chegada invalida rejeitada");
+        r.setChegada(Data("32/11/2025"));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarPartida()
-{
-    try
-    {
+void TestsReserva::testarPartida() {
+    apresentacaoTeste("05/11/2025");
+    try {
         Reserva r;
         r.setPartida(Data("05/11/2025"));
-        checar(true, "Data de partida valida aceita");
-    }
-    catch (...)
-    {
-        checar(false, "Data de partida valida rejeitada");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarPartidaInvalida()
-{
-    try
-    {
+void TestsReserva::testarPartidaInvalida() {
+    apresentacaoTeste("00/11/2025");
+    try {
         Reserva r;
-        r.setPartida(Data("00/11/2025")); // dia invalido
-        checar(false, "Data de partida invalida aceita");
-    }
-    catch (...)
-    {
-        checar(true, "Data de partida invalida rejeitada");
+        r.setPartida(Data("00/11/2025"));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarDinheiro()
-{
-    try
-    {
+void TestsReserva::testarDinheiro() {
+    apresentacaoTeste("R$100,00");
+    try {
         Reserva r;
-        r.setDinheiro(Dinheiro(10000)); // R$100,00
-        checar(true, "Valor valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Valor valido rejeitado");
+        r.setDinheiro(Dinheiro(10000));
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarDinheiroInvalido()
-{
-    try
-    {
+void TestsReserva::testarDinheiroInvalido() {
+    apresentacaoTeste("R$0,00");
+    try {
         Reserva r;
-        r.setDinheiro(Dinheiro(0)); // invalido
-        checar(false, "Valor invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Valor invalido rejeitado");
+        r.setDinheiro(Dinheiro(0));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarCodigo()
-{
-    try
-    {
+void TestsReserva::testarCodigo() {
+    apresentacaoTeste("RES123");
+    try {
         Reserva r;
         r.setCodigo(Codigo("RES123"));
-        checar(true, "Codigo valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Codigo valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarCodigoInvalido()
-{
-    try
-    {
+void TestsReserva::testarCodigoInvalido() {
+    apresentacaoTeste("RES@123");
+    try {
         Reserva r;
         r.setCodigo(Codigo("RES@123"));
-        checar(false, "Codigo invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Codigo invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarConstrucaoCompleta()
-{
-    try
-    {
+void TestsReserva::testarConstrucaoCompleta() {
+    apresentacaoTeste("Reserva completa valida");
+    try {
         Reserva r(
             Data("01/11/2025"),
             Data("05/11/2025"),
             Dinheiro(10000),
             Codigo("RES123")
         );
-        checar(true, "Reserva construida com todos os dados validos");
-    }
-    catch (...)
-    {
-        checar(false, "Falha ao construir reserva completa");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarConstrucaoInvalida()
-{
-    try
-    {
+void TestsReserva::testarConstrucaoInvalida() {
+    apresentacaoTeste("Reserva com valor invalido");
+    try {
         Reserva r(
             Data("01/11/2025"),
             Data("05/11/2025"),
-            Dinheiro(0), // invalido
+            Dinheiro(0),
             Codigo("RES123")
         );
-        checar(false, "Reserva construida com valor invalido");
-    }
-    catch (...)
-    {
-        checar(true, "Falha esperada ao construir reserva com dado invalido");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsReserva::testarGetters()
-{
+void TestsReserva::testarGetters() {
+    apresentacaoTeste("Testando getters de Reserva");
+
     Data chegada("01/11/2025");
     Data partida("05/11/2025");
     Dinheiro dinheiro(10000);
@@ -180,8 +147,8 @@ void TestsReserva::testarGetters()
     r.setDinheiro(dinheiro);
     r.setCodigo(codigo);
 
-    checar(r.getChegada().toString() == chegada.toString(), "Getter de chegada funcionando");
-    checar(r.getPartida().toString() == partida.toString(), "Getter de partida funcionando");
-    checar(r.getDinheiro() == dinheiro.getValor(), "Getter de dinheiro funcionando");
-    checar(r.getCodigo() == codigo.getValor(), "Getter de codigo funcionando");
+    checaResultado(DEVE_DAR_CERTO, r.getChegada().toString() == chegada.toString() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, r.getPartida().toString() == partida.toString() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, r.getDinheiro() == dinheiro.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, r.getCodigo() == codigo.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
 }

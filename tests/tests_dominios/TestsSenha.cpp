@@ -1,156 +1,157 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsSenha.h"
+#include <iostream>
+#include <vector>
 
-void TestsSenha::executar()
-{
+void TestsSenha::executar() {
     testarSenhasValidas();
     testarSenhasMuitoCurtas();
     testarSenhasSemMaiuscula();
     testarSenhasSemMinuscula();
     testarSenhasSemDigito();
     testarSenhasSemEspecial();
-    testarSenhasComInicioInvalido();
+    testarSenhasComSequenciaDeLetras();
+    testarSenhasComSequenciaDeDigitos();
 }
 
-void TestsSenha::testarSenhasValidas()
-{
+void TestsSenha::testarSenhasValidas() {
     std::vector<std::string> senhas = {
-        "Abcdef1@", "Senha123!", "Teste@2023", "Valid@Senha1", "Xyz#7890"
+        "a1#Bz", // minúscula, dígito, especial, maiúscula, sem sequência inválida
+        "B2$a", // maiúscula, dígito, especial, minúscula
+        "c3%D" // minúscula, dígito, especial, maiúscula
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(true, "Senha valida aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(false, "Senha valida rejeitada: " + senha);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasMuitoCurtas()
-{
+void TestsSenha::testarSenhasMuitoCurtas() {
     std::vector<std::string> senhas = {
-        "Ab1@", "S1!", "aB3#", "Xy9*"
+        "a1#B", // 4 caracteres
+        "A1$", // 3 caracteres
+        "b2#", // 3 caracteres
+        "C3@" // 3 caracteres
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha curta aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(true, "Senha curta rejeitada: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasSemMaiuscula()
-{
+void TestsSenha::testarSenhasSemMaiuscula() {
     std::vector<std::string> senhas = {
-        "senha123@", "teste@2023", "abcde1#", "valid@senha1"
+        "a1#bz",
+        "c2@xy",
+        "m3%no"
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha sem maiuscula aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(true, "Senha sem maiuscula rejeitada: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasSemMinuscula()
-{
+void TestsSenha::testarSenhasSemMinuscula() {
     std::vector<std::string> senhas = {
-        "SENHA123@", "TESTE@2023", "ABCDE1#", "VALID@SENHA1"
+        "A1#BZ",
+        "C2@XY",
+        "M3%NO"
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha sem minuscula aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(true, "Senha sem minuscula rejeitada: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasSemDigito()
-{
+void TestsSenha::testarSenhasSemDigito() {
     std::vector<std::string> senhas = {
-        "Senha@", "Teste@!", "Valid@Senha", "Abcdef@"
+        "a#BZx",
+        "C@XYz",
+        "M%NOa"
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha sem digito aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(true, "Senha sem digito rejeitada: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasSemEspecial()
-{
+void TestsSenha::testarSenhasSemEspecial() {
     std::vector<std::string> senhas = {
-        "Senha123", "Teste2023", "ValidSenha1", "Xyz7890"
+        "a1BZx",
+        "C2XYz",
+        "M3NOa"
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha sem caractere especial aceita: " + senha);
-        }
-        catch (...)
-        {
-            checar(true, "Senha sem caractere especial rejeitada: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsSenha::testarSenhasComInicioInvalido()
-{
+void TestsSenha::testarSenhasComSequenciaDeLetras() {
     std::vector<std::string> senhas = {
-        "@Senha123", "#Teste2023", "!ValidSenha1", "*Xyz7890"
+        "aB#c1", // letras seguidas
+        "xY@z2"
     };
 
-    for (const auto& senha : senhas)
-    {
-        try
-        {
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
             Senha s(senha);
-            checar(false, "Senha iniciando com caractere especial aceita: " + senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
-        catch (...)
-        {
-            checar(true, "Senha iniciando com caractere especial rejeitada: " + senha);
+    }
+}
+
+void TestsSenha::testarSenhasComSequenciaDeDigitos() {
+    std::vector<std::string> senhas = {
+        "a12#B", // dígitos seguidos
+        "C34@d"
+    };
+
+    for (const std::string &senha: senhas) {
+        apresentacaoTeste(senha);
+        try {
+            Senha s(senha);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }

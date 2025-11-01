@@ -2,7 +2,6 @@
 #define TESTE_INCLUDE
 
 #include <iostream>
-#include <ostream>
 #include <string>
 #include "../entidades/Pessoa.h"
 #include "../entidades/Gerente.h"
@@ -13,8 +12,7 @@
 
 using namespace std;
 
-class Teste
-{
+class InterfaceDeTeste {
 private:
     static int contTodalTestes;
     static int contTodalTestesOk;
@@ -24,6 +22,14 @@ public:
     static const int DEVE_DAR_ERRADO = -1;
     static const int DEVE_DAR_CERTO = 1;
 
+    // Métodos virtuais obrigatórios
+    virtual void executar() = 0;
+
+    virtual string nomeDoTeste() const = 0;
+
+    virtual ~InterfaceDeTeste() = default;
+
+    // Métodos utilitários
     static void checaResultado(int esperando_resultado, int resultado_teste);
 
     static void apresentacaoTeste(string valor);
@@ -35,8 +41,10 @@ public:
     static int apresentacaoSucesso();
 
     static int apresentacaoErro(invalid_argument erro);
+
     static int apresentacaoErro(string erro);
 
+    // Contadores
     static void setTestes(int contTodalTestes);
 
     static void setTestesOk(int contTodalTestesOk);
@@ -49,4 +57,5 @@ public:
 
     static int getTestesProblema();
 };
-#endif
+
+#endif // TESTE_INCLUDE

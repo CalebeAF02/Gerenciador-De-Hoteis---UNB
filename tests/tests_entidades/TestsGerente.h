@@ -1,38 +1,43 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSGERENTE_H
+#define TESTSGERENTE_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSGERENTES_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSGERENTES_H
-
-#include "../interface_tests/TestsBase.h"
+#include "InterfaceDeTeste.h"
+#include "Gerente.h"
 #include "Nome.h"
 #include "Email.h"
 #include "Senha.h"
 #include "Ramal.h"
-#include "Gerente.h"
 
-class TestsGerente : public TestsBase
-{
+#include <string>
+
+class TestsGerente : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsGerente"; }
+
+    std::string nomeDoTeste() const override { return "TestsGerente"; }
 
 private:
     void testarNome();
-    void testarEmail();
-    void testarSenha();
-    void testarRamal();
 
     void testarNomeInvalido();
+
+    void testarEmail();
+
     void testarEmailInvalido();
+
+    void testarSenha();
+
     void testarSenhaInvalida();
+
+    void testarRamal();
+
     void testarRamalInvalido();
 
     void testarConstrucaoCompleta();
+
     void testarConstrucaoInvalida();
 
     void testarGetters();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSGERENTES_H
+#endif // TESTSGERENTE_H

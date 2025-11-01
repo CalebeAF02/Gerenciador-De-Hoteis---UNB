@@ -1,11 +1,7 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsHotel.h"
+#include <iostream>
 
-void TestsHotel::executar()
-{
+void TestsHotel::executar() {
     testarNome();
     testarNomeInvalido();
     testarEndereco();
@@ -19,154 +15,125 @@ void TestsHotel::executar()
     testarGetters();
 }
 
-void TestsHotel::testarNome()
-{
-    try
-    {
+void TestsHotel::testarNome() {
+    apresentacaoTeste("Hotel Central");
+    try {
         Hotel h;
         h.setNome(Nome("Hotel Central"));
-        checar(true, "Nome valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Nome valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarNomeInvalido()
-{
-    try
-    {
+void TestsHotel::testarNomeInvalido() {
+    apresentacaoTeste("Hotel@Central");
+    try {
         Hotel h;
         h.setNome(Nome("Hotel@Central"));
-        checar(false, "Nome invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Nome invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarEndereco()
-{
-    try
-    {
+void TestsHotel::testarEndereco() {
+    apresentacaoTeste("Av. Brasil, 1000");
+    try {
         Hotel h;
         h.setEndereco(Endereco("Av. Brasil, 1000"));
-        checar(true, "Endereco valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Endereco valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarEnderecoInvalido()
-{
-    try
-    {
+void TestsHotel::testarEnderecoInvalido() {
+    apresentacaoTeste("Av. Brasil @ 1000");
+    try {
         Hotel h;
         h.setEndereco(Endereco("Av. Brasil @ 1000"));
-        checar(false, "Endereco invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Endereco invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarTelefone()
-{
-    try
-    {
+void TestsHotel::testarTelefone() {
+    apresentacaoTeste("(61) 91234-5678");
+    try {
         Hotel h;
         h.setTelefone(Telefone("(61) 91234-5678"));
-        checar(true, "Telefone valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Telefone valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarTelefoneInvalido()
-{
-    try
-    {
+void TestsHotel::testarTelefoneInvalido() {
+    apresentacaoTeste("(61) 01234-5678");
+    try {
         Hotel h;
-        h.setTelefone(Telefone("(61) 01234-5678")); // prefixo invalido
-        checar(false, "Telefone invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Telefone invalido rejeitado");
+        h.setTelefone(Telefone("(61) 01234-5678"));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarCodigo()
-{
-    try
-    {
+void TestsHotel::testarCodigo() {
+    apresentacaoTeste("ABC123");
+    try {
         Hotel h;
         h.setCodigo(Codigo("ABC123"));
-        checar(true, "Codigo valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Codigo valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarCodigoInvalido()
-{
-    try
-    {
+void TestsHotel::testarCodigoInvalido() {
+    apresentacaoTeste("ABC@123");
+    try {
         Hotel h;
         h.setCodigo(Codigo("ABC@123"));
-        checar(false, "Codigo invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Codigo invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarConstrucaoCompleta()
-{
-    try
-    {
+void TestsHotel::testarConstrucaoCompleta() {
+    apresentacaoTeste("Hotel completo valido");
+    try {
         Hotel h;
         h.setNome(Nome("Hotel Central"));
         h.setEndereco(Endereco("Av. Brasil, 1000"));
         h.setTelefone(Telefone("(61) 91234-5678"));
         h.setCodigo(Codigo("ABC123"));
-        checar(true, "Hotel construido com todos os dados validos");
-    }
-    catch (...)
-    {
-        checar(false, "Falha ao construir hotel completo");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarConstrucaoInvalida()
-{
-    try
-    {
+void TestsHotel::testarConstrucaoInvalida() {
+    apresentacaoTeste("Hotel com código invalido");
+    try {
         Hotel h;
         h.setNome(Nome("Hotel Central"));
         h.setEndereco(Endereco("Av. Brasil, 1000"));
         h.setTelefone(Telefone("(61) 91234-5678"));
-        h.setCodigo(Codigo("ABC@123")); // invalido
-        checar(false, "Hotel construido com codigo invalido");
-    }
-    catch (...)
-    {
-        checar(true, "Falha esperada ao construir hotel com dado invalido");
+        h.setCodigo(Codigo("ABC@123"));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsHotel::testarGetters()
-{
+void TestsHotel::testarGetters() {
+    apresentacaoTeste("Testando getters de Hotel");
+
     Hotel h;
     Nome nome("Hotel Central");
     Endereco endereco("Av. Brasil, 1000");
@@ -178,8 +145,8 @@ void TestsHotel::testarGetters()
     h.setTelefone(telefone);
     h.setCodigo(codigo);
 
-    checar(h.getNome() == nome.getValor(), "Getter de nome funcionando");
-    checar(h.getEndereco() == endereco.getValor(), "Getter de endereco funcionando");
-    checar(h.getTelefone() == telefone.getValor(), "Getter de telefone funcionando");
-    checar(h.getCodigo() == codigo.getValor(), "Getter de codigo funcionando");
+    checaResultado(DEVE_DAR_CERTO, h.getNome() == nome.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getEndereco() == endereco.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getTelefone() == telefone.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, h.getCodigo() == codigo.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
 }

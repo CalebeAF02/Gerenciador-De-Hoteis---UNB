@@ -1,11 +1,8 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsCodigo.h"
+#include <iostream>
+#include <vector>
 
-void TestsCodigo::executar()
-{
+void TestsCodigo::executar() {
     testarCodigosValidos();
     testarCodigosComCaracteresInvalidos();
     testarCodigosComEspacos();
@@ -13,103 +10,99 @@ void TestsCodigo::executar()
     testarCodigosMuitoLongos();
 }
 
-void TestsCodigo::testarCodigosValidos()
-{
-    std::vector<std::string> codigos = {
-        "ABC123", "X9Y8Z7", "Codigo01", "A1B2C3", "ZXC987"
-    };
+void TestsCodigo::testarCodigosValidos() {
+    std::vector<std::string> codigos;
+    codigos.push_back("ABC123");
+    codigos.push_back("X9Y8Z7");
+    codigos.push_back("Codigo01");
+    codigos.push_back("A1B2C3");
+    codigos.push_back("ZXC987");
 
-    for (const auto& codigo : codigos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < codigos.size(); ++i) {
+        std::string codigo = codigos[i];
+        apresentacaoTeste(codigo);
+        try {
             Codigo c(codigo);
-            checar(true, "Codigo valido aceito: " + codigo);
-        }
-        catch (...)
-        {
-            checar(false, "Codigo valido rejeitado: " + codigo);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCodigo::testarCodigosComCaracteresInvalidos()
-{
-    std::vector<std::string> codigos = {
-        "ABC@123", "X9Y#Z7", "Codigo!", "A1B2*C3", "ZXC$987"
-    };
+void TestsCodigo::testarCodigosComCaracteresInvalidos() {
+    std::vector<std::string> codigos;
+    codigos.push_back("ABC@123");
+    codigos.push_back("X9Y#Z7");
+    codigos.push_back("Codigo!");
+    codigos.push_back("A1B2*C3");
+    codigos.push_back("ZXC$987");
 
-    for (const auto& codigo : codigos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < codigos.size(); ++i) {
+        std::string codigo = codigos[i];
+        apresentacaoTeste(codigo);
+        try {
             Codigo c(codigo);
-            checar(false, "Codigo com caractere invalido aceito: " + codigo);
-        }
-        catch (...)
-        {
-            checar(true, "Codigo com caractere invalido rejeitado: " + codigo);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCodigo::testarCodigosComEspacos()
-{
-    std::vector<std::string> codigos = {
-        "ABC 123", " X9Y8Z7", "Codigo 01", "A1B2 C3", "ZXC987 "
-    };
+void TestsCodigo::testarCodigosComEspacos() {
+    std::vector<std::string> codigos;
+    codigos.push_back("ABC 123");
+    codigos.push_back(" X9Y8Z7");
+    codigos.push_back("Codigo 01");
+    codigos.push_back("A1B2 C3");
+    codigos.push_back("ZXC987 ");
 
-    for (const auto& codigo : codigos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < codigos.size(); ++i) {
+        std::string codigo = codigos[i];
+        apresentacaoTeste(codigo);
+        try {
             Codigo c(codigo);
-            checar(false, "Codigo com espaco aceito: " + codigo);
-        }
-        catch (...)
-        {
-            checar(true, "Codigo com espaco rejeitado: " + codigo);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCodigo::testarCodigosMuitoCurtos()
-{
-    std::vector<std::string> codigos = {
-        "A1", "X9", "C0", "Z", "1"
-    };
+void TestsCodigo::testarCodigosMuitoCurtos() {
+    std::vector<std::string> codigos;
+    codigos.push_back("A1");
+    codigos.push_back("X9");
+    codigos.push_back("C0");
+    codigos.push_back("Z");
+    codigos.push_back("1");
 
-    for (const auto& codigo : codigos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < codigos.size(); ++i) {
+        std::string codigo = codigos[i];
+        apresentacaoTeste(codigo);
+        try {
             Codigo c(codigo);
-            checar(false, "Codigo muito curto aceito: " + codigo);
-        }
-        catch (...)
-        {
-            checar(true, "Codigo muito curto rejeitado: " + codigo);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCodigo::testarCodigosMuitoLongos()
-{
-    std::vector<std::string> codigos = {
-        "ABC123XYZ789DEF456", // 18 caracteres
-        std::string(25, 'A') // 25 caracteres
-    };
+void TestsCodigo::testarCodigosMuitoLongos() {
+    std::vector<std::string> codigos;
+    codigos.push_back("ABC123XYZ789DEF456");
+    codigos.push_back(std::string(25, 'A'));
 
-    for (const auto& codigo : codigos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < codigos.size(); ++i) {
+        std::string codigo = codigos[i];
+        apresentacaoTeste(codigo);
+        try {
             Codigo c(codigo);
-            checar(false, "Codigo muito longo aceito: " + codigo);
-        }
-        catch (...)
-        {
-            checar(true, "Codigo muito longo rejeitado: " + codigo);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }

@@ -8,9 +8,11 @@
 #include <memory>
 #include "apresentacoes/InterfaceApresentacaoCRUD.h"
 
+using namespace std;
+
 class InterfaceFabricaGerenciavel {
 public:
-    virtual std::unique_ptr<InterfaceApresentacaoCRUD> criar() = 0;
+    virtual unique_ptr<InterfaceApresentacaoCRUD> criar() = 0;
 
     virtual ~InterfaceFabricaGerenciavel() = default;
 };

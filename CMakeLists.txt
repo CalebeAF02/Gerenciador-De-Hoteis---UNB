@@ -150,7 +150,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_entidades/TestsHotel.cpp
         tests/tests_entidades/TestsQuarto.cpp
         tests/tests_entidades/TestsReserva.cpp
-        tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
 )
 
 # Linka com o executável principal

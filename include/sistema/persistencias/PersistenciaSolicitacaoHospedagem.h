@@ -21,9 +21,9 @@ public:
 
     static void salvar(const SolicitacaoHospedagem &s);
 
-    static std::vector<SolicitacaoHospedagem> buscarPorEmail(const std::string &email);
+    static vector<SolicitacaoHospedagem> buscarPorEmail(const string &email);
 
-    static std::vector<SolicitacaoHospedagem> buscarPorStatus(int status);
+    static vector<SolicitacaoHospedagem> buscarPorStatus(int status);
 
     static void atualizar(const SolicitacaoHospedagem &s);
 };

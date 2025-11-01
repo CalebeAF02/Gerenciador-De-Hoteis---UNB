@@ -5,22 +5,26 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSTELEFONE_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSTELEFONE_H
 
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
 #include "Telefone.h"
 #include <vector>
 #include <string>
 
-class TestsTelefone : public TestsBase
-{
+class TestsTelefone : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsTelefone"; }
+
+    string nomeDoTeste() const override { return "TestsTelefone"; }
 
 private:
     void testarTelefonesValidos();
+
     void testarTelefonesComFormatoInvalido();
+
     void testarTelefonesComPrefixoInvalido();
+
     void testarTelefonesComCaracteresInvalidos();
+
     void testarTelefonesComDigitosInvalidos();
 };
 

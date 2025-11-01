@@ -1,11 +1,7 @@
-//
-
-// Created by caleb on 25/10/2025.
-//
 #include "TestsGerente.h"
+#include <iostream>
 
-void TestsGerente::executar()
-{
+void TestsGerente::executar() {
     testarNome();
     testarNomeInvalido();
     testarEmail();
@@ -19,167 +15,138 @@ void TestsGerente::executar()
     testarGetters();
 }
 
-void TestsGerente::testarNome()
-{
-    try
-    {
+void TestsGerente::testarNome() {
+    apresentacaoTeste("Joao Silva");
+    try {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
-        checar(true, "Nome valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Nome valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarNomeInvalido()
-{
-    try
-    {
+void TestsGerente::testarNomeInvalido() {
+    apresentacaoTeste("Joao@Silva");
+    try {
         Gerente g;
         g.setNome(Nome("Joao@Silva"));
-        checar(false, "Nome invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Nome invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarEmail()
-{
-    try
-    {
+void TestsGerente::testarEmail() {
+    apresentacaoTeste("joao@empresa.com");
+    try {
         Gerente g;
         g.setEmail(Email("joao@empresa.com"));
-        checar(true, "Email valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Email valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarEmailInvalido()
-{
-    try
-    {
+void TestsGerente::testarEmailInvalido() {
+    apresentacaoTeste("joao@.com");
+    try {
         Gerente g;
         g.setEmail(Email("joao@.com"));
-        checar(false, "Email invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Email invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarSenha()
-{
-    try
-    {
+void TestsGerente::testarSenha() {
+    apresentacaoTeste("a1!Bz"); // ✅ válida: 5 caracteres, sem sequência, contém todos os tipos
+    try {
         Gerente g;
-        g.setSenha(Senha("A1#a1a1a"));
-        checar(true, "Senha valida aceita");
-    }
-    catch (...)
-    {
-        checar(false, "Senha valida rejeitada");
+        g.setSenha(Senha("a1!Bz"));
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarSenhaInvalida()
-{
-    try
-    {
+void TestsGerente::testarSenhaInvalida() {
+    apresentacaoTeste("a1Bz"); // ❌ apenas 4 caracteres
+    try {
         Gerente g;
-        g.setSenha(Senha("123")); // muito curta e sem requisitos
-        checar(false, "Senha invalida aceita");
-    }
-    catch (...)
-    {
-        checar(true, "Senha invalida rejeitada");
+        g.setSenha(Senha("a1Bz"));
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarRamal()
-{
-    try
-    {
+void TestsGerente::testarRamal() {
+    apresentacaoTeste("42");
+    try {
         Gerente g;
-        g.setRamal(Ramal("1234"));
-        checar(true, "Ramal valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Ramal valido rejeitado");
+        g.setRamal(Ramal("42"));
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarRamalInvalido()
-{
-    try
-    {
+void TestsGerente::testarRamalInvalido() {
+    apresentacaoTeste("12a4");
+    try {
         Gerente g;
         g.setRamal(Ramal("12a4"));
-        checar(false, "Ramal invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Ramal invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarConstrucaoCompleta()
-{
-    try
-    {
+void TestsGerente::testarConstrucaoCompleta() {
+    apresentacaoTeste("Gerente completo valido");
+    try {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
         g.setEmail(Email("joao@empresa.com"));
-        g.setSenha(Senha("A1#a1a1a"));
-        g.setRamal(Ramal("1234"));
-        checar(true, "Gerente construido com todos os dados validos");
-    }
-    catch (...)
-    {
-        checar(false, "Falha ao construir gerente completo");
+        g.setSenha(Senha("a1!Bz")); // ✅ válida
+        g.setRamal(Ramal("42")); // ✅ válida
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarConstrucaoInvalida()
-{
-    try
-    {
+void TestsGerente::testarConstrucaoInvalida() {
+    apresentacaoTeste("Gerente com senha invalida");
+    try {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
         g.setEmail(Email("joao@empresa.com"));
-        g.setSenha(Senha("123")); // invalida
-        g.setRamal(Ramal("1234"));
-        checar(false, "Gerente construido com senha invalida");
-    }
-    catch (...)
-    {
-        checar(true, "Falha esperada ao construir gerente com dado invalido");
+        g.setSenha(Senha("123")); // ❌ inválida: curta, sem tipos
+        g.setRamal(Ramal("42")); // ✅ válida
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsGerente::testarGetters()
-{
-    Gerente g;
+void TestsGerente::testarGetters() {
+    apresentacaoTeste("Testando getters de Gerente");
+
     Nome nome("Joao Silva");
     Email email("joao@empresa.com");
-    Senha senha("A1#a1a1a");
-    Ramal ramal("1234");
+    Senha senha("a1!B2"); // ✅ válida
+    Ramal ramal("42"); // ✅ válida
 
+    Gerente g;
     g.setNome(nome);
     g.setEmail(email);
     g.setSenha(senha);
     g.setRamal(ramal);
 
-    checar(g.getNome() == nome.getValor(), "Getter de nome funcionando");
-    checar(g.getEmail() == email.getValor(), "Getter de email funcionando");
-    checar(g.getSenha() == senha.getValor(), "Getter de senha funcionando");
-    checar(g.getRamal() == ramal.getValor(), "Getter de ramal funcionando");
+    checaResultado(DEVE_DAR_CERTO, g.getNome() == nome.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, g.getEmail() == email.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, g.getSenha() == senha.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, g.getRamal() == ramal.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
 }

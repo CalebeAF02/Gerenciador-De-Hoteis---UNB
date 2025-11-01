@@ -1,80 +1,76 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsCapacidade.h"
+#include <iostream>
+#include <vector>
 
-void TestsCapacidade::executar()
-{
+void TestsCapacidade::executar() {
     testarCapacidadesValidas();
     testarCapacidadesNegativas();
     testarCapacidadesZero();
     testarCapacidadesMuitoAltas();
 }
 
-void TestsCapacidade::testarCapacidadesValidas()
-{
-    std::vector<int> capacidades = {1, 2, 4, 10, 999};
+void TestsCapacidade::testarCapacidadesValidas() {
+    std::vector<int> capacidades;
+    capacidades.push_back(1);
+    capacidades.push_back(2);
+    capacidades.push_back(4);
+    capacidades.push_back(10);
+    capacidades.push_back(999);
 
-    for (int capacidade : capacidades)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < capacidades.size(); ++i) {
+        int capacidade = capacidades[i];
+        apresentacaoTeste(capacidade);
+        try {
             Capacidade c(capacidade);
-            checar(true, "Capacidade valida aceita: " + std::to_string(capacidade));
-        }
-        catch (...)
-        {
-            checar(false, "Capacidade valida rejeitada: " + std::to_string(capacidade));
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCapacidade::testarCapacidadesNegativas()
-{
-    std::vector<int> capacidades = {-1, -10, -999};
+void TestsCapacidade::testarCapacidadesNegativas() {
+    std::vector<int> capacidades;
+    capacidades.push_back(-1);
+    capacidades.push_back(-10);
+    capacidades.push_back(-999);
 
-    for (int capacidade : capacidades)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < capacidades.size(); ++i) {
+        int capacidade = capacidades[i];
+        apresentacaoTeste(capacidade);
+        try {
             Capacidade c(capacidade);
-            checar(false, "Capacidade negativa aceita: " + std::to_string(capacidade));
-        }
-        catch (...)
-        {
-            checar(true, "Capacidade negativa rejeitada: " + std::to_string(capacidade));
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsCapacidade::testarCapacidadesZero()
-{
-    try
-    {
+void TestsCapacidade::testarCapacidadesZero() {
+    apresentacaoTeste(0);
+    try {
         Capacidade c(0);
-        checar(false, "Capacidade zero aceita");
-    }
-    catch (...)
-    {
-        checar(true, "Capacidade zero rejeitada");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsCapacidade::testarCapacidadesMuitoAltas()
-{
-    std::vector<int> capacidades = {1000, 5000, 99999};
+void TestsCapacidade::testarCapacidadesMuitoAltas() {
+    std::vector<int> capacidades;
+    capacidades.push_back(1000);
+    capacidades.push_back(5000);
+    capacidades.push_back(99999);
 
-    for (int capacidade : capacidades)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < capacidades.size(); ++i) {
+        int capacidade = capacidades[i];
+        apresentacaoTeste(capacidade);
+        try {
             Capacidade c(capacidade);
-            checar(false, "Capacidade muito alta aceita: " + std::to_string(capacidade));
-        }
-        catch (...)
-        {
-            checar(true, "Capacidade muito alta rejeitada: " + std::to_string(capacidade));
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }

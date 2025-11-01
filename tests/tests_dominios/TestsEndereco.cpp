@@ -1,104 +1,85 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsEndereco.h"
+#include <iostream>
+#include <vector>
 
-void TestsEndereco::executar()
-{
+void TestsEndereco::executar() {
     testarEnderecosValidos();
     testarEnderecosComCaracteresInvalidos();
     testarEnderecosComInicioOuFimInvalido();
     testarEnderecosMuitoLongos();
 }
 
-void TestsEndereco::testarEnderecosValidos()
-{
-    std::vector<std::string> enderecos = {
-        "Rua das Flores, 123",
-        "Av. Brasil - Bloco A",
-        "Praca Central 45",
-        "Rua Joao Goulart, 789",
-        "Alameda dos Anjos - Casa 10"
-    };
+void TestsEndereco::testarEnderecosValidos() {
+    std::vector<std::string> enderecos;
+    enderecos.push_back("Rua das Flores, 123");
+    enderecos.push_back("Av. Brasil - Bloco A");
+    enderecos.push_back("Praca Central 45");
+    enderecos.push_back("Rua Joao Goulart, 789");
+    enderecos.push_back("Alameda dos Anjos - Casa 10");
 
-    for (const auto& endereco : enderecos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < enderecos.size(); ++i) {
+        std::string endereco = enderecos[i];
+        apresentacaoTeste(endereco);
+        try {
             Endereco e(endereco);
-            checar(true, "Endereco valido aceito: " + endereco);
-        }
-        catch (...)
-        {
-            checar(false, "Endereco valido rejeitado: " + endereco);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &ex) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(ex));
         }
     }
 }
 
-void TestsEndereco::testarEnderecosComCaracteresInvalidos()
-{
-    std::vector<std::string> enderecos = {
-        "Rua das Flores @ 123",
-        "Av. Brasil # Bloco A",
-        "Praca Central * 45",
-        "Rua Joao Goulart ! 789"
-    };
+void TestsEndereco::testarEnderecosComCaracteresInvalidos() {
+    std::vector<std::string> enderecos;
+    enderecos.push_back("Rua das Flores @ 123");
+    enderecos.push_back("Av. Brasil # Bloco A");
+    enderecos.push_back("Praca Central * 45");
+    enderecos.push_back("Rua Joao Goulart ! 789");
 
-    for (const auto& endereco : enderecos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < enderecos.size(); ++i) {
+        std::string endereco = enderecos[i];
+        apresentacaoTeste(endereco);
+        try {
             Endereco e(endereco);
-            checar(false, "Endereco com caractere invalido aceito: " + endereco);
-        }
-        catch (...)
-        {
-            checar(true, "Endereco com caractere invalido rejeitado: " + endereco);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &ex) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(ex));
         }
     }
 }
 
-void TestsEndereco::testarEnderecosComInicioOuFimInvalido()
-{
-    std::vector<std::string> enderecos = {
-        ".Rua das Flores", // comeca com ponto
-        "Rua das Flores.", // termina com ponto
-        "-Av. Brasil", // comeca com hifen
-        "Praca Central-" // termina com hifen
-    };
+void TestsEndereco::testarEnderecosComInicioOuFimInvalido() {
+    std::vector<std::string> enderecos;
+    enderecos.push_back(".Rua das Flores");
+    enderecos.push_back("Rua das Flores.");
+    enderecos.push_back("-Av. Brasil");
+    enderecos.push_back("Praca Central-");
 
-    for (const auto& endereco : enderecos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < enderecos.size(); ++i) {
+        std::string endereco = enderecos[i];
+        apresentacaoTeste(endereco);
+        try {
             Endereco e(endereco);
-            checar(false, "Endereco com inicio/fim invalido aceito: " + endereco);
-        }
-        catch (...)
-        {
-            checar(true, "Endereco com inicio/fim invalido rejeitado: " + endereco);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &ex) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(ex));
         }
     }
 }
 
-void TestsEndereco::testarEnderecosMuitoLongos()
-{
-    std::vector<std::string> enderecos = {
-        std::string(101, 'A'), // 101 caracteres
-        "Rua " + std::string(97, 'B') // ultrapassa 100
-    };
+void TestsEndereco::testarEnderecosMuitoLongos() {
+    std::vector<std::string> enderecos;
+    enderecos.push_back(std::string(101, 'A'));
+    enderecos.push_back("Rua " + std::string(97, 'B'));
 
-    for (const auto& endereco : enderecos)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < enderecos.size(); ++i) {
+        std::string endereco = enderecos[i];
+        apresentacaoTeste(endereco);
+        try {
             Endereco e(endereco);
-            checar(false, "Endereco muito longo aceito: " + endereco);
-        }
-        catch (...)
-        {
-            checar(true, "Endereco muito longo rejeitado: " + endereco);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &ex) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(ex));
         }
     }
 }

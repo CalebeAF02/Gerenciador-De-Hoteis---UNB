@@ -5,7 +5,6 @@
 #include "ControladorInterfaceHotel.h"
 
 void ControladorInterfaceHotel::exibirMenu() {
-
 }
 
 void ControladorInterfaceHotel::exibirMenuCRUD() {
@@ -97,7 +96,7 @@ void ControladorInterfaceHotel::criar() {
                     break;
                 }
             } else {
-                cout << "Ops* Hotel não cadastrado!\n";
+                cout << "Ops* Hotel nao cadastrado!\n";
                 cout << "Retornando ao menu de acesso...\n";
                 break;
             }
@@ -114,4 +113,3 @@ void ControladorInterfaceHotel::atualizar() {
 
 bool ControladorInterfaceHotel::remover() {
 }
-

@@ -1,11 +1,7 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsQuarto.h"
+#include <iostream>
 
-void TestsQuarto::executar()
-{
+void TestsQuarto::executar() {
     testarNumero();
     testarNumeroInvalido();
     testarCapacidade();
@@ -19,154 +15,125 @@ void TestsQuarto::executar()
     testarGetters();
 }
 
-void TestsQuarto::testarNumero()
-{
-    try
-    {
+void TestsQuarto::testarNumero() {
+    apresentacaoTeste("101");
+    try {
         Quarto q;
         q.setNumero(Numero("101"));
-        checar(true, "Numero valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Numero valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarNumeroInvalido()
-{
-    try
-    {
+void TestsQuarto::testarNumeroInvalido() {
+    apresentacaoTeste("10A");
+    try {
         Quarto q;
         q.setNumero(Numero("10A"));
-        checar(false, "Numero invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Numero invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarCapacidade()
-{
-    try
-    {
+void TestsQuarto::testarCapacidade() {
+    apresentacaoTeste("2");
+    try {
         Quarto q;
         q.setCapacidade(Capacidade(2));
-        checar(true, "Capacidade valida aceita");
-    }
-    catch (...)
-    {
-        checar(false, "Capacidade valida rejeitada");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarCapacidadeInvalida()
-{
-    try
-    {
+void TestsQuarto::testarCapacidadeInvalida() {
+    apresentacaoTeste("0");
+    try {
         Quarto q;
         q.setCapacidade(Capacidade(0));
-        checar(false, "Capacidade invalida aceita");
-    }
-    catch (...)
-    {
-        checar(true, "Capacidade invalida rejeitada");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarDiaria()
-{
-    try
-    {
+void TestsQuarto::testarDiaria() {
+    apresentacaoTeste("R$50,00");
+    try {
         Quarto q;
-        q.setDiaria(Dinheiro(5000)); // R$50,00
-        checar(true, "Valor valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Valor valido rejeitado");
+        q.setDiaria(Dinheiro(5000));
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarDiariaInvalida()
-{
-    try
-    {
+void TestsQuarto::testarDiariaInvalida() {
+    apresentacaoTeste("R$0,00");
+    try {
         Quarto q;
         q.setDiaria(Dinheiro(0));
-        checar(false, "Valor invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Valor invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarRamal()
-{
-    try
-    {
+void TestsQuarto::testarRamal() {
+    apresentacaoTeste("1234");
+    try {
         Quarto q;
         q.setRamal(Ramal("1234"));
-        checar(true, "Ramal valido aceito");
-    }
-    catch (...)
-    {
-        checar(false, "Ramal valido rejeitado");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarRamalInvalido()
-{
-    try
-    {
+void TestsQuarto::testarRamalInvalido() {
+    apresentacaoTeste("12a4");
+    try {
         Quarto q;
         q.setRamal(Ramal("12a4"));
-        checar(false, "Ramal invalido aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Ramal invalido rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarConstrucaoCompleta()
-{
-    try
-    {
+void TestsQuarto::testarConstrucaoCompleta() {
+    apresentacaoTeste("Quarto completo valido");
+    try {
         Quarto q;
         q.setNumero(Numero("101"));
         q.setCapacidade(Capacidade(2));
         q.setDiaria(Dinheiro(5000));
         q.setRamal(Ramal("1234"));
-        checar(true, "Quarto construido com todos os dados validos");
-    }
-    catch (...)
-    {
-        checar(false, "Falha ao construir quarto completo");
+        checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarConstrucaoInvalida()
-{
-    try
-    {
+void TestsQuarto::testarConstrucaoInvalida() {
+    apresentacaoTeste("Quarto com diária invalida");
+    try {
         Quarto q;
         q.setNumero(Numero("101"));
         q.setCapacidade(Capacidade(2));
-        q.setDiaria(Dinheiro(0)); // invalido
+        q.setDiaria(Dinheiro(0));
         q.setRamal(Ramal("1234"));
-        checar(false, "Quarto construido com valor invalido");
-    }
-    catch (...)
-    {
-        checar(true, "Falha esperada ao construir quarto com dado invalido");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsQuarto::testarGetters()
-{
+void TestsQuarto::testarGetters() {
+    apresentacaoTeste("Testando getters de Quarto");
+
     Quarto q;
     Numero numero("101");
     Capacidade capacidade(2);
@@ -178,8 +145,8 @@ void TestsQuarto::testarGetters()
     q.setDiaria(diaria);
     q.setRamal(ramal);
 
-    checar(q.getNumero() == numero.getValor(), "Getter de numero funcionando");
-    checar(q.getCapacidade() == capacidade.getValor(), "Getter de capacidade funcionando");
-    checar(q.getDiaria() == diaria.getValor(), "Getter de dinheiro funcionando");
-    checar(q.getRamal() == ramal.getValor(), "Getter de ramal funcionando");
+    checaResultado(DEVE_DAR_CERTO, q.getNumero() == numero.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, q.getCapacidade() == capacidade.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, q.getDiaria() == diaria.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
+    checaResultado(DEVE_DAR_CERTO, q.getRamal() == ramal.getValor() ? DEVE_DAR_CERTO : DEVE_DAR_ERRADO);
 }

@@ -14,31 +14,31 @@
 
 class SolicitacaoHospedagem {
 private:
-    std::string hospedeId;
-    std::string hotelId;
-    std::string quartoId;
+    string hospedeId;
+    string hotelId;
+    string quartoId;
     Data chegada;
     Data partida;
     StatusSolicitacaoHospedagem status;
-    std::string motivoRecusa;
+    string motivoRecusa;
 
 public:
     SolicitacaoHospedagem() = default; // construtor padrao
 
     SolicitacaoHospedagem(
-        const std::string &hospedeId,
-        const std::string &hotelId,
-        const std::string &quartoId,
+        const string &hospedeId,
+        const string &hotelId,
+        const string &quartoId,
         const Data &chegada,
         const Data &partida,
         const StatusSolicitacaoHospedagem status,
-        const std::string &motivoRecusa
+        const string &motivoRecusa
     );
 
     // Setters inline
-    void setHospedeId(const std::string &id) { hospedeId = id; }
-    void setHotelId(const std::string &id) { hotelId = id; }
-    void setQuartoId(const std::string &id) { quartoId = id; }
+    void setHospedeId(const string &id) { hospedeId = id; }
+    void setHotelId(const string &id) { hotelId = id; }
+    void setQuartoId(const string &id) { quartoId = id; }
     void setChegada(const Data &d) { chegada = d; }
     void setPartida(const Data &d) { partida = d; }
 
@@ -46,19 +46,19 @@ public:
         this->status = s;
     }
 
-    void setMotivoRecusa(const std::string &motivo) { motivoRecusa = motivo; }
+    void setMotivoRecusa(const string &motivo) { motivoRecusa = motivo; }
 
     // Getters inline
 
-    std::string getHospedeId() const {
+    string getHospedeId() const {
         return hospedeId;
     }
 
-    std::string getHotelId() const {
+    string getHotelId() const {
         return hotelId;
     }
 
-    std::string getQuartoId() const {
+    string getQuartoId() const {
         return quartoId;
     }
 
@@ -74,7 +74,7 @@ public:
         return status;
     }
 
-    std::string getMotivoRecusa() const {
+    string getMotivoRecusa() const {
         return motivoRecusa;
     }
 };

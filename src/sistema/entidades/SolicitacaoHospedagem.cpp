@@ -5,13 +5,13 @@
 #include "../../../include/sistema/entidades/SolicitacaoHospedagem.h"
 
 SolicitacaoHospedagem::SolicitacaoHospedagem(
-    const std::string &hospedeId,
-    const std::string &hotelId,
-    const std::string &quartoId,
+    const string &hospedeId,
+    const string &hotelId,
+    const string &quartoId,
     const Data &chegada,
     const Data &partida,
     const StatusSolicitacaoHospedagem status,
-    const std::string &motivoRecusa
+    const string &motivoRecusa
 ) {
     setHospedeId(hospedeId);
     setHotelId(hotelId);

@@ -11,8 +11,7 @@
 
 using namespace std;
 
-class Quarto
-{
+class Quarto {
 private:
     Numero numero;
     Capacidade capacidade;
@@ -22,52 +21,43 @@ private:
 public:
     Quarto() = default;
 
-    Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal)
-    {
+    Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal) {
         setNumero(numero);
         setCapacidade(capacidade);
         setDiaria(diaria);
         setRamal(ramal);
     }
 
-    void setNumero(const Numero& newNumero)
-    {
+    void setNumero(const Numero &newNumero) {
         this->numero = newNumero;
     }
 
-    void setCapacidade(const Capacidade& newCapacidade)
-    {
+    void setCapacidade(const Capacidade &newCapacidade) {
         this->capacidade = newCapacidade;
     }
 
-    void setDiaria(const Dinheiro& newDiaria)
-    {
+    void setDiaria(const Dinheiro &newDiaria) {
         this->diaria = newDiaria;
     }
 
-    void setRamal(const Ramal& newRamal)
-    {
+    void setRamal(const Ramal &newRamal) {
         this->ramal = newRamal;
     }
 
     //Get
-    string getNumero() const
-    {
+    string getNumero() const {
         return numero.getValor();
     }
 
-    int getCapacidade() const
-    {
+    int getCapacidade() const {
         return capacidade.getValor();
     }
 
-    int getDiaria() const
-    {
-        diaria.getValor();
+    int getDiaria() const {
+        return diaria.getValor();
     }
 
-    string getRamal() const
-    {
+    string getRamal() const {
         return ramal.getValor();
     }
 };

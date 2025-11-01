@@ -21,9 +21,7 @@ void Sistema::rodandoSistema() {
             cout << "Encerrando o sistema..." << endl;
         } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
             Email emailAcessar;
-            cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
             exibirMenu();
-            cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
         } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
             controladorHospede.exibirMenu();
         }

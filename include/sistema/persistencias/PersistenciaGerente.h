@@ -19,7 +19,7 @@ public:
 
     vector<Gerente *> listarBD();
 
-    bool autenticarGerentePeloBD(const std::string &email, const std::string &senha);
+    bool autenticarGerentePeloBD(const string &email, const string &senha);
 
     bool atualizarGerenteNoBD(const Gerente &gerente);
 

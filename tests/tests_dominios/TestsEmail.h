@@ -5,23 +5,29 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSEMAIL_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSEMAIL_H
 
-#include "TestsBase.h"
 #include "Email.h"
 #include <vector>
 #include <string>
 
-class TestsEmail : public TestsBase
-{
+#include "InterfaceDeTeste.h"
+
+class TestsEmail : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsEmail"; }
+
+    string nomeDoTeste() const override { return "TestsEmail"; }
 
 private:
     void testarEmailsValidos();
+
     void testarEmailsInvalidosFormato();
+
     void testarEmailsComCaracteresInvalidos();
+
     void testarEmailsComParteLocalInvalida();
+
     void testarEmailsComDominioInvalido();
+
     void testarEmailsMuitoLongos();
 };
 

@@ -15,54 +15,40 @@
 void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
     bool lacoLogin = false;
 
-    while (!lacoLogin) // Enquanto esta falso , ele repete
-    {
-        string emailCopia = "";
-        string senhaCopia = "";
+    while (!lacoLogin) {
+        string emailCopia;
+        string senhaCopia;
 
         TextoApresentacao::MostrarTituloEmCaixa("Logando com Gerente");
 
-        bool tudoOK = true;
-        if (tudoOK) {
-            cout << "Informe o Email: \n";
-            emailCopia = TextoApresentacao::LerLinha();
-        }
-        if (tudoOK) {
-            cout << "Informe o Senha: \n";
-            senhaCopia = TextoApresentacao::LerLinha();
-        }
-        if (tudoOK) {
-            try {
-                Email emailObj(emailCopia);
-                Senha senhaObj(senhaCopia);
-                // chama servico
-                if (autenticar(emailObj, senhaObj)) {
-                    lacoLogin = true;
-                } else {
-                    TextoApresentacao::MostrarOpcao("Voltar", 0);
-                    TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
-                    string opcao = TextoApresentacao::LerLinha();
-                    if (opcao == "0") {
-                        break;
-                    } else if (opcao == "1") {
-                        lacoLogin = false;
-                    }
-                }
-            } catch (invalid_argument &erro) {
+        cout << "Informe o Email: \n";
+        emailCopia = TextoApresentacao::LerLinha();
+
+        cout << "Informe a Senha: \n";
+        senhaCopia = TextoApresentacao::LerLinha();
+
+        try {
+            Email emailObj(emailCopia);
+            Senha senhaObj(senhaCopia);
+
+            if (autenticar(emailObj, senhaObj)) {
+                lacoLogin = true;
+            } else {
+                cout << "Gerente nao cadastrado" << endl;
                 TextoApresentacao::MostrarOpcao("Voltar", 0);
                 TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
                 string opcao = TextoApresentacao::LerLinha();
-                if (opcao == "0") {
-                    break;
-                } else if (opcao == "1") {
-                    lacoLogin = false;
-                }
+                if (opcao == "0") break;
             }
-        } else {
-            cout << "Gerente nao cadastrado" << endl;
+        } catch (std::invalid_argument &erro) {
+            cout << "Erro: " << erro.what() << endl;
+            TextoApresentacao::MostrarOpcao("Voltar", 0);
+            TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
+            string opcao = TextoApresentacao::LerLinha();
+            if (opcao == "0") break;
         }
     }
-};
+}
 
 /*
 void ServicosGerente::excluirMeuCadastro()

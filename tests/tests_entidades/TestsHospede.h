@@ -1,38 +1,42 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSHOSPEDE_H
+#define TESTSHOSPEDE_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSHOSPEDES_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSHOSPEDES_H
-
-#include "../interface_tests/TestsBase.h"
+#include "InterfaceDeTeste.h"
+#include "Hospede.h"
 #include "Nome.h"
 #include "Email.h"
 #include "Endereco.h"
 #include "Cartao.h"
-#include "Hospede.h"
+#include <string>
 
-class TestsHospede : public TestsBase
-{
+class TestsHospede : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsHospede"; }
+
+    std::string nomeDoTeste() const override { return "TestsHospede"; }
 
 private:
     void testarNome();
-    void testarEmail();
-    void testarEndereco();
-    void testarCartao();
 
     void testarNomeInvalido();
+
+    void testarEmail();
+
     void testarEmailInvalido();
+
+    void testarEndereco();
+
     void testarEnderecoInvalido();
+
+    void testarCartao();
+
     void testarCartaoInvalido();
 
     void testarConstrucaoCompleta();
+
     void testarConstrucaoInvalida();
 
     void testarGetters();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSHOSPEDES_H
+#endif // TESTSHOSPEDE_H

@@ -1,27 +1,34 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSNOME_H
+#define TESTSNOME_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNOME_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNOME_H
-
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
+#include "TextoApresentacao.h"
 #include "Nome.h"
+#include <vector>
+#include <string>
 
-class TestsNome : public TestsBase
-{
+class TestsNome : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsNome"; }
+
+    std::string nomeDoTeste() const override {
+        return "TestsNome";
+    }
 
 private:
     void testarNomesValidos();
+
     void testarNomesInvalidos();
+
     void testarNomesComNumeros();
+
     void testarNomesMuitoLongos();
+
     void testarNomesSemMaiusculaInicial();
+
     void testarNomesComEspacoInvalido();
+
     void testarNomesComCaracteresEspeciais();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSNOME_H
+#endif // TESTSNOME_H

@@ -1,87 +1,77 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsDinheiro.h"
+#include <iostream>
+#include <vector>
 
-void TestsDinheiro::executar()
-{
+void TestsDinheiro::executar() {
     testarValoresValidos();
     testarValoresNegativos();
     testarValoresZero();
     testarValoresMuitoAltos();
 }
 
-void TestsDinheiro::testarValoresValidos()
-{
-    std::vector<int> valores = {
-        1, // R$0,01
-        100, // R$1,00
-        9999, // R$99,99
-        100000, // R$1.000,00
-        99999999, // R$999.999,99
-        100000000 // R$1.000.000,00
-    };
+void TestsDinheiro::testarValoresValidos() {
+    std::vector<int> valores;
+    valores.push_back(1);
+    valores.push_back(100);
+    valores.push_back(9999);
+    valores.push_back(100000);
+    valores.push_back(99999999);
+    valores.push_back(100000000);
 
-    for (int valor : valores)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < valores.size(); ++i) {
+        int valor = valores[i];
+        apresentacaoTeste(valor);
+        try {
             Dinheiro d(valor);
-            checar(true, "Valor valido aceito: " + std::to_string(valor));
-        }
-        catch (...)
-        {
-            checar(false, "Valor valido rejeitado: " + std::to_string(valor));
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsDinheiro::testarValoresNegativos()
-{
-    std::vector<int> valores = {-1, -100, -99999999};
+void TestsDinheiro::testarValoresNegativos() {
+    std::vector<int> valores;
+    valores.push_back(-1);
+    valores.push_back(-100);
+    valores.push_back(-99999999);
 
-    for (int valor : valores)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < valores.size(); ++i) {
+        int valor = valores[i];
+        apresentacaoTeste(valor);
+        try {
             Dinheiro d(valor);
-            checar(false, "Valor negativo aceito: " + std::to_string(valor));
-        }
-        catch (...)
-        {
-            checar(true, "Valor negativo rejeitado: " + std::to_string(valor));
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsDinheiro::testarValoresZero()
-{
-    try
-    {
+void TestsDinheiro::testarValoresZero() {
+    apresentacaoTeste(0);
+    try {
         Dinheiro d(0);
-        checar(false, "Valor zero aceito");
-    }
-    catch (...)
-    {
-        checar(true, "Valor zero rejeitado");
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+    } catch (std::invalid_argument &e) {
+        checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
 
-void TestsDinheiro::testarValoresMuitoAltos()
-{
-    std::vector<int> valores = {100000001, 500000000, 999999999};
+void TestsDinheiro::testarValoresMuitoAltos() {
+    std::vector<int> valores;
+    valores.push_back(100000001);
+    valores.push_back(500000000);
+    valores.push_back(999999999);
 
-    for (int valor : valores)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < valores.size(); ++i) {
+        int valor = valores[i];
+        apresentacaoTeste(valor);
+        try {
             Dinheiro d(valor);
-            checar(false, "Valor muito alto aceito: " + std::to_string(valor));
-        }
-        catch (...)
-        {
-            checar(true, "Valor muito alto rejeitado: " + std::to_string(valor));
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }

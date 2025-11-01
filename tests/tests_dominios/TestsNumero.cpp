@@ -1,11 +1,8 @@
-//
-// Created by caleb on 25/10/2025.
-//
-
 #include "TestsNumero.h"
+#include <iostream>
+#include <vector>
 
-void TestsNumero::executar()
-{
+void TestsNumero::executar() {
     testarNumerosValidos();
     testarNumerosNegativos();
     testarNumerosComLetras();
@@ -14,122 +11,113 @@ void TestsNumero::executar()
     testarNumerosVazios();
 }
 
-void TestsNumero::testarNumerosValidos()
-{
-    std::vector<std::string> numeros = {
-        "1", "123", "9999", "456", "789"
-    };
+void TestsNumero::testarNumerosValidos() {
+    std::vector<std::string> numeros;
+    numeros.push_back("1");
+    numeros.push_back("123");
+    numeros.push_back("9999");
+    numeros.push_back("456");
+    numeros.push_back("789");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(true, "Numero valido aceito: " + numero);
-        }
-        catch (...)
-        {
-            checar(false, "Numero valido rejeitado: " + numero);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsNumero::testarNumerosNegativos()
-{
-    std::vector<std::string> numeros = {
-        "-1", "-123", "-9999"
-    };
+void TestsNumero::testarNumerosNegativos() {
+    std::vector<std::string> numeros;
+    numeros.push_back("-1");
+    numeros.push_back("-123");
+    numeros.push_back("-9999");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(false, "Numero negativo aceito: " + numero);
-        }
-        catch (...)
-        {
-            checar(true, "Numero negativo rejeitado: " + numero);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsNumero::testarNumerosComLetras()
-{
-    std::vector<std::string> numeros = {
-        "12a3", "abc", "9b9c"
-    };
+void TestsNumero::testarNumerosComLetras() {
+    std::vector<std::string> numeros;
+    numeros.push_back("12a3");
+    numeros.push_back("abc");
+    numeros.push_back("9b9c");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(false, "Numero com letras aceito: " + numero);
-        }
-        catch (...)
-        {
-            checar(true, "Numero com letras rejeitado: " + numero);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsNumero::testarNumerosComSimbolos()
-{
-    std::vector<std::string> numeros = {
-        "12@3", "99#9", "!000", "45.67"
-    };
+void TestsNumero::testarNumerosComSimbolos() {
+    std::vector<std::string> numeros;
+    numeros.push_back("12@3");
+    numeros.push_back("99#9");
+    numeros.push_back("!000");
+    numeros.push_back("45.67");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(false, "Numero com simbolo aceito: " + numero);
-        }
-        catch (...)
-        {
-            checar(true, "Numero com simbolo rejeitado: " + numero);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsNumero::testarNumerosComEspacos()
-{
-    std::vector<std::string> numeros = {
-        " 123", "12 3", "123 ", "1 2 3 4"
-    };
+void TestsNumero::testarNumerosComEspacos() {
+    std::vector<std::string> numeros;
+    numeros.push_back(" 123");
+    numeros.push_back("12 3");
+    numeros.push_back("123 ");
+    numeros.push_back("1 2 3 4");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(false, "Numero com espaco aceito: " + numero);
-        }
-        catch (...)
-        {
-            checar(true, "Numero com espaco rejeitado: " + numero);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }
 
-void TestsNumero::testarNumerosVazios()
-{
-    std::vector<std::string> numeros = {
-        "", " "
-    };
+void TestsNumero::testarNumerosVazios() {
+    std::vector<std::string> numeros;
+    numeros.push_back("");
+    numeros.push_back(" ");
 
-    for (const auto& numero : numeros)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < numeros.size(); ++i) {
+        std::string numero = numeros[i];
+        apresentacaoTeste(numero);
+        try {
             Numero n(numero);
-            checar(false, "Numero vazio aceito: '" + numero + "'");
-        }
-        catch (...)
-        {
-            checar(true, "Numero vazio rejeitado: '" + numero + "'");
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
 }

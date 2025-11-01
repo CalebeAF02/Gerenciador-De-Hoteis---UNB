@@ -1,86 +1,51 @@
-//
-// Created by caleb on 01/10/2025.
-//
+#include <sstream>
+#include <cctype>
+#include <stdexcept>
 
 #include "Endereco.h"
 
-
-void Endereco::validar(const string endereco)
-{
-    int enderecoTamanho = endereco.length();
-    if (enderecoTamanho < 5 || enderecoTamanho > 30)
-    {
-        throw invalid_argument("Erro: Endereco com tamanho invalido");
+void Endereco::validar(const std::string endereco) {
+    if (endereco.length() < 5 || endereco.length() > 30) {
+        throw std::invalid_argument("Erro: Endereco com tamanho invalido");
     }
 
-    if (endereco[0] == ' ' || endereco[0] == ',' || endereco[0] == '.')
-    {
-        throw invalid_argument("Erro: Endereco nao pode comecar com ' ' ou ',' ou '.' !");
+    // Separar os componentes: rua, número, complemento
+    std::istringstream iss(endereco);
+    std::string rua, numero, complemento;
+
+    if (!(iss >> rua >> numero)) {
+        throw std::invalid_argument("Erro: Endereco deve conter pelo menos rua e numero");
     }
 
-    if (endereco[enderecoTamanho - 1] == ' ' || endereco[enderecoTamanho - 1] == ',' || endereco[enderecoTamanho - 1] ==
-        '.')
-    {
-        throw invalid_argument("Erro: Endereco nao pode terminar com ' ' ou ',' ou '.' !");
+    std::getline(iss, complemento); // complemento pode ter espaços
+
+    // Validar rua: cada termo começa com maiúscula
+    std::istringstream ruaStream(rua);
+    std::string termo;
+    while (std::getline(ruaStream, termo, ' ')) {
+        if (!isupper(termo[0])) {
+            throw std::invalid_argument("Erro: Rua deve comecar com letra maiuscula em cada termo");
+        }
     }
 
-    int cont_branco = 0;
-    int contNumeros = 0;
-    int caracteres_brancos = 0;
-    int contCaracter = 0;
-    int contLetra = 0;
-
-    for (int i = 0; i < enderecoTamanho; i++)
-    {
-        if (endereco[i] == ',' || endereco[i] == '.')
-        {
-            cont_branco = 0;
-            contCaracter += 1;
-            if (contCaracter > 1)
-            {
-                throw invalid_argument("Erro: Simbolo seguido por outro simbolo");
-            }
-        }
-        else if (endereco[i] == ' ')
-        {
-            contCaracter = 0;
-            caracteres_brancos += 1;
-            cont_branco += 1;
-            if (cont_branco > 1)
-            {
-                throw invalid_argument("Erro: Espaco em branco seguido por outro espaco em branco");
-            }
-        }
-        else if (cont_branco == 1)
-        {
-            if (isalpha(endereco[i]))
-            {
-                contCaracter = 0;
-                cont_branco = 0;
-                contLetra += 1;
-            }
-            else
-            {
-                throw invalid_argument("Erro: Espaco em branco seguido por outro caracter");
-            }
-        }
-        else if (isalpha(endereco[i]))
-        {
-            contCaracter = 0;
-            cont_branco = 0;
-            contLetra += 1;
-        }
-        else if (isalpha(endereco[i]))
-        {
-            contCaracter = 0;
-            cont_branco = 0;
-            contLetra += 1;
-        }
-        else if (isdigit(endereco[i]))
-        {
-            contCaracter = 0;
-            cont_branco = 0;
-            contNumeros += 1;
+    // Validar número: inteiro positivo
+    for (char c: numero) {
+        if (!isdigit(c)) {
+            throw std::invalid_argument("Erro: Numero do endereco deve conter apenas digitos");
         }
     }
-};
+    if (std::stoi(numero) <= 0) {
+        throw std::invalid_argument("Erro: Numero do endereco deve ser positivo");
+    }
+
+    // Validar complemento (se existir): cada termo começa com maiúscula
+    if (!complemento.empty()) {
+        std::istringstream compStream(complemento);
+        std::string compTermo;
+        while (compStream >> compTermo) {
+            if (!isupper(compTermo[0])) {
+                throw std::invalid_argument("Erro: Complemento deve comecar com letra maiuscula em cada termo");
+            }
+        }
+    }
+}

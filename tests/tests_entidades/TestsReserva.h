@@ -1,37 +1,41 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSRESERVA_H
+#define TESTSRESERVA_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRESERVAS_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRESERVAS_H
-
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
+#include "Reserva.h"
 #include "Data.h"
 #include "Dinheiro.h"
 #include "Codigo.h"
-#include "Reserva.h"
+#include <string>
 
-class TestsReserva : public TestsBase
-{
+class TestsReserva : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsReserva"; }
+
+    std::string nomeDoTeste() const override { return "TestsReserva"; }
 
 private:
     void testarChegada();
-    void testarPartida();
-    void testarDinheiro();
-    void testarCodigo();
 
     void testarChegadaInvalida();
+
+    void testarPartida();
+
     void testarPartidaInvalida();
+
+    void testarDinheiro();
+
     void testarDinheiroInvalido();
+
+    void testarCodigo();
+
     void testarCodigoInvalido();
 
     void testarConstrucaoCompleta();
+
     void testarConstrucaoInvalida();
 
     void testarGetters();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRESERVAS_H
+#endif // TESTSRESERVA_H

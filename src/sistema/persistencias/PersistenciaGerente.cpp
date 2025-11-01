@@ -11,24 +11,24 @@ bool PersistenciaGerente::inserirAoBD(Gerente &gerente) {
 
     sqlite3 *db = banco.getConexao();
 
-    std::string sql = "INSERT INTO gerentes (nome, email, ramal, senha) VALUES ('" +
-                      gerente.getNome() + "', '" + gerente.getEmail() + "', '" + gerente.getRamal() + "', '" + gerente.
-                      getSenha() +
-                      "');";
+    string sql = "INSERT INTO gerentes (nome, email, ramal, senha) VALUES ('" +
+                 gerente.getNome() + "', '" + gerente.getEmail() + "', '" + gerente.getRamal() + "', '" + gerente.
+                 getSenha() +
+                 "');";
 
     char *mensagemErro = nullptr;
 
     int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
     if (rc != SQLITE_OK) {
-        std::string erroStr = mensagemErro ? mensagemErro : "Erro desconhecido";
+        string erroStr = mensagemErro ? mensagemErro : "Erro desconhecido";
 
         // Verifica se o erro é de violação de UNIQUE no campo email
-        if (erroStr.find("UNIQUE constraint failed: gerentes.email") != std::string::npos) {
+        if (erroStr.find("UNIQUE constraint failed: gerentes.email") != string::npos) {
             // não esta apresentando a menssagem
 
-            std::cout << "\nErro: Este email ja esta cadastrado no sistema!" << std::endl;
+            cout << "\nErro: Este email ja esta cadastrado no sistema!" << endl;
         } else {
-            std::cout << "\nErro ao inserir gerente: " << erroStr << std::endl << endl;
+            cout << "\nErro ao inserir gerente: " << erroStr << endl << endl;
         }
 
         sqlite3_free(mensagemErro);
@@ -54,16 +54,16 @@ vector<Gerente *> PersistenciaGerente::listarBD() {
     const char *sql = "SELECT nome, email, ramal, senha FROM gerentes;";
     int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
-        std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
         banco.fechandoConexao();
         return listaGerentes;
     }
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        std::string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
-        std::string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-        std::string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-        std::string senha = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
+        string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string senha = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
 
         Gerente *gerenteObj = new Gerente(Nome(nome), Email(email), Ramal(ramal), Senha(senha));
 
@@ -75,7 +75,7 @@ vector<Gerente *> PersistenciaGerente::listarBD() {
     return listaGerentes;
 }
 
-bool PersistenciaGerente::autenticarGerentePeloBD(const std::string &email, const std::string &senha) {
+bool PersistenciaGerente::autenticarGerentePeloBD(const string &email, const string &senha) {
     BancoDeDados banco;
 
     if (email.empty() || senha.empty())
@@ -90,7 +90,7 @@ bool PersistenciaGerente::autenticarGerentePeloBD(const std::string &email, cons
     const char *sql = "SELECT COUNT(*) FROM gerentes WHERE email = ? AND senha = ? LIMIT 1;";
     int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
-        std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
         banco.fechandoConexao();
         return false;
     }
@@ -122,7 +122,7 @@ bool PersistenciaGerente::atualizarGerenteNoBD(const Gerente &gerente) {
     const char *sql = "UPDATE gerentes SET nome = ?, ramal = ?, senha = ? WHERE email = ?;";
     int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
-        std::cerr << "Erro ao preparar atualizacao: " << sqlite3_errmsg(db) << std::endl;
+        cerr << "Erro ao preparar atualizacao: " << sqlite3_errmsg(db) << endl;
         banco.fechandoConexao();
         return false;
     }
@@ -141,11 +141,11 @@ bool PersistenciaGerente::atualizarGerenteNoBD(const Gerente &gerente) {
 
 bool PersistenciaGerente::excluirPorEmailDoBD(Gerente *gerenteLogado) {
     if (gerenteLogado == nullptr) {
-        std::cout << "Nenhum gerente esta logado. Exclusao nao permitida." << std::endl;
+        cout << "Nenhum gerente esta logado. Exclusao nao permitida." << endl;
         return false;
     }
 
-    std::string email = gerenteLogado->getEmail();
+    string email = gerenteLogado->getEmail();
 
     BancoDeDados banco;
     if (!banco.abrindoConexao())
@@ -153,12 +153,12 @@ bool PersistenciaGerente::excluirPorEmailDoBD(Gerente *gerenteLogado) {
 
     sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
 
-    std::string sql = "DELETE FROM gerentes WHERE email = '" + email + "';";
+    string sql = "DELETE FROM gerentes WHERE email = '" + email + "';";
     char *mensagemErro = nullptr;
 
     int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
     if (rc != SQLITE_OK) {
-        std::cerr << "Erro ao excluir gerente: " << mensagemErro << std::endl;
+        cerr << "Erro ao excluir gerente: " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
         banco.fechandoConexao();
         return false;

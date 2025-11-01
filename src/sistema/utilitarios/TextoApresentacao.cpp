@@ -3,19 +3,16 @@
 #include <algorithm>
 #include <limits>
 
-void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c)
-{
+void TextoApresentacao::RepetirCaracter(int qntCaracteres, char c) {
     int i = 0;
-    while (i < (qntCaracteres))
-    {
+    while (i < (qntCaracteres)) {
         cout << c;
 
         i++;
     }
 };
 
-void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao)
-{
+void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao) {
     RepetirCaracter(apresentacao.length() + 2 + (2 * 4), '-');
 
     cout << endl << "|";
@@ -41,44 +38,37 @@ void TextoApresentacao::MostrarTituloEmCaixa(string apresentacao)
     cout << endl;
 };
 
-void TextoApresentacao::MostrarTituloPergunta(string pergunta)
-{
+void TextoApresentacao::MostrarTituloPergunta(string pergunta) {
     cout << pergunta << endl;
 };
 
-void TextoApresentacao::MostrarTituloRetorno(string retorno)
-{
+void TextoApresentacao::MostrarTituloRetorno(string retorno) {
     cout << retorno << endl;
 };
 
-void TextoApresentacao::MostrarOpcaoEmCaixa(const std::string& texto, int numero)
-{
-    std::cout << "------------------------------\n";
-    std::cout << "| [" << numero << "] " << texto << "\n";
-    std::cout << "------------------------------\n";
+void TextoApresentacao::MostrarOpcaoEmCaixa(const string &texto, int numero) {
+    cout << "------------------------------\n";
+    cout << "| [" << numero << "] " << texto << "\n";
+    cout << "------------------------------\n";
 };
 
-void TextoApresentacao::MostrarOpcaoEmCaixa(std::string texto, string numero)
-{
-    std::cout << "------------------------------\n";
-    std::cout << "| [" << numero << "] " << texto << "\n";
-    std::cout << "------------------------------\n";
+void TextoApresentacao::MostrarOpcaoEmCaixa(string texto, string numero) {
+    cout << "------------------------------\n";
+    cout << "| [" << numero << "] " << texto << "\n";
+    cout << "------------------------------\n";
 };
 
-void TextoApresentacao::MostrarOpcao(string texto, int numero)
-{
+void TextoApresentacao::MostrarOpcao(string texto, int numero) {
     cout << "[" << numero << "] " << texto << "\n";
 };
 
-string TextoApresentacao::RecebeOpcao()
-{
+string TextoApresentacao::RecebeOpcao() {
     cout << endl << "Opcao: ";
     string opcao = LerLinha();
     return opcao;
 };
 
-string TextoApresentacao::LerLinha()
-{
+string TextoApresentacao::LerLinha() {
     string valor = "";
     getline(cin, valor);
     return valor;

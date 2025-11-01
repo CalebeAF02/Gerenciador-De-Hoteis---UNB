@@ -10,10 +10,10 @@ bool ServicoAutenticavel::autenticar(Email &emailCopia, Senha &senhaCopia) {
 
     if (gerenteLogado) {
         this->estaLogado = true;
-        std::cout << "Login realizado com sucesso!\n";
+        cout << "Login realizado com sucesso!\n";
         return true;
     } else {
-        std::cout << "Erro: Usuario nao encontrado ou senha incorreta!\n";
+        cout << "Erro: Usuario nao encontrado ou senha incorreta!\n";
         return false;
     }
 };

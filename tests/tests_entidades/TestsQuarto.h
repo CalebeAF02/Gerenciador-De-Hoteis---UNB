@@ -1,38 +1,42 @@
-//
-// Created by caleb on 25/10/2025.
-//
+#ifndef TESTSQUARTO_H
+#define TESTSQUARTO_H
 
-#ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSQUARTOS_H
-#define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSQUARTOS_H
-
-#include "TestsBase.h"
+#include "InterfaceDeTeste.h"
+#include "Quarto.h"
 #include "Numero.h"
 #include "Capacidade.h"
 #include "Dinheiro.h"
 #include "Ramal.h"
-#include "Quarto.h"
+#include <string>
 
-class TestsQuarto : public TestsBase
-{
+class TestsQuarto : public InterfaceDeTeste {
 public:
     void executar() override;
-    std::string nome() const override { return "TestsQuarto"; }
+
+    std::string nomeDoTeste() const override { return "TestsQuarto"; }
 
 private:
     void testarNumero();
-    void testarCapacidade();
-    void testarDiaria();
-    void testarRamal();
 
     void testarNumeroInvalido();
+
+    void testarCapacidade();
+
     void testarCapacidadeInvalida();
+
+    void testarDiaria();
+
     void testarDiariaInvalida();
+
+    void testarRamal();
+
     void testarRamalInvalido();
 
     void testarConstrucaoCompleta();
+
     void testarConstrucaoInvalida();
 
     void testarGetters();
 };
 
-#endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSQUARTOS_H
+#endif // TESTSQUARTO_H

@@ -1,12 +1,8 @@
-//
-// Created by caleb on 25/10/2025.
-//
 #include "TestsNome.h"
 
-#include <vector>
+void TestsNome::executar() {
+    TextoApresentacao::MostrarTituloEmCaixa("Testes Dominio -> Nome");
 
-void TestsNome::executar()
-{
     testarNomesValidos();
     testarNomesInvalidos();
     testarNomesComNumeros();
@@ -16,161 +12,156 @@ void TestsNome::executar()
     testarNomesComCaracteresEspeciais();
 }
 
-void TestsNome::testarNomesValidos()
-{
-    std::vector<std::string> nomes = {
-        "Joao da Silva",
-        "Maria Clara",
-        "Carlos Eduardo",
-        "Ana Beatriz",
-        "Fernanda Lima"
-    };
+void TestsNome::testarNomesValidos() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes validos:");
+    std::vector<std::string> nomes;
+    nomes.push_back("João da Silva");
+    nomes.push_back("Maria Clara");
+    nomes.push_back("Carlos Eduardo");
+    nomes.push_back("Ana Beatriz");
+    nomes.push_back("Fernanda Lima");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(true, "Nome valido aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(false, "Nome valido rejeitado: " + nome);
+            checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesInvalidos()
-{
-    std::vector<std::string> nomes = {
-        "J@o",
-        "Joao#Silva",
-        "Joao!",
-        "Joao..Silva",
-        "Joao--Silva"
-    };
+void TestsNome::testarNomesInvalidos() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes com símbolos invalidos:");
+    std::vector<std::string> nomes;
+    nomes.push_back("J@o");
+    nomes.push_back("Joao#Silva");
+    nomes.push_back("Joao!");
+    nomes.push_back("Joao..Silva");
+    nomes.push_back("Joao--Silva");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome invalido aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome invalido rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesComNumeros()
-{
-    std::vector<std::string> nomes = {
-        "Joao123",
-        "Maria 2",
-        "Carlos99",
-        "Ana1Beatriz"
-    };
+void TestsNome::testarNomesComNumeros() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes com números:");
+    std::vector<std::string> nomes;
+    nomes.push_back("Joao1");
+    nomes.push_back("Maria 2 Clara");
+    nomes.push_back("Carlos3Eduardo");
+    nomes.push_back("Ana4 Beatriz");
+    nomes.push_back("Fernanda5");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome com numeros aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome com numeros rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesMuitoLongos()
-{
-    std::vector<std::string> nomes = {
-        std::string(101, 'A'),
-        "Joao da Silva " + std::string(90, 'B')
-    };
+void TestsNome::testarNomesMuitoLongos() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes muito longos:");
+    std::vector<std::string> nomes;
+    nomes.push_back("Joao da Silva Oliveira Lima Souza Andrade");
+    nomes.push_back("Maria Clara de Albuquerque Ferreira Santos");
+    nomes.push_back("Carlos Eduardo da Costa e Silva Junior");
+    nomes.push_back("Ana Beatriz de Oliveira Lima Souza");
+    nomes.push_back("Fernanda Lima de Souza Andrade Ferreira");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome muito longo aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome muito longo rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesSemMaiusculaInicial()
-{
-    std::vector<std::string> nomes = {
-        "joao da Silva",
-        "maria clara",
-        "carlos eduardo"
-    };
+void TestsNome::testarNomesSemMaiusculaInicial() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes sem maiúscula inicial:");
+    std::vector<std::string> nomes;
+    nomes.push_back("joao da Silva");
+    nomes.push_back("maria Clara");
+    nomes.push_back("carlos Eduardo");
+    nomes.push_back("ana Beatriz");
+    nomes.push_back("fernanda Lima");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome sem maiuscula inicial aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome sem maiuscula inicial rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesComEspacoInvalido()
-{
-    std::vector<std::string> nomes = {
-        " Joao",
-        "Joao ",
-        " Joao Silva "
-    };
+void TestsNome::testarNomesComEspacoInvalido() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes com espaços invalidos:");
+    std::vector<std::string> nomes;
+    nomes.push_back("Joao  da Silva");
+    nomes.push_back("Maria   Clara");
+    nomes.push_back("Carlos     Eduardo");
+    nomes.push_back("Ana  Beatriz");
+    nomes.push_back("Fernanda     Lima");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome com espaco invalido aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome com espaco invalido rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
 
-void TestsNome::testarNomesComCaracteresEspeciais()
-{
-    vector<std::string> nomes = {
-        "Joao@Silva",
-        "Maria*Clara",
-        "Carlos&Eduardo",
-        "Ana#Beatriz"
-    };
+void TestsNome::testarNomesComCaracteresEspeciais() {
+    TextoApresentacao::MostrarTituloPergunta("Testando nomes com caracteres especiais:");
+    std::vector<std::string> nomes;
+    nomes.push_back("Joao@Silva");
+    nomes.push_back("Maria#Clara");
+    nomes.push_back("Carlos$Eduardo");
+    nomes.push_back("Ana%Beatriz");
+    nomes.push_back("Fernanda&Lima");
 
-    for (const auto& nome : nomes)
-    {
-        try
-        {
+    for (std::size_t i = 0; i < nomes.size(); ++i) {
+        std::string nome = nomes[i];
+        apresentacaoTeste(nome);
+        try {
             Nome n(nome);
-            checar(false, "Nome com caractere especial aceito: " + nome);
-        }
-        catch (...)
-        {
-            checar(true, "Nome com caractere especial rejeitado: " + nome);
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
+        } catch (std::invalid_argument &e) {
+            checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
         }
     }
+    std::cout << "\n";
 }
