@@ -107,6 +107,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Persistencias
         src/sistema/persistencias/PersistenciaGerente.cpp
         src/sistema/persistencias/PersistenciaHospede.cpp
+        src/sistema/persistencias/PersistenciaHotel.cpp
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
         # Servicos

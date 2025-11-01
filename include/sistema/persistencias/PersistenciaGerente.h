@@ -15,7 +15,7 @@ using namespace std;
 
 class PersistenciaGerente {
 public:
-    bool adicionarAoBD(Gerente &gerente);
+    bool inserirAoBD(Gerente &gerente);
 
     vector<Gerente *> listarBD();
 

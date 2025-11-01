@@ -4,7 +4,7 @@
 
 #include "PersistenciaGerente.h"
 
-bool PersistenciaGerente::adicionarAoBD(Gerente &gerente) {
+bool PersistenciaGerente::inserirAoBD(Gerente &gerente) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;

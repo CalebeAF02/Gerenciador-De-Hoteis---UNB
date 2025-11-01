@@ -115,7 +115,7 @@ void ControladorInterfaceGerente::criar() {
             }
             if (tudoOK) {
                 PersistenciaGerente dao;
-                bool sucesso = dao.adicionarAoBD(*gerente);
+                bool sucesso = dao.inserirAoBD(*gerente);
 
                 if (sucesso) {
                     criado = true;
