@@ -7,6 +7,10 @@
 
 #include "ServicosGerente.h"
 #include "ServicosHospede.h"
+#include "ServicosHotel.h"
+#include "ServicosQuarto.h"
+#include "ServicosReserva.h"
+
 #include "../utilitarios/Menu.h"
 
 #include "TextoApresentacao.h"
@@ -14,6 +18,7 @@
 #include <string>
 
 #include "sqlite3.h"
+#include "GerenteGerenciavel.h"
 
 using namespace std;
 
@@ -36,6 +41,12 @@ public:
     bool autenticar(Email &emailLoginProgramado, Senha &senhaLoginProgramada) {
         return servicosGerente.autenticar(emailLoginProgramado, senhaLoginProgramada);
     };
+
+    // Confirmar que e um gerente
+    void exibirMenu();
+
+    // Acessando servicos
+    void exibirCentralDeServicos();
 };
 
 inline bool Sistema::getExecutandoSistema() {

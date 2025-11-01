@@ -22,7 +22,6 @@ public:
 
     bool remover() override;
 
-    void avaliarSolicitacoes();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H

@@ -19,8 +19,7 @@
 
 using namespace std;
 
-class ServicosHospede
-{
+class ServicosHospede {
 private:
     bool executando = true;
 
@@ -30,9 +29,12 @@ public:
 
     // Solicitacao de Hospedagem para Gerente
     void opcoesDeHospedagem();
+
     void solicitandoHospedagem();
 
     void statusDaSolicitandoHospedagem() const;
+
+    void avaliarSolicitacoes();
 
     // Confirmar que e um Hospede
     void acessandoHospede();

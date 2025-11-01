@@ -11,8 +11,7 @@
 #include "sqlite3.h"
 #include "GeradorCodigo.h"
 
-void ServicosHospede::acessandoHospede()
-{
+void ServicosHospede::acessandoHospede() {
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -20,36 +19,25 @@ void ServicosHospede::acessandoHospede()
     const int OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Criar Solicitacao de Hospedagem");
     const int OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Status da Solicitacao de Hospedagem");
 
-    while (executando == true)
-    {
+    while (executando == true) {
         int opcao = menu.executa("Faca o acesso para liberar os servicos");
 
-        if (opcao == OPCAO_VOLTAR_AO_SISTEMA)
-        {
+        if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             executando = false;
             cout << "Voltando a selecao de usuario!" << endl;
-        }
-        else if (opcao == OPCAO_HOSPEDAGENS)
-        {
+        } else if (opcao == OPCAO_HOSPEDAGENS) {
             opcoesDeHospedagem();
-        }
-        else if (opcao == OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM)
-        {
+        } else if (opcao == OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM) {
             solicitandoHospedagem();
-        }
-        else if (opcao == OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM)
-        {
+        } else if (opcao == OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM) {
             statusDaSolicitandoHospedagem();
-        }
-        else
-        {
+        } else {
             cout << "Opcao Invalida!" << endl;
         }
     }
 };
 
-void ServicosHospede::exibirCentralDeServicosHospedes()
-{
+void ServicosHospede::exibirCentralDeServicosHospedes() {
     bool status = true;
     while (status) {
         TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
@@ -58,15 +46,13 @@ void ServicosHospede::exibirCentralDeServicosHospedes()
     };
 }
 
-void ServicosHospede::opcoesDeHospedagem()
-{
+void ServicosHospede::opcoesDeHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Opcoes de Hospedagem");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
     return;
 }
 
-void ServicosHospede::solicitandoHospedagem()
-{
+void ServicosHospede::solicitandoHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
     std::string codigoSolicitacao = GeradorCodigo::gerar("SQL");
@@ -87,8 +73,7 @@ void ServicosHospede::solicitandoHospedagem()
     std::string partidaStr = TextoApresentacao::LerLinha();
 
     cout << idHotel.length() << " e " << idQuarto.length();
-    try
-    {
+    try {
         Data chegada(chegadaStr);
         Data partida(partidaStr);
 
@@ -106,9 +91,7 @@ void ServicosHospede::solicitandoHospedagem()
 
         PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
         TextoApresentacao::MostrarTituloRetorno("Solicitacao registrada com sucesso!");
-    }
-    catch (std::exception& e)
-    {
+    } catch (std::exception &e) {
         TextoApresentacao::MostrarTituloRetorno("Erro ao criar solicitacao: " + std::string(e.what()));
     }
 }
@@ -121,8 +104,7 @@ void ServicosHospede::statusDaSolicitandoHospedagem() const {
 
     const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
-    if (lista.empty())
-    {
+    if (lista.empty()) {
         TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao encontrada.");
         return;
     }
@@ -146,5 +128,45 @@ void ServicosHospede::statusDaSolicitandoHospedagem() const {
             std::cout << " | Motivo: " << s.getMotivoRecusa();
 
         std::cout << "\n----------------------------------------\n";
+    }
+}
+
+void ServicosHospede::avaliarSolicitacoes() {
+    TextoApresentacao::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
+
+    auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
+
+    if (pendentes.empty()) {
+        TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao pendente.");
+        return;
+    }
+
+    for (auto &solicitacao: pendentes) {
+        std::cout << "\nCodigo da Solicitacao: " << solicitacao.getCodigo().getValor()
+                << "\nHospede: " << solicitacao.getHospedeId()
+                << "\nHotel: " << solicitacao.getHotelId()
+                << "\nQuarto: " << solicitacao.getQuartoId()
+                << "\nChegada: " << solicitacao.getChegada().toString()
+                << "\nPartida: " << solicitacao.getPartida().toString()
+                << "\nStatus atual: Pendente\n";
+
+        TextoApresentacao::MostrarTituloPergunta("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
+        std::string escolha = TextoApresentacao::RecebeOpcao();
+
+        if (escolha == "A" || escolha == "a") {
+            solicitacao.setStatus(StatusSolicitacaoHospedagem::APROVADO); // aprovada
+            solicitacao.setMotivoRecusa(""); // limpa motivo
+            PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+            TextoApresentacao::MostrarTituloRetorno("Solicitacao aprovada com sucesso.");
+        } else if (escolha == "R" || escolha == "r") {
+            TextoApresentacao::MostrarTituloPergunta("Informe o motivo da recusa:");
+            std::string motivo = TextoApresentacao::LerLinha();
+            solicitacao.setStatus(StatusSolicitacaoHospedagem::RECUSADO); // recusada
+            solicitacao.setMotivoRecusa(motivo);
+            PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+            TextoApresentacao::MostrarTituloRetorno("Solicitacao recusada.");
+        } else {
+            TextoApresentacao::MostrarTituloRetorno("Opcao invalida. Solicitacao nao foi alterada.");
+        }
     }
 }

@@ -25,12 +25,6 @@ public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
 
-    // Confirmar que e um gerente
-    void exibirMenu();
-
-    // Acessando servicos
-    void exibirCentralDeServicos();
-
     void exibirCentralDeServicosGerentes();
 
     // metudo para excluir
