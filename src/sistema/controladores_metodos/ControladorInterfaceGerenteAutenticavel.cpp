@@ -5,7 +5,6 @@
 #include "ControladorInterfaceGerenteAutenticavel.h"
 
 #include "FabricaGerenciavel.h"
-#include "GerenteGerenciavel.h"
 #include "HospedeGerenciavel.h"
 #include "Menu.h"
 #include "ControladorInterfaceHospede.h"

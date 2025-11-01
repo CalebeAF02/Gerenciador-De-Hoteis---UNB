@@ -19,7 +19,6 @@
 #include <string>
 
 #include "sqlite3.h"
-#include "GerenteGerenciavel.h"
 
 using namespace std;
 

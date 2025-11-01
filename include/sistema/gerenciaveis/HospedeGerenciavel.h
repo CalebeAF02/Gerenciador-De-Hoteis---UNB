@@ -5,12 +5,12 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H
 
-#include "InterfaceGerenciavel.h"
+#include "../interfaces/apresentacoes/InterfaceApresentacaoCRUD.h"
 #include "PersistenciaHospede.h"
 #include "../persistencias/PersistenciaSolicitacaoHospedagem.h"
 #include "TextoApresentacao.h"
 
-class HospedeGerenciavel : public InterfaceGerenciavel {
+class HospedeGerenciavel : public InterfaceApresentacaoCRUD {
     PersistenciaHospede dao;
 
 public:
@@ -21,7 +21,6 @@ public:
     void atualizar() override;
 
     bool remover() override;
-
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_HOSPEDEGERENCIAVEL_H

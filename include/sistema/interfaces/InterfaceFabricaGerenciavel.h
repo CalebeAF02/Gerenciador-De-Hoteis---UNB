@@ -6,12 +6,12 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_INTERFACEFABRICAGERENCIAVEL_H
 
 #include <memory>
-#include "InterfaceGerenciavel.h"
+#include "apresentacoes/InterfaceApresentacaoCRUD.h"
 
-class InterfaceFabricaGerenciavel
-{
+class InterfaceFabricaGerenciavel {
 public:
-    virtual std::unique_ptr<InterfaceGerenciavel> criar() = 0;
+    virtual std::unique_ptr<InterfaceApresentacaoCRUD> criar() = 0;
+
     virtual ~InterfaceFabricaGerenciavel() = default;
 };
 

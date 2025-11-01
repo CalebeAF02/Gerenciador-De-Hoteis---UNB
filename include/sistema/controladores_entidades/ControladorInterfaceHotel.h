@@ -8,6 +8,8 @@
 #include <iostream>
 #include "TextoApresentacao.h"
 #include "InterfaceApresentacaoExibirMenu.h"
+#include "Menu.h"
+#include "MenuItem.h"
 
 using namespace std;
 
@@ -21,6 +23,9 @@ public:
 
     // Menu CRUD
     void exibirMenuCRUD();
+
+    // Opções de Hotel
+    bool criarHotel();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H

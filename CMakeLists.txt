@@ -94,18 +94,17 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
         # Gerenciaveis
-        src/sistema/gerenciaveis/GerenteGerenciavel.cpp
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
         ## Interface apresentacoes
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
+        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoCRUD.cpp
 
         ## Interface Servicos
         src/sistema/interfaces/servicos/InterfaceServicoAutenticavel.cpp
 
         # Interface
-        src/sistema/interfaces/InterfaceGerenciavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
 
         # Persistencias

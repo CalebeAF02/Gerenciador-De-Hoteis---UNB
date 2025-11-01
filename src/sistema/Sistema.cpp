@@ -45,7 +45,7 @@ void Sistema::exibirMenu() {
             executando = false;
             cout << "Voltando a selecao de usuario!" << endl;
         } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
-            FabricaGerenciavel<GerenteGerenciavel> fabrica;
+            FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
             fabrica.criar(); // apenas cria o gerente, sem abrir o menu
         } else if (opcao == OPCAO_FAZER_LOGIN) {
             controladorGerente.fazerLogin();
