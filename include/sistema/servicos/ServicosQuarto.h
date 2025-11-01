@@ -17,12 +17,11 @@ public:
     // Construtor dos servicosQuarto
     ServicosQuarto() = default;
 
-    // Confirmar que e um Quarto
-    void acessandoQuarto();
-
     // Acessando servicos
-    void exibirCentralDeServicos();
-    void exibirCentralDeServicosQuartos();
+    void exibirMenu();
+
+    // Menu CRUD
+    void exibirMenuCRUD();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSQUARTO_H

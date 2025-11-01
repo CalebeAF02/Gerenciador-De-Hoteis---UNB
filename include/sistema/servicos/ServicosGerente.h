@@ -25,7 +25,11 @@ public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
 
-    void exibirCentralDeServicosGerentes();
+    // Acessando servicos
+    void exibirMenu();
+
+    // Menu CRUD
+    void exibirMenuCRUDGerentes();
 
     // metudo para excluir
     //void excluirMeuCadastro();

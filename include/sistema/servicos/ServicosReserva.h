@@ -16,12 +16,11 @@ public:
     // Construtor dos servicosReserva
     ServicosReserva() = default;
 
-    // Confirmar que e um Reserva
-    void acessandoReserva();
-
     // Acessando servicos
-    void exibirCentralDeServicos();
-    void exibirCentralDeServicosReservas();
+    void exibirMenu();
+
+    // Menu CRUD
+    void exibirMenuCRUD();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSRESERVA_H

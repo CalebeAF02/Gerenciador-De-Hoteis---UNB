@@ -11,7 +11,7 @@
 #include "sqlite3.h"
 #include "GeradorCodigo.h"
 
-void ServicosHospede::acessandoHospede() {
+void ServicosHospede::exibirMenu() {
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -37,7 +37,7 @@ void ServicosHospede::acessandoHospede() {
     }
 };
 
-void ServicosHospede::exibirCentralDeServicosHospedes() {
+void ServicosHospede::exibirMenuCRUD() {
     bool status = true;
     while (status) {
         TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");

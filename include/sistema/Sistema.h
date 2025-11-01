@@ -45,8 +45,6 @@ public:
     // Confirmar que e um gerente
     void exibirMenu();
 
-    // Acessando servicos
-    void exibirCentralDeServicos();
 };
 
 inline bool Sistema::getExecutandoSistema() {

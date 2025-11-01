@@ -23,7 +23,7 @@ void Sistema::rodandoSistema() {
             Email emailAcessar;
             exibirMenu();
         } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
-            servicosHospede.acessandoHospede();
+            servicosHospede.exibirMenu();
         }
     }
 };
@@ -49,50 +49,10 @@ void Sistema::exibirMenu() {
             servicosGerente.fazerLogin();
             if (servicosGerente.getEstaLogado()) {
                 cout << "Agora Voce Possui Super-Poderes" << endl;
-                exibirCentralDeServicos();
+                servicosGerente.exibirMenu();
             }
         } else {
             cout << "Opcao Invalida!" << endl;
         }
     }
 };
-
-void Sistema::exibirCentralDeServicos() {
-    Menu menu;
-
-    const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
-    const int OPCAO_GERENCIE_GERENTES = menu.adcionarItens("Gerencie Gerentes");
-    const int OPCAO_GERENCIE_HOSPEDES = menu.adcionarItens("Gerencie Hospedes");
-    const int OPCAO_GERENCIE_HOTEIS = menu.adcionarItens("Gerencie Hoteis");
-    const int OPCAO_GERENCIE_QUARTOS = menu.adcionarItens("Gerencie Quartos");
-    const int OPCAO_GERENCIE_RESERVAS = menu.adcionarItens("Gerencie Reservas");
-    const int OPCAO_AVALIAR_SOLICITACOES = menu.adcionarItens("Avaliar Solicitacoes de Hospedagem");
-
-    while (this->servicosGerente.getEstaLogado()) {
-        int opcao = menu.executa("Seja bem vindo a central de servicos");
-
-        if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-            this->servicosGerente.sair();
-            cout << "Voce Saiu da Central de servicos e foi deslogado!\n";
-        } else if (opcao == OPCAO_GERENCIE_GERENTES) {
-            servicosGerente.exibirCentralDeServicosGerentes();
-        } else if (opcao == OPCAO_GERENCIE_HOSPEDES) {
-            ServicosHospede servicosHospede;
-            servicosHospede.exibirCentralDeServicosHospedes();
-        } else if (opcao == OPCAO_GERENCIE_HOTEIS) {
-            ServicosHotel servicosHotel;
-            servicosHotel.exibirCentralDeServicosHotel();
-        } else if (opcao == OPCAO_GERENCIE_QUARTOS) {
-            ServicosQuarto servicosQuarto;
-            servicosQuarto.exibirCentralDeServicosQuartos();
-        } else if (opcao == OPCAO_GERENCIE_RESERVAS) {
-            ServicosReserva servicosReserva;
-            servicosReserva.exibirCentralDeServicosReservas();
-        } else if (opcao == OPCAO_AVALIAR_SOLICITACOES) {
-            ServicosHospede servicosHospede;
-            servicosHospede.avaliarSolicitacoes();
-        } else {
-            cout << "Opcao Invalida!" << endl;
-        }
-    };
-}

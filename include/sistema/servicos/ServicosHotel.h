@@ -16,12 +16,11 @@ public:
     // Construtor dos servicosHotel
     ServicosHotel() = default;
 
-    // Confirmar que e um Hotel
-    void acessandoHotel();
-
     // Acessando servicos
-    void exibirCentralDeServicos();
-    void exibirCentralDeServicosHotel();
+    void exibirMenu();
+
+    // Menu CRUD
+    void exibirMenuCRUD();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H

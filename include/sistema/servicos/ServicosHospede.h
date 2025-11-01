@@ -36,11 +36,11 @@ public:
 
     void avaliarSolicitacoes();
 
-    // Confirmar que e um Hospede
-    void acessandoHospede();
-
     // Acessando servicos
-    void exibirCentralDeServicosHospedes();
+    void exibirMenu();
+
+    // Menu CRUD
+    void exibirMenuCRUD();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOSPEDE_H
