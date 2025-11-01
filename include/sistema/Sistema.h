@@ -56,11 +56,6 @@ public:
     {
         return servicosGerente.fazerLoginGerente(emailLoginProgramado, senhaLoginProgramada);
     };
-
-    bool fazerLoginSistemaHospede(const string& emailLoginProgramado, const string& senhaLoginProgramada)
-    {
-        return servicosHospede.fazerLoginHospede(emailLoginProgramado);
-    };
 };
 
 inline bool Sistema::getExecutandoSistema()

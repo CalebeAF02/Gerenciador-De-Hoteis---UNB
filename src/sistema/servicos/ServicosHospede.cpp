@@ -48,125 +48,13 @@ void ServicosHospede::acessandoHospede()
     }
 };
 
-bool ServicosHospede::fazerLoginHospede(string emailCopia)
-{
-    //_________________________ABRE CONEXÂO_______________________________
-    sqlite3* db;
-    char* mensagemErro = nullptr;
-
-    int rc = sqlite3_open("hotel.db", &db);
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
-        return false;
-    }
-    //_________________________------------_______________________________
-
-    sqlite3_stmt* stmt = nullptr;
-
-    PersistenciaHospede dao;
-    vector<Hospede*> hospedes = dao.listar();
-
-    const char* sql = "SELECT nome, email, endereco, cartao FROM hospedes WHERE email = ?;";
-    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << std::endl;
-        sqlite3_close(db);
-        return false;
-    }
-
-    // Bind dos parâmetros
-    sqlite3_bind_text(stmt, 1, emailCopia.c_str(), -1, SQLITE_STATIC);
-
-    bool loginOK = false;
-    if (sqlite3_step(stmt) == SQLITE_ROW)
-    {
-        std::string nome = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
-        std::string email = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        std::string endereco = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
-        std::string cartao = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
-
-        Hospede* hospedeLogado = new Hospede(Nome(nome), Email(email), Endereco(endereco), Cartao(cartao));
-
-        this->logHospede = hospedeLogado;
-        this->hospedeEstaLogado = true;
-        loginOK = true;
-
-        std::cout << "Login Realizado com Sucesso" << std::endl;
-    }
-
-    if (!loginOK)
-    {
-        std::cout << "Erro: Usuario nao encontrado ou senha incorreta!" << std::endl;
-    }
-
-    sqlite3_finalize(stmt);
-
-    //_________________________FECHA CONEXÂO_______________________________
-    sqlite3_close(db);
-    //_________________________------------_______________________________
-    return false;
-};
-
-void ServicosHospede::logandoHospede()
-{
-    bool lacoLogin = false;
-    string emailCopia = "";
-
-    while (!lacoLogin) // Enquanto esta falso , ele repete
-    {
-        TextoApresentacao::MostrarTituloEmCaixa("Logando com Hospede");
-
-        bool tudoOK = true;
-        if (tudoOK)
-        {
-            cout << "Informe o Email: " << endl;
-            emailCopia = TextoApresentacao::LerLinha();
-        }
-        if (tudoOK)
-        {
-            if (fazerLoginHospede(emailCopia))
-            {
-                lacoLogin = true;
-            }
-            else
-            {
-                TextoApresentacao::MostrarOpcao("Voltar", 0);
-                TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
-                string opcao = TextoApresentacao::LerLinha();
-                if (opcao == "0")
-                {
-                    break;
-                }
-                else if (opcao == "1")
-                {
-                    lacoLogin = false;
-                }
-            }
-        }
-        else
-        {
-            cout << "Gerente nao cadastrado" << endl;
-        }
-    }
-}
-
 void ServicosHospede::exibirCentralDeServicosHospedes()
 {
     bool status = true;
-    while (this->getHospedeEstaLogado())
-    {
-        if (status)
-        {
-            TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
-            FabricaGerenciavel<HospedeGerenciavel> fabrica;
-            fabrica.executarMenu(status);
-        }
-        else
-        {
-            this->hospedeEstaLogado = false;
-        }
+    while (status) {
+        TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
+        FabricaGerenciavel<HospedeGerenciavel> fabrica;
+        fabrica.executarMenu(status);
     };
 }
 
@@ -181,14 +69,10 @@ void ServicosHospede::solicitandoHospedagem()
 {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    if (!hospedeEstaLogado || logHospede == nullptr)
-    {
-        TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
-        return;
-    }
-
-    std::string codigoSolicitacao = GeradorCodigo::gerar("SOL");
-    std::string emailHospede = logHospede->getEmail();
+    std::string codigoSolicitacao = GeradorCodigo::gerar("SQL");
+    cout << codigoSolicitacao.length();
+    TextoApresentacao::MostrarTituloPergunta("Informe o Email");
+    std::string email = TextoApresentacao::LerLinha();
 
     TextoApresentacao::MostrarTituloPergunta("Codigo do hotel desejado:");
     std::string idHotel = TextoApresentacao::LerLinha();
@@ -202,6 +86,7 @@ void ServicosHospede::solicitandoHospedagem()
     TextoApresentacao::MostrarTituloPergunta("Data de partida (dd/mm/aaaa):");
     std::string partidaStr = TextoApresentacao::LerLinha();
 
+    cout << idHotel.length() << " e " << idQuarto.length();
     try
     {
         Data chegada(chegadaStr);
@@ -209,12 +94,14 @@ void ServicosHospede::solicitandoHospedagem()
 
         SolicitacaoHospedagem solicitacao(
             Codigo(codigoSolicitacao),
-            emailHospede,
+            email,
             idHotel,
             idQuarto,
             chegada,
             partida,
-            0 // pendente
+            StatusSolicitacaoHospedagem::PENDENTE,
+            "Fez Errado"
+
         );
 
         PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
@@ -226,18 +113,13 @@ void ServicosHospede::solicitandoHospedagem()
     }
 }
 
-void ServicosHospede::statusDaSolicitandoHospedagem()
-{
+void ServicosHospede::statusDaSolicitandoHospedagem() const {
     TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
 
-    if (!hospedeEstaLogado || logHospede == nullptr)
-    {
-        TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
-        return;
-    }
+    TextoApresentacao::MostrarTituloPergunta("Informe o Email");
+    std::string email = TextoApresentacao::LerLinha();
 
-    std::string email = logHospede->getEmail();
-    vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
+    const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
     if (lista.empty())
     {
@@ -245,9 +127,12 @@ void ServicosHospede::statusDaSolicitandoHospedagem()
         return;
     }
 
-    for (const auto& s : lista)
-    {
-        std::string statusStr = (s.getStatus() == 0) ? "Pendente" : (s.getStatus() == 1) ? "Aprovada" : "Recusada";
+    for (const SolicitacaoHospedagem &s: lista) {
+        std::string statusStr = (s.getStatus() == StatusSolicitacaoHospedagem::PENDENTE)
+                                    ? "Pendente"
+                                    : (s.getStatus() == StatusSolicitacaoHospedagem::APROVADO)
+                                          ? "Aprovada"
+                                          : "Recusada";
 
         std::cout << "----------------------------------------\n";
         std::cout << "Codigo: " << s.getCodigo().getValor() << "\n";
@@ -257,7 +142,7 @@ void ServicosHospede::statusDaSolicitandoHospedagem()
         std::cout << "Partida: " << s.getPartida().toString() << "\n";
         std::cout << "Status: " << statusStr;
 
-        if (s.getStatus() == 2)
+        if (s.getStatus() == StatusSolicitacaoHospedagem::RECUSADO)
             std::cout << " | Motivo: " << s.getMotivoRecusa();
 
         std::cout << "\n----------------------------------------\n";
