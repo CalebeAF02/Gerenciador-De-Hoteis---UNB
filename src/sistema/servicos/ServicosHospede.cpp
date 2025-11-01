@@ -181,7 +181,7 @@ void ServicosHospede::solicitandoHospedagem()
 {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    if (!logHospede)
+    if (!hospedeEstaLogado || logHospede == nullptr)
     {
         TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
         return;
@@ -230,14 +230,14 @@ void ServicosHospede::statusDaSolicitandoHospedagem()
 {
     TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
 
-    if (!logHospede)
+    if (!hospedeEstaLogado || logHospede == nullptr)
     {
         TextoApresentacao::MostrarTituloRetorno("Nenhum hospede esta logado.");
         return;
     }
 
     std::string email = logHospede->getEmail();
-    auto lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
+    vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
     if (lista.empty())
     {
