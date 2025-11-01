@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu{
+class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu {
 public:
     // Construtor dos servicosHotel
     ControladorInterfaceHotel() = default;

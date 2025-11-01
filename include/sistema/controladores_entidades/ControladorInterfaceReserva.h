@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class ControladorInterfaceReserva : public InterfaceApresentacaoExibirMenu{
+class ControladorInterfaceReserva : public InterfaceApresentacaoExibirMenu {
 public:
     // Construtor dos servicosReserva
     ControladorInterfaceReserva() = default;

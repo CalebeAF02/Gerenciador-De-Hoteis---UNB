@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu{
+class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu {
 private:
     bool executando = true;
 
