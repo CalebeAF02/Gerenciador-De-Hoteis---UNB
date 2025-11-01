@@ -12,16 +12,18 @@
 #include "ControladorInterfaceReserva.h"
 
 #include "GerenteGerenciavel.h"
+#include "InterfaceApresentacaoExibirMenu.h"
 #include "iostream"
 
 using namespace std;
 
-class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticavel {
+class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticavel,
+                                    public InterfaceApresentacaoExibirMenu {
 public:
     bool executando = true;
 
     // Acessando servicos
-    void exibirMenu();
+    void exibirMenu() override;
 
     // Menu CRUD
     void exibirMenuCRUDGerentes();

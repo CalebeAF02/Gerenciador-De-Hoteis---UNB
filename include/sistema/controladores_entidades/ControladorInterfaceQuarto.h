@@ -7,16 +7,17 @@
 
 #include <iostream>
 #include "TextoApresentacao.h"
+#include "InterfaceApresentacaoExibirMenu.h"
 
 using namespace std;
 
-class ControladorInterfaceQuarto {
+class ControladorInterfaceQuarto : public InterfaceApresentacaoExibirMenu{
 public:
     // Construtor dos servicosQuarto
     ControladorInterfaceQuarto() = default;
 
     // Acessando servicos
-    void exibirMenu();
+    void exibirMenu() override;
 
     // Menu CRUD
     void exibirMenuCRUD();

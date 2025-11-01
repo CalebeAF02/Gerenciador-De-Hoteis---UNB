@@ -99,6 +99,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         ## Interface apresentacoes
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp
+        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
 
         ## Interface Servicos
         src/sistema/interfaces/servicos/InterfaceServicoAutenticavel.cpp

@@ -9,6 +9,7 @@
 #include "Hospede.h"
 
 #include "../utilitarios/TextoApresentacao.h"
+#include "InterfaceApresentacaoExibirMenu.h"
 
 #include "InterfaceFabricaGerenciavel.h"
 #include "FabricaGerenciavel.h"
@@ -19,7 +20,7 @@
 
 using namespace std;
 
-class ControladorInterfaceHospede {
+class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu{
 private:
     bool executando = true;
 
@@ -37,7 +38,7 @@ public:
     void avaliarSolicitacoes();
 
     // Acessando servicos
-    void exibirMenu();
+    void exibirMenu() override;
 
     // Menu CRUD
     void exibirMenuCRUD();
