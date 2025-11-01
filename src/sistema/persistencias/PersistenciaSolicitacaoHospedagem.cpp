@@ -6,6 +6,8 @@
 #include <sqlite3.h>
 #include <iostream>
 
+#include "EnumConversor.h"
+#include "HospedeGerenciavel.h"
 #include "../../../include/sistema/entidades/SolicitacaoHospedagem.h"
 
 static const char *DB_PATH = "sistema_hotel.db";
@@ -61,7 +63,7 @@ void PersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
     sqlite3_bind_text(stmt, 4, s.getQuartoId().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 5, s.getChegada().toString().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 6, s.getPartida().toString().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_int(stmt, 7, s.getStatus());
+    sqlite3_bind_int(stmt, 7, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
     sqlite3_bind_text(stmt, 8, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
 
     sqlite3_step(stmt);
@@ -91,7 +93,8 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorE
         std::string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
         std::string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
         std::string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
-        int status = sqlite3_column_int(stmt, 5);
+        StatusSolicitacaoHospedagem status = EnumConversor::InteiroParaStatusSolicitacaoHospedagem(
+            sqlite3_column_int(stmt, 5));
         std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 6));
 
         lista.emplace_back(
@@ -134,7 +137,8 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorS
         std::string quartoId = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
         std::string chegadaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
         std::string partidaStr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 5));
-        int status = sqlite3_column_int(stmt, 6);
+        StatusSolicitacaoHospedagem status = EnumConversor::InteiroParaStatusSolicitacaoHospedagem(
+            sqlite3_column_int(stmt, 6));
         std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 7));
 
         lista.emplace_back(
@@ -167,7 +171,7 @@ void PersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &s
     sqlite3_stmt *stmt;
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
-    sqlite3_bind_int(stmt, 1, s.getStatus());
+    sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
     sqlite3_bind_text(stmt, 2, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 3, s.getCodigo().getValor().c_str(), -1, SQLITE_STATIC);
 

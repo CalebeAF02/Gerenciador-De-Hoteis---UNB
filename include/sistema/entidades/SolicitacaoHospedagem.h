@@ -10,8 +10,9 @@
 #include <string>
 #include <stdexcept>
 
-class SolicitacaoHospedagem
-{
+#include "StatusSolicitacaoHospedagem.h"
+
+class SolicitacaoHospedagem {
 private:
     Codigo codigo;
     std::string hospedeId;
@@ -19,77 +20,67 @@ private:
     std::string quartoId;
     Data chegada;
     Data partida;
-    int status; // 0 = pendente, 1 = aprovada, 2 = recusada
+    StatusSolicitacaoHospedagem status;
     std::string motivoRecusa;
 
 public:
-    SolicitacaoHospedagem(); // construtor padrao
+    SolicitacaoHospedagem() = default; // construtor padrao
 
     SolicitacaoHospedagem(
-        const Codigo& codigo,
-        const std::string& hospedeId,
-        const std::string& hotelId,
-        const std::string& quartoId,
-        const Data& chegada,
-        const Data& partida,
-        int status = 0,
-        const std::string& motivoRecusa = ""
+        const Codigo &codigo,
+        const std::string &hospedeId,
+        const std::string &hotelId,
+        const std::string &quartoId,
+        const Data &chegada,
+        const Data &partida,
+        const StatusSolicitacaoHospedagem status,
+        const std::string &motivoRecusa
     );
 
     // Setters inline
-    void setCodigo(const Codigo& c) { codigo = c; }
-    void setHospedeId(const std::string& id) { hospedeId = id; }
-    void setHotelId(const std::string& id) { hotelId = id; }
-    void setQuartoId(const std::string& id) { quartoId = id; }
-    void setChegada(const Data& d) { chegada = d; }
-    void setPartida(const Data& d) { partida = d; }
+    void setCodigo(const Codigo &c) { codigo = c; }
+    void setHospedeId(const std::string &id) { hospedeId = id; }
+    void setHotelId(const std::string &id) { hotelId = id; }
+    void setQuartoId(const std::string &id) { quartoId = id; }
+    void setChegada(const Data &d) { chegada = d; }
+    void setPartida(const Data &d) { partida = d; }
 
-    void setStatus(int s)
-    {
-        if (s < 0 || s > 2) throw std::invalid_argument("Status invalido");
-        status = s;
+    void setStatus(StatusSolicitacaoHospedagem s) {
+        this->status = s;
     }
 
-    void setMotivoRecusa(const std::string& motivo) { motivoRecusa = motivo; }
+    void setMotivoRecusa(const std::string &motivo) { motivoRecusa = motivo; }
 
     // Getters inline
-    Codigo getCodigo() const
-    {
+    Codigo getCodigo() const {
         return codigo;
     }
 
-    std::string getHospedeId() const
-    {
+    std::string getHospedeId() const {
         return hospedeId;
     }
 
-    std::string getHotelId() const
-    {
+    std::string getHotelId() const {
         return hotelId;
     }
 
-    std::string getQuartoId() const
-    {
+    std::string getQuartoId() const {
         return quartoId;
     }
 
-    Data getChegada() const
-    {
+    Data getChegada() const {
         return chegada;
     }
 
-    Data getPartida() const
-    {
+    Data getPartida() const {
         return partida;
     }
 
-    int getStatus() const
-    {
+    StatusSolicitacaoHospedagem getStatus() const {
         return status;
     }
 
-    std::string getMotivoRecusa() const
-    {
+    std::string getMotivoRecusa() const {
         return motivoRecusa;
     }
 };
