@@ -46,10 +46,10 @@ void Sistema::exibirMenu() {
             FabricaGerenciavel<GerenteGerenciavel> fabrica;
             fabrica.criar(); // apenas cria o gerente, sem abrir o menu
         } else if (opcao == OPCAO_FAZER_LOGIN) {
-            servicosGerente.fazerLogin();
-            if (servicosGerente.getEstaLogado()) {
+            controladorGerente.fazerLogin();
+            if (controladorGerente.getEstaLogado()) {
                 cout << "Agora Voce Possui Super-Poderes" << endl;
-                servicosGerente.exibirMenu();
+                controladorGerente.exibirMenu();
             }
         } else {
             cout << "Opcao Invalida!" << endl;

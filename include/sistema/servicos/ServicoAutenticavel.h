@@ -7,31 +7,29 @@
 
 #include <iostream>
 
-#include "InterfaceApresentacaoAutenticavel.h"
+#include "InterfaceServicoAutenticavel.h"
 #include "PersistenciaGerente.h"
 #include "TextoApresentacao.h"
 
 using namespace std;
 
-class ControleInterfaceGerenteAutenticavel : public InterfaceApresentacaoAutenticavel {
+class ServicoAutenticavel : public InterfaceServicoAutenticavel {
 private:
     bool estaLogado = false;
 
 public:
     bool autenticar(Email &emailCopia, Senha &senhaCopia) override;
 
-    void fazerLogin();
+    void sair() override;
 
-    void sair();
-
-    bool getEstaLogado();
+    bool getEstaLogado() override;
 };
 
-inline bool ControleInterfaceGerenteAutenticavel::getEstaLogado() {
+inline bool ServicoAutenticavel::getEstaLogado() {
     return estaLogado;
 };
 
-inline void ControleInterfaceGerenteAutenticavel::sair() {
+inline void ServicoAutenticavel::sair() {
     this->estaLogado = false;
 }
 

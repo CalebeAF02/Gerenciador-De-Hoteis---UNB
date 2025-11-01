@@ -11,11 +11,15 @@
 
 // InterfaceApresentacaoAutenticavel == IAA
 
-class InterfaceApresentacaoAutenticavel {
+class InterfaceServicoAutenticavel {
 public:
-    virtual ~InterfaceApresentacaoAutenticavel() = default;
-
     virtual bool autenticar(Email &, Senha &) = 0;
+
+    virtual void sair() = 0;
+
+    virtual bool getEstaLogado() = 0;
+
+    virtual ~InterfaceServicoAutenticavel() = default;
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_INTERFACEAPRESENTACAOAUTENTICAVEL_H

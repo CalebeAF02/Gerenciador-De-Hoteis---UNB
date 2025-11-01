@@ -34,7 +34,7 @@ using namespace std;
 #define MODO_PRODUCAO 1
 #define MODO_SMOKE 2
 
-#define MODO_ATUAL MODO_TESTES
+#define MODO_ATUAL MODO_PRODUCAO
 
 void executarSmokeTests() {
     SmokeTest::testarEntradas();

@@ -17,15 +17,17 @@ include_directories(
         include
 
         include/sistema
-        include/sistema/controladores
+        include/sistema/servicos
         include/sistema/dominios
         include/sistema/entidades
         include/sistema/enum
         include/sistema/fabricas
         include/sistema/gerenciaveis
         include/sistema/interfaces
+        include/sistema/interfaces/apresentacoes
+        include/sistema/interfaces/servicos
         include/sistema/persistencias
-        include/sistema/servicos
+        include/sistema/controladores
         include/sistema/utilitarios
         include/sistema/validadorPrincipais
         include/libs/sqlite
@@ -52,7 +54,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/BancoDeDados.cpp
 
         # Controladores
-        src/sistema/controladores/ControleInterfaceGerenteAutenticavel.cpp
+        src/sistema/controladores/ControladorInterfaceGerenteAutenticavel.cpp
+        src/sistema/controladores/ServicosHospede.cpp
+        src/sistema/controladores/ServicosHotel.cpp
+        src/sistema/controladores/ServicosQuarto.cpp
+        src/sistema/controladores/ServicosReserva.cpp
 
         # Dominios
         src/sistema/dominios/Nome.cpp
@@ -87,11 +93,15 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/gerenciaveis/GerenteGerenciavel.cpp
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
-        # interfaces
-        src/sistema/interfaces/InterfaceApresentacaoAutenticavel.cpp
+        ## Interface apresentacoes
+        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp
+
+        ## Interface Servicos
+        src/sistema/interfaces/servicos/InterfaceServicoAutenticavel.cpp
+
+        # Interface
         src/sistema/interfaces/InterfaceGerenciavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
-        src/sistema/interfaces/InterfaceServicoAutenticacao.cpp
 
         # Persistencias
         src/sistema/persistencias/PersistenciaGerente.cpp
@@ -99,12 +109,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
         # Servicos
-        src/sistema/servicos/ServicosGerente.cpp
-        src/sistema/servicos/ServicosHospede.cpp
-        src/sistema/servicos/ServicosHotel.cpp
-        src/sistema/servicos/ServicosQuarto.cpp
-        src/sistema/servicos/ServicosReserva.cpp
-        src/sistema/servicos/ServicosAutenticacao.cpp
+        src/sistema/servicos/ServicoAutenticavel.cpp
 
         #utilitarios
         src/sistema/utilitarios/Data.cpp

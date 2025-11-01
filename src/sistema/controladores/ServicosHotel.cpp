@@ -2,15 +2,14 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "../../../include/sistema/servicos/ServicosReserva.h"
+#include "../../../include/sistema/controladores/ServicosHotel.h"
 
-
-void ServicosReserva::exibirMenu() {
+void ServicosHotel::exibirMenu() {
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
 
-void ServicosReserva::exibirMenuCRUD() {
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Reserva");
+void ServicosHotel::exibirMenuCRUD() {
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Hotel");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }

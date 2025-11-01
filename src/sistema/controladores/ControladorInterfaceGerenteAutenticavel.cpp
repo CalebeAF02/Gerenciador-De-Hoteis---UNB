@@ -2,7 +2,7 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ServicosGerente.h"
+#include "ControladorInterfaceGerenteAutenticavel.h"
 
 #include "FabricaGerenciavel.h"
 #include "GerenteGerenciavel.h"
@@ -13,7 +13,8 @@
 #include "ServicosQuarto.h"
 #include "ServicosReserva.h"
 #include "sqlite3.h"
-void ServicosGerente::exibirMenu() {
+
+void ControladorInterfaceGerenteAutenticavel::exibirMenu() {
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -53,7 +54,7 @@ void ServicosGerente::exibirMenu() {
     };
 }
 
-void ServicosGerente::exibirMenuCRUDGerentes() {
+void ControladorInterfaceGerenteAutenticavel::exibirMenuCRUDGerentes() {
     bool status = true;
     while (this->getEstaLogado()) {
         FabricaGerenciavel<GerenteGerenciavel> fabrica;
@@ -63,6 +64,48 @@ void ServicosGerente::exibirMenuCRUDGerentes() {
         }
     };
 }
+
+
+void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
+    bool lacoLogin = false;
+    string emailCopia = "";
+    string senhaCopia = "";
+
+    while (!lacoLogin) // Enquanto esta falso , ele repete
+    {
+        TextoApresentacao::MostrarTituloEmCaixa("Logando com Gerente");
+
+        bool tudoOK = true;
+        if (tudoOK) {
+            cout << "Informe o Email: \n";
+            emailCopia = TextoApresentacao::LerLinha();
+        }
+        if (tudoOK) {
+            cout << "Informe o Senha: \n";
+            senhaCopia = TextoApresentacao::LerLinha();
+        }
+        if (tudoOK) {
+            Email emailObj(emailCopia);
+            Senha senhaObj(senhaCopia);
+
+            // chama servico
+            if (autenticar(emailObj, senhaObj)) {
+                lacoLogin = true;
+            } else {
+                TextoApresentacao::MostrarOpcao("Voltar", 0);
+                TextoApresentacao::MostrarOpcao("Tentar novamente", 1);
+                string opcao = TextoApresentacao::LerLinha();
+                if (opcao == "0") {
+                    break;
+                } else if (opcao == "1") {
+                    lacoLogin = false;
+                }
+            }
+        } else {
+            cout << "Gerente nao cadastrado" << endl;
+        }
+    }
+};
 
 /*
 void ServicosGerente::excluirMeuCadastro()
