@@ -168,17 +168,13 @@ void BancoDeDados::criarTabelaSolicitacoesHospedagem(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS solicitacoes_hospedagem (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        codigo TEXT NOT NULL UNIQUE,
         email_hospede TEXT NOT NULL,
         id_hotel TEXT NOT NULL,
         id_quarto TEXT NOT NULL,
         chegada TEXT NOT NULL,
         partida TEXT NOT NULL,
         status INTEGER NOT NULL,
-        motivo_recusa TEXT,
-        FOREIGN KEY (email_hospede) REFERENCES hospedes(email),
-        FOREIGN KEY (id_hotel) REFERENCES hoteis(id),
-        FOREIGN KEY (id_quarto) REFERENCES quartos(id)
+        motivo_recusa TEXT
         );
     )";
 

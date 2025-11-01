@@ -14,7 +14,6 @@
 
 class SolicitacaoHospedagem {
 private:
-    Codigo codigo;
     std::string hospedeId;
     std::string hotelId;
     std::string quartoId;
@@ -27,7 +26,6 @@ public:
     SolicitacaoHospedagem() = default; // construtor padrao
 
     SolicitacaoHospedagem(
-        const Codigo &codigo,
         const std::string &hospedeId,
         const std::string &hotelId,
         const std::string &quartoId,
@@ -38,7 +36,6 @@ public:
     );
 
     // Setters inline
-    void setCodigo(const Codigo &c) { codigo = c; }
     void setHospedeId(const std::string &id) { hospedeId = id; }
     void setHotelId(const std::string &id) { hotelId = id; }
     void setQuartoId(const std::string &id) { quartoId = id; }
@@ -52,9 +49,6 @@ public:
     void setMotivoRecusa(const std::string &motivo) { motivoRecusa = motivo; }
 
     // Getters inline
-    Codigo getCodigo() const {
-        return codigo;
-    }
 
     std::string getHospedeId() const {
         return hospedeId;

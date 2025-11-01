@@ -12,63 +12,35 @@
 
 static const char *DB_PATH = "hotel.db";
 
-void PersistenciaSolicitacaoHospedagem::inicializar() {
-    sqlite3 *db;
-    char *erroMsg = nullptr;
-
-    if (sqlite3_open(DB_PATH, &db) != SQLITE_OK) {
-        std::cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << std::endl;
-        return;
-    }
-
-    const char *sql = R"(
-        CREATE TABLE IF NOT EXISTS solicitacoes_hospedagem (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            codigo TEXT NOT NULL UNIQUE,
-            email_hospede TEXT NOT NULL,
-            id_hotel TEXT NOT NULL,
-            id_quarto TEXT NOT NULL,
-            chegada TEXT NOT NULL,
-            partida TEXT NOT NULL,
-            status INTEGER NOT NULL,
-            motivo_recusa TEXT
-        );
-    )";
-
-    if (sqlite3_exec(db, sql, nullptr, nullptr, &erroMsg) != SQLITE_OK) {
-        std::cerr << "Erro ao criar tabela: " << erroMsg << std::endl;
-        sqlite3_free(erroMsg);
-    }
-
-    sqlite3_close(db);
-}
-
 void PersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
-    sqlite3 *db;
-    sqlite3_open(DB_PATH, &db);
+    BancoDeDados banco;
+
+    if (!banco.abrindoConexao())
+        return;
+
+    sqlite3 *db = banco.getConexao();
 
     const char *sql = R"(
         INSERT INTO solicitacoes_hospedagem (
-            codigo, email_hospede, id_hotel, id_quarto,
+            email_hospede, id_hotel, id_quarto,
             chegada, partida, status, motivo_recusa
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?);
     )";
 
     sqlite3_stmt *stmt;
     sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
-    sqlite3_bind_text(stmt, 1, s.getCodigo().getValor().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, s.getHospedeId().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, s.getHotelId().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, s.getQuartoId().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 5, s.getChegada().toString().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 6, s.getPartida().toString().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_int(stmt, 7, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
-    sqlite3_bind_text(stmt, 8, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 1, s.getHospedeId().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, s.getHotelId().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, s.getQuartoId().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, s.getChegada().toString().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, s.getPartida().toString().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 6, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
+    sqlite3_bind_text(stmt, 7, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
 
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
-    sqlite3_close(db);
+    banco.fechandoConexao();
 }
 
 std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorEmail(const std::string &email) {
@@ -98,7 +70,6 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorE
         std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 6));
 
         lista.emplace_back(
-            Codigo(codigo),
             email,
             hotelId,
             quartoId,
@@ -142,7 +113,6 @@ std::vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorS
         std::string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 7));
 
         lista.emplace_back(
-            Codigo(codigo),
             email,
             hotelId,
             quartoId,
@@ -173,7 +143,6 @@ void PersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &s
 
     sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
     sqlite3_bind_text(stmt, 2, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, s.getCodigo().getValor().c_str(), -1, SQLITE_STATIC);
 
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);

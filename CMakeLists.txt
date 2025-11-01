@@ -121,7 +121,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/utilitarios/LinhaTSV.cpp
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
-        src/sistema/utilitarios/GeradorCodigo.cpp
 
         # ValidadoresPrincipais
         src/sistema/validadores_principais/ValidarInt.cpp

@@ -6,6 +6,7 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIASOLICITACAOHOSPEDAGEM_H
 
 #include "../entidades/SolicitacaoHospedagem.h"
+#include "BancoDeDados.h"
 #include <vector>
 #include <string>
 

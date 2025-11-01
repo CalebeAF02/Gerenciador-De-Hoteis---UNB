@@ -9,7 +9,6 @@
 #include "Menu.h"
 #include "PersistenciaHospede.h"
 #include "sqlite3.h"
-#include "GeradorCodigo.h"
 
 void ControladorInterfaceHospede::exibirMenu() {
     Menu menu;
@@ -55,8 +54,6 @@ void ControladorInterfaceHospede::opcoesDeHospedagem() {
 void ControladorInterfaceHospede::solicitandoHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    std::string codigoSolicitacao = GeradorCodigo::gerar("SQL");
-    cout << codigoSolicitacao.length();
     TextoApresentacao::MostrarTituloPergunta("Informe o Email");
     std::string email = TextoApresentacao::LerLinha();
 
@@ -78,14 +75,13 @@ void ControladorInterfaceHospede::solicitandoHospedagem() {
         Data partida(partidaStr);
 
         SolicitacaoHospedagem solicitacao(
-            Codigo(codigoSolicitacao),
             email,
             idHotel,
             idQuarto,
             chegada,
             partida,
             StatusSolicitacaoHospedagem::PENDENTE,
-            "Fez Errado"
+            ""
 
         );
 
@@ -117,7 +113,6 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
                                           : "Recusada";
 
         std::cout << "----------------------------------------\n";
-        std::cout << "Codigo: " << s.getCodigo().getValor() << "\n";
         std::cout << "Hotel: " << s.getHotelId() << "\n";
         std::cout << "Quarto: " << s.getQuartoId() << "\n";
         std::cout << "Chegada: " << s.getChegada().toString() << "\n";
@@ -142,8 +137,7 @@ void ControladorInterfaceHospede::avaliarSolicitacoes() {
     }
 
     for (auto &solicitacao: pendentes) {
-        std::cout << "\nCodigo da Solicitacao: " << solicitacao.getCodigo().getValor()
-                << "\nHospede: " << solicitacao.getHospedeId()
+        cout << "\nHospede: " << solicitacao.getHospedeId()
                 << "\nHotel: " << solicitacao.getHotelId()
                 << "\nQuarto: " << solicitacao.getQuartoId()
                 << "\nChegada: " << solicitacao.getChegada().toString()
