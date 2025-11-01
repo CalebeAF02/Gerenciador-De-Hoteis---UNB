@@ -17,6 +17,7 @@ include_directories(
         include
 
         include/sistema
+        include/sistema/controladores
         include/sistema/dominios
         include/sistema/entidades
         include/sistema/enum
@@ -48,6 +49,10 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         #Sistamas
         src/sistema/Sistema.cpp
+        src/sistema/BancoDeDados.cpp
+
+        # Controladores
+        src/sistema/controladores/ControleInterfaceGerenteAutenticavel.cpp
 
         # Dominios
         src/sistema/dominios/Nome.cpp
@@ -83,8 +88,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
         # interfaces
+        src/sistema/interfaces/InterfaceApresentacaoAutenticavel.cpp
         src/sistema/interfaces/InterfaceGerenciavel.cpp
-        src/sistema/interfaces/InterfaceAutenticavel.cpp
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
         src/sistema/interfaces/InterfaceServicoAutenticacao.cpp
 

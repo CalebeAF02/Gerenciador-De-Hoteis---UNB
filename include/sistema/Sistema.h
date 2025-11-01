@@ -17,49 +17,28 @@
 
 using namespace std;
 
-class Sistema
-{
+class Sistema {
 private:
     bool executando = true;
     ServicosGerente servicosGerente;
     ServicosHospede servicosHospede;
-    sqlite3* db = nullptr;
 
 public:
-    void menuSistema()
-    {
+    void menuSistema() {
         Sistema::rodandoSistema();
     };
 
     void rodandoSistema();
 
-    bool abrindoConexao();
-    bool fechandoConexao();
-    void criandoBancoDeDados();
-
-    void criarTabelaGerentes(sqlite3* db);
-    void criarTabelaHospedes(sqlite3* db);
-    void criarTabelaHoteis(sqlite3* db);
-    void criarTabelaQuartos(sqlite3* db);
-    void criarTabelaReservas(sqlite3* db);
-    void criarTabelaSolicitacoesHospedagem(sqlite3* db);
-
     bool getExecutandoSistema();
 
-    sqlite3* getConexao() const
-    {
-        return db;
-    }
-
     // Metodo Para Fazer um login pre-programado)
-    bool fazerLoginSistemaGerente(const string& emailLoginProgramado, const string& senhaLoginProgramada)
-    {
-        return servicosGerente.fazerLoginGerente(emailLoginProgramado, senhaLoginProgramada);
+    bool autenticar(Email &emailLoginProgramado, Senha &senhaLoginProgramada) {
+        return servicosGerente.autenticar(emailLoginProgramado, senhaLoginProgramada);
     };
 };
 
-inline bool Sistema::getExecutandoSistema()
-{
+inline bool Sistema::getExecutandoSistema() {
     return executando;
 };
 #endif //GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H

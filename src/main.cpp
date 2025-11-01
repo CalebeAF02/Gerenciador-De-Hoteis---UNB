@@ -36,20 +36,18 @@ using namespace std;
 
 #define MODO_ATUAL MODO_TESTES
 
-void executarSmokeTests()
-{
+void executarSmokeTests() {
     SmokeTest::testarEntradas();
 }
 
-void executarSistema()
-{
+void executarSistema() {
+    BancoDeDados banco;
+    banco.criandoBancoDeDados();
     Sistema sistema;
-    sistema.criandoBancoDeDados();
     sistema.menuSistema();
 }
 
-int main()
-{
+int main() {
     /*
      * Edicoes a fazer :
      *
@@ -68,15 +66,14 @@ int main()
      * 3) Nao permite exclusoes que gerem inconcistencias!
      *
      */
-    switch (MODO_ATUAL)
-    {
-    case MODO_SMOKE:
-        {
+    switch (MODO_ATUAL) {
+        case MODO_SMOKE: {
             SmokeTest::testarEntradas();
+
+            BancoDeDados bancoModoSmokeTestes;
+            bancoModoSmokeTestes.criandoBancoDeDados();
+
             Sistema sistemaModoSmokeTestes;
-
-            sistemaModoSmokeTestes.criandoBancoDeDados();
-
             sistemaModoSmokeTestes.menuSistema();
 
             /*
@@ -90,21 +87,23 @@ int main()
             };
             */
         }
-    case MODO_TESTES:
-        {
+        case MODO_TESTES: {
             executarTestsModulares();
+
+            BancoDeDados bancoModoTestes;
+            bancoModoTestes.criandoBancoDeDados();
+
             Sistema sistemaModoTestes;
-
-            sistemaModoTestes.criandoBancoDeDados();
-
             sistemaModoTestes.menuSistema();
+
             break;
         }
-    case MODO_PRODUCAO:
-        {
+        case MODO_PRODUCAO: {
+            BancoDeDados bancoModoTestes;
+            bancoModoTestes.criandoBancoDeDados();
+
             Sistema sistemaProducao;
-            while (sistemaProducao.getExecutandoSistema())
-            {
+            while (sistemaProducao.getExecutandoSistema()) {
                 sistemaProducao.rodandoSistema();
             }
             break;

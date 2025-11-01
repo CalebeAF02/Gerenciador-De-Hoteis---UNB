@@ -13,39 +13,28 @@
 #include "FabricaGerenciavel.h"
 
 #include "ServicosHospede.h"
+#include "controladores/ControleInterfaceGerenteAutenticavel.h"
 
 using namespace std;
 
-class ServicosGerente
-{
+class ServicosGerente : public ControleInterfaceGerenteAutenticavel {
 private:
-    bool gerenteEstaLogado = false;
     bool executando = true;
-    Gerente* logGerente;
 
 public:
     // Construtor dos servicosGerente
     ServicosGerente() = default;
 
     // Confirmar que e um gerente
-    void acessandoGerente();
+    void exibirMenu();
 
     // Acessando servicos
     void exibirCentralDeServicos();
+
     void exibirCentralDeServicosGerentes();
 
-    // Metodos Programados de Login
-    void logandoGerente();
-    bool fazerLoginGerente(string emailCopia, string senhaCopia);
-    bool getGerenteEstaLogado();
-
     // metudo para excluir
-    void excluirMeuCadastro();
-};
-
-inline bool ServicosGerente::getGerenteEstaLogado()
-{
-    return gerenteEstaLogado;
+    //void excluirMeuCadastro();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSGERENTE_H

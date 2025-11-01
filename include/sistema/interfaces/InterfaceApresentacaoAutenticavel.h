@@ -10,13 +10,12 @@
 #include "Senha.h"
 
 // InterfaceApresentacaoAutenticavel == IAA
-class InterfaceApresentacaoAutenticavel
-{
-public:
-    virtual void autenticar(Email &, Senha &) = 0;
 
-    virtual void exibirMenu(const std::string& email) = 0;
+class InterfaceApresentacaoAutenticavel {
+public:
     virtual ~InterfaceApresentacaoAutenticavel() = default;
+
+    virtual bool autenticar(Email &, Senha &) = 0;
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_INTERFACEAPRESENTACAOAUTENTICAVEL_H
