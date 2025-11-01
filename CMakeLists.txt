@@ -17,7 +17,6 @@ include_directories(
         include
 
         include/sistema
-        include/sistema/apresentacao
         include/sistema/dominios
         include/sistema/entidades
         include/sistema/enum
@@ -41,7 +40,6 @@ include_directories(
         confiruracoes
         docs
         imagens
-
 )
 
 # Fontes principais
@@ -50,9 +48,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         #Sistamas
         src/sistema/Sistema.cpp
-
-        # Apresentacao
-        src/sistema/apresentacao/ApresentacaoAutenticavel.cpp
 
         # Dominios
         src/sistema/dominios/Nome.cpp
@@ -78,6 +73,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # Enum
         src/sistema/enum/StatusSolicitacaoHospedagem.cpp
+        src/sistema/enum/EnumConversor.cpp
 
         # Fabricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
@@ -144,8 +140,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_entidades/TestsQuarto.cpp
         tests/tests_entidades/TestsReserva.cpp
         tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
-        src/sistema/enum/EnumConversor.cpp
-        include/sistema/enum/EnumConversor.h
 )
 
 # Linka com o executável principal

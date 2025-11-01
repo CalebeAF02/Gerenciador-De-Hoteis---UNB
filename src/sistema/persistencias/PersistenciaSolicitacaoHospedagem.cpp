@@ -10,7 +10,7 @@
 #include "HospedeGerenciavel.h"
 #include "../../../include/sistema/entidades/SolicitacaoHospedagem.h"
 
-static const char *DB_PATH = "sistema_hotel.db";
+static const char *DB_PATH = "hotel.db";
 
 void PersistenciaSolicitacaoHospedagem::inicializar() {
     sqlite3 *db;
