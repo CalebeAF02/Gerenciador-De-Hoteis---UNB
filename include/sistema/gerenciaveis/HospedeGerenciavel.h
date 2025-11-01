@@ -7,18 +7,21 @@
 
 #include "InterfaceGerenciavel.h"
 #include "PersistenciaHospede.h"
-#include "PersistenciaSolicitacaoHospedagem.h"
+#include "../persistencias/PersistenciaSolicitacaoHospedagem.h"
 #include "TextoApresentacao.h"
 
-class HospedeGerenciavel : public InterfaceGerenciavel
-{
+class HospedeGerenciavel : public InterfaceGerenciavel {
     PersistenciaHospede dao;
 
 public:
     void criar() override;
+
     void ler() override;
+
     void atualizar() override;
+
     bool remover() override;
+
     void avaliarSolicitacoes();
 };
 

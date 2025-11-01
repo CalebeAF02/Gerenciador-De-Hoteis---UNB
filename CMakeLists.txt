@@ -73,6 +73,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/entidades/Pessoa.cpp
         src/sistema/entidades/Quarto.cpp
         src/sistema/entidades/Reserva.cpp
+        src/sistema/entidades/SolicitacaoHospedagem.cpp
 
         # Fabricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
@@ -90,6 +91,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Persistencias
         src/sistema/persistencias/PersistenciaGerente.cpp
         src/sistema/persistencias/PersistenciaHospede.cpp
+        src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
         # Servicos
         src/sistema/servicos/ServicosGerente.cpp
@@ -105,14 +107,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/utilitarios/LinhaTSV.cpp
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
-        src/sistema/utilitarios/SolicitacaoHospedagem.cpp
-        src/sistema/utilitarios/PersistenciaSolicitacaoHospedagem.cpp
         src/sistema/utilitarios/GeradorCodigo.cpp
 
         # ValidadoresPrincipais
         src/sistema/validadores_principais/ValidarInt.cpp
         src/sistema/validadores_principais/ValidarString.cpp
-
 
         # Tests
         tests/interface_tests/InterfaceDeTeste.cpp
