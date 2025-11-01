@@ -20,6 +20,7 @@ include_directories(
         include/sistema/apresentacao
         include/sistema/dominios
         include/sistema/entidades
+        include/sistema/enum
         include/sistema/fabricas
         include/sistema/gerenciaveis
         include/sistema/interfaces
@@ -74,6 +75,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/entidades/Quarto.cpp
         src/sistema/entidades/Reserva.cpp
         src/sistema/entidades/SolicitacaoHospedagem.cpp
+
+        # Enum
+        src/sistema/enum/StatusSolicitacaoHospedagem.cpp
 
         # Fabricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
@@ -140,6 +144,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_entidades/TestsQuarto.cpp
         tests/tests_entidades/TestsReserva.cpp
         tests/tests_entidades/TestsSolicitacaoHospedagem.cpp
+        src/sistema/enum/EnumConversor.cpp
+        include/sistema/enum/EnumConversor.h
 )
 
 # Linka com o executável principal
