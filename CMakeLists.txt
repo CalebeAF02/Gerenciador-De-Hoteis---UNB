@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Declara a biblioteca SQLite como externa
 add_library(sqlite3 STATIC IMPORTED)
-set_target_properties(sqlite3 PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/extern/libsqlite3.a)
+set_target_properties(sqlite3 PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/libsqlite3.a)
 
 # Inclui o diretório dos headers
 include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/libs/sqlite)
+include_directories(${CMAKE_SOURCE_DIR}/include/libs/sqlite)
 
 # Diretorios de headers
 include_directories(
@@ -27,9 +27,9 @@ include_directories(
         include/sistema/servicos
         include/sistema/utilitarios
         include/sistema/validadorPrincipais
+        include/libs/sqlite
 
         libs
-        libs/sqlite
 
         tests
         tests/interface_tests
