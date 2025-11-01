@@ -19,13 +19,13 @@
 
 using namespace std;
 
-class ServicosHospede {
+class ControladorInterfaceHospede {
 private:
     bool executando = true;
 
 public:
     // Construtor dos ServicosHospede
-    ServicosHospede() = default;
+    ControladorInterfaceHospede() = default;
 
     // Solicitacao de Hospedagem para Gerente
     void opcoesDeHospedagem();

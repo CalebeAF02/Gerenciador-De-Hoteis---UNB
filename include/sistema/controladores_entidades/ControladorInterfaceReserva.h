@@ -10,11 +10,10 @@
 
 using namespace std;
 
-class ServicosReserva
-{
+class ControladorInterfaceReserva {
 public:
     // Construtor dos servicosReserva
-    ServicosReserva() = default;
+    ControladorInterfaceReserva() = default;
 
     // Acessando servicos
     void exibirMenu();

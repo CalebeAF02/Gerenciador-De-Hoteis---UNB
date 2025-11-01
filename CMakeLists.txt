@@ -27,7 +27,8 @@ include_directories(
         include/sistema/interfaces/apresentacoes
         include/sistema/interfaces/servicos
         include/sistema/persistencias
-        include/sistema/controladores
+        include/sistema/controladores_entidades
+        include/sistema/controladores_metodos
         include/sistema/utilitarios
         include/sistema/validadorPrincipais
         include/libs/sqlite
@@ -53,12 +54,15 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
-        # Controladores
-        src/sistema/controladores/ControladorInterfaceGerenteAutenticavel.cpp
-        src/sistema/controladores/ServicosHospede.cpp
-        src/sistema/controladores/ServicosHotel.cpp
-        src/sistema/controladores/ServicosQuarto.cpp
-        src/sistema/controladores/ServicosReserva.cpp
+        # Controladore_Entidades
+        src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
+        src/sistema/controladores_entidades/ControladorInterfaceHospede.cpp
+        src/sistema/controladores_entidades/ControladorInterfaceHotel.cpp
+        src/sistema/controladores_entidades/ControladorInterfaceQuarto.cpp
+        src/sistema/controladores_entidades/ControladorInterfaceReserva.cpp
+
+        # Controladores_Metodos
+        src/sistema/controladores_metodos/ControladorInterfaceGerenteAutenticavel.cpp
 
         # Dominios
         src/sistema/dominios/Nome.cpp

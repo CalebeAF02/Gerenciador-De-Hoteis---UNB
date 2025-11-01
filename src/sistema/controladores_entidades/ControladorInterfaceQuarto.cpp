@@ -2,15 +2,14 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "../../../include/sistema/controladores/ServicosReserva.h"
+#include "ControladorInterfaceQuarto.h"
 
-
-void ServicosReserva::exibirMenu() {
+void ControladorInterfaceQuarto::exibirMenu() {
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
 
-void ServicosReserva::exibirMenuCRUD() {
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Reserva");
+void ControladorInterfaceQuarto::exibirMenuCRUD() {
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Quarto");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }

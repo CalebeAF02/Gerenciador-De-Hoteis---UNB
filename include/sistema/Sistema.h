@@ -5,11 +5,12 @@
 #ifndef GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 #define GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 
+#include "ControladorInterfaceGerente.h"
 #include "ControladorInterfaceGerenteAutenticavel.h"
-#include "ServicosHospede.h"
-#include "ServicosHotel.h"
-#include "ServicosQuarto.h"
-#include "ServicosReserva.h"
+#include "controladores_entidades/ControladorInterfaceHospede.h"
+#include "ControladorInterfaceHotel.h"
+#include "ControladorInterfaceQuarto.h"
+#include "ControladorInterfaceReserva.h"
 
 #include "Menu.h"
 
@@ -25,8 +26,8 @@ using namespace std;
 class Sistema {
 private:
     bool executando = true;
-    ControladorInterfaceGerenteAutenticavel controladorGerente;
-    ServicosHospede servicosHospede;
+    ControladorInterfaceGerente controladorGerente;
+    ControladorInterfaceHospede controladorHospede;
 
 public:
     void menuSistema() {
@@ -37,7 +38,6 @@ public:
 
     bool getExecutandoSistema();
 
-    // Confirmar que e um gerente
     void exibirMenu();
 };
 

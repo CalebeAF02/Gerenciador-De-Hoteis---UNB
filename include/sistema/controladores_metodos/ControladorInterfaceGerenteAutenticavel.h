@@ -14,7 +14,7 @@
 #include "InterfaceFabricaGerenciavel.h"
 #include "FabricaGerenciavel.h"
 
-#include "ServicosHospede.h"
+#include "../controladores_entidades/ControladorInterfaceHospede.h"
 
 using namespace std;
 
@@ -25,12 +25,6 @@ private:
 public:
     // Construtor dos servicosGerente
     ControladorInterfaceGerenteAutenticavel() = default;
-
-    // Acessando servicos
-    void exibirMenu();
-
-    // Menu CRUD
-    void exibirMenuCRUDGerentes();
 
     // Fazer Login
     void fazerLogin() override;

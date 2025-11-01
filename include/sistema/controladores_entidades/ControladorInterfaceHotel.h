@@ -10,11 +10,10 @@
 
 using namespace std;
 
-class ServicosHotel
-{
+class ControladorInterfaceHotel {
 public:
     // Construtor dos servicosHotel
-    ServicosHotel() = default;
+    ControladorInterfaceHotel() = default;
 
     // Acessando servicos
     void exibirMenu();

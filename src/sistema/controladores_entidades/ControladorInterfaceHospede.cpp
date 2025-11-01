@@ -2,7 +2,7 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ServicosHospede.h"
+#include "ControladorInterfaceHospede.h"
 
 #include "FabricaGerenciavel.h"
 #include "HospedeGerenciavel.h"
@@ -11,7 +11,7 @@
 #include "sqlite3.h"
 #include "GeradorCodigo.h"
 
-void ServicosHospede::exibirMenu() {
+void ControladorInterfaceHospede::exibirMenu() {
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -37,7 +37,7 @@ void ServicosHospede::exibirMenu() {
     }
 };
 
-void ServicosHospede::exibirMenuCRUD() {
+void ControladorInterfaceHospede::exibirMenuCRUD() {
     bool status = true;
     while (status) {
         TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
@@ -46,13 +46,13 @@ void ServicosHospede::exibirMenuCRUD() {
     };
 }
 
-void ServicosHospede::opcoesDeHospedagem() {
+void ControladorInterfaceHospede::opcoesDeHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Opcoes de Hospedagem");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
     return;
 }
 
-void ServicosHospede::solicitandoHospedagem() {
+void ControladorInterfaceHospede::solicitandoHospedagem() {
     TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
     std::string codigoSolicitacao = GeradorCodigo::gerar("SQL");
@@ -96,7 +96,7 @@ void ServicosHospede::solicitandoHospedagem() {
     }
 }
 
-void ServicosHospede::statusDaSolicitandoHospedagem() const {
+void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
     TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
 
     TextoApresentacao::MostrarTituloPergunta("Informe o Email");
@@ -131,7 +131,7 @@ void ServicosHospede::statusDaSolicitandoHospedagem() const {
     }
 }
 
-void ServicosHospede::avaliarSolicitacoes() {
+void ControladorInterfaceHospede::avaliarSolicitacoes() {
     TextoApresentacao::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
 
     auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente

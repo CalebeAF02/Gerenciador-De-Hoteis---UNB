@@ -10,12 +10,10 @@
 
 using namespace std;
 
-class ServicosQuarto
-
-{
+class ControladorInterfaceQuarto {
 public:
     // Construtor dos servicosQuarto
-    ServicosQuarto() = default;
+    ControladorInterfaceQuarto() = default;
 
     // Acessando servicos
     void exibirMenu();

@@ -2,14 +2,14 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ServicosQuarto.h"
+#include "../../../include/sistema/controladores_entidades/ControladorInterfaceHotel.h"
 
-void ServicosQuarto::exibirMenu() {
+void ControladorInterfaceHotel::exibirMenu() {
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
 
-void ServicosQuarto::exibirMenuCRUD() {
-    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Quarto");
+void ControladorInterfaceHotel::exibirMenuCRUD() {
+    TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Hotel");
     TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
