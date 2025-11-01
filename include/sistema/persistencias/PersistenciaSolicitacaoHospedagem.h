@@ -5,10 +5,15 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIASOLICITACAOHOSPEDAGEM_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIASOLICITACAOHOSPEDAGEM_H
 
-#include "../entidades/SolicitacaoHospedagem.h"
+#include "SolicitacaoHospedagem.h"
+#include "EnumConversor.h"
+#include "SolicitacaoHospedagem.h"
+
 #include "BancoDeDados.h"
 #include <vector>
 #include <string>
+#include <sqlite3.h>
+#include <iostream>
 
 class PersistenciaSolicitacaoHospedagem {
 public:

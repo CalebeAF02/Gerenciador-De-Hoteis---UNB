@@ -2,13 +2,8 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "../../../include/sistema/persistencias/PersistenciaSolicitacaoHospedagem.h"
-#include <sqlite3.h>
-#include <iostream>
+#include "PersistenciaSolicitacaoHospedagem.h"
 
-#include "EnumConversor.h"
-#include "HospedeGerenciavel.h"
-#include "../../../include/sistema/entidades/SolicitacaoHospedagem.h"
 
 static const char *DB_PATH = "hotel.db";
 

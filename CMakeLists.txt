@@ -22,7 +22,6 @@ include_directories(
         include/sistema/entidades
         include/sistema/enum
         include/sistema/fabricas
-        include/sistema/gerenciaveis
         include/sistema/interfaces
         include/sistema/interfaces/apresentacoes
         include/sistema/interfaces/servicos
@@ -93,8 +92,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Fabricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
-        # Gerenciaveis
-        src/sistema/gerenciaveis/HospedeGerenciavel.cpp
 
         ## Interface apresentacoes
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp

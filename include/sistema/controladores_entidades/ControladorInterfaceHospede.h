@@ -10,8 +10,10 @@
 
 #include "../utilitarios/TextoApresentacao.h"
 #include "InterfaceApresentacaoExibirMenu.h"
-
+#include "PersistenciaHospede.h"
 #include "InterfaceFabricaGerenciavel.h"
+#include "SolicitacaoHospedagem.h"
+#include "PersistenciaSolicitacaoHospedagem.h"
 #include "FabricaGerenciavel.h"
 
 #include <vector>
@@ -20,9 +22,11 @@
 
 using namespace std;
 
-class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu {
+class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu,
+                                    public InterfaceApresentacaoCRUD {
 private:
     bool executando = true;
+    PersistenciaHospede dao;
 
 public:
     // Construtor dos ServicosHospede
@@ -42,6 +46,14 @@ public:
 
     // Menu CRUD
     void exibirMenuCRUD();
+
+    void criar() override;
+
+    void ler() override;
+
+    void atualizar() override;
+
+    bool remover() override;
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOSPEDE_H
