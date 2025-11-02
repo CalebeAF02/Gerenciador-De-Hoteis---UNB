@@ -1,4 +1,4 @@
-#include "TestsGerente.h"
+#include "TestsGerente.hpp"
 #include <iostream>
 
 void TestsGerente::executar() {

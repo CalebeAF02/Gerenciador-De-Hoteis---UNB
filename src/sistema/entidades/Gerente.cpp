@@ -1,4 +1,4 @@
-#include "Gerente.h"
+#include "Gerente.hpp"
 
 #include <istream>
 #include <sstream>

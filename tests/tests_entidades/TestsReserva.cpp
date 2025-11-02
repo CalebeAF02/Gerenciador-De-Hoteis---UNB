@@ -1,4 +1,4 @@
-#include "TestsReserva.h"
+#include "TestsReserva.hpp"
 #include <iostream>
 
 void TestsReserva::executar() {

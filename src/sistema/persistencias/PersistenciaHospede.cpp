@@ -2,7 +2,7 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "../../../include/sistema/persistencias/PersistenciaHospede.h"
+#include "../../../include/sistema/persistencias/PersistenciaHospede.hpp"
 
 #include "sqlite3.h"
 

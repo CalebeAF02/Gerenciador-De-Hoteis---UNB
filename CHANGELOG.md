@@ -103,7 +103,8 @@ Este projeto segue o formato [Keep a Changelog](https://keepachangelog.com/pt-BR
 - Merge com versão finalizada do projeto anterior.
 
 ### 2025-10-29
-- Reorganização completa das pastas e código.
+
+- Reorganização completa das pastas e codigo.
 
 ### 2025-10-31
 - Renomeação de `sqlite3.c` para `sqlite3.cpp`.

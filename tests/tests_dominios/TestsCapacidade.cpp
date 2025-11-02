@@ -1,4 +1,4 @@
-#include "TestsCapacidade.h"
+#include "TestsCapacidade.hpp"
 #include <iostream>
 #include <vector>
 

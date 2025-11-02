@@ -1,4 +1,4 @@
-#include "TestsHospede.h"
+#include "TestsHospede.hpp"
 #include <iostream>
 
 void TestsHospede::executar() {

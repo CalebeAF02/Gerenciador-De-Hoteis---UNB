@@ -2,7 +2,7 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "PersistenciaSolicitacaoHospedagem.h"
+#include "PersistenciaSolicitacaoHospedagem.hpp"
 
 
 static const char *DB_PATH = "hotel.db";

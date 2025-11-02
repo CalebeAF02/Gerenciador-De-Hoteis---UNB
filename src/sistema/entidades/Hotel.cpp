@@ -1,1 +1,1 @@
-#include "Hotel.h"
+#include "Hotel.hpp"

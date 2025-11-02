@@ -2,11 +2,11 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ControladorInterfaceHospede.h"
+#include "ControladorInterfaceHospede.hpp"
 
-#include "FabricaGerenciavel.h"
-#include "Menu.h"
-#include "PersistenciaHospede.h"
+#include "FabricaGerenciavel.hpp"
+#include "Menu.hpp"
+#include "PersistenciaHospede.hpp"
 #include "sqlite3.h"
 
 void ControladorInterfaceHospede::exibirMenu() {

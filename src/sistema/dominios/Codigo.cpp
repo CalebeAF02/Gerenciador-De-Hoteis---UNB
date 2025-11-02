@@ -2,7 +2,7 @@
 // Created by caleb on 01/10/2025.
 //
 
-#include "Codigo.h"
+#include "Codigo.hpp"
 
 void Codigo::validar(const string codigo) {
     int cont_baixo = 0;

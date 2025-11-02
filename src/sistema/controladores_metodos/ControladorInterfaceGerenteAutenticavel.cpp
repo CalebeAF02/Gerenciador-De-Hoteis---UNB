@@ -2,14 +2,14 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ControladorInterfaceGerenteAutenticavel.h"
+#include "ControladorInterfaceGerenteAutenticavel.hpp"
 
-#include "FabricaGerenciavel.h"
-#include "Menu.h"
-#include "ControladorInterfaceHospede.h"
-#include "ControladorInterfaceHotel.h"
-#include "ControladorInterfaceQuarto.h"
-#include "ControladorInterfaceReserva.h"
+#include "FabricaGerenciavel.hpp"
+#include "Menu.hpp"
+#include "ControladorInterfaceHospede.hpp"
+#include "ControladorInterfaceHotel.hpp"
+#include "ControladorInterfaceQuarto.hpp"
+#include "ControladorInterfaceReserva.hpp"
 #include "sqlite3.h"
 
 void ControladorInterfaceGerenteAutenticavel::fazerLogin() {

@@ -2,7 +2,7 @@
 #include <cctype>
 #include <stdexcept>
 
-#include "Endereco.h"
+#include "Endereco.hpp"
 
 void Endereco::validar(const std::string endereco) {
     if (endereco.length() < 5 || endereco.length() > 30) {

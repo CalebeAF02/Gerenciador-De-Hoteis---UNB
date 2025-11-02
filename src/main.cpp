@@ -1,32 +1,32 @@
-#include "Smoke_Tests.h"
-#include "sistema/Sistema.h"
+#include "Smoke_Tests.hpp"
+#include "sistema/Sistema.hpp"
 
 #include <iostream>
 #include <string>
 #include "sqlite3.h"
 
-#include "TextoApresentacao.h"
-#include "interface_tests/TestsModulares.h"
+#include "TextoApresentacao.hpp"
+#include "interface_tests/TestsModulares.hpp"
 
-#include "interface_tests/InterfaceDeTeste.h"
-#include "tests_dominios/TestsCapacidade.h"
-#include "tests_dominios/TestsCartao.h"
-#include "tests_dominios/TestsCodigo.h"
-#include "tests_dominios/TestsData.h"
-#include "tests_dominios/TestsDinheiro.h"
-#include "tests_dominios/TestsEmail.h"
-#include "tests_dominios/TestsEndereco.h"
-#include "tests_dominios/TestsNome.h"
-#include "tests_dominios/TestsNumero.h"
-#include "tests_dominios/TestsRamal.h"
-#include "tests_dominios/TestsSenha.h"
-#include "tests_dominios/TestsTelefone.h"
+#include "interface_tests/InterfaceDeTeste.hpp"
+#include "tests_dominios/TestsCapacidade.hpp"
+#include "tests_dominios/TestsCartao.hpp"
+#include "tests_dominios/TestsCodigo.hpp"
+#include "tests_dominios/TestsData.hpp"
+#include "tests_dominios/TestsDinheiro.hpp"
+#include "tests_dominios/TestsEmail.hpp"
+#include "tests_dominios/TestsEndereco.hpp"
+#include "tests_dominios/TestsNome.hpp"
+#include "tests_dominios/TestsNumero.hpp"
+#include "tests_dominios/TestsRamal.hpp"
+#include "tests_dominios/TestsSenha.hpp"
+#include "tests_dominios/TestsTelefone.hpp"
 
-#include "tests_entidades/TestsGerente.h"
-#include "tests_entidades/TestsHospede.h"
-#include "tests_entidades/TestsHotel.h"
-#include "tests_entidades/TestsQuarto.h"
-#include "tests_entidades/TestsReserva.h"
+#include "tests_entidades/TestsGerente.hpp"
+#include "tests_entidades/TestsHospede.hpp"
+#include "tests_entidades/TestsHotel.hpp"
+#include "tests_entidades/TestsQuarto.hpp"
+#include "tests_entidades/TestsReserva.hpp"
 
 using namespace std;
 
@@ -34,7 +34,7 @@ using namespace std;
 #define MODO_PRODUCAO 1
 #define MODO_SMOKE 2
 
-#define MODO_ATUAL MODO_PRODUCAO
+#define MODO_ATUAL MODO_TESTES
 
 void executarSmokeTests() {
     SmokeTest::testarEntradas();

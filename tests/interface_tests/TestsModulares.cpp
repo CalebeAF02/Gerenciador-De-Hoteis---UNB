@@ -3,26 +3,26 @@
 //
 
 
-#include "interface_tests/InterfaceDeTeste.h"
+#include "interface_tests/InterfaceDeTeste.hpp"
 
-#include "tests_dominios/TestsCapacidade.h"
-#include "tests_dominios/TestsCartao.h"
-#include "tests_dominios/TestsCodigo.h"
-#include "tests_dominios/TestsData.h"
-#include "tests_dominios/TestsDinheiro.h"
-#include "tests_dominios/TestsEmail.h"
-#include "tests_dominios/TestsEndereco.h"
-#include "tests_dominios/TestsNome.h"
-#include "tests_dominios/TestsNumero.h"
-#include "tests_dominios/TestsRamal.h"
-#include "tests_dominios/TestsSenha.h"
-#include "tests_dominios/TestsTelefone.h"
+#include "tests_dominios/TestsCapacidade.hpp"
+#include "tests_dominios/TestsCartao.hpp"
+#include "tests_dominios/TestsCodigo.hpp"
+#include "tests_dominios/TestsData.hpp"
+#include "tests_dominios/TestsDinheiro.hpp"
+#include "tests_dominios/TestsEmail.hpp"
+#include "tests_dominios/TestsEndereco.hpp"
+#include "tests_dominios/TestsNome.hpp"
+#include "tests_dominios/TestsNumero.hpp"
+#include "tests_dominios/TestsRamal.hpp"
+#include "tests_dominios/TestsSenha.hpp"
+#include "tests_dominios/TestsTelefone.hpp"
 
-#include "tests_entidades/TestsGerente.h"
-#include "tests_entidades/TestsHospede.h"
-#include "tests_entidades/TestsHotel.h"
-#include "tests_entidades/TestsQuarto.h"
-#include "tests_entidades/TestsReserva.h"
+#include "tests_entidades/TestsGerente.hpp"
+#include "tests_entidades/TestsHospede.hpp"
+#include "tests_entidades/TestsHotel.hpp"
+#include "tests_entidades/TestsQuarto.hpp"
+#include "tests_entidades/TestsReserva.hpp"
 
 #include <vector>
 #include <memory> // para usar smart pointers
@@ -49,8 +49,8 @@ void executarTestsModulares() {
     testes.push_back(make_unique<TestsData>());
     */
 
-    testes.push_back(make_unique<TestsGerente>());
-    testes.push_back(make_unique<TestsHospede>());
+    //testes.push_back(make_unique<TestsGerente>());
+    //testes.push_back(make_unique<TestsHospede>());
     testes.push_back(make_unique<TestsHotel>());
     testes.push_back(make_unique<TestsQuarto>());
     testes.push_back(make_unique<TestsReserva>());

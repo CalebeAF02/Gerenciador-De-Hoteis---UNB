@@ -2,7 +2,7 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "BancoDeDados.h"
+#include "BancoDeDados.hpp"
 
 bool BancoDeDados::abrindoConexao() {
     //_________________________ABRE CONEXÂO_______________________________

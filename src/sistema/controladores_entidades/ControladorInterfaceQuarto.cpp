@@ -2,7 +2,7 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ControladorInterfaceQuarto.h"
+#include "ControladorInterfaceQuarto.hpp"
 
 void ControladorInterfaceQuarto::exibirMenu() {
     TextoApresentacao::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");

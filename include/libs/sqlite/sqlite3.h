@@ -25,7 +25,7 @@
 ** from comments in this file.  This file is the authoritative source
 ** on how SQLite interfaces are supposed to operate.
 **
-** The name of this file under configuration management is "sqlite.h.in".
+** The name of this file under configuration management is "sqlite.hpp.in".
 ** The makefile makes some minor changes to this file (such as inserting
 ** the version number) and changes its name to "sqlite3.h" as
 ** part of the build process.
@@ -11236,7 +11236,7 @@ SQLITE_API SQLITE_API int sqlite3_carray_bind(
 #endif
 /* #endif for SQLITE3_H will be added by mksqlite3.tcl */
 
-/******** Begin file sqlite3rtree.h *********/
+/******** Begin file sqlite3rtree.hpp *********/
 /*
 ** 2010 August 30
 **
@@ -11356,8 +11356,8 @@ struct sqlite3_rtree_query_info
 
 #endif  /* ifndef _SQLITE3RTREE_H_ */
 
-/******** End of sqlite3rtree.h *********/
-/******** Begin file sqlite3session.h *********/
+/******** End of sqlite3rtree.hpp *********/
+/******** Begin file sqlite3session.hpp *********/
 
 #if !defined(__SQLITESESSION_H_) && defined(SQLITE_ENABLE_SESSION)
 #define __SQLITESESSION_H_ 1
@@ -13223,8 +13223,8 @@ SQLITE_API int sqlite3session_config(int op, void* pArg);
 
 #endif  /* !defined(__SQLITESESSION_H_) && defined(SQLITE_ENABLE_SESSION) */
 
-/******** End of sqlite3session.h *********/
-/******** Begin file fts5.h *********/
+/******** End of sqlite3session.hpp *********/
+/******** Begin file fts5.hpp *********/
 /*
 ** 2014 May 31
 **
@@ -13987,5 +13987,5 @@ struct fts5_api
 
 #endif /* _FTS5_H */
 
-/******** End of fts5.h *********/
+/******** End of fts5.hpp *********/
 #endif /* SQLITE3_H */

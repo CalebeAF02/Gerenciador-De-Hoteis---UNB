@@ -1,6 +1,6 @@
 # Forcar quebra de linha LF para codigo-fonte
 *.cpp text eol=lf
-*.h text eol=lf
+*.hpp text eol=lf
 
 # Marcar arquivos binarios
 *.png binary

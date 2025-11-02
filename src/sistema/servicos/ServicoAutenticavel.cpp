@@ -2,7 +2,7 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "ServicoAutenticavel.h"
+#include "ServicoAutenticavel.hpp"
 
 bool ServicoAutenticavel::autenticar(Email &emailCopia, Senha &senhaCopia) {
     PersistenciaGerente dao;

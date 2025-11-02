@@ -2,7 +2,7 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "PersistenciaHotel.h"
+#include "PersistenciaHotel.hpp"
 
 bool PersistenciaHotel::inserirAoBD(Hotel *hotel) {
     BancoDeDados banco;

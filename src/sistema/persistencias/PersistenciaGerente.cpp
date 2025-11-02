@@ -2,7 +2,7 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "PersistenciaGerente.h"
+#include "PersistenciaGerente.hpp"
 
 bool PersistenciaGerente::inserirAoBD(Gerente &gerente) {
     BancoDeDados banco;

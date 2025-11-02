@@ -2,7 +2,7 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "ControladorInterfaceHotel.h"
+#include "ControladorInterfaceHotel.hpp"
 
 void ControladorInterfaceHotel::exibirMenu() {
 }

@@ -1,4 +1,4 @@
-#include "InterfaceDeTeste.h"
+#include "InterfaceDeTeste.hpp"
 
 int InterfaceDeTeste::contTodalTestes = 0;
 int InterfaceDeTeste::contTodalTestesOk = 0;

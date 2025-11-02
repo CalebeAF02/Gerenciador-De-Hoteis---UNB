@@ -1,4 +1,4 @@
-#include "Smoke_Tests.h"
+#include "Smoke_Tests.hpp"
 
 void SmokeTest::testarEntradas() {
     //------------------------------------------------------------------------------------------------------------------

@@ -2,9 +2,9 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "../../../include/sistema/controladores_entidades/ControladorInterfaceGerente.h"
+#include "../../../include/sistema/controladores_entidades/ControladorInterfaceGerente.hpp"
 
-#include "ControladorInterfaceGerente.h"
+#include "ControladorInterfaceGerente.hpp"
 
 void ControladorInterfaceGerente::exibirMenu() {
     Menu menu;

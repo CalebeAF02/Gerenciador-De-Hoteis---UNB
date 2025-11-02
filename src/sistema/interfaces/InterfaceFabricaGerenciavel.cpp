@@ -2,4 +2,4 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "../../../include/sistema/interfaces/InterfaceFabricaGerenciavel.h"
+#include "../../../include/sistema/interfaces/InterfaceFabricaGerenciavel.hpp"

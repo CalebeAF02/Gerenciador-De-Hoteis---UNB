@@ -1,4 +1,4 @@
-#include "TestsNome.h"
+#include "TestsNome.hpp"
 
 void TestsNome::executar() {
     TextoApresentacao::MostrarTituloEmCaixa("Testes Dominio -> Nome");

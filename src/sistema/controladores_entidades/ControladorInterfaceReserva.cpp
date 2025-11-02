@@ -2,7 +2,7 @@
 // Created by caleb on 10/10/2025.
 //
 
-#include "../../../include/sistema/controladores_entidades/ControladorInterfaceReserva.h"
+#include "../../../include/sistema/controladores_entidades/ControladorInterfaceReserva.hpp"
 
 
 void ControladorInterfaceReserva::exibirMenu() {

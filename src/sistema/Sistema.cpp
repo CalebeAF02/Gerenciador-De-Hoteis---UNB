@@ -2,7 +2,7 @@
 // Created by caleb on 28/09/2025.
 //
 
-#include "Sistema.h"
+#include "Sistema.hpp"
 
 #include "sqlite3.h"
 
