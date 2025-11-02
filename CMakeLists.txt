@@ -4,67 +4,31 @@ project(Gerenciador-De-Hoteis---UNB)
 set(CMAKE_CXX_STANDARD 17)
 
 # Declara a biblioteca SQLite como externa
-add_library(sqlite3 STATIC IMPORTED
-        include/libs/sqlite/sqlite3.h)
-set_target_properties(sqlite3 PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/libsqlite3.a)
-
-# Inclui o diretório dos headers
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/include/libs/sqlite)
-
-# Diretorios de headers
-include_directories(
-        #includes
-        include
-
-        include/sistema
-        include/sistema/servicos
-        include/sistema/dominios
-        include/sistema/entidades
-        include/sistema/enum
-        include/sistema/fabricas
-        include/sistema/interfaces
-        include/sistema/interfaces/apresentacoes
-        include/sistema/interfaces/servicos
-        include/sistema/persistencias
-        include/sistema/controladores_entidades
-        include/sistema/controladores_metodos
-        include/sistema/utilitarios
-        include/sistema/validadorPrincipais
-        include/libs/sqlite
-
-        libs
-
-        tests
-        tests/interface_tests
-        tests/smoke_testes
-        tests/tests_dominios
-        tests/tests_entidades
-
-        confiruracoes
-        docs
-        imagens
+add_library(sqlite3 STATIC IMPORTED)
+set_target_properties(sqlite3 PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/libsqlite3.a
+        INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/include/libs/sqlite
 )
 
 # Fontes principais
 add_executable(Gerenciador-De-Hoteis---UNB
         src/main.cpp
 
-        #Sistamas
+        # Sistema
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
-        # Controladore_Entidades
+        # Controladores de Entidades
         src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
         src/sistema/controladores_entidades/ControladorInterfaceHospede.cpp
         src/sistema/controladores_entidades/ControladorInterfaceHotel.cpp
         src/sistema/controladores_entidades/ControladorInterfaceQuarto.cpp
         src/sistema/controladores_entidades/ControladorInterfaceReserva.cpp
 
-        # Controladores_Metodos
+        # Controladores de Métodos
         src/sistema/controladores_metodos/ControladorInterfaceGerenteAutenticavel.cpp
 
-        # Dominios
+        # Domínios
         src/sistema/dominios/Nome.cpp
         src/sistema/dominios/Email.cpp
         src/sistema/dominios/Ramal.cpp
@@ -90,48 +54,48 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/enum/StatusSolicitacaoHospedagem.cpp
         src/sistema/enum/EnumConversor.cpp
 
-        # Fabricas
+        # Fábricas
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
-
-        ## Interface apresentacoes
+        # Interfaces - Apresentações
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoCRUD.cpp
 
-        ## Interface Servicos
+        # Interfaces - Serviços
         src/sistema/interfaces/servicos/InterfaceServicoAutenticavel.cpp
 
-        # Interface
+        # Interfaces - Gerais
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
 
-        # Persistencias
+        # Persistências
         src/sistema/persistencias/PersistenciaGerente.cpp
         src/sistema/persistencias/PersistenciaHospede.cpp
         src/sistema/persistencias/PersistenciaHotel.cpp
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
-        # Servicos
+        # Serviços
         src/sistema/servicos/ServicoAutenticavel.cpp
 
-        #utilitarios
+        # Utilitários
         src/sistema/utilitarios/Data.cpp
         src/sistema/utilitarios/TextoApresentacao.cpp
         src/sistema/utilitarios/LinhaTSV.cpp
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
 
-        # ValidadoresPrincipais
+        # Validadores principais
         src/sistema/validadores_principais/ValidarInt.cpp
         src/sistema/validadores_principais/ValidarString.cpp
 
-        # Tests
+        # Testes - Interface
         tests/interface_tests/InterfaceDeTeste.cpp
         tests/interface_tests/TestsModulares.cpp
 
+        # Testes - Smoke
         tests/smoke_testes/Smoke_Tests.cpp
 
-        # Tests_Dominios
+        # Testes - Domínios
         tests/tests_dominios/TestsCapacidade.cpp
         tests/tests_dominios/TestsCartao.cpp
         tests/tests_dominios/TestsCodigo.cpp
@@ -145,13 +109,37 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_dominios/TestsTelefone.cpp
         tests/tests_dominios/TestsData.cpp
 
-        # Tests_Entidades
+        # Testes - Entidades
         tests/tests_entidades/TestsGerente.cpp
         tests/tests_entidades/TestsHospede.cpp
         tests/tests_entidades/TestsHotel.cpp
         tests/tests_entidades/TestsQuarto.cpp
         tests/tests_entidades/TestsReserva.cpp
-        include/libs/sqlite/sqlite3.h
+)
+
+# Diretórios de headers
+target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/include/sistema
+        ${CMAKE_SOURCE_DIR}/include/sistema/servicos
+        ${CMAKE_SOURCE_DIR}/include/sistema/dominios
+        ${CMAKE_SOURCE_DIR}/include/sistema/entidades
+        ${CMAKE_SOURCE_DIR}/include/sistema/enum
+        ${CMAKE_SOURCE_DIR}/include/sistema/fabricas
+        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces
+        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/apresentacoes
+        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/servicos
+        ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
+        ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
+        ${CMAKE_SOURCE_DIR}/include/sistema/controladores_metodos
+        ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
+        ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
+        ${CMAKE_SOURCE_DIR}/include/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/tests
+        ${CMAKE_SOURCE_DIR}/tests/interface_tests
+        ${CMAKE_SOURCE_DIR}/tests/smoke_testes
+        ${CMAKE_SOURCE_DIR}/tests/tests_dominios
+        ${CMAKE_SOURCE_DIR}/tests/tests_entidades
 )
 
 # Linka com o executável principal
