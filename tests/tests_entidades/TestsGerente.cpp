@@ -21,7 +21,7 @@ void TestsGerente::testarNome() {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -32,7 +32,7 @@ void TestsGerente::testarNomeInvalido() {
         Gerente g;
         g.setNome(Nome("Joao@Silva"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -43,7 +43,7 @@ void TestsGerente::testarEmail() {
         Gerente g;
         g.setEmail(Email("joao@empresa.com"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -54,7 +54,7 @@ void TestsGerente::testarEmailInvalido() {
         Gerente g;
         g.setEmail(Email("joao@.com"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -65,7 +65,7 @@ void TestsGerente::testarSenha() {
         Gerente g;
         g.setSenha(Senha("a1!Bz"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -76,7 +76,7 @@ void TestsGerente::testarSenhaInvalida() {
         Gerente g;
         g.setSenha(Senha("a1Bz"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -87,7 +87,7 @@ void TestsGerente::testarRamal() {
         Gerente g;
         g.setRamal(Ramal("42"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -98,7 +98,7 @@ void TestsGerente::testarRamalInvalido() {
         Gerente g;
         g.setRamal(Ramal("12a4"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -112,7 +112,7 @@ void TestsGerente::testarConstrucaoCompleta() {
         g.setSenha(Senha("a1!Bz")); // ✅ válida
         g.setRamal(Ramal("42")); // ✅ válida
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -126,7 +126,7 @@ void TestsGerente::testarConstrucaoInvalida() {
         g.setSenha(Senha("123")); // ❌ inválida: curta, sem tipos
         g.setRamal(Ramal("42")); // ✅ válida
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }

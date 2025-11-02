@@ -35,7 +35,7 @@ using namespace std;
 class SmokeTest
 {
 public:
-    static void testarEntradas();
+    //static void testarEntradas();
 
     // Validadores Principais
     static void testarValidadorString(int esperando_resultado, string s1, string s2);

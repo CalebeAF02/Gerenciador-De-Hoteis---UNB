@@ -14,7 +14,7 @@ class TestsGerente : public InterfaceDeTeste {
 public:
     void executar() override;
 
-    std::string nomeDoTeste() const override { return "TestsGerente"; }
+    string nomeDoTeste() const override { return "TestsGerente"; }
 
 private:
     void testarNome();

@@ -59,8 +59,8 @@ void executarTestsModulares() {
     // Adicione os outros testes aqui...
 
     // Executa todos os testes
-    for (std::unique_ptr<InterfaceDeTeste> &teste: testes) {
-        std::cout << "\nExecutando: " << teste->nomeDoTeste() << std::endl;
+    for (unique_ptr<InterfaceDeTeste> &teste: testes) {
+        cout << "\nExecutando: " << teste->nomeDoTeste() << endl;
         teste->executar();
     }
 }

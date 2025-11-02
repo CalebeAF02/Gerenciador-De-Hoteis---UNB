@@ -21,7 +21,7 @@ void TestsHospede::testarNome() {
         Hospede h;
         h.setNome(Nome("Maria Clara"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -32,7 +32,7 @@ void TestsHospede::testarNomeInvalido() {
         Hospede h;
         h.setNome(Nome("Maria@Clara"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -43,7 +43,7 @@ void TestsHospede::testarEmail() {
         Hospede h;
         h.setEmail(Email("maria@exemplo.com"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -54,7 +54,7 @@ void TestsHospede::testarEmailInvalido() {
         Hospede h;
         h.setEmail(Email("maria@.com"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -65,7 +65,7 @@ void TestsHospede::testarEndereco() {
         Hospede h;
         h.setEndereco(Endereco("Rua Central,123")); // ✅ válido
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -76,7 +76,7 @@ void TestsHospede::testarEnderecoInvalido() {
         Hospede h;
         h.setEndereco(Endereco("rua central @ 123")); // ❌ inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -87,7 +87,7 @@ void TestsHospede::testarCartao() {
         Hospede h;
         h.setCartao(Cartao("4111111111111111"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -98,7 +98,7 @@ void TestsHospede::testarCartaoInvalido() {
         Hospede h;
         h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -112,7 +112,7 @@ void TestsHospede::testarConstrucaoCompleta() {
         h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ válido
         h.setCartao(Cartao("4111111111111111"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -126,7 +126,7 @@ void TestsHospede::testarConstrucaoInvalida() {
         h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ corrigido
         h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }

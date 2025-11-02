@@ -21,7 +21,7 @@ void TestsHotel::testarNome() {
         Hotel h;
         h.setNome(Nome("Hotel Central"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -32,7 +32,7 @@ void TestsHotel::testarNomeInvalido() {
         Hotel h;
         h.setNome(Nome("Hotel@Central"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -43,7 +43,7 @@ void TestsHotel::testarEndereco() {
         Hotel h;
         h.setEndereco(Endereco("Av. Brasil, 1000, Bloco A")); // ✅ formato completo
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -54,7 +54,7 @@ void TestsHotel::testarEnderecoInvalido() {
         Hotel h;
         h.setEndereco(Endereco("Av. Brasil @ 1000")); // ❌ símbolo inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -65,7 +65,7 @@ void TestsHotel::testarTelefone() {
         Hotel h;
         h.setTelefone(Telefone("(61) 91234-5678")); // ✅ válido
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -76,7 +76,7 @@ void TestsHotel::testarTelefoneInvalido() {
         Hotel h;
         h.setTelefone(Telefone("(61) 01234-5678")); // ❌ número começa com 0
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -87,7 +87,7 @@ void TestsHotel::testarCodigo() {
         Hotel h;
         h.setCodigo(Codigo("ABC123")); // ✅ válido
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -98,7 +98,7 @@ void TestsHotel::testarCodigoInvalido() {
         Hotel h;
         h.setCodigo(Codigo("ABC@123")); // ❌ símbolo inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -112,7 +112,7 @@ void TestsHotel::testarConstrucaoCompleta() {
         h.setTelefone(Telefone("(61) 91234-5678")); // ✅ válido
         h.setCodigo(Codigo("ABC123")); // ✅ válido
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -126,7 +126,7 @@ void TestsHotel::testarConstrucaoInvalida() {
         h.setTelefone(Telefone("(61) 91234-5678")); // ✅ válido
         h.setCodigo(Codigo("ABC@123")); // ❌ inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }

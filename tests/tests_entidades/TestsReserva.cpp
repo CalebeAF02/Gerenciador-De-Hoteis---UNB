@@ -21,7 +21,7 @@ void TestsReserva::testarChegada() {
         Reserva r;
         r.setChegada(Data("01/11/2025"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -32,7 +32,7 @@ void TestsReserva::testarChegadaInvalida() {
         Reserva r;
         r.setChegada(Data("32/11/2025"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -43,7 +43,7 @@ void TestsReserva::testarPartida() {
         Reserva r;
         r.setPartida(Data("05/11/2025"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -54,7 +54,7 @@ void TestsReserva::testarPartidaInvalida() {
         Reserva r;
         r.setPartida(Data("00/11/2025"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -65,7 +65,7 @@ void TestsReserva::testarDinheiro() {
         Reserva r;
         r.setDinheiro(Dinheiro(10000));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -76,7 +76,7 @@ void TestsReserva::testarDinheiroInvalido() {
         Reserva r;
         r.setDinheiro(Dinheiro(0));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -87,7 +87,7 @@ void TestsReserva::testarCodigo() {
         Reserva r;
         r.setCodigo(Codigo("RES123"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -98,7 +98,7 @@ void TestsReserva::testarCodigoInvalido() {
         Reserva r;
         r.setCodigo(Codigo("RES@123"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -113,7 +113,7 @@ void TestsReserva::testarConstrucaoCompleta() {
             Codigo("RES123")
         );
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -128,7 +128,7 @@ void TestsReserva::testarConstrucaoInvalida() {
             Codigo("RES123")
         );
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }

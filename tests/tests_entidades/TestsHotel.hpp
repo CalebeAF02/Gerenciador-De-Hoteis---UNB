@@ -13,7 +13,7 @@ class TestsHotel : public InterfaceDeTeste {
 public:
     void executar() override;
 
-    std::string nomeDoTeste() const override { return "TestsHotel"; }
+    string nomeDoTeste() const override { return "TestsHotel"; }
 
 private:
     void testarNome();

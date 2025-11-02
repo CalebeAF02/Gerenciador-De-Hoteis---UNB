@@ -21,7 +21,7 @@ void TestsQuarto::testarNumero() {
         Quarto q;
         q.setNumero(Numero("101"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -32,7 +32,7 @@ void TestsQuarto::testarNumeroInvalido() {
         Quarto q;
         q.setNumero(Numero("10A"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -43,7 +43,7 @@ void TestsQuarto::testarCapacidade() {
         Quarto q;
         q.setCapacidade(Capacidade(2));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -54,7 +54,7 @@ void TestsQuarto::testarCapacidadeInvalida() {
         Quarto q;
         q.setCapacidade(Capacidade(0));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -65,7 +65,7 @@ void TestsQuarto::testarDiaria() {
         Quarto q;
         q.setDiaria(Dinheiro(5000));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -76,7 +76,7 @@ void TestsQuarto::testarDiariaInvalida() {
         Quarto q;
         q.setDiaria(Dinheiro(0));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -87,7 +87,7 @@ void TestsQuarto::testarRamal() {
         Quarto q;
         q.setRamal(Ramal("1234"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -98,7 +98,7 @@ void TestsQuarto::testarRamalInvalido() {
         Quarto q;
         q.setRamal(Ramal("12a4"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }
@@ -112,7 +112,7 @@ void TestsQuarto::testarConstrucaoCompleta() {
         q.setDiaria(Dinheiro(5000));
         q.setRamal(Ramal("1234"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
     }
 }
@@ -126,7 +126,7 @@ void TestsQuarto::testarConstrucaoInvalida() {
         q.setDiaria(Dinheiro(0));
         q.setRamal(Ramal("1234"));
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
-    } catch (std::invalid_argument &e) {
+    } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
     }
 }

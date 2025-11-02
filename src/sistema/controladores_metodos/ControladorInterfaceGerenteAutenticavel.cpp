@@ -40,7 +40,7 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
                 string opcao = TextoApresentacao::LerLinha();
                 if (opcao == "0") break;
             }
-        } catch (std::invalid_argument &erro) {
+        } catch (invalid_argument &erro) {
             cout << "Erro: " << erro.what() << endl;
             TextoApresentacao::MostrarOpcao("Voltar", 0);
             TextoApresentacao::MostrarOpcao("Tentar novamente", 1);

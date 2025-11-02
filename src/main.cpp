@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include "sqlite3.h"
-
+#include "TestandoSmoke.hpp"
 #include "TextoApresentacao.hpp"
 #include "interface_tests/TestsModulares.hpp"
 
@@ -34,10 +34,15 @@ using namespace std;
 #define MODO_PRODUCAO 1
 #define MODO_SMOKE 2
 
-#define MODO_ATUAL MODO_TESTES
+#define MODO_ATUAL MODO_SMOKE
 
+void executandoNovoSmoke() {
+    TestandoSmoke testando_smoke;
+    testando_smoke.ChamandoOsTests();
+}
 void executarSmokeTests() {
-    SmokeTest::testarEntradas();
+    SmokeTest smoke_test;
+    //SmokeTest::testarEntradas();
 }
 
 void executarSistema() {
@@ -69,7 +74,9 @@ int main() {
      */
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
-            SmokeTest::testarEntradas();
+            //SmokeTest::testarEntradas();
+
+            executandoNovoSmoke();
 
             BancoDeDados bancoModoSmokeTestes;
             bancoModoSmokeTestes.criandoBancoDeDados();

@@ -10,7 +10,7 @@ class TestsSenha : public InterfaceDeTeste {
 public:
     void executar() override;
 
-    std::string nomeDoTeste() const override { return "TestsSenha"; }
+    string nomeDoTeste() const override { return "TestsSenha"; }
 
 private:
     void testarSenhasValidas();

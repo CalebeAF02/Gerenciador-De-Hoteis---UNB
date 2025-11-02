@@ -11,7 +11,7 @@ class TestsNome : public InterfaceDeTeste {
 public:
     void executar() override;
 
-    std::string nomeDoTeste() const override {
+    string nomeDoTeste() const override {
         return "TestsNome";
     }
 
