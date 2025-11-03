@@ -1,19 +1,15 @@
 # .gitattributes
+# --- Correção do Classificador de Linguagens do GitHub (Linguist) ---
 
-# Ignora a pasta de bibliotecas C, como o código-fonte do SQLite, na contagem de linguagens.
-/libs/** linguist-language=C++
+# 1. Ignora o código-fonte C do SQLite (o principal causador da alta contagem de C)
+src/libs/sqlite/sqlite3.c linguist-vendored
 
-# Se você tiver incluído os headers do SQLite:
-/include/libs/** linguist-language=C++
+# 2. Ignora o arquivo de header C do SQLite na contagem, mas permite a compilação
+include/libs/sqlite/sqlite3.h linguist-vendored
 
-# Se você está usando o código-fonte do SQLite (sqlite3.c)
-# E ele estiver na raiz ou em src/, ajuste o caminho:
-# src/sqlite3.c linguist-language=C++
+# 3. Ignora a biblioteca estática pré-compilada (.a) na contagem (boa prática)
+libs/libsqlite3.a linguist-vendored
 
-# Garante que headers padrões (.h) sejam tratados como C++
+# 4. Garante que todos os outros headers (.h e .hpp) do seu projeto sejam tratados como C++
 *.h linguist-language=C++
-
-# (OPCIONAL) Se você tem pastas de C++ que foram mal classificadas
-/src/** linguist-language=C++
-/dominios/** linguist-language=C++
-/entidades/** linguist-language=C++
+*.hpp linguist-language=C++
