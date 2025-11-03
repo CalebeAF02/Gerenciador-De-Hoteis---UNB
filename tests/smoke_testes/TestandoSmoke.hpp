@@ -24,21 +24,7 @@ using namespace std;
 
 class TestandoSmoke {
 public:
-    void ChamandoOsTests();
-
-    static void TestesGerente(string titulo, string contador);
-
-    static void TestesHospede(string titulo, string contador);
-
-    static void TestesHotel(string titulo, string contador);
-
-    static void TestesQuarto(string titulo, string contador);
-
-    static void TestesReserva(string titulo, string contador);
-
-    static void TestesData(string titulo, string contador);
-
-    static void GerenteTSV(string titulo, string contador);
+    void ExecutarSmokeTest();
 
     static void ResultadoTSV(string titulo, string contador);
 };

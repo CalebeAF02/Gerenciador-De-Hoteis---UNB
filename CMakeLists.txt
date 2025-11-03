@@ -93,7 +93,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # Testes - Interface
         tests/interface_tests/InterfaceDeTeste.cpp
-        tests/interface_tests/TestsModulares.cpp
 
         # Testes - Smoke
         tests/smoke_testes/Smoke_Tests.cpp
@@ -114,11 +113,13 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_dominios/TestsData.cpp
 
         # Testes - Entidades
-        tests/tests_entidades/TestsGerente.cpp
-        tests/tests_entidades/TestsHospede.cpp
-        tests/tests_entidades/TestsHotel.cpp
-        tests/tests_entidades/TestsQuarto.cpp
-        tests/tests_entidades/TestsReserva.cpp
+        tests/tests_entidades/TestesGerente.cpp
+        tests/tests_entidades/TestesHospede.cpp
+        tests/tests_entidades/TestesHotel.cpp
+        tests/tests_entidades/TestesQuarto.cpp
+        tests/tests_entidades/TestesReserva.cpp
+        tests/tests_entidades/TestesData.cpp
+        tests/tests_entidades/GerenteTSV.cpp
 )
 
 # Diretórios de headers
