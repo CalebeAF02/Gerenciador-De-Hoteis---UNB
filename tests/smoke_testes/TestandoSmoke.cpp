@@ -4,8 +4,9 @@
 
 #include "TestandoSmoke.hpp"
 
-#include "Smoke_Tests.hpp"
+using namespace std;
 
+//------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::ChamandoOsTests() {
     TestesGerente("Testes Gerente","C1");
     TestesHospede( "Testes Hospede","C2");
@@ -17,339 +18,482 @@ void TestandoSmoke::ChamandoOsTests() {
     ResultadoTSV( "Testes Resultado TSV","C8");
 }
 
-void TestandoSmoke::TestesGerente(string titulo, string contador){
-
+//------------------------------------------------------------------------------------------------------------------
+void TestandoSmoke::TestesGerente(string titulo, string contador) {
     SmokeTest smoke_test;
-
     Gerente gerente1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
-    cout << "                |   Testes Nome   |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: GERENTE");
 
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Cb");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves Freitas Madeira Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe  Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe   ");
+    // =========================================================================
+    // 1. VALIDACAO DE NOME
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria(
+        "1. Validacao de Nome (4 a 30 caracteres, 1o maiusculo, Apenas 1 espaco)");
 
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe@alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Calebe Alves ");
+    // A. Casos Invalidos
+    vector<string> nomesInvalidos = {
+        "", "Cb", "Calebe Alves Freitas Madeira Alves", "Calebe  Alves", "Calebe   ",
+        "calebe alves", "Calebe alves", "Calebe@alves", "Calebe Alves "
+    };
 
+    for (const string &nome: nomesInvalidos) {
+        smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, nome);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "Luan Freitas");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "Kaio Rodrigues");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
-    cout << "                |  Testes Emails  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 2. VALIDACAO DE EMAIL
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("2. Validacao de Email (Padrao: AAAA@BBBB.CCC, min 3, max 64 no local)");
 
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1,
-                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe clves@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "calebe  clves@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1,
-                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, ".cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, ".-cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "c--b@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "c..b@gmail.com");
+    // A. Casos Invalidos
+    vector<string> emailsInvalidos = {
+        "", "Cb@gmail.com",
+        "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com", // Usuario muito longo
+        "calebe clves@gmail.com", "calebe  clves@gmail.com", ".cb@gmail.com", ".-cb@gmail.com",
+        "c--b@gmail.com", "c..b@gmail.com",
+        "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com"
+        // Dominio muito longo
+    };
 
+    for (const string &email: emailsInvalidos) {
+        smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, email);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "calebeclves@citex.eb.mil.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "luanfreitas@gmai.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "kaiorodrigues@gmail.com");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
-    cout << "                |   Testes Ramal  |" << endl;
-    cout << "                -------------------" << endl << endl;
 
-    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "-1");
+    // =========================================================================
+    // 3. VALIDACAO DE RAMAL
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("3. Validacao de Ramal (2 digitos numericos, 00 a 50)");
 
-    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "00");
-    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "50");
+    // A. Casos Invalidos
+    vector<string> ramaisInvalidos = {
+        "-1", "51", "abc", ""
+    };
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Gerente     |" << endl;
-    cout << "                |   Testes Senha  |" << endl;
-    cout << "                -------------------" << endl << endl;
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "AA1#2");
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "Aa1#2");
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "A12#3");
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "1#2#3");
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "A#B#C");
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, "a#b#c");
+    for (const string &ramal: ramaisInvalidos) {
+        smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, ramal);
+    }
 
-    smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "A1b!3");
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
+    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "49");
+
+
+    // =========================================================================
+    // 4. VALIDACAO DE SENHA
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("4. Validacao de Senha (5 caracteres: M, m, d, #)");
+
+    // A. Casos Invalidos
+    vector<string> senhasInvalidas = {
+        "AA1#2", "Aa1#2", "A12#3", "1#2#3", "A#B#C", "a#b#c", ""
+    };
+
+    for (const string &senha: senhasInvalidas) {
+        smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_ERRADO, &gerente1, senha);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorSenha(InterfaceDeTeste::DEVE_DAR_CERTO, &gerente1, "A1!b2");
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::TestesHospede(string titulo, string contador) {
     SmokeTest smoke_test;
-
     Hospede hospede1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
-    cout << "                |   Testes Nome   |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: HOSPEDE");
 
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Cb");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves Freitas Madeira Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe  Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe@alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Calebe Alves ");
+    // =========================================================================
+    // 1. VALIDACAO DE NOME (Compartilhado com Gerente)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria(
+        "1. Validacao de Nome (4 a 30 caracteres, 1o maiusculo, Apenas 1 espaco)");
 
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Luan Freitas");
+    // A. Casos Invalidos
+    vector<string> nomesInvalidos = {
+        "", "Cb", "Calebe Alves Freitas Madeira Alves", "Calebe  Alves",
+        "calebe alves", "Calebe alves", "Calebe@alves", "Calebe Alves "
+    };
+
+    for (const string &nome: nomesInvalidos) {
+        smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, nome);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Kaio Rodrigues");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
-    cout << "                |  Testes Emails  |" << endl;
-    cout << "                -------------------" << endl << endl;
 
+    // =========================================================================
+    // 2. VALIDACAO DE EMAIL (Compartilhado com Gerente)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("2. Validacao de Email (Padrao: AAAA@BBBB.CCC)");
 
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "Cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1,
-                         "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe clves@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "calebe  clves@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1,
-                         "calebeclves@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, ".cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, ".-cb@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "c--b@gmail.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "c..b@gmail.com");
+    // A. Casos Invalidos
+    vector<string> emailsInvalidos = {
+        "", "Cb@gmail.com",
+        "1234567890123456789012345678901234567890123456789012345678901234567890@gmail.com",
+        "calebe clves@gmail.com", "calebe  clves@gmail.com", ".cb@gmail.com", ".-cb@gmail.com",
+        "c--b@gmail.com", "c..b@gmail.com",
+        "calebeclves@123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890.eb.mil.com"
+    };
 
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "calebeclves@citex.eb.mil.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "cb@gmail.com");
+    for (const string &email: emailsInvalidos) {
+        smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, email);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "luanfreitas@gmai.com");
-    smoke_test.testarValidadorEmail(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "kaiorodrigues@gmail.com");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
-    cout << "                | Testes Endereco |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 3. VALIDACAO DE ENDERECO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria(
+        "3. Validacao de Endereco (1 a 20 caracteres alfanumericos, inclui . e espacos)");
 
-    smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
+    // A. Casos Invalidos
+    vector<string> enderecosInvalidos = {
+        "", "Endereco com Caractere Invalido!"
+    };
 
+    for (const string &endereco: enderecosInvalidos) {
+        smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, endereco);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "Qd.52 Cs.02 Comercial DelLago");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Hospede     |" << endl;
-    cout << "                |  Testes Cartao  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 4. VALIDACAO DE CARTAO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("4. Validacao de Cartao (16 digitos numericos)");
 
-    smoke_test.testarValidadorCartao(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, "");
+    // A. Casos Invalidos
+    vector<string> cartoesInvalidos = {
+        "", "123456789012345", "12345678901234567", "123456789012A456"
+    };
 
+    for (const string &cartao: cartoesInvalidos) {
+        smoke_test.testarValidadorCartao(InterfaceDeTeste::DEVE_DAR_ERRADO, &hospede1, cartao);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorCartao(InterfaceDeTeste::DEVE_DAR_CERTO, &hospede1, "1234567890123456");
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::TestesHotel(string titulo, string contador) {
-
     SmokeTest smoke_test;
-
     Hotel hotel1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |      Hotel      |" << endl;
-    cout << "                |   Testes Nome   |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: HOTEL");
 
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Cb");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves Freitas Madeira Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe  Alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe@alves");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "Calebe Alves ");
+    // =========================================================================
+    // 1. VALIDACAO DE NOME
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria(
+        "1. Validacao de Nome (4 a 30 caracteres, 1o maiusculo, Apenas 1 espaco)");
 
+    // A. Casos Invalidos
+    vector<string> nomesInvalidos = {
+        "", "Cb", "Calebe Alves Freitas Madeira Alves", "Calebe  Alves",
+        "calebe alves", "Calebe alves", "Calebe@alves", "Calebe Alves "
+    };
+
+    for (const string &nome: nomesInvalidos) {
+        smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, nome);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Luan Freitas");
-    smoke_test.testarValidadorNome(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Kaio Rodrigues");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |      Hotel      |" << endl;
-    cout << "                | Testes Endereco |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 2. VALIDACAO DE ENDERECO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("2. Validacao de Endereco");
 
+    // A. Casos Invalidos
+    vector<string> enderecosInvalidos = {
+        ""
+    };
 
-    smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
+    for (const string &endereco: enderecosInvalidos) {
+        smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, endereco);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorEndereco(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "Qd.52 Cs.02 Comercial DelLago");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |      Hotel      |" << endl;
-    cout << "                | Testes Telefone |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 3. VALIDACAO DE TELEFONE
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("3. Validacao de Telefone (12 a 16 digitos, iniciando com '+')");
 
-    smoke_test.testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
-    smoke_test.testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
-    smoke_test.testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "+123456789987654321");
+    // A. Casos Invalidos
+    vector<string> telefonesInvalidos = {
+        "", "5161993009537", "+123456789987654321", "+5161A993009537", "+123"
+    };
 
+    for (const string &telefone: telefonesInvalidos) {
+        smoke_test.testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, telefone);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorTelefone(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "+5161993009537");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |      Hotel      |" << endl;
-    cout << "                |  Testes Codigo  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 4. VALIDACAO DE CODIGO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("4. Validacao de Codigo (10 caracteres, alfanumerico)");
 
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "");
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "5161993009537");
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, "abcdedghij9987654321");
+    // A. Casos Invalidos
+    vector<string> codigosInvalidos = {
+        "", "5161993009537", "abcdedghij9987654321", "abcde12!34"
+    };
 
+    for (const string &codigo: codigosInvalidos) {
+        smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &hotel1, codigo);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "1234567890");
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &hotel1, "abcde12345");
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::TestesQuarto(string titulo, string contador) {
-
     SmokeTest smoke_test;
-
     Quarto quarto1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Quarto      |" << endl;
-    cout << "                |  Testes Numero  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: QUARTO");
 
-    smoke_test.testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "-300");
-    smoke_test.testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "000");
-    smoke_test.testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "Ab$");
+    // =========================================================================
+    // 1. VALIDACAO DE NUMERO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("1. Validacao de Numero (3 digitos, > 000)");
 
+    // A. Casos Invalidos
+    vector<string> numerosInvalidos = {
+        "-300", "000", "Ab$", ""
+    };
+
+    for (const string &numero: numerosInvalidos) {
+        smoke_test.testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, numero);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorNumero(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, "001");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Quarto      |" << endl;
-    cout << "                |Testes Capacidade|" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 2. VALIDACAO DE CAPACIDADE
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("2. Validacao de Capacidade (1 a 4 pessoas)");
 
+    // A. Casos Invalidos
+    vector<int> capacidadesInvalidas = {
+        0, 5, -1
+    };
 
-    smoke_test.testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, 5);
+    for (const int &capacidade: capacidadesInvalidas) {
+        smoke_test.testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, capacidade);
+    }
 
-    smoke_test.testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 1);
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
+    smoke_test.testarValidadorCapacidade(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 4);
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Quarto      |" << endl;
-    cout << "                |  Testes Diaria  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 3. VALIDACAO DE DIARIA (DINHEIRO)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("3. Validacao de Diaria (Valor inteiro positivo)");
 
-    smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, -50);
+    // A. Casos Invalidos
+    vector<int> diariasInvalidas = {
+        -50, 0
+    };
 
-    smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 1000);
-    smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 80000);
+    for (const int &diaria: diariasInvalidas) {
+        smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, diaria);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, 120000);
 
+    // =========================================================================
+    // 4. VALIDACAO DE RAMAL
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("4. Validacao de Ramal (2 digitos, 10 a 99)");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Quarto      |" << endl;
-    cout << "                |   Testes Ramal  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // A. Casos Invalidos
+    vector<string> ramaisInvalidos = {
+        "0", "100", ""
+    };
 
-    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "0");
-    smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, "100");
+    for (const string &ramal: ramaisInvalidos) {
+        smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_ERRADO, &quarto1, ramal);
+    }
 
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorRamal(InterfaceDeTeste::DEVE_DAR_CERTO, &quarto1, "10");
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::TestesReserva(string titulo, string contador){
-
     SmokeTest smoke_test;
-
     Reserva reserva1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Reserva     |" << endl;
-    cout << "                |  Testes Chegada |" << endl;
-    cout << "                -------------------" << endl << endl;
-    smoke_test.testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
-    smoke_test.testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: RESERVA");
 
+    // =========================================================================
+    // 1. VALIDACAO DE DATA DE CHEGADA (STRING)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("1. Validacao de Data de Chegada (DD/MM/AAAA)");
 
+    // A. Casos Invalidos
+    vector<string> datasInvalidas = {
+        "33/55/5000", "-20/-30/-1000", "01/01/1999", "30/02/2023", ""
+    };
+
+    for (const string &data: datasInvalidas) {
+        smoke_test.testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, data);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "23/03/2002");
 
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Reserva     |" << endl;
-    cout << "                |  Testes Partida |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 2. VALIDACAO DE DATA DE PARTIDA (STRING)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("2. Validacao de Data de Partida (DD/MM/AAAA)");
 
-    smoke_test.testarValidadorPartida(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "33/55/5000");
-    smoke_test.testarValidadorPartida(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "-20/-30/-1000");
+    // A. Casos Invalidos
+    vector<string> partidasInvalidas = {
+        "33/55/5000", "-20/-30/-1000", "01/01/1999"
+    };
 
+    for (const string &data: partidasInvalidas) {
+        smoke_test.testarValidadorPartida(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, data);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorChegada(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "01/03/2022");
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Reserva     |" << endl;
-    cout << "                | Testes Dinheiro |" << endl;
-    cout << "                -------------------" << endl << endl;
 
-    smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, -70);
+    // =========================================================================
+    // 3. VALIDACAO DE DINHEIRO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("3. Validacao de Dinheiro (Valor inteiro positivo)");
 
+    // A. Casos Invalidos
+    vector<int> dinheirosInvalidos = {
+        -70, 0
+    };
+
+    for (const int &dinheiro: dinheirosInvalidos) {
+        smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, dinheiro);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorDinheiro(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, 2000);
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |     Reserva     |" << endl;
-    cout << "                |  Testes Codigo  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    // =========================================================================
+    // 4. VALIDACAO DE CODIGO
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("4. Validacao de Codigo (10 caracteres, alfanumerico)");
 
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "");
-    smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, "12345678901215168468");
+    // A. Casos Invalidos
+    vector<string> codigosInvalidos = {
+        "", "12345678901215168468", "abcde!fghi"
+    };
 
+    for (const string &codigo: codigosInvalidos) {
+        smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_ERRADO, &reserva1, codigo);
+    }
+
+    // B. Caso Valido (Apenas 1)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido Unico (Referencia Correta):");
     smoke_test.testarValidadorCodigo(InterfaceDeTeste::DEVE_DAR_CERTO, &reserva1, "1234567890");
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::TestesData(string titulo, string contador){
-
     SmokeTest smoke_test;
-
     Data data1;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |      Data       |" << endl;
-    cout << "                |   Testes Data   |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: DATA (Membros internos)");
 
+    // =========================================================================
+    // 1. VALIDACAO DE DIA, MES, ANO (Membros internos)
+    // =========================================================================
+    ConsoleFormatter::MostrarSeparadorCategoria("1. Validacao de Dia, Mes, Ano");
 
-    smoke_test.testarValidadorDia(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 40);
-    smoke_test.testarValidadorMes(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 22);
-    smoke_test.testarValidadorAno(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, 5000);
+    // A. Casos Invalidos
+    vector<int> diasInvalidos = {40, 0, -5};
+    vector<int> mesesInvalidos = {22, 0, -1};
+    vector<int> anosInvalidos = {5000, 1999, 10000};
 
+    ConsoleIO::PrintMensagem("-> Testando Dias Invalidos:");
+    for (const int &dia: diasInvalidos) {
+        smoke_test.testarValidadorDia(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, dia);
+    }
+
+    ConsoleIO::PrintMensagem("-> Testando Meses Invalidos:");
+    for (const int &mes: mesesInvalidos) {
+        smoke_test.testarValidadorMes(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, mes);
+    }
+
+    ConsoleIO::PrintMensagem("-> Testando Anos Invalidos:");
+    for (const int &ano: anosInvalidos) {
+        smoke_test.testarValidadorAno(InterfaceDeTeste::DEVE_DAR_ERRADO, &data1, ano);
+    }
+
+    // B. Caso Valido (Apenas 1 de cada)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Casos Validos Unicos (Referencia Correta):");
     smoke_test.testarValidadorDia(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 23);
     smoke_test.testarValidadorMes(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 3);
     smoke_test.testarValidadorAno(InterfaceDeTeste::DEVE_DAR_CERTO, &data1, 2002);
@@ -357,56 +501,41 @@ void TestandoSmoke::TestesData(string titulo, string contador){
 
 //------------------------------------------------------------------------------------------------------------------
 void TestandoSmoke::GerenteTSV(string titulo, string contador){
-
     SmokeTest smoke_test;
-
     Gerente g_teste;
 
-    cout << "                -------------------" << endl;
-    cout << "                |     Testes      |" << endl;
-    cout << "                |       TSV       |" << endl;
-    cout << "                | Testes Gerente  |" << endl;
-    cout << "                -------------------" << endl << endl;
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE PERSISTENCIA: TSV");
 
+    ConsoleFormatter::MostrarSeparadorCategoria("Validacao de Gerente TSV (SERIALIZACAO/DESSERIALIZACAO)");
+
+    // Teste 1: Serializacao (Criar TSV)
     g_teste.setNome(Nome("Calebe"));
     g_teste.setEmail(Email("calebe.2324@gmail.com"));
     g_teste.setRamal(Ramal("22"));
     g_teste.setSenha(Senha("A1!b2"));
 
-    //cout << "g1 =" << dadosGerente << endl;
+    // Caso 1 Valido (Serializacao)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido 1 (Criacao de TSV):");
     smoke_test.testarValidadorString(InterfaceDeTeste::DEVE_DAR_CERTO, g_teste.getTSV(),
                           "GERENTE\tCalebe\tcalebe.2324@gmail.com\t22\tA1!b2");
+
+    // Teste 2: Desserializacao (Ler TSV)
     Gerente g2;
     string dadosGerente = g_teste.getTSV();
     g2.setTSV(dadosGerente);
-    //cout << "g2 =" << g2.getTSV() << endl;
+
+    // Caso 2 Valido (Leitura de TSV - Verifica se o objeto lido é igual ao original)
+    ConsoleFormatter::MostrarSeparadorDeTeste();
+    ConsoleIO::PrintMensagem("Caso Valido 2 (Leitura de TSV):");
     smoke_test.testarValidadorString(InterfaceDeTeste::DEVE_DAR_CERTO, g_teste.getTSV(), g2.getTSV());
 
-    Gerente g3;
-
-    g3.setNome(Nome("Luan Freitas"));
-    g3.setEmail(Email("luan.dkg@gmail.com"));
-    g3.setRamal(Ramal("49"));
-    g3.setSenha(Senha("C4$c5"));
 }
+
 //------------------------------------------------------------------------------------------------------------------
-
-void TestandoSmoke::ResultadoTSV(string titulo, string contador){
-    cout << "                -------------------" << endl;
-    cout << "                |    Resultado    |" << endl;
-    cout << "                |       TSV       |" << endl;
-    cout << "                -------------------" << endl << endl;
-
-    int tests = InterfaceDeTeste::getTestes();
-    cout << "\nTotal de Testes: " << tests;
-
-    int testsOK = InterfaceDeTeste::getTestesOk();
-    cout << "\nTotal de Testes Ok: " << testsOK;
-
-    int TestesProblema = InterfaceDeTeste::getTestesProblema();
-    cout << "\nTotal de Testes Problema: " << TestesProblema;
-
-
-    cout << "\n\n";
+void TestandoSmoke::ResultadoTSV(string titulo, string contador) {
+    // Este metodo agora simplesmente delega a responsabilidade para a InterfaceDeTeste
+    InterfaceDeTeste::mostrarSumarioGeral();
 }
+
 //------------------------------------------------------------------------------------------------------------------

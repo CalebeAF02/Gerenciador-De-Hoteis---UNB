@@ -79,10 +79,13 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # Utilitários
         src/sistema/utilitarios/Data.cpp
-        src/sistema/utilitarios/TextoApresentacao.cpp
         src/sistema/utilitarios/LinhaTSV.cpp
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
+
+        # Utilitarios - Console
+        src/sistema/utilitarios/console/ConsoleFormatter.cpp
+        src/sistema/utilitarios/console/ConsoleIO.cpp
 
         # Validadores principais
         src/sistema/validadores_principais/ValidarInt.cpp
@@ -116,7 +119,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         tests/tests_entidades/TestsHotel.cpp
         tests/tests_entidades/TestsQuarto.cpp
         tests/tests_entidades/TestsReserva.cpp
-
 )
 
 # Diretórios de headers
@@ -135,6 +137,7 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_metodos
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
+        ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
         ${CMAKE_SOURCE_DIR}/include/libs/sqlite
         ${CMAKE_SOURCE_DIR}/tests

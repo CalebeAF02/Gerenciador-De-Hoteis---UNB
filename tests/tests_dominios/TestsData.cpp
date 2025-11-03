@@ -21,7 +21,7 @@ void TestsData::testarDatasValidas() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
@@ -41,7 +41,7 @@ void TestsData::testarDatasComFormatoInvalido() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
@@ -60,7 +60,7 @@ void TestsData::testarDatasComDiaInvalido() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
@@ -78,7 +78,7 @@ void TestsData::testarDatasComMesInvalido() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
@@ -96,7 +96,7 @@ void TestsData::testarDatasComAnoInvalido() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
@@ -115,7 +115,7 @@ void TestsData::testarDatasBissextas() {
 
     for (size_t i = 0; i < datas.size(); ++i) {
         string dataStr = datas[i];
-        apresentacaoTesteData(dataStr);
+        apresentacaoTeste(dataStr);
         try {
             Data d(dataStr);
             bool isBissexto = (dataStr == "29/02/2024" || dataStr == "29/02/2020");

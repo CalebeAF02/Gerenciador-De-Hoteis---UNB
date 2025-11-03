@@ -7,16 +7,14 @@
 #include <memory>
 
 #include "Menu.hpp"
-#include "TextoApresentacao.hpp"
+#include "../utilitarios/console/ConsoleFormatter.hpp"
 
 using namespace std;
 
-template <typename T>
-class FabricaGerenciavel
-{
+template<typename T>
+class FabricaGerenciavel {
 public:
-    shared_ptr<T> criar()
-    {
+    shared_ptr<T> criar() {
         //shared_ptr == Classe de compartilhamento de ponteiros por referencia
         //make_shared == criar um objeto de ponteiro compartilhado
         shared_ptr<T> objeto = make_shared<T>();
@@ -26,8 +24,7 @@ public:
         return objeto;
     }
 
-    void ler()
-    {
+    void ler() {
         //shared_ptr == Classe de compartilhamento de ponteiros por referencia
         //make_shared == criar um objeto de ponteiro compartilhado
         shared_ptr<T> objeto = make_shared<T>();
@@ -36,8 +33,7 @@ public:
         objeto->ler();
     }
 
-    void atualizar()
-    {
+    void atualizar() {
         //shared_ptr == Classe de compartilhamento de ponteiros por referencia
         //make_shared == criar um objeto de ponteiro compartilhado
         shared_ptr<T> objeto = make_shared<T>();
@@ -46,8 +42,7 @@ public:
         objeto->atualizar();
     }
 
-    bool remover()
-    {
+    bool remover() {
         //shared_ptr == Classe de compartilhamento de ponteiros por referencia
         //make_shared == criar um objeto de ponteiro compartilhado
         shared_ptr<T> objeto = make_shared<T>();
@@ -57,8 +52,7 @@ public:
         return status;
     }
 
-    void executarMenu(bool& status)
-    {
+    void executarMenu(bool &status) {
         Menu menu;
 
         const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -69,13 +63,11 @@ public:
 
         int opcao = menu.executa("Voce Entrou na central de servicos");
 
-        if (opcao == OPCAO_VOLTAR_AO_SISTEMA)
-        {
+        if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             status = false;
             cout << "Voce Saiu da Central de servicos!" << endl;
             return;
-        }
-        else if (opcao == OPCAO_CRIAR) criar();
+        } else if (opcao == OPCAO_CRIAR) criar();
         else if (opcao == OPCAO_LER) ler();
         else if (opcao == OPCAO_ATUALIZAR) atualizar();
         else if (opcao == OPCAO_REMOVER) remover();

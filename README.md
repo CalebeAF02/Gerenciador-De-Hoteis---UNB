@@ -14,12 +14,12 @@ O sistema simula um **gerenciador de hotel**, permitindo:
 
 ## 🚀 Atualizações Recentes
 
-- ✅ Interface de terminal funcional com menus dinâmicos
-- ✅ Persistência com SQLite (`hotel.db`)
-- ✅ Criação, login, leitura e exclusão de gerentes
-- ✅ Fluxo completo para hóspedes com opções de hospedagem
-- ✅ Validação embutida nos domínios com tratamento de exceções
-- ✅ Remoção das classes de validação externas (`validadores_abstratos`)
+- Interface de terminal funcional com menus dinâmicos
+- Persistência com SQLite (`hotel.db`)
+- Criação, login, leitura e exclusão de gerentes
+- Fluxo completo para hóspedes com opções de hospedagem
+- Validação embutida nos domínios com tratamento de exceções
+- Remoção das classes de validação externas (`validadores_abstratos`)
 - 🔄 Função de atualização de gerente em desenvolvimento
 
 ---
@@ -56,7 +56,7 @@ O sistema simula um **gerenciador de hotel**, permitindo:
 
 ![Opções de criar gerente ou fazer login](imagens/menu_inicial_gerente.png)
 
-### ❌ Tentativa de Login com Erro
+### Tentativa de Login com Erro
 
 ![Erro de login: usuário não encontrado ou senha incorreta](imagens/login_erro.png)
 
@@ -142,7 +142,7 @@ cmake ..
 make  
 ./gerenciador_hotel_unb
 
-✅ Este projeto já inclui o SQLite como biblioteca estática:
+Este projeto já inclui o SQLite como biblioteca estática:
 
 - libs/sqlite/sqlite3.h → cabeçalho da API
 - libs/extern/libsqlite3.a → biblioteca compilada

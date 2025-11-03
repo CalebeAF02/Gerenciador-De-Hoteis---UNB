@@ -42,10 +42,10 @@ void ControladorInterfaceHotel::criar() {
                 break;
             }
 
-            TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Hotel");
+            ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Hotel");
             if (tudoOK) {
                 cout << "Informe o Nome: \n";
-                string valor = TextoApresentacao::LerLinha();
+                string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setNome(Nome(valor));
                 } catch (invalid_argument &erro) {
@@ -55,7 +55,7 @@ void ControladorInterfaceHotel::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Endereco: \n";
-                string valor = TextoApresentacao::LerLinha();
+                string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setEndereco(Endereco(valor));
                 } catch (invalid_argument &erro) {
@@ -65,7 +65,7 @@ void ControladorInterfaceHotel::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Telefone: \n";
-                string valor = TextoApresentacao::LerLinha();
+                string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setTelefone(Telefone(valor));
                 } catch (invalid_argument &erro) {
@@ -75,7 +75,7 @@ void ControladorInterfaceHotel::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Codigo: \n";
-                string valor = TextoApresentacao::LerLinha();
+                string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setCodigo(Codigo(valor));
                 } catch (invalid_argument &erro) {

@@ -5,6 +5,7 @@
 #include "Senha.hpp"
 #include <vector>
 #include <string>
+#include  "ConsoleIO.hpp"
 
 class TestsSenha : public InterfaceDeTeste {
 public:

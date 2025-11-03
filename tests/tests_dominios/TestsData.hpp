@@ -9,6 +9,7 @@
 #include "Data.hpp"
 #include <vector>
 #include <string>
+#include  "ConsoleIO.hpp"
 
 class TestsData : public InterfaceDeTeste {
 public:

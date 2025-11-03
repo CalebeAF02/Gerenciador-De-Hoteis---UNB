@@ -1,7 +1,7 @@
 #include "TestsNome.hpp"
 
 void TestsNome::executar() {
-    TextoApresentacao::MostrarTituloEmCaixa("Testes Dominio -> Nome");
+    ConsoleFormatter::MostrarTituloEmCaixa("Testes Dominio -> Nome");
 
     testarNomesValidos();
     testarNomesInvalidos();
@@ -13,7 +13,7 @@ void TestsNome::executar() {
 }
 
 void TestsNome::testarNomesValidos() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes validos:");
+    ConsoleIO::PrintMensagem("Testando nomes validos:");
     vector<string> nomes;
     nomes.push_back("João da Silva");
     nomes.push_back("Maria Clara");
@@ -35,7 +35,7 @@ void TestsNome::testarNomesValidos() {
 }
 
 void TestsNome::testarNomesInvalidos() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes com símbolos invalidos:");
+    ConsoleIO::PrintMensagem("Testando nomes com símbolos invalidos:");
     vector<string> nomes;
     nomes.push_back("J@o");
     nomes.push_back("Joao#Silva");
@@ -57,7 +57,7 @@ void TestsNome::testarNomesInvalidos() {
 }
 
 void TestsNome::testarNomesComNumeros() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes com números:");
+    ConsoleIO::PrintMensagem("Testando nomes com números:");
     vector<string> nomes;
     nomes.push_back("Joao1");
     nomes.push_back("Maria 2 Clara");
@@ -79,7 +79,7 @@ void TestsNome::testarNomesComNumeros() {
 }
 
 void TestsNome::testarNomesMuitoLongos() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes muito longos:");
+    ConsoleIO::PrintMensagem("Testando nomes muito longos:");
     vector<string> nomes;
     nomes.push_back("Joao da Silva Oliveira Lima Souza Andrade");
     nomes.push_back("Maria Clara de Albuquerque Ferreira Santos");
@@ -101,7 +101,7 @@ void TestsNome::testarNomesMuitoLongos() {
 }
 
 void TestsNome::testarNomesSemMaiusculaInicial() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes sem maiúscula inicial:");
+    ConsoleIO::PrintMensagem("Testando nomes sem maiúscula inicial:");
     vector<string> nomes;
     nomes.push_back("joao da Silva");
     nomes.push_back("maria Clara");
@@ -123,7 +123,7 @@ void TestsNome::testarNomesSemMaiusculaInicial() {
 }
 
 void TestsNome::testarNomesComEspacoInvalido() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes com espaços invalidos:");
+    ConsoleIO::PrintMensagem("Testando nomes com espaços invalidos:");
     vector<string> nomes;
     nomes.push_back("Joao  da Silva");
     nomes.push_back("Maria   Clara");
@@ -145,7 +145,7 @@ void TestsNome::testarNomesComEspacoInvalido() {
 }
 
 void TestsNome::testarNomesComCaracteresEspeciais() {
-    TextoApresentacao::MostrarTituloPergunta("Testando nomes com caracteres especiais:");
+    ConsoleIO::PrintMensagem("Testando nomes com caracteres especiais:");
     vector<string> nomes;
     nomes.push_back("Joao@Silva");
     nomes.push_back("Maria#Clara");

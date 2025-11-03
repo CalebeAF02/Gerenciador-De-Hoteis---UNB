@@ -9,6 +9,7 @@
 #include "Endereco.hpp"
 #include <vector>
 #include <string>
+#include  "ConsoleIO.hpp"
 
 class TestsEndereco : public InterfaceDeTeste {
 public:

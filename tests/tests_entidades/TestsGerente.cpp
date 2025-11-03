@@ -60,7 +60,7 @@ void TestsGerente::testarEmailInvalido() {
 }
 
 void TestsGerente::testarSenha() {
-    apresentacaoTeste("a1!Bz"); // ✅ válida: 5 caracteres, sem sequência, contém todos os tipos
+    apresentacaoTeste("a1!Bz"); // válida: 5 caracteres, sem sequência, contém todos os tipos
     try {
         Gerente g;
         g.setSenha(Senha("a1!Bz"));
@@ -71,7 +71,7 @@ void TestsGerente::testarSenha() {
 }
 
 void TestsGerente::testarSenhaInvalida() {
-    apresentacaoTeste("a1Bz"); // ❌ apenas 4 caracteres
+    apresentacaoTeste("a1Bz"); // apenas 4 caracteres
     try {
         Gerente g;
         g.setSenha(Senha("a1Bz"));
@@ -109,8 +109,8 @@ void TestsGerente::testarConstrucaoCompleta() {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
         g.setEmail(Email("joao@empresa.com"));
-        g.setSenha(Senha("a1!Bz")); // ✅ válida
-        g.setRamal(Ramal("42")); // ✅ válida
+        g.setSenha(Senha("a1!Bz")); // válida
+        g.setRamal(Ramal("42")); // válida
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
@@ -123,8 +123,8 @@ void TestsGerente::testarConstrucaoInvalida() {
         Gerente g;
         g.setNome(Nome("Joao Silva"));
         g.setEmail(Email("joao@empresa.com"));
-        g.setSenha(Senha("123")); // ❌ inválida: curta, sem tipos
-        g.setRamal(Ramal("42")); // ✅ válida
+        g.setSenha(Senha("123")); // inválida: curta, sem tipos
+        g.setRamal(Ramal("42")); // válida
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
@@ -136,8 +136,8 @@ void TestsGerente::testarGetters() {
 
     Nome nome("Joao Silva");
     Email email("joao@empresa.com");
-    Senha senha("a1!B2"); // ✅ válida
-    Ramal ramal("42"); // ✅ válida
+    Senha senha("a1!B2"); // válida
+    Ramal ramal("42"); // válida
 
     Gerente g;
     g.setNome(nome);

@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "../entidades/Pessoa.hpp"
 #include "../entidades/Gerente.hpp"
 #include "../entidades/Hospede.hpp"
 #include "../entidades/Hotel.hpp"
 #include "../entidades/Quarto.hpp"
 #include "../entidades/Reserva.hpp"
+#include "ConsoleFormatter.hpp"
+#include "ConsoleIO.hpp"
 
 using namespace std;
 
@@ -17,6 +20,8 @@ private:
     static int contTodalTestes;
     static int contTodalTestesOk;
     static int contTodalTestesProblema;
+
+    static vector<string> listaFalhas;
 
 public:
     static const int DEVE_DAR_ERRADO = -1;
@@ -36,8 +41,6 @@ public:
 
     static void apresentacaoTeste(int valor);
 
-    static void apresentacaoTesteData(string valor);
-
     static int apresentacaoSucesso();
 
     static int apresentacaoErro(invalid_argument erro);
@@ -50,6 +53,10 @@ public:
     static void setTestesOk(int contTodalTestesOk);
 
     static void setTestesProblema(int contTodalTestesProblema);
+
+    static void registrarFalha(const std::string &dominio, const std::string &entrada, const std::string &erro);
+
+    static void mostrarSumarioGeral();
 
     static int getTestes();
 

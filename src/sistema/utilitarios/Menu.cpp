@@ -18,14 +18,14 @@ vector<MenuItem> Menu::listar() {
 }
 
 int Menu::executa(string tituloStr) {
-    TextoApresentacao::MostrarTituloEmCaixa(tituloStr);
-    TextoApresentacao::MostrarTituloPergunta("Selecione a opcao:");
+    ConsoleFormatter::MostrarTituloEmCaixa(tituloStr);
+    ConsoleIO::PrintMensagem("Selecione a opcao:");
 
     for (int i = 0; i < menuItens.size(); i++) {
-        TextoApresentacao::MostrarOpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
+        ConsoleFormatter::MostrarOpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
     }
 
-    string opcao = TextoApresentacao::RecebeOpcao();
+    string opcao = ConsoleIO::ReceberOpcao();
     int opcaoInt = -1;
     for (int i = 0; i < menuItens.size(); i++) {
         if (opcao == menuItens[i].getValor()) {

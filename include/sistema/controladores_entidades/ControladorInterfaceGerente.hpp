@@ -10,6 +10,7 @@
 #include "ControladorInterfaceHotel.hpp"
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
+#include "ConsoleIO.hpp"
 
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "iostream"

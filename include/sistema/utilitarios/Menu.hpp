@@ -9,21 +9,23 @@
 #include <string>
 #include <vector>
 
-#include "TextoApresentacao.hpp"
+#include "console/ConsoleFormatter.hpp"
+#include "ConsoleIO.hpp"
 
 #include "MenuItem.hpp"
 
 using namespace std;
 
-class Menu
-{
+class Menu {
 private:
     vector<MenuItem> menuItens;
     int contador = -1;
 
 public:
     int adcionarItens(string nome);
+
     vector<MenuItem> listar();
+
     int executa(string titulo);
 };
 

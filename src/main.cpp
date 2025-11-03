@@ -5,7 +5,7 @@
 #include <string>
 #include "sqlite3.h"
 #include "TestandoSmoke.hpp"
-#include "TextoApresentacao.hpp"
+#include "../include/sistema/utilitarios/console/ConsoleFormatter.hpp"
 #include "interface_tests/TestsModulares.hpp"
 
 #include "interface_tests/InterfaceDeTeste.hpp"
@@ -40,6 +40,7 @@ void executandoNovoSmoke() {
     TestandoSmoke testando_smoke;
     testando_smoke.ChamandoOsTests();
 }
+
 void executarSmokeTests() {
     SmokeTest smoke_test;
     //SmokeTest::testarEntradas();

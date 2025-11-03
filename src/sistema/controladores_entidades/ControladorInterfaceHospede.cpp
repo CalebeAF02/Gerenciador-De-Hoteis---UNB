@@ -38,35 +38,35 @@ void ControladorInterfaceHospede::exibirMenu() {
 void ControladorInterfaceHospede::exibirMenuCRUD() {
     bool status = true;
     while (status) {
-        TextoApresentacao::MostrarTituloEmCaixa("CRUD Gerente");
+        ConsoleFormatter::MostrarTituloEmCaixa("CRUD Gerente");
         FabricaGerenciavel<ControladorInterfaceHospede> fabrica;
         fabrica.executarMenu(status);
     };
 }
 
 void ControladorInterfaceHospede::opcoesDeHospedagem() {
-    TextoApresentacao::MostrarTituloEmCaixa("Opcoes de Hospedagem");
-    TextoApresentacao::MostrarTituloPergunta("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    ConsoleFormatter::MostrarTituloEmCaixa("Opcoes de Hospedagem");
+    ConsoleIO::PrintMensagem("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
     return;
 }
 
 void ControladorInterfaceHospede::solicitandoHospedagem() {
-    TextoApresentacao::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
+    ConsoleFormatter::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    TextoApresentacao::MostrarTituloPergunta("Informe o Email");
-    string email = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Informe o Email");
+    string email = ConsoleIO::LerLinha();
 
-    TextoApresentacao::MostrarTituloPergunta("Codigo do hotel desejado:");
-    string idHotel = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Codigo do hotel desejado:");
+    string idHotel = ConsoleIO::LerLinha();
 
-    TextoApresentacao::MostrarTituloPergunta("Codigo do quarto desejado:");
-    string idQuarto = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Codigo do quarto desejado:");
+    string idQuarto = ConsoleIO::LerLinha();
 
-    TextoApresentacao::MostrarTituloPergunta("Data de chegada (dd/mm/aaaa):");
-    string chegadaStr = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Data de chegada (dd/mm/aaaa):");
+    string chegadaStr = ConsoleIO::LerLinha();
 
-    TextoApresentacao::MostrarTituloPergunta("Data de partida (dd/mm/aaaa):");
-    string partidaStr = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Data de partida (dd/mm/aaaa):");
+    string partidaStr = ConsoleIO::LerLinha();
 
     cout << idHotel.length() << " e " << idQuarto.length();
     try {
@@ -85,22 +85,22 @@ void ControladorInterfaceHospede::solicitandoHospedagem() {
         );
 
         PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
-        TextoApresentacao::MostrarTituloRetorno("Solicitacao registrada com sucesso!");
+        ConsoleIO::PrintMensagem("Solicitacao registrada com sucesso!");
     } catch (exception &e) {
-        TextoApresentacao::MostrarTituloRetorno("Erro ao criar solicitacao: " + string(e.what()));
+        ConsoleIO::PrintMensagem("Erro ao criar solicitacao: " + string(e.what()));
     }
 }
 
 void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
-    TextoApresentacao::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
+    ConsoleFormatter::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
 
-    TextoApresentacao::MostrarTituloPergunta("Informe o Email");
-    string email = TextoApresentacao::LerLinha();
+    ConsoleIO::PrintMensagem("Informe o Email");
+    string email = ConsoleIO::LerLinha();
 
     const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
     if (lista.empty()) {
-        TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao encontrada.");
+        ConsoleIO::PrintMensagem("Nenhuma solicitacao encontrada.");
         return;
     }
 
@@ -119,19 +119,19 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
         cout << "Status: " << statusStr;
 
         if (s.getStatus() == StatusSolicitacaoHospedagem::RECUSADO)
-            cout << " | Motivo: " << s.getMotivoRecusa();
+            cout << "\n | Motivo: " << s.getMotivoRecusa();
 
         cout << "\n----------------------------------------\n";
     }
 }
 
 void ControladorInterfaceHospede::avaliarSolicitacoes() {
-    TextoApresentacao::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
+    ConsoleFormatter::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
 
     auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
 
     if (pendentes.empty()) {
-        TextoApresentacao::MostrarTituloRetorno("Nenhuma solicitacao pendente.");
+        ConsoleIO::PrintMensagem("Nenhuma solicitacao pendente.");
         return;
     }
 
@@ -143,23 +143,23 @@ void ControladorInterfaceHospede::avaliarSolicitacoes() {
                 << "\nPartida: " << solicitacao.getPartida().toString()
                 << "\nStatus atual: Pendente\n";
 
-        TextoApresentacao::MostrarTituloPergunta("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
-        string escolha = TextoApresentacao::RecebeOpcao();
+        ConsoleIO::PrintMensagem("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
+        string escolha = ConsoleIO::ReceberOpcao();
 
         if (escolha == "A" || escolha == "a") {
             solicitacao.setStatus(StatusSolicitacaoHospedagem::APROVADO); // aprovada
             solicitacao.setMotivoRecusa(""); // limpa motivo
             PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
-            TextoApresentacao::MostrarTituloRetorno("Solicitacao aprovada com sucesso.");
+            ConsoleIO::PrintMensagem("Solicitacao aprovada com sucesso.");
         } else if (escolha == "R" || escolha == "r") {
-            TextoApresentacao::MostrarTituloPergunta("Informe o motivo da recusa:");
-            string motivo = TextoApresentacao::LerLinha();
+            ConsoleIO::PrintMensagem("Informe o motivo da recusa:");
+            string motivo = ConsoleIO::LerLinha();
             solicitacao.setStatus(StatusSolicitacaoHospedagem::RECUSADO); // recusada
             solicitacao.setMotivoRecusa(motivo);
             PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
-            TextoApresentacao::MostrarTituloRetorno("Solicitacao recusada.");
+            ConsoleIO::PrintMensagem("Solicitacao recusada.");
         } else {
-            TextoApresentacao::MostrarTituloRetorno("Opcao invalida. Solicitacao nao foi alterada.");
+            ConsoleIO::PrintMensagem("Opcao invalida. Solicitacao nao foi alterada.");
         }
     }
 }
@@ -180,10 +180,10 @@ void ControladorInterfaceHospede::criar() {
                 break;
             }
 
-            TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Hospede");
+            ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Hospede");
 
             cout << "Informe o Nome: " << endl;
-            string nomeStr = TextoApresentacao::LerLinha();
+            string nomeStr = ConsoleIO::LerLinha();
             try {
                 hospede->setNome(Nome(nomeStr));
             } catch (invalid_argument &erro) {
@@ -192,7 +192,7 @@ void ControladorInterfaceHospede::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Email: " << endl;
-                string emailStr = TextoApresentacao::LerLinha();
+                string emailStr = ConsoleIO::LerLinha();
                 try {
                     hospede->setEmail(Email(emailStr));
                 } catch (invalid_argument &erro) {
@@ -202,7 +202,7 @@ void ControladorInterfaceHospede::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Endereco: " << endl;
-                string enderecoStr = TextoApresentacao::LerLinha();
+                string enderecoStr = ConsoleIO::LerLinha();
                 try {
                     hospede->setEndereco(Endereco(enderecoStr));
                 } catch (invalid_argument &erro) {
@@ -212,7 +212,7 @@ void ControladorInterfaceHospede::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Cartao: " << endl;
-                string cartaoStr = TextoApresentacao::LerLinha();
+                string cartaoStr = ConsoleIO::LerLinha();
                 try {
                     ;
                     hospede->setCartao(Cartao(cartaoStr));
@@ -247,7 +247,7 @@ void ControladorInterfaceHospede::ler() {
         return;
     }
 
-    TextoApresentacao::MostrarTituloEmCaixa("Lista de Gerentes");
+    ConsoleFormatter::MostrarTituloEmCaixa("Lista de Gerentes");
 
     for (const auto &g: listaHospedes) {
         cout << "Nome: " << g->getNome() << endl;
@@ -264,7 +264,7 @@ void ControladorInterfaceHospede::atualizar() {
 
 bool ControladorInterfaceHospede::remover() {
     cout << "Informe o Email: \n";
-    string emailStr = TextoApresentacao::LerLinha();
+    string emailStr = ConsoleIO::LerLinha();
     bool status = true; //dao.excluirPorEmail(emailStr);
 
     if (status == true) {

@@ -9,6 +9,7 @@
 #include "Ramal.hpp"
 #include <vector>
 #include <string>
+#include  "ConsoleIO.hpp"
 
 class TestsRamal : public InterfaceDeTeste {
 public:

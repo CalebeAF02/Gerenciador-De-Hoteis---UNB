@@ -63,7 +63,7 @@ void TestsHospede::testarEndereco() {
     apresentacaoTeste("Rua Central,123");
     try {
         Hospede h;
-        h.setEndereco(Endereco("Rua Central,123")); // ✅ válido
+        h.setEndereco(Endereco("Rua Central,123")); // válido
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_CERTO, apresentacaoErro(e));
@@ -74,7 +74,7 @@ void TestsHospede::testarEnderecoInvalido() {
     apresentacaoTeste("rua central @ 123");
     try {
         Hospede h;
-        h.setEndereco(Endereco("rua central @ 123")); // ❌ inválido
+        h.setEndereco(Endereco("rua central @ 123")); // inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
@@ -96,7 +96,7 @@ void TestsHospede::testarCartaoInvalido() {
     apresentacaoTeste("4111-1111-1111-1111");
     try {
         Hospede h;
-        h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
+        h.setCartao(Cartao("4111-1111-1111-1111")); // inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
@@ -109,7 +109,7 @@ void TestsHospede::testarConstrucaoCompleta() {
         Hospede h;
         h.setNome(Nome("Maria Clara"));
         h.setEmail(Email("maria@exemplo.com"));
-        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ válido
+        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // válido
         h.setCartao(Cartao("4111111111111111"));
         checaResultado(DEVE_DAR_CERTO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
@@ -123,8 +123,8 @@ void TestsHospede::testarConstrucaoInvalida() {
         Hospede h;
         h.setNome(Nome("Maria Clara"));
         h.setEmail(Email("maria@exemplo.com"));
-        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // ✅ corrigido
-        h.setCartao(Cartao("4111-1111-1111-1111")); // ❌ inválido
+        h.setEndereco(Endereco("Avenida Brasil,1000,Bloco A")); // corrigido
+        h.setCartao(Cartao("4111-1111-1111-1111")); // inválido
         checaResultado(DEVE_DAR_ERRADO, apresentacaoSucesso());
     } catch (invalid_argument &e) {
         checaResultado(DEVE_DAR_ERRADO, apresentacaoErro(e));
@@ -137,7 +137,7 @@ void TestsHospede::testarGetters() {
     Hospede h;
     Nome nome("Maria Clara");
     Email email("maria@exemplo.com");
-    Endereco endereco("Rua Central,123"); // ✅ corrigido
+    Endereco endereco("Rua Central,123"); // corrigido
     Cartao cartao("4111111111111111");
 
     h.setNome(nome);

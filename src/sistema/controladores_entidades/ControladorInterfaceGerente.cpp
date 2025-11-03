@@ -73,10 +73,10 @@ void ControladorInterfaceGerente::criar() {
                 break;
             }
 
-            TextoApresentacao::MostrarTituloEmCaixa("Criando Novo Gerente");
+            ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Gerente");
 
             cout << "Informe o Nome: \n";
-            string nomeStr = TextoApresentacao::LerLinha();
+            string nomeStr = ConsoleIO::LerLinha();
             try {
                 gerente->setNome(Nome(nomeStr));
             } catch (invalid_argument &erro) {
@@ -85,7 +85,7 @@ void ControladorInterfaceGerente::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Email: \n";
-                string emailStr = TextoApresentacao::LerLinha();
+                string emailStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setEmail(Email(emailStr));
                 } catch (invalid_argument &erro) {
@@ -95,7 +95,7 @@ void ControladorInterfaceGerente::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Ramal: \n";
-                string ramalStr = TextoApresentacao::LerLinha();
+                string ramalStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setRamal(Ramal(ramalStr));
                 } catch (invalid_argument &erro) {
@@ -105,7 +105,7 @@ void ControladorInterfaceGerente::criar() {
             }
             if (tudoOK) {
                 cout << "Informe o Senha: \n";
-                string senhaStr = TextoApresentacao::LerLinha();
+                string senhaStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setSenha(Senha(senhaStr));
                 } catch (invalid_argument &erro) {
@@ -144,7 +144,7 @@ void ControladorInterfaceGerente::ler() {
         return;
     }
 
-    TextoApresentacao::MostrarTituloEmCaixa("Lista de Gerentes");
+    ConsoleFormatter::MostrarTituloEmCaixa("Lista de Gerentes");
 
     for (const auto &g: listaGerentes) {
         cout << "Nome: " << g->getNome() << endl;
@@ -156,7 +156,7 @@ void ControladorInterfaceGerente::ler() {
 
 void ControladorInterfaceGerente::atualizar() {
     if (gerenteLogado == nullptr) {
-        TextoApresentacao::MostrarTituloEmCaixa("Atualizacao de Cadastro");
+        ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
         cout << "\nVoce precisa estar logado para atualizar seu cadastro.\n\n";
         return;
     }
@@ -164,19 +164,19 @@ void ControladorInterfaceGerente::atualizar() {
     PersistenciaGerente dao;
     bool alterado = false;
 
-    TextoApresentacao::MostrarTituloEmCaixa("Atualizacao de Cadastro");
-    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Nome", 1);
-    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Ramal", 2);
-    TextoApresentacao::MostrarOpcaoEmCaixa("Alterar Senha", 3);
-    TextoApresentacao::MostrarOpcaoEmCaixa("Cancelar", 0);
+    ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
+    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Nome", 1);
+    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Ramal", 2);
+    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Senha", 3);
+    ConsoleFormatter::MostrarOpcaoEmCaixa("Cancelar", 0);
 
-    string opcaoStr = TextoApresentacao::RecebeOpcao();
+    string opcaoStr = ConsoleIO::ReceberOpcao();
     int opcao = stoi(opcaoStr);
 
     switch (opcao) {
         case 1: {
-            TextoApresentacao::MostrarTituloPergunta("Novo nome:");
-            string novoNome = TextoApresentacao::LerLinha();
+            ConsoleIO::PrintMensagem("Novo nome:");
+            string novoNome = ConsoleIO::LerLinha();
             try {
                 gerenteLogado->setNome(Nome(novoNome));
                 alterado = true;
@@ -186,8 +186,8 @@ void ControladorInterfaceGerente::atualizar() {
             break;
         }
         case 2: {
-            TextoApresentacao::MostrarTituloPergunta("Novo ramal:");
-            string novoRamal = TextoApresentacao::LerLinha();
+            ConsoleIO::PrintMensagem("Novo ramal:");
+            string novoRamal = ConsoleIO::LerLinha();
             try {
                 gerenteLogado->setRamal(Ramal(novoRamal));
                 alterado = true;
@@ -197,8 +197,8 @@ void ControladorInterfaceGerente::atualizar() {
             break;
         }
         case 3: {
-            TextoApresentacao::MostrarTituloPergunta("Nova senha:");
-            string novaSenha = TextoApresentacao::LerLinha();
+            ConsoleIO::PrintMensagem("Nova senha:");
+            string novaSenha = ConsoleIO::LerLinha();
             try {
                 gerenteLogado->setSenha(Senha(novaSenha));
                 alterado = true;
@@ -218,15 +218,15 @@ void ControladorInterfaceGerente::atualizar() {
     if (alterado) {
         bool sucesso = dao.atualizarGerenteNoBD(*gerenteLogado);
         if (sucesso)
-            TextoApresentacao::MostrarTituloRetorno("Cadastro atualizado com sucesso!");
+            ConsoleIO::PrintMensagem("Cadastro atualizado com sucesso!");
         else
-            TextoApresentacao::MostrarTituloRetorno("Erro ao atualizar cadastro no banco.");
+            ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
     }
 }
 
 bool ControladorInterfaceGerente::remover() {
     cout << "Informe o Email: \n";
-    string emailStr = TextoApresentacao::LerLinha();
+    string emailStr = ConsoleIO::LerLinha();
     bool status = dao.excluirPorEmailDoBD(gerenteLogado);
 
     if (status == true) {

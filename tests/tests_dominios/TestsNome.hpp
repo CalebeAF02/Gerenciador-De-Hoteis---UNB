@@ -2,10 +2,11 @@
 #define TESTSNOME_H
 
 #include "InterfaceDeTeste.hpp"
-#include "TextoApresentacao.hpp"
+#include "../../include/sistema/utilitarios/console/ConsoleFormatter.hpp"
 #include "Nome.hpp"
 #include <vector>
 #include <string>
+#include  "ConsoleIO.hpp"
 
 class TestsNome : public InterfaceDeTeste {
 public:

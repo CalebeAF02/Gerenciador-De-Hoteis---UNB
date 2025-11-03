@@ -2,7 +2,6 @@
 // Created by caleb on 25/10/2025.
 //
 
-
 #include "interface_tests/InterfaceDeTeste.hpp"
 
 #include "tests_dominios/TestsCapacidade.hpp"
@@ -28,13 +27,14 @@
 #include <memory> // para usar smart pointers
 
 using namespace std;
+// Em main.cpp ou TestMain.cpp
 
 void executarTestsModulares() {
     // Lista de testes
     vector<unique_ptr<InterfaceDeTeste> > testes;
 
     // Adiciona cada teste à lista
-    /*
+
     testes.push_back(make_unique<TestsNome>());
     testes.push_back(make_unique<TestsEmail>());
     testes.push_back(make_unique<TestsRamal>());
@@ -47,10 +47,10 @@ void executarTestsModulares() {
     testes.push_back(make_unique<TestsCapacidade>());
     testes.push_back(make_unique<TestsDinheiro>());
     testes.push_back(make_unique<TestsData>());
-    */
 
-    //testes.push_back(make_unique<TestsGerente>());
-    //testes.push_back(make_unique<TestsHospede>());
+
+    testes.push_back(make_unique<TestsGerente>());
+    testes.push_back(make_unique<TestsHospede>());
     testes.push_back(make_unique<TestsHotel>());
     testes.push_back(make_unique<TestsQuarto>());
     testes.push_back(make_unique<TestsReserva>());
