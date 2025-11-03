@@ -1,15 +1,19 @@
-# Forcar quebra de linha LF para codigo-fonte
-*.cpp text eol=lf
-*.hpp text eol=lf
+# .gitattributes
 
-# Marcar arquivos binarios
-*.png binary
-*.jpg binary
-*.pdf binary
+# Ignora a pasta de bibliotecas C, como o código-fonte do SQLite, na contagem de linguagens.
+/libs/** linguist-language=C++
 
-# Ignorar arquivos ao exportar
-.idea/ export-ignore
-cmake-build-debug/ export-ignore
+# Se você tiver incluído os headers do SQLite:
+/include/libs/** linguist-language=C++
 
-# Auto detect text files and perform LF normalization
-* text=auto
+# Se você está usando o código-fonte do SQLite (sqlite3.c)
+# E ele estiver na raiz ou em src/, ajuste o caminho:
+# src/sqlite3.c linguist-language=C++
+
+# Garante que headers padrões (.h) sejam tratados como C++
+*.h linguist-language=C++
+
+# (OPCIONAL) Se você tem pastas de C++ que foram mal classificadas
+/src/** linguist-language=C++
+/dominios/** linguist-language=C++
+/entidades/** linguist-language=C++
