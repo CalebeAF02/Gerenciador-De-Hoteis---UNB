@@ -8,78 +8,57 @@
 #include "Ramal.hpp"
 #include "Senha.hpp"
 
-#include "../utilitarios/LinhaTSV.hpp"
-
 #include <string>
 
 using namespace std;
 
-class Gerente : public Pessoa, public LinhaTSV
-{
+class Gerente : public Pessoa {
 private:
     Ramal ramal;
     Senha senha;
 
 public:
     // Construcutor -----------
-    Gerente() : Pessoa(Nome(), Email())
-    {
+    Gerente() : Pessoa(Nome(), Email()) {
     };
 
     Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
-        ramal(ramal), senha(senha)
-    {
+        ramal(ramal), senha(senha) {
     };
 
     // virtuais ----------------
-    void exibirInfo() const override
-    {
+    void exibirInfo() const override {
         cout << "Sou um Gerente\n";
     };
 
     // seters -----------------
-    void setNome(const Nome& newNome)
-    {
+    void setNome(const Nome &newNome) {
         Pessoa::setPessoaNome(newNome);
     }
 
-    void setEmail(const Email& newEmail)
-    {
+    void setEmail(const Email &newEmail) {
         Pessoa::setPessoaEmail(newEmail);
     }
 
-    void setRamal(const Ramal& newRamal)
-    {
+    void setRamal(const Ramal &newRamal) {
         this->ramal = newRamal;
     }
 
-    void setSenha(const Senha& newSenha)
-    {
+    void setSenha(const Senha &newSenha) {
         this->senha = newSenha;
     }
-
-    void setTSV(string dados); // Altera o setTSV do linhaTSV
 
     // geters -----------------
     string getRamal() const;
 
     string getSenha() const;
-
-    string getTSV() const; // Altera o getTSV do linhaTSV
 };
 
-inline string Gerente::getTSV() const // Transforma Gerente em uma linha de texto
-{
-    return string("GERENTE") + "\t" + getNome() + "\t" + getEmail() + "\t" + getRamal() + "\t" + getSenha();
-}
-
-inline string Gerente::getRamal() const
-{
+inline string Gerente::getRamal() const {
     return ramal.getValor();
 }
 
-inline string Gerente::getSenha() const
-{
+inline string Gerente::getSenha() const {
     return senha.getValor();
 }
 

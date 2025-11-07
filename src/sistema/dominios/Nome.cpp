@@ -5,10 +5,8 @@
 #include "Nome.hpp"
 
 void Nome::validar(const string &nome) {
-    int cont_alta = 0;
-    int cont_baixa = 0;
-    // logica de validacao do nome
     int nomeTamanho = nome.length();
+    // 1. REGRA DE TAMANHO
     if (nomeTamanho < 5 || nomeTamanho > 20) {
         throw invalid_argument("Erro: Nome com tamanho invalido");
     }
@@ -17,27 +15,39 @@ void Nome::validar(const string &nome) {
     int contEspaco = 0;
 
     for (int i = 0; i < nomeTamanho; i++) {
-        if (nome[i] == ' ') {
+        char c = nome[i];
+
+        if (c == ' ') {
+            // 2. REGRA DE ESPAÇOS
             primeiraLetraCaixaAlta = true;
             contEspaco++;
             if (contEspaco > 1) {
                 throw invalid_argument("Erro: Espaco em branco seguido por outro espaco");
             }
-        } else if (isalpha(nome[i])) {
+        }
+        else if (isalpha(c)) {
             contEspaco = 0;
-            if (primeiraLetraCaixaAlta && !isupper(nome[i])) {
-                throw invalid_argument("Erro: Primeira letra de cada termo deve ser maiuscula");
+
+            // 3. REGRA DE CAIXA
+            if (primeiraLetraCaixaAlta) {
+                if (!isupper(c)) {
+                    throw invalid_argument("Erro: Primeira letra de cada termo deve ser maiuscula");
+                }
+                primeiraLetraCaixaAlta = false;
             }
-            primeiraLetraCaixaAlta = false;
-        } else if (isupper(nome[i])) {
-            cont_alta += 1;
-        } else if (islower(nome[i])) {
-            cont_baixa += 1;
+            // 4. REGRA DE CARACTERE INVÁLIDO (Números, Símbolos)
         } else {
-            throw invalid_argument("Erro: Nome com caracter invalido");
+            // Se não for espaço, e não for letra, é inválido.
+            // Isso cobre números, símbolos e pontuação não permitida.
+            throw invalid_argument("Erro: Nome com caracter invalido (Deve ser letra ou espaco).");
         }
     }
+
+    // 5. REGRA DE ESPAÇO FINAL
     if (nome[nomeTamanho - 1] == ' ') {
         throw invalid_argument("Erro: Nome nao pode terminar com espaco");
     }
+
+    // As contagens de letras maiúsculas/minúsculas não são estritamente necessárias
+    // pois a lógica de `primeiraLetraCaixaAlta` já verifica o formato.
 }

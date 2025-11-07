@@ -40,6 +40,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/dominios/Numero.cpp
         src/sistema/dominios/Capacidade.cpp
         src/sistema/dominios/Dinheiro.cpp
+        src/sistema/dominios/Data.cpp
 
         # Entidades
         src/sistema/entidades/Gerente.cpp
@@ -78,8 +79,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/servicos/ServicoAutenticavel.cpp
 
         # Utilitários
-        src/sistema/utilitarios/Data.cpp
-        src/sistema/utilitarios/LinhaTSV.cpp
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
 
@@ -92,34 +91,32 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/validadores_principais/ValidarString.cpp
 
         # Testes - Interface
-        tests/interface_tests/InterfaceDeTeste.cpp
+        testes/interface_testes/InterfaceDeTestes.cpp
 
         # Testes - Smoke
-        tests/smoke_testes/Smoke_Tests.cpp
-        tests/smoke_testes/TestandoSmoke.cpp
+        testes/smoke_teste/SmokeTeste.cpp
+        testes/smoke_teste/TestandoSmoke.cpp
 
         # Testes - Domínios
-        tests/tests_dominios/TestsCapacidade.cpp
-        tests/tests_dominios/TestsCartao.cpp
-        tests/tests_dominios/TestsCodigo.cpp
-        tests/tests_dominios/TestsDinheiro.cpp
-        tests/tests_dominios/TestsEmail.cpp
-        tests/tests_dominios/TestsEndereco.cpp
-        tests/tests_dominios/TestsNome.cpp
-        tests/tests_dominios/TestsNumero.cpp
-        tests/tests_dominios/TestsRamal.cpp
-        tests/tests_dominios/TestsSenha.cpp
-        tests/tests_dominios/TestsTelefone.cpp
-        tests/tests_dominios/TestsData.cpp
+        testes/testes_dominios/TesteCapacidade.cpp
+        testes/testes_dominios/TesteCartao.cpp
+        testes/testes_dominios/TesteCodigo.cpp
+        testes/testes_dominios/TesteDinheiro.cpp
+        testes/testes_dominios/TesteEmail.cpp
+        testes/testes_dominios/TesteEndereco.cpp
+        testes/testes_dominios/TesteNome.cpp
+        testes/testes_dominios/TesteNumero.cpp
+        testes/testes_dominios/TesteRamal.cpp
+        testes/testes_dominios/TesteSenha.cpp
+        testes/testes_dominios/TesteTelefone.cpp
+        testes/testes_dominios/TestesData.cpp
 
         # Testes - Entidades
-        tests/tests_entidades/TestesGerente.cpp
-        tests/tests_entidades/TestesHospede.cpp
-        tests/tests_entidades/TestesHotel.cpp
-        tests/tests_entidades/TestesQuarto.cpp
-        tests/tests_entidades/TestesReserva.cpp
-        tests/tests_entidades/TestesData.cpp
-        tests/tests_entidades/GerenteTSV.cpp
+        testes/testes_entidades/TesteGerente.cpp
+        testes/testes_entidades/TesteHospede.cpp
+        testes/testes_entidades/TesteHotel.cpp
+        testes/testes_entidades/TesteQuarto.cpp
+        testes/testes_entidades/TesteReserva.cpp
 )
 
 # Diretórios de headers
@@ -141,11 +138,11 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
         ${CMAKE_SOURCE_DIR}/include/libs/sqlite
-        ${CMAKE_SOURCE_DIR}/tests
-        ${CMAKE_SOURCE_DIR}/tests/interface_tests
-        ${CMAKE_SOURCE_DIR}/tests/smoke_testes
-        ${CMAKE_SOURCE_DIR}/tests/tests_dominios
-        ${CMAKE_SOURCE_DIR}/tests/tests_entidades
+        ${CMAKE_SOURCE_DIR}/testes
+        ${CMAKE_SOURCE_DIR}/testes/interface_testes
+        ${CMAKE_SOURCE_DIR}/testes/smoke_teste
+        ${CMAKE_SOURCE_DIR}/testes/testes_dominios
+        ${CMAKE_SOURCE_DIR}/testes/testes_entidades
 )
 
 # Linka com o executável principal

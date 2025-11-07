@@ -5,7 +5,7 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SOLICITACAOHOSPEDAGEM_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SOLICITACAOHOSPEDAGEM_H
 
-#include "../utilitarios/Data.hpp"
+#include "../dominios/Data.hpp"
 #include "Codigo.hpp"
 #include <string>
 #include <stdexcept>

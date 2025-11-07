@@ -1,4 +1,4 @@
-#include "Smoke_Tests.hpp"
+#include "SmokeTeste.hpp"
 #include "sistema/Sistema.hpp"
 
 #include <iostream>
@@ -7,25 +7,24 @@
 #include "TestandoSmoke.hpp"
 #include "../include/sistema/utilitarios/console/ConsoleFormatter.hpp"
 
-#include "interface_tests/InterfaceDeTeste.hpp"
-#include "tests_dominios/TestsCapacidade.hpp"
-#include "tests_dominios/TestsCartao.hpp"
-#include "tests_dominios/TestsCodigo.hpp"
-#include "tests_dominios/TestsData.hpp"
-#include "tests_dominios/TestsDinheiro.hpp"
-#include "tests_dominios/TestsEmail.hpp"
-#include "tests_dominios/TestsEndereco.hpp"
-#include "tests_dominios/TestsNome.hpp"
-#include "tests_dominios/TestsNumero.hpp"
-#include "tests_dominios/TestsRamal.hpp"
-#include "tests_dominios/TestsSenha.hpp"
-#include "tests_dominios/TestsTelefone.hpp"
+#include "interface_testes/InterfaceDeTestes.hpp"
+#include "testes_dominios/TesteCapacidade.hpp"
+#include "testes_dominios/TesteCartao.hpp"
+#include "testes_dominios/TesteCodigo.hpp"
+#include "testes_dominios/TesteDinheiro.hpp"
+#include "testes_dominios/TesteEmail.hpp"
+#include "testes_dominios/TesteEndereco.hpp"
+#include "testes_dominios/TesteNome.hpp"
+#include "testes_dominios/TesteNumero.hpp"
+#include "testes_dominios/TesteRamal.hpp"
+#include "testes_dominios/TesteSenha.hpp"
+#include "testes_dominios/TesteTelefone.hpp"
 
-#include "tests_entidades/TestesGerente.hpp"
-#include "tests_entidades/TestesHospede.hpp"
-#include "tests_entidades/TestesHotel.hpp"
-#include "tests_entidades/TestesQuarto.hpp"
-#include "tests_entidades/TestesReserva.hpp"
+#include "testes_entidades/TesteGerente.hpp"
+#include "testes_entidades/TesteHospede.hpp"
+#include "testes_entidades/TesteHotel.hpp"
+#include "testes_entidades/TesteQuarto.hpp"
+#include "testes_entidades/TesteReserva.hpp"
 
 using namespace std;
 
@@ -35,8 +34,8 @@ using namespace std;
 #define MODO_ATUAL MODO_SMOKE
 
 void executandoNovoSmoke() {
-    TestandoSmoke testando_smoke;
-    testando_smoke.ExecutarSmokeTest();
+    TestandoSmoke teste;
+    teste.ExecutarSmokeTest();
 }
 
 void executarSistema() {
@@ -50,8 +49,6 @@ void executarSistema() {
 int main() {
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
-            //SmokeTest::testarEntradas();
-
             executandoNovoSmoke();
             InterfaceDeTeste::mostrarSumarioGeral();
 
