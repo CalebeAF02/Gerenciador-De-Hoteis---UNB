@@ -24,8 +24,7 @@ void Nome::validar(const string &nome) {
             if (contEspaco > 1) {
                 throw invalid_argument("Erro: Espaco em branco seguido por outro espaco");
             }
-        }
-        else if (isalpha(c)) {
+        } else if (isalpha(c)) {
             contEspaco = 0;
 
             // 3. REGRA DE CAIXA

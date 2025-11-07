@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Dinheiro
-{
+class Dinheiro {
 private:
     int valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Dinheiro() = default;
 
-    explicit Dinheiro(const int& dinheiro)
-    {
+    explicit Dinheiro(const int &dinheiro) {
         setValor(dinheiro);
     };
 
-    void setValor(int dinheiro)
-    {
+    void setValor(int dinheiro) {
         validar(dinheiro);
         this->valor = dinheiro;
     }
 
-    int getValor() const
-    {
+    int getValor() const {
         return valor;
     }
 };

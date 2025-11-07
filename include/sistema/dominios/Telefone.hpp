@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Telefone
-{
+class Telefone {
 private:
     string valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Telefone() = default;
 
-    explicit Telefone(const string& telefone)
-    {
+    explicit Telefone(const string &telefone) {
         setValor(telefone);
     }
 
-    void setValor(const string& telefone)
-    {
+    void setValor(const string &telefone) {
         validar(telefone);
         this->valor = telefone;
     }
 
-    string getValor() const
-    {
+    string getValor() const {
         return valor;
     }
 };

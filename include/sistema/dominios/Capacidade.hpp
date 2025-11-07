@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Capacidade
-{
+class Capacidade {
 private:
     int valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Capacidade() = default;
 
-    explicit Capacidade(const int& capacidade)
-    {
+    explicit Capacidade(const int &capacidade) {
         setValor(capacidade);
     };
 
-    void setValor(const int& capacidade)
-    {
+    void setValor(const int &capacidade) {
         validar(capacidade);
         this->valor = capacidade;
     }
 
-    int getValor() const
-    {
+    int getValor() const {
         return valor;
     }
 };

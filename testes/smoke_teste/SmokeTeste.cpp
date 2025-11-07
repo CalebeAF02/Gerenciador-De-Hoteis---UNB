@@ -24,9 +24,9 @@ void SmokeTeste::testarDominio(
     // --- 1. IMPRIME O QUE OCORREU (EXCLUSIVAMENTE AQUI) ---
     // Faz a impressão da linha "Ocorreu" que você deseja
     if (resultado_obtido_codigo == InterfaceDeTeste::DEVE_DAR_CERTO) {
-        ConsoleIO::PrintMensagem("| Ocorreu: SUCESSO na Validacao");
+        ConsoleIO::PrintMensagem("\n | Ocorreu: SUCESSO na Validacao");
     } else {
-        ConsoleIO::PrintMensagem("| Ocorreu: ERRO (" + erro_capturado + ")");
+        ConsoleIO::PrintMensagem("\n | Ocorreu: ERRO (" + erro_capturado + ")");
     }
 
     // --- 2. DELEGA A IMPRESSÃO DO RESULTADO E A CONTAGEM AO checaResultado ---
@@ -43,7 +43,7 @@ void SmokeTeste::testarDominio(
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void SmokeTeste::testarEntidade (
+void SmokeTeste::testarEntidade(
     int esperando_resultado,
     const string &valor_teste,
     const string &entidade,

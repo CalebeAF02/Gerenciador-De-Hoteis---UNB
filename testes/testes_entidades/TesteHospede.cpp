@@ -18,11 +18,11 @@ void TesteHospede::executar() {
 
     // Testa se o metodo setNome da Entidade aceita o Domínio Nome válido
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            nomeStr,
-            "Hospede - Nome",
-            [&hospede1, &nomeStr]() { hospede1.setNome(Nome(nomeStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        nomeStr,
+        "Hospede - Nome",
+        [&hospede1, &nomeStr]() { hospede1.setNome(Nome(nomeStr)); }
+    );
 
     // =========================================================================
     // 2. ATRIBUIÇÃO DE EMAIL (Herdado de Pessoa)
@@ -32,11 +32,11 @@ void TesteHospede::executar() {
 
     // Testa se o metodo setEmail da Entidade aceita o Domínio Email válido
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            emailStr,
-            "Hospede - Email",
-            [&hospede1, &emailStr]() { hospede1.setEmail(Email(emailStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        emailStr,
+        "Hospede - Email",
+        [&hospede1, &emailStr]() { hospede1.setEmail(Email(emailStr)); }
+    );
 
     // =========================================================================
     // 3. ATRIBUIÇÃO DE ENDEREÇO
@@ -46,11 +46,11 @@ void TesteHospede::executar() {
 
     // Testa se o metodo setEndereco da Entidade aceita o Domínio Endereco válido
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            enderecoStr,
-            "Hospede - Endereco",
-            [&hospede1, &enderecoStr]() { hospede1.setEndereco(Endereco(enderecoStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        enderecoStr,
+        "Hospede - Endereco",
+        [&hospede1, &enderecoStr]() { hospede1.setEndereco(Endereco(enderecoStr)); }
+    );
 
     // =========================================================================
     // 4. ATRIBUIÇÃO DE CARTÃO
@@ -61,10 +61,11 @@ void TesteHospede::executar() {
 
     // Testa se o metodo setCartao da Entidade aceita o Domínio Cartao válido
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            cartaoStr,
-            "Hospede - Cartao",
-            [&hospede1, &cartaoStr]() { hospede1.setCartao(Cartao(cartaoStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        cartaoStr,
+        "Hospede - Cartao",
+        [&hospede1, &cartaoStr]() { hospede1.setCartao(Cartao(cartaoStr)); }
+    );
 }
+
 //------------------------------------------------------------------------------------------------------------------

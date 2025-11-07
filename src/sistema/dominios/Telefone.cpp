@@ -22,15 +22,15 @@ void Telefone::validar(const string valor) {
             ddi += valor[i];
         } else if (i <= 4) {
             ddd += valor[i];
-        } else if ( i<= valor.length()) {
-                numero += valor[i];
-            }else {
-                throw invalid_argument("Erro: Caracter nao e numero");
-            }
+        } else if (i <= valor.length()) {
+            numero += valor[i];
+        } else {
+            throw invalid_argument("Erro: Caracter nao e numero");
+        }
     }
     if (ddi[0] != '+') {
         throw invalid_argument("Erro: Primeiro caracter invalido. Esperado '+'.");
-   }
+    }
 
     if (!(isdigit(ddi[1]) && isdigit(ddi[2]))) {
         throw invalid_argument("Erro: DDD invalido");
@@ -38,7 +38,6 @@ void Telefone::validar(const string valor) {
 
     if (!(isdigit(ddd[0]) && isdigit(ddd[1]))) {
         throw invalid_argument("Erro: DDD invalido");
-
     }
     if (numero.length() != 10) {
         throw invalid_argument("Erro: numero invalido");

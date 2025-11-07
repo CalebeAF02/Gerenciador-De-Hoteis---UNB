@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Hotel
-{
+class Hotel {
 private:
     Nome nome;
     Endereco endereco;
@@ -21,52 +20,43 @@ private:
 public:
     Hotel() = default;
 
-    Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo)
-    {
+    Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo) {
         setNome(nome);
         setEndereco(endereco);
         setTelefone(telefone);
         setCodigo(codigo);
     };
 
-    void setNome(const Nome& newNome)
-    {
+    void setNome(const Nome &newNome) {
         this->nome = newNome;
     };
 
-    void setEndereco(const Endereco& newEndereco)
-    {
+    void setEndereco(const Endereco &newEndereco) {
         this->endereco = newEndereco;
     };
 
-    void setTelefone(const Telefone& newTelefone)
-    {
+    void setTelefone(const Telefone &newTelefone) {
         this->telefone = newTelefone;
     };
 
-    void setCodigo(const Codigo& newCodigo)
-    {
+    void setCodigo(const Codigo &newCodigo) {
         this->codigo = newCodigo;
     };
 
     //Get
-    string getNome() const
-    {
+    string getNome() const {
         return nome.getValor();
     };
 
-    string getEndereco() const
-    {
+    string getEndereco() const {
         return endereco.getValor();
     };
 
-    string getTelefone() const
-    {
+    string getTelefone() const {
         return telefone.getValor();
     };
 
-    string getCodigo() const
-    {
+    string getCodigo() const {
         return codigo.getValor();
     };
 

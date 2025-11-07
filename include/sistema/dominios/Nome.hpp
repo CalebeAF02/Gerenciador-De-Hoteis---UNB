@@ -10,23 +10,20 @@
 
 using namespace std;
 
-class Nome
-{
+class Nome {
 private:
     string valor;
 
-    void validar(const string& nome); // Metodo de validacao
+    void validar(const string &nome); // Metodo de validacao
 
 public:
     Nome() = default;
 
-    explicit Nome(const string& nomeStr)
-    {
+    explicit Nome(const string &nomeStr) {
         setValor(nomeStr);
     };
 
-    void setValor(const string& nome)
-    {
+    void setValor(const string &nome) {
         validar(nome);
         this->valor = nome;
     }
@@ -34,8 +31,7 @@ public:
     string getValor() const;
 };
 
-inline string Nome::getValor() const
-{
+inline string Nome::getValor() const {
     return valor;
 }
 

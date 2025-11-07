@@ -24,7 +24,7 @@ public:
     };
 
     Hospede(Nome nomePessoaObj, Email emailPessoaObj, Endereco endereco, Cartao cartao) : Pessoa(nomePessoaObj,
-        emailPessoaObj), endereco(endereco), cartao(cartao) {
+            emailPessoaObj), endereco(endereco), cartao(cartao) {
     };
 
     // virtuais ----------------

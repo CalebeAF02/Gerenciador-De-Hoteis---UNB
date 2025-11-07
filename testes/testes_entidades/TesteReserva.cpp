@@ -21,11 +21,11 @@ void TesteReserva::executar() {
     ConsoleFormatter::MostrarSeparadorCategoria("1. Atribuicao de Codigo Valido");
 
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            codigoStr,
-            "Reserva - Codigo",
-            [&reserva1, &codigoStr]() { reserva1.setCodigo(Codigo(codigoStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        codigoStr,
+        "Reserva - Codigo",
+        [&reserva1, &codigoStr]() { reserva1.setCodigo(Codigo(codigoStr)); }
+    );
 
     // =========================================================================
     // 2. ATRIBUIÇÃO DE DATA (CHEGADA)
@@ -35,12 +35,12 @@ void TesteReserva::executar() {
     ConsoleFormatter::MostrarSeparadorCategoria("2. Atribuicao de Data de Chegada Valida");
 
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            dataChegadaStr,
-            "Reserva - Data Chegada",
-            // Assume-se que o Domínio Data aceita a string (ex: 15/JAN/2026)
-            [&reserva1, &dataChegadaStr]() { reserva1.setChegada(Data(dataChegadaStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        dataChegadaStr,
+        "Reserva - Data Chegada",
+        // Assume-se que o Domínio Data aceita a string (ex: 15/JAN/2026)
+        [&reserva1, &dataChegadaStr]() { reserva1.setChegada(Data(dataChegadaStr)); }
+    );
 
     // =========================================================================
     // 3. ATRIBUIÇÃO DE DATA (Partida)
@@ -50,11 +50,11 @@ void TesteReserva::executar() {
     ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Data da Partida Valida");
 
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            dataPartidaStr,
-            "Reserva - Data Partida",
-            [&reserva1, &dataPartidaStr]() { reserva1.setPartida(Data(dataPartidaStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        dataPartidaStr,
+        "Reserva - Data Partida",
+        [&reserva1, &dataPartidaStr]() { reserva1.setPartida(Data(dataPartidaStr)); }
+    );
 
     // =========================================================================
     // 4. ATRIBUIÇÃO DE VALOR (DINHEIRO)
@@ -65,10 +65,11 @@ void TesteReserva::executar() {
     ConsoleFormatter::MostrarSeparadorCategoria("4. Atribuicao de Valor (Dinheiro) Valido");
 
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            to_string(DinheiroInt),
-            "Reserva - Dinheiro",
-            [&reserva1, &DinheiroInt]() { reserva1.setDinheiro(Dinheiro(DinheiroInt)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        to_string(DinheiroInt),
+        "Reserva - Dinheiro",
+        [&reserva1, &DinheiroInt]() { reserva1.setDinheiro(Dinheiro(DinheiroInt)); }
+    );
 }
+
 //------------------------------------------------------------------------------------------------------------------

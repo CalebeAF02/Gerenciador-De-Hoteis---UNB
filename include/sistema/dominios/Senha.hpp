@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Senha
-{
+class Senha {
 private:
     string valor;
 
@@ -20,13 +19,11 @@ private:
 public:
     Senha() = default;
 
-    explicit Senha(const string& senha)
-    {
+    explicit Senha(const string &senha) {
         setValor(senha);
     };
 
-    void setValor(const string& senha)
-    {
+    void setValor(const string &senha) {
         validar(senha);
         this->valor = senha;
     }
@@ -34,8 +31,7 @@ public:
     string getValor() const;
 };
 
-inline string Senha::getValor() const
-{
+inline string Senha::getValor() const {
     return valor;
 }
 

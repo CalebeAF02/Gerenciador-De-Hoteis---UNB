@@ -38,6 +38,7 @@ public:
     static void checaResultado(int esperando_resultado, int resultado_teste);
 
     static void apresentacaoTeste(string valor);
+
     static void apresentacaoTeste(int valor);
 
     // Contadores e registro de falha
@@ -52,7 +53,9 @@ public:
     static void mostrarSumarioGeral();
 
     static int getTestes();
+
     static int getTestesOk();
+
     static int getTestesProblema();
 };
 

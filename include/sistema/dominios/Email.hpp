@@ -10,23 +10,20 @@
 
 using namespace std;
 
-class Email
-{
+class Email {
 private:
     string valor;
 
-    void validar(const string& email);
+    void validar(const string &email);
 
 public:
     Email() = default;
 
-    explicit Email(const string& email)
-    {
+    explicit Email(const string &email) {
         setValor(email);
     }
 
-    void setValor(const string& email)
-    {
+    void setValor(const string &email) {
         validar(email);
         this->valor = email;
     }
@@ -34,8 +31,7 @@ public:
     string getValor() const;
 };
 
-inline string Email::getValor() const
-{
+inline string Email::getValor() const {
     return valor;
 }
 

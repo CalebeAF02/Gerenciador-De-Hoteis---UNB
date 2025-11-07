@@ -14,7 +14,7 @@ void Codigo::validar(const string codigo) {
                 cont_baixo += 1;
             } else if (isalpha(codigo[i])) {
                 cont_alto += 1;
-            }else if (isdigit(codigo[i])) {
+            } else if (isdigit(codigo[i])) {
                 cont_num += 1;
             } else {
                 throw invalid_argument("Erro: Caracter invalido");

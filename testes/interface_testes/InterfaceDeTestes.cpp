@@ -21,38 +21,45 @@ void InterfaceDeTeste::checaResultado(int esperando_resultado, int resultado_tes
     // 2. Mostrar o resultado da checagem
     if (sucesso) {
         // Se o que aconteceu é o que era esperado.
-        cout << " -> OK" << endl;
-        contTodalTestesOk ++;
+        cout << " -> OK (Tudo Certo)!\n" << endl;
+        contTodalTestesOk++;
     } else {
         // Se o que aconteceu não é o que era esperado.
-        cout << " -> PROBLEMA NA VALIDACAO!" << endl;
-        contTodalTestesProblema ++;
+        cout << " -> Erro: (PROBLEMA NA VALIDACAO)!\n" << endl;
+        contTodalTestesProblema++;
     }
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::apresentacaoTeste(string valor) {
     cout << " > Testando entrada: [" << valor << "]";
-    contTodalTestes ++;
+    contTodalTestes++;
 }
+
 void InterfaceDeTeste::apresentacaoTeste(int valor) {
     cout << " > Testando entrada: [" << valor << "]";
-    contTodalTestes ++;
+    contTodalTestes++;
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::registrarFalha(const string &dominio, const string &entrada, const string &erro) {
     string falha = "FALHA: " + dominio + " (Entrada: " + entrada + " | Erro: " + erro + ")";
     listaFalhas.push_back(falha);
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::setTestes(int contTodalTestes) {
     InterfaceDeTeste::contTodalTestes = contTodalTestes;
 }
+
 void InterfaceDeTeste::setTestesOk(int contTodalTestesOk) {
     InterfaceDeTeste::contTodalTestesOk = contTodalTestesOk;
 }
+
 void InterfaceDeTeste::setTestesProblema(int contTodalTestesProblema) {
     InterfaceDeTeste::contTodalTestesProblema = contTodalTestesProblema;
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::mostrarSumarioGeral() {
     cout << "\n=======================================================" << endl;
@@ -75,14 +82,18 @@ void InterfaceDeTeste::mostrarSumarioGeral() {
     }
     cout << "=======================================================" << endl;
 }
+
 //-------------------------------------------------------------------
 int InterfaceDeTeste::getTestes() {
     return contTodalTestes;
 }
+
 int InterfaceDeTeste::getTestesOk() {
     return contTodalTestesOk;
 }
+
 int InterfaceDeTeste::getTestesProblema() {
     return contTodalTestesProblema;
 }
+
 //-----------------------------------------------------------------------------------------------------------

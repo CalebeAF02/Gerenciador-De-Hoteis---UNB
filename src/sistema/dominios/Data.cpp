@@ -27,6 +27,7 @@ void Data::validar(int tipo, int valor) {
         }
     }
 }
+
 void Data::setData(int d, int m, int a) {
     validar(TIPO_DIA, d);
     validar(TIPO_MES, m);

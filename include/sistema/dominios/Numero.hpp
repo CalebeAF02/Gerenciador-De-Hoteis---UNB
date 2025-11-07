@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Numero
-{
+class Numero {
 private:
     string valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Numero() = default;
 
-    explicit Numero(const string& numero)
-    {
+    explicit Numero(const string &numero) {
         setValor(numero);
     };
 
-    void setValor(const string& numero)
-    {
+    void setValor(const string &numero) {
         validar(numero);
         this->valor = numero;
     }
 
-    string getValor() const
-    {
+    string getValor() const {
         return valor;
     }
 };

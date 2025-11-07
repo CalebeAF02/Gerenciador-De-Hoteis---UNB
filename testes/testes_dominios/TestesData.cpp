@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 void TestesData::executar() {
     SmokeTeste smoke_teste;
 
@@ -42,7 +43,7 @@ void TestesData::executar() {
         "30/02/2024", // Fevereiro nunca tem 30
     };
 
-    for (const string &dataStr : datasInvalidas) {
+    for (const string &dataStr: datasInvalidas) {
         smoke_teste.testarDominio(
             InterfaceDeTeste::DEVE_DAR_ERRADO,
             dataStr,
@@ -64,7 +65,7 @@ void TestesData::executar() {
         "29/02/2024", // 2024 é bissexto! (Seu validador deve permitir isso)
     };
 
-    for (const string &dataStr : datasValidas) {
+    for (const string &dataStr: datasValidas) {
         smoke_teste.testarDominio(
             InterfaceDeTeste::DEVE_DAR_CERTO,
             dataStr,
@@ -78,4 +79,5 @@ void TestesData::executar() {
 string TestesData::nomeDoTeste() const {
     return "Teste de Entidade: Data";
 }
+
 //------------------------------------------------------------------------------------------------------------------

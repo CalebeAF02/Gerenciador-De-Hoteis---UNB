@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Endereco
-{
+class Endereco {
 private:
     string valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Endereco() = default;
 
-    explicit Endereco(const string& endereco)
-    {
+    explicit Endereco(const string &endereco) {
         setValor(endereco);
     };
 
-    void setValor(const string& endereco)
-    {
+    void setValor(const string &endereco) {
         validar(endereco);
         this->valor = endereco;
     }
 
-    string getValor() const
-    {
+    string getValor() const {
         return valor;
     }
 };

@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Cartao
-{
+class Cartao {
 private:
     string valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Cartao() = default;
 
-    explicit Cartao(const string& cartao)
-    {
+    explicit Cartao(const string &cartao) {
         setValor(cartao);
     }
 
-    void setValor(const string& cartao)
-    {
+    void setValor(const string &cartao) {
         validar(cartao);
         this->valor = cartao;
     }
 
-    string getValor() const
-    {
+    string getValor() const {
         return valor;
     }
 };

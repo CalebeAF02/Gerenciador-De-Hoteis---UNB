@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class MenuItem
-{
+class MenuItem {
 private:
     string nome;
     string valor;
@@ -19,27 +18,25 @@ private:
 
 public:
     MenuItem(string nomeStr, string valorStr, int valorConstanteInt) : nome(nomeStr), valor(valorStr),
-                                                                       valorConstante(valorConstanteInt)
-    {
+                                                                       valorConstante(valorConstanteInt) {
     };
 
     string getNome();
+
     string getValor();
+
     int getValorConstante();
 };
 
-inline string MenuItem::getNome()
-{
+inline string MenuItem::getNome() {
     return nome;
 }
 
-inline string MenuItem::getValor()
-{
+inline string MenuItem::getValor() {
     return valor;
 }
 
-inline int MenuItem::getValorConstante()
-{
+inline int MenuItem::getValorConstante() {
     return valorConstante;
 }
 

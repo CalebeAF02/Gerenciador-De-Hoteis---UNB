@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Codigo
-{
+class Codigo {
 private:
     string valor;
 
@@ -20,19 +19,16 @@ private:
 public:
     Codigo() = default;
 
-    explicit Codigo(const string& codigo)
-    {
+    explicit Codigo(const string &codigo) {
         setValor(codigo);
     };
 
-    void setValor(const string& codigo)
-    {
+    void setValor(const string &codigo) {
         validar(codigo);
         this->valor = codigo;
     }
 
-    string getValor() const
-    {
+    string getValor() const {
         return valor;
     }
 };

@@ -19,13 +19,12 @@ void TesteHotel::executar() {
     const string nomeStr = "Hotel Bandeirantes";
     ConsoleFormatter::MostrarSeparadorCategoria("1. Atribuicao de Nome Valido");
 
-    // O lambda testa se o mtodo setNome da Entidade aceita o Domínio Nome válido
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            nomeStr,
-            "Hotel - Nome",
-            [&hotel1, &nomeStr]() { hotel1.setNome(Nome(nomeStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        nomeStr,
+        "Hotel - Nome",
+        [&hotel1, &nomeStr]() { hotel1.setNome(Nome(nomeStr)); }
+    );
 
     // =========================================================================
     // 2. ATRIBUIÇÃO DE ENDEREÇO
@@ -33,11 +32,12 @@ void TesteHotel::executar() {
     const string enderecoStr = "Asa Norte Bloco A 10"; // Endereço de exemplo
     ConsoleFormatter::MostrarSeparadorCategoria("2. Atribuicao de Endereco Valido");
 
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            enderecoStr,
-            "Hotel - Endereco",
-            [&hotel1, &enderecoStr]() { hotel1.setEndereco(Endereco(enderecoStr)); }
-        );
+    smoke_teste.testarEntidade(
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        enderecoStr,
+        "Hotel - Endereco",
+        [&hotel1, &enderecoStr]() { hotel1.setEndereco(Endereco(enderecoStr)); }
+    );
 
     // =========================================================================
     // 3. ATRIBUIÇÃO DE CÓDIGO
@@ -47,10 +47,10 @@ void TesteHotel::executar() {
     ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Codigo Valido");
 
     smoke_teste.testarEntidade(
-            InterfaceDeTeste::DEVE_DAR_CERTO,
-            codigoStr,
-            "Hotel - Codigo",
-            [&hotel1, &codigoStr]() { hotel1.setCodigo(Codigo(codigoStr)); }
-        );
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        codigoStr,
+        "Hotel - Codigo",
+        [&hotel1, &codigoStr]() { hotel1.setCodigo(Codigo(codigoStr)); }
+    );
 }
 //------------------------------------------------------------------------------------------------------------------

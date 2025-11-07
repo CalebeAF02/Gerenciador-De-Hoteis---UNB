@@ -10,23 +10,20 @@
 
 using namespace std;
 
-class Ramal
-{
+class Ramal {
 private:
     string valor;
 
-    void validar(const string& ramal); // Metodo de validacao
+    void validar(const string &ramal); // Metodo de validacao
 
 public:
     Ramal() = default;
 
-    explicit Ramal(const string& ramal)
-    {
+    explicit Ramal(const string &ramal) {
         setValor(ramal);
     };
 
-    void setValor(const string& ramal)
-    {
+    void setValor(const string &ramal) {
         validar(ramal);
         this->valor = ramal;
     }
@@ -34,8 +31,7 @@ public:
     string getValor() const;
 };
 
-inline string Ramal::getValor() const
-{
+inline string Ramal::getValor() const {
     return valor;
 }
 #endif //GERENCIADOR_HOTEL_UNB_RAMAL_H

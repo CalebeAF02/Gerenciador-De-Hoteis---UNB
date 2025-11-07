@@ -22,7 +22,7 @@ public:
     );
 
     // Versão 2 (Template): Recebe o valor_teste como Template T (para int, float, etc.)
-    template <typename T>
+    template<typename T>
     void testarDominio(
         int esperando_resultado,
         const T &valor_teste, // Agora aceita qualquer tipo (int, float, etc.)
@@ -44,7 +44,7 @@ public:
     );
 
     // Versão 2 (Template): Recebe o valor_teste como Template T (para int, float, etc.)
-    template <typename T>
+    template<typename T>
     void testarEntidade(
         int esperando_resultado,
         const T &valor_teste, // Agora aceita qualquer tipo (int, float, etc.)
@@ -53,7 +53,7 @@ public:
     );
 };
 
-template <typename T>
+template<typename T>
 void SmokeTeste::testarDominio(
     int esperando_resultado,
     const T &valor_teste,
@@ -69,7 +69,7 @@ void SmokeTeste::testarDominio(
     );
 }
 
-template <typename T>
+template<typename T>
 void SmokeTeste::testarEntidade(
     int esperando_resultado,
     const T &valor_teste,

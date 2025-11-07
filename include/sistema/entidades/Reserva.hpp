@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Reserva
-{
+class Reserva {
 private:
     Data chegada;
     Data partida;
@@ -21,53 +20,44 @@ private:
 public:
     Reserva() = default;
 
-    Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo)
-    {
+    Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo) {
         setChegada(chegada);
         setPartida(partida);
         setDinheiro(dinheiro);
         setCodigo(codigo);
     };
 
-    void setChegada(const Data& newChegada)
-    {
+    void setChegada(const Data &newChegada) {
         this->chegada = newChegada;
     };
 
-    void setPartida(const Data& newPartida)
-    {
+    void setPartida(const Data &newPartida) {
         this->partida = newPartida;
     };
 
-    void setDinheiro(const Dinheiro& newDinheiro)
-    {
+    void setDinheiro(const Dinheiro &newDinheiro) {
         this->dinheiro = newDinheiro;
     };
 
-    void setCodigo(const Codigo& newCodigo)
-    {
+    void setCodigo(const Codigo &newCodigo) {
         this->codigo = newCodigo;
     };
 
 
     //Get
-    Data getChegada() const
-    {
+    Data getChegada() const {
         return chegada;
     };
 
-    Data getPartida() const
-    {
+    Data getPartida() const {
         return partida;
     };
 
-    int getDinheiro() const
-    {
+    int getDinheiro() const {
         return dinheiro.getValor();
     };
 
-    string getCodigo() const
-    {
+    string getCodigo() const {
         return codigo.getValor();
     };
 };
