@@ -6,7 +6,13 @@
 
 #include "sqlite3.h"
 
-void Sistema::rodandoSistema() {
+void Sistema::iniciar() {
+    while (getExecutandoSistema()) {
+        exibirMenu();
+    }
+}
+
+void Sistema::exibirMenu() {
     Menu menu;
 
     int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
@@ -21,7 +27,7 @@ void Sistema::rodandoSistema() {
             cout << "Encerrando o sistema..." << endl;
         } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
             Email emailAcessar;
-            exibirMenu();
+            exibirMenuDoGerente();
         } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
             controladorHospede.exibirMenu();
         }
@@ -29,7 +35,7 @@ void Sistema::rodandoSistema() {
 };
 
 
-void Sistema::exibirMenu() {
+void Sistema::exibirMenuDoGerente() {
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");

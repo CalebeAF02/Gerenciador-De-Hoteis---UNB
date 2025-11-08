@@ -33,44 +33,33 @@ using namespace std;
 #define MODO_PRODUCAO 0
 #define MODO_SMOKE 1
 
-#define MODO_ATUAL MODO_SMOKE
+#define MODO_ATUAL MODO_PRODUCAO
 
 //-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {
     TestandoSmoke teste;
-    teste.ExecutarSmokeTest();
+    teste.executarSmokeTest();
+    InterfaceDeTeste::mostrarRelatorioDeTestes();
 }
 void executarSistema() {
     BancoDeDados banco;
     banco.criandoBancoDeDados();
 
     Sistema sistema;
-    sistema.menuSistema();
+    sistema.iniciar();
 }
 //-----------------------------------------------------------------------------------------------------------
 int main() {
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
             executandoNovoSmoke();
-            InterfaceDeTeste::mostrarSumarioGeral();
-
-            BancoDeDados bancoModoSmokeTestes;
-            bancoModoSmokeTestes.criandoBancoDeDados();
-
-            Sistema sistemaModoSmokeTestes;
-            sistemaModoSmokeTestes.menuSistema();
             break;
         }
         case MODO_PRODUCAO: {
-            InterfaceDeTeste::mostrarSumarioGeral();
-
             BancoDeDados bancoModoTestes;
             bancoModoTestes.criandoBancoDeDados();
 
-            Sistema sistemaProducao;
-            while (sistemaProducao.getExecutandoSistema()) {
-                sistemaProducao.rodandoSistema();
-            }
+            executarSistema();
             break;
         }
     }

@@ -26,7 +26,7 @@
 
 using namespace std;
 
-void TestandoSmoke::ExecutarSmokeTest() {
+void TestandoSmoke::executarSmokeTest() {
     ConsoleFormatter::MostrarTituloEmCaixa("TESTE FUMACA (SMOKE TEST) - EXECUCAO INTEGRADA");
 
     //------------------------------------------------------------------------------------------------------------------

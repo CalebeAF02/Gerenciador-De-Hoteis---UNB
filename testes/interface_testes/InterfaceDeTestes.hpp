@@ -42,7 +42,7 @@ public:
     // Contadores e registro de falha
     static void registrarFalha(const string &dominio, const string &entrada, const string &erro);
 
-    static void mostrarSumarioGeral();
+    static void mostrarRelatorioDeTestes();
 
     // geters
     static int getTestes();

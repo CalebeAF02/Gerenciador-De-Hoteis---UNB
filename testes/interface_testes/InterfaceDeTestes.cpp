@@ -49,7 +49,7 @@ void InterfaceDeTeste::registrarFalha(const string &dominio, const string &entra
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void InterfaceDeTeste::mostrarSumarioGeral() {
+void InterfaceDeTeste::mostrarRelatorioDeTestes() {
     ConsoleFormatter::MostrarTituloEmCaixa("RESUMO GERAL DOS TESTES");
     cout << " > Total de Testes Executados: " << InterfaceDeTeste::getTestes() << endl;
     cout << " > Resultados Corretos (OK):   " << InterfaceDeTeste::getTestesOk() << endl;

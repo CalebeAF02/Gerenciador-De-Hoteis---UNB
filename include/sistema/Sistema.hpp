@@ -28,16 +28,19 @@ private:
     ControladorInterfaceGerente controladorGerente;
     ControladorInterfaceHospede controladorHospede;
 
-public:
     void menuSistema() {
-        Sistema::rodandoSistema();
+        exibirMenu();
     };
 
-    void rodandoSistema();
+    void exibirMenu();
 
     bool getExecutandoSistema();
 
-    void exibirMenu();
+    void exibirMenuDoGerente();
+
+public:
+    void iniciar();
+
 };
 
 inline bool Sistema::getExecutandoSistema() {

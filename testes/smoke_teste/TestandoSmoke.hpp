@@ -24,7 +24,7 @@ using namespace std;
 
 class TestandoSmoke {
 public:
-    void ExecutarSmokeTest();
+    void executarSmokeTest();
 };
 
 
