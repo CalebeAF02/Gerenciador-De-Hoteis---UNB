@@ -14,11 +14,6 @@
 class TesteRamal : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    // Retorna o nome do grupo de testes.
-    string nomeDoTeste() const override {
-        return "Teste de Dominio: Ramal";
-    }
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRAMAL_H

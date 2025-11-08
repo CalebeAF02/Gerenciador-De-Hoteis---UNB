@@ -30,28 +30,21 @@ public:
     // Métodos virtuais obrigatórios
     virtual void executar() = 0;
 
-    virtual string nomeDoTeste() const = 0;
-
     virtual ~InterfaceDeTeste() = default;
 
     // Métodos utilitários (usados pelo SmokeTest)
     static void checaResultado(int esperando_resultado, int resultado_teste);
 
-    static void apresentacaoTeste(string valor);
+    static void apresentacaoTeste(const string &valor);
 
-    static void apresentacaoTeste(int valor);
+    static void apresentacaoTeste(const int &valor);
 
     // Contadores e registro de falha
-    static void setTestes(int contTodalTestes);
-
-    static void setTestesOk(int contTodalTestesOk);
-
-    static void setTestesProblema(int contTodalTestesProblema);
-
     static void registrarFalha(const string &dominio, const string &entrada, const string &erro);
 
     static void mostrarSumarioGeral();
 
+    // geters
     static int getTestes();
 
     static int getTestesOk();
@@ -59,4 +52,15 @@ public:
     static int getTestesProblema();
 };
 
+inline int InterfaceDeTeste::getTestes() {
+    return contTodalTestes;
+}
+
+inline int InterfaceDeTeste::getTestesOk() {
+    return contTodalTestesOk;
+}
+
+inline int InterfaceDeTeste::getTestesProblema() {
+    return contTodalTestesProblema;
+}
 #endif // TESTE_INCLUDE

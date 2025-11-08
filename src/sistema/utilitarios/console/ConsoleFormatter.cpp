@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <limits>
-
+//-----------------------------------------------------------------------------------------------------------
 void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
     int i = 0;
     while (i < (qntCaracteres)) {
@@ -11,17 +11,16 @@ void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
         i++;
     }
 };
-
-// 1. Mostrar Título em Caixa (Versão centralizada)
+//-----------------------------------------------------------------------------------------------------------
 void ConsoleFormatter::MostrarTituloEmCaixa(const string &titulo) {
-    const int LARGURA = 50;
+    const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
     cout << "\n";
     RepetirCaracter(LARGURA, '=');
     cout << "\n";
 
-    // Centraliza o texto dentro da largura
-    int padding_total = LARGURA - titulo.length() - 2; // -2 para as bordas
+    // Centralização
+    int padding_total = LARGURA - titulo.length() - 2;
     int padding_esq = padding_total / 2;
     int padding_dir = padding_total - padding_esq;
 
@@ -32,10 +31,9 @@ void ConsoleFormatter::MostrarTituloEmCaixa(const string &titulo) {
     cout << "|" << endl;
 
     RepetirCaracter(LARGURA, '=');
-    cout << "\n\n";
+    cout << "\n";
 };
-
-// 2. Separador de Categoria (Para Testes Válidos/Inválidos)
+//-----------------------------------------------------------------------------------------------------------
 void ConsoleFormatter::MostrarSeparadorCategoria(const string &titulo) {
     const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
@@ -57,24 +55,112 @@ void ConsoleFormatter::MostrarSeparadorCategoria(const string &titulo) {
     RepetirCaracter(LARGURA, '-');
     cout << "\n";
 };
-
-void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, int numero) {
+//-----------------------------------------------------------------------------------------------------------
+void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const int &numero) {
     cout << "------------------------------\n";
     cout << "| [" << numero << "] " << texto << "\n";
     cout << "------------------------------\n";
 };
-
 void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const string &numero) {
     cout << "------------------------------\n";
     cout << "| [" << numero << "] " << texto << "\n";
     cout << "------------------------------\n";
 };
-
-void ConsoleFormatter::MostrarOpcaoSimples(const string &texto, int numero) {
+//-----------------------------------------------------------------------------------------------------------
+void ConsoleFormatter::MostrarSubOpcao(const string &texto, const int &numero) {
     cout << "[" << numero << "] " << texto << "\n";
 };
+//-----------------------------------------------------------------------------------------------------------
+void ConsoleFormatter::MostrarTabelaGenerica(
+    const string &titulo,
+    const vector<string> &titulosTabela,
+    const vector<vector<string> > &dadosTabela
+) {
+    if (dadosTabela.empty()) {
+        cout << "Nenhum dado para exibir.\n";
+        return;
+    }
 
-// 4. Separador simples (para usar entre testes individuais ou seções curtas)
-void ConsoleFormatter::MostrarSeparadorDeTeste() {
-    cout << "--------------------------------------------------------\n";
-}
+    if (!titulo.empty()) {
+        MostrarTituloEmCaixa(titulo);
+    }
+
+    // O número de colunas é determinado pelo cabeçalho
+    int numColunas = titulosTabela.size();
+    if (numColunas == 0 || dadosTabela[0].size() != numColunas) {
+        cout << "Erro: Headers e dados incompatíveis.\n";
+        return;
+    }
+
+    // =======================================================
+    // ETAPA 1: CALCULAR OS TAMANHOS MÁXIMOS
+    // =======================================================
+    vector<int> maxLarguras(numColunas);
+    int margem = 2; // Margem de 2 espaços
+
+    // Inicializa com o tamanho dos cabeçalhos
+    for (int j = 0; j < numColunas; ++j) {
+        maxLarguras[j] = titulosTabela[j].length();
+    }
+
+    // Itera sobre todos os dados para encontrar a largura máxima
+    for (const auto &linha: dadosTabela) {
+        for (int j = 0; j < numColunas; ++j) {
+            if (linha[j].length() > maxLarguras[j]) {
+                maxLarguras[j] = linha[j].length();
+            }
+        }
+    }
+
+    // Adiciona a margem
+    for (int j = 0; j < numColunas; ++j) {
+        maxLarguras[j] += margem;
+    }
+
+    // Calcula o tamanho total da linha da tabela
+    int larguraTotal = 0;
+    for (int largura: maxLarguras) {
+        larguraTotal += largura;
+    }
+    // Adiciona as bordas verticais ('|' no início, fim, e entre colunas)
+    larguraTotal += (numColunas + 1);
+
+
+    // =======================================================
+    // ETAPA 2: EXIBIR O CABEÇALHO
+    // =======================================================
+
+    RepetirCaracter(larguraTotal, '-');
+    cout << "\n|";
+
+    for (int j = 0; j < numColunas; ++j) {
+        cout << " " << titulosTabela[j]; // 1 espaço inicial
+        // Completa com espaços brancos: largura total da coluna - (tamanho do header + 1 espaço inicial)
+        RepetirCaracter(maxLarguras[j] - titulosTabela[j].length() - 1, ' ');
+        cout << "|";
+    }
+    cout << "\n";
+
+    RepetirCaracter(larguraTotal, '-');
+
+
+    // =======================================================
+    // ETAPA 3: EXIBIR OS DADOS
+    // =======================================================
+
+    for (const auto &linha: dadosTabela) {
+        cout << "\n|";
+
+        for (int j = 0; j < numColunas; ++j) {
+            cout << " " << linha[j]; // 1 espaço inicial
+            // Completa com espaços brancos: largura total da coluna - (tamanho do dado + 1 espaço inicial)
+            RepetirCaracter(maxLarguras[j] - linha[j].length() - 1, ' ');
+            cout << "|";
+        }
+        cout << "\n";
+
+        RepetirCaracter(larguraTotal, '-');
+    }
+    cout << "\n";
+};
+//-----------------------------------------------------------------------------------------------------------

@@ -15,11 +15,6 @@
 class TesteCodigo : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    // Retorna o nome do grupo de testes.
-    string nomeDoTeste() const override {
-        return "Teste de Dominio: Codigo";
-    }
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSCODIGOS_H

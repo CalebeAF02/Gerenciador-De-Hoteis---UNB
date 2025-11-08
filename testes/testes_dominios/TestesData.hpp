@@ -13,8 +13,6 @@ using namespace std;
 class TestesData : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    string nomeDoTeste() const override;
 };
 
 

@@ -4,6 +4,7 @@
 #include "SmokeTeste.hpp"
 #include "SmokeTeste.hpp"
 
+//------------------------------------------------------------------------------------------------------------------
 void TesteCapacidade::executar() {
     SmokeTeste smoke_teste;
 

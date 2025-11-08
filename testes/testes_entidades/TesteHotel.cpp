@@ -11,7 +11,7 @@ void TesteHotel::executar() {
     SmokeTeste smoke_teste;
     Hotel hotel1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: HOTEL (ATRIBUIÇÃO DE DOMÍNIOS)");
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: HOTEL (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE NOME
@@ -53,4 +53,5 @@ void TesteHotel::executar() {
         [&hotel1, &codigoStr]() { hotel1.setCodigo(Codigo(codigoStr)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------

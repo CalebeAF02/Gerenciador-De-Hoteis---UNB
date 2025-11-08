@@ -3,16 +3,16 @@
 
 #include <iostream>
 #include <ostream>
+#include <vector>
 
 using namespace std;
 
 // Classe responsável APENAS pela formatação visual de strings no terminal (caixas, títulos, separadores).
 class ConsoleFormatter {
-private:
+public:
     // Função auxiliar para repetir caracteres (herdada do seu projeto original)
     static void RepetirCaracter(int qntCaracteres, char c);
 
-public:
     // 1. Caixas principais (para Títulos de Módulos, Menus)
     static void MostrarTituloEmCaixa(const string &titulo);
 
@@ -20,14 +20,19 @@ public:
     static void MostrarSeparadorCategoria(const string &titulo);
 
     // 3. Opções de menu (já em uso na sua controladora)
-    static void MostrarOpcaoEmCaixa(const string &texto, int numero);
+    static void MostrarOpcaoEmCaixa(const string &texto, const int &numero);
 
     static void MostrarOpcaoEmCaixa(const string &texto, const string &numero);
 
-    static void MostrarOpcaoSimples(const string &texto, int numero);
+    // 4. Sub Opcoes
+    static void MostrarSubOpcao(const string &texto, const int &numero);
 
-    // 4. Utilitário para resumo de teste
-    static void MostrarSeparadorDeTeste();
+    // 5. Exibir em tabela
+    static void MostrarTabelaGenerica(
+        const string &titulo, // Nome do 1º argumento: titulo
+        const vector<string> &headers, // Nome do 2º argumento: headers
+        const vector<vector<string> > &data // Nome do 3º argumento: data
+    );
 };
 
 #endif

@@ -4,7 +4,7 @@
 
 #include "Menu.hpp"
 
-
+//-----------------------------------------------------------------------------------------------------------
 int Menu::adcionarItens(string nome) {
     contador++;
     // emplace_back adiciona ao vinal do vetor.
@@ -12,11 +12,12 @@ int Menu::adcionarItens(string nome) {
 
     return contador;
 };
-
+//-----------------------------------------------------------------------------------------------------------
 vector<MenuItem> Menu::listar() {
     return menuItens;
 }
 
+//-----------------------------------------------------------------------------------------------------------
 int Menu::executa(string tituloStr) {
     ConsoleFormatter::MostrarTituloEmCaixa(tituloStr);
     ConsoleIO::PrintMensagem("Selecione a opcao:");
@@ -35,3 +36,5 @@ int Menu::executa(string tituloStr) {
     }
     return opcaoInt;
 }
+
+//-----------------------------------------------------------------------------------------------------------

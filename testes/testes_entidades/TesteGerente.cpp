@@ -42,7 +42,7 @@ void TesteGerente::executar() {
     // =========================================================================
     // 3. ATRIBUIÇÃO DE RAMAL (Usando um valor válido de 2 dígitos)
     // =========================================================================
-    // 🚨 Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
+    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
     const string ramalStr = "49";
     ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Ramal Valido (00-50)");
 

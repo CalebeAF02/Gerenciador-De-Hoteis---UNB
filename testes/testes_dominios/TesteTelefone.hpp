@@ -15,10 +15,6 @@ class TesteTelefone : public InterfaceDeTeste {
 public:
     void executar() override;
 
-    // Retorna o nome do grupo de testes.
-    string nomeDoTeste() const override {
-        return "Teste de Dominio: Telefone";
-    }
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSTELEFONE_H

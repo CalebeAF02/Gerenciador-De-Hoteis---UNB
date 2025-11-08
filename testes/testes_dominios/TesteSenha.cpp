@@ -44,7 +44,7 @@ void TesteSenha::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Atende todas as regras)");
+    ConsoleFormatter::MostrarTituloEmCaixa("2. Casos de Validade (Atende todas as regras)");
 
     vector<string> senhasValidas = {
         "a1!B3",

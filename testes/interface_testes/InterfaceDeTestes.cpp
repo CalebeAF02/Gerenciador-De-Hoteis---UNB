@@ -5,6 +5,7 @@ int InterfaceDeTeste::contTodalTestesOk = 0;
 int InterfaceDeTeste::contTodalTestesProblema = 0;
 
 vector<string> InterfaceDeTeste::listaFalhas;
+
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::checaResultado(int esperando_resultado, int resultado_teste) {
     bool sucesso = (esperando_resultado == resultado_teste);
@@ -31,12 +32,12 @@ void InterfaceDeTeste::checaResultado(int esperando_resultado, int resultado_tes
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void InterfaceDeTeste::apresentacaoTeste(string valor) {
+void InterfaceDeTeste::apresentacaoTeste(const string &valor) {
     cout << " > Testando entrada: [" << valor << "]";
     contTodalTestes++;
 }
 
-void InterfaceDeTeste::apresentacaoTeste(int valor) {
+void InterfaceDeTeste::apresentacaoTeste(const int &valor) {
     cout << " > Testando entrada: [" << valor << "]";
     contTodalTestes++;
 }
@@ -48,52 +49,26 @@ void InterfaceDeTeste::registrarFalha(const string &dominio, const string &entra
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void InterfaceDeTeste::setTestes(int contTodalTestes) {
-    InterfaceDeTeste::contTodalTestes = contTodalTestes;
-}
-
-void InterfaceDeTeste::setTestesOk(int contTodalTestesOk) {
-    InterfaceDeTeste::contTodalTestesOk = contTodalTestesOk;
-}
-
-void InterfaceDeTeste::setTestesProblema(int contTodalTestesProblema) {
-    InterfaceDeTeste::contTodalTestesProblema = contTodalTestesProblema;
-}
-
-//-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::mostrarSumarioGeral() {
-    cout << "\n=======================================================" << endl;
-    cout << "                 RESUMO GERAL DOS TESTES                 " << endl;
-    cout << "=======================================================" << endl;
-    cout << "Total de Testes Executados: " << InterfaceDeTeste::getTestes() << endl;
-    cout << "Resultados Corretos (OK):   " << InterfaceDeTeste::getTestesOk() << endl;
-    cout << "Problemas de Validacao:     " << InterfaceDeTeste::getTestesProblema() << endl;
-    cout << "-------------------------------------------------------" << endl; // Separador
+    ConsoleFormatter::MostrarTituloEmCaixa("RESUMO GERAL DOS TESTES");
+    cout << " > Total de Testes Executados: " << InterfaceDeTeste::getTestes() << endl;
+    cout << " > Resultados Corretos (OK):   " << InterfaceDeTeste::getTestesOk() << endl;
+    cout << " > Problemas de Validacao:     " << InterfaceDeTeste::getTestesProblema() << endl;
+    cout << "----------------------------------------------------------------------" << endl; // Separador
     if (listaFalhas.empty()) {
         ConsoleIO::PrintMensagem("STATUS FINAL: SUCESSO EM TODOS OS TESTES UNITARIOS!");
     } else {
         // Exibe a mensagem de falha e os detalhes
         ConsoleIO::PrintMensagem(
             "STATUS FINAL: FALHA EM " + to_string(listaFalhas.size()) + " TESTES. REQUER REVISAO.");
+
         ConsoleFormatter::MostrarSeparadorCategoria("DETALHES DAS FALHAS");
+
         for (const auto &falha: listaFalhas) {
             ConsoleIO::PrintMensagem("  - " + falha);
         }
     }
-    cout << "=======================================================" << endl;
-}
-
-//-------------------------------------------------------------------
-int InterfaceDeTeste::getTestes() {
-    return contTodalTestes;
-}
-
-int InterfaceDeTeste::getTestesOk() {
-    return contTodalTestesOk;
-}
-
-int InterfaceDeTeste::getTestesProblema() {
-    return contTodalTestesProblema;
+    cout << "======================================================================" << endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------

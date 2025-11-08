@@ -7,11 +7,6 @@
 class TesteNome : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    // Retorna o nome do grupo de testes.
-    string nomeDoTeste() const override {
-        return "Teste de Dominio: Nome";
-    }
 };
 
 #endif // TESTSNOME_HPP

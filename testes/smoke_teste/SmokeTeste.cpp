@@ -83,5 +83,4 @@ void SmokeTeste::testarEntidade(
         InterfaceDeTeste::registrarFalha(entidade, valor_teste, erro_capturado);
     }
 };
-
 //-----------------------------------------------------------------------------------------------------------

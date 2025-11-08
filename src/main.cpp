@@ -1,13 +1,15 @@
-#include "SmokeTeste.hpp"
-#include "sistema/Sistema.hpp"
+#include "Sistema.hpp"
 
 #include <iostream>
 #include <string>
 #include "sqlite3.h"
-#include "TestandoSmoke.hpp"
-#include "../include/sistema/utilitarios/console/ConsoleFormatter.hpp"
 
+#include "ConsoleFormatter.hpp"
+
+#include "SmokeTeste.hpp"
+#include "TestandoSmoke.hpp"
 #include "interface_testes/InterfaceDeTestes.hpp"
+
 #include "testes_dominios/TesteCapacidade.hpp"
 #include "testes_dominios/TesteCartao.hpp"
 #include "testes_dominios/TesteCodigo.hpp"
@@ -33,11 +35,11 @@ using namespace std;
 
 #define MODO_ATUAL MODO_SMOKE
 
+//-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {
     TestandoSmoke teste;
     teste.ExecutarSmokeTest();
 }
-
 void executarSistema() {
     BancoDeDados banco;
     banco.criandoBancoDeDados();
@@ -45,7 +47,7 @@ void executarSistema() {
     Sistema sistema;
     sistema.menuSistema();
 }
-
+//-----------------------------------------------------------------------------------------------------------
 int main() {
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
@@ -74,6 +76,7 @@ int main() {
     }
     return 0;
 };
+//-----------------------------------------------------------------------------------------------------------
 /*
  * Edicoes a fazer :
  *
@@ -92,3 +95,4 @@ int main() {
  * 3) Nao permite exclusoes que gerem inconcistencias!
  *
  */
+//-----------------------------------------------------------------------------------------------------------

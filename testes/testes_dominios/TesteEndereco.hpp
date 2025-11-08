@@ -14,17 +14,6 @@
 class TesteEndereco : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    string nomeDoTeste() const override { return "TestsEndereco"; }
-
-private:
-    void testarEnderecosValidos();
-
-    void testarEnderecosComCaracteresInvalidos();
-
-    void testarEnderecosComInicioOuFimInvalido();
-
-    void testarEnderecosMuitoLongos();
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSENDERECO_H

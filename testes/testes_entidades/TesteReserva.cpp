@@ -11,7 +11,7 @@ void TesteReserva::executar() {
     SmokeTeste smoke_teste;
     Reserva reserva1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: RESERVA (ATRIBUIÇÃO DE DOMÍNIOS)");
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: RESERVA (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE CÓDIGO

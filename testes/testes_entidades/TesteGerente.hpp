@@ -22,9 +22,6 @@ public:
 
     void executar() override;
 
-    string nomeDoTeste() const override {
-        return "Teste de Entidade: Gerente";
-    }
 };
 
 #endif // TESTSGERENTE_H

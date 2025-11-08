@@ -29,9 +29,10 @@ using namespace std;
 void TestandoSmoke::ExecutarSmokeTest() {
     ConsoleFormatter::MostrarTituloEmCaixa("TESTE FUMACA (SMOKE TEST) - EXECUCAO INTEGRADA");
 
+    //------------------------------------------------------------------------------------------------------------------
     // Lista de testes_dominios
     vector<unique_ptr<InterfaceDeTeste> > testes_dominios;
-    //------------------------------------------------------------------------------------------------------------------
+
     testes_dominios.push_back(make_unique<TesteNome>());
     testes_dominios.push_back(make_unique<TesteEmail>());
     testes_dominios.push_back(make_unique<TesteRamal>());
@@ -44,14 +45,12 @@ void TestandoSmoke::ExecutarSmokeTest() {
     testes_dominios.push_back(make_unique<TesteCapacidade>());
     testes_dominios.push_back(make_unique<TesteDinheiro>());
     testes_dominios.push_back(make_unique<TestesData>());
-
     // Executa todos os testes_dominios
     for (unique_ptr<InterfaceDeTeste> &teste: testes_dominios) {
-        cout << "\nExecutando: " << teste->nomeDoTeste() << endl;
         teste->executar();
     }
+
     //------------------------------------------------------------------------------------------------------------------
-    /*
     // Lista de testes_entidades
     vector<unique_ptr<InterfaceDeTeste> > testes_entidades;
 
@@ -60,14 +59,9 @@ void TestandoSmoke::ExecutarSmokeTest() {
     testes_entidades.push_back(make_unique<TesteHotel>());
     testes_entidades.push_back(make_unique<TesteQuarto>());
     testes_entidades.push_back(make_unique<TesteReserva>());
-
     // Executa todos os testes_entidades
+
     for (unique_ptr<InterfaceDeTeste> &teste: testes_entidades) {
-        cout << "\nExecutando: " << teste->nomeDoTeste() << endl;
         teste->executar();
     }
-    */
-    //------------------------------------------------------------------------------------------------------------------
-}
-
-//------------------------------------------------------------------------------------------------------------------
+};

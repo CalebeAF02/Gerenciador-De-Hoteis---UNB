@@ -14,11 +14,6 @@
 class TesteDinheiro : public InterfaceDeTeste {
 public:
     void executar() override;
-
-    // Retorna o nome do grupo de testes.
-    string nomeDoTeste() const override {
-        return "Teste de Dominio: Dinheiro";
-    }
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSDINHEIRO_H

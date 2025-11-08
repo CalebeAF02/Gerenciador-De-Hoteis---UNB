@@ -5,7 +5,7 @@
 #include "../../../include/sistema/controladores_entidades/ControladorInterfaceGerente.hpp"
 
 #include "ControladorInterfaceGerente.hpp"
-
+//-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenu() {
     Menu menu;
 
@@ -45,7 +45,7 @@ void ControladorInterfaceGerente::exibirMenu() {
         }
     };
 }
-
+//-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenuCRUDGerentes() {
     bool status = true;
     while (this->getEstaLogado()) {
@@ -57,7 +57,7 @@ void ControladorInterfaceGerente::exibirMenuCRUDGerentes() {
     };
 }
 
-
+//-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::criar() {
     bool criado = false;
     bool tudoOK = true;
@@ -135,7 +135,7 @@ void ControladorInterfaceGerente::criar() {
         }
     }
 };
-
+//-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::ler() {
     vector<Gerente *> listaGerentes = dao.listarBD();
 
@@ -144,16 +144,23 @@ void ControladorInterfaceGerente::ler() {
         return;
     }
 
-    ConsoleFormatter::MostrarTituloEmCaixa("Lista de Gerentes");
+    // 1. CABEÇALHOS
+    vector<string> titulosTabela = {"Nome", "Email", "Ramal"};
 
-    for (const auto &g: listaGerentes) {
-        cout << "Nome: " << g->getNome() << endl;
-        cout << "Email: " << g->getEmail() << endl;
-        cout << "Ramal: " << g->getRamal() << endl;
-        cout << "-----------------------------\n";
+    // 2. DADOS (Iterar sobre listaGerentes e extrair)
+    vector<vector<string> > dadosTabela;
+    for (const Gerente *const &g: listaGerentes) {
+        dadosTabela.push_back({
+            g->getNome(),
+            g->getEmail(),
+            g->getRamal()
+        });
     }
-}
 
+    // 3. CHAMADA GENÉRICA
+    ConsoleFormatter::MostrarTabelaGenerica("Lista de Gerentes", titulosTabela, dadosTabela);
+}
+//-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::atualizar() {
     if (gerenteLogado == nullptr) {
         ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
@@ -223,7 +230,7 @@ void ControladorInterfaceGerente::atualizar() {
             ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------
 bool ControladorInterfaceGerente::remover() {
     cout << "Informe o Email: \n";
     string emailStr = ConsoleIO::LerLinha();
@@ -236,3 +243,4 @@ bool ControladorInterfaceGerente::remover() {
     }
     return status;
 }
+//-----------------------------------------------------------------------------------------------------------

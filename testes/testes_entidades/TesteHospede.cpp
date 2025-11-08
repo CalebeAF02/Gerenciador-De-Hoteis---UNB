@@ -8,7 +8,7 @@ void TesteHospede::executar() {
     SmokeTeste smoke_teste;
     Hospede hospede1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: HOSPEDE (ATRIBUIÇÃO DE DOMÍNIOS)");
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: HOSPEDE (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE NOME (Herdado de Pessoa)

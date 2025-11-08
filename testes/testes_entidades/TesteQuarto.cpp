@@ -11,7 +11,7 @@ void TesteQuarto::executar() {
     SmokeTeste smoke_teste;
     Quarto quarto1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: QUARTO (ATRIBUIÇÃO DE DOMÍNIOS)");
+    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: QUARTO (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE NÚMERO
@@ -58,7 +58,7 @@ void TesteQuarto::executar() {
     // =========================================================================
     // 4. ATRIBUIÇÃO DE RAMAL (Usando um valor válido de 2 dígitos)
     // =========================================================================
-    // 🚨 Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
+    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
     const string ramalStr = "49";
     ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Ramal Valido (00-50)");
 
@@ -70,4 +70,5 @@ void TesteQuarto::executar() {
         [&quarto1, &ramalStr]() { quarto1.setRamal(Ramal(ramalStr)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------
