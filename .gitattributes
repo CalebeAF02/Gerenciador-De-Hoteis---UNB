@@ -2,14 +2,11 @@
 # --- Correção do Classificador de Linguagens do GitHub (Linguist) ---
 
 # 1. Ignora o código-fonte C do SQLite (o principal causador da alta contagem de C)
-src/libs/sqlite/sqlite3.c linguist-vendored
+libs/sqlite/sqlite3.c linguist-vendored
 
 # 2. Ignora o arquivo de header C do SQLite na contagem, mas permite a compilação
-include/libs/sqlite/sqlite3.h linguist-vendored
+libs/sqlite/sqlite3.h linguist-vendored
 
-# 3. Ignora a biblioteca estática pré-compilada (.a) na contagem (boa prática)
-libs/libsqlite3.a linguist-vendored
-
-# 4. Garante que todos os outros headers (.h e .hpp) do seu projeto sejam tratados como C++
+# 3. Garante que todos os outros headers (.h e .hpp) do seu projeto sejam tratados como C++
 *.h linguist-language=C++
 *.hpp linguist-language=C++
