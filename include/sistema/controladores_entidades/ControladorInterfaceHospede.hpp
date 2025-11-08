@@ -27,7 +27,7 @@ class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu,
                                     public InterfaceApresentacaoCRUD {
 private:
     bool executando = true;
-    PersistenciaHospede dao;
+    PersistenciaHospede persistencia;
 
 public:
     // Construtor dos ServicosHospede

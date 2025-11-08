@@ -24,7 +24,7 @@ void ControladorInterfaceGerente::exibirMenu() {
             this->sair();
             cout << "Voce Saiu da Central de servicos e foi deslogado!\n";
         } else if (opcao == OPCAO_GERENCIE_GERENTES) {
-            exibirMenuCRUDGerentes();
+            exibirMenuCRUD();
         } else if (opcao == OPCAO_GERENCIE_HOSPEDES) {
             ControladorInterfaceHospede servicosHospede;
             servicosHospede.exibirMenuCRUD();
@@ -46,7 +46,7 @@ void ControladorInterfaceGerente::exibirMenu() {
     };
 }
 //-----------------------------------------------------------------------------------------------------------
-void ControladorInterfaceGerente::exibirMenuCRUDGerentes() {
+void ControladorInterfaceGerente::exibirMenuCRUD() {
     bool status = true;
     while (this->getEstaLogado()) {
         FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
@@ -56,7 +56,6 @@ void ControladorInterfaceGerente::exibirMenuCRUDGerentes() {
         }
     };
 }
-
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::criar() {
     bool criado = false;
@@ -67,12 +66,6 @@ void ControladorInterfaceGerente::criar() {
         Gerente *gerente = new Gerente();
 
         if (gerente) {
-            //Preencher atribultos com validacao
-            if (tudoOK == false) {
-                cout << "\nRetornando...\n\n";
-                break;
-            }
-
             ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Gerente");
 
             cout << "Informe o Nome: \n";
@@ -114,8 +107,8 @@ void ControladorInterfaceGerente::criar() {
                 }
             }
             if (tudoOK) {
-                PersistenciaGerente dao;
-                bool sucesso = dao.inserirAoBD(*gerente);
+                PersistenciaGerente persistencia;
+                bool sucesso = persistencia.inserir(*gerente);
 
                 if (sucesso) {
                     criado = true;
@@ -137,9 +130,9 @@ void ControladorInterfaceGerente::criar() {
 };
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::ler() {
-    vector<Gerente *> listaGerentes = dao.listarBD();
+    vector<Gerente *> lista = persistencia.listar();
 
-    if (listaGerentes.empty()) {
+    if (lista.empty()) {
         cout << "Nenhum gerente cadastrado.\n";
         return;
     }
@@ -149,7 +142,7 @@ void ControladorInterfaceGerente::ler() {
 
     // 2. DADOS (Iterar sobre listaGerentes e extrair)
     vector<vector<string> > dadosTabela;
-    for (const Gerente *const &g: listaGerentes) {
+    for (const Gerente *const &g: lista) {
         dadosTabela.push_back({
             g->getNome(),
             g->getEmail(),
@@ -168,7 +161,7 @@ void ControladorInterfaceGerente::atualizar() {
         return;
     }
 
-    PersistenciaGerente dao;
+    PersistenciaGerente persistencia;
     bool alterado = false;
 
     ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
@@ -223,7 +216,7 @@ void ControladorInterfaceGerente::atualizar() {
     }
 
     if (alterado) {
-        bool sucesso = dao.atualizarGerenteNoBD(*gerenteLogado);
+        bool sucesso = persistencia.atualizar(*gerenteLogado);
         if (sucesso)
             ConsoleIO::PrintMensagem("Cadastro atualizado com sucesso!");
         else
@@ -234,7 +227,7 @@ void ControladorInterfaceGerente::atualizar() {
 bool ControladorInterfaceGerente::remover() {
     cout << "Informe o Email: \n";
     string emailStr = ConsoleIO::LerLinha();
-    bool status = dao.excluirPorEmailDoBD(gerenteLogado);
+    bool status = persistencia.excluirPorEmail(gerenteLogado);
 
     if (status == true) {
         cout << "Foi excluido com sucesso!\n";

@@ -22,23 +22,20 @@ class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticav
                                     public InterfaceApresentacaoCRUD {
 private:
     Gerente *gerenteLogado;
-    PersistenciaGerente dao;
+    PersistenciaGerente persistencia;
     bool executando = true;
 
 public:
     // Acessando servicos
     void exibirMenu() override;
 
-    // Menu CRUD
-    void exibirMenuCRUDGerentes();
+    // Chama o Menu crud
+    void exibirMenuCRUD();
 
-    // Metods CRUD
+    // Menu CRUD herdados da interface
     void criar() override;
-
     void ler() override;
-
     void atualizar() override;
-
     bool remover() override;
 
     void setGerenteLogado(Gerente *gerente) {

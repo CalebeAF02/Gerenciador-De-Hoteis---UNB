@@ -5,6 +5,7 @@
 #include "sqlite3.h"
 
 #include "ConsoleFormatter.hpp"
+#include "SistemaHacker.hpp"
 
 #include "SmokeTeste.hpp"
 #include "TestandoSmoke.hpp"
@@ -32,8 +33,9 @@ using namespace std;
 
 #define MODO_PRODUCAO 0
 #define MODO_SMOKE 1
+#define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_PRODUCAO
+#define MODO_ATUAL MODO_HACKER
 
 //-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {
@@ -41,6 +43,7 @@ void executandoNovoSmoke() {
     teste.executarSmokeTest();
     InterfaceDeTeste::mostrarRelatorioDeTestes();
 }
+
 void executarSistema() {
     BancoDeDados banco;
     banco.criandoBancoDeDados();
@@ -48,6 +51,15 @@ void executarSistema() {
     Sistema sistema;
     sistema.iniciar();
 }
+
+void burlandoSistema() {
+    BancoDeDados banco;
+    banco.criandoBancoDeDados();
+
+    SistemaHacker sistema_hacker;
+    sistema_hacker.iniciar();
+}
+
 //-----------------------------------------------------------------------------------------------------------
 int main() {
     switch (MODO_ATUAL) {
@@ -60,6 +72,13 @@ int main() {
             bancoModoTestes.criandoBancoDeDados();
 
             executarSistema();
+            break;
+        }
+        case MODO_HACKER: {
+            BancoDeDados bancoModoTestes;
+            bancoModoTestes.criandoBancoDeDados();
+
+            burlandoSistema();
             break;
         }
     }

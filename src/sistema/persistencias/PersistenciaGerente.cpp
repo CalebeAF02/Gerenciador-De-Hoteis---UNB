@@ -4,7 +4,7 @@
 
 #include "PersistenciaGerente.hpp"
 
-bool PersistenciaGerente::inserirAoBD(Gerente &gerente) {
+bool PersistenciaGerente::inserir(Gerente &gerente) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;
@@ -40,7 +40,7 @@ bool PersistenciaGerente::inserirAoBD(Gerente &gerente) {
     return true;
 }
 
-vector<Gerente *> PersistenciaGerente::listarBD() {
+vector<Gerente *> PersistenciaGerente::listar() {
     vector<Gerente *> listaGerentes;
 
     BancoDeDados banco;
@@ -75,7 +75,7 @@ vector<Gerente *> PersistenciaGerente::listarBD() {
     return listaGerentes;
 }
 
-bool PersistenciaGerente::autenticarGerentePeloBD(const string &email, const string &senha) {
+bool PersistenciaGerente::autenticarGerente(const string &email, const string &senha) {
     BancoDeDados banco;
 
     if (email.empty() || senha.empty())
@@ -111,7 +111,7 @@ bool PersistenciaGerente::autenticarGerentePeloBD(const string &email, const str
     return statusAutenticacao;
 }
 
-bool PersistenciaGerente::atualizarGerenteNoBD(const Gerente &gerente) {
+bool PersistenciaGerente::atualizar(const Gerente &gerente) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;
@@ -139,7 +139,7 @@ bool PersistenciaGerente::atualizarGerenteNoBD(const Gerente &gerente) {
     return rc == SQLITE_DONE;
 }
 
-bool PersistenciaGerente::excluirPorEmailDoBD(Gerente *gerenteLogado) {
+bool PersistenciaGerente::excluirPorEmail(Gerente *gerenteLogado) {
     if (gerenteLogado == nullptr) {
         cout << "Nenhum gerente esta logado. Exclusao nao permitida." << endl;
         return false;

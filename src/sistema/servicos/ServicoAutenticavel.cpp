@@ -5,8 +5,8 @@
 #include "ServicoAutenticavel.hpp"
 
 bool ServicoAutenticavel::autenticar(Email &emailCopia, Senha &senhaCopia) {
-    PersistenciaGerente dao;
-    bool gerenteLogado = dao.autenticarGerentePeloBD(emailCopia.getValor(), senhaCopia.getValor());
+    PersistenciaGerente persistencia;
+    bool gerenteLogado = persistencia.autenticarGerente(emailCopia.getValor(), senhaCopia.getValor());
 
     if (gerenteLogado) {
         this->estaLogado = true;

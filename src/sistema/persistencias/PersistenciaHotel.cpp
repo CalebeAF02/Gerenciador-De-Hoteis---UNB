@@ -4,7 +4,7 @@
 
 #include "PersistenciaHotel.hpp"
 
-bool PersistenciaHotel::inserirAoBD(Hotel *hotel) {
+bool PersistenciaHotel::inserir(Hotel *hotel) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;
@@ -25,4 +25,40 @@ bool PersistenciaHotel::inserirAoBD(Hotel *hotel) {
     sqlite3_finalize(stmt);
     banco.fechandoConexao();
     return true;
+}
+
+vector<HotelDTO *> PersistenciaHotel::listar() {
+    vector<HotelDTO *> lista;
+
+    BancoDeDados banco;
+    if (!banco.abrindoConexao())
+        return lista;
+
+    sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
+
+
+    sqlite3_stmt *stmt = nullptr;
+    const char *sql = "SELECT id, nome, endereco, telefone, codigo FROM hoteis;";
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
+        banco.fechandoConexao();
+        return lista;
+    }
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        int id = reinterpret_cast<int>(sqlite3_column_int(stmt, 0));
+        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string endereco = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string telefone = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+
+        HotelDTO *gerenteObj = new HotelDTO(id, nome, endereco, telefone, codigo);
+
+        lista.push_back(gerenteObj);
+    }
+
+    sqlite3_finalize(stmt);
+    banco.fechandoConexao();
+    return lista;
 }

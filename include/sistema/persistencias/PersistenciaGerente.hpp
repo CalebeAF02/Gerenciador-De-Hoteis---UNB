@@ -15,15 +15,15 @@ using namespace std;
 
 class PersistenciaGerente {
 public:
-    bool inserirAoBD(Gerente &gerente);
+    bool inserir(Gerente &gerente);
 
-    vector<Gerente *> listarBD();
+    vector<Gerente *> listar();
 
-    bool autenticarGerentePeloBD(const string &email, const string &senha);
+    bool atualizar(const Gerente &gerente);
 
-    bool atualizarGerenteNoBD(const Gerente &gerente);
+    static bool excluirPorEmail(Gerente *gerenteLogado);
 
-    static bool excluirPorEmailDoBD(Gerente *gerenteLogado);
+    bool autenticarGerente(const string &email, const string &senha);
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H

@@ -57,7 +57,7 @@ public:
 
         const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
         const int OPCAO_CRIAR = menu.adcionarItens("criar");
-        const int OPCAO_LER = menu.adcionarItens("Ler Gerentes");
+        const int OPCAO_LER = menu.adcionarItens("Ler");
         const int OPCAO_ATUALIZAR = menu.adcionarItens("Atualizar");
         const int OPCAO_REMOVER = menu.adcionarItens("Remover");
 

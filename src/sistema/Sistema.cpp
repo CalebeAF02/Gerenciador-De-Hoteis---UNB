@@ -42,7 +42,7 @@ void Sistema::exibirMenuDoGerente() {
     const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
     const int OPCAO_FAZER_LOGIN = menu.adcionarItens("Fazer Login");
 
-    while (executando == true) {
+    while (executando) {
         int opcao = menu.executa("Faca o acesso para liberar os servicos");
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {

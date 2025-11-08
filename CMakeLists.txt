@@ -35,6 +35,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/dominios/Dinheiro.cpp
         src/sistema/dominios/Data.cpp
 
+        # DTO
+        src/sistema/dto/HotelDTO.cpp
+
         # Entidades
         src/sistema/entidades/Gerente.cpp
         src/sistema/entidades/Hospede.cpp
@@ -113,14 +116,19 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # Include - Sqlite
         libs/sqlite/sqlite3.c
+
+        # HACKER
+        src/HACKER/SistemaHacker.cpp
 )
 
 # Diretórios de headers
 target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/include/HACKER
         ${CMAKE_SOURCE_DIR}/include/sistema
         ${CMAKE_SOURCE_DIR}/include/sistema/servicos
         ${CMAKE_SOURCE_DIR}/include/sistema/dominios
+        ${CMAKE_SOURCE_DIR}/include/sistema/dto
         ${CMAKE_SOURCE_DIR}/include/sistema/entidades
         ${CMAKE_SOURCE_DIR}/include/sistema/enum
         ${CMAKE_SOURCE_DIR}/include/sistema/fabricas

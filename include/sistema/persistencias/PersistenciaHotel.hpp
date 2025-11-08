@@ -7,6 +7,7 @@
 
 #include "Hotel.hpp"
 #include "BancoDeDados.hpp"
+#include "HotelDTO.hpp"
 
 #include "iostream"
 #include "sqlite3.h"
@@ -15,7 +16,9 @@ using namespace std;
 
 class PersistenciaHotel {
 public:
-    bool inserirAoBD(Hotel *hotel);
+    bool inserir(Hotel *hotel);
+
+    vector<HotelDTO *> listar();
 };
 
 

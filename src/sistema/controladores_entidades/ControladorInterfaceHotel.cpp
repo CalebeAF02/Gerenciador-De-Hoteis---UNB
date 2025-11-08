@@ -12,6 +12,8 @@ void ControladorInterfaceHotel::exibirMenuCRUD() {
 
     const int OPCAO_VOLTAR_ANTERIOR = menu.adcionarItens("Voltar");
     const int OPCAO_CRIAR_HOTEL = menu.adcionarItens("Criar Hotel");
+    const int OPCAO_LER_HOTEL = menu.adcionarItens("Ler Hoteis");
+    const int OPCAO_ATUALIZAR_HOTEL = menu.adcionarItens("Atualizar Hotel");
 
     bool executando = true;
     while (executando) {
@@ -21,6 +23,10 @@ void ControladorInterfaceHotel::exibirMenuCRUD() {
             executando = false;
         } else if (opcao == OPCAO_CRIAR_HOTEL) {
             criar();
+        } else if (opcao == OPCAO_LER_HOTEL) {
+            ler();
+        } else if (opcao == OPCAO_ATUALIZAR_HOTEL) {
+            atualizar();
         } else {
             cout << "Opcao Invalida!" << endl;
         }
@@ -36,12 +42,6 @@ void ControladorInterfaceHotel::criar() {
         Hotel *hotel = new Hotel();
 
         if (hotel) {
-            //Preencher atribultos com validacao
-            if (tudoOK == false) {
-                cout << "\nRetornando...\n\n";
-                break;
-            }
-
             ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Hotel");
             if (tudoOK) {
                 cout << "Informe o Nome: \n";
@@ -84,8 +84,8 @@ void ControladorInterfaceHotel::criar() {
                 }
             }
             if (tudoOK) {
-                PersistenciaHotel dao;
-                bool sucesso = dao.inserirAoBD(hotel);
+                PersistenciaHotel persistencia;
+                bool sucesso = persistencia.inserir(hotel);
 
                 if (sucesso) {
                     criado = true;
@@ -106,9 +106,36 @@ void ControladorInterfaceHotel::criar() {
 };
 
 void ControladorInterfaceHotel::ler() {
-}
+    vector<HotelDTO *> lista = persistencia.listar();
 
+    if (lista.empty()) {
+        cout << "Nenhum gerente cadastrado.\n";
+        return;
+    }
+
+    // 1. CABEÇALHOS
+    vector<string> titulosTabela = {"Id", "Nome", "Endereco", "Telefone", "Codigo"};
+
+    // 2. DADOS (Iterar sobre listaGerentes e extrair)
+    vector<vector<string> > dadosTabela;
+    for (const HotelDTO *const &g: lista) {
+        dadosTabela.push_back({
+            to_string(g->getId()),
+            g->getNome(),
+            g->getEndereco(),
+            g->getTelefone(),
+            g->getCodigo()
+        });
+    }
+
+    // 3. CHAMADA GENÉRICA
+    ConsoleFormatter::MostrarTabelaGenerica("Lista de Hoteis", titulosTabela, dadosTabela);
+}
 void ControladorInterfaceHotel::atualizar() {
+    ConsoleFormatter::MostrarTituloEmCaixa("Atualizando Hotel");
+
+    ConsoleIO::PrintMensagem("Informe o Id do hotel: ");
+    string id_hotel = ConsoleIO::LerLinha();
 }
 
 bool ControladorInterfaceHotel::remover() {

@@ -6,7 +6,6 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H
 
 #include <iostream>
-
 #include "InterfaceApresentacaoCRUD.hpp"
 #include "../utilitarios/console/ConsoleFormatter.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
@@ -26,6 +25,9 @@ using namespace std;
 
 class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
                                   public InterfaceApresentacaoCRUD {
+private:
+    PersistenciaHotel persistencia;
+
 public:
     // Construtor dos servicosHotel
     ControladorInterfaceHotel() = default;

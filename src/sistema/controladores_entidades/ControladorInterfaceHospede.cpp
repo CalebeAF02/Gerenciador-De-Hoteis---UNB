@@ -225,8 +225,8 @@ void ControladorInterfaceHospede::criar() {
                 cout << "Hospede Cadastrado" << endl;
                 criado = true;
 
-                PersistenciaHospede dao;
-                dao.criar(*hospede);
+                PersistenciaHospede persistencia;
+                persistencia.criar(*hospede);
 
                 criado = true;
                 cout << "Hospede cadastrado!\n";
@@ -240,7 +240,7 @@ void ControladorInterfaceHospede::criar() {
 };
 
 void ControladorInterfaceHospede::ler() {
-    vector<Hospede *> listaHospedes = dao.listar(); // Vetor para Construir OBJETOS - HOSPEDE
+    vector<Hospede *> listaHospedes = persistencia.listar(); // Vetor para Construir OBJETOS - HOSPEDE
 
     if (listaHospedes.empty()) {
         cout << "Nenhum hospede cadastrado.\n";
@@ -265,7 +265,7 @@ void ControladorInterfaceHospede::atualizar() {
 bool ControladorInterfaceHospede::remover() {
     cout << "Informe o Email: \n";
     string emailStr = ConsoleIO::LerLinha();
-    bool status = true; //dao.excluirPorEmail(emailStr);
+    bool status = true; //persistencia.excluirPorEmail(emailStr);
 
     if (status == true) {
         cout << "Foi excluido com sucesso!\n";
