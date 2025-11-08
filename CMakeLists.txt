@@ -3,13 +3,6 @@ project(Gerenciador-De-Hoteis---UNB)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Declara a biblioteca SQLite como externa
-add_library(sqlite3 STATIC IMPORTED)
-set_target_properties(sqlite3 PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/libsqlite3.a
-        INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/include/libs/sqlite
-)
-
 # Fontes principais
 add_executable(Gerenciador-De-Hoteis---UNB
         src/main.cpp
@@ -117,6 +110,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteHotel.cpp
         testes/testes_entidades/TesteQuarto.cpp
         testes/testes_entidades/TesteReserva.cpp
+
+        # Include - Sqlite
+        libs/sqlite/sqlite3.c
 )
 
 # Diretórios de headers
@@ -137,13 +133,10 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
-        ${CMAKE_SOURCE_DIR}/include/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/libs/sqlite
         ${CMAKE_SOURCE_DIR}/testes
         ${CMAKE_SOURCE_DIR}/testes/interface_testes
         ${CMAKE_SOURCE_DIR}/testes/smoke_teste
         ${CMAKE_SOURCE_DIR}/testes/testes_dominios
         ${CMAKE_SOURCE_DIR}/testes/testes_entidades
 )
-
-# Linka com o executável principal
-target_link_libraries(Gerenciador-De-Hoteis---UNB sqlite3)
