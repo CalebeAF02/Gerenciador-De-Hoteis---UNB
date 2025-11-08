@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <limits>
+
+#include "ConsoleIO.hpp"
 //-----------------------------------------------------------------------------------------------------------
 void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
     int i = 0;
@@ -81,10 +83,6 @@ void ConsoleFormatter::MostrarTabelaGenerica(
         return;
     }
 
-    if (!titulo.empty()) {
-        MostrarTituloEmCaixa(titulo);
-    }
-
     // O número de colunas é determinado pelo cabeçalho
     int numColunas = titulosTabela.size();
     if (numColunas == 0 || dadosTabela[0].size() != numColunas) {
@@ -104,7 +102,7 @@ void ConsoleFormatter::MostrarTabelaGenerica(
     }
 
     // Itera sobre todos os dados para encontrar a largura máxima
-    for (const auto &linha: dadosTabela) {
+    for (const vector<string> &linha: dadosTabela) {
         for (int j = 0; j < numColunas; ++j) {
             if (linha[j].length() > maxLarguras[j]) {
                 maxLarguras[j] = linha[j].length();
@@ -125,12 +123,22 @@ void ConsoleFormatter::MostrarTabelaGenerica(
     // Adiciona as bordas verticais ('|' no início, fim, e entre colunas)
     larguraTotal += (numColunas + 1);
 
+    if (!titulo.empty()) {
+        int espaco = ((larguraTotal - titulo.length()) / 2);
+        RepetirCaracter(larguraTotal, '=');
+        cout << "\n|";
+        RepetirCaracter(espaco - 1, ' ');
+        cout << titulo;
+        RepetirCaracter(espaco - 1, ' ');
+        cout << "|\n";
+        RepetirCaracter(larguraTotal, '=');
+    }
+
 
     // =======================================================
     // ETAPA 2: EXIBIR O CABEÇALHO
     // =======================================================
 
-    RepetirCaracter(larguraTotal, '-');
     cout << "\n|";
 
     for (int j = 0; j < numColunas; ++j) {
@@ -157,10 +165,9 @@ void ConsoleFormatter::MostrarTabelaGenerica(
             RepetirCaracter(maxLarguras[j] - linha[j].length() - 1, ' ');
             cout << "|";
         }
-        cout << "\n";
-
-        RepetirCaracter(larguraTotal, '-');
     }
+    cout << "\n";
+    RepetirCaracter(larguraTotal, '-');
     cout << "\n";
 };
 //-----------------------------------------------------------------------------------------------------------
