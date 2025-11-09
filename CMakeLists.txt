@@ -3,6 +3,20 @@ project(Gerenciador-De-Hoteis---UNB)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# Caminhos
+set(VERSAO_TXT "${CMAKE_CURRENT_SOURCE_DIR}/versao.txt")
+set(VERSAO_HPP "${CMAKE_CURRENT_SOURCE_DIR}/include/sistema/Versao.hpp")
+
+# Geração automática do cabeçalho
+add_custom_command(
+        OUTPUT ${VERSAO_HPP}
+        COMMAND ${CMAKE_COMMAND} -DINPUT_FILE=${VERSAO_TXT} -DOUTPUT_FILE=${VERSAO_HPP} -P ${CMAKE_CURRENT_SOURCE_DIR}/atualizar_versao.cmake
+        DEPENDS ${VERSAO_TXT}
+        COMMENT "Atualizando versão automaticamente..."
+)
+
+add_custom_target(gerar_versao DEPENDS ${VERSAO_HPP})
+
 # Fontes principais
 add_executable(Gerenciador-De-Hoteis---UNB
         src/main.cpp
@@ -94,6 +108,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/validadores_principais/ValidarInt.cpp
         src/sistema/validadores_principais/ValidarString.cpp
 
+        # Versao
+        src/sistema/Versao.cpp
+
         # Testes - Interface
         testes/interface_testes/InterfaceDeTestes.cpp
 
@@ -127,8 +144,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # HACKER
         src/HACKER/SistemaHacker.cpp
-
 )
+
+add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
 
 # Diretórios de headers
 target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE

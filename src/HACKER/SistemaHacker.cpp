@@ -6,6 +6,8 @@
 
 
 void SistemaHacker::iniciar() {
+    ConsoleIO::PrintMensagem("Versao " + Versao::getVersaoCompleta());
+
     Email emailHK("calebe.2324@gmail.com");
     Senha senhaHK("A1!b2");
     controladorGerente.autenticar(emailHK, senhaHK);

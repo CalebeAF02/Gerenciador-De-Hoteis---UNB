@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "ControladorInterfaceGerente.hpp"
+#include "Versao.hpp"
 
 using namespace std;
 

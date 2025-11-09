@@ -5,8 +5,10 @@
 #include "Sistema.hpp"
 
 #include "sqlite3.h"
+#include "Versao.hpp"
 
 void Sistema::iniciar() {
+    ConsoleIO::PrintMensagem("Versao " + Versao::getVersaoCompleta());
     while (getExecutandoSistema()) {
         exibirMenu();
     }
