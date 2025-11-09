@@ -62,3 +62,38 @@ vector<HotelDTO *> PersistenciaHotel::listar() {
     banco.fechandoConexao();
     return lista;
 }
+optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
+    optional<HotelDTO> hotel_dto = nullopt;
+
+    BancoDeDados banco;
+    if (!banco.abrindoConexao())
+        return nullopt; // Retorna o optional vazio (falha na busca);
+
+    sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
+
+
+    sqlite3_stmt *stmt = nullptr;
+    const char *sql = "SELECT id, nome, endereco, telefone, codigo FROM hoteis WHERE id = ? LIMIT 1;";
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
+        banco.fechandoConexao();
+        return nullopt; // Retorna o optional vazio (falha na busca);
+    }
+
+    sqlite3_bind_int(stmt, 1, id);
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        int id = reinterpret_cast<int>(sqlite3_column_int(stmt, 0));
+        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string endereco = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string telefone = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+
+        hotel_dto = HotelDTO(id, nome, endereco, telefone, codigo);
+    }
+
+    sqlite3_finalize(stmt);
+    banco.fechandoConexao();
+    return hotel_dto;
+}

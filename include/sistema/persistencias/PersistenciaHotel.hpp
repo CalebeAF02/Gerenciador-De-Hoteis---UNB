@@ -8,6 +8,7 @@
 #include "Hotel.hpp"
 #include "BancoDeDados.hpp"
 #include "HotelDTO.hpp"
+#include <optional>
 
 #include "iostream"
 #include "sqlite3.h"
@@ -19,6 +20,8 @@ public:
     bool inserir(Hotel *hotel);
 
     vector<HotelDTO *> listar();
+
+    optional<HotelDTO> buscaHotelPorID(int id);
 };
 
 

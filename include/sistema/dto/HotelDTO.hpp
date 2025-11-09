@@ -18,6 +18,9 @@ private:
     string codigo;
 
 public:
+
+    HotelDTO() = default;
+
     HotelDTO(int id, string nome, string endereco, string telefone, string codigo) : id(id),
         nome(nome),
         endereco(endereco),

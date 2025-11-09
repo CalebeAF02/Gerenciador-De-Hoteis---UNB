@@ -6,11 +6,15 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H
 
 #include <iostream>
+#include <string>
+#include <optional>
+
+#include "ValidadorNumerico.hpp"
 #include "InterfaceApresentacaoCRUD.hpp"
-#include "../utilitarios/console/ConsoleFormatter.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "PersistenciaHotel.hpp"
 #include "ConsoleIO.hpp"
+#include "ConsoleFormatter.hpp"
 
 #include "Menu.hpp"
 #include "MenuItem.hpp"

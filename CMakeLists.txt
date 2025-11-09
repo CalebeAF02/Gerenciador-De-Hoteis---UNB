@@ -77,6 +77,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Utilitários
         src/sistema/utilitarios/Menu.cpp
         src/sistema/utilitarios/MenuItem.cpp
+        src/sistema/utilitarios/ValidadorNumerico.cpp
 
         # Utilitarios - Console
         src/sistema/utilitarios/console/ConsoleFormatter.cpp

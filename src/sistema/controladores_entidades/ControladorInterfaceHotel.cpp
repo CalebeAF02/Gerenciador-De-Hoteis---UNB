@@ -136,6 +136,40 @@ void ControladorInterfaceHotel::atualizar() {
 
     ConsoleIO::PrintMensagem("Informe o Id do hotel: ");
     string id_hotel = ConsoleIO::LerLinha();
+
+    if (ValidadorNumerico::verificaSeENumero(id_hotel)) {
+        PersistenciaHotel persistencia_hotel;
+        int trasformar = stoi(id_hotel);
+        optional<HotelDTO> existe_hotel = persistencia_hotel.buscaHotelPorID(trasformar);
+        // transforma a string em numero e verica no banco, retornando um Hotel DTO opcional.
+        // has_value  = verifica se tem valor
+        if (existe_hotel.has_value()) {
+            vector<HotelDTO> lista;
+            lista.push_back(*existe_hotel);
+
+            // 1. CABEÇALHOS
+            vector<string> titulosTabela = {"Id", "Nome", "Endereco", "Telefone", "Codigo"};
+
+            // 2. DADOS (Iterar sobre listaGerentes e extrair)
+            vector<vector<string> > dadosTabela;
+            for (const HotelDTO &g: lista) {
+                dadosTabela.push_back({
+                    to_string(g.getId()),
+                    g.getNome(),
+                    g.getEndereco(),
+                    g.getTelefone(),
+                    g.getCodigo()
+                });
+            }
+            // 3. CHAMADA GENÉRICA
+            ConsoleFormatter::MostrarTabelaGenerica("Hotel", titulosTabela, dadosTabela);
+        }else {
+            ConsoleIO::PrintMensagem("Erro: Hotel nao encontrado");
+        }
+
+    }else {
+        ConsoleIO::PrintMensagem("Erro: Id Invalido");
+    }
 }
 
 bool ControladorInterfaceHotel::remover() {
