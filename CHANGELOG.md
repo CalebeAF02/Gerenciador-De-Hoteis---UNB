@@ -1,4 +1,4 @@
-# Changelog
+# Histórico de Alterações (Changelog) - Gerenciador de Hotéis
 
 Todas as mudanças notáveis neste projeto serão documentadas aqui.
 
@@ -6,131 +6,285 @@ Este projeto segue o formato [Keep a Changelog](https://keepachangelog.com/pt-BR
 e [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
 ---
+## [Unreleased] - Próximas Alterações
 
-## [Unreleased]
+### Versao 1.1.3 - 2025-11-09
 
-### 2025-09-20
+#### Adicionado
+* **Feature:** Adicionando Versionamento (`#6`, `#7`).
+* **Feature:** Apresenta atualização de um Hotel por ID.
+* **Feature:** Verifica se a string é um número inteiro.
+* **Feature:** Criação de `GerenteDTO`.
+* **Recurso:** Implementação da classe `Tabela`.
 
-- Início do projeto.
-- Criação da estrutura de testes.
-- Implementação da classe `Reserva`.
-- Testes de validação: Endereço, Senha, Cartão, Telefone.
+#### Refatorado
+* Refatoração de DTOs para operações de Atualização e Leitura.
+* Refatoração para utilização da classe `Tabela` para melhor exibição.
+* Refatoração dos *logs* de comentários do banco de dados.
+* Refatoração do código de atualização do Hotel.
 
-### 2025-09-21
+#### Estilo
+* Formatando código (`close #6`, `close #7`).
+* Projeto completamente reformatado.
 
-- Implementação completa da classe `Reserva`.
-- Criação de todos os validadores.
-- Início dos testes automatizados.
+### Versao 1.1.2 - 2025-11-08
 
-### 2025-09-22
+#### Refatorado
+* Refatoração de `Hacker`, `HotelDTO` e `ControladorInterfaceHotel`.
+* Refatoração das bibliotecas SQLite.
+* Refatoração do código principal e do sistema.
+* Refatoração e renomeação de `MostrarTabelaGenerica` para `ConsoleFormater`.
+* Refatoração do método de leitura (`ler->Gerentes`).
 
-- Criação do arquivo `README.md`.
-- Correções nos atributos da classe `Reserva`.
-- Ajustes em testes de validadores.
+### Versao 1.1.1 - 2025-11-07
 
-### 2025-09-23
+#### Refatorado
+* Código completamente formatado.
+* Finalização dos `TestesEntidades` e `TestesDominios`.
+* *Bugs* resolvidos após a finalização dos testes.
 
-- Atualizações em validações: Senha, Ramal, Cartão, Telefone, Endereço.
-- Correções em testes.
-- Tentativas de resolver erros de commit.
+### Versao 1.1.0 - 2025-11-03 (Grande Refatoração de Testes e Visuais)
 
-### 2025-09-24
+#### Refatorado
+* Finalização e refatoração dos `TestesEntidades`, `Teste de Fumaça`, `TestandoSmoke`, e `InterfaceDeTest`.
+* Refatoração de `ConsoleIO` e `ConsoleFormatter`, com novos visuais e novo Resumo de Testes.
 
-- Refatoração dos validadores.
-- Atualização do `README.md`.
-- Mudança de métodos `virtual` para `static`.
+#### Tarefa
+* Adicionado `.gitattributes` para corrigir a contagem de linguagens (C++).
 
-### 2025-09-25
+### Versao 1.0.1 - 2025-11-02
 
-- Organização das pastas.
-- Correção de bug relacionado à conta antiga.
+#### Refatorado
+* Criação da classe `TestandoSmoke` para encapsular a chamada dos testes (deixando `Smoke_Tests` apenas com os métodos).
+* Arquivos de cabeçalho (`.h`) foram transformados para o padrão `.hpp`.
+* Atualizações no `CMakeLists.txt`.
 
-### 2025-09-26
+### Versao 1.0.0 - 2025-11-01 (Lançamento Estável - Features de Gerente/Hotel)
 
-- Padronização da estrutura de arquivos.
-- Organização do projeto em estilo profissional.
+#### Adicionado
+* **Recurso:** Implementação da funcionalidade `Criar Hotel`.
+* **Recurso:** Implementação da `InterfaceApresentaçãoExibirMenu`.
+* **Recurso:** Implementação da `InterfaceApresentaçãoAutênticavel`.
 
-### 2025-09-27
+#### Corrigido
+* Correção no fluxo de Solicitação de Hospedagem.
+* Correção de *bug* no módulo Gerente que ocorria quando o *login* falhava.
+* Correção de `Interface Autenticação (Apresentação)` duplicada.
+* Correção no fluxo: Não existe mais *login* para Hóspede (apenas Solicitação de Hospedagem).
 
-- Refatoração de includes, defines e testes.
-- Criação do objeto `Gerente`.
+#### Refatorado
+* Organização completa do Módulo Gerente (`InterfaceApresentação`, `InterfaceServiço`, `Controlador`).
+* Refatoração dos Menus de Serviços.
+* Métodos `ExibirMenu` e `ExibirCentralDeServico` movidos para a Classe `Sistema`.
+* Implementação do *status* em `enum` para Solicitação de Hospedagem (`close #4`).
+* Atualização e refatoração dos Testes.
 
-### 2025-09-28
+#### Tarefa
+* Remoção das classes `HospedeGerenciavel` e `GerenteGerenciavel`.
 
-- Criação da pasta `Sistema`.
-- Implementação dos métodos `menuSistema`, `fazerLogin`, `exibirCentralDeServicos`.
-- Criação da classe abstrata `linhaTSV`.
+### Versao 0.5.0 - 2025-10-31 (Estabilização do Banco de Dados/SQLite)
 
-### 2025-09-30
+#### Corrigido
+* Correção do *bug* de autenticação do hóspede.
+* Correção para compilar SQLite como C, evitando conflitos com C++.
 
-- Confirmação inicial da estrutura no repositório.
+#### Refatorado
+* Reorganização de `sqlite3.h` e `libsqlite3.a`.
+* Ajuste na estrutura SQLite e atualização de testes e entidades.
+* Renomeação de `sqlite3.c` para `.cpp` e ajuste no `CMakeLists.txt`.
 
-### 2025-10-01
+#### Documentação
+* Atualização do `README` com estrutura, autores e instruções de contribuição.
+* Adição do `Changelog` com histórico completo do projeto.
 
-- Refatoração das classes `Pessoa`, `Gerente`, `Hospede`, `Nome`, `Email`.
-- Validação incorporada nas classes de domínio.
-- Reorganização do projeto conforme documentação.
+#### Tarefa
+* Adicionado `libsqlite3.a` e cabeçalho `sqlite3.h`.
+* Integração do SQLite como biblioteca estática e ajustes no `main`.
 
-### 2025-10-02
+### Versao 0.4.0 - 2025-10-29 (Reorganização Arquitetural)
 
-- Exclusão do diretório `cmake-build-debug`.
+#### Refatorado
+* Reorganização completa do projeto, atualizando pastas antigas com código atualizado.
 
-### 2025-10-07
+#### Tarefa
+* *Merge* do projeto finalizado com o conteúdo do antigo.
 
-- Atualizações em aulas e criação de objetos.
+### Versao 0.3.5 - 2025-10-28
 
-### 2025-10-08
+#### Refatorado
+* Organização das massas de dados.
 
-- Atualização da classe `Reserva` com lógica de anos bissextos.
+### Versao 0.3.4 - 2025-10-26 (Nova Modelagem)
 
-### 2025-10-11
+#### Refatorado
+* Refatoração do `SmokeTestes` em `TetsUnicos`.
+* Implementação de sistema de Modelagem com Interfaces e Módulos (nova forma de autenticar o usuário).
 
-- Criação do sistema de serviços para `Gerente` e `Hospede`.
+### Versao 0.3.3 - 2025-10-23
 
-### 2025-10-12
+#### Adicionado
+* Criação de todas as tabelas inovadoras no banco de dados.
 
-- Refatoração de entradas e saídas nos serviços.
+#### Corrigido
+* Correção no retorno de `adicionarAoBD` para controle de persistência.
 
-### 2025-10-16
+#### Refatorado
+* Refatoração da `PersistenciaGerente`: Renomeação de métodos e simplificação da conexão com o banco.
 
-- Implementação de fábricas para `Pessoa`, `Gerente` e `Hospede`.
+### Versao 0.3.2 - 2025-10-20
 
-### 2025-10-17
+#### Documentação
+* Atualiza `README.md` com imagens da interface.
 
-- Criação do fluxo de autenticação de gerente com login e menu CRUD protegido.
+#### Refatorado
+* Organização da estrutura visual do projeto.
 
-### 2025-10-19
+#### Corrigido
+* Correção do fluxo de login e serviços.
 
-- Integração da biblioteca SQLite ao projeto.
-- Criação da tabela `Gerente` no banco.
+### Versao 0.3.1 - 2025-10-19 (Integração Inicial do BD/SQLite)
 
-### 2025-10-20
+#### Adicionado
+* Criação de tabela para gerentes no banco de dados SQLite.
+* Adicionado fluxo de hospedagem com criação e *status* de solicitação.
+* Inclusão da biblioteca SQLite ao projeto.
 
-- Atualização do `README.md` com imagens da interface.
-- Organização visual e correção do fluxo de login.
+#### Refatorado
+* Refatoração e reorganização do sistema de fábricas, *gerenciáveis* e interfaces.
+* Organização do projeto: criação de pastas `libs` e mudança dos testes de lugar.
+* Refatoração do sistema de `ServiçosHospede`, utilizando interfaces, persistências, *gerenciáveis* e fábricas.
 
-### 2025-10-23
+### Versao 0.2.2 - 2025-10-17
 
-- Refatoração da `PersistenciaGerente`.
-- Criação de todas as tabelas no banco SQLite.
-- Correções no controle de retorno de métodos de persistência.
+#### Adicionado
+* Adicionado fluxo de autenticação de gerente com criação, *login* e menu CRUD protegido.
 
-### 2025-10-26
+#### Documentação
+* Documentação das fábricas, *gerenciáveis*, interfaces e persistências criadas.
 
-- Refatoração dos Smoke Tests em testes únicos.
-- Implementação de sistema de modelagem com interfaces e módulos.
-- Novo sistema de autenticação de usuário.
+### Versao 0.2.1 - 2025-10-16
 
-### 2025-10-28
+#### Adicionado
+* Implementação de Fábricas (`Pessoa`, `Gerente` e `Hospede`).
 
-- Organização das massas de dados.
-- Merge com versão finalizada do projeto anterior.
+### Versao 0.2.0 - 2025-10-12 (Ajustes em Serviços)
 
-### 2025-10-29
+#### Alterado
+* Refatoração de entradas e saídas de operações nos serviços.
 
-- Reorganização completa das pastas e codigo.
+### Versao 0.1.7 - 2025-10-11
 
-### 2025-10-31
+#### Adicionado
+* Criação e organização do sistema de serviços para Gerentes e Hóspedes.
 
-- Renomeação de `sqlite3.c` para `sqlite3.cpp`.
-- Atualização do `CMakeLists.txt` para compilar corretamente o novo arquivo.
+### Versao 0.1.6 - 2025-10-08
+
+#### Alterado
+* Classe `Reserva` atualizada (lógica de anos bissextos pendente).
+* Adicionada visualização de *logging* programado no módulo `TESTANDO`.
+
+### Versao 0.1.5 - 2025-10-07
+
+#### Alterado
+* Aulas atualizadas com mudanças na criação de objetos.
+
+### Versao 0.1.4 - 2025-10-02
+
+#### Refatorado
+* Classes de domínios e entidades finalizadas (`OK`). Refatoração completa para iniciar as funcionalidades do sistema.
+* Refatoração dos domínios de classe e correção das entidades para receber os domínios.
+* Refatoração dos validadores de objetos.
+
+#### Removido
+* Diretório `cmake-build-debug` excluído.
+
+### Versao 0.1.3 - 2025-10-01
+
+#### Refatorado
+* Refatoração completa das Entidades (`Pessoa`, `Gerente`, `Hospede`) e Domínios (`Nome`, `Email`).
+* Projeto reformulado para aderir à documentação (classes Domínios e Entidades).
+* Validação incorporada nas classes de domínio (validadores antigos removidos).
+
+### Versao 0.1.2 - 2025-09-30
+
+#### Tarefa
+* Confirmação inicial da estrutura do projeto.
+
+### Versao 0.1.0 - 2025-09-28 (Estrutura Básica de Sistema/Login)
+
+#### Adicionado
+* Criação dos métodos `menuSistema`, `fazerLogin`, `exibirCentralDeServicos` e `loginGerente`.
+* Implementação da classe abstrata `linhaTSV` em Gerente.
+
+#### Alterado
+* Métodos `set` e `get` (`Tsv`) implementados em Gerente.
+
+#### Refatorado
+* Organização de arquivos: classes `Data` e `Serviços` movidas para a pasta `Sistema`.
+* Refatoração do método `setTSV`.
+
+### Versao 0.0.9 - 2025-09-27
+
+#### Adicionado
+* Criação do objeto `Gerente` e suas entradas.
+
+#### Refatorado
+* Refatoração de *includes*, *defines* e renomeação de `testesValidadores` para `Smoke_Testes`.
+
+### Versao 0.0.8 - 2025-09-26
+
+#### Refatorado
+* Organização dos arquivos em um estilo padrão de projetos.
+
+### Versao 0.0.7 - 2025-09-25
+
+#### Corrigido
+* Tentativa de retirar um *bug* relacionado à conta antiga.
+
+#### Tarefa
+* Organização das pastas.
+
+### Versao 0.0.6 - 2025-09-24
+
+#### Refatorado
+* Atualização e refatoração de todos os validadores e seus testes.
+* Troca de tipos de atributos.
+* Mudança de métodos `virtual` para `static` em validações.
+
+#### Documentação
+* `README` atualizado.
+
+### Versao 0.0.5 - 2025-09-23
+
+#### Refatorado
+* Atualizações em validações: `Senha`, `Ramal`, `Cartão`, `Telefone`, `Endereço` e seus testes.
+
+#### Corrigido
+* Tentativas de resolver erros de *commit*.
+
+### Versao 0.0.4 - 2025-09-22
+
+#### Alterado
+* Atributos da classe `Reserva` (`partida` e `chegada`) consertados, sendo declarados como objetos de dados.
+* Atualização em testes de validadores.
+
+#### Documentação
+* Criação do arquivo `README.md`.
+
+### Versao 0.0.3 - 2025-09-21 (Implementação da Reserva)
+
+#### Adicionado
+* Criação da Classe `Reserva` e implementação de todos os validadores.
+* Início da implementação de todos os testes de validadores.
+
+#### Alterado
+* Classe `Reserva` atualizada (correção de erro em Dinheiro).
+* Atualização em testes de validadores.
+
+### Versao 0.0.1 - 2025-09-20 (Início do Projeto)
+
+#### Adicionado
+* Início do projeto.
+* Implementação da classe `Testes` com contador de sucessos e problemas.
+* Implementação inicial de Validação e Testes de Validação.
+* **Estrutura:** Entrando na vida de desenvolvimento com a estrutura inicial.
