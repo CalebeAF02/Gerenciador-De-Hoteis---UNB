@@ -31,8 +31,7 @@ public:
 
     // construtor com valores do banco de dados
     // Transforma GerenteDTO em Hotel
-    Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail()))
-    {
+    Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
         setRamal(Ramal(gerente_dto.getRamal()));
     };
     //-----------------------------------------------------------------------------------------------------------------

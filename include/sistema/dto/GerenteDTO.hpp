@@ -19,12 +19,11 @@ private:
 public:
     GerenteDTO() = default;
 
-    GerenteDTO(int id, string nome, string email, string ramal) :
-        id(id),
-        nome(nome),
-        email(email),
-        ramal(ramal)
-    {};
+    GerenteDTO(int id, string nome, string email, string ramal) : id(id),
+                                                                  nome(nome),
+                                                                  email(email),
+                                                                  ramal(ramal) {
+    };
 
     int getId() const {
         return id;

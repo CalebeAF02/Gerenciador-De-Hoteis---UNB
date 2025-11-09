@@ -1,5 +1,3 @@
-
-
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
 
@@ -18,6 +16,7 @@ public:
     static uint64_t major() { return valor / 100; }
     static uint64_t getValor() { return valor; }
     static std::string getData() { return data; }
+
     static std::string getVersaoCompleta() {
         return std::to_string(major()) + "." +
                std::to_string(minor()) + "." +

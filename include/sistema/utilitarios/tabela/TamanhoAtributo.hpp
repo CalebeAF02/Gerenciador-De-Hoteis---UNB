@@ -10,26 +10,32 @@
 #include <vector>
 
 using namespace std;
+
 namespace VisualizadorDeTabela {
     class TamanhoAtributo {
     private:
         string nome;
         int tamanho = 0;
+
     public:
         TamanhoAtributo() = default;
 
-        TamanhoAtributo(string nome, int tamanho) : nome(nome), tamanho(tamanho) {};
+        TamanhoAtributo(string nome, int tamanho) : nome(nome), tamanho(tamanho) {
+        };
 
         void setNome(string nome);
+
         void setTamanho(int tamanho);
 
         string getNome();
-        int getTamanho();
 
+        int getTamanho();
     };
+
     inline string TamanhoAtributo::getNome() {
         return nome;
     }
+
     inline int TamanhoAtributo::getTamanho() {
         return tamanho;
     };

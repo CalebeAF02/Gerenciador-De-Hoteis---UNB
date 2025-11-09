@@ -27,7 +27,6 @@ public:
     bool autenticarGerente(const string &email, const string &senha);
 
     optional<GerenteDTO> buscaGerentePorID(int id);
-
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H

@@ -158,7 +158,6 @@ void ControladorInterfaceGerente::atualizar() {
     string id_gerente = ConsoleIO::LerLinha();
 
     if (ValidadorNumerico::verificaSeENumero(id_gerente)) {
-
         PersistenciaGerente persistencia;
         bool alterado = false;
 
@@ -220,7 +219,7 @@ void ControladorInterfaceGerente::atualizar() {
             } catch (invalid_argument &erro) {
                 cout << erro.what() << endl;
             }
-        }else if (opcao == OPCAO_ALTERAR_SENHA) {
+        } else if (opcao == OPCAO_ALTERAR_SENHA) {
             ConsoleIO::PrintMensagem("Nova senha:");
             string valor = ConsoleIO::LerLinha();
             try {
@@ -244,7 +243,7 @@ void ControladorInterfaceGerente::atualizar() {
             else
                 ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
         }
-    }else {
+    } else {
         ConsoleIO::PrintMensagem("Erro: Id Invalido");
     }
 }
@@ -264,4 +263,5 @@ bool ControladorInterfaceGerente::remover() {
     return status;
     */
 }
+
 //-----------------------------------------------------------------------------------------------------------

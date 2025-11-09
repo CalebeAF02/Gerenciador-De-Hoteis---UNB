@@ -65,7 +65,7 @@ vector<GerenteDTO *> PersistenciaGerente::listar() {
         string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
         string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
 
-        GerenteDTO *gerenteObj = new GerenteDTO (id, nome, email, ramal);
+        GerenteDTO *gerenteObj = new GerenteDTO(id, nome, email, ramal);
 
         lista.push_back(gerenteObj);
     }
@@ -169,6 +169,7 @@ bool PersistenciaGerente::excluirPorEmail(Gerente *gerenteLogado) {
     cout << "\nSeu cadastro foi excluido com sucesso. Sessao encerrada.\n";
     return true;
 }
+
 optional<GerenteDTO> PersistenciaGerente::buscaGerentePorID(int id) {
     optional<GerenteDTO> dto = nullopt;
 

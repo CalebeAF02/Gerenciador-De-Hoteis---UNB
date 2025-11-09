@@ -5,7 +5,7 @@
 
 #include "ConsoleIO.hpp"
 //-----------------------------------------------------------------------------------------------------------
-string  ConsoleFormatter::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
+string ConsoleFormatter::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
     int i = 0;
     string temp = "";
     while (i < (qntCaracteres)) {
@@ -14,6 +14,7 @@ string  ConsoleFormatter::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
     }
     return temp;
 };
+
 void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
     int i = 0;
     while (i < (qntCaracteres)) {

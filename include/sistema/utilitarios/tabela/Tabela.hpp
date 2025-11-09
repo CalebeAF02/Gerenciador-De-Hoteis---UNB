@@ -12,18 +12,18 @@
 
 using namespace std;
 
-namespace VisualizadorDeTabela{
+namespace VisualizadorDeTabela {
+    class Tabela {
+    private:
+        vector<shared_ptr<Linha> > linhas;
 
-class Tabela {
-private:
-    vector <shared_ptr<Linha>> linhas;
-public:
-    Tabela() = default;
+    public:
+        Tabela() = default;
 
-    Linha* criarObj();
-    void exibirTabela(string titulo);
-};
+        Linha *criarObj();
 
+        void exibirTabela(string titulo);
+    };
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_TABELA_HPP

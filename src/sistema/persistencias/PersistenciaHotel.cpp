@@ -98,6 +98,7 @@ optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
     banco.fechandoConexao();
     return dto;
 }
+
 bool PersistenciaHotel::atualizar(int id, const Hotel &hotel) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())

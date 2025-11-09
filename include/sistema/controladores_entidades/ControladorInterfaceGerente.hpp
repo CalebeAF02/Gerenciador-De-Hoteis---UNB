@@ -41,7 +41,6 @@ public:
     void atualizar() override;
 
     bool remover() override;
-
 };
 
 

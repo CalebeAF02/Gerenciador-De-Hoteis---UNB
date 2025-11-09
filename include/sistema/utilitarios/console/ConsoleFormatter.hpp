@@ -12,6 +12,7 @@ class ConsoleFormatter {
 public:
     // Função auxiliar para repetir caracteres (herdada do seu projeto original)
     static void RepetirCaracter(int qntCaracteres, char c);
+
     static string RepetirCaracterMesmaLinha(int qntCaracteres, char c);
 
 

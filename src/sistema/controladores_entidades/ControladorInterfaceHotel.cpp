@@ -140,7 +140,6 @@ void ControladorInterfaceHotel::atualizar() {
         // transforma a string em numero e verica no banco, retornando um Hotel DTO opcional.
         // has_value  = verifica se tem valor
         if (existe_hotel.has_value()) {
-
             Tabela tab;
             vector<HotelDTO> lista;
             lista.push_back(*existe_hotel);
@@ -179,8 +178,7 @@ void ControladorInterfaceHotel::atualizar() {
                 } catch (invalid_argument &erro) {
                     cout << erro.what() << endl;
                 }
-            }
-            else if (opcao == OPCAO_ALTERAR_ENDERECO) {
+            } else if (opcao == OPCAO_ALTERAR_ENDERECO) {
                 ConsoleIO::PrintMensagem("Novo Endereco:");
                 string valor = ConsoleIO::LerLinha();
                 try {
