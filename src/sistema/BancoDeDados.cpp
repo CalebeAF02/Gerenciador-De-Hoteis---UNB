@@ -14,7 +14,7 @@ bool BancoDeDados::abrindoConexao() {
     char *mensagemErro = nullptr;
     sqlite3_exec(db, "PRAGMA foreign_keys = ON;", nullptr, nullptr, &mensagemErro);
 
-    ConsoleFormatter::MostrarSeparadorCategoria("Banco aberto com sucesso!");
+    //ConsoleFormatter::MostrarSeparadorCategoria("Banco aberto com sucesso!");
 
     return true;
     //_________________________------------_______________________________
@@ -25,7 +25,7 @@ bool BancoDeDados::fechandoConexao() {
     if (db) {
         sqlite3_close(db);
         db = nullptr;
-        ConsoleFormatter::MostrarSeparadorCategoria("Conexao com o banco encerrada com sucesso!");
+        //ConsoleFormatter::MostrarSeparadorCategoria("Conexao com o banco encerrada com sucesso!");
         return true;
     }
 
@@ -67,7 +67,7 @@ void BancoDeDados::criarTabelaGerentes(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'gerentes': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'gerentes' criada com sucesso!" << endl;
+        //cout << "\nTabela 'gerentes' criada com sucesso!" << endl;
     }
 }
 
@@ -89,7 +89,7 @@ void BancoDeDados::criarTabelaHospedes(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'hospedes': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'hospedes' criada com sucesso!" << endl;
+        //cout << "\nTabela 'hospedes' criada com sucesso!" << endl;
     }
 }
 
@@ -111,7 +111,7 @@ void BancoDeDados::criarTabelaHoteis(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'hoteis': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'hoteis' criada com sucesso!" << endl;
+        //cout << "\nTabela 'hoteis' criada com sucesso!" << endl;
     }
 }
 
@@ -135,7 +135,7 @@ void BancoDeDados::criarTabelaQuartos(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'quartos': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'quartos' criada com sucesso!" << endl;
+        //cout << "\nTabela 'quartos' criada com sucesso!" << endl;
     }
 }
 
@@ -160,7 +160,7 @@ void BancoDeDados::criarTabelaReservas(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'reservas': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'reservas' criada com sucesso!" << endl;
+        //cout << "\nTabela 'reservas' criada com sucesso!" << endl;
     }
 }
 
@@ -186,6 +186,6 @@ void BancoDeDados::criarTabelaSolicitacoesHospedagem(sqlite3 *db) {
         cerr << "\nErro ao criar tabela 'solicitacoes_hospedagem': " << mensagemErro << endl;
         sqlite3_free(mensagemErro);
     } else {
-        cout << "\nTabela 'solicitacoes_hospedagem' criada com sucesso!" << endl;
+        //cout << "\nTabela 'solicitacoes_hospedagem' criada com sucesso!" << endl;
     }
 }
