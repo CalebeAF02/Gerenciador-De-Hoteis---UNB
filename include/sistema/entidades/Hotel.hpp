@@ -5,6 +5,7 @@
 #include "Endereco.hpp"
 #include "Telefone.hpp"
 #include "Codigo.hpp"
+#include "HotelDTO.hpp"
 
 #include <string>
 
@@ -18,8 +19,11 @@ private:
     Codigo codigo;
 
 public:
+    //-----------------------------------------------------------------------------------------------------------------
+    // Contrutor de Hotel sem valores
     Hotel() = default;
 
+    // Contrutor de Hotel Com todos valores
     Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo) {
         setNome(nome);
         setEndereco(endereco);
@@ -27,6 +31,17 @@ public:
         setCodigo(codigo);
     };
 
+    // construtor com valores do banco de dados
+    // Transforma HotelDTO em Hotel
+    Hotel(HotelDTO &hotel_dto) {
+        setNome(Nome(hotel_dto.getNome()));
+        setEndereco(Endereco(hotel_dto.getEndereco()));
+        setTelefone(Telefone(hotel_dto.getTelefone()));
+        setCodigo(Codigo(hotel_dto.getCodigo()));
+    };
+
+    //-----------------------------------------------------------------------------------------------------------------
+    // Set
     void setNome(const Nome &newNome) {
         this->nome = newNome;
     };
@@ -42,8 +57,8 @@ public:
     void setCodigo(const Codigo &newCodigo) {
         this->codigo = newCodigo;
     };
-
-    //Get
+    //-----------------------------------------------------------------------------------------------------------------
+    // Get
     string getNome() const {
         return nome.getValor();
     };
@@ -59,17 +74,7 @@ public:
     string getCodigo() const {
         return codigo.getValor();
     };
-
-
-    /*
-    void listarHoteis [];
-
-    void listarQuartos [];
-
-    void listarReservas [];
-
-    void listarHospedes [];
-    */
+    //-----------------------------------------------------------------------------------------------------------------
 };
 
 #endif

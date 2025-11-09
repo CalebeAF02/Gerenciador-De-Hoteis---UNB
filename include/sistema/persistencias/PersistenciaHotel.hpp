@@ -22,6 +22,8 @@ public:
     vector<HotelDTO *> listar();
 
     optional<HotelDTO> buscaHotelPorID(int id);
+
+    bool atualizar(int id, const Hotel &hotel);
 };
 
 

@@ -140,8 +140,8 @@ void ControladorInterfaceHotel::atualizar() {
 
     if (ValidadorNumerico::verificaSeENumero(id_hotel)) {
         PersistenciaHotel persistencia_hotel;
-        int trasformar = stoi(id_hotel);
-        optional<HotelDTO> existe_hotel = persistencia_hotel.buscaHotelPorID(trasformar);
+        int id_numero = stoi(id_hotel);
+        optional<HotelDTO> existe_hotel = persistencia_hotel.buscaHotelPorID(id_numero);
         // transforma a string em numero e verica no banco, retornando um Hotel DTO opcional.
         // has_value  = verifica se tem valor
         if (existe_hotel.has_value()) {
@@ -164,6 +164,67 @@ void ControladorInterfaceHotel::atualizar() {
             }
             // 3. CHAMADA GENÉRICA
             ConsoleFormatter::MostrarTabelaGenerica("Hotel", titulosTabela, dadosTabela);
+
+            // Perguntas para o usuario
+
+            Hotel hotel(*existe_hotel); // Construtor em Hotel , para HotelDTO
+
+                ConsoleFormatter::MostrarTituloEmCaixa("Atualizando Hotel");
+                bool tudoOK = true;
+
+                if (tudoOK) {
+                    cout << "Informe o Nome: \n";
+                    string valor = ConsoleIO::LerLinha();
+                    try {
+                        hotel.setNome(Nome(valor));
+                    } catch (invalid_argument &erro) {
+                        cout << erro.what() << endl;
+                        tudoOK = false;
+                    }
+                }
+                if (tudoOK) {
+                    cout << "Informe o Endereco: \n";
+                    string valor = ConsoleIO::LerLinha();
+                    try {
+                        hotel.setEndereco(Endereco(valor));
+                    } catch (invalid_argument &erro) {
+                        cout << erro.what() << endl;
+                        tudoOK = false;
+                    }
+                }
+                if (tudoOK) {
+                    cout << "Informe o Telefone: \n";
+                    string valor = ConsoleIO::LerLinha();
+                    try {
+                        hotel.setTelefone(Telefone(valor));
+                    } catch (invalid_argument &erro) {
+                        cout << erro.what() << endl;
+                        tudoOK = false;
+                    }
+                }
+                if (tudoOK) {
+                    cout << "Informe o Codigo: \n";
+                    string valor = ConsoleIO::LerLinha();
+                    try {
+                        hotel.setCodigo(Codigo(valor));
+                    } catch (invalid_argument &erro) {
+                        cout << erro.what() << endl;
+                        tudoOK = false;
+                    }
+                }
+                if (tudoOK) {
+                    PersistenciaHotel persistencia;
+                    bool sucesso = persistencia.atualizar(id_numero, hotel);
+                    if (sucesso) {
+                        cout << "Hotel Atualizado!\n";
+                    } else {
+                        cout << "Erro ao atualizar hotel no banco!\n";
+                        cout << "Retornando ao menu de acesso...\n";
+                    }
+                } else {
+                    cout << "Ops* Hotel nao atualizado!\n";
+                    cout << "Retornando ao menu de acesso...\n";
+                }
         } else {
             ConsoleIO::PrintMensagem("Erro: Hotel nao encontrado");
         }
