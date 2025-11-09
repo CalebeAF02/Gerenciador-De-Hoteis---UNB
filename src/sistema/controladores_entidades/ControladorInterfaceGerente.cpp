@@ -138,22 +138,18 @@ void ControladorInterfaceGerente::ler() {
         cout << "Nenhum gerente cadastrado.\n";
         return;
     }
+    Tabela tab;
 
-    // 1. CABEÇALHOS
-    vector<string> titulosTabela = {"Nome", "Email", "Ramal"};
+    for (Gerente *g : lista) {
+        Linha* objLinha = tab.criarObj();
 
-    // 2. DADOS (Iterar sobre listaGerentes e extrair)
-    vector<vector<string> > dadosTabela;
-    for (const Gerente *const &g: lista) {
-        dadosTabela.push_back({
-            g->getNome(),
-            g->getEmail(),
-            g->getRamal()
-        });
+        objLinha->atributo("Nome", g->getNome());
+        objLinha->atributo("Email", g->getEmail());
+        objLinha->atributo("Ramal", g->getRamal());
+        objLinha->atributo("Senha", g->getSenha());
     }
 
-    // 3. CHAMADA GENÉRICA
-    ConsoleFormatter::MostrarTabelaGenerica("Lista de Gerentes", titulosTabela, dadosTabela);
+    tab.exibirTabela("Lista De Gerentes");
 }
 
 //-----------------------------------------------------------------------------------------------------------

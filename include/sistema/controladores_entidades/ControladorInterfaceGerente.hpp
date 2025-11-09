@@ -11,11 +11,13 @@
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
 #include "ConsoleIO.hpp"
+#include "Tabela.hpp"
 
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "iostream"
 
 using namespace std;
+using namespace VisualizadorDeTabela;
 
 class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticavel,
                                     public InterfaceApresentacaoExibirMenu,

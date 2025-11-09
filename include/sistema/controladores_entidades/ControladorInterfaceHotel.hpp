@@ -15,6 +15,8 @@
 #include "PersistenciaHotel.hpp"
 #include "ConsoleIO.hpp"
 #include "ConsoleFormatter.hpp"
+#include "Tabela.hpp"
+#include "Linha.hpp"
 
 #include "Menu.hpp"
 #include "MenuItem.hpp"
@@ -26,6 +28,7 @@
 #include "Codigo.hpp"
 
 using namespace std;
+using namespace VisualizadorDeTabela;
 
 class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
                                   public InterfaceApresentacaoCRUD {

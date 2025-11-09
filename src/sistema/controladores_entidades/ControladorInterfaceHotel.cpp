@@ -112,24 +112,18 @@ void ControladorInterfaceHotel::ler() {
         cout << "Nenhum gerente cadastrado.\n";
         return;
     }
+    Tabela tab;
 
-    // 1. CABEÇALHOS
-    vector<string> titulosTabela = {"Id", "Nome", "Endereco", "Telefone", "Codigo"};
+    for (HotelDTO *item : lista) {
+        Linha* objLinha = tab.criarObj();
 
-    // 2. DADOS (Iterar sobre listaGerentes e extrair)
-    vector<vector<string> > dadosTabela;
-    for (const HotelDTO *const &g: lista) {
-        dadosTabela.push_back({
-            to_string(g->getId()),
-            g->getNome(),
-            g->getEndereco(),
-            g->getTelefone(),
-            g->getCodigo()
-        });
+        objLinha->atributo("Nome", item->getNome());
+        objLinha->atributo("Endereco", item->getEndereco());
+        objLinha->atributo("Telefone", item->getTelefone());
+        objLinha->atributo("Codigo", item->getCodigo());
     }
 
-    // 3. CHAMADA GENÉRICA
-    ConsoleFormatter::MostrarTabelaGenerica("Lista de Hoteis", titulosTabela, dadosTabela);
+    tab.exibirTabela("Lista De Hoteis");
 }
 
 void ControladorInterfaceHotel::atualizar() {
