@@ -45,6 +45,7 @@ void ControladorInterfaceGerente::exibirMenu() {
         }
     };
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenuCRUD() {
     bool status = true;
@@ -56,6 +57,7 @@ void ControladorInterfaceGerente::exibirMenuCRUD() {
         }
     };
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::criar() {
     bool criado = false;
@@ -153,6 +155,7 @@ void ControladorInterfaceGerente::ler() {
     // 3. CHAMADA GENÉRICA
     ConsoleFormatter::MostrarTabelaGenerica("Lista de Gerentes", titulosTabela, dadosTabela);
 }
+
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::atualizar() {
     if (gerenteLogado == nullptr) {
@@ -223,6 +226,7 @@ void ControladorInterfaceGerente::atualizar() {
             ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
     }
 }
+
 //-----------------------------------------------------------------------------------------------------------
 bool ControladorInterfaceGerente::remover() {
     cout << "Informe o Email: \n";
@@ -236,4 +240,5 @@ bool ControladorInterfaceGerente::remover() {
     }
     return status;
 }
+
 //-----------------------------------------------------------------------------------------------------------

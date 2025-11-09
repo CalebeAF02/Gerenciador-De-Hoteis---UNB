@@ -21,7 +21,6 @@ public:
     TesteGerente() = default;
 
     void executar() override;
-
 };
 
 #endif // TESTSGERENTE_H

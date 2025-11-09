@@ -4,14 +4,13 @@
 
 #include "../../../include/sistema/utilitarios/ValidadorNumerico.hpp"
 
-bool ValidadorNumerico::verificaSeENumero(const string& str) {
-
+bool ValidadorNumerico::verificaSeENumero(const string &str) {
     // passa por cada caracter, e verifica se a string e um numero
 
     if (str.empty()) {
         return false;
     }
-    for (char c : str) {
+    for (char c: str) {
         if (!isdigit(static_cast<unsigned char>(c))) {
             return false;
         }

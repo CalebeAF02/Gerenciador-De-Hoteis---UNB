@@ -11,7 +11,6 @@ public:
 
     // O metodo principal que contém a lógica de teste de integração
     void executar() override;
-
 };
 
 #endif // TESTESHOTEL_HPP

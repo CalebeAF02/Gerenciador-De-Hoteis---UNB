@@ -63,6 +63,7 @@ void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const int &numer
     cout << "| [" << numero << "] " << texto << "\n";
     cout << "------------------------------\n";
 };
+
 void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const string &numero) {
     cout << "------------------------------\n";
     cout << "| [" << numero << "] " << texto << "\n";

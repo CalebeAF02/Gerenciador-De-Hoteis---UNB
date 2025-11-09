@@ -34,8 +34,11 @@ public:
 
     // Menu CRUD herdados da interface
     void criar() override;
+
     void ler() override;
+
     void atualizar() override;
+
     bool remover() override;
 
     void setGerenteLogado(Gerente *gerente) {

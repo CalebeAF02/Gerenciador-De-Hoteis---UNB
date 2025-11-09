@@ -40,7 +40,6 @@ private:
 
 public:
     void iniciar();
-
 };
 
 inline bool Sistema::getExecutandoSistema() {

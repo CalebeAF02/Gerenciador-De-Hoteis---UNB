@@ -62,6 +62,7 @@ vector<HotelDTO *> PersistenciaHotel::listar() {
     banco.fechandoConexao();
     return lista;
 }
+
 optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
     optional<HotelDTO> hotel_dto = nullopt;
 

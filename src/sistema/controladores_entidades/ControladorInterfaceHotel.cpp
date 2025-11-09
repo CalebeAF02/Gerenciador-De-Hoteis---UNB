@@ -131,6 +131,7 @@ void ControladorInterfaceHotel::ler() {
     // 3. CHAMADA GENÉRICA
     ConsoleFormatter::MostrarTabelaGenerica("Lista de Hoteis", titulosTabela, dadosTabela);
 }
+
 void ControladorInterfaceHotel::atualizar() {
     ConsoleFormatter::MostrarTituloEmCaixa("Atualizando Hotel");
 
@@ -163,11 +164,10 @@ void ControladorInterfaceHotel::atualizar() {
             }
             // 3. CHAMADA GENÉRICA
             ConsoleFormatter::MostrarTabelaGenerica("Hotel", titulosTabela, dadosTabela);
-        }else {
+        } else {
             ConsoleIO::PrintMensagem("Erro: Hotel nao encontrado");
         }
-
-    }else {
+    } else {
         ConsoleIO::PrintMensagem("Erro: Id Invalido");
     }
 }

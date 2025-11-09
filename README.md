@@ -61,6 +61,7 @@ O sistema simula um **gerenciador de hotel**, permitindo:
 ![Erro de login: usuário não encontrado ou senha incorreta](imagens/login_erro.png)
 
 ### 👤 Cadastro de Novo Gerente
+
 ![Cadastro de gerente com nome, email, ramal e senha](imagens/cadastro_gerente.png)
 
 ### 🔐 Login de Gerente com Sucesso

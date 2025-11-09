@@ -14,7 +14,6 @@
 class TesteTelefone : public InterfaceDeTeste {
 public:
     void executar() override;
-
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSTELEFONE_H
