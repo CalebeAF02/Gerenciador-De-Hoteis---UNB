@@ -40,39 +40,39 @@ bool PersistenciaGerente::inserir(Gerente &gerente) {
     return true;
 }
 
-vector<Gerente *> PersistenciaGerente::listar() {
-    vector<Gerente *> listaGerentes;
+vector<GerenteDTO *> PersistenciaGerente::listar() {
+    vector<GerenteDTO *> lista;
 
     BancoDeDados banco;
     if (!banco.abrindoConexao())
-        return listaGerentes;
+        return lista;
 
     sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
 
 
     sqlite3_stmt *stmt = nullptr;
-    const char *sql = "SELECT nome, email, ramal, senha FROM gerentes;";
+    const char *sql = "SELECT id, nome, email, ramal FROM gerentes;";
     int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
         cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
         banco.fechandoConexao();
-        return listaGerentes;
+        return lista;
     }
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
-        string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-        string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-        string senha = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+        int id = reinterpret_cast<int>(sqlite3_column_int(stmt, 0));
+        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
 
-        Gerente *gerenteObj = new Gerente(Nome(nome), Email(email), Ramal(ramal), Senha(senha));
+        GerenteDTO *gerenteObj = new GerenteDTO (id, nome, email, ramal);
 
-        listaGerentes.push_back(gerenteObj);
+        lista.push_back(gerenteObj);
     }
 
     sqlite3_finalize(stmt);
     banco.fechandoConexao();
-    return listaGerentes;
+    return lista;
 }
 
 bool PersistenciaGerente::autenticarGerente(const string &email, const string &senha) {
@@ -111,7 +111,7 @@ bool PersistenciaGerente::autenticarGerente(const string &email, const string &s
     return statusAutenticacao;
 }
 
-bool PersistenciaGerente::atualizar(const Gerente &gerente) {
+bool PersistenciaGerente::atualizar(int id, const Gerente &gerente) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;
@@ -119,7 +119,7 @@ bool PersistenciaGerente::atualizar(const Gerente &gerente) {
     sqlite3 *db = banco.getConexao();
     sqlite3_stmt *stmt = nullptr;
 
-    const char *sql = "UPDATE gerentes SET nome = ?, ramal = ?, senha = ? WHERE email = ?;";
+    const char *sql = "UPDATE gerentes SET nome = ?, email = ?, ramal = ?, senha = ? WHERE id = ?;";
     int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
         cerr << "Erro ao preparar atualizacao: " << sqlite3_errmsg(db) << endl;
@@ -128,9 +128,10 @@ bool PersistenciaGerente::atualizar(const Gerente &gerente) {
     }
 
     sqlite3_bind_text(stmt, 1, gerente.getNome().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, gerente.getRamal().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, gerente.getSenha().c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, gerente.getEmail().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, gerente.getEmail().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, gerente.getRamal().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, gerente.getSenha().c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 5, id);
 
     rc = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
@@ -167,4 +168,38 @@ bool PersistenciaGerente::excluirPorEmail(Gerente *gerenteLogado) {
     banco.fechandoConexao();
     cout << "\nSeu cadastro foi excluido com sucesso. Sessao encerrada.\n";
     return true;
+}
+optional<GerenteDTO> PersistenciaGerente::buscaGerentePorID(int id) {
+    optional<GerenteDTO> dto = nullopt;
+
+    BancoDeDados banco;
+    if (!banco.abrindoConexao())
+        return nullopt; // Retorna o optional vazio (falha na busca);
+
+    sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
+
+
+    sqlite3_stmt *stmt = nullptr;
+    const char *sql = "SELECT id, nome, email, ramal FROM gerentes WHERE id = ? LIMIT 1;";
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
+        banco.fechandoConexao();
+        return nullopt; // Retorna o optional vazio (falha na busca);
+    }
+
+    sqlite3_bind_int(stmt, 1, id);
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        int id = reinterpret_cast<int>(sqlite3_column_int(stmt, 0));
+        string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+        string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+        string ramal = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+
+        dto = GerenteDTO(id, nome, email, ramal);
+    }
+
+    sqlite3_finalize(stmt);
+    banco.fechandoConexao();
+    return dto;
 }

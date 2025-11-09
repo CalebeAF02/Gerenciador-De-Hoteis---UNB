@@ -23,7 +23,6 @@ class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticav
                                     public InterfaceApresentacaoExibirMenu,
                                     public InterfaceApresentacaoCRUD {
 private:
-    Gerente *gerenteLogado;
     PersistenciaGerente persistencia;
     bool executando = true;
 
@@ -43,9 +42,6 @@ public:
 
     bool remover() override;
 
-    void setGerenteLogado(Gerente *gerente) {
-        this->gerenteLogado = gerente;
-    }
 };
 
 

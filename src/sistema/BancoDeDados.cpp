@@ -52,7 +52,7 @@ void BancoDeDados::criandoBancoDeDados() {
 void BancoDeDados::criarTabelaGerentes(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS gerentes (
-            gerente_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL DEFAULT '',
             email TEXT NOT NULL DEFAULT '',
             ramal TEXT NOT NULL DEFAULT '',

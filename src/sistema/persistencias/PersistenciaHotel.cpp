@@ -64,7 +64,7 @@ vector<HotelDTO *> PersistenciaHotel::listar() {
 }
 
 optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
-    optional<HotelDTO> hotel_dto = nullopt;
+    optional<HotelDTO> dto = nullopt;
 
     BancoDeDados banco;
     if (!banco.abrindoConexao())
@@ -91,12 +91,12 @@ optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
         string telefone = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
         string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
 
-        hotel_dto = HotelDTO(id, nome, endereco, telefone, codigo);
+        dto = HotelDTO(id, nome, endereco, telefone, codigo);
     }
 
     sqlite3_finalize(stmt);
     banco.fechandoConexao();
-    return hotel_dto;
+    return dto;
 }
 bool PersistenciaHotel::atualizar(int id, const Hotel &hotel) {
     BancoDeDados banco;

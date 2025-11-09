@@ -7,6 +7,7 @@
 #include "Email.hpp"
 #include "Ramal.hpp"
 #include "Senha.hpp"
+#include "GerenteDTO.hpp"
 
 #include <string>
 
@@ -18,13 +19,23 @@ private:
     Senha senha;
 
 public:
-    // Construcutor -----------
+    //-----------------------------------------------------------------------------------------------------------------
+    // Contrutor de Hotel sem valores
     Gerente() : Pessoa(Nome(), Email()) {
     };
 
+    // Contrutor de Hotel Com todos valores
     Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
         ramal(ramal), senha(senha) {
     };
+
+    // construtor com valores do banco de dados
+    // Transforma GerenteDTO em Hotel
+    Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail()))
+    {
+        setRamal(Ramal(gerente_dto.getRamal()));
+    };
+    //-----------------------------------------------------------------------------------------------------------------
 
     // virtuais ----------------
     void exibirInfo() const override {

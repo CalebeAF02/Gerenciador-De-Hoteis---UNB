@@ -132,7 +132,7 @@ void ControladorInterfaceGerente::criar() {
 };
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::ler() {
-    vector<Gerente *> lista = persistencia.listar();
+    vector<GerenteDTO *> lista = persistencia.listar();
 
     if (lista.empty()) {
         cout << "Nenhum gerente cadastrado.\n";
@@ -140,13 +140,13 @@ void ControladorInterfaceGerente::ler() {
     }
     Tabela tab;
 
-    for (Gerente *g : lista) {
-        Linha* objLinha = tab.criarObj();
+    for (GerenteDTO *item: lista) {
+        Linha *objLinha = tab.criarObj();
 
-        objLinha->atributo("Nome", g->getNome());
-        objLinha->atributo("Email", g->getEmail());
-        objLinha->atributo("Ramal", g->getRamal());
-        objLinha->atributo("Senha", g->getSenha());
+        objLinha->atributo("id", item->getId());
+        objLinha->atributo("Nome", item->getNome());
+        objLinha->atributo("Email", item->getEmail());
+        objLinha->atributo("Ramal", item->getRamal());
     }
 
     tab.exibirTabela("Lista De Gerentes");
@@ -154,77 +154,104 @@ void ControladorInterfaceGerente::ler() {
 
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::atualizar() {
-    if (gerenteLogado == nullptr) {
-        ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
-        cout << "\nVoce precisa estar logado para atualizar seu cadastro.\n\n";
-        return;
-    }
+    ConsoleIO::PrintMensagem("Informe o Id do Gerente: ");
+    string id_gerente = ConsoleIO::LerLinha();
 
-    PersistenciaGerente persistencia;
-    bool alterado = false;
+    if (ValidadorNumerico::verificaSeENumero(id_gerente)) {
 
-    ConsoleFormatter::MostrarTituloEmCaixa("Atualizacao de Cadastro");
-    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Nome", 1);
-    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Ramal", 2);
-    ConsoleFormatter::MostrarOpcaoEmCaixa("Alterar Senha", 3);
-    ConsoleFormatter::MostrarOpcaoEmCaixa("Cancelar", 0);
+        PersistenciaGerente persistencia;
+        bool alterado = false;
 
-    string opcaoStr = ConsoleIO::ReceberOpcao();
-    int opcao = stoi(opcaoStr);
+        int id_numero = stoi(id_gerente);
+        optional<GerenteDTO> existe_gerente = persistencia.buscaGerentePorID(id_numero);
 
-    switch (opcao) {
-        case 1: {
+        Tabela tab;
+        vector<GerenteDTO> lista;
+        lista.push_back(*existe_gerente);
+
+        for (GerenteDTO item: lista) {
+            Linha *objLinha = tab.criarObj();
+
+            objLinha->atributo("Id", item.getId());
+            objLinha->atributo("Nome", item.getNome());
+            objLinha->atributo("Email", item.getEmail());
+            objLinha->atributo("Ramal", item.getRamal());
+        }
+
+        tab.exibirTabela("Gerente");
+
+        // Perguntas para o usuario
+        Gerente gerente(*existe_gerente); // Construtor em Gerente para GerenteDTO
+
+        Menu menu;
+
+        const int OPCAO_ALTERAR_NOME = menu.adcionarItens("Alterar Nome");
+        const int OPCAO_ALTERAR_EMAIL = menu.adcionarItens("Alterar Email");
+        const int OPCAO_ALTERAR_RAMAL = menu.adcionarItens("Alterar Ramal");
+        const int OPCAO_ALTERAR_SENHA = menu.adcionarItens("Alterar Senha");
+        const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
+
+        int opcao = menu.executa("Atualizacao de Cadastro");
+
+        if (opcao == OPCAO_ALTERAR_NOME) {
             ConsoleIO::PrintMensagem("Novo nome:");
-            string novoNome = ConsoleIO::LerLinha();
+            string valor = ConsoleIO::LerLinha();
             try {
-                gerenteLogado->setNome(Nome(novoNome));
+                gerente.setNome(Nome(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
                 cout << erro.what() << endl;
             }
-            break;
-        }
-        case 2: {
+        } else if (opcao == OPCAO_ALTERAR_EMAIL) {
+            ConsoleIO::PrintMensagem("Novo Email:");
+            string valor = ConsoleIO::LerLinha();
+            try {
+                gerente.setEmail(Email(valor));
+                alterado = true;
+            } catch (invalid_argument &erro) {
+                cout << erro.what() << endl;
+            }
+        } else if (opcao == OPCAO_ALTERAR_RAMAL) {
             ConsoleIO::PrintMensagem("Novo ramal:");
-            string novoRamal = ConsoleIO::LerLinha();
+            string valor = ConsoleIO::LerLinha();
             try {
-                gerenteLogado->setRamal(Ramal(novoRamal));
+                gerente.setRamal(Ramal(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
                 cout << erro.what() << endl;
             }
-            break;
-        }
-        case 3: {
+        }else if (opcao == OPCAO_ALTERAR_SENHA) {
             ConsoleIO::PrintMensagem("Nova senha:");
-            string novaSenha = ConsoleIO::LerLinha();
+            string valor = ConsoleIO::LerLinha();
             try {
-                gerenteLogado->setSenha(Senha(novaSenha));
+                gerente.setSenha(Senha(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
                 cout << erro.what() << endl;
             }
-            break;
+        } else if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
+            ConsoleIO::PrintMensagem("Atualizacao cancelada.");
+            return;
+        } else {
+            ConsoleIO::PrintMensagem("Opcao invalida.");
+            return;
         }
-        case 0:
-            cout << "Atualizacao cancelada.\n";
-            return;
-        default:
-            cout << "Opcao invalida.\n";
-            return;
-    }
 
-    if (alterado) {
-        bool sucesso = persistencia.atualizar(*gerenteLogado);
-        if (sucesso)
-            ConsoleIO::PrintMensagem("Cadastro atualizado com sucesso!");
-        else
-            ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
+        if (alterado) {
+            bool sucesso = persistencia.atualizar(id_numero, gerente);
+            if (sucesso)
+                ConsoleIO::PrintMensagem("Cadastro atualizado com sucesso!");
+            else
+                ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
+        }
+    }else {
+        ConsoleIO::PrintMensagem("Erro: Id Invalido");
     }
 }
 
 //-----------------------------------------------------------------------------------------------------------
 bool ControladorInterfaceGerente::remover() {
+    /*
     cout << "Informe o Email: \n";
     string emailStr = ConsoleIO::LerLinha();
     bool status = persistencia.excluirPorEmail(gerenteLogado);
@@ -235,6 +262,6 @@ bool ControladorInterfaceGerente::remover() {
         cout << "Gerente nao encontrado!\n";
     }
     return status;
+    */
 }
-
 //-----------------------------------------------------------------------------------------------------------

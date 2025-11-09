@@ -37,6 +37,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # DTO
         src/sistema/dto/HotelDTO.cpp
+        src/sistema/dto/GerenteDTO.cpp
 
         # Entidades
         src/sistema/entidades/Gerente.cpp
