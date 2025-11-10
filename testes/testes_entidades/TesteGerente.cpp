@@ -6,13 +6,13 @@ void TesteGerente::executar() {
     SmokeTeste smoke_teste;
     Gerente gerente1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: GERENTE (ATRIBUICAO DE DOMINIOS)");
+    Formato::TituloEmCaixa("TESTES DE ENTIDADE: GERENTE (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE NOME
     // =========================================================================
     const string nomeStr = "Calebe Alves";
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Atribuicao de Nome Valido");
+    Formato::SeparadorDeCategoria("1. Atribuicao de Nome Valido");
 
     // O LAMBDA agora testa se o metodo da ENTIDADE (setNome) aceita o Domínio.
     smoke_teste.testarEntidade(
@@ -27,7 +27,7 @@ void TesteGerente::executar() {
     // 2. ATRIBUIÇÃO DE EMAIL
     // =========================================================================
     const string emailStr = "adm.123@gmail.com";
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Atribuicao de Email Valido");
+    Formato::SeparadorDeCategoria("2. Atribuicao de Email Valido");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,
@@ -44,7 +44,7 @@ void TesteGerente::executar() {
     // =========================================================================
     // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
     const string ramalStr = "49";
-    ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Ramal Valido (00-50)");
+    Formato::SeparadorDeCategoria("3. Atribuicao de Ramal Valido (00-50)");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,
@@ -58,7 +58,7 @@ void TesteGerente::executar() {
     // 4. ATRIBUIÇÃO DE SENHA
     // =========================================================================
     const string senhaStr = "A1!b2";
-    ConsoleFormatter::MostrarSeparadorCategoria("4. Atribuicao de Senha Valida");
+    Formato::SeparadorDeCategoria("4. Atribuicao de Senha Valida");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,

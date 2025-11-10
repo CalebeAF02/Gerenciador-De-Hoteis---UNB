@@ -19,14 +19,14 @@ vector<MenuItem> Menu::listar() {
 
 //-----------------------------------------------------------------------------------------------------------
 int Menu::executa(string tituloStr) {
-    ConsoleFormatter::MostrarTituloEmCaixa(tituloStr);
-    ConsoleIO::Pergunta("Selecione a opcao:");
+    Formato::TituloEmCaixa(tituloStr);
+    IO::Println("Selecione a opcao:");
 
     for (int i = 0; i < menuItens.size(); i++) {
-        ConsoleFormatter::MostrarOpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
+        Formato::OpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
     }
 
-    string opcao = ConsoleIO::LerOpcao();
+    string opcao = IO::LerOpcao();
     int opcaoInt = -1;
     for (int i = 0; i < menuItens.size(); i++) {
         if (opcao == menuItens[i].getValor()) {

@@ -2,10 +2,10 @@
 // Created by caleb on 02/11/2025.
 //
 
-#include "ConsoleIO.hpp"
+#include "IO.hpp"
 
 //-----------------------------------------------------------------------------------------------------------
-string ConsoleIO::LerLinha() {
+string IO::LerLinha() {
     string valor = "";
     // Limpa o buffer antes de ler, para evitar lixo (importante em C++ com cin/getline misturado)
     if (cin.rdbuf()->in_avail() > 0) {
@@ -16,23 +16,18 @@ string ConsoleIO::LerLinha() {
 }
 
 //-----------------------------------------------------------------------------------------------------------
-string ConsoleIO::LerOpcao() {
+string IO::LerOpcao() {
     cout << "Opcao: ";
     return LerLinha();
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleIO::PrintMenssagem(const string &mensagem) {
+void IO::Println(const string &mensagem) {
     cout << mensagem << endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleIO::Pergunta(const string &pergunta) {
-    cout << pergunta << endl;
-}
-
-//-----------------------------------------------------------------------------------------------------------
-void ConsoleIO::SubPergunta(const string &pergunta) {
+void IO::Print(const string &pergunta) {
     cout << pergunta;
 }
 

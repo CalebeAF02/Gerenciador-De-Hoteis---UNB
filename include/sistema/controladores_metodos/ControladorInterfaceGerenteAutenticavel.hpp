@@ -10,10 +10,10 @@
 #include "Pessoa.hpp"
 #include "Gerente.hpp"
 
-#include "../utilitarios/console/ConsoleFormatter.hpp"
+#include "../utilitarios/console/Formato.hpp"
 #include "InterfaceFabricaGerenciavel.hpp"
 #include "FabricaGerenciavel.hpp"
-#include "ConsoleIO.hpp"
+#include "IO.hpp"
 
 #include "../controladores_entidades/ControladorInterfaceHospede.hpp"
 

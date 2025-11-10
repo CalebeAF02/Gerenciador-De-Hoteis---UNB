@@ -6,11 +6,11 @@
 
 
 void ControladorInterfaceReserva::exibirMenu() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
-    ConsoleIO::PrintMenssagem("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    Formato::TituloEmCaixa("Seja bem vindo a central de servicos");
+    IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
 
 void ControladorInterfaceReserva::exibirMenuCRUD() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Reserva");
-    ConsoleIO::PrintMenssagem("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    Formato::TituloEmCaixa("Seja bem vindo a central de servicos Reserva");
+    IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }

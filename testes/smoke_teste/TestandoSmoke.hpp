@@ -11,8 +11,8 @@
 #include "Quarto.hpp"
 #include "Reserva.hpp"
 
-#include  "ConsoleIO.hpp"
-#include "ConsoleFormatter.hpp"
+#include  "IO.hpp"
+#include "Formato.hpp"
 
 #include "SmokeTeste.hpp"
 #include "InterfaceDeTestes.hpp"

@@ -7,7 +7,7 @@
 #include <memory>
 
 #include "Menu.hpp"
-#include "../utilitarios/console/ConsoleFormatter.hpp"
+#include "../utilitarios/console/Formato.hpp"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ public:
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             executando = false;
-            ConsoleIO::PrintMenssagem("Voce Saiu da Central de servicos!");
+            IO::Println("Voce Saiu da Central de servicos!");
             return;
         } else if (opcao == OPCAO_CRIAR) criar();
         else if (opcao == OPCAO_LER) ler();

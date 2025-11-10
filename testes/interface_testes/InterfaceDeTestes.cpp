@@ -50,22 +50,22 @@ void InterfaceDeTeste::registrarFalha(const string &dominio, const string &entra
 
 //-----------------------------------------------------------------------------------------------------------
 void InterfaceDeTeste::mostrarRelatorioDeTestes() {
-    ConsoleFormatter::MostrarTituloEmCaixa("RESUMO GERAL DOS TESTES");
-    ConsoleIO::PrintMenssagem(" > Total de Testes Executados: " + getTestes());
-    ConsoleIO::PrintMenssagem(" > Resultados Corretos (OK):   " + getTestesOk());
-    ConsoleIO::PrintMenssagem(" > Problemas de Validacao:     " + getTestesProblema());
+    Formato::TituloEmCaixa("RESUMO GERAL DOS TESTES");
+    IO::Println(" > Total de Testes Executados: " + getTestes());
+    IO::Println(" > Resultados Corretos (OK):   " + getTestesOk());
+    IO::Println(" > Problemas de Validacao:     " + getTestesProblema());
     cout << "----------------------------------------------------------------------" << endl; // Separador
     if (listaFalhas.empty()) {
-        ConsoleIO::PrintMenssagem("STATUS FINAL: SUCESSO EM TODOS OS TESTES UNITARIOS!");
+        IO::Println("STATUS FINAL: SUCESSO EM TODOS OS TESTES UNITARIOS!");
     } else {
         // Exibe a mensagem de falha e os detalhes
-        ConsoleIO::PrintMenssagem(
+        IO::Println(
             "STATUS FINAL: FALHA EM " + to_string(listaFalhas.size()) + " TESTES. REQUER REVISAO.");
 
-        ConsoleFormatter::MostrarSeparadorCategoria("DETALHES DAS FALHAS");
+        Formato::SeparadorDeCategoria("DETALHES DAS FALHAS");
 
         for (const auto &falha: listaFalhas) {
-            ConsoleIO::PrintMenssagem("  - " + falha);
+            IO::Println("  - " + falha);
         }
     }
     cout << "======================================================================" << endl;

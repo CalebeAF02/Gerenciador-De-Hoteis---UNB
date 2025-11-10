@@ -6,12 +6,12 @@
 void TesteSenha::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: SENHA");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: SENHA");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Regras de Composição e Sequências)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Regras de Composição e Sequências)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> senhasInvalidas = {
@@ -44,7 +44,7 @@ void TesteSenha::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarTituloEmCaixa("2. Casos de Validade (Atende todas as regras)");
+    Formato::TituloEmCaixa("2. Casos de Validade (Atende todas as regras)");
 
     vector<string> senhasValidas = {
         "a1!B3",

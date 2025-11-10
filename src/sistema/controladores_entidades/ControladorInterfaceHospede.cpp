@@ -24,7 +24,7 @@ void ControladorInterfaceHospede::exibirMenu() {
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             executando = false;
-            ConsoleIO::PrintMenssagem("Voltando a selecao de usuario!");
+            IO::Println("Voltando a selecao de usuario!");
         } else if (opcao == OPCAO_HOSPEDAGENS) {
             opcoesDeHospedagem();
         } else if (opcao == OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM) {
@@ -32,7 +32,7 @@ void ControladorInterfaceHospede::exibirMenu() {
         } else if (opcao == OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM) {
             statusDaSolicitandoHospedagem();
         } else {
-            ConsoleIO::PrintMenssagem("Opcao Invalida!");
+            IO::Println("Opcao Invalida!");
         }
     }
 };
@@ -41,37 +41,37 @@ void ControladorInterfaceHospede::exibirMenuCRUD() {
     this->executando = true;
 
     while (executando) {
-        ConsoleFormatter::MostrarTituloEmCaixa("CRUD Gerente");
+        Formato::TituloEmCaixa("CRUD Gerente");
         FabricaGerenciavel<ControladorInterfaceHospede> fabrica;
         fabrica.executarMenu(executando);
     };
 }
 
 void ControladorInterfaceHospede::opcoesDeHospedagem() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Opcoes de Hospedagem");
-    ConsoleIO::PrintMenssagem("Esta opcao ainda nao foi construida! Retornando...");
+    Formato::TituloEmCaixa("Opcoes de Hospedagem");
+    IO::Println("Esta opcao ainda nao foi construida! Retornando...");
     return;
 }
 
 void ControladorInterfaceHospede::solicitandoHospedagem() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Criar Solicitacao de Hospedagem");
+    Formato::TituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    ConsoleIO::SubPergunta("Informe o Email: ");
-    string email = ConsoleIO::LerLinha();
+    IO::Print("Informe o Email: ");
+    string email = IO::LerLinha();
 
-    ConsoleIO::SubPergunta("Codigo do hotel desejado: ");
-    string idHotel = ConsoleIO::LerLinha();
+    IO::Print("Codigo do hotel desejado: ");
+    string idHotel = IO::LerLinha();
 
-    ConsoleIO::SubPergunta("Codigo do quarto desejado: ");
-    string idQuarto = ConsoleIO::LerLinha();
+    IO::Print("Codigo do quarto desejado: ");
+    string idQuarto = IO::LerLinha();
 
-    ConsoleIO::SubPergunta("Data de chegada (dd/mm/aaaa): ");
-    string chegadaStr = ConsoleIO::LerLinha();
+    IO::Print("Data de chegada (dd/mm/aaaa): ");
+    string chegadaStr = IO::LerLinha();
 
-    ConsoleIO::SubPergunta("Data de partida (dd/mm/aaaa): ");
-    string partidaStr = ConsoleIO::LerLinha();
+    IO::Print("Data de partida (dd/mm/aaaa): ");
+    string partidaStr = IO::LerLinha();
 
-    ConsoleIO::PrintMenssagem(idHotel.length() + " e " + idQuarto.length());
+    IO::Println(idHotel.length() + " e " + idQuarto.length());
     try {
         Data chegada(chegadaStr);
         Data partida(partidaStr);
@@ -88,22 +88,22 @@ void ControladorInterfaceHospede::solicitandoHospedagem() {
         );
 
         PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
-        ConsoleIO::PrintMenssagem("Solicitacao registrada com sucesso!");
+        IO::Println("Solicitacao registrada com sucesso!");
     } catch (exception &e) {
-        ConsoleIO::PrintMenssagem("Erro ao criar solicitacao: " + string(e.what()));
+        IO::Println("Erro ao criar solicitacao: " + string(e.what()));
     }
 }
 
 void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
-    ConsoleFormatter::MostrarTituloEmCaixa("Status da Solicitacao de Hospedagem");
+    Formato::TituloEmCaixa("Status da Solicitacao de Hospedagem");
 
-    ConsoleIO::SubPergunta("Informe o Email: ");
-    string email = ConsoleIO::LerLinha();
+    IO::Print("Informe o Email: ");
+    string email = IO::LerLinha();
 
     const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
     if (lista.empty()) {
-        ConsoleIO::PrintMenssagem("Nenhuma solicitacao encontrada.");
+        IO::Println("Nenhuma solicitacao encontrada.");
         return;
     }
 
@@ -114,11 +114,11 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
                                      ? "Aprovada"
                                      : "Recusada";
 
-        ConsoleIO::PrintMenssagem("Hotel: " + s.getHotelId());
-        ConsoleIO::PrintMenssagem("Quarto: " + s.getQuartoId());
-        ConsoleIO::PrintMenssagem("Chegada: " + s.getChegada().toString());
-        ConsoleIO::PrintMenssagem("Partida: " + s.getPartida().toString());
-        ConsoleIO::PrintMenssagem("Status: " + statusStr);
+        IO::Println("Hotel: " + s.getHotelId());
+        IO::Println("Quarto: " + s.getQuartoId());
+        IO::Println("Chegada: " + s.getChegada().toString());
+        IO::Println("Partida: " + s.getPartida().toString());
+        IO::Println("Status: " + statusStr);
 
         if (s.getStatus() == StatusSolicitacaoHospedagem::RECUSADO)
             cout << "\n | Motivo: " << s.getMotivoRecusa();
@@ -126,40 +126,40 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
 }
 
 void ControladorInterfaceHospede::avaliarSolicitacoes() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
+    Formato::TituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
 
     auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
 
     if (pendentes.empty()) {
-        ConsoleIO::PrintMenssagem("Nenhuma solicitacao pendente.");
+        IO::Println("Nenhuma solicitacao pendente.");
         return;
     }
 
     for (auto &solicitacao: pendentes) {
-        ConsoleIO::PrintMenssagem("Hospede: " + solicitacao.getHospedeId());
-        ConsoleIO::PrintMenssagem("Hotel: " + solicitacao.getHotelId());
-        ConsoleIO::PrintMenssagem("Quarto: " + solicitacao.getQuartoId());
-        ConsoleIO::PrintMenssagem("Chegada: " + solicitacao.getChegada().toString());
-        ConsoleIO::PrintMenssagem("Partida: " + solicitacao.getPartida().toString());
-        ConsoleIO::PrintMenssagem("Status atual: Pendente");
+        IO::Println("Hospede: " + solicitacao.getHospedeId());
+        IO::Println("Hotel: " + solicitacao.getHotelId());
+        IO::Println("Quarto: " + solicitacao.getQuartoId());
+        IO::Println("Chegada: " + solicitacao.getChegada().toString());
+        IO::Println("Partida: " + solicitacao.getPartida().toString());
+        IO::Println("Status atual: Pendente");
 
-        ConsoleIO::Pergunta("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
-        string escolha = ConsoleIO::LerOpcao();
+        IO::Println("Deseja aprovar (A) ou recusar (R) esta solicitacao?");
+        string escolha = IO::LerOpcao();
 
         if (escolha == "A" || escolha == "a") {
             solicitacao.setStatus(StatusSolicitacaoHospedagem::APROVADO); // aprovada
             solicitacao.setMotivoRecusa(""); // limpa motivo
             PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
-            ConsoleIO::PrintMenssagem("Solicitacao aprovada com sucesso.");
+            IO::Println("Solicitacao aprovada com sucesso.");
         } else if (escolha == "R" || escolha == "r") {
-            ConsoleIO::Pergunta("Informe o motivo da recusa:");
-            string motivo = ConsoleIO::LerLinha();
+            IO::Println("Informe o motivo da recusa:");
+            string motivo = IO::LerLinha();
             solicitacao.setStatus(StatusSolicitacaoHospedagem::RECUSADO); // recusada
             solicitacao.setMotivoRecusa(motivo);
             PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
-            ConsoleIO::PrintMenssagem("Solicitacao recusada.");
+            IO::Println("Solicitacao recusada.");
         } else {
-            ConsoleIO::PrintMenssagem("Opcao invalida. Solicitacao nao foi alterada.");
+            IO::Println("Opcao invalida. Solicitacao nao foi alterada.");
         }
     }
 }
@@ -174,10 +174,10 @@ void ControladorInterfaceHospede::criar() {
         Hospede *hospede = new Hospede();
 
         if (hospede) {
-            ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Hospede");
+            Formato::TituloEmCaixa("Criando Novo Hospede");
 
-            ConsoleIO::SubPergunta("Informe o Nome: ");
-            string nomeStr = ConsoleIO::LerLinha();
+            IO::Print("Informe o Nome: ");
+            string nomeStr = IO::LerLinha();
             try {
                 hospede->setNome(Nome(nomeStr));
             } catch (invalid_argument &erro) {
@@ -185,8 +185,8 @@ void ControladorInterfaceHospede::criar() {
                 tudoOK = false;
             }
             if (tudoOK) {
-                ConsoleIO::SubPergunta("Informe o Email: ");
-                string emailStr = ConsoleIO::LerLinha();
+                IO::Print("Informe o Email: ");
+                string emailStr = IO::LerLinha();
                 try {
                     hospede->setEmail(Email(emailStr));
                 } catch (invalid_argument &erro) {
@@ -195,8 +195,8 @@ void ControladorInterfaceHospede::criar() {
                 }
             }
             if (tudoOK) {
-                ConsoleIO::SubPergunta("Informe o Endereco: ");
-                string enderecoStr = ConsoleIO::LerLinha();
+                IO::Print("Informe o Endereco: ");
+                string enderecoStr = IO::LerLinha();
                 try {
                     hospede->setEndereco(Endereco(enderecoStr));
                 } catch (invalid_argument &erro) {
@@ -205,8 +205,8 @@ void ControladorInterfaceHospede::criar() {
                 }
             }
             if (tudoOK) {
-                ConsoleIO::SubPergunta("Informe o Cartao: ");
-                string cartaoStr = ConsoleIO::LerLinha();
+                IO::Print("Informe o Cartao: ");
+                string cartaoStr = IO::LerLinha();
                 try {
                     ;
                     hospede->setCartao(Cartao(cartaoStr));
@@ -216,17 +216,17 @@ void ControladorInterfaceHospede::criar() {
                 }
             }
             if (tudoOK) {
-                ConsoleIO::PrintMenssagem("Hospede Cadastrado");
+                IO::Println("Hospede Cadastrado");
                 criado = true;
 
                 PersistenciaHospede persistencia;
                 persistencia.criar(*hospede);
 
                 criado = true;
-                ConsoleIO::PrintMenssagem("Hospede cadastrado!");
+                IO::Println("Hospede cadastrado!");
                 // coloca os Hospedes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
             } else {
-                ConsoleIO::PrintMenssagem("Erro: Hospede nao cadastrado!");
+                IO::Println("Erro: Hospede nao cadastrado!");
             }
             delete hospede; // Liberar o ponteiro da memoria.
         }
@@ -237,33 +237,33 @@ void ControladorInterfaceHospede::ler() {
     vector<Hospede *> listaHospedes = persistencia.listar(); // Vetor para Construir OBJETOS - HOSPEDE
 
     if (listaHospedes.empty()) {
-        ConsoleIO::PrintMenssagem("Nenhum hospede cadastrado.");
+        IO::Println("Nenhum hospede cadastrado.");
         return;
     }
 
-    ConsoleFormatter::MostrarTituloEmCaixa("Lista de Hospedes");
+    Formato::TituloEmCaixa("Lista de Hospedes");
 
     for (const auto &g: listaHospedes) {
-        ConsoleIO::PrintMenssagem("Nome: " + g->getNome());
-        ConsoleIO::PrintMenssagem("Email: " + g->getEmail());
-        ConsoleIO::PrintMenssagem("Endereco: " + g->getEndereco());
-        ConsoleIO::PrintMenssagem("Cartao: " + g->getCartao());
+        IO::Println("Nome: " + g->getNome());
+        IO::Println("Email: " + g->getEmail());
+        IO::Println("Endereco: " + g->getEndereco());
+        IO::Println("Cartao: " + g->getCartao());
     }
 }
 
 void ControladorInterfaceHospede::atualizar() {
-    ConsoleIO::PrintMenssagem("Funcao atualizar ainda nao implementada.");
+    IO::Println("Funcao atualizar ainda nao implementada.");
 }
 
 bool ControladorInterfaceHospede::remover() {
-    ConsoleIO::SubPergunta("Informe o Email: ");
-    string emailStr = ConsoleIO::LerLinha();
+    IO::Print("Informe o Email: ");
+    string emailStr = IO::LerLinha();
     bool status = true; //persistencia.excluirPorEmail(emailStr);
 
     if (status) {
-        ConsoleIO::PrintMenssagem("Foi excluido com sucesso!");
+        IO::Println("Foi excluido com sucesso!");
     } else {
-        ConsoleIO::PrintMenssagem("Hospede nao encontrado!");
+        IO::Println("Hospede nao encontrado!");
     }
     return status;
 }

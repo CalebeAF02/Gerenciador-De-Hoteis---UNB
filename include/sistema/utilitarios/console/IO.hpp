@@ -12,7 +12,7 @@
 using namespace std;
 
 // Classe responsável pela manipulação de entrada e saída de dados simples.
-class ConsoleIO {
+class IO {
 public:
     // Métodos de Input
     static string LerLinha();
@@ -21,14 +21,11 @@ public:
     static string LerOpcao();
 
     // Métodos de Output Simples
-    // Usaremos PrintMensagem(string) para imprimir mensagens genéricas
-    static void PrintMenssagem(const string &mensagem);
+    // Usaremos para imprimir uma mensagens e pular uma linha
+    static void Println(const string &mensagem);
 
-    // Usaremos para imprimir perguntas linha por linha
-    static void Pergunta(const string &mensagem);
-
-    // Usaremos para imprimir prguntas na mesma linha
-    static void SubPergunta(const string &mensagem);
+    // Usaremos para imprimir mensagens na mesma linha
+    static void Print(const string &mensagem);
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP

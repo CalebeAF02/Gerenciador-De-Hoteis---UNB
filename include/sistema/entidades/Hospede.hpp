@@ -9,7 +9,7 @@
 #include "Endereco.hpp"
 
 #include <string>
-#include "ConsoleIO.hpp"
+#include "IO.hpp"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ public:
 
     // virtuais ----------------
     void exibirInfo() const override {
-        ConsoleIO::PrintMenssagem("Sou um Hospede");
+        IO::Println("Sou um Hospede");
     };
 
     // seters -----------------

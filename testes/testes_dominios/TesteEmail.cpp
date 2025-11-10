@@ -7,12 +7,12 @@
 void TesteEmail::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: EMAIL");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: EMAIL");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Formato, Caracteres, Local/Domínio, Tamanho)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Formato, Caracteres, Local/Domínio, Tamanho)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> emailsInvalidos = {
@@ -61,7 +61,7 @@ void TesteEmail::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade");
+    Formato::SeparadorDeCategoria("2. Casos de Validade");
 
     vector<string> emailsValidos = {
         "joao.silva@empresa.com",

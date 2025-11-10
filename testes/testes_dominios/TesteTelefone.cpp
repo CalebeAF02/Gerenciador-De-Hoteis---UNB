@@ -6,12 +6,12 @@
 void TesteTelefone::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: TELEFONE");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: TELEFONE");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Formato, Prefixo, Símbolos, Dígitos)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Formato, Prefixo, Símbolos, Dígitos)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> telefonesInvalidos = {
@@ -45,7 +45,7 @@ void TesteTelefone::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Formato (DD) 9XXXX-XXXX)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (Formato (DD) 9XXXX-XXXX)");
 
     vector<string> telefonesValidos = {
         "+55611299934567",

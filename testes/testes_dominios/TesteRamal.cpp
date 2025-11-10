@@ -7,12 +7,12 @@
 void TesteRamal::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: RAMAL");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: RAMAL");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Tamanho, Letras, Símbolos, Espaços)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Tamanho, Letras, Símbolos, Espaços)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> ramaisInvalidos = {
@@ -39,7 +39,7 @@ void TesteRamal::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (4 Dígitos, Apenas Números)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (4 Dígitos, Apenas Números)");
 
     vector<string> ramaisValidos = {
         "00", "01", "15", "49", "50" // ✅ Ramais de 2 dígitos no range 00-50

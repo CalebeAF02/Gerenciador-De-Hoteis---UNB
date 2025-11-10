@@ -7,12 +7,12 @@
 void TesteCodigo::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: CODIGO");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: CODIGO");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Tamanho, Caracteres Inválidos, Espaços)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Tamanho, Caracteres Inválidos, Espaços)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> codigosInvalidos = {
@@ -43,7 +43,7 @@ void TesteCodigo::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Alfanuméricos, sem espaço)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (Alfanuméricos, sem espaço)");
 
     vector<string> codigosValidos = {
         "QTR1234567", "QTR4561287", "QTR9997845", "QTR9451267", "QTR5426873"

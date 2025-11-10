@@ -8,12 +8,12 @@
 void TesteCapacidade::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: CAPACIDADE");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: CAPACIDADE");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Negativos e Extremos)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Negativos e Extremos)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<int> capacidadesInvalidas = {
@@ -38,7 +38,7 @@ void TesteCapacidade::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Incluindo Limite Zero)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (Incluindo Limite Zero)");
 
     // Casos válidos e o caso 0, que seu código original esperava sucesso.
     vector<int> capacidadesValidas = {

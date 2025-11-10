@@ -2,8 +2,8 @@
 
 #include "TestesData.hpp"
 #include "SmokeTeste.hpp"
-#include "ConsoleFormatter.hpp"
-#include "ConsoleIO.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
 #include "../../include/sistema/dominios/Data.hpp"
 #include <vector>
 #include <string>
@@ -13,7 +13,7 @@ using namespace std;
 void TestesData::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: DATA (DD/MM/AAAA)");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: DATA (DD/MM/AAAA)");
 
     // O valor de teste deve ser sempre a string completa da data.
     const string DOMINIO = "Data";
@@ -21,7 +21,7 @@ void TestesData::executar() {
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Formato, Limites, Dias por Mes)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Formato, Limites, Dias por Mes)");
 
     vector<string> datasInvalidas = {
         // Formato/Separador
@@ -56,7 +56,7 @@ void TestesData::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (DD/MM/AAAA)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (DD/MM/AAAA)");
 
     vector<string> datasValidas = {
         "01/01/2000",

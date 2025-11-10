@@ -14,7 +14,7 @@
 
 #include "Menu.hpp"
 
-#include "utilitarios/console/ConsoleFormatter.hpp"
+#include "utilitarios/console/Formato.hpp"
 #include <iostream>
 #include <string>
 

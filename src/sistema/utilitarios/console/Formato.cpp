@@ -1,11 +1,11 @@
-#include "ConsoleFormatter.hpp"
+#include "Formato.hpp"
 
 #include <algorithm>
 #include <limits>
 
-#include "ConsoleIO.hpp"
+#include "IO.hpp"
 //-----------------------------------------------------------------------------------------------------------
-string ConsoleFormatter::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
+string Formato::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
     int i = 0;
     string temp = "";
     while (i < (qntCaracteres)) {
@@ -15,7 +15,7 @@ string ConsoleFormatter::RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
     return temp;
 };
 
-void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
+void Formato::RepetirCaracter(int qntCaracteres, char c) {
     int i = 0;
     while (i < (qntCaracteres)) {
         cout << c;
@@ -24,7 +24,7 @@ void ConsoleFormatter::RepetirCaracter(int qntCaracteres, char c) {
     }
 };
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleFormatter::MostrarTituloEmCaixa(const string &titulo) {
+void Formato::TituloEmCaixa(const string &titulo) {
     const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
     cout << "\n";
@@ -46,7 +46,7 @@ void ConsoleFormatter::MostrarTituloEmCaixa(const string &titulo) {
     cout << "\n";
 };
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleFormatter::MostrarSeparadorCategoria(const string &titulo) {
+void Formato::SeparadorDeCategoria(const string &titulo) {
     const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
     cout << "\n";
@@ -68,36 +68,36 @@ void ConsoleFormatter::MostrarSeparadorCategoria(const string &titulo) {
     cout << "\n";
 };
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const int &numero) {
+void Formato::OpcaoEmCaixa(const string &texto, const int &numero) {
     cout << "------------------------------\n";
     cout << "| [" << numero << "] " << texto << "\n";
     cout << "------------------------------\n";
 };
 
-void ConsoleFormatter::MostrarOpcaoEmCaixa(const string &texto, const string &numero) {
+void Formato::OpcaoEmCaixa(const string &texto, const string &numero) {
     cout << "------------------------------\n";
     cout << "| [" << numero << "] " << texto << "\n";
     cout << "------------------------------\n";
 };
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleFormatter::MostrarSubOpcao(const string &texto, const int &numero) {
+void Formato::OpcaoSimples(const string &texto, const int &numero) {
     cout << "[" << numero << "] " << texto << "\n";
 };
 //-----------------------------------------------------------------------------------------------------------
-void ConsoleFormatter::MostrarTabelaGenerica(
+void Formato::TabelaGenerica(
     const string &titulo,
     const vector<string> &titulosTabela,
     const vector<vector<string> > &dadosTabela
 ) {
     if (dadosTabela.empty()) {
-        ConsoleIO::PrintMenssagem("Nenhum dado para exibir.");
+        IO::Println("Nenhum dado para exibir.");
         return;
     }
 
     // O número de colunas é determinado pelo cabeçalho
     int numColunas = titulosTabela.size();
     if (numColunas == 0 || dadosTabela[0].size() != numColunas) {
-        ConsoleIO::PrintMenssagem("Erro: Headers e dados incompatíveis.");
+        IO::Println("Erro: Headers e dados incompatíveis.");
         return;
     }
 

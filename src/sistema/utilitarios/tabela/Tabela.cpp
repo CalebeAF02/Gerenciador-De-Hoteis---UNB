@@ -4,8 +4,8 @@
 
 #include "../../../../include/sistema/utilitarios/tabela/Tabela.hpp"
 
-#include "ConsoleFormatter.hpp"
-#include "ConsoleIO.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
 #include "TamanhoAtributo.hpp"0
 
 namespace VisualizadorDeTabela {
@@ -18,7 +18,7 @@ namespace VisualizadorDeTabela {
 
     void Tabela::exibirTabela(string titulo) {
         if (linhas.empty()) {
-            ConsoleIO::PrintMenssagem("Nenhum dado para exibir.");
+            IO::Println("Nenhum dado para exibir.");
             return;
         }
 
@@ -54,11 +54,11 @@ namespace VisualizadorDeTabela {
         //Exibir Titulo da tabela
         int espco_titulo = larguraTotal + colunas.size() + (colunas.size() * 2);
         int espaco_entre = (espco_titulo - titulo.length()) / 2;
-        ConsoleFormatter::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
+        Formato::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
         cout << "\n|";
-        cout << ConsoleFormatter::RepetirCaracterMesmaLinha(espaco_entre, ' ') << titulo <<
-                ConsoleFormatter::RepetirCaracterMesmaLinha(espaco_entre, ' ') << "|" << endl;
-        ConsoleFormatter::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
+        cout << Formato::RepetirCaracterMesmaLinha(espaco_entre, ' ') << titulo <<
+                Formato::RepetirCaracterMesmaLinha(espaco_entre, ' ') << "|" << endl;
+        Formato::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
         cout << "\n";
 
         //Exibir Cabeçalho
@@ -66,11 +66,11 @@ namespace VisualizadorDeTabela {
         for (TamanhoAtributo &coluna: colunas) {
             int falta_espacos = coluna.getTamanho() - coluna.getNome().length();
             linha_cabecalho += coluna.getNome();
-            linha_cabecalho += ConsoleFormatter::RepetirCaracterMesmaLinha(falta_espacos, ' ');
+            linha_cabecalho += Formato::RepetirCaracterMesmaLinha(falta_espacos, ' ');
             linha_cabecalho += " | ";
         }
         cout << linha_cabecalho << endl;
-        ConsoleFormatter::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
+        Formato::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
         cout << "\n";
 
         // Exibir linha da tabela
@@ -81,7 +81,7 @@ namespace VisualizadorDeTabela {
                     if (atributo->getNome() == coluna.getNome()) {
                         int falta_espacos = coluna.getTamanho() - atributo->getValor().length();
                         linha_texto += atributo->getValor();
-                        linha_texto += ConsoleFormatter::RepetirCaracterMesmaLinha(falta_espacos, ' ');
+                        linha_texto += Formato::RepetirCaracterMesmaLinha(falta_espacos, ' ');
 
                         linha_texto += " | ";
                         break;
@@ -90,7 +90,7 @@ namespace VisualizadorDeTabela {
             }
             cout << linha_texto << endl;
         }
-        ConsoleFormatter::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
+        Formato::RepetirCaracter(larguraTotal + colunas.size() + 1 + (colunas.size() * 2), '-');
         cout << "\n";
     };
 }

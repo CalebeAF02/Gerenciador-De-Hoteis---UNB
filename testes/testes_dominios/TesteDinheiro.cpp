@@ -7,12 +7,12 @@
 void TesteDinheiro::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: DINHEIRO");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: DINHEIRO");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Negativos, Zero, Limites Máximos)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Negativos, Zero, Limites Máximos)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<int> valoresInvalidos = {
@@ -39,7 +39,7 @@ void TesteDinheiro::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Positivos, dentro do limite)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (Positivos, dentro do limite)");
 
     vector<int> valoresValidos = {
         1, 100, 9999, 100000, 99999999, 100000000

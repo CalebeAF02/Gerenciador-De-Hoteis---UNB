@@ -6,12 +6,12 @@
 void TesteNumero::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: NUMERO");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: NUMERO");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Vazio, Negativos, Letras, Símbolos, Espaços)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Vazio, Negativos, Letras, Símbolos, Espaços)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> numerosInvalidos = {
@@ -41,7 +41,7 @@ void TesteNumero::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade (Apenas Dígitos Positivos)");
+    Formato::SeparadorDeCategoria("2. Casos de Validade (Apenas Dígitos Positivos)");
 
     vector<string> numerosValidos = {
         "001", "123", "999", "456", "789", "100" // Adicionei "0", que é geralmente válido

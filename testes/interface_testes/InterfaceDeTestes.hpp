@@ -10,8 +10,8 @@
 #include "../entidades/Hotel.hpp"
 #include "../entidades/Quarto.hpp"
 #include "../entidades/Reserva.hpp"
-#include "ConsoleFormatter.hpp"
-#include "ConsoleIO.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
 
 using namespace std;
 

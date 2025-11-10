@@ -9,8 +9,8 @@
 #include <string>
 #include <vector>
 
-#include "console/ConsoleFormatter.hpp"
-#include "ConsoleIO.hpp"
+#include "console/Formato.hpp"
+#include "IO.hpp"
 
 #include "MenuItem.hpp"
 

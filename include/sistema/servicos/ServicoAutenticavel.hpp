@@ -9,7 +9,7 @@
 
 #include "InterfaceServicoAutenticavel.hpp"
 #include "PersistenciaGerente.hpp"
-#include "../utilitarios/console/ConsoleFormatter.hpp"
+#include "../utilitarios/console/Formato.hpp"
 
 using namespace std;
 

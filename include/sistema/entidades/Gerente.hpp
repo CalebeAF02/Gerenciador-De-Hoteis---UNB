@@ -8,7 +8,7 @@
 #include "Ramal.hpp"
 #include "Senha.hpp"
 #include "GerenteDTO.hpp"
-#include "ConsoleIO.hpp"
+#include "IO.hpp"
 
 #include <string>
 
@@ -39,7 +39,7 @@ public:
 
     // virtuais ----------------
     void exibirInfo() const override {
-        ConsoleIO::PrintMenssagem("Sou um Gerente");
+        IO::Println("Sou um Gerente");
     };
 
     // seters -----------------

@@ -27,7 +27,7 @@
 using namespace std;
 
 void TestandoSmoke::executarSmokeTest() {
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTE FUMACA (SMOKE TEST) - EXECUCAO INTEGRADA");
+    Formato::TituloEmCaixa("TESTE FUMACA (SMOKE TEST) - EXECUCAO INTEGRADA");
 
     //------------------------------------------------------------------------------------------------------------------
     // Lista de testes_dominios

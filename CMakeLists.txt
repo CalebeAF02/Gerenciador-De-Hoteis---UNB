@@ -95,8 +95,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/utilitarios/ValidadorNumerico.cpp
 
         # Utilitarios - Console
-        src/sistema/utilitarios/console/ConsoleFormatter.cpp
-        src/sistema/utilitarios/console/ConsoleIO.cpp
+        src/sistema/utilitarios/console/Formato.cpp
+        src/sistema/utilitarios/console/IO.cpp
 
         # Utilitarios - Tabela
         src/sistema/utilitarios/tabela/Tabela.cpp

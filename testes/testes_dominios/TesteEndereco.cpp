@@ -7,12 +7,12 @@
 void TesteEndereco::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: ENDERECO");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: ENDERECO");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Caracteres, Início/Fim Invalido, Tamanho)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Caracteres, Início/Fim Invalido, Tamanho)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> enderecosInvalidos = {
@@ -46,7 +46,7 @@ void TesteEndereco::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade");
+    Formato::SeparadorDeCategoria("2. Casos de Validade");
 
     vector<string> enderecosValidos = {
         "Rua das Flores, 123",

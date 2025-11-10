@@ -19,13 +19,13 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
         string emailCopia;
         string senhaCopia;
 
-        ConsoleFormatter::MostrarTituloEmCaixa("Logando com Gerente");
+        Formato::TituloEmCaixa("Logando com Gerente");
 
-        ConsoleIO::SubPergunta("Informe o Email: ");
-        emailCopia = ConsoleIO::LerLinha();
+        IO::Print("Informe o Email: ");
+        emailCopia = IO::LerLinha();
 
-        ConsoleIO::SubPergunta("Informe a Senha: ");
-        senhaCopia = ConsoleIO::LerLinha();
+        IO::Print("Informe a Senha: ");
+        senhaCopia = IO::LerLinha();
 
         try {
             Email emailObj(emailCopia);
@@ -34,17 +34,17 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
             if (autenticar(emailObj, senhaObj)) {
                 lacoLogin = true;
             } else {
-                ConsoleIO::PrintMenssagem("Gerente nao cadastrado");
-                ConsoleFormatter::MostrarSubOpcao("Voltar", 0);
-                ConsoleFormatter::MostrarSubOpcao("Tentar novamente", 1);
-                string opcao = ConsoleIO::LerLinha();
+                IO::Println("Gerente nao cadastrado");
+                Formato::OpcaoSimples("Voltar", 0);
+                Formato::OpcaoSimples("Tentar novamente", 1);
+                string opcao = IO::LerLinha();
                 if (opcao == "0") break;
             }
         } catch (invalid_argument &erro) {
             cout << "Erro: " << erro.what() << endl;
-            ConsoleFormatter::MostrarSubOpcao("Voltar", 0);
-            ConsoleFormatter::MostrarSubOpcao("Tentar novamente", 1);
-            string opcao = ConsoleIO::LerLinha();
+            Formato::OpcaoSimples("Voltar", 0);
+            Formato::OpcaoSimples("Tentar novamente", 1);
+            string opcao = IO::LerLinha();
             if (opcao == "0") break;
         }
     }

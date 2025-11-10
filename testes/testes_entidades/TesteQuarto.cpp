@@ -4,20 +4,20 @@
 #include "sistema/dominios/Numero.hpp"
 #include "sistema/dominios/Capacidade.hpp"
 #include "sistema/dominios/Dinheiro.hpp"
-#include "ConsoleFormatter.hpp"
+#include "Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteQuarto::executar() {
     SmokeTeste smoke_teste;
     Quarto quarto1; // Instância da Entidade a ser testada
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE ENTIDADE: QUARTO (ATRIBUICAO DE DOMINIOS)");
+    Formato::TituloEmCaixa("TESTES DE ENTIDADE: QUARTO (ATRIBUICAO DE DOMINIOS)");
 
     // =========================================================================
     // 1. ATRIBUIÇÃO DE NÚMERO
     // =========================================================================
     const string numeroStr = "101"; // Número de quarto de exemplo (geralmente 3 dígitos)
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Atribuicao de Numero Valido");
+    Formato::SeparadorDeCategoria("1. Atribuicao de Numero Valido");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,
@@ -31,7 +31,7 @@ void TesteQuarto::executar() {
     // =========================================================================
     // Capacidade deve ser 1, 2, 3 ou 4.
     int capacidadeInt = 4;
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Atribuicao de Capacidade Valida");
+    Formato::SeparadorDeCategoria("2. Atribuicao de Capacidade Valida");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,
@@ -47,7 +47,7 @@ void TesteQuarto::executar() {
     int diariaInt = 25000;
 
     // NOTA: Para Dinheiro, geralmente se usa um tipo numérico (int), então o teste deve ser adaptado.
-    ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Diaria (Dinheiro) Valida");
+    Formato::SeparadorDeCategoria("3. Atribuicao de Diaria (Dinheiro) Valida");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,
@@ -60,7 +60,7 @@ void TesteQuarto::executar() {
     // =========================================================================
     // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
     const string ramalStr = "49";
-    ConsoleFormatter::MostrarSeparadorCategoria("3. Atribuicao de Ramal Valido (00-50)");
+    Formato::SeparadorDeCategoria("3. Atribuicao de Ramal Valido (00-50)");
 
     smoke_teste.testarEntidade(
         InterfaceDeTeste::DEVE_DAR_CERTO,

@@ -7,12 +7,12 @@
 void TesteCartao::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: CARTAO");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: CARTAO");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Tamanho, Letras, Símbolos, Espaços)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Tamanho, Letras, Símbolos, Espaços)");
 
     // Consolida todos os casos que DEVEM FALHAR.
     vector<string> cartoesInvalidos = {
@@ -39,7 +39,7 @@ void TesteCartao::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade");
+    Formato::SeparadorDeCategoria("2. Casos de Validade");
 
     vector<string> cartoesValidos = {
         "4111111111111111", // Visa (16 dígitos)

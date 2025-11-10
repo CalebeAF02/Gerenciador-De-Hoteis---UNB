@@ -3,7 +3,7 @@
 #include "TesteNome.hpp"
 #include "SmokeTeste.hpp"
 #include "sistema/dominios/Nome.hpp" // A classe que será testada
-#include "ConsoleFormatter.hpp"
+#include "Formato.hpp"
 #include <vector>
 
 //------------------------------------------------------------------------------------------------------------------
@@ -12,12 +12,12 @@ using namespace std;
 void TesteNome::executar() {
     SmokeTeste smoke_teste;
 
-    ConsoleFormatter::MostrarTituloEmCaixa("TESTES DE DOMINIO: NOME");
+    Formato::TituloEmCaixa("TESTES DE DOMINIO: NOME");
 
     // =========================================================================
     // 1. CASOS INVÁLIDOS (DEVE_DAR_ERRADO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("1. Casos de Invalidade (Tamanho, Símbolo, Espaço, Inicial)");
+    Formato::SeparadorDeCategoria("1. Casos de Invalidade (Tamanho, Símbolo, Espaço, Inicial)");
 
     vector<string> nomesInvalidos = {
         // Tamanho
@@ -41,7 +41,7 @@ void TesteNome::executar() {
     // =========================================================================
     // 2. CASOS VÁLIDOS (DEVE_DAR_CERTO)
     // =========================================================================
-    ConsoleFormatter::MostrarSeparadorCategoria("2. Casos de Validade");
+    Formato::SeparadorDeCategoria("2. Casos de Validade");
 
     vector<string> nomesValidos = {
         "Joao Da Silva", "Maria Clara", "Carlos Eduardo"

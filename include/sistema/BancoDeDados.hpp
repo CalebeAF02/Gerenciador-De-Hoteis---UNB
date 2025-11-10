@@ -7,8 +7,8 @@
 
 #include "sqlite3.h"
 #include <iostream>
-#include "ConsoleIO.hpp"
-#include "ConsoleFormatter.hpp"
+#include "IO.hpp"
+#include "Formato.hpp"
 
 using namespace std;
 

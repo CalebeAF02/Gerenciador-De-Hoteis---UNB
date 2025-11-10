@@ -10,7 +10,7 @@
 #include <string>
 
 #include "InterfaceDeTestes.hpp"
-#include  "ConsoleIO.hpp"
+#include  "IO.hpp"
 
 class TesteCartao : public InterfaceDeTeste {
 public:

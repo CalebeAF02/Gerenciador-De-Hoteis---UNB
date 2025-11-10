@@ -5,11 +5,11 @@
 #include "ControladorInterfaceQuarto.hpp"
 
 void ControladorInterfaceQuarto::exibirMenu() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Seja bem vindo a central de servicos");
-    ConsoleIO::PrintMenssagem("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    Formato::TituloEmCaixa("Seja bem vindo a central de servicos");
+    IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
 
 void ControladorInterfaceQuarto::exibirMenuCRUD() {
-    ConsoleFormatter::MostrarTituloEmCaixa("Seja bem vindo a central de servicos Quarto");
-    ConsoleIO::PrintMenssagem("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    Formato::TituloEmCaixa("Seja bem vindo a central de servicos Quarto");
+    IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
 }
