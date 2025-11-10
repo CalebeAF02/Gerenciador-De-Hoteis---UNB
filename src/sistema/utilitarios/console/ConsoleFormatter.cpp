@@ -90,14 +90,14 @@ void ConsoleFormatter::MostrarTabelaGenerica(
     const vector<vector<string> > &dadosTabela
 ) {
     if (dadosTabela.empty()) {
-        cout << "Nenhum dado para exibir.\n";
+        ConsoleIO::PrintMenssagem("Nenhum dado para exibir.");
         return;
     }
 
     // O número de colunas é determinado pelo cabeçalho
     int numColunas = titulosTabela.size();
     if (numColunas == 0 || dadosTabela[0].size() != numColunas) {
-        cout << "Erro: Headers e dados incompatíveis.\n";
+        ConsoleIO::PrintMenssagem("Erro: Headers e dados incompatíveis.");
         return;
     }
 

@@ -22,7 +22,7 @@ void ControladorInterfaceGerente::exibirMenu() {
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             this->sair();
-            cout << "Voce Saiu da Central de servicos e foi deslogado!\n";
+            ConsoleIO::PrintMenssagem("Voce Saiu da Central de servicos e foi deslogado!");
         } else if (opcao == OPCAO_GERENCIE_GERENTES) {
             exibirMenuCRUD();
         } else if (opcao == OPCAO_GERENCIE_HOSPEDES) {
@@ -41,18 +41,19 @@ void ControladorInterfaceGerente::exibirMenu() {
             ControladorInterfaceHospede servicosHospede;
             servicosHospede.avaliarSolicitacoes();
         } else {
-            cout << "Opcao Invalida!" << endl;
+            ConsoleIO::PrintMenssagem("Opcao Invalida!");
         }
     };
 }
 
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenuCRUD() {
-    bool status = true;
+    this->executando = true;
+
     while (this->getEstaLogado()) {
         FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
-        fabrica.executarMenu(status);
-        if (status == false) {
+        fabrica.executarMenu(executando);
+        if (executando == false) {
             break;
         }
     };
@@ -70,7 +71,7 @@ void ControladorInterfaceGerente::criar() {
         if (gerente) {
             ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Gerente");
 
-            cout << "Informe o Nome: \n";
+            ConsoleIO::SubPergunta("Informe o Nome: ");
             string nomeStr = ConsoleIO::LerLinha();
             try {
                 gerente->setNome(Nome(nomeStr));
@@ -79,7 +80,7 @@ void ControladorInterfaceGerente::criar() {
                 tudoOK = false;
             }
             if (tudoOK) {
-                cout << "Informe o Email: \n";
+                ConsoleIO::SubPergunta("Informe o Email: ");
                 string emailStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setEmail(Email(emailStr));
@@ -89,7 +90,7 @@ void ControladorInterfaceGerente::criar() {
                 }
             }
             if (tudoOK) {
-                cout << "Informe o Ramal: \n";
+                ConsoleIO::SubPergunta("Informe o Ramal: ");
                 string ramalStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setRamal(Ramal(ramalStr));
@@ -99,7 +100,7 @@ void ControladorInterfaceGerente::criar() {
                 }
             }
             if (tudoOK) {
-                cout << "Informe o Senha: \n";
+                ConsoleIO::SubPergunta("Informe o Senha: ");
                 string senhaStr = ConsoleIO::LerLinha();
                 try {
                     gerente->setSenha(Senha(senhaStr));
@@ -114,28 +115,26 @@ void ControladorInterfaceGerente::criar() {
 
                 if (sucesso) {
                     criado = true;
-                    cout << "Gerente Cadastrado!\n";
-                    // coloca os Gerentes da listaGerentes que esta na memoria para o arquivo Dados_Gerentes.tsv .
+                    ConsoleIO::PrintMenssagem("Gerente Cadastrado!");
                 } else {
-                    cout << "Erro ao cadastrar gerente no banco!\n";
-                    cout << "Retornando ao menu de acesso...\n";
+                    ConsoleIO::PrintMenssagem("Erro ao cadastrar gerente no banco!");
                     break; // ← Aqui você interrompe o loop e volta ao menu anterior
                 }
             } else {
-                cout << "Ops* Gerente não cadastrado!\n";
-                cout << "Retornando ao menu de acesso...\n";
+                ConsoleIO::PrintMenssagem("Err: Gerente não cadastrado!");
                 break; // ← Também retorna se houver erro de validação
             }
             delete gerente; // Liberar o ponteiro da memoria.
         }
     }
 };
+
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::ler() {
     vector<GerenteDTO *> lista = persistencia.listar();
 
     if (lista.empty()) {
-        cout << "Nenhum gerente cadastrado.\n";
+        ConsoleIO::PrintMenssagem("Nenhum gerente cadastrado.");
         return;
     }
     Tabela tab;
@@ -154,7 +153,7 @@ void ControladorInterfaceGerente::ler() {
 
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::atualizar() {
-    ConsoleIO::PrintMensagem("Informe o Id do Gerente: ");
+    ConsoleIO::SubPergunta("Informe o Id do Gerente: ");
     string id_gerente = ConsoleIO::LerLinha();
 
     if (ValidadorNumerico::verificaSeENumero(id_gerente)) {
@@ -193,7 +192,7 @@ void ControladorInterfaceGerente::atualizar() {
         int opcao = menu.executa("Atualizacao de Cadastro");
 
         if (opcao == OPCAO_ALTERAR_NOME) {
-            ConsoleIO::PrintMensagem("Novo nome:");
+            ConsoleIO::SubPergunta("Novo nome: ");
             string valor = ConsoleIO::LerLinha();
             try {
                 gerente.setNome(Nome(valor));
@@ -202,7 +201,7 @@ void ControladorInterfaceGerente::atualizar() {
                 cout << erro.what() << endl;
             }
         } else if (opcao == OPCAO_ALTERAR_EMAIL) {
-            ConsoleIO::PrintMensagem("Novo Email:");
+            ConsoleIO::SubPergunta("Novo Email: ");
             string valor = ConsoleIO::LerLinha();
             try {
                 gerente.setEmail(Email(valor));
@@ -211,7 +210,7 @@ void ControladorInterfaceGerente::atualizar() {
                 cout << erro.what() << endl;
             }
         } else if (opcao == OPCAO_ALTERAR_RAMAL) {
-            ConsoleIO::PrintMensagem("Novo ramal:");
+            ConsoleIO::SubPergunta("Novo ramal: ");
             string valor = ConsoleIO::LerLinha();
             try {
                 gerente.setRamal(Ramal(valor));
@@ -220,7 +219,7 @@ void ControladorInterfaceGerente::atualizar() {
                 cout << erro.what() << endl;
             }
         } else if (opcao == OPCAO_ALTERAR_SENHA) {
-            ConsoleIO::PrintMensagem("Nova senha:");
+            ConsoleIO::SubPergunta("Nova senha: ");
             string valor = ConsoleIO::LerLinha();
             try {
                 gerente.setSenha(Senha(valor));
@@ -229,22 +228,22 @@ void ControladorInterfaceGerente::atualizar() {
                 cout << erro.what() << endl;
             }
         } else if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-            ConsoleIO::PrintMensagem("Atualizacao cancelada.");
+            ConsoleIO::PrintMenssagem("Atualizacao cancelada.");
             return;
         } else {
-            ConsoleIO::PrintMensagem("Opcao invalida.");
+            ConsoleIO::PrintMenssagem("Opcao invalida.");
             return;
         }
 
         if (alterado) {
             bool sucesso = persistencia.atualizar(id_numero, gerente);
             if (sucesso)
-                ConsoleIO::PrintMensagem("Cadastro atualizado com sucesso!");
+                ConsoleIO::PrintMenssagem("Cadastro atualizado com sucesso!");
             else
-                ConsoleIO::PrintMensagem("Erro ao atualizar cadastro no banco.");
+                ConsoleIO::PrintMenssagem("Erro ao atualizar cadastro no banco.");
         }
     } else {
-        ConsoleIO::PrintMensagem("Erro: Id Invalido");
+        ConsoleIO::PrintMenssagem("Erro: Id Invalido");
     }
 }
 

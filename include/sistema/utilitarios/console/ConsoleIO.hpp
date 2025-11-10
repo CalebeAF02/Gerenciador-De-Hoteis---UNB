@@ -17,16 +17,18 @@ public:
     // Métodos de Input
     static string LerLinha();
 
-    static string ReceberOpcao();
+    // Métodos de Input com texto "Opção: "
+    static string LerOpcao();
 
     // Métodos de Output Simples
-    // Usaremos PrintMensagem(string) para imprimir mensagens genéricas (perguntas, retornos, etc.)
-    static void PrintMensagem(const string &mensagem);
+    // Usaremos PrintMensagem(string) para imprimir mensagens genéricas
+    static void PrintMenssagem(const string &mensagem);
 
-    // Podemos manter um PrintLine simples para quebras de linha ou debugging
-    static void PrintLine(const string &texto);
+    // Usaremos para imprimir perguntas linha por linha
+    static void Pergunta(const string &mensagem);
 
-    static void PrintLine(int numero);
+    // Usaremos para imprimir prguntas na mesma linha
+    static void SubPergunta(const string &mensagem);
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP

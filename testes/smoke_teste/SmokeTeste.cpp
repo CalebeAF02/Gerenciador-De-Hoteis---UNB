@@ -24,9 +24,9 @@ void SmokeTeste::testarDominio(
     // --- 1. IMPRIME O QUE OCORREU (EXCLUSIVAMENTE AQUI) ---
     // Faz a impressão da linha "Ocorreu" que você deseja
     if (resultado_obtido_codigo == InterfaceDeTeste::DEVE_DAR_CERTO) {
-        ConsoleIO::PrintMensagem("\n | Ocorreu: SUCESSO na Validacao");
+        ConsoleIO::PrintMenssagem("\n | Ocorreu: SUCESSO na Validacao");
     } else {
-        ConsoleIO::PrintMensagem("\n | Ocorreu: ERRO (" + erro_capturado + ")");
+        ConsoleIO::PrintMenssagem("\n | Ocorreu: ERRO (" + erro_capturado + ")");
     }
 
     // --- 2. DELEGA A IMPRESSÃO DO RESULTADO E A CONTAGEM AO checaResultado ---
@@ -66,9 +66,9 @@ void SmokeTeste::testarEntidade(
     // --- 1. IMPRIME O QUE OCORREU (EXCLUSIVAMENTE AQUI) ---
     // Faz a impressão da linha "Ocorreu" que você deseja
     if (resultado_obtido_codigo == InterfaceDeTeste::DEVE_DAR_CERTO) {
-        ConsoleIO::PrintMensagem("\n | Ocorreu: SUCESSO na Validacao");
+        ConsoleIO::PrintMenssagem("\n | Ocorreu: SUCESSO na Validacao");
     } else {
-        ConsoleIO::PrintMensagem("\n | Ocorreu: ERRO (" + erro_capturado + ")");
+        ConsoleIO::PrintMenssagem("\n | Ocorreu: ERRO (" + erro_capturado + ")");
     }
 
     // --- 2. DELEGA A IMPRESSÃO DO RESULTADO E A CONTAGEM AO checaResultado ---

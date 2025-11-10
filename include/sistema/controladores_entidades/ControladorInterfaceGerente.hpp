@@ -30,16 +30,11 @@ public:
     // Acessando servicos
     void exibirMenu() override;
 
-    // Chama o Menu crud
+    // Menu CRUD
     void exibirMenuCRUD();
-
-    // Menu CRUD herdados da interface
     void criar() override;
-
     void ler() override;
-
     void atualizar() override;
-
     bool remover() override;
 };
 

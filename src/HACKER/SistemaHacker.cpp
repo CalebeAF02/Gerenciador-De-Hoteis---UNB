@@ -6,13 +6,13 @@
 
 
 void SistemaHacker::iniciar() {
-    ConsoleIO::PrintMensagem("Versao " + Versao::getVersaoCompleta());
+    ConsoleIO::PrintMenssagem("Versao " + Versao::getVersaoCompleta());
 
     Email emailHK("calebe.2324@gmail.com");
     Senha senhaHK("A1!b2");
     controladorGerente.autenticar(emailHK, senhaHK);
     if (controladorGerente.getEstaLogado()) {
-        cout << "Agora Voce Possui Super-Poderes" << endl;
+        ConsoleIO::PrintMenssagem("Agora Voce Possui Super-Poderes");
         controladorGerente.exibirMenu();
     }
 }

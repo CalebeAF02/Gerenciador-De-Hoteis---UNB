@@ -34,6 +34,7 @@ class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
                                   public InterfaceApresentacaoCRUD {
 private:
     PersistenciaHotel persistencia;
+    bool executando = true;
 
 public:
     // Construtor dos servicosHotel

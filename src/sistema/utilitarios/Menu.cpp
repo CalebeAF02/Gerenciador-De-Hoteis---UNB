@@ -20,13 +20,13 @@ vector<MenuItem> Menu::listar() {
 //-----------------------------------------------------------------------------------------------------------
 int Menu::executa(string tituloStr) {
     ConsoleFormatter::MostrarTituloEmCaixa(tituloStr);
-    ConsoleIO::PrintMensagem("Selecione a opcao:");
+    ConsoleIO::Pergunta("Selecione a opcao:");
 
     for (int i = 0; i < menuItens.size(); i++) {
         ConsoleFormatter::MostrarOpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
     }
 
-    string opcao = ConsoleIO::ReceberOpcao();
+    string opcao = ConsoleIO::LerOpcao();
     int opcaoInt = -1;
     for (int i = 0; i < menuItens.size(); i++) {
         if (opcao == menuItens[i].getValor()) {

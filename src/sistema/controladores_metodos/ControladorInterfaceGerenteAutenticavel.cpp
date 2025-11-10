@@ -21,10 +21,10 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
 
         ConsoleFormatter::MostrarTituloEmCaixa("Logando com Gerente");
 
-        cout << "Informe o Email: \n";
+        ConsoleIO::SubPergunta("Informe o Email: ");
         emailCopia = ConsoleIO::LerLinha();
 
-        cout << "Informe a Senha: \n";
+        ConsoleIO::SubPergunta("Informe a Senha: ");
         senhaCopia = ConsoleIO::LerLinha();
 
         try {
@@ -34,7 +34,7 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
             if (autenticar(emailObj, senhaObj)) {
                 lacoLogin = true;
             } else {
-                cout << "Gerente nao cadastrado" << endl;
+                ConsoleIO::PrintMenssagem("Gerente nao cadastrado");
                 ConsoleFormatter::MostrarSubOpcao("Voltar", 0);
                 ConsoleFormatter::MostrarSubOpcao("Tentar novamente", 1);
                 string opcao = ConsoleIO::LerLinha();

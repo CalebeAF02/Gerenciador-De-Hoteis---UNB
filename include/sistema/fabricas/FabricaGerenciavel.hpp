@@ -48,11 +48,11 @@ public:
         shared_ptr<T> objeto = make_shared<T>();
         // objeto == FabricaGerenciavel do tipo T.
         // se T == GerenteGerenciavel ; Estou criando umafabrica de gerente gerenciavel.
-        bool status = objeto->remover();
-        return status;
+        bool executando = objeto->remover();
+        return executando;
     }
 
-    void executarMenu(bool &status) {
+    void executarMenu(bool &executando) {
         Menu menu;
 
         const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -64,8 +64,8 @@ public:
         int opcao = menu.executa("Voce Entrou na central de servicos");
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-            status = false;
-            cout << "Voce Saiu da Central de servicos!" << endl;
+            executando = false;
+            ConsoleIO::PrintMenssagem("Voce Saiu da Central de servicos!");
             return;
         } else if (opcao == OPCAO_CRIAR) criar();
         else if (opcao == OPCAO_LER) ler();

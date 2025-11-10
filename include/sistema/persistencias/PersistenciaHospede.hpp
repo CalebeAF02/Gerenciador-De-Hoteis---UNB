@@ -6,7 +6,7 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAHOSPEDE_H
 
 #include <vector>
-
+#include "sqlite3.h"
 #include "Hospede.hpp"
 
 using namespace std;

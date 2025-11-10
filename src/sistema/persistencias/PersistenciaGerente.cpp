@@ -26,9 +26,9 @@ bool PersistenciaGerente::inserir(Gerente &gerente) {
         if (erroStr.find("UNIQUE constraint failed: gerentes.email") != string::npos) {
             // não esta apresentando a menssagem
 
-            cout << "\nErro: Este email ja esta cadastrado no sistema!" << endl;
+            ConsoleIO::PrintMenssagem("Erro: Este email ja esta cadastrado no sistema!");
         } else {
-            cout << "\nErro ao inserir gerente: " << erroStr << endl << endl;
+            ConsoleIO::PrintMenssagem("Erro ao inserir gerente: " + erroStr);
         }
 
         sqlite3_free(mensagemErro);

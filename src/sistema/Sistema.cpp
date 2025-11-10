@@ -8,7 +8,7 @@
 #include "Versao.hpp"
 
 void Sistema::iniciar() {
-    ConsoleIO::PrintMensagem("Versao " + Versao::getVersaoCompleta());
+    ConsoleIO::PrintMenssagem("Versao " + Versao::getVersaoCompleta());
     while (getExecutandoSistema()) {
         exibirMenu();
     }
@@ -26,7 +26,7 @@ void Sistema::exibirMenu() {
 
         if (opcao == OPCAO_SAIR_DO_SISTEMA) {
             executando = false;
-            cout << "Encerrando o sistema..." << endl;
+            ConsoleIO::PrintMenssagem("Encerrando o sistema...");
         } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
             Email emailAcessar;
             exibirMenuDoGerente();
@@ -49,18 +49,18 @@ void Sistema::exibirMenuDoGerente() {
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             executando = false;
-            cout << "Voltando a selecao de usuario!" << endl;
+            ConsoleIO::PrintMenssagem("Voltando a selecao de usuario!");
         } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
             FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
             fabrica.criar(); // apenas cria o gerente, sem abrir o menu
         } else if (opcao == OPCAO_FAZER_LOGIN) {
             controladorGerente.fazerLogin();
             if (controladorGerente.getEstaLogado()) {
-                cout << "Agora Voce Possui Super-Poderes" << endl;
+                ConsoleIO::PrintMenssagem("Agora Voce Possui Super-Poderes");
                 controladorGerente.exibirMenu();
             }
         } else {
-            cout << "Opcao Invalida!" << endl;
+            ConsoleIO::PrintMenssagem("Opcao Invalida!");
         }
     }
 };

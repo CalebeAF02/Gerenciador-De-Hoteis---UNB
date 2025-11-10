@@ -15,7 +15,8 @@ void ControladorInterfaceHotel::exibirMenuCRUD() {
     const int OPCAO_LER_HOTEL = menu.adcionarItens("Ler Hoteis");
     const int OPCAO_ATUALIZAR_HOTEL = menu.adcionarItens("Atualizar Hotel");
 
-    bool executando = true;
+    this->executando = true;
+
     while (executando) {
         int opcao = menu.executa("Seja bem vindo a central de servicos");
 
@@ -28,7 +29,7 @@ void ControladorInterfaceHotel::exibirMenuCRUD() {
         } else if (opcao == OPCAO_ATUALIZAR_HOTEL) {
             atualizar();
         } else {
-            cout << "Opcao Invalida!" << endl;
+            ConsoleIO::PrintMenssagem("Opcao Invalida!");
         }
     };
 }
@@ -44,7 +45,7 @@ void ControladorInterfaceHotel::criar() {
         if (hotel) {
             ConsoleFormatter::MostrarTituloEmCaixa("Criando Novo Hotel");
             if (tudoOK) {
-                cout << "Informe o Nome: \n";
+                ConsoleIO::SubPergunta("Informe o Nome: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setNome(Nome(valor));
@@ -54,7 +55,7 @@ void ControladorInterfaceHotel::criar() {
                 }
             }
             if (tudoOK) {
-                cout << "Informe o Endereco: \n";
+                ConsoleIO::SubPergunta("Informe o Endereco: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setEndereco(Endereco(valor));
@@ -64,7 +65,7 @@ void ControladorInterfaceHotel::criar() {
                 }
             }
             if (tudoOK) {
-                cout << "Informe o Telefone: \n";
+                ConsoleIO::SubPergunta("Informe o Telefone: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setTelefone(Telefone(valor));
@@ -74,7 +75,7 @@ void ControladorInterfaceHotel::criar() {
                 }
             }
             if (tudoOK) {
-                cout << "Informe o Codigo: \n";
+                ConsoleIO::SubPergunta("Informe o Codigo: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel->setCodigo(Codigo(valor));
@@ -89,15 +90,13 @@ void ControladorInterfaceHotel::criar() {
 
                 if (sucesso) {
                     criado = true;
-                    cout << "Hotel Cadastrado!\n";
+                    ConsoleIO::PrintMenssagem("Hotel Cadastrado!");
                 } else {
-                    cout << "Erro ao cadastrar hotel no banco!\n";
-                    cout << "Retornando ao menu de acesso...\n";
+                    ConsoleIO::PrintMenssagem("Erro ao cadastrar hotel no banco!");
                     break;
                 }
             } else {
-                cout << "Ops* Hotel nao cadastrado!\n";
-                cout << "Retornando ao menu de acesso...\n";
+                ConsoleIO::PrintMenssagem("Erro: Hotel nao cadastrado!");
                 break;
             }
             delete hotel; // Liberar o ponteiro da memoria.
@@ -109,7 +108,7 @@ void ControladorInterfaceHotel::ler() {
     vector<HotelDTO *> lista = persistencia.listar();
 
     if (lista.empty()) {
-        cout << "Nenhum gerente cadastrado.\n";
+        ConsoleIO::PrintMenssagem("Nenhum gerente cadastrado.");
         return;
     }
     Tabela tab;
@@ -128,7 +127,7 @@ void ControladorInterfaceHotel::ler() {
 }
 
 void ControladorInterfaceHotel::atualizar() {
-    ConsoleIO::PrintMensagem("Informe o Id do hotel: ");
+    ConsoleIO::SubPergunta("Informe o Id do hotel: ");
     string id_hotel = ConsoleIO::LerLinha();
 
     if (ValidadorNumerico::verificaSeENumero(id_hotel)) {
@@ -170,7 +169,7 @@ void ControladorInterfaceHotel::atualizar() {
             int opcao = menu.executa("Atualizacao de Cadastro");
 
             if (opcao == OPCAO_ALTERAR_NOME) {
-                ConsoleIO::PrintMensagem("Novo nome:");
+                ConsoleIO::SubPergunta("Novo nome: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel.setNome(Nome(valor));
@@ -179,7 +178,7 @@ void ControladorInterfaceHotel::atualizar() {
                     cout << erro.what() << endl;
                 }
             } else if (opcao == OPCAO_ALTERAR_ENDERECO) {
-                ConsoleIO::PrintMensagem("Novo Endereco:");
+                ConsoleIO::SubPergunta("Novo Endereco: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel.setEndereco(Endereco(valor));
@@ -188,7 +187,7 @@ void ControladorInterfaceHotel::atualizar() {
                     cout << erro.what() << endl;
                 }
             } else if (opcao == OPCAO_ALTERAR_TELEFONE) {
-                ConsoleIO::PrintMensagem("Novo Telefone:");
+                ConsoleIO::SubPergunta("Novo Telefone: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel.setTelefone(Telefone(valor));
@@ -197,7 +196,7 @@ void ControladorInterfaceHotel::atualizar() {
                     cout << erro.what() << endl;
                 }
             } else if (opcao == OPCAO_ALTERAR_CODIGO) {
-                ConsoleIO::PrintMensagem("Novo Codigo:");
+                ConsoleIO::SubPergunta("Novo Codigo: ");
                 string valor = ConsoleIO::LerLinha();
                 try {
                     hotel.setCodigo(Codigo(valor));
@@ -206,9 +205,9 @@ void ControladorInterfaceHotel::atualizar() {
                     cout << erro.what() << endl;
                 }
             } else if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-                ConsoleIO::PrintMensagem("Atualizacao cancelada.");
+                ConsoleIO::PrintMenssagem("Atualizacao cancelada.");
             } else {
-                ConsoleIO::PrintMensagem("Opcao invalida.");
+                ConsoleIO::PrintMenssagem("Opcao invalida.");
             }
 
 
@@ -216,16 +215,16 @@ void ControladorInterfaceHotel::atualizar() {
                 PersistenciaHotel persistencia;
                 bool sucesso = persistencia.atualizar(id_numero, hotel);
                 if (sucesso) {
-                    ConsoleIO::PrintMensagem("Hotel Atualizado!");
+                    ConsoleIO::PrintMenssagem("Hotel Atualizado!");
                 } else {
-                    ConsoleIO::PrintMensagem("Erro ao atualizar hotel no banco!");
+                    ConsoleIO::PrintMenssagem("Erro ao atualizar hotel no banco!");
                 }
             }
         } else {
-            ConsoleIO::PrintMensagem("Erro: Hotel nao encontrado");
+            ConsoleIO::PrintMenssagem("Erro: Hotel nao encontrado");
         }
     } else {
-        ConsoleIO::PrintMensagem("Erro: Id Invalido");
+        ConsoleIO::PrintMenssagem("Erro: Id Invalido");
     }
 }
 

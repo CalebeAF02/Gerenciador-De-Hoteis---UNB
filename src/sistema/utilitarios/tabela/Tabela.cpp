@@ -6,7 +6,7 @@
 
 #include "ConsoleFormatter.hpp"
 #include "ConsoleIO.hpp"
-#include "TamanhoAtributo.hpp"
+#include "TamanhoAtributo.hpp"0
 
 namespace VisualizadorDeTabela {
     Linha *Tabela::criarObj() {
@@ -18,7 +18,7 @@ namespace VisualizadorDeTabela {
 
     void Tabela::exibirTabela(string titulo) {
         if (linhas.empty()) {
-            cout << "Nenhum dado para exibir.\n";
+            ConsoleIO::PrintMenssagem("Nenhum dado para exibir.");
             return;
         }
 
