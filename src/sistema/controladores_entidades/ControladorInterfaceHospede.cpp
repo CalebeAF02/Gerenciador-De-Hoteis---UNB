@@ -122,7 +122,6 @@ void ControladorInterfaceHospede::statusDaSolicitandoHospedagem() const {
 
         if (s.getStatus() == StatusSolicitacaoHospedagem::RECUSADO)
             cout << "\n | Motivo: " << s.getMotivoRecusa();
-
     }
 }
 

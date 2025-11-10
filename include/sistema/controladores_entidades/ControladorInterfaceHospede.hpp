@@ -35,8 +35,11 @@ public:
 
     // Solicitacao de Hospedagem para Gerente
     void opcoesDeHospedagem();
+
     void solicitandoHospedagem();
+
     void statusDaSolicitandoHospedagem() const;
+
     void avaliarSolicitacoes();
 
     // Acessando servicos
@@ -44,9 +47,13 @@ public:
 
     // Menu CRUD
     void exibirMenuCRUD();
+
     void criar() override;
+
     void ler() override;
+
     void atualizar() override;
+
     bool remover() override;
 };
 
