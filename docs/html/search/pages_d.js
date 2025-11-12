@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['da_20interface_0',['📸 Exemplos Visuais da Interface',['../md__r_e_a_d_m_e.html#autotoc_md96',1,'']]],
+  ['da_20reserva_1',['Versao 0.0.3 - 2025-09-21 (Implementação da Reserva)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md85',1,'']]],
+  ['dados_20sqlite_2',['Versao 0.5.0 - 2025-10-31 (Estabilização do Banco de Dados/SQLite)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md21',1,'']]],
+  ['de_20alterações_20changelog_20gerenciador_20de_20hotéis_3',['Histórico de Alterações (Changelog) - Gerenciador de Hotéis',['../md__c_h_a_n_g_e_l_o_g.html',1,'']]],
+  ['de_20dados_20sqlite_4',['Versao 0.5.0 - 2025-10-31 (Estabilização do Banco de Dados/SQLite)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md21',1,'']]],
+  ['de_20funcionalidades_5',['🧭 Linha do Tempo de Funcionalidades',['../md__r_e_a_d_m_e.html#autotoc_md94',1,'']]],
+  ['de_20gerente_20com_20sucesso_6',['🔐 Login de Gerente com Sucesso',['../md__r_e_a_d_m_e.html#autotoc_md102',1,'']]],
+  ['de_20gerente_20hotel_7',['Versao 1.0.0 - 2025-11-01 (Lançamento Estável - Features de Gerente/Hotel)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md16',1,'']]],
+  ['de_20gerentes_8',['de Gerentes',['../md__r_e_a_d_m_e.html#autotoc_md105',1,'📋 Lista de Gerentes'],['../md__r_e_a_d_m_e.html#autotoc_md104',1,'🧭 Menu CRUD de Gerentes']]],
+  ['de_20hotéis_9',['Histórico de Alterações (Changelog) - Gerenciador de Hotéis',['../md__c_h_a_n_g_e_l_o_g.html',1,'']]],
+  ['de_20hotel_20unb_10',['🏨 Gerenciador de Hotel - UnB',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['de_20login_20com_20erro_11',['Tentativa de Login com Erro',['../md__r_e_a_d_m_e.html#autotoc_md100',1,'']]],
+  ['de_20novo_20gerente_12',['👤 Cadastro de Novo Gerente',['../md__r_e_a_d_m_e.html#autotoc_md101',1,'']]],
+  ['de_20serviços_13',['🧠 Central de Serviços',['../md__r_e_a_d_m_e.html#autotoc_md103',1,'']]],
+  ['de_20sistema_20login_14',['Versao 0.1.0 - 2025-09-28 (Estrutura Básica de Sistema/Login)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md64',1,'']]],
+  ['de_20testes_20e_20visuais_15',['Versao 1.1.0 - 2025-11-03 (Grande Refatoração de Testes e Visuais)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md11',1,'']]],
+  ['do_20banco_20de_20dados_20sqlite_16',['Versao 0.5.0 - 2025-10-31 (Estabilização do Banco de Dados/SQLite)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md21',1,'']]],
+  ['do_20bd_20sqlite_17',['Versao 0.3.1 - 2025-10-19 (Integração Inicial do BD/SQLite)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md41',1,'']]],
+  ['do_20gerente_18',['🧑‍💼 Menu Inicial do Gerente',['../md__r_e_a_d_m_e.html#autotoc_md99',1,'']]],
+  ['do_20projeto_19',['do Projeto',['../md__r_e_a_d_m_e.html#autotoc_md107',1,'📂 Estrutura do Projeto'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md88',1,'Versao 0.0.1 - 2025-09-20 (Início do Projeto)']]],
+  ['do_20sistema_20',['🏁 Tela Inicial do Sistema',['../md__r_e_a_d_m_e.html#autotoc_md97',1,'']]],
+  ['do_20tempo_20de_20funcionalidades_21',['🧭 Linha do Tempo de Funcionalidades',['../md__r_e_a_d_m_e.html#autotoc_md94',1,'']]],
+  ['documentação_22',['Documentação',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md24',1,'Documentação'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md38',1,'Documentação'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md46',1,'Documentação'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md78',1,'Documentação'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md84',1,'Documentação']]],
+  ['domínios_23',['🔹 Validação Embutida nos Domínios',['../md__r_e_a_d_m_e.html#autotoc_md109',1,'']]]
+];

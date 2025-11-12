@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <limits> // Para clear/ignore do buffer se necessário
+#include "Formato.hpp"
 
 using namespace std;
 
@@ -19,6 +20,9 @@ public:
 
     // Métodos de Input com texto "Opção: "
     static string LerOpcao();
+
+    // Opção para tentar novamente ou sair
+    static bool tentarNovamente();
 
     // Métodos de Output Simples
     // Usaremos para imprimir uma mensagens e pular uma linha

@@ -1,0 +1,167 @@
+\chapter{🏨 Gerenciador de Hotel -\/ UnB }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{🏨 Gerenciador de Hotel -\/ UnB@{🏨 Gerenciador de Hotel -\/ UnB}}
+\label{md__r_e_a_d_m_e_autotoc_md90}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md90}%
+
+
+Projeto acadêmico em {\bfseries{C++}}, desenvolvido na Universidade de Brasília (UnB), com foco em {\bfseries{Programação Orientada a Objetos (POO)}} e persistência de dados com {\bfseries{SQLite}}.
+
+O sistema simula um {\bfseries{gerenciador de hotel}}, permitindo\+:
+
+
+\begin{DoxyItemize}
+\item Cadastro e login de {\bfseries{hóspedes}} e {\bfseries{gerentes}}
+\item Registro e gerenciamento de {\bfseries{quartos}}, {\bfseries{reservas}} e {\bfseries{hotéis}}
+\item Validação de dados diretamente nas classes de domínio
+\item Navegação por menus interativos via {\bfseries{interface de terminal (CLI)}}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md92}{}\doxysection{\texorpdfstring{🚀 Atualizações Recentes}{🚀 Atualizações Recentes}}\label{md__r_e_a_d_m_e_autotoc_md92}
+
+\begin{DoxyItemize}
+\item Interface de terminal funcional com menus dinâmicos
+\item Persistência com SQLite ({\ttfamily hotel.\+db})
+\item Criação, login, leitura e exclusão de gerentes
+\item Fluxo completo para hóspedes com opções de hospedagem
+\item Validação embutida nos domínios com tratamento de exceções
+\item Remoção das classes de validação externas ({\ttfamily validadores\+\_\+abstratos})
+\item 🔄 Função de atualização de gerente em desenvolvimento
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md94}{}\doxysection{\texorpdfstring{🧭 Linha do Tempo de Funcionalidades}{🧭 Linha do Tempo de Funcionalidades}}\label{md__r_e_a_d_m_e_autotoc_md94}
+
+\begin{DoxyTable}{3}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Etapa  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Funcionalidade  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Descrição  \\
+1️⃣  &Tela Inicial  &Escolha entre gerente ou hóspede  \\
+2️⃣  &Acesso como Gerente  &Menu com opções de criar, logar e gerenciar  \\
+3️⃣  &Criar Gerente  &Cadastro com validação de nome, email, ramal e senha  \\
+4️⃣  &Login de Gerente  &Verificação no banco com feedback de sucesso ou erro  \\
+5️⃣  &Central de Serviços  &Acesso às operações CRUD de gerentes  \\
+6️⃣  &Ler Gerentes  &Listagem formatada dos gerentes cadastrados  \\
+7️⃣  &Remover Gerente  &Exclusão por email com confirmação  \\
+8️⃣  &Acesso como Hóspede  &Menu com opções de hospedagem e status  \\
+9️⃣  &Criar Solicitação  &Interface para registrar interesse em hospedagem  \\
+🔟  &Ver Status  &Consulta ao status da solicitação feita  \\
+🔜  &Atualizar Gerente  &(Em desenvolvimento) Edição de dados do gerente  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md96}{}\doxysection{\texorpdfstring{📸 Exemplos Visuais da Interface}{📸 Exemplos Visuais da Interface}}\label{md__r_e_a_d_m_e_autotoc_md96}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md97}{}\doxysubsection{\texorpdfstring{🏁 Tela Inicial do Sistema}{🏁 Tela Inicial do Sistema}}\label{md__r_e_a_d_m_e_autotoc_md97}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md98}{}\doxysubsection{\texorpdfstring{🛏️ Menu para Hospedagem}{🛏️ Menu para Hospedagem}}\label{md__r_e_a_d_m_e_autotoc_md98}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md99}{}\doxysubsection{\texorpdfstring{🧑‍💼 Menu Inicial do Gerente}{🧑‍💼 Menu Inicial do Gerente}}\label{md__r_e_a_d_m_e_autotoc_md99}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md100}{}\doxysubsection{\texorpdfstring{Tentativa de Login com Erro}{Tentativa de Login com Erro}}\label{md__r_e_a_d_m_e_autotoc_md100}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md101}{}\doxysubsection{\texorpdfstring{👤 Cadastro de Novo Gerente}{👤 Cadastro de Novo Gerente}}\label{md__r_e_a_d_m_e_autotoc_md101}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md102}{}\doxysubsection{\texorpdfstring{🔐 Login de Gerente com Sucesso}{🔐 Login de Gerente com Sucesso}}\label{md__r_e_a_d_m_e_autotoc_md102}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md103}{}\doxysubsection{\texorpdfstring{🧠 Central de Serviços}{🧠 Central de Serviços}}\label{md__r_e_a_d_m_e_autotoc_md103}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md104}{}\doxysubsection{\texorpdfstring{🧭 Menu CRUD de Gerentes}{🧭 Menu CRUD de Gerentes}}\label{md__r_e_a_d_m_e_autotoc_md104}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md105}{}\doxysubsection{\texorpdfstring{📋 Lista de Gerentes}{📋 Lista de Gerentes}}\label{md__r_e_a_d_m_e_autotoc_md105}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md107}{}\doxysection{\texorpdfstring{📂 Estrutura do Projeto}{📂 Estrutura do Projeto}}\label{md__r_e_a_d_m_e_autotoc_md107}
+├── include/ │ ├── entidades/ │ ├── dominios/ │ ├── sistema/ │ ├── utilitarios/ ├── src/ │ ├── sistema/ │ ├── persistencias/ │ ├── servicos/ │ ├── entidades/ │ ├── dominios/ ├── libs/ │ ├── sqlite/ │ │ └── sqlite3.\+h │ ├── extern/ │ │ └── libsqlite3.\+a ├── tests/ ├── imagens/ ├── README.\+md
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md109}{}\doxysection{\texorpdfstring{🔹 Validação Embutida nos Domínios}{🔹 Validação Embutida nos Domínios}}\label{md__r_e_a_d_m_e_autotoc_md109}
+A validação de dados agora é feita diretamente dentro das classes de domínio. Cada classe é responsável por garantir sua própria integridade, lançando exceções ({\ttfamily invalid\+\_\+argument}) quando os dados são invalidos.
+
+Exemplos\+:
+
+Nome nome("{}\+Calebe"{}); // valido ~\newline
+ Email email("{}email@invalido"{}); // lança exceção ~\newline
+ Senha senha("{}123"{}); // lança exceção se nao atender aos critérios\hypertarget{md__r_e_a_d_m_e_autotoc_md110}{}\doxysubsection{\texorpdfstring{🔹 Utilitários Genéricos}{🔹 Utilitários Genéricos}}\label{md__r_e_a_d_m_e_autotoc_md110}
+Algumas validações genéricas ainda são mantidas para entradas livres\+:
+
+
+\begin{DoxyItemize}
+\item Validar\+String → valida strings genéricas (menus, comandos)
+\item Validar\+Int → valida inteiros fora dos domínios
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md112}{}\doxysection{\texorpdfstring{🧪 Testes}{🧪 Testes}}\label{md__r_e_a_d_m_e_autotoc_md112}
+
+\begin{DoxyItemize}
+\item Teste\+Validadores\+: conjunto de testes unitários para verificar os domínios
+\item Contadores estáticos para monitorar execução\+:
+\item cont\+Total\+Testes
+\item cont\+Total\+Testes\+Ok
+\item cont\+Total\+Testes\+Problema
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md114}{}\doxysection{\texorpdfstring{🛠️ Como Compilar}{🛠️ Como Compilar}}\label{md__r_e_a_d_m_e_autotoc_md114}
+mkdir build \&\& cd build ~\newline
+ cmake .. ~\newline
+ make ~\newline
+ ./gerenciador\+\_\+hotel\+\_\+unb
+
+Este projeto já inclui o SQLite como biblioteca estática\+:
+
+
+\begin{DoxyItemize}
+\item libs/sqlite/sqlite3.\+h → cabeçalho da API
+\item libs/extern/libsqlite3.\+a → biblioteca compilada Nenhuma instalação externa é necessária. Basta clonar e compilar.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md116}{}\doxysection{\texorpdfstring{🤝 Como Contribuir}{🤝 Como Contribuir}}\label{md__r_e_a_d_m_e_autotoc_md116}
+Se você deseja colaborar com o projeto, siga estas etapas\+:
+
+
+\begin{DoxyEnumerate}
+\item Clone o repositório \+: git clone \href{https://github.com/CalebeAF02/Gerenciador-De-Hoteis&mdash;UNB.git}{\texttt{https\+://github.\+com/\+Calebe\+AF02/\+Gerenciador-\/\+De-\/\+Hoteis---\+UNB.\+git}} cd Gerenciador-\/\+De-\/\+Hoteis---UNB
+\item Crie uma branch \+:
+
+git checkout -\/b nome-\/da-\/sua-\/branch
+\item Compile e teste localmente \+:
+
+mkdir build \&\& cd build cmake .. make
+\item Commit e push \+:
+
+git add . git commit -\/m "{}feat\+: descrição clara da funcionalidade"{} git push origin nome-\/da-\/sua-\/branch
+\item Abra um Pull Request no Git\+Hub
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md118}{}\doxysection{\texorpdfstring{📚 Próximos Passos}{📚 Próximos Passos}}\label{md__r_e_a_d_m_e_autotoc_md118}
+
+\begin{DoxyItemize}
+\item Finalizar função de atualização de gerente
+\item Implementar persistência para hóspedes e solicitações
+\item Criar exportação de dados para .tsv ou .csv
+\item Ampliar cobertura dos testes
+\item Migrar para interface gráfica (Qt ou Web)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md120}{}\doxysection{\texorpdfstring{🎯 Objetivo Educacional}{🎯 Objetivo Educacional}}\label{md__r_e_a_d_m_e_autotoc_md120}
+Este projeto visa aplicar conceitos de POO em C++ moderno, com foco em\+:
+
+
+\begin{DoxyItemize}
+\item Herança e Polimorfismo
+\item Encapsulamento
+\item Tratamento de exceções
+\item Arquitetura limpa e boas práticas
+\item Persistência com banco de dados
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md122}{}\doxysection{\texorpdfstring{👤 Autores}{👤 Autores}}\label{md__r_e_a_d_m_e_autotoc_md122}
+Projeto desenvolvido por\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/CalebeAF02}{\texttt{Calebe Alves}} — Universidade de Brasília (UnB)
+\item \href{https://github.com/TUTUBOY-PRO}{\texttt{Artur Silva}} — Universidade de Brasília (UnB)
+\end{DoxyItemize}
+
+📎 Repositorio\+: \href{https://github.com/CalebeAF02/gerenciador_hotel_unb}{\texttt{https\+://github.\+com/\+Calebe\+AF02/gerenciador\+\_\+hotel\+\_\+unb}}
+
+\DoxyHorRuler{0}
+ 
