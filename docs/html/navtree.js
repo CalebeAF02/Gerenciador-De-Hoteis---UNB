@@ -890,7 +890,6 @@ function initNavTree(toroot,relpath,allMembersFile) {
         lastScrollSourceOffset = contentScrollOffset;
       }
     }
-    // TODO: find out how to avoid a timeout
     setTimeout(() => {
       navtree_trampoline.updateContentTop();
     },200);
