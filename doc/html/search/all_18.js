@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['recentes_0',['🚀 Atualizações Recentes',['../md__r_e_a_d_m_e.html#autotoc_md92',1,'']]],
-  ['refatoração_20de_20testes_20e_20visuais_1',['Versao 1.1.0 - 2025-11-03 (Grande Refatoração de Testes e Visuais)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md11',1,'']]],
-  ['refatorado_2',['Refatorado',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md5',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md8',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md10',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md12',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md15',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md19',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md23',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md27',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md30',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md32',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md36',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md39',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md43',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md58',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md61',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md67',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md70',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md72',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md77',1,'Refatorado'],['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md80',1,'Refatorado']]],
-  ['removido_3',['Removido',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md59',1,'']]],
-  ['reorganização_20arquitetural_4',['Versao 0.4.0 - 2025-10-29 (Reorganização Arquitetural)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md26',1,'']]],
-  ['reserva_5',['Versao 0.0.3 - 2025-09-21 (Implementação da Reserva)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md85',1,'']]]
-];

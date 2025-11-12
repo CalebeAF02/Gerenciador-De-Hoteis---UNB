@@ -59,7 +59,7 @@ Thumbs.db    # Arquivos de sistema do Windows
 # =======================================================
 # Se voce USA o GitHub Pages para exibir a documentacao,
 # REMOVA o comentario da linha abaixo (ou seja, nao ignore)
-# pois a pasta 'doc/' precisa estar no Git.
+# pois a pasta 'docs/' precisa estar no Git.
 
 # Se voce NAO usa o GitHub Pages e quer arquivos leves:
-# doc/
+# docs/
