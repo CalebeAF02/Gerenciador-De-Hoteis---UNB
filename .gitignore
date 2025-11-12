@@ -1,23 +1,65 @@
-# Ignorar arquivos de compilacao
+# =======================================================
+# 1. ARQUIVOS BINARIOS E DE COMPILACAO
+# =======================================================
+# Arquivos de objeto, executaveis e bibliotecas
 *.o
 *.obj
 *.exe
 *.out
+*.dll
+*.lib
 
-# Ignorar pastas de build
+# =======================================================
+# 2. PASTAS E ARQUIVOS DE BUILD DO VISUAL STUDIO
+# =======================================================
+# Pastas de saida (Debug, Release, etc.)
+Debug/
+Release/
+x64/
+bin/
+
+# Arquivos de simbolo e link
+*.pdb
+*.ilk
+
+# Arquivos de configuracao de usuario/solucao do VS
+*.suo
+*.user
+*.aps
+*.ncb
+*.vsw
+*.vcxproj.user
+*.vcxproj.filters
+
+# =======================================================
+# 3. PASTAS DE BUILD DE OUTRAS FERRAMENTAS (CMake, etc.)
+# =======================================================
 build/
 cmake-build-debug/
 dist/
 
-
-# Ignorar arquivos temporarios
+# =======================================================
+# 4. ARQUIVOS TEMPORARIOS, LOGS E SISTEMA
+# =======================================================
 *.log
 *.tmp
+*.bak
+.DS_Store    # Arquivos de sistema do macOS
+Thumbs.db    # Arquivos de sistema do Windows
 
-# Ignorar configuracoes do CLion
-.idea/
+# =======================================================
+# 5. CONFIGURACOES DE IDES
+# =======================================================
+.idea/       # CLion e JetBrains
 *.iml
+*.vscode/    # Visual Studio Code
 
-# Ignorar arquivos de sistema
-.DS_Store
-Thumbs.db
+# =======================================================
+# 6. DOCUMENTACAO DO DOXYGEN (OPCIONAL)
+# =======================================================
+# Se voce USA o GitHub Pages para exibir a documentacao,
+# REMOVA o comentario da linha abaixo (ou seja, nao ignore)
+# pois a pasta 'doc/' precisa estar no Git.
+
+# Se voce NAO usa o GitHub Pages e quer arquivos leves:
+# doc/
