@@ -26,7 +26,7 @@ public:
 
     vector<MenuItem> listar();
 
-    int executa(string titulo);
+    int executa(string tituloStr);
 };
 
 

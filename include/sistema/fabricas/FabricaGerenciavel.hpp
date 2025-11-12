@@ -52,7 +52,7 @@ public:
         return executando;
     }
 
-    void executarMenu(bool &executando) {
+    void executarMenu(string tituloStr,bool &executando) {
         Menu menu;
 
         const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
@@ -61,11 +61,11 @@ public:
         const int OPCAO_ATUALIZAR = menu.adcionarItens("Atualizar");
         const int OPCAO_REMOVER = menu.adcionarItens("Remover");
 
-        int opcao = menu.executa("Voce Entrou na central de servicos");
+        int opcao = menu.executa(tituloStr);
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             executando = false;
-            IO::Println("Voce Saiu da Central de servicos!");
+            IO::Println("Voce Saiu do Menu CRUD!");
             return;
         } else if (opcao == OPCAO_CRIAR) criar();
         else if (opcao == OPCAO_LER) ler();

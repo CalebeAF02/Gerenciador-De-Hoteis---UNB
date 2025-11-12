@@ -48,11 +48,11 @@ void ControladorInterfaceGerente::exibirMenu() {
 
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenuCRUD() {
-    this->executando = true;
+    bool executando = true;
 
     while (this->getEstaLogado()) {
         FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
-        fabrica.executarMenu(executando);
+        fabrica.executarMenu("Menu CRUD Gerente",executando);
         if (executando == false) {
             break;
         }
@@ -76,7 +76,7 @@ void ControladorInterfaceGerente::criar() {
             try {
                 gerente->setNome(Nome(nomeStr));
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
                 tudoOK = false;
             }
             if (tudoOK) {
@@ -85,7 +85,7 @@ void ControladorInterfaceGerente::criar() {
                 try {
                     gerente->setEmail(Email(emailStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -95,7 +95,7 @@ void ControladorInterfaceGerente::criar() {
                 try {
                     gerente->setRamal(Ramal(ramalStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -105,7 +105,7 @@ void ControladorInterfaceGerente::criar() {
                 try {
                     gerente->setSenha(Senha(senhaStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -121,7 +121,7 @@ void ControladorInterfaceGerente::criar() {
                     break; // ← Aqui você interrompe o loop e volta ao menu anterior
                 }
             } else {
-                IO::Println("Err: Gerente não cadastrado!");
+                IO::Println("Err: Gerente nao cadastrado!");
                 break; // ← Também retorna se houver erro de validação
             }
             delete gerente; // Liberar o ponteiro da memoria.
@@ -198,7 +198,7 @@ void ControladorInterfaceGerente::atualizar() {
                 gerente.setNome(Nome(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
             }
         } else if (opcao == OPCAO_ALTERAR_EMAIL) {
             IO::Print("Novo Email: ");
@@ -207,7 +207,7 @@ void ControladorInterfaceGerente::atualizar() {
                 gerente.setEmail(Email(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
             }
         } else if (opcao == OPCAO_ALTERAR_RAMAL) {
             IO::Print("Novo ramal: ");
@@ -216,7 +216,7 @@ void ControladorInterfaceGerente::atualizar() {
                 gerente.setRamal(Ramal(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
             }
         } else if (opcao == OPCAO_ALTERAR_SENHA) {
             IO::Print("Nova senha: ");
@@ -225,7 +225,7 @@ void ControladorInterfaceGerente::atualizar() {
                 gerente.setSenha(Senha(valor));
                 alterado = true;
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
             }
         } else if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
             IO::Println("Atualizacao cancelada.");

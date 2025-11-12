@@ -15,14 +15,15 @@ void Sistema::iniciar() {
 }
 
 void Sistema::exibirMenu() {
+    bool executando = true;
     Menu menu;
 
     int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
     int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
     int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
 
-    while (executando == true) {
-        int opcao = menu.executa("Seja bem vindo ao gerenciador de hoteis");
+    while (executando) {
+        int opcao = menu.executa("Seja bem vindo ao Gerenciador de Hoteis");
 
         if (opcao == OPCAO_SAIR_DO_SISTEMA) {
             executando = false;
@@ -38,6 +39,8 @@ void Sistema::exibirMenu() {
 
 
 void Sistema::exibirMenuDoGerente() {
+    bool executando = true;
+
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");

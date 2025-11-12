@@ -20,8 +20,6 @@ vector<MenuItem> Menu::listar() {
 //-----------------------------------------------------------------------------------------------------------
 int Menu::executa(string tituloStr) {
     Formato::TituloEmCaixa(tituloStr);
-    IO::Println("Selecione a opcao:");
-
     for (int i = 0; i < menuItens.size(); i++) {
         Formato::OpcaoEmCaixa(menuItens[i].getNome(), menuItens[i].getValor());
     }

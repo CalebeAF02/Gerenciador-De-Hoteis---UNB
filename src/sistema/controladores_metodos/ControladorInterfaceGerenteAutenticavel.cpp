@@ -35,17 +35,11 @@ void ControladorInterfaceGerenteAutenticavel::fazerLogin() {
                 lacoLogin = true;
             } else {
                 IO::Println("Gerente nao cadastrado");
-                Formato::OpcaoSimples("Voltar", 0);
-                Formato::OpcaoSimples("Tentar novamente", 1);
-                string opcao = IO::LerLinha();
-                if (opcao == "0") break;
+                IO::tentarNovamente();
             }
         } catch (invalid_argument &erro) {
             cout << "Erro: " << erro.what() << endl;
-            Formato::OpcaoSimples("Voltar", 0);
-            Formato::OpcaoSimples("Tentar novamente", 1);
-            string opcao = IO::LerLinha();
-            if (opcao == "0") break;
+            IO::tentarNovamente();
         }
     }
 }

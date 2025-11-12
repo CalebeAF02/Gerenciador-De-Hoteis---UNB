@@ -10,14 +10,14 @@
 #include "sqlite3.h"
 
 void ControladorInterfaceHospede::exibirMenu() {
+    bool executando = true;
+
     Menu menu;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
     const int OPCAO_HOSPEDAGENS = menu.adcionarItens("Opcoes de Hospedagem");
     const int OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Criar Solicitacao de Hospedagem");
     const int OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Status da Solicitacao de Hospedagem");
-
-    this->executando = true;
 
     while (executando == true) {
         int opcao = menu.executa("Faca o acesso para liberar os servicos");
@@ -38,59 +38,69 @@ void ControladorInterfaceHospede::exibirMenu() {
 };
 
 void ControladorInterfaceHospede::exibirMenuCRUD() {
-    this->executando = true;
+    bool executando = true;
 
     while (executando) {
-        Formato::TituloEmCaixa("CRUD Gerente");
         FabricaGerenciavel<ControladorInterfaceHospede> fabrica;
-        fabrica.executarMenu(executando);
+        fabrica.executarMenu("Menu CRUD Hospede",executando);
+        if (executando == false) {
+            break;
+        }
     };
 }
 
 void ControladorInterfaceHospede::opcoesDeHospedagem() {
+    bool executando = true;
+
     Formato::TituloEmCaixa("Opcoes de Hospedagem");
     IO::Println("Esta opcao ainda nao foi construida! Retornando...");
-    return;
 }
 
 void ControladorInterfaceHospede::solicitandoHospedagem() {
-    Formato::TituloEmCaixa("Criar Solicitacao de Hospedagem");
+    bool executando = true;
 
-    IO::Print("Informe o Email: ");
-    string email = IO::LerLinha();
+    while (executando) {
+        Formato::TituloEmCaixa("Criar Solicitacao de Hospedagem");
 
-    IO::Print("Codigo do hotel desejado: ");
-    string idHotel = IO::LerLinha();
+        IO::Print("Informe o Email: ");
+        string email = IO::LerLinha();
 
-    IO::Print("Codigo do quarto desejado: ");
-    string idQuarto = IO::LerLinha();
+        IO::Print("Codigo do hotel desejado: ");
+        string idHotel = IO::LerLinha();
 
-    IO::Print("Data de chegada (dd/mm/aaaa): ");
-    string chegadaStr = IO::LerLinha();
+        IO::Print("Codigo do quarto desejado: ");
+        string idQuarto = IO::LerLinha();
 
-    IO::Print("Data de partida (dd/mm/aaaa): ");
-    string partidaStr = IO::LerLinha();
+        IO::Print("Data de chegada (dd/mm/aaaa): ");
+        string chegadaStr = IO::LerLinha();
 
-    IO::Println(idHotel.length() + " e " + idQuarto.length());
-    try {
-        Data chegada(chegadaStr);
-        Data partida(partidaStr);
+        IO::Print("Data de partida (dd/mm/aaaa): ");
+        string partidaStr = IO::LerLinha();
 
-        SolicitacaoHospedagem solicitacao(
-            email,
-            idHotel,
-            idQuarto,
-            chegada,
-            partida,
-            StatusSolicitacaoHospedagem::PENDENTE,
-            ""
+        IO::Println(idHotel.length() + " e " + idQuarto.length());
+        try {
+            Data chegada(chegadaStr);
+            Data partida(partidaStr);
 
-        );
+            SolicitacaoHospedagem solicitacao(
+                email,
+                idHotel,
+                idQuarto,
+                chegada,
+                partida,
+                StatusSolicitacaoHospedagem::PENDENTE,
+                ""
 
-        PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
-        IO::Println("Solicitacao registrada com sucesso!");
-    } catch (exception &e) {
-        IO::Println("Erro ao criar solicitacao: " + string(e.what()));
+            );
+
+            PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
+            IO::Println("Solicitacao registrada com sucesso!");
+        } catch (exception &e) {
+            IO::Println("Erro ao criar solicitacao: " + string(e.what()));
+        }
+        if (IO::tentarNovamente()) {
+            break;
+        }
     }
 }
 
@@ -181,7 +191,7 @@ void ControladorInterfaceHospede::criar() {
             try {
                 hospede->setNome(Nome(nomeStr));
             } catch (invalid_argument &erro) {
-                cout << erro.what() << endl;
+                IO::Println(erro.what());
                 tudoOK = false;
             }
             if (tudoOK) {
@@ -190,7 +200,7 @@ void ControladorInterfaceHospede::criar() {
                 try {
                     hospede->setEmail(Email(emailStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -200,7 +210,7 @@ void ControladorInterfaceHospede::criar() {
                 try {
                     hospede->setEndereco(Endereco(enderecoStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -211,7 +221,7 @@ void ControladorInterfaceHospede::criar() {
                     ;
                     hospede->setCartao(Cartao(cartaoStr));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }

@@ -50,7 +50,7 @@ void ControladorInterfaceHotel::criar() {
                 try {
                     hotel->setNome(Nome(valor));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -60,7 +60,7 @@ void ControladorInterfaceHotel::criar() {
                 try {
                     hotel->setEndereco(Endereco(valor));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -70,7 +70,7 @@ void ControladorInterfaceHotel::criar() {
                 try {
                     hotel->setTelefone(Telefone(valor));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -80,7 +80,7 @@ void ControladorInterfaceHotel::criar() {
                 try {
                     hotel->setCodigo(Codigo(valor));
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                     tudoOK = false;
                 }
             }
@@ -175,7 +175,7 @@ void ControladorInterfaceHotel::atualizar() {
                     hotel.setNome(Nome(valor));
                     alterado = true;
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                 }
             } else if (opcao == OPCAO_ALTERAR_ENDERECO) {
                 IO::Print("Novo Endereco: ");
@@ -184,7 +184,7 @@ void ControladorInterfaceHotel::atualizar() {
                     hotel.setEndereco(Endereco(valor));
                     alterado = true;
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                 }
             } else if (opcao == OPCAO_ALTERAR_TELEFONE) {
                 IO::Print("Novo Telefone: ");
@@ -193,7 +193,7 @@ void ControladorInterfaceHotel::atualizar() {
                     hotel.setTelefone(Telefone(valor));
                     alterado = true;
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                 }
             } else if (opcao == OPCAO_ALTERAR_CODIGO) {
                 IO::Print("Novo Codigo: ");
@@ -202,7 +202,7 @@ void ControladorInterfaceHotel::atualizar() {
                     hotel.setCodigo(Codigo(valor));
                     alterado = true;
                 } catch (invalid_argument &erro) {
-                    cout << erro.what() << endl;
+                    IO::Println(erro.what());
                 }
             } else if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
                 IO::Println("Atualizacao cancelada.");
