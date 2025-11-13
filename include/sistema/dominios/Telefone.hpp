@@ -12,24 +12,24 @@ using namespace std;
 
 class Telefone {
 private:
-    string valor;
+    string telefoneStr;
 
     void validar(string valor);
 
 public:
     Telefone() = default;
 
-    explicit Telefone(const string &telefone) {
-        setValor(telefone);
+    explicit Telefone(const string &valor) {
+        setValor(valor);
     }
 
-    void setValor(const string &telefone) {
-        validar(telefone);
-        this->valor = telefone;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->telefoneStr = valor;
     }
 
     string getValor() const {
-        return valor;
+        return telefoneStr;
     }
 };
 

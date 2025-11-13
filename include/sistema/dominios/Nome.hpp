@@ -12,27 +12,27 @@ using namespace std;
 
 class Nome {
 private:
-    string valor;
+    string nomeStr;
 
-    void validar(const string &nome); // Metodo de validacao
+    void validar(const string &valor); // Metodo de validacao
 
 public:
     Nome() = default;
 
-    explicit Nome(const string &nomeStr) {
-        setValor(nomeStr);
+    explicit Nome(const string &valor) {
+        setValor(valor);
     };
 
-    void setValor(const string &nome) {
-        validar(nome);
-        this->valor = nome;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->nomeStr = valor;
     }
 
     string getValor() const;
 };
 
 inline string Nome::getValor() const {
-    return valor;
+    return nomeStr;
 }
 
 #endif //GERENCIADOR_HOTEL_UNB_NOME_H

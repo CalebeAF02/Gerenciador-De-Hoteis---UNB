@@ -44,15 +44,15 @@ dist/
 *.log
 *.tmp
 *.bak
-.DS_Store    # Arquivos de sistema do macOS
-Thumbs.db    # Arquivos de sistema do Windows
+.DS_Store    # Arquivos de sistema do macOS
+Thumbs.db    # Arquivos de sistema do Windows
 
 # =======================================================
 # 5. CONFIGURACOES DE IDES
 # =======================================================
-.idea/       # CLion e JetBrains
+.idea/       # CLion e JetBrains
 *.iml
-*.vscode/    # Visual Studio Code
+*.vscode/    # Visual Studio Code
 
 # =======================================================
 # 6. DOCUMENTACAO DO DOXYGEN (OPCIONAL)

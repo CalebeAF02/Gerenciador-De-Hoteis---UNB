@@ -12,24 +12,24 @@ using namespace std;
 
 class Numero {
 private:
-    string valor;
+    string numeroStr;
 
     void validar(string valor); // Metodo de validacao
 
 public:
     Numero() = default;
 
-    explicit Numero(const string &numero) {
-        setValor(numero);
+    explicit Numero(const string &valor) {
+        setValor(valor);
     };
 
-    void setValor(const string &numero) {
-        validar(numero);
-        this->valor = numero;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->numeroStr = valor;
     }
 
     string getValor() const {
-        return valor;
+        return numeroStr;
     }
 };
 #endif //GERENCIADOR_HOTEL_UNB_NUMERO_H

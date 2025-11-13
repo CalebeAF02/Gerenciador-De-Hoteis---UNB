@@ -12,24 +12,24 @@ using namespace std;
 
 class Codigo {
 private:
-    string valor;
+    string codigoStr;
 
-    void validar(string codigo); // Metodo de validacao
+    void validar(string valor); // Metodo de validacao
 
 public:
     Codigo() = default;
 
-    explicit Codigo(const string &codigo) {
-        setValor(codigo);
+    explicit Codigo(const string &valor) {
+        setValor(valor);
     };
 
-    void setValor(const string &codigo) {
-        validar(codigo);
-        this->valor = codigo;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->codigoStr = valor;
     }
 
     string getValor() const {
-        return valor;
+        return codigoStr;
     }
 };
 

@@ -14,18 +14,18 @@ class Dinheiro {
 private:
     int valor;
 
-    void validar(int valor); // Metodo de validacao
+    void validar(int dinheiroInt); // Metodo de validacao
 
 public:
     Dinheiro() = default;
 
-    explicit Dinheiro(const int &dinheiro) {
-        setValor(dinheiro);
+    explicit Dinheiro(const int &dinheiroInt ) {
+        setValor(dinheiroInt );
     };
 
-    void setValor(int dinheiro) {
-        validar(dinheiro);
-        this->valor = dinheiro;
+    void setValor(int dinheiroInt) {
+        validar(dinheiroInt);
+        this->valor = dinheiroInt;
     }
 
     int getValor() const {

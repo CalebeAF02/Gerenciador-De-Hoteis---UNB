@@ -12,24 +12,24 @@ using namespace std;
 
 class Cartao {
 private:
-    string valor;
+    string cartaoStr;
 
     void validar(string valor);
 
 public:
     Cartao() = default;
 
-    explicit Cartao(const string &cartao) {
-        setValor(cartao);
+    explicit Cartao(const string &valor) {
+        setValor(valor);
     }
 
-    void setValor(const string &cartao) {
-        validar(cartao);
-        this->valor = cartao;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->cartaoStr = valor;
     }
 
     string getValor() const {
-        return valor;
+        return cartaoStr;
     }
 };
 #endif //GERENCIADOR_HOTEL_UNB_CARTAO_H

@@ -12,27 +12,27 @@ using namespace std;
 
 class Senha {
 private:
-    string valor;
+    string senhaStr;
 
-    void validar(string senha); // Metodo de validacao
+    void validar(string valor); // Metodo de validacao
 
 public:
     Senha() = default;
 
-    explicit Senha(const string &senha) {
-        setValor(senha);
+    explicit Senha(const string &valor) {
+        setValor(valor);
     };
 
-    void setValor(const string &senha) {
-        validar(senha);
-        this->valor = senha;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->senhaStr = valor;
     }
 
     string getValor() const;
 };
 
 inline string Senha::getValor() const {
-    return valor;
+    return senhaStr;
 }
 
 #endif //GERENCIADOR_HOTEL_UNB_SENHA_H

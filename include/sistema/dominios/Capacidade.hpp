@@ -12,24 +12,24 @@ using namespace std;
 
 class Capacidade {
 private:
-    int valor;
+    int capacidadeInt;
 
     void validar(int valor); // Metodo de validacao
 
 public:
     Capacidade() = default;
 
-    explicit Capacidade(const int &capacidade) {
-        setValor(capacidade);
+    explicit Capacidade(const int &valor) {
+        setValor(valor);
     };
 
-    void setValor(const int &capacidade) {
-        validar(capacidade);
-        this->valor = capacidade;
+    void setValor(const int &valor) {
+        validar(valor);
+        this->capacidadeInt = valor;
     }
 
     int getValor() const {
-        return valor;
+        return capacidadeInt;
     }
 };
 #endif //GERENCIADOR_HOTEL_UNB_CAPACIDADE_H

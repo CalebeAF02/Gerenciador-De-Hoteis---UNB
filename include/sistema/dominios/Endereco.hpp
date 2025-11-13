@@ -12,24 +12,24 @@ using namespace std;
 
 class Endereco {
 private:
-    string valor;
+    string enderecoStr;
 
-    void validar(string endereco); // Metodo de validacao
+    void validar(string valor); // Metodo de validacao
 
 public:
     Endereco() = default;
 
-    explicit Endereco(const string &endereco) {
-        setValor(endereco);
+    explicit Endereco(const string &valor) {
+        setValor(valor);
     };
 
-    void setValor(const string &endereco) {
-        validar(endereco);
-        this->valor = endereco;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->enderecoStr = valor;
     }
 
     string getValor() const {
-        return valor;
+        return enderecoStr;
     }
 };
 #endif //GERENCIADOR_HOTEL_UNB_ENDERECO_H

@@ -12,27 +12,27 @@ using namespace std;
 
 class Email {
 private:
-    string valor;
+    string emailStr;
 
-    void validar(const string &email);
+    void validar(const string &valor);
 
 public:
     Email() = default;
 
-    explicit Email(const string &email) {
-        setValor(email);
+    explicit Email(const string &valor) {
+        setValor(valor);
     }
 
-    void setValor(const string &email) {
-        validar(email);
-        this->valor = email;
+    void setValor(const string &valor) {
+        validar(valor);
+        this->emailStr = valor;
     }
 
     string getValor() const;
 };
 
 inline string Email::getValor() const {
-    return valor;
+    return emailStr;
 }
 
 

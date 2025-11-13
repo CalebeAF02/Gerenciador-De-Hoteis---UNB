@@ -2,8 +2,8 @@
 #include <stdexcept>
 #include <cctype>
 
-void Senha::validar(const string senha) {
-    if (senha.length() != 5) {
+void Senha::validar(const string valor) {
+    if (valor.length() != 5) {
         throw invalid_argument("Erro: Senha com tamanho invalido");
     }
 
@@ -12,9 +12,9 @@ void Senha::validar(const string senha) {
     bool tem_digito = false;
     bool tem_especial = false;
 
-    for (size_t i = 0; i < senha.length(); ++i) {
-        char atual = senha[i];
-        char anterior = (i > 0) ? senha[i - 1] : '\0';
+    for (size_t i = 0; i < valor.length(); ++i) {
+        char atual = valor[i];
+        char anterior = (i > 0) ? valor[i - 1] : '\0';
 
         if (isalpha(atual)) {
             if (islower(atual)) tem_minuscula = true;
