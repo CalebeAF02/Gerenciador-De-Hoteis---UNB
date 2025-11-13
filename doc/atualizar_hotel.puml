@@ -1,0 +1,96 @@
+@startuml Atualizar Hotel
+
+title Fluxo de Atualização de Hotel (CRUD - Atualizar)
+
+' ---------------------------------
+' PARTICIPANTES (Camadas e Classes)
+' ---------------------------------
+actor Gerente as G
+boundary ControladorInterfaceGerente as CIG
+boundary ControladorInterfaceHotel as CIH
+database PersistenciaHotel as PH
+
+' ---------------------------------
+' FLUXO PRINCIPAL: atualizar()
+' ---------------------------------
+
+G -> CIG : seleciona "Gerenciar Hotéis"
+activate CIG
+
+CIG -> CIH : exibirMenu()
+activate CIH
+
+CIH -> G : exibe Menu CRUD
+G -> CIH : seleciona "Atualizar Hotéis" (método atualizar())
+
+' 1. SOLICITAÇÃO DO CÓDIGO DO HOTEL
+CIH -> G : solicita Código do Hotel a ser atualizado
+G -> CIH : insere Código
+
+CIH -> HotelCodigo** : Construtor (Codigo) ' Cria domínio de busca
+activate HotelCodigo
+deactivate HotelCodigo
+
+' 2. BUSCA DO REGISTRO EXISTENTE
+CIH -> PH : buscar(Codigo)
+activate PH
+
+    PH -> PH : Acesso ao Banco de Dados
+    PH -> PH : Busca registro por Código
+
+    alt Hotel Encontrado
+        PH --> CIH : Retorna HotelDTO* existente
+    else Hotel Não Encontrado
+        PH --> CIH : Retorna null
+    end
+
+deactivate PH
+
+alt Hotel Não Encontrado
+    CIH -> G : exibe "Erro: Hotel não encontrado pelo Código."
+    CIH -> CIH : retorna ao Menu CRUD
+    deactivate CIH
+    deactivate CIG
+    return
+end
+
+' 3. ENTRADA E VALIDAÇÃO DOS NOVOS DADOS
+CIH -> G : solicita Novos Dados (Nome, Endereço, Telefone)
+G -> CIH : insere novos dados
+
+CIH -> CIH : Cria e Valida Domínios (Nome, Endereco, Telefone)
+alt Novos Domínios Inválidos
+    CIH -> G : exibe "Erro de formato nos novos dados."
+    CIH -> CIH : retorna ao Menu CRUD
+    deactivate CIH
+    deactivate CIG
+    return
+end
+
+' 4. ATUALIZAÇÃO DA ENTIDADE NA PERSISTÊNCIA
+CIH -> PH : atualizar(HotelDTO &novos_dados)
+activate PH
+
+    PH -> PH : Acesso ao Banco de Dados
+    PH -> PH : Atualiza registro correspondente ao Código
+
+    alt Atualização bem-sucedida
+        PH --> CIH : Retorna true
+    else Falha na atualização
+        PH --> CIH : Retorna false
+    end
+
+deactivate PH
+
+' 5. TRATAMENTO DO RESULTADO
+alt Sucesso
+    CIH -> G : exibe "Hotel atualizado com sucesso!"
+else Falha
+    CIH -> G : exibe "Erro: Falha na atualização (ex: problema de conexão)."
+end
+
+CIH -> CIH : exibirMenuCRUD()
+deactivate CIH
+deactivate CIG
+
+@enduml

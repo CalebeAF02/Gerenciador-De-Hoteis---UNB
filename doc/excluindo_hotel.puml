@@ -1,0 +1,60 @@
+@startuml Excluir Hotel
+
+title Fluxo de Exclusão de Hotel (CRUD - Excluir)
+
+' ---------------------------------
+' PARTICIPANTES (Camadas e Classes)
+' ---------------------------------
+actor Gerente as G
+boundary ControladorInterfaceGerente as CIG
+boundary ControladorInterfaceHotel as CIH
+database PersistenciaHotel as PH
+
+' ---------------------------------
+' FLUXO PRINCIPAL: excluir()
+' ---------------------------------
+
+G -> CIG : seleciona "Gerenciar Hotéis"
+activate CIG
+
+CIG -> CIH : exibirMenu()
+activate CIH
+
+CIH -> G : exibe Menu CRUD
+G -> CIH : seleciona "Excluir Hotéis" (método excluir())
+
+' 1. SOLICITAÇÃO DO CÓDIGO
+CIH -> G : solicita Código do Hotel a ser excluído
+G -> CIH : insere Código
+
+CIH -> HotelCodigo** : Construtor (Codigo) ' Cria domínio de busca
+activate HotelCodigo
+deactivate HotelCodigo
+
+' 2. BUSCA E EXCLUSÃO DO REGISTRO
+CIH -> PH : excluir(Codigo)
+activate PH
+
+    PH -> PH : Acesso ao Banco de Dados
+    PH -> PH : Tenta remover registro por Código
+
+    alt Exclusão bem-sucedida (Hotel encontrado e removido)
+        PH --> CIH : Retorna true
+    else Falha na exclusão (Hotel não encontrado ou erro de BD)
+        PH --> CIH : Retorna false
+    end
+
+deactivate PH
+
+' 3. TRATAMENTO DO RESULTADO
+alt Sucesso
+    CIH -> G : exibe "Hotel excluído com sucesso!"
+else Falha (inclui caso de Código não encontrado)
+    CIH -> G : exibe "Erro: Falha na exclusão (Código não existe ou erro de BD)."
+end
+
+CIH -> CIH : exibirMenuCRUD()
+deactivate CIH
+deactivate CIG
+
+@enduml

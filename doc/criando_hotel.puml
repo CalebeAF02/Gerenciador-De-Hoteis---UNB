@@ -1,0 +1,68 @@
+@startuml Criar Hotel
+
+title Fluxo de Criação de Hotel (CRUD - Criar)
+
+' ---------------------------------
+' PARTICIPANTES (Camadas e Classes)
+' ---------------------------------
+actor Gerente as G
+boundary ControladorInterfaceGerente as CIG
+boundary ControladorInterfaceHotel as CIH
+database PersistenciaHotel as PH
+
+' ---------------------------------
+' FLUXO PRINCIPAL: criar()
+' ---------------------------------
+
+G -> CIG : seleciona "Gerenciar Hotéis"
+activate CIG
+
+CIG -> CIH : exibirMenu()
+activate CIH
+
+CIH -> CIH : solicita Nome, Endereço, Telefone, Código
+CIH -> G : exibe inputs
+G -> CIH : insere dados
+
+' 1. CRIAÇÃO E VALIDAÇÃO DOS DOMÍNIOS
+CIH -> CIH : Cria e Valida Domínios (Nome, Endereco, Telefone, Codigo)
+alt Domínios Inválidos
+    CIH -> G : exibe "Erro de formato."
+    CIH -> CIH : retorna ao Menu CRUD
+    deactivate CIH
+    deactivate CIG
+    return
+end
+
+' 2. CRIAÇÃO DA ENTIDADE E ENVIO PARA PERSISTÊNCIA
+CIH -> Hotel** : Construtor (Domínios Válidos)
+activate Hotel
+deactivate Hotel
+
+CIH -> PH : inserir(Hotel &hotel)
+activate PH
+
+    PH -> PH : Acesso ao Banco de Dados
+    PH -> PH : Verifica duplicidade do Código
+
+    alt Inserção bem-sucedida (Código único)
+        PH -> PH : Salva o novo registro na tabela HOTEL
+        PH --> CIH : Retorna true
+    else Falha na inserção (Ex: Código duplicado)
+        PH --> CIH : Retorna false
+    end
+
+deactivate PH
+
+' 3. TRATAMENTO DO RESULTADO NA APRESENTAÇÃO
+alt Sucesso
+    CIH -> G : exibe "Hotel cadastrado com sucesso!"
+else Falha
+    CIH -> G : exibe "Erro: Falha na inserção (Código já existe)."
+end
+
+CIH -> CIH : exibirMenuCRUD()
+deactivate CIH
+deactivate CIG
+
+@enduml
