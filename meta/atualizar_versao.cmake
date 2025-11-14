@@ -18,6 +18,7 @@ file(WRITE "${OUTPUT_FILE}" "
 #include <cstdint>
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Versao {
 private:
