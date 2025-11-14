@@ -52,7 +52,7 @@ void ControladorInterfaceGerente::exibirMenuCRUD() {
 
     while (this->getEstaLogado()) {
         FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
-        fabrica.executarMenu("Menu CRUD Gerente",executando);
+        fabrica.executarMenu("Menu CRUD Gerente", executando);
         if (executando == false) {
             break;
         }

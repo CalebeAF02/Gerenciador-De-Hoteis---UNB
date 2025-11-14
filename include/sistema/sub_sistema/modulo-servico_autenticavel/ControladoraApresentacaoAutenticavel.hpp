@@ -14,15 +14,17 @@
 #include <iostream>
 using namespace std;
 
-class ControladoraApresentacaoAutenticavel  : public InterfaceApresentacaoAutenticavel{
+class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenticavel {
 private:
-    InterfaceServicoAutenticavel *controladora_servico_autenticavel;            // Referência para servidor.
+    InterfaceServicoAutenticavel *controladora_servico_autenticavel; // Referência para servidor.
 public:
-    bool autenticar(Email*);
-    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*);
+    bool autenticar(Email *);
+
+    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *);
 };
 
-void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *controladora_servico_autenticavel){
+void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(
+    InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
     this->controladora_servico_autenticavel = controladora_servico_autenticavel;
 }
 

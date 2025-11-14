@@ -1,6 +1,5 @@
 classDiagram
     direction LR
-
 %% 1. ENTIDADES (Com atributos detalhados)
 
 %% NÍVEL 1: BASE DA HERANÇA
@@ -10,9 +9,9 @@ classDiagram
         # Email email
         --
         + Pessoa(Nome, Email)
-        + exibirInfo() : void
-        + getNome() : string
-        + getEmail() : string
+        + exibirInfo(): void
+        + getNome(): string
+        + getEmail(): string
     }
 
 %% NÍVEL 2: HERDEIROS
@@ -21,8 +20,8 @@ classDiagram
         - Senha senha
         --
         + Gerente(Nome, Email, Ramal, Senha)
-        + getRamal() : string
-        + getSenha() : string
+        + getRamal(): string
+        + getSenha(): string
     }
 
     class Hospede {
@@ -30,8 +29,8 @@ classDiagram
         - Cartao cartao
         --
         + Hospede(Nome, Email, Endereco, Cartao)
-        + getEndereco() : string
-        + getCartao() : string
+        + getEndereco(): string
+        + getCartao(): string
     }
 
 %% NÍVEL 3: NEGÓCIO CENTRAL
@@ -42,7 +41,7 @@ classDiagram
         - Codigo codigo
         --
         + Hotel(Nome, Endereco, Telefone, Codigo)
-        + getCodigo() : string
+        + getCodigo(): string
     }
 
     class Quarto {
@@ -52,8 +51,8 @@ classDiagram
         - Ramal ramal
         --
         + Quarto(Numero, Capacidade, Dinheiro, Ramal)
-        + getNumero() : string
-        + getDiaria() : int
+        + getNumero(): string
+        + getDiaria(): int
     }
 
     class Reserva {
@@ -63,58 +62,75 @@ classDiagram
         - Codigo codigo
         --
         + Reserva(Data, Data, Dinheiro, Codigo)
-        + getChegada() : Data
-        + getCodigo() : string
+        + getChegada(): Data
+        + getCodigo(): string
     }
 
 %% 2. DOMÍNIOS (Sem subgraph, para melhor layout e evitar erros de parse)
 
-    class Nome {<< dominio >>}
-    class Email {<< dominio >>}
-    class Ramal {<< dominio >>}
-    class Senha {<< dominio >>}
-    class Endereco {<< dominio >>}
-    class Cartao {<< dominio >>}
-    class Telefone {<< dominio >>}
-    class Codigo {<< dominio >>}
-    class Capacidade {<< dominio >>}
-    class Dinheiro {<< dominio >>}
-    class Data {<< dominio >>}
-    class Numero {<< dominio >>}
+    class Nome {
+        <<dominio>>
+    }
+    class Email {
+        <<dominio>>
+    }
+    class Ramal {
+        <<dominio>>
+    }
+    class Senha {
+        <<dominio>>
+    }
+    class Endereco {
+        <<dominio>>
+    }
+    class Cartao {
+        <<dominio>>
+    }
+    class Telefone {
+        <<dominio>>
+    }
+    class Codigo {
+        <<dominio>>
+    }
+    class Capacidade {
+        <<dominio>>
+    }
+    class Dinheiro {
+        <<dominio>>
+    }
+    class Data {
+        <<dominio>>
+    }
+    class Numero {
+        <<dominio>>
+    }
 
 %% 3. RELAÇÕES
 
 %% Herança
     Pessoa <|-- Gerente
     Pessoa <|-- Hospede
-
 %% Associações (1:N)
-    Gerente "1" -- "0..*" Hotel : gerencia/associa
-    Hotel "1" -- "0..*" Quarto : oferece
-    Hotel "1" -- "0..*" Reserva : possui
-    Hospede "1" -- "0..*" Reserva : faz
-    Quarto "1" -- "0..*" Reserva : alocado_em
-
+    Gerente "1" -- "0..*" Hotel: gerencia/associa
+    Hotel "1" -- "0..*" Quarto: oferece
+    Hotel "1" -- "0..*" Reserva: possui
+    Hospede "1" -- "0..*" Reserva: faz
+    Quarto "1" -- "0..*" Reserva: alocado_em
 %% Composição (Entidade *-- Domínio)
     Pessoa *-- Nome
     Pessoa *-- Email
-
     Gerente *-- Ramal
     Gerente *-- Senha
-
     Hospede *-- Endereco
     Hospede *-- Cartao
-
     Hotel *-- Telefone
     Hotel *-- Codigo
     Hotel *-- Nome
     Hotel *-- Endereco
-
     Quarto *-- Capacidade
     Quarto *-- Dinheiro
     Quarto *-- Ramal
     Quarto *-- Numero
-
     Reserva *-- Data
     Reserva *-- Dinheiro
     Reserva *-- Codigo

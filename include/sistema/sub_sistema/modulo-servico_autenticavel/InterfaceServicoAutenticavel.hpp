@@ -13,8 +13,9 @@ using namespace std;
 
 class InterfaceServicoAutenticavel {
 public:
-    virtual bool autenticar(const Email, const Senha) = 0;    //  por meio do qual é solicitado o serviço.
-    virtual ~InterfaceServicoAutenticavel(){}                                     //  destrutor virtual.
+    virtual bool autenticar(const Email, const Senha) = 0; //  por meio do qual é solicitado o serviço.
+    virtual ~InterfaceServicoAutenticavel() {
+    } //  destrutor virtual.
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_ISA_HPP

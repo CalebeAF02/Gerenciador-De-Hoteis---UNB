@@ -10,7 +10,7 @@
 #include <iostream>
 using namespace std;
 
-class ControladoraApresentacaoHotel{
+class ControladoraApresentacaoHotel {
 public:
     string valor;
 };

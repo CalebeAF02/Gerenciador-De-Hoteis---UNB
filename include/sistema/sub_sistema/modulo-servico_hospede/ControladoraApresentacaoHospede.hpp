@@ -10,7 +10,7 @@
 #include <iostream>
 using namespace std;
 
-class ControladoraApresentacaoHospede  : public InterfaceApresentacaoHospede{
+class ControladoraApresentacaoHospede : public InterfaceApresentacaoHospede {
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAHOSPEDAGEM_HPP

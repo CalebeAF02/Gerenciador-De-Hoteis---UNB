@@ -30,15 +30,14 @@ bool IO::tentarNovamente() {
         string opcaoSTR = IO::LerLinha();
         try {
             int opcaoINT = stoi(opcaoSTR);
-            if (opcaoINT == 0){
+            if (opcaoINT == 0) {
                 return false;
-            }
-            else if (opcaoINT == 1){
+            } else if (opcaoINT == 1) {
                 return true;
-            }else{
+            } else {
                 IO::Println("Erro: Opcao Invalida (somente 0 ou 1).");
             }
-        }catch (const invalid_argument& erro){
+        } catch (const invalid_argument &erro) {
             IO::Println("Erro: Numero fora do limite. Por favor, digite 0 ou 1.");
         }
     }

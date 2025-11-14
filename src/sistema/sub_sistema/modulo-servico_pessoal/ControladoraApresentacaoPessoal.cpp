@@ -4,7 +4,7 @@
 
 #include "ControladoraApresentacaoPessoal.hpp"
 
-void ControladoraApresentacaoPessoal::executar(const Email email){
+void ControladoraApresentacaoPessoal::executar(const Email email) {
     /*
      ComandoIAGerente *comando;
 

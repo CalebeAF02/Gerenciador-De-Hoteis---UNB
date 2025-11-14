@@ -10,7 +10,7 @@
 #include <iostream>
 using namespace std;
 
-class ControladoraApresentacaoQuarto  : public InterfaceApresentacaoQuarto{
+class ControladoraApresentacaoQuarto : public InterfaceApresentacaoQuarto {
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAQUARTO_HPP

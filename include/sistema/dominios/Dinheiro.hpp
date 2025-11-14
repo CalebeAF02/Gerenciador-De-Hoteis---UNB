@@ -19,8 +19,8 @@ private:
 public:
     Dinheiro() = default;
 
-    explicit Dinheiro(const int &dinheiroInt ) {
-        setValor(dinheiroInt );
+    explicit Dinheiro(const int &dinheiroInt) {
+        setValor(dinheiroInt);
     };
 
     void setValor(int dinheiroInt) {

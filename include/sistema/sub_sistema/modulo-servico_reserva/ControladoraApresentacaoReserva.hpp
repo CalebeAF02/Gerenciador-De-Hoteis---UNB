@@ -14,7 +14,6 @@
 using namespace std;
 
 class ControladoraApresentacaoReserva : public InterfaceApresentacaoReserva {
-
 public:
     // Construtor dos servicosReserva
     ControladorInterfaceReserva();

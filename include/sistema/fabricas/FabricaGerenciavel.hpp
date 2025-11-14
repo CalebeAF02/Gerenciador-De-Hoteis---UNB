@@ -52,7 +52,7 @@ public:
         return executando;
     }
 
-    void executarMenu(string tituloStr,bool &executando) {
+    void executarMenu(string tituloStr, bool &executando) {
         Menu menu;
 
         const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");

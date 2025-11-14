@@ -42,7 +42,7 @@ void ControladorInterfaceHospede::exibirMenuCRUD() {
 
     while (executando) {
         FabricaGerenciavel<ControladorInterfaceHospede> fabrica;
-        fabrica.executarMenu("Menu CRUD Hospede",executando);
+        fabrica.executarMenu("Menu CRUD Hospede", executando);
         if (executando == false) {
             break;
         }

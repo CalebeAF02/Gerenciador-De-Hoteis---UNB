@@ -13,11 +13,13 @@ using namespace std;
 
 class ControladoraServicoPessoal : public InterfaceServicoPessoal {
 public:
-
     //  por meio dos quais são solicitados os serviços.
     bool incluir(const Gerente);
+
     bool remover(const Email email);
+
     bool pesquisar(Gerente);
+
     bool editar(const Gerente);
 };
 
