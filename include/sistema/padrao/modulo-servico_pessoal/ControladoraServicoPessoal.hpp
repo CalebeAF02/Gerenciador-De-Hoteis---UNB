@@ -1,0 +1,13 @@
+//
+// Created by caleb on 14/11/2025.
+//
+
+#ifndef GERENCIADOR_DE_HOTEIS_UNB_CSP_HPP
+#define GERENCIADOR_DE_HOTEIS_UNB_CSP_HPP
+
+
+class CSP {
+};
+
+
+#endif //GERENCIADOR_DE_HOTEIS_UNB_CSP_HPP

@@ -1,0 +1,8 @@
+//
+// Created by caleb on 14/11/2025.
+//
+
+#ifndef GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
+#define GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
+
+#endif //GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP

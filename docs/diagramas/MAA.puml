@@ -1,0 +1,60 @@
+@startuml
+left to right direction
+
+title Módulo Autenticável - Visão de Classes e Interfaces
+
+skinparam ClassFontSize 11
+skinparam package {
+  borderColor #303F9F
+  backgroundColor #E8EAF6
+}
+skinparam class {
+  StereotypeFontSize 10
+  StereotypeFontColor #757575
+}
+
+package ModuloAutenticavel <<Componente>> {
+
+    package InterfacesDeApresentacao {
+        interface InterfaceApresentacaoAutenticavel <<Interface>> {
+        + executar() : bool
+        }
+    }
+
+    package ControladorasDeApresentacao {
+        class ControladoraApresentacaoAutenticavel
+    }
+
+    package InterfacesDeServico {
+        interface InterfaceServicoAutenticavel <<Interface>> {
+        + autenticar(Email, Senha) : bool
+        }
+    }
+
+    package ControladorasDeServico {
+        class ControladoraServicoAutenticavel
+    }
+
+    ' === RELAÇÕES DENTRO DO MÓDULO ===
+
+    ' 1. Implementação Apresentação
+    InterfaceApresentacaoAutenticavel <|.. ControladoraApresentacaoAutenticavel : <<implementa>>
+
+    ' 2. Dependência Intercamadas (DIP)
+    ControladoraApresentacaoAutenticavel ..> InterfaceServicoAutenticavel : Depende/Usa
+
+    ' 3. Implementação Serviço
+    InterfaceServicoAutenticavel <|.. ControladoraServicoAutenticavel : <<implementa>>
+
+    ' 4. Dependência para Persistência
+    package Persistencia {
+        class BD <<Banco de Dados>>
+        class STL <<Estruturas STL>>
+    }
+
+    ControladoraServicoAutenticavel ..> BD : Depende/Usa
+    ControladoraServicoAutenticavel ..> STL : Depende/Usa
+
+}
+
+@enduml

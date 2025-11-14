@@ -1,0 +1,13 @@
+//
+// Created by caleb on 14/11/2025.
+//
+
+#ifndef GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
+#define GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
+
+
+class CAP {
+};
+
+
+#endif //GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
