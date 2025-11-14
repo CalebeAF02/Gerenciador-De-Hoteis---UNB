@@ -1,0 +1,92 @@
+@startuml
+title Diagrama de Sequência: Autenticação (Login)
+
+skinparam sequence {
+    ArrowColor #00796B
+    LifeLineBorderColor #00796B
+    LifeLineBackgroundColor #E0F2F1
+}
+
+actor User as Usuario
+
+' =============================================================
+' Participantes
+' =============================================================
+' Camada de Apresentação (Início e Interface)
+participant "ControladoraApresentacaoInicial\n(CAP)" as CAP
+participant "InterfaceApresentacaoAutenticavel\n(IAA)" as IAA
+participant "ControladoraApresentacaoAutenticavel\n(CAA)" as CAA
+
+' Camada de Serviço (Lógica de Negócio)
+participant "InterfaceServicoAutenticavel\n(ISA)" as ISA
+participant "ControladoraServicoAutenticavel\n(CSA)" as CSA
+
+' Camada de Persistência (Acesso a Dados)
+participant "InterfaceAcessoInformacao\n(IAI)" as IAI
+participant "ControladoraAcessoInformacao\n(CAI)" as CAI
+database "BD / STL" as BD
+
+' =============================================================
+' Fluxo Principal: Executar Login
+' =============================================================
+
+Usuario -> CAP : Iniciar()
+activate CAP
+
+' 1. Apresentação: Chama a interface de apresentação
+CAP -> IAA : executar()
+deactivate CAP
+activate CAA
+
+' 2. Apresentação: Coleta de dados
+CAA -> Usuario : Solicitar(Email, Senha)
+activate Usuario
+
+Usuario -> CAA : Informar(Email, Senha)
+deactivate Usuario
+
+' 3. Transição para Serviço (DIP)
+CAA -> ISA : autenticar(Email, Senha)
+deactivate CAA
+activate CSA
+
+' 4. Serviço: Transição para Persistência (DIP)
+CSA -> IAI : buscarUsuario(Email)
+activate CAI
+
+' 5. Persistência: Acesso ao banco de dados
+CAI -> BD : READ_BY_EMAIL(Email)
+activate BD
+BD --> CAI : Retorna {HashSenha, Perfil}
+deactivate BD
+
+' 6. Persistência: Retorno do Acesso à Informação
+CAI --> CSA : Retorna {HashSenha, Perfil}
+deactivate CAI
+
+' 7. Serviço: Validação da Senha
+CSA -> CSA : Comparar(Senha, HashSenha)
+
+alt Autenticação BEM-SUCEDIDA
+    CSA --> IAA : Retorna True / Perfil
+    deactivate CSA
+
+    ' 8. Apresentação: Retorno de Sucesso
+    CAA -> CAP : Retorna True / Perfil
+    activate CAP
+
+    CAP -> Usuario : Sucesso + Abrir Menu(Perfil)
+
+else Autenticação FALHOU
+    CSA --> IAA : Retorna False
+    deactivate CSA
+
+    ' 8. Apresentação: Retorno de Falha
+    CAA -> CAP : Retorna False
+    activate CAP
+
+    CAP -> Usuario : Exibir Mensagem de Erro
+end
+
+deactivate CAP
+@enduml

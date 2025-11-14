@@ -7,13 +7,13 @@
 
 #include <iostream>
 
-#include "InterfaceServicoAutenticavel.hpp"
+#include "ISAutenticavel.hpp"
 #include "PersistenciaGerente.hpp"
 #include "../utilitarios/console/Formato.hpp"
 
 using namespace std;
 
-class ServicoAutenticavel : public InterfaceServicoAutenticavel {
+class ServicoAutenticavel : public ISAutenticavel {
 private:
     bool estaLogado = false;
 

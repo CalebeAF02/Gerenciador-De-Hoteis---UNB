@@ -1,0 +1,22 @@
+//
+// Created by caleb on 14/11/2025.
+//
+
+#ifndef GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP
+#define GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP
+
+#include "InterfaceServicoAutenticavel.hpp"
+#include "IO.hpp"
+#include <iostream>
+
+#include "Email.hpp"
+#include "InterfaceApresentacaoAutenticavel.hpp"
+#include "Senha.hpp"
+using namespace std;
+
+class ControladoraServicoAutenticavel : public InterfaceApresentacaoAutenticavel {
+public:
+    bool autenticar(Email email, Senha senha);
+};
+
+#endif //GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP

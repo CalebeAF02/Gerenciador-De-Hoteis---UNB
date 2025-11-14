@@ -70,12 +70,12 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
         # Interfaces - Apresentações
-        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoAutenticavel.cpp
+        src/sistema/interfaces/apresentacoes/IAAutenticavel.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoCRUD.cpp
 
         # Interfaces - Serviços
-        src/sistema/interfaces/servicos/InterfaceServicoAutenticavel.cpp
+        src/sistema/interfaces/servicos/ISAutenticavel.cpp
 
         # Interfaces - Gerais
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
@@ -144,44 +144,25 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # HACKER
         src/HACKER/SistemaHacker.cpp
-        include/sistema/padrao/ControladoraApresentacaoInicial.cpp
-        include/sistema/padrao/ControladoraApresentacaoInicial.hpp
-        include/sistema/padrao/modulo-servico_autenticavel/InterfaceApresentacaoAutenticavel.hpp
-        include/sistema/padrao/modulo-servico_autenticavel/ControladoraApresentacaoAutenciavel.cpp
-        include/sistema/padrao/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.hpp
-        include/sistema/padrao/modulo-servico_pessoal/ControladoraApresentacaoPessoal.cpp
-        include/sistema/padrao/modulo-servico_pessoal/ControladoraApresentacaoPessoal.hpp
-        include/sistema/padrao/modulo-servico_pessoal/InterfaceApresentacaoPessoal.hpp
-        include/sistema/padrao/modulo-servico_hospede/InterfaceApresentacaoHospede.hpp
-        include/sistema/padrao/modulo-servico_hotel/InterfaceApresentacaoHotel.hpp
-        include/sistema/padrao/modulo-servico_quarto/InterfaceApresentacaoQuarto.hpp
-        include/sistema/padrao/modulo-servico_reserva/InterfaceApresentacaoReserva.hpp
-        include/sistema/padrao/modulo-servico_hospede/ControladoraApresentacaoHospede.cpp
-        include/sistema/padrao/modulo-servico_hospede/ControladoraApresentacaoHospede.hpp
-        include/sistema/padrao/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
-        include/sistema/padrao/modulo-servico_hotel/ControladoraApresentacaoHotel.hpp
-        include/sistema/padrao/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
-        include/sistema/padrao/modulo-servico_quarto/ControladoraApresentacaoQuarto.hpp
-        include/sistema/padrao/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
-        include/sistema/padrao/modulo-servico_reserva/ControladoraApresentacaoReserva.hpp
-        include/sistema/padrao/modulo-servico_autenticavel/InterfaceServicoAutenticavel.hpp
-        include/sistema/padrao/modulo-servico_pessoal/InterfaceServicoPessoal.hpp
-        include/sistema/padrao/modulo-servico_hospede/InterfaceServicoHospede.hpp
-        include/sistema/padrao/modulo-servico_hotel/InterfaceServicoHotel.hpp
-        include/sistema/padrao/modulo-servico_quarto/InterfaceServicoQuarto.hpp
-        include/sistema/padrao/modulo-servico_reserva/InterfaceServicoReserva.hpp
-        include/sistema/padrao/modulo-servico_autenticavel/ControladoraServicoAutencticavel.cpp
-        include/sistema/padrao/modulo-servico_autenticavel/ControladoraServicoAutenticavel.hpp
-        include/sistema/padrao/modulo-servico_pessoal/ControladoraServicoPessoal.cpp
-        include/sistema/padrao/modulo-servico_pessoal/ControladoraServicoPessoal.hpp
-        include/sistema/padrao/modulo-servico_hospede/ControladoraServicoHospede.cpp
-        include/sistema/padrao/modulo-servico_hospede/ControladoraServicoHospede.hpp
-        include/sistema/padrao/modulo-servico_hotel/ControladoraServicoHotel.cpp
-        include/sistema/padrao/modulo-servico_hotel/ControladoraServicoHotel.hpp
-        include/sistema/padrao/modulo-servico_quarto/ControladoraServicoQuarto.cpp
-        include/sistema/padrao/modulo-servico_quarto/ControladoraServicoQuarto.hpp
-        include/sistema/padrao/modulo-servico_reserva/ControladoraServicoReserva.cpp
-        include/sistema/padrao/modulo-servico_reserva/ControladoraServicoReserva.hpp
+
+        # Sub Sistema
+        src/sistema/sub_sistema/ControladoraApresentacaoInicial.cpp
+
+        ## Apresentacao
+        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.cpp
+        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraApresentacaoPessoal.cpp
+        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraApresentacaoHospede.cpp
+        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
+        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
+        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
+
+        ## Servico
+        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraServicoAutenticavel.cpp
+        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraServicoPessoal.cpp
+        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraServicoHospede.cpp
+        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraServicoHotel.cpp
+        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraServicoQuarto.cpp
+        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraServicoReserva.cpp
 )
 
 add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
@@ -195,6 +176,14 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/HACKER
         ${CMAKE_SOURCE_DIR}/include/sistema
         ${CMAKE_SOURCE_DIR}/include/sistema/servicos
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hospede
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hotel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_quarto
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_reserva
+
         ${CMAKE_SOURCE_DIR}/include/sistema/dominios
         ${CMAKE_SOURCE_DIR}/include/sistema/dto
         ${CMAKE_SOURCE_DIR}/include/sistema/entidades

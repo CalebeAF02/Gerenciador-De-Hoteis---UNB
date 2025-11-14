@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+title Módulo Pessoal - Design de Componentes
+skinparam componentStyle uml2
+skinparam package {
+  backgroundColor #E8EAF6
+  borderColor #303F9F
+}
+
+' ==========================================================
+' 1. DEFINIÇÃO DAS CAMADAS E INTERFACES
+' ==========================================================
+
+package Apresentacao <<Camada do Usuário>> {
+    interface InterfaceApresentacaoPessoal as IAPessoal
+    [ModuloApresentacaoPessoal] as MAPessoal
+}
+
+package Servico <<Camada Lógica>> {
+    interface InterfaceServicoPessoal as ISPessoal
+    [ModuloServicoPessoal] as MSPessoal
+}
+
+package Persistencia <<Camada de Acesso>> {
+    interface InterfaceAcessoInformacao as IAI
+    [ModuloAcessoInformacao] as MAI
+}
+
+[BD / STL] as DadosBrutos
+
+' ==========================================================
+' 2. RELAÇÕES DE REALIZAÇÃO (BOLA - O FORNECEDOR)
+' ==========================================================
+IAPessoal o-- MAPessoal : <<Controladora Apresentação>>
+ISPessoal o-- MSPessoal : <<Controladora Serviço>>
+IAI o-- MAI : <<Controladora Acesso Informação (CAI)>>
+
+
+' ==========================================================
+' 3. RELAÇÕES DE USO (SOQUETE - O CLIENTE)
+' ==========================================================
+' Apresentação depende de Serviço
+MAPessoal ..> ISPessoal : Depende (CRUD Pessoal)
+
+' Serviço depende de Persistência
+MSPessoal ..> IAI : Depende (Buscar Dados)
+
+' Persistência usa os Dados Brutos
+MAI ..> DadosBrutos : Usa (READ/WRITE)
+
+@enduml

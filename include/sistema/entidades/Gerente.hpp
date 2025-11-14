@@ -35,6 +35,8 @@ public:
     Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
         setRamal(Ramal(gerente_dto.getRamal()));
     };
+
+    // Obs : exemplo Matricula getMatricula() const;
     //-----------------------------------------------------------------------------------------------------------------
 
     // virtuais ----------------

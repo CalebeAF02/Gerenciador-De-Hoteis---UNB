@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+
+title Módulo Autenticável - Design de Componentes
+
+skinparam componentStyle uml2
+
+' === 1. CAMADAS ===
+package Apresentacao <<Camada de Interface com o Usuário>> {
+    ' O Módulo MAA (Controladora) implementa a IAA
+    [ModuloAutenticavelApresentacao] as MAA
+    interface InterfaceApresentacaoAutenticavel as IAA
+}
+
+package Servico <<Camada Lógica de Serviço>> {
+    ' O Módulo MSA (Controladora) implementa a ISA
+    [ModuloAutenticavelServico] as MSA
+    interface InterfaceServicoAutenticavel as ISA
+}
+
+package Persistencia <<Camada de Dados>> {
+    ' O Módulo MP (CAI) implementa a IP
+    [ModuloPersistencia] as MP
+    interface InterfaceAcessoInformacao as IAI
+}
+
+' === 2. REALIZAÇÃO (IMPLEMENTAÇÃO) ===
+' Módulo fornece o serviço (implementa a Interface)
+IAA o-- MAA
+ISA o-- MSA
+IAI o-- MP
+
+' === 3. USO (DEPENDÊNCIA) ===
+' O Cliente (MAA) usa o serviço (ISA)
+MAA ..> ISA : Depende (Autenticar)
+
+' O Cliente (MSA) usa o serviço (IAI)
+MSA ..> IAI : Depende (Persistência)
+
+' === 4. PERSISTÊNCIA BRUTA ===
+MP ..> [BD / STL] : Usa
+
+@enduml
