@@ -1,3 +1,5 @@
+
+
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
 
@@ -9,8 +11,8 @@ using namespace std;
 
 class Versao {
 private:
-    static constexpr uint64_t valor = 113;
-    static inline const string data = "2025-11-09 19:00";
+    static constexpr uint64_t valor = 114;
+    static inline const string data = "2025-11-14 09:10";
 
 public:
     static uint8_t patch() { return valor % 10; }
@@ -18,7 +20,6 @@ public:
     static uint64_t major() { return valor / 100; }
     static uint64_t getValor() { return valor; }
     static string getData() { return data; }
-
     static string getVersaoCompleta() {
         return to_string(major()) + "." +
                to_string(minor()) + "." +

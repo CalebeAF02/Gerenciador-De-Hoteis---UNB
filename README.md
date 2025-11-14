@@ -46,39 +46,39 @@ O sistema simula um **gerenciador de hotel**, permitindo:
 
 ### 🏁 Tela Inicial do Sistema
 
-![Tela de boas-vindas com opções de acesso](imagens/tela_inicial.png)
+![Tela de boas-vindas com opções de acesso](docs/imagens/tela_inicial.png)
 
 ### 🛏️ Menu para Hospedagem
 
-![Menu para hospedagem com opções de solicitação e status](imagens/menu_hospedagem.png)
+![Menu para hospedagem com opções de solicitação e status](docs/imagens/menu_hospedagem.png)
 
 ### 🧑‍💼 Menu Inicial do Gerente
 
-![Opções de criar gerente ou fazer login](imagens/menu_inicial_gerente.png)
+![Opções de criar gerente ou fazer login](docs/imagens/menu_inicial_gerente.png)
 
 ### Tentativa de Login com Erro
 
-![Erro de login: usuário não encontrado ou senha incorreta](imagens/login_erro.png)
+![Erro de login: usuário não encontrado ou senha incorreta](docs/imagens/login_erro.png)
 
 ### 👤 Cadastro de Novo Gerente
 
-![Cadastro de gerente com nome, email, ramal e senha](imagens/cadastro_gerente.png)
+![Cadastro de gerente com nome, email, ramal e senha](docs/imagens/cadastro_gerente.png)
 
 ### 🔐 Login de Gerente com Sucesso
 
-![Login realizado com sucesso e acesso à central de serviços](imagens/login_sucesso_menu_servicos.png)
+![Login realizado com sucesso e acesso à central de serviços](docs/imagens/login_sucesso_menu_servicos.png)
 
 ### 🧠 Central de Serviços
 
-![Menu principal após login, com acesso aos módulos do sistema](imagens/central_servicos.png)
+![Menu principal após login, com acesso aos módulos do sistema](docs/imagens/central_servicos.png)
 
 ### 🧭 Menu CRUD de Gerentes
 
-![Central de serviços com opções de criar, ler, atualizar e remover](imagens/menu_crud_gerente.png)
+![Central de serviços com opções de criar, ler, atualizar e remover](docs/imagens/menu_crud_gerente.png)
 
 ### 📋 Lista de Gerentes
 
-![Exibição dos gerentes cadastrados](imagens/lista_gerentes.png)
+![Exibição dos gerentes cadastrados](docs/imagens/lista_gerentes.png)
 
 ---
 

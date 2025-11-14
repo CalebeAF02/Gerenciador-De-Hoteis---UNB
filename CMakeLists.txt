@@ -10,7 +10,7 @@ set(VERSAO_HPP "${CMAKE_CURRENT_SOURCE_DIR}/include/sistema/Versao.hpp")
 # Geração automática do cabeçalho
 add_custom_command(
         OUTPUT ${VERSAO_HPP}
-        COMMAND ${CMAKE_COMMAND} -DINPUT_FILE=${VERSAO_TXT} -DOUTPUT_FILE=${VERSAO_HPP} -P ${CMAKE_CURRENT_SOURCE_DIR}/atualizar_versao.cmake
+        COMMAND ${CMAKE_COMMAND} -DINPUT_FILE=${VERSAO_TXT} -DOUTPUT_FILE=${VERSAO_HPP} -P ${CMAKE_SOURCE_DIR}/meta/atualizar_versao.cmake
         DEPENDS ${VERSAO_TXT}
         COMMENT "Atualizando versão automaticamente..."
 )
@@ -150,6 +150,9 @@ add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
 
 # Diretórios de headers
 target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
+        ${CMAKE_SOURCE_DIR}/docs
+        ${CMAKE_SOURCE_DIR}/docs/diagramas
+        ${CMAKE_SOURCE_DIR}/docs/imagens
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include/HACKER
         ${CMAKE_SOURCE_DIR}/include/sistema
@@ -170,6 +173,7 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/tabela
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
         ${CMAKE_SOURCE_DIR}/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/meta
         ${CMAKE_SOURCE_DIR}/testes
         ${CMAKE_SOURCE_DIR}/testes/interface_testes
         ${CMAKE_SOURCE_DIR}/testes/smoke_teste
