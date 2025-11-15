@@ -14,18 +14,17 @@ namespace Hotelaria {
         }
     }
     void Sistema::exibirMenu() {
-        bool executando = true;
         Menu menu;
 
         int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
         int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
         int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
 
-        while (executando) {
+        while (getExecutandoSistema()) {
             int opcao = menu.executa("Seja bem vindo ao Gerenciador de Hoteis");
 
             if (opcao == OPCAO_SAIR_DO_SISTEMA) {
-                executando = false;
+                sair();
                 IO::Println("Encerrando o sistema...");
             } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
                 contoladoraApresentacaoAcessoGerente.exibirMenu();

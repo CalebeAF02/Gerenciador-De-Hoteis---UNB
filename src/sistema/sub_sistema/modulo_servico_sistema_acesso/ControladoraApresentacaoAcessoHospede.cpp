@@ -14,7 +14,7 @@ void ControladoraApresentacaoAcessoHospede::exibirMenu() {
     const int OPCAO_CRIAR_SOLOCITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Criar Solicitacao de Hospedagem");
     const int OPCAO_STATUS_DA_SOLICITACAO_DE_HOSPEDAGEM = menu.adcionarItens("Status da Solicitacao de Hospedagem");
 
-    while (executando == true) {
+    while (executando) {
         int opcao = menu.executa("Faca o acesso para liberar os servicos");
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
