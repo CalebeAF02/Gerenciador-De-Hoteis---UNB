@@ -156,7 +156,7 @@ void ControladorInterfaceGerente::atualizar() {
     IO::Print("Informe o Id do Gerente: ");
     string id_gerente = IO::LerLinha();
 
-    if (ValidadorNumerico::verificaSeENumero(id_gerente)) {
+    if (Utils::verificaSeENumero(id_gerente)) {
         PersistenciaGerente persistencia;
         bool alterado = false;
 

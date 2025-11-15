@@ -101,7 +101,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
         # Utilitários
-        src/sistema/utilitarios/ValidadorNumerico.cpp
+        src/sistema/utilitarios/Utils.cpp
 
         # Validadores principais
         src/sistema/validadores_principais/ValidarInt.cpp

@@ -9,9 +9,8 @@
 
 using namespace std;
 
-class ValidadorNumerico {
-public:
-    static bool verificaSeENumero(const string &str);
+namespace Utils {
+    bool verificaSeENumero(const string &str);
 };
 
 

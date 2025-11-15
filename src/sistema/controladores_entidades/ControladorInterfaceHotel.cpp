@@ -130,7 +130,7 @@ void ControladorInterfaceHotel::atualizar() {
     IO::Print("Informe o Id do hotel: ");
     string id_hotel = IO::LerLinha();
 
-    if (ValidadorNumerico::verificaSeENumero(id_hotel)) {
+    if (Utils::verificaSeENumero(id_hotel)) {
         PersistenciaHotel persistencia;
         bool alterado = false;
 
