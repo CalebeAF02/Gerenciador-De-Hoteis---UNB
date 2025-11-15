@@ -1,4 +1,4 @@
-# 🏨 Gerenciador de Hotel - UnB
+# 🏨 Hotelaria_UnB_TP1
 
 Projeto acadêmico em **C++**, desenvolvido na Universidade de Brasília (UnB), com foco em **Programação Orientada a
 Objetos (POO)** e persistência de dados com **SQLite**.
