@@ -12,12 +12,15 @@ using namespace std;
 
 class InterfaceApresentacaoAutenticavel {
 public:
+    virtual void sair() = 0;
+
     virtual bool autenticar(Email*) = 0; //  solicitado o serviço.
+
     virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) = 0;
 
-    // estabelecer ligação (link) com a controladora na camada de serviço.
-    virtual ~InterfaceApresentacaoAutenticavel() {
-    } // destrutor virtual.
+    virtual void setEstaAutenticado(bool estaAutenticado) = 0;
+
+    virtual bool getEstaAutenticado() = 0;
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP

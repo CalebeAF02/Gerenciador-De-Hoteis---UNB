@@ -17,15 +17,29 @@ using namespace std;
 class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenticavel {
 private:
     InterfaceServicoAutenticavel *controladora_servico_autenticavel; // Referência para servidor.
+    bool estaAutenticado = false;
 public:
-    bool autenticar(Email*);
+    void sair() override;
 
-    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*);
+    bool autenticar(Email*) override;
+
+    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) override;
+
+    void setEstaAutenticado(bool estaAutenticado) override;
+
+    bool getEstaAutenticado() override;
 };
 
-void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(
-    InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
+void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
     this->controladora_servico_autenticavel = controladora_servico_autenticavel;
 }
-
+inline void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
+    this->estaAutenticado = estaAutenticado;
+}
+inline bool ControladoraApresentacaoAutenticavel::getEstaAutenticado() {
+    return estaAutenticado;
+}
+inline void ControladoraApresentacaoAutenticavel::sair() {
+    this->estaAutenticado = false;
+}
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAA_HPP

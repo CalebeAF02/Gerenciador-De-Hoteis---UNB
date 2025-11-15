@@ -17,7 +17,7 @@ void ControladorInterfaceGerente::exibirMenu() {
     const int OPCAO_GERENCIE_RESERVAS = menu.adcionarItens("Gerencie Reservas");
     const int OPCAO_AVALIAR_SOLICITACOES = menu.adcionarItens("Avaliar Solicitacoes de Hospedagem");
 
-    while (this->getEstaLogado()) {
+    while (this->getEstaAutenticado()) {
         int opcao = menu.executa("Seja bem vindo a central de servicos");
 
         if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
@@ -50,7 +50,7 @@ void ControladorInterfaceGerente::exibirMenu() {
 void ControladorInterfaceGerente::exibirMenuCRUD() {
     bool executando = true;
 
-    while (this->getEstaLogado()) {
+    while (this->getEstaAutenticado()) {
         FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
         fabrica.executarMenu("Menu CRUD Gerente", executando);
         if (executando == false) {

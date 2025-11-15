@@ -10,6 +10,7 @@
 using namespace std;
 
 class ControladoraApresentacaoInicial {
+
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAI_HPP

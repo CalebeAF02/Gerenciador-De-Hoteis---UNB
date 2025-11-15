@@ -32,8 +32,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/controladores_entidades/ControladorInterfaceQuarto.cpp
         src/sistema/controladores_entidades/ControladorInterfaceReserva.cpp
 
-        # Controladores de Métodos
-        src/sistema/controladores_metodos/ControladorInterfaceGerenteAutenticavel.cpp
 
         # Domínios
         src/sistema/dominios/Nome.cpp
@@ -70,12 +68,9 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/fabricas/FabricaGerenciavel.cpp
 
         # Interfaces - Apresentações
-        src/sistema/interfaces/apresentacoes/IAAutenticavel.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
         src/sistema/interfaces/apresentacoes/InterfaceApresentacaoCRUD.cpp
 
-        # Interfaces - Serviços
-        src/sistema/interfaces/servicos/ISAutenticavel.cpp
 
         # Interfaces - Gerais
         src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
@@ -85,9 +80,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/persistencias/PersistenciaHospede.cpp
         src/sistema/persistencias/PersistenciaHotel.cpp
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
-
-        # Serviços
-        src/sistema/servicos/CSAutenticavel.cpp
 
         # Utilitários
         src/sistema/utilitarios/Menu.cpp
@@ -175,7 +167,6 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include/HACKER
         ${CMAKE_SOURCE_DIR}/include/sistema
-        ${CMAKE_SOURCE_DIR}/include/sistema/servicos
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_autenticavel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hospede
@@ -194,7 +185,6 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/servicos
         ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
-        ${CMAKE_SOURCE_DIR}/include/sistema/controladores_metodos
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/tabela

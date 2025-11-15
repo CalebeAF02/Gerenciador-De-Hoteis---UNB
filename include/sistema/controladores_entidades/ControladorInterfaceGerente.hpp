@@ -5,11 +5,13 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
 #define GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
 
-#include "ControladorInterfaceGerenteAutenticavel.hpp"
+#include "ControladoraApresentacaoAutenticavel.hpp"
 #include "ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
+#include "PersistenciaGerente.hpp"
+#include "ControladoraServicoAutenticavel.hpp"
 #include "IO.hpp"
 #include "Tabela.hpp"
 
@@ -19,14 +21,20 @@
 using namespace std;
 using namespace VisualizadorDeTabela;
 
-class ControladorInterfaceGerente : public ControladorInterfaceGerenteAutenticavel,
+class ControladorInterfaceGerente : public ControladoraApresentacaoAutenticavel,
                                     public InterfaceApresentacaoExibirMenu,
                                     public InterfaceApresentacaoCRUD {
 private:
     PersistenciaGerente persistencia;
     bool executando = true;
+    bool estaAutenticado = false;
 
 public:
+    ControladorInterfaceGerente() {
+        InterfaceServicoAutenticavel *controladora_servico_autenticavel = new ControladoraServicoAutenticavel();
+        setControladoraServicoAutenticavel(controladora_servico_autenticavel);
+    }
+
     // Acessando servicos
     void exibirMenu() override;
 
@@ -41,6 +49,5 @@ public:
 
     bool remover() override;
 };
-
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H

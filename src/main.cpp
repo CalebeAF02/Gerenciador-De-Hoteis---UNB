@@ -39,24 +39,10 @@ using namespace std;
 #define MODO_PRODUCAO 0
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
-#define REFATORANDO 3
 
-#define MODO_ATUAL REFATORANDO
+#define MODO_ATUAL MODO_PRODUCAO
 
 //-----------------------------------------------------------------------------------------------------------
-void refatorando() {
-    /*
-    InterfaceApresentacaoAutenticavel * caa;
-    InterfaceApresentacaoPessoal * cap;
-
-    caa = new ControladoraApresentacaoAutenticavel(caa);
-    cap = new ControladoraApresentacaoPessoal(cap);
-
-    caa->setControladoraApresentacaoAutenticavel("stub");
-    cap->setControladoraApresentacaoPessoal("stub");
-    */
-}
-
 void executandoNovoSmoke() {
     TestandoSmoke teste;
     teste.executarSmokeTest();
@@ -99,9 +85,6 @@ int main() {
 
             burlandoSistema();
             break;
-        }
-        case REFATORANDO: {
-            refatorando();
         }
     }
     return 0;

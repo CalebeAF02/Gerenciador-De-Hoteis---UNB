@@ -6,7 +6,6 @@
 #define GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 
 #include "ControladorInterfaceGerente.hpp"
-#include "ControladorInterfaceGerenteAutenticavel.hpp"
 #include "controladores_entidades/ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"
 #include "ControladorInterfaceQuarto.hpp"

@@ -4,27 +4,40 @@
 
 #include "ControladoraApresentacaoAutenticavel.hpp"
 
-bool ControladoraApresentacaoAutenticavel::autenticar(Email *email) {
+bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
+    bool lacoLogin = false;
     bool resultado;
-    Senha senha;
-    string entrada;
 
-    // Solicitar email e senha.
-    while (true) {
+    while (!lacoLogin) {
+        string emailCopia;
+        string senhaCopia;
+
+        Formato::TituloEmCaixa("Logando com Gerente");
+
+        IO::Print("Informe o Email: ");
+        emailCopia = IO::LerLinha();
+
+        IO::Print("Informe a Senha: ");
+        senhaCopia = IO::LerLinha();
+
         try {
-            cout << "Digite o email     : ";
-            cin >> entrada;
-            email->setValor(entrada);
-            cout << "Digite a senha     : ";
-            cin >> entrada;
-            senha.setValor(entrada);
-            break;
-        } catch (const invalid_argument &exp) {
-            cout << endl << "Dado em formato incorreto." << endl;
+            emailObj->setValor(emailCopia);
+            Senha senhaObj(senhaCopia);
+
+            resultado = controladora_servico_autenticavel->autenticar(*emailObj, senhaObj); // Solicitar autenticação.
+
+            IO::Println("Passou do resultado");
+
+            if (!resultado) {
+                IO::Println("Gerente nao cadastrado");
+                IO::tentarNovamente();
+            }
+            lacoLogin = true;
+
+        } catch (invalid_argument &erro) {
+            cout << "Erro: " << erro.what() << endl;
+            IO::tentarNovamente();
         }
     }
-
-    resultado = controladora_servico_autenticavel->autenticar(*email, senha); // Solicitar autenticação.
-
     return resultado; // Informar resultado da autenticação.
 }

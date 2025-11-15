@@ -41,6 +41,7 @@ void Sistema::exibirMenuDoGerente() {
     bool executando = true;
 
     Menu menu;
+    Email emailObj;
 
     const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
     const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
@@ -56,8 +57,9 @@ void Sistema::exibirMenuDoGerente() {
             FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
             fabrica.criar(); // apenas cria o gerente, sem abrir o menu
         } else if (opcao == OPCAO_FAZER_LOGIN) {
-            controladorGerente.fazerLogin();
-            if (controladorGerente.getEstaLogado()) {
+            bool estaAutenticado = controladorGerente.autenticar(&emailObj);
+            controladorGerente.setEstaAutenticado(estaAutenticado);
+            if (estaAutenticado) {
                 IO::Println("Agora Voce Possui Super-Poderes");
                 controladorGerente.exibirMenu();
             }

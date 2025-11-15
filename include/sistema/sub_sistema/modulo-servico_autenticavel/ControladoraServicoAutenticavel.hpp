@@ -14,9 +14,9 @@
 #include "Senha.hpp"
 using namespace std;
 
-class ControladoraServicoAutenticavel : public InterfaceApresentacaoAutenticavel {
+class ControladoraServicoAutenticavel : public InterfaceServicoAutenticavel {
 public:
-    bool autenticar(Email email, Senha senha);
+    bool autenticar(const Email, const Senha) override;
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP

@@ -6,7 +6,7 @@
 
 #include "Formato.hpp"
 #include "IO.hpp"
-#include "TamanhoAtributo.hpp"0
+#include "TamanhoAtributo.hpp"
 
 namespace VisualizadorDeTabela {
     Linha *Tabela::criarObj() {
