@@ -2,9 +2,9 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "ServicoAutenticavel.hpp"
+#include "CSAutenticavel.hpp"
 
-bool ServicoAutenticavel::autenticar(Email &emailCopia, Senha &senhaCopia) {
+bool CSAutenticavel::autenticar(Email &emailCopia, Senha &senhaCopia) {
     PersistenciaGerente persistencia;
     bool gerenteLogado = persistencia.autenticarGerente(emailCopia.getValor(), senhaCopia.getValor());
 

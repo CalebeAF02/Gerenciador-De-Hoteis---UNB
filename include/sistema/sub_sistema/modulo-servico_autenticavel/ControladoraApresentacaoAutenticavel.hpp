@@ -18,9 +18,9 @@ class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenti
 private:
     InterfaceServicoAutenticavel *controladora_servico_autenticavel; // Referência para servidor.
 public:
-    bool autenticar(Email *);
+    bool autenticar(Email*);
 
-    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *);
+    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*);
 };
 
 void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(

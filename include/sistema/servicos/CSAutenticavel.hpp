@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class ServicoAutenticavel : public ISAutenticavel {
+class CSAutenticavel : public ISAutenticavel {
 private:
     bool estaLogado = false;
 
@@ -25,11 +25,11 @@ public:
     bool getEstaLogado() override;
 };
 
-inline bool ServicoAutenticavel::getEstaLogado() {
+inline bool CSAutenticavel::getEstaLogado() {
     return estaLogado;
 };
 
-inline void ServicoAutenticavel::sair() {
+inline void CSAutenticavel::sair() {
     this->estaLogado = false;
 }
 

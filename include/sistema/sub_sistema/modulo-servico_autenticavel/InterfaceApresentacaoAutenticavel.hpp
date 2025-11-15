@@ -5,14 +5,15 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
 
+#include "InterfaceServicoAutenticavel.hpp"
 #include "IO.hpp"
 #include <iostream>
 using namespace std;
 
 class InterfaceApresentacaoAutenticavel {
 public:
-    virtual bool autenticar(Email *) = 0; //  solicitado o serviço.
-    virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *) = 0;
+    virtual bool autenticar(Email*) = 0; //  solicitado o serviço.
+    virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) = 0;
 
     // estabelecer ligação (link) com a controladora na camada de serviço.
     virtual ~InterfaceApresentacaoAutenticavel() {

@@ -87,7 +87,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
 
         # Serviços
-        src/sistema/servicos/ServicoAutenticavel.cpp
+        src/sistema/servicos/CSAutenticavel.cpp
 
         # Utilitários
         src/sistema/utilitarios/Menu.cpp

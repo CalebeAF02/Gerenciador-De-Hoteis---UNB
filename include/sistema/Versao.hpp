@@ -10,8 +10,8 @@ using namespace std;
 
 class Versao {
 private:
-    static constexpr uint64_t valor = 118;
-    static inline const string data = "2025-11-15 02:36";
+    static constexpr uint64_t valor = 119;
+    static inline const string data = "2025-11-15 10:57";
 
 public:
     static uint8_t patch() { return valor % 10; }

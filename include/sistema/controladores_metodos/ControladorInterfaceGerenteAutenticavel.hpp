@@ -6,7 +6,7 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSGERENTE_H
 
 #include "../interfaces/apresentacoes/IAAutenticavel.hpp"
-#include "ServicoAutenticavel.hpp"
+#include "CSAutenticavel.hpp"
 #include "Pessoa.hpp"
 #include "Gerente.hpp"
 
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-class ControladorInterfaceGerenteAutenticavel : public IAAutenticavel, public ServicoAutenticavel {
+class ControladorInterfaceGerenteAutenticavel : public IAAutenticavel, public CSAutenticavel {
 private:
     bool executando = true;
 

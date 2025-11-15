@@ -1,0 +1,110 @@
+@startuml
+left to right direction
+title Arquitetura do Sistema - Organização por Sub-Sistemas
+
+skinparam componentStyle uml2
+skinparam package {
+  backgroundColor #FFF9C4
+  borderColor #FFB300
+}
+
+' ==========================================================
+' 1. SUBSISTEMAS FUNCIONAIS (Agrupamento Vertical)
+' ==========================================================
+
+package SubSistemaAutenticavel {
+    [MAA] as MAA
+    interface InterfaceApresentacaoAutenticavel as IAA
+    [MSA] as MSA
+    interface InterfaceServicoAutenticavel as ISA
+
+    IAA o-- MAA
+    ISA o-- MSA
+    MAA ..> ISA : Depende (Autenticar)
+}
+
+package SubSistemaHospede {
+    [MAHospede] as MAHospede
+    interface InterfaceApresentacaoHospede as IAHospede
+    [MSHospede] as MSHospede
+    interface InterfaceServicoHospede as ISHospede
+
+    IAHospede o-- MAHospede
+    ISHospede o-- MSHospede
+    MAHospede ..> ISHospede : Depende (CRUD)
+}
+
+package SubSistemaHotel {
+    [MAHotel] as MAHotel
+    interface InterfaceApresentacaoHotel as IAHotel
+    [MSHotel] as MSHotel
+    interface InterfaceServicoHotel as ISHotel
+
+    IAHotel o-- MAHotel
+    ISHotel o-- MSHotel
+    MAHotel ..> ISHotel : Depende (CRUD)
+}
+
+package SubSistemaQuarto {
+    [MAQuarto] as MAQuarto
+    interface InterfaceApresentacaoQuarto as IAQuarto
+    [MSQuarto] as MSQuarto
+    interface InterfaceServicoQuarto as ISQuarto
+
+    IAQuarto o-- MAQuarto
+    ISQuarto o-- MSQuarto
+    MAQuarto ..> ISQuarto : Depende (CRUD)
+}
+
+package SubSistemaReserva {
+    [MAReserva] as MAReserva
+    interface InterfaceApresentacaoReserva as IAReserva
+    [MSReserva] as MSReserva
+    interface InterfaceServicoReserva as ISReserva
+
+    IAReserva o-- MAReserva
+    ISReserva o-- MSReserva
+    MAReserva ..> ISReserva : Depende (CRUD)
+}
+
+package SubSistemaPessoal {
+    [MAPessoal] as MAPessoal
+    interface InterfaceApresentacaoPessoal as IAPessoal
+    [MSPessoal] as MSPessoal
+    interface InterfaceServicoPessoal as ISPessoal
+
+    IAPessoal o-- MAPessoal
+    ISPessoal o-- MSPessoal
+    MAPessoal ..> ISPessoal : Depende (CRUD)
+}
+
+' ==========================================================
+' 2. SUBSISTEMA COMPARTILHADO (PERSISTÊNCIA)
+' ==========================================================
+
+package Persistencia <<SubSistema Compartilhado>> {
+    [ModuloAcessoInformacao] as MAI
+    interface InterfaceAcessoInformacao as IAI
+    [BD / STL] as DadosBrutos
+
+    IAI o-- MAI
+    MAI ..> DadosBrutos : Usa (READ/WRITE)
+}
+
+' ==========================================================
+' 3. DEPENDÊNCIAS ENTRE SUBSISTEMAS
+' ==========================================================
+
+' SUBSISTEMAS DE SERVIÇO DEPENDEM DA INTERFACE DE PERSISTÊNCIA COMPARTILHADA
+MSA ..> IAI
+MSHospede ..> IAI
+MSHotel ..> IAI
+MSQuarto ..> IAI
+MSReserva ..> IAI
+MSPessoal ..> IAI
+
+' DEPENDÊNCIAS ENTRE SERVIÇOS (EX: Reserva usa Hóspede e Quarto)
+MSReserva ..> ISHospede : Verifica Hóspede
+MSReserva ..> ISQuarto : Verifica Disponibilidade
+
+@enduml

@@ -1,0 +1,128 @@
+@startuml
+left to right direction
+title Arquitetura de Módulos (Sub-Sistemas)
+
+skinparam componentStyle uml2
+skinparam package {
+  backgroundColor #E1F5FE
+  borderColor #0277BD
+  shadowing false
+}
+skinparam component {
+  backgroundColor #BBDEFB
+  borderColor #1976D2
+}
+
+' ==========================================================
+' PONTO DE ENTRADA (Controladora Principal)
+' ==========================================================
+component "ControladoraApresentacaoInicial\n(Ponto de Entrada)" as Principal
+
+' ==========================================================
+' SUBSISTEMAS FUNCIONAIS (Agrupamento Vertical: Apresentação + Serviço)
+' ==========================================================
+
+package SubSistemaAutenticavel {
+    [ControladoraApresentacaoAutenticavel] as MAA
+    interface InterfaceApresentacaoAutenticavel as IAA
+    [ControladoraServicoAutenticavel] as MSA
+    interface InterfaceServicoAutenticavel as ISA
+
+    IAA o-- MAA
+    ISA o-- MSA
+    MAA ..> ISA : Usa
+}
+
+package SubSistemaHospede {
+    [ControladoraApresentacaoHospede] as MAHospede
+    interface InterfaceApresentacaoHospede as IAHospede
+    [ControladoraServicoHospede] as MSHospede
+    interface InterfaceServicoHospede as ISHospede
+
+    IAHospede o-- MAHospede
+    ISHospede o-- MSHospede
+    MAHospede ..> ISHospede : Usa
+}
+
+package SubSistemaReserva {
+    [ControladoraApresentacaoReserva] as MAReserva
+    interface InterfaceApresentacaoReserva as IAReserva
+    [ControladoraServicoReserva] as MSReserva
+    interface InterfaceServicoReserva as ISReserva
+
+    IAReserva o-- MAReserva
+    ISReserva o-- MSReserva
+    MAReserva ..> ISReserva : Usa
+}
+
+package SubSistemaQuarto {
+    [ControladoraApresentacaoQuarto] as MAQuarto
+    interface InterfaceApresentacaoQuarto as IAQuarto
+    [ControladoraServicoQuarto] as MSQuarto
+    interface InterfaceServicoQuarto as ISQuarto
+
+    IAQuarto o-- MAQuarto
+    ISQuarto o-- MSQuarto
+    MAQuarto ..> ISQuarto : Usa
+}
+
+package SubSistemaHotel {
+    [ControladoraApresentacaoHotel] as MAHotel
+    interface InterfaceApresentacaoHotel as IAHotel
+    [ControladoraServicoHotel] as MSHotel
+    interface InterfaceServicoHotel as ISHotel
+
+    IAHotel o-- MAHotel
+    ISHotel o-- MSHotel
+    MAHotel ..> ISHotel : Usa
+}
+
+package SubSistemaPessoal {
+    [ControladoraApresentacaoPessoal] as MAPessoal
+    interface InterfaceApresentacaoPessoal as IAPessoal
+    [ControladoraServicoPessoal] as MSPessoal
+    interface InterfaceServicoPessoal as ISPessoal
+
+    IAPessoal o-- MAPessoal
+    ISPessoal o-- MSPessoal
+    MAPessoal ..> ISPessoal : Usa
+}
+
+' ==========================================================
+' SUBSISTEMA COMPARTILHADO (PERSISTÊNCIA)
+' ==========================================================
+
+package Persistencia <<SubSistema Compartilhado>> {
+    [ControladoraAcessoInformacao] as MAI
+    interface InterfaceAcessoInformacao as IAI
+    [BD / STL] as DadosBrutos
+
+    IAI o-- MAI
+    MAI ..> DadosBrutos : Acesso Direto
+}
+
+' ==========================================================
+' 4. INTERCONEXÕES E DEPENDÊNCIAS CRUZADAS
+' ==========================================================
+
+' 4.1. Principal chama as Interfaces de Apresentação
+Principal ..> IAA : Inicia Fluxo
+Principal ..> IAHospede
+Principal ..> IAReserva
+Principal ..> IAQuarto
+Principal ..> IAHotel
+Principal ..> IAPessoal
+
+' 4.2. SERVIÇOS dependem da Interface de Persistência Compartilhada (CAI)
+MSA ..> IAI
+MSHospede ..> IAI
+MSReserva ..> IAI
+MSQuarto ..> IAI
+MSHotel ..> IAI
+MSPessoal ..> IAI
+
+' 4.3. DEPENDÊNCIAS HORIZONTAIS (Reserva)
+MSReserva ..> ISHospede : Verifica Existência
+MSReserva ..> ISQuarto : Verifica Disponibilidade
+
+@enduml

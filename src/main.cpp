@@ -29,15 +29,34 @@
 #include "testes_entidades/TesteQuarto.hpp"
 #include "testes_entidades/TesteReserva.hpp"
 
+#include "InterfaceApresentacaoAutenticavel.hpp"
+#include "InterfaceApresentacaoPessoal.hpp"
+#include "ControladoraApresentacaoAutenticavel.hpp"
+#include "ControladoraApresentacaoPessoal.hpp"
+
 using namespace std;
 
 #define MODO_PRODUCAO 0
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
+#define REFATORANDO 3
 
-#define MODO_ATUAL MODO_HACKER
+#define MODO_ATUAL REFATORANDO
 
 //-----------------------------------------------------------------------------------------------------------
+void refatorando() {
+    /*
+    InterfaceApresentacaoAutenticavel * caa;
+    InterfaceApresentacaoPessoal * cap;
+
+    caa = new ControladoraApresentacaoAutenticavel(caa);
+    cap = new ControladoraApresentacaoPessoal(cap);
+
+    caa->setControladoraApresentacaoAutenticavel("stub");
+    cap->setControladoraApresentacaoPessoal("stub");
+    */
+}
+
 void executandoNovoSmoke() {
     TestandoSmoke teste;
     teste.executarSmokeTest();
@@ -80,6 +99,9 @@ int main() {
 
             burlandoSistema();
             break;
+        }
+        case REFATORANDO: {
+            refatorando();
         }
     }
     return 0;

@@ -29,7 +29,6 @@ void Sistema::exibirMenu() {
             executando = false;
             IO::Println("Encerrando o sistema...");
         } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
-            Email emailAcessar;
             exibirMenuDoGerente();
         } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
             controladorHospede.exibirMenu();
