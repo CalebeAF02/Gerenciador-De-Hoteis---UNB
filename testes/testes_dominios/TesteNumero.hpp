@@ -9,7 +9,7 @@
 #include "Numero.hpp"
 #include <vector>
 #include <string>
-#include  "IO.hpp"
+#include "../../libs/IO/IO.hpp"
 
 using namespace Teste;
 class TesteNumero : public InterfaceDeTeste {

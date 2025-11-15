@@ -12,7 +12,7 @@
 #include "ControladorInterfaceReserva.hpp"
 #include "PersistenciaGerente.hpp"
 #include "ControladoraServicoAutenticavel.hpp"
-#include "IO.hpp"
+#include "../../../libs/IO/IO.hpp"
 #include "Tabela.hpp"
 
 #include "InterfaceApresentacaoExibirMenu.hpp"

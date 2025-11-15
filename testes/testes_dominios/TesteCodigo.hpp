@@ -10,7 +10,7 @@
 #include <string>
 
 #include "../../libs/teste/InterfaceDeTestes.hpp"
-#include  "IO.hpp"
+#include "../../libs/IO/IO.hpp"
 
 using namespace Teste;
 class TesteCodigo : public InterfaceDeTeste {

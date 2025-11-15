@@ -6,7 +6,7 @@
 #define GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP
 
 #include "InterfaceServicoAutenticavel.hpp"
-#include "IO.hpp"
+#include "../../../../libs/IO/IO.hpp"
 #include <iostream>
 
 #include "Email.hpp"

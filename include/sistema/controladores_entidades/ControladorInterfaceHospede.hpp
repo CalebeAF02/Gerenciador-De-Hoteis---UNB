@@ -15,7 +15,7 @@
 #include "SolicitacaoHospedagem.hpp"
 #include "PersistenciaSolicitacaoHospedagem.hpp"
 #include "FabricaGerenciavel.hpp"
-#include "IO.hpp"
+#include "../../../libs/IO/IO.hpp"
 
 #include <vector>
 #include <limits>

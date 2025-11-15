@@ -25,6 +25,25 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
+        # Sub Sistema
+        src/sistema/sub_sistema/ControladoraApresentacaoInicial.cpp
+
+        ## Apresentacao
+        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.cpp
+        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraApresentacaoPessoal.cpp
+        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraApresentacaoHospede.cpp
+        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
+        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
+        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
+
+        ## Servico
+        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraServicoAutenticavel.cpp
+        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraServicoPessoal.cpp
+        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraServicoHospede.cpp
+        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraServicoHotel.cpp
+        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraServicoQuarto.cpp
+        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraServicoReserva.cpp
+
         # Controladores de Entidades
         src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
         src/sistema/controladores_entidades/ControladorInterfaceHospede.cpp
@@ -88,7 +107,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # Utilitarios - Console
         src/sistema/utilitarios/console/Formato.cpp
-        src/sistema/utilitarios/console/IO.cpp
 
         # Utilitarios - Tabela
         src/sistema/utilitarios/tabela/Tabela.cpp
@@ -103,11 +121,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Versao
         src/sistema/Versao.cpp
 
-        # Testes - Interface
-        libs/teste/InterfaceDeTestes.cpp
-
-        # Testes - Smoke
-        libs/teste/SmokeTeste.cpp
+        # Testes
         testes/TestandoSmoke.cpp
 
         # Testes - Domínios
@@ -131,30 +145,18 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteQuarto.cpp
         testes/testes_entidades/TesteReserva.cpp
 
-        # Include - Sqlite
+        # Libs - IO
+        libs/IO/IO.cpp
+
+        # Libs - Sqlite
         libs/sqlite/sqlite3.c
+
+        # Libs - teste
+        libs/teste/InterfaceDeTestes.cpp
+        libs/teste/SmokeTeste.cpp
 
         # HACKER
         src/HACKER/SistemaHacker.cpp
-
-        # Sub Sistema
-        src/sistema/sub_sistema/ControladoraApresentacaoInicial.cpp
-
-        ## Apresentacao
-        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.cpp
-        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraApresentacaoPessoal.cpp
-        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraApresentacaoHospede.cpp
-        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
-        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
-        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
-
-        ## Servico
-        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraServicoAutenticavel.cpp
-        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraServicoPessoal.cpp
-        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraServicoHospede.cpp
-        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraServicoHotel.cpp
-        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraServicoQuarto.cpp
-        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraServicoReserva.cpp
 )
 
 add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)

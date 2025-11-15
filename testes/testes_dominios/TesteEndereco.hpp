@@ -9,7 +9,7 @@
 #include "Endereco.hpp"
 #include <vector>
 #include <string>
-#include  "IO.hpp"
+#include "../../libs/IO/IO.hpp"
 
 using namespace Teste;
 class TesteEndereco : public InterfaceDeTeste {

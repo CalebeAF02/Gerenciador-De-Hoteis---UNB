@@ -5,7 +5,7 @@
 #include "../../../../include/sistema/utilitarios/tabela/Tabela.hpp"
 
 #include "Formato.hpp"
-#include "IO.hpp"
+#include "../../../../libs/IO/IO.hpp"
 #include "TamanhoAtributo.hpp"
 
 namespace VisualizadorDeTabela {

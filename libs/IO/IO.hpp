@@ -8,28 +8,27 @@
 #include <iostream>
 #include <string>
 #include <limits> // Para clear/ignore do buffer se necessário
-#include "Formato.hpp"
+#include "../../include/sistema/utilitarios/console/Formato.hpp"
 
 using namespace std;
 
 // Classe responsável pela manipulação de entrada e saída de dados simples.
-class IO {
-public:
+namespace  IO {
     // Métodos de Input
-    static string LerLinha();
+    string LerLinha();
 
     // Métodos de Input com texto "Opção: "
-    static string LerOpcao();
+    string LerOpcao();
 
     // Opção para tentar novamente ou sair
-    static bool tentarNovamente();
+    bool tentarNovamente();
 
     // Métodos de Output Simples
     // Usaremos para imprimir uma mensagens e pular uma linha
-    static void Println(const string &mensagem);
+    void Println(const string &mensagem);
 
     // Usaremos para imprimir mensagens na mesma linha
-    static void Print(const string &mensagem);
+    void Print(const string &mensagem);
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP

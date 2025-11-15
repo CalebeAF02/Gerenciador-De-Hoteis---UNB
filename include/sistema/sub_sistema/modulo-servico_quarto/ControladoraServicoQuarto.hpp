@@ -6,7 +6,7 @@
 #define GERENCIADOR_DE_HOTEIS_UNB_CSQUARTO_HPP
 
 #include "InterfaceServicoQuarto.hpp"
-#include "IO.hpp"
+#include "../../../../libs/IO/IO.hpp"
 #include <iostream>
 using namespace std;
 
