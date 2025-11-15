@@ -6,15 +6,20 @@
 
 
 void SistemaHacker::iniciar() {
-    /*
+
     IO::Println("Versao " + Versao::getVersaoCompleta());
 
-    Email emailHK("calebe.2324@gmail.com");
+    Email emailHK;
+    emailHK.setValor("calebe.2324@gmail.com");
+    Email *emailObj = &emailHK;
+
     Senha senhaHK("A1!b2");
-    controladorGerente.autenticar(emailHK, senhaHK);
-    if (controladorGerente.getEstaLogado()) {
+
+    bool estaAutenticado = controladorGerente.getHacke()->autenticar(*emailObj, senhaHK);
+    controladorGerente.setEstaAutenticado(estaAutenticado);
+    if (estaAutenticado) {
         IO::Println("Agora Voce Possui Super-Poderes");
         controladorGerente.exibirMenu();
     }
-    */
+
 }

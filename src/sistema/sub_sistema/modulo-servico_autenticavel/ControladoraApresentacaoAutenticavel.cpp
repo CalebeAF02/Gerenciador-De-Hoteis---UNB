@@ -26,8 +26,6 @@ bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
 
             resultado = controladora_servico_autenticavel->autenticar(*emailObj, senhaObj); // Solicitar autenticação.
 
-            IO::Println("Passou do resultado");
-
             if (!resultado) {
                 IO::Println("Gerente nao cadastrado");
                 IO::tentarNovamente();

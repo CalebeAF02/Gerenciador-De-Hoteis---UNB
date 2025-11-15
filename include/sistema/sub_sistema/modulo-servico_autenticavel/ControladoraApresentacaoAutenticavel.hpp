@@ -28,6 +28,8 @@ public:
     void setEstaAutenticado(bool estaAutenticado) override;
 
     bool getEstaAutenticado() override;
+
+    InterfaceServicoAutenticavel* getHacke();
 };
 
 void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
@@ -42,4 +44,9 @@ inline bool ControladoraApresentacaoAutenticavel::getEstaAutenticado() {
 inline void ControladoraApresentacaoAutenticavel::sair() {
     this->estaAutenticado = false;
 }
+
+inline InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
+    return this->controladora_servico_autenticavel;
+}
+
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAA_HPP
