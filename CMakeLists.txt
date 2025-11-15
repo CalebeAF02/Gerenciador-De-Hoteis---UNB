@@ -4,7 +4,7 @@ project(Gerenciador-De-Hoteis---UNB)
 set(CMAKE_CXX_STANDARD 17)
 
 # Caminhos
-set(VERSAO_TXT "${CMAKE_CURRENT_SOURCE_DIR}/versao.txt")
+set(VERSAO_TXT "${CMAKE_CURRENT_SOURCE_DIR}/meta/versao.txt")
 set(VERSAO_HPP "${CMAKE_CURRENT_SOURCE_DIR}/include/sistema/Versao.hpp")
 
 # Geração automática do cabeçalho
