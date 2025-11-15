@@ -1,9 +1,10 @@
 #ifndef TESTSRESERVA_HPP
 #define TESTSRESERVA_HPP
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include <string>
 
+using namespace Teste;
 // A classe TestsReserva testa a integração da Entidade Reserva.
 class TesteReserva : public InterfaceDeTeste {
 public:

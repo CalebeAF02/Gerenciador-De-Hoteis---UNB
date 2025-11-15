@@ -1,5 +1,5 @@
 #include "TesteReserva.hpp"
-#include "SmokeTeste.hpp"
+#include "../../libs/teste/SmokeTeste.hpp"
 #include "sistema/entidades/Reserva.hpp"
 #include "sistema/dominios/Codigo.hpp"
 #include "../../include/sistema/dominios/Data.hpp"

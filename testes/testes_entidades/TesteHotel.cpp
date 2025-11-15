@@ -1,5 +1,5 @@
 #include "TesteHotel.hpp"
-#include "SmokeTeste.hpp"
+#include "../../libs/teste/SmokeTeste.hpp"
 #include "sistema/entidades/Hotel.hpp"
 #include "sistema/dominios/Nome.hpp"
 #include "sistema/dominios/Endereco.hpp"

@@ -104,11 +104,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/Versao.cpp
 
         # Testes - Interface
-        testes/interface_testes/InterfaceDeTestes.cpp
+        libs/teste/InterfaceDeTestes.cpp
 
         # Testes - Smoke
-        testes/smoke_teste/SmokeTeste.cpp
-        testes/smoke_teste/TestandoSmoke.cpp
+        libs/teste/SmokeTeste.cpp
+        testes/TestandoSmoke.cpp
 
         # Testes - Domínios
         testes/testes_dominios/TesteCapacidade.cpp

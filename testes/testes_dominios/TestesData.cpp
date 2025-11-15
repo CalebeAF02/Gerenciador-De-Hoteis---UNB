@@ -1,15 +1,14 @@
 // NO SEU TestesData.cpp (Refatorado para o Padrão Genérico)
 
 #include "TestesData.hpp"
-#include "SmokeTeste.hpp"
+#include "../../libs/teste/SmokeTeste.hpp"
 #include "Formato.hpp"
 #include "IO.hpp"
 #include "../../include/sistema/dominios/Data.hpp"
 #include <vector>
 #include <string>
 
-using namespace std;
-
+//------------------------------------------------------------------------------------------------------------------
 void TestesData::executar() {
     SmokeTeste smoke_teste;
 

@@ -6,9 +6,10 @@
 #define GERENCIADOR_DE_HOTEIS_UNB_TESTSDATA_HPP
 
 #include <iostream>
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 
 using namespace std;
+using namespace Teste;
 
 class TestesData : public InterfaceDeTeste {
 public:

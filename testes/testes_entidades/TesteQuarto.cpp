@@ -1,5 +1,5 @@
 #include "TesteQuarto.hpp"
-#include "SmokeTeste.hpp"
+#include "../../libs/teste/SmokeTeste.hpp"
 #include "sistema/entidades/Quarto.hpp"
 #include "sistema/dominios/Numero.hpp"
 #include "sistema/dominios/Capacidade.hpp"

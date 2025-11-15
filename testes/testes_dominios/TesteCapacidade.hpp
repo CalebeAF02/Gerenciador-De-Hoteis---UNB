@@ -8,11 +8,12 @@
 #include "Capacidade.hpp"
 #include <vector>
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include  "IO.hpp"
 
 using namespace std;
 
+using namespace Teste;
 class TesteCapacidade : public InterfaceDeTeste {
 public:
     void executar() override;

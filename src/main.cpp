@@ -7,9 +7,9 @@
 #include "Formato.hpp"
 #include "SistemaHacker.hpp"
 
-#include "SmokeTeste.hpp"
-#include "TestandoSmoke.hpp"
-#include "interface_testes/InterfaceDeTestes.hpp"
+#include "../libs/teste/SmokeTeste.hpp"
+#include "../testes/TestandoSmoke.hpp"
+#include "../libs/teste/InterfaceDeTestes.hpp"
 
 #include "testes_dominios/TesteCapacidade.hpp"
 #include "testes_dominios/TesteCartao.hpp"
@@ -40,7 +40,7 @@ using namespace std;
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_HACKER
+#define MODO_ATUAL MODO_SMOKE
 
 //-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {

@@ -1,7 +1,7 @@
 #ifndef TESTSGERENTE_H
 #define TESTSGERENTE_H
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include "Gerente.hpp"
 #include "Nome.hpp"
 #include "Email.hpp"

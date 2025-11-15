@@ -5,12 +5,13 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRAMAL_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_TESTSRAMAL_H
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include "Ramal.hpp"
 #include <vector>
 #include <string>
 #include  "IO.hpp"
 
+using namespace Teste;
 class TesteRamal : public InterfaceDeTeste {
 public:
     void executar() override;

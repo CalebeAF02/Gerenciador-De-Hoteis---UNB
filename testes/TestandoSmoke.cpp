@@ -5,7 +5,7 @@
 #include "TestandoSmoke.hpp"
 #include <memory>
 
-#include "../testes_dominios/TestesData.hpp"
+#include "testes_dominios/TestesData.hpp"
 #include "testes_dominios/TesteCapacidade.hpp"
 #include "testes_dominios/TesteCartao.hpp"
 #include "testes_dominios/TesteCodigo.hpp"

@@ -1,5 +1,5 @@
 #include "TesteGerente.hpp"
-#include "SmokeTeste.hpp"
+#include "../../libs/teste/SmokeTeste.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteGerente::executar() {

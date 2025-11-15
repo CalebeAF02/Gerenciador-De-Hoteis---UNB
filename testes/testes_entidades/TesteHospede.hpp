@@ -1,9 +1,10 @@
 #ifndef TESTESHOSPEDE_HPP
 #define TESTESHOSPEDE_HPP
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include <string>
 
+using namespace Teste;
 class TesteHospede : public InterfaceDeTeste {
 public:
     TesteHospede() = default;

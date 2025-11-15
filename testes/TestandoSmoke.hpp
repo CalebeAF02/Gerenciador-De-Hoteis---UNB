@@ -14,8 +14,8 @@
 #include  "IO.hpp"
 #include "Formato.hpp"
 
-#include "SmokeTeste.hpp"
-#include "InterfaceDeTestes.hpp"
+#include "../libs/teste/SmokeTeste.hpp"
+#include "../libs/teste/InterfaceDeTestes.hpp"
 
 #include <vector>
 #include <iostream>

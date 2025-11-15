@@ -8,9 +8,10 @@
 #include "Dinheiro.hpp"
 #include <vector>
 
-#include "InterfaceDeTestes.hpp"
+#include "../../libs/teste/InterfaceDeTestes.hpp"
 #include  "IO.hpp"
 
+using namespace Teste;
 class TesteDinheiro : public InterfaceDeTeste {
 public:
     void executar() override;

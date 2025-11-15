@@ -7,7 +7,8 @@
 #include <iostream>   // Necessário se você usar cout/cin, mas geralmente já é incluído por ConsoleFormatter
 #include <stdexcept>  // Necessário para invalid_argument
 
-class SmokeTeste {
+namespace Teste {
+    class SmokeTeste {
 public:
     // =========================================================================
     // 1. TESTAR DOMÍNIO (União da lógica try/catch com output para Domínios)
@@ -83,6 +84,8 @@ void SmokeTeste::testarEntidade(
         entidade,
         funcao_validacao
     );
+}
+
 }
 
 #endif // SMOKE_TESTS_HPP
