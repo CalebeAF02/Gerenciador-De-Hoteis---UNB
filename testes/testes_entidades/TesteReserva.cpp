@@ -5,7 +5,6 @@
 #include "Data.hpp"
 #include "Dinheiro.hpp"
 #include "Formato.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteReserva::executar() {
     SmokeTeste smoke_teste;
@@ -71,5 +70,4 @@ void TesteReserva::executar() {
         [&reserva1, &DinheiroInt]() { reserva1.setDinheiro(Dinheiro(DinheiroInt)); }
     );
 }
-
 //------------------------------------------------------------------------------------------------------------------

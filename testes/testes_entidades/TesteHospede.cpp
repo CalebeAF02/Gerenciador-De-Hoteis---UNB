@@ -2,7 +2,6 @@
 #include "SmokeTeste.hpp"
 #include "Hospede.hpp" // Sua entidade Hospede
 #include "Formato.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteHospede::executar() {
     SmokeTeste smoke_teste;
@@ -67,5 +66,4 @@ void TesteHospede::executar() {
         [&hospede1, &cartaoStr]() { hospede1.setCartao(Cartao(cartaoStr)); }
     );
 }
-
 //------------------------------------------------------------------------------------------------------------------

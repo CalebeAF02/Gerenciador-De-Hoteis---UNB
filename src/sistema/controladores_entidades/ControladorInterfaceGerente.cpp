@@ -45,7 +45,6 @@ void ControladorInterfaceGerente::exibirMenu() {
         }
     };
 }
-
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::exibirMenuCRUD() {
     bool executando = true;
@@ -58,7 +57,6 @@ void ControladorInterfaceGerente::exibirMenuCRUD() {
         }
     };
 }
-
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::criar() {
     bool criado = false;
@@ -128,7 +126,6 @@ void ControladorInterfaceGerente::criar() {
         }
     }
 };
-
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::ler() {
     vector<GerenteDTO *> lista = persistencia.listar();
@@ -150,7 +147,6 @@ void ControladorInterfaceGerente::ler() {
 
     tab.exibirTabela("Lista De Gerentes");
 }
-
 //-----------------------------------------------------------------------------------------------------------
 void ControladorInterfaceGerente::atualizar() {
     IO::Print("Informe o Id do Gerente: ");
@@ -246,7 +242,6 @@ void ControladorInterfaceGerente::atualizar() {
         IO::Println("Erro: Id Invalido");
     }
 }
-
 //-----------------------------------------------------------------------------------------------------------
 bool ControladorInterfaceGerente::remover() {
     /*
@@ -263,5 +258,4 @@ bool ControladorInterfaceGerente::remover() {
     */
     return false;
 }
-
 //-----------------------------------------------------------------------------------------------------------

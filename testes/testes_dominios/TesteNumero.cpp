@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include "../../libs/teste/SmokeTeste.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteNumero::executar() {
     SmokeTeste smoke_teste;

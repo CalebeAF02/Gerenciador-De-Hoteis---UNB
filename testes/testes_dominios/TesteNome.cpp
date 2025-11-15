@@ -5,7 +5,6 @@
 #include "Nome.hpp" // A classe que será testada
 #include "Formato.hpp"
 #include <vector>
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteNome::executar() {
     SmokeTeste smoke_teste;
@@ -55,5 +54,4 @@ void TesteNome::executar() {
         );
     }
 }
-
 //------------------------------------------------------------------------------------------------------------------

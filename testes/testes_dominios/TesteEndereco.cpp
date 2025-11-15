@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include "../../libs/teste/SmokeTeste.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteEndereco::executar() {
     SmokeTeste smoke_teste;
@@ -66,5 +65,4 @@ void TesteEndereco::executar() {
         );
     }
 }
-
 //------------------------------------------------------------------------------------------------------------------

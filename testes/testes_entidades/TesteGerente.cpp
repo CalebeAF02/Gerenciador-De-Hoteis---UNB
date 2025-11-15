@@ -1,6 +1,5 @@
 #include "TesteGerente.hpp"
 #include "../../libs/teste/SmokeTeste.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteGerente::executar() {
     SmokeTeste smoke_teste;
@@ -68,5 +67,4 @@ void TesteGerente::executar() {
         [&gerente1, &senhaStr]() { gerente1.setSenha(Senha(senhaStr)); }
     );
 }
-
 //------------------------------------------------------------------------------------------------------------------

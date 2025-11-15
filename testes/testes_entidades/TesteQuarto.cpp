@@ -5,7 +5,6 @@
 #include "Capacidade.hpp"
 #include "Dinheiro.hpp"
 #include "Formato.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteQuarto::executar() {
     SmokeTeste smoke_teste;
@@ -70,5 +69,4 @@ void TesteQuarto::executar() {
         [&quarto1, &ramalStr]() { quarto1.setRamal(Ramal(ramalStr)); }
     );
 }
-
 //------------------------------------------------------------------------------------------------------------------

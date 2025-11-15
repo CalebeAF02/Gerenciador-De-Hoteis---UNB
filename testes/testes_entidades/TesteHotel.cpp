@@ -5,7 +5,6 @@
 #include "Endereco.hpp"
 #include "Codigo.hpp"
 #include "Formato.hpp"
-
 //------------------------------------------------------------------------------------------------------------------
 void TesteHotel::executar() {
     SmokeTeste smoke_teste;
@@ -53,5 +52,4 @@ void TesteHotel::executar() {
         [&hotel1, &codigoStr]() { hotel1.setCodigo(Codigo(codigoStr)); }
     );
 }
-
 //------------------------------------------------------------------------------------------------------------------
