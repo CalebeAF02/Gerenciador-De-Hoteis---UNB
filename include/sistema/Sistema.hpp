@@ -6,7 +6,7 @@
 #define GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 
 #include "ControladorInterfaceGerente.hpp"
-#include "controladores_entidades/ControladorInterfaceHospede.hpp"
+#include "ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
@@ -16,7 +16,8 @@
 #include "../../libs/formato/Formato.hpp"
 #include <iostream>
 #include <string>
-
+#include "ControladoraApresentacaoAcessoGerente.hpp"
+#include "ControladoraApresentacaoAcessoHospede.hpp"
 #include "sqlite3.h"
 
 using namespace std;
@@ -25,18 +26,12 @@ namespace Hotelaria {
     class Sistema {
     private:
         bool executando = true;
-        ControladorInterfaceGerente controladorGerente;
-        ControladorInterfaceHospede controladorHospede;
-
-        void menuSistema() {
-            exibirMenu();
-        };
+        ControladoraApresentacaoAcessoGerente contoladoraApresentacaoAcessoGerente;
+        ControladoraApresentacaoAcessoHospede contoladoraApresentacaoAcessoHospede;
 
         void exibirMenu();
 
         bool getExecutandoSistema();
-
-        void exibirMenuDoGerente();
 
     public:
         void iniciar();

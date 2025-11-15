@@ -13,7 +13,6 @@ namespace Hotelaria {
             exibirMenu();
         }
     }
-
     void Sistema::exibirMenu() {
         bool executando = true;
         Menu menu;
@@ -29,42 +28,9 @@ namespace Hotelaria {
                 executando = false;
                 IO::Println("Encerrando o sistema...");
             } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
-                exibirMenuDoGerente();
+                contoladoraApresentacaoAcessoGerente.exibirMenu();
             } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
-                controladorHospede.exibirMenu();
-            }
-        }
-    };
-
-
-    void Sistema::exibirMenuDoGerente() {
-        bool executando = true;
-
-        Menu menu;
-        Email emailObj;
-
-        const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
-        const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
-        const int OPCAO_FAZER_LOGIN = menu.adcionarItens("Fazer Login");
-
-        while (executando) {
-            int opcao = menu.executa("Faca o acesso para liberar os servicos");
-
-            if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-                executando = false;
-                IO::Println("Voltando a selecao de usuario!");
-            } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
-                FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
-                fabrica.criar(); // apenas cria o gerente, sem abrir o menu
-            } else if (opcao == OPCAO_FAZER_LOGIN) {
-                bool estaAutenticado = controladorGerente.autenticar(&emailObj);
-                controladorGerente.setEstaAutenticado(estaAutenticado);
-                if (estaAutenticado) {
-                    IO::Println("Agora Voce Possui Super-Poderes");
-                    controladorGerente.exibirMenu();
-                }
-            } else {
-                IO::Println("Opcao Invalida!");
+                contoladoraApresentacaoAcessoHospede.exibirMenu();
             }
         }
     };

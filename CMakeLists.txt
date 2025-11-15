@@ -49,7 +49,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/BancoDeDados.cpp
 
         # Sub Sistema
-        src/sistema/sub_sistema/ControladoraApresentacaoInicial.cpp
 
         ## Apresentacao
         src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.cpp
@@ -58,6 +57,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/sub_sistema/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
         src/sistema/sub_sistema/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
         src/sistema/sub_sistema/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
+        src/sistema/sub_sistema/modulo_servico_sistema_acesso/ControladoraApresentacaoAcessoGerente.cpp
+        src/sistema/sub_sistema/modulo_servico_sistema_acesso/ControladoraApresentacaoAcessoHospede.cpp
 
         ## Servico
         src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraServicoAutenticavel.cpp
@@ -178,6 +179,7 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_pessoal
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_reserva
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo_servico_sistema_acesso
 
         ${CMAKE_SOURCE_DIR}/include/sistema/objetos/dominios
         ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades_dto

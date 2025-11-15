@@ -23,8 +23,7 @@
 
 using namespace std;
 
-class ControladorInterfaceHospede : public InterfaceApresentacaoExibirMenu,
-                                    public InterfaceApresentacaoCRUD {
+class ControladorInterfaceHospede : public InterfaceApresentacaoCRUD {
 private:
     PersistenciaHospede persistencia;
     bool executando = true;
@@ -33,17 +32,7 @@ public:
     // Construtor dos ServicosHospede
     ControladorInterfaceHospede() = default;
 
-    // Solicitacao de Hospedagem para Gerente
-    void opcoesDeHospedagem();
-
-    void solicitandoHospedagem();
-
-    void statusDaSolicitandoHospedagem() const;
-
     void avaliarSolicitacoes();
-
-    // Acessando servicos
-    void exibirMenu() override;
 
     // Menu CRUD
     void exibirMenuCRUD();

@@ -40,7 +40,7 @@ using namespace std;
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_SMOKE
+#define MODO_ATUAL MODO_PRODUCAO
 
 //-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {

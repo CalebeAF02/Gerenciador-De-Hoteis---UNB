@@ -5,7 +5,7 @@
 #include "../../../include/sistema/controladores_entidades/ControladorInterfaceGerente.hpp"
 
 #include "ControladorInterfaceGerente.hpp"
-//-----------------------------------------------------------------------------------------------------------
+
 void ControladorInterfaceGerente::exibirMenu() {
     Menu menu;
 
@@ -261,6 +261,7 @@ bool ControladorInterfaceGerente::remover() {
     }
     return status;
     */
+    return false;
 }
 
 //-----------------------------------------------------------------------------------------------------------
