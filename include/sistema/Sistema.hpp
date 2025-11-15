@@ -21,28 +21,29 @@
 
 using namespace std;
 
-class Sistema {
-private:
-    bool executando = true;
-    ControladorInterfaceGerente controladorGerente;
-    ControladorInterfaceHospede controladorHospede;
+namespace Hotelaria {
+    class Sistema {
+    private:
+        bool executando = true;
+        ControladorInterfaceGerente controladorGerente;
+        ControladorInterfaceHospede controladorHospede;
 
-    void menuSistema() {
-        exibirMenu();
+        void menuSistema() {
+            exibirMenu();
+        };
+
+        void exibirMenu();
+
+        bool getExecutandoSistema();
+
+        void exibirMenuDoGerente();
+
+    public:
+        void iniciar();
     };
 
-    void exibirMenu();
-
-    bool getExecutandoSistema();
-
-    void exibirMenuDoGerente();
-
-public:
-    void iniciar();
-};
-
-inline bool Sistema::getExecutandoSistema() {
-    return executando;
-};
-
+    inline bool Sistema::getExecutandoSistema() {
+        return executando;
+    };
+}
 #endif //GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H

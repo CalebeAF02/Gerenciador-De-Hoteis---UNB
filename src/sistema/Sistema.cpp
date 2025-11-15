@@ -6,65 +6,66 @@
 
 #include "sqlite3.h"
 #include "Versao.hpp"
-
-void Sistema::iniciar() {
-    IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
-    while (getExecutandoSistema()) {
-        exibirMenu();
-    }
-}
-
-void Sistema::exibirMenu() {
-    bool executando = true;
-    Menu menu;
-
-    int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
-    int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
-    int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
-
-    while (executando) {
-        int opcao = menu.executa("Seja bem vindo ao Gerenciador de Hoteis");
-
-        if (opcao == OPCAO_SAIR_DO_SISTEMA) {
-            executando = false;
-            IO::Println("Encerrando o sistema...");
-        } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
-            exibirMenuDoGerente();
-        } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
-            controladorHospede.exibirMenu();
+namespace Hotelaria {
+    void Sistema::iniciar() {
+        IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
+        while (getExecutandoSistema()) {
+            exibirMenu();
         }
     }
-};
 
+    void Sistema::exibirMenu() {
+        bool executando = true;
+        Menu menu;
 
-void Sistema::exibirMenuDoGerente() {
-    bool executando = true;
+        int OPCAO_SAIR_DO_SISTEMA = menu.adcionarItens("Sair");
+        int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
+        int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
 
-    Menu menu;
-    Email emailObj;
+        while (executando) {
+            int opcao = menu.executa("Seja bem vindo ao Gerenciador de Hoteis");
 
-    const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
-    const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
-    const int OPCAO_FAZER_LOGIN = menu.adcionarItens("Fazer Login");
-
-    while (executando) {
-        int opcao = menu.executa("Faca o acesso para liberar os servicos");
-
-        if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-            executando = false;
-            IO::Println("Voltando a selecao de usuario!");
-        } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
-            FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
-            fabrica.criar(); // apenas cria o gerente, sem abrir o menu
-        } else if (opcao == OPCAO_FAZER_LOGIN) {
-            bool estaAutenticado = controladorGerente.autenticar(&emailObj);
-            controladorGerente.setEstaAutenticado(estaAutenticado);
-            if (estaAutenticado) {
-                IO::Println("Agora Voce Possui Super-Poderes");
-                controladorGerente.exibirMenu();
+            if (opcao == OPCAO_SAIR_DO_SISTEMA) {
+                executando = false;
+                IO::Println("Encerrando o sistema...");
+            } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
+                exibirMenuDoGerente();
+            } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
+                controladorHospede.exibirMenu();
             }
-        } else {
-            IO::Println("Opcao Invalida!");
         }
-    }
-};
+    };
+
+
+    void Sistema::exibirMenuDoGerente() {
+        bool executando = true;
+
+        Menu menu;
+        Email emailObj;
+
+        const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
+        const int OPCAO_CRIAR_UM_GERENTE = menu.adcionarItens("Criar Gerente");
+        const int OPCAO_FAZER_LOGIN = menu.adcionarItens("Fazer Login");
+
+        while (executando) {
+            int opcao = menu.executa("Faca o acesso para liberar os servicos");
+
+            if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
+                executando = false;
+                IO::Println("Voltando a selecao de usuario!");
+            } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
+                FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
+                fabrica.criar(); // apenas cria o gerente, sem abrir o menu
+            } else if (opcao == OPCAO_FAZER_LOGIN) {
+                bool estaAutenticado = controladorGerente.autenticar(&emailObj);
+                controladorGerente.setEstaAutenticado(estaAutenticado);
+                if (estaAutenticado) {
+                    IO::Println("Agora Voce Possui Super-Poderes");
+                    controladorGerente.exibirMenu();
+                }
+            } else {
+                IO::Println("Opcao Invalida!");
+            }
+        }
+    };
+}

@@ -53,7 +53,7 @@ void executarSistema() {
     BancoDeDados banco;
     banco.iniciar();
 
-    Sistema sistema;
+    Hotelaria::Sistema sistema;
     sistema.iniciar();
 }
 
