@@ -105,12 +105,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/utilitarios/MenuItem.cpp
         src/sistema/utilitarios/ValidadorNumerico.cpp
 
-        # Utilitarios - Tabela
-        src/sistema/utilitarios/tabela/Tabela.cpp
-        src/sistema/utilitarios/tabela/Linha.cpp
-        src/sistema/utilitarios/tabela/Atributo.cpp
-        src/sistema/utilitarios/tabela/TamanhoAtributo.cpp
-
         # Validadores principais
         src/sistema/validadores_principais/ValidarInt.cpp
         src/sistema/validadores_principais/ValidarString.cpp
@@ -151,6 +145,12 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Libs - Sqlite
         libs/sqlite/sqlite3.c
 
+        # Libs - Tabela
+        libs/tabela/Tabela.cpp
+        libs/tabela/Linha.cpp
+        libs/tabela/Atributo.cpp
+        libs/tabela/TamanhoAtributo.cpp
+
         # Libs - teste
         libs/teste/InterfaceDeTestes.cpp
         libs/teste/SmokeTeste.cpp
@@ -176,7 +176,6 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_pessoal
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_reserva
-
         ${CMAKE_SOURCE_DIR}/include/sistema/dominios
         ${CMAKE_SOURCE_DIR}/include/sistema/dto
         ${CMAKE_SOURCE_DIR}/include/sistema/entidades
@@ -188,12 +187,11 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
-        ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
-        ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/tabela
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
         ${CMAKE_SOURCE_DIR}/libs/formato
         ${CMAKE_SOURCE_DIR}/libs/io
         ${CMAKE_SOURCE_DIR}/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/libs/tabela
         ${CMAKE_SOURCE_DIR}/libs/teste
         ${CMAKE_SOURCE_DIR}/meta
         ${CMAKE_SOURCE_DIR}/testes

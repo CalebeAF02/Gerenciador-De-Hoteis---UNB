@@ -2,10 +2,10 @@
 // Created by caleb on 09/11/2025.
 //
 
-#include "../../../../include/sistema/utilitarios/tabela/Tabela.hpp"
+#include "Tabela.hpp"
 
-#include "../../../../libs/formato/Formato.hpp"
-#include "../../../../libs/io/IO.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
 #include "TamanhoAtributo.hpp"
 
 namespace VisualizadorDeTabela {

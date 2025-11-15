@@ -2,7 +2,7 @@
 // Created by caleb on 09/11/2025.
 //
 
-#include "../../../../include/sistema/utilitarios/tabela/Linha.hpp"
+#include "Linha.hpp"
 
 namespace VisualizadorDeTabela {
     void Linha::atributo(string nome, string valor) {
