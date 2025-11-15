@@ -4,38 +4,24 @@ using namespace std;
 
 //void Data{10,9,2025};
 
-void Data::validar(int tipo, int valor) {
-    switch (tipo) {
-        case TIPO_DIA: {
-            if (valor < 1 || valor > 31) {
-                throw invalid_argument("Erro: Dia invalido");
-            }
-
-            break;
-        }
-        case TIPO_MES: {
-            if (valor < 1 || valor > 12) {
+void Data::validar() {
+    if (dia < 1 || dia > 31) {
+        throw invalid_argument("Erro: Dia invalido");
+    }
+    if (mes < 1 || mes > 12) {
                 throw invalid_argument("Erro: Mes invalido");
             }
-            break;
-        }
-        case TIPO_ANO: {
-            if (valor < 2000 || valor > 2999) {
+    if (ano < 2000 || ano > 2999) {
                 throw invalid_argument("Erro: Ano invalido");
-            }
-            break;
-        }
     }
 }
 
 void Data::setData(int d, int m, int a) {
-    validar(TIPO_DIA, d);
-    validar(TIPO_MES, m);
-    validar(TIPO_ANO, a);
-
     this->dia = d;
     this->mes = m;
     this->ano = a;
+
+    validar();
 
     // 2. Validação LÓGICA (Bissexto e Dias por Mês) - DEVE OCORRER DEPOIS DE SETAR TUDO
 

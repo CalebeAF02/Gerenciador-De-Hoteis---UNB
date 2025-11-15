@@ -4,15 +4,12 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
-#include "validadores_principais/ValidarInt.hpp"
 
 using namespace std;
 
-class Data : public ValidarInt, public exception {
+class Data : public exception {
 private:
-    static const int TIPO_DIA = 1;
-    static const int TIPO_MES = 2;
-    static const int TIPO_ANO = 3;
+    void validar();
 
 public:
     int dia;
@@ -31,8 +28,6 @@ public:
     static int const OUT = 10;
     static int const NOV = 11;
     static int const DEZ = 12;
-
-    void validar(int tipo, int valor) override;
 
     //Construtores
     Data() = default;

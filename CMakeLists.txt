@@ -103,10 +103,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Utilitários
         src/sistema/utilitarios/Utils.cpp
 
-        # Validadores principais
-        src/sistema/validadores_principais/ValidarInt.cpp
-        src/sistema/validadores_principais/ValidarString.cpp
-
         # Versao
         src/sistema/Versao.cpp
 
@@ -189,7 +185,6 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
-        ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
         ${CMAKE_SOURCE_DIR}/libs/formato
         ${CMAKE_SOURCE_DIR}/libs/io
         ${CMAKE_SOURCE_DIR}/libs/sqlite

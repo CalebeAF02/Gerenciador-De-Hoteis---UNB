@@ -77,9 +77,6 @@ int main() {
             break;
         }
         case MODO_HACKER: {
-            BancoDeDados bancoModoTestes;
-            bancoModoTestes.iniciar();
-
             burlandoSistema();
             break;
         }

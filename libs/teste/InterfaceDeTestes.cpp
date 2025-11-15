@@ -53,9 +53,9 @@ namespace Teste
     //-----------------------------------------------------------------------------------------------------------
     void InterfaceDeTeste::mostrarRelatorioDeTestes() {
         Formato::TituloEmCaixa("RESUMO GERAL DOS TESTES");
-        IO::Println(" > Total de Testes Executados: " + getTestes());
-        IO::Println(" > Resultados Corretos (OK):   " + getTestesOk());
-        IO::Println(" > Problemas de Validacao:     " + getTestesProblema());
+        IO::Println(" > Total de Testes Executados: " + to_string(getTestes()));
+        IO::Println(" > Resultados Corretos (OK):   " + to_string(getTestesOk()));
+        IO::Println(" > Problemas de Validacao:     " + to_string(getTestesProblema()));
         cout << "----------------------------------------------------------------------" << endl; // Separador
         if (listaFalhas.empty()) {
             IO::Println("STATUS FINAL: SUCESSO EM TODOS OS TESTES UNITARIOS!");
