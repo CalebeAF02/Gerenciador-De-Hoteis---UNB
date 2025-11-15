@@ -11,8 +11,8 @@
 #include "Quarto.hpp"
 #include "Reserva.hpp"
 
-#include "../libs/IO/IO.hpp"
-#include "Formato.hpp"
+#include "../libs/io/IO.hpp"
+#include "../libs/formato/Formato.hpp"
 
 #include "../libs/teste/SmokeTeste.hpp"
 #include "../libs/teste/InterfaceDeTestes.hpp"

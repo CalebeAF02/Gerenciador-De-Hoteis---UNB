@@ -8,14 +8,14 @@
 
 #include "Hospede.hpp"
 
-#include "../utilitarios/console/Formato.hpp"
+#include "../../../libs/formato/Formato.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "PersistenciaHospede.hpp"
 #include "InterfaceFabricaGerenciavel.hpp"
 #include "SolicitacaoHospedagem.hpp"
 #include "PersistenciaSolicitacaoHospedagem.hpp"
 #include "FabricaGerenciavel.hpp"
-#include "../../../libs/IO/IO.hpp"
+#include "../../../libs/io/IO.hpp"
 
 #include <vector>
 #include <limits>

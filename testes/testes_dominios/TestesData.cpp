@@ -2,8 +2,8 @@
 
 #include "TestesData.hpp"
 #include "../../libs/teste/SmokeTeste.hpp"
-#include "Formato.hpp"
-#include "../../libs/IO/IO.hpp"
+#include "../../libs/formato/Formato.hpp"
+#include "../../libs/io/IO.hpp"
 #include "../../include/sistema/dominios/Data.hpp"
 #include <vector>
 #include <string>

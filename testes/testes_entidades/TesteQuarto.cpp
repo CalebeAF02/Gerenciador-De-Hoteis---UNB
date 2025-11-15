@@ -4,7 +4,7 @@
 #include "sistema/dominios/Numero.hpp"
 #include "sistema/dominios/Capacidade.hpp"
 #include "sistema/dominios/Dinheiro.hpp"
-#include "Formato.hpp"
+#include "../../libs/formato/Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteQuarto::executar() {

@@ -10,8 +10,8 @@
 #include "../entidades/Hotel.hpp"
 #include "../entidades/Quarto.hpp"
 #include "../entidades/Reserva.hpp"
-#include "Formato.hpp"
-#include "../IO/IO.hpp"
+#include "../formato/Formato.hpp"
+#include "../io/IO.hpp"
 
 using namespace std;
 namespace Teste {

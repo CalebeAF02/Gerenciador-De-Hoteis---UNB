@@ -8,7 +8,7 @@
 #include "Email.hpp"
 #include "InterfaceServicoPessoal.hpp"
 
-#include "../../../../libs/IO/IO.hpp"
+#include "../../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
 

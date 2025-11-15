@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <limits> // Para clear/ignore do buffer se necessário
-#include "../../include/sistema/utilitarios/console/Formato.hpp"
+#include "../formato/Formato.hpp"
 
 using namespace std;
 

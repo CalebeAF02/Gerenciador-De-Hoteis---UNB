@@ -4,7 +4,7 @@
 #include <string>
 #include "sqlite3.h"
 
-#include "Formato.hpp"
+#include "../libs/formato/Formato.hpp"
 #include "SistemaHacker.hpp"
 
 #include "../libs/teste/SmokeTeste.hpp"

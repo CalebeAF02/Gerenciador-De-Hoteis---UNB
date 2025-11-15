@@ -4,7 +4,7 @@
 #include "sistema/dominios/Nome.hpp"
 #include "sistema/dominios/Endereco.hpp"
 #include "sistema/dominios/Codigo.hpp"
-#include "Formato.hpp"
+#include "../../libs/formato/Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteHotel::executar() {

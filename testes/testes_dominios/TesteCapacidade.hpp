@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "../../libs/teste/InterfaceDeTestes.hpp"
-#include "../../libs/IO/IO.hpp"
+#include "../../libs/io/IO.hpp"
 
 using namespace std;
 

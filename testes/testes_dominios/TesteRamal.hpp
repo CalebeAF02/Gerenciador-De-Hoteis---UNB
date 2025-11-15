@@ -9,7 +9,7 @@
 #include "Ramal.hpp"
 #include <vector>
 #include <string>
-#include "../../libs/IO/IO.hpp"
+#include "../../libs/io/IO.hpp"
 
 using namespace Teste;
 class TesteRamal : public InterfaceDeTeste {

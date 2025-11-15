@@ -5,9 +5,9 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSRESERVA_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSRESERVA_H
 
-#include "../utilitarios/console/Formato.hpp"
+#include "../../../libs/formato/Formato.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
-#include "../../../libs/IO/IO.hpp"
+#include "../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
 

@@ -6,7 +6,7 @@
 #define GERENCIADOR_DE_HOTEIS_UNB_CAQUARTO_HPP
 
 #include "InterfaceApresentacaoQuarto.hpp"
-#include "../../../../libs/IO/IO.hpp"
+#include "../../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
 

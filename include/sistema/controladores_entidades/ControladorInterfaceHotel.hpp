@@ -13,8 +13,8 @@
 #include "InterfaceApresentacaoCRUD.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "PersistenciaHotel.hpp"
-#include "../../../libs/IO/IO.hpp"
-#include "Formato.hpp"
+#include "../../../libs/io/IO.hpp"
+#include "../../../libs/formato/Formato.hpp"
 #include "Tabela.hpp"
 #include "Linha.hpp"
 

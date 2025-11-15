@@ -6,9 +6,9 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSQUARTO_H
 
 #include <iostream>
-#include "../utilitarios/console/Formato.hpp"
+#include "../../../libs/formato/Formato.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
-#include "../../../libs/IO/IO.hpp"
+#include "../../../libs/io/IO.hpp"
 
 using namespace std;
 

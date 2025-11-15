@@ -105,9 +105,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/utilitarios/MenuItem.cpp
         src/sistema/utilitarios/ValidadorNumerico.cpp
 
-        # Utilitarios - Console
-        src/sistema/utilitarios/console/Formato.cpp
-
         # Utilitarios - Tabela
         src/sistema/utilitarios/tabela/Tabela.cpp
         src/sistema/utilitarios/tabela/Linha.cpp
@@ -146,7 +143,10 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteReserva.cpp
 
         # Libs - IO
-        libs/IO/IO.cpp
+        libs/io/IO.cpp
+
+        # Libs - Formato
+        libs/formato/Formato.cpp
 
         # Libs - Sqlite
         libs/sqlite/sqlite3.c
@@ -191,11 +191,12 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/console
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/tabela
         ${CMAKE_SOURCE_DIR}/include/sistema/validadorPrincipais
+        ${CMAKE_SOURCE_DIR}/libs/formato
+        ${CMAKE_SOURCE_DIR}/libs/io
         ${CMAKE_SOURCE_DIR}/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/libs/teste
         ${CMAKE_SOURCE_DIR}/meta
         ${CMAKE_SOURCE_DIR}/testes
-        ${CMAKE_SOURCE_DIR}/testes/interface_testes
-        ${CMAKE_SOURCE_DIR}/testes/smoke_teste
         ${CMAKE_SOURCE_DIR}/testes/testes_dominios
         ${CMAKE_SOURCE_DIR}/testes/testes_entidades
 )

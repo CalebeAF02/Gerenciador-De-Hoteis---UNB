@@ -5,10 +5,10 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP
 
-#include "../utilitarios/console/Formato.hpp"
+#include "../../../../libs/formato/Formato.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
 #include "InterfaceApresentacaoReserva.hpp"
-#include "../../../../libs/IO/IO.hpp"
+#include "../../../../libs/io/IO.hpp"
 #include <iostream>
 
 using namespace std;

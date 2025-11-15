@@ -3,7 +3,7 @@
 #include "TesteNome.hpp"
 #include "../../libs/teste/SmokeTeste.hpp"
 #include "sistema/dominios/Nome.hpp" // A classe que será testada
-#include "Formato.hpp"
+#include "../../libs/formato/Formato.hpp"
 #include <vector>
 
 //------------------------------------------------------------------------------------------------------------------
