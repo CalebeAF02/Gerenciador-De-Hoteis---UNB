@@ -1,10 +1,10 @@
 #include "TesteReserva.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "sistema/entidades/Reserva.hpp"
-#include "sistema/dominios/Codigo.hpp"
-#include "../../include/sistema/dominios/Data.hpp"
-#include "sistema/dominios/Dinheiro.hpp"
-#include "../../libs/formato/Formato.hpp"
+#include "SmokeTeste.hpp"
+#include "Reserva.hpp"
+#include "Codigo.hpp"
+#include "Data.hpp"
+#include "Dinheiro.hpp"
+#include "Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteReserva::executar() {

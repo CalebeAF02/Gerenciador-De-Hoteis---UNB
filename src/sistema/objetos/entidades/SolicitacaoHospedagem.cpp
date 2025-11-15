@@ -2,7 +2,7 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "../../../include/sistema/entidades/SolicitacaoHospedagem.hpp"
+#include "SolicitacaoHospedagem.hpp"
 
 SolicitacaoHospedagem::SolicitacaoHospedagem(
     const string &hospedeId,

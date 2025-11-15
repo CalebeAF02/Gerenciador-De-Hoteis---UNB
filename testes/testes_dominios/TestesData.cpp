@@ -1,10 +1,10 @@
 // NO SEU TestesData.cpp (Refatorado para o Padrão Genérico)
 
 #include "TestesData.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "../../libs/formato/Formato.hpp"
-#include "../../libs/io/IO.hpp"
-#include "../../include/sistema/dominios/Data.hpp"
+#include "SmokeTeste.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
+#include "Data.hpp"
 #include <vector>
 #include <string>
 

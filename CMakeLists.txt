@@ -21,6 +21,29 @@ add_custom_target(gerar_versao DEPENDS ${VERSAO_HPP})
 add_executable(Gerenciador-De-Hoteis---UNB
         src/main.cpp
 
+        # Libs - Formato
+        libs/formato/Formato.cpp
+
+        # Libs - IO
+        libs/io/IO.cpp
+
+        # Libs - Menu
+        libs/menu/Menu.cpp
+        libs/menu/MenuItem.cpp
+
+        # Libs - Sqlite
+        libs/sqlite/sqlite3.c
+
+        # Libs - Tabela
+        libs/tabela/Tabela.cpp
+        libs/tabela/Linha.cpp
+        libs/tabela/Atributo.cpp
+        libs/tabela/TamanhoAtributo.cpp
+
+        # Libs - teste
+        libs/teste/InterfaceDeTestes.cpp
+        libs/teste/SmokeTeste.cpp
+
         # Sistema
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
@@ -52,32 +75,32 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/controladores_entidades/ControladorInterfaceReserva.cpp
 
 
-        # Domínios
-        src/sistema/dominios/Nome.cpp
-        src/sistema/dominios/Email.cpp
-        src/sistema/dominios/Ramal.cpp
-        src/sistema/dominios/Senha.cpp
-        src/sistema/dominios/Endereco.cpp
-        src/sistema/dominios/Cartao.cpp
-        src/sistema/dominios/Telefone.cpp
-        src/sistema/dominios/Codigo.cpp
-        src/sistema/dominios/Numero.cpp
-        src/sistema/dominios/Capacidade.cpp
-        src/sistema/dominios/Dinheiro.cpp
-        src/sistema/dominios/Data.cpp
+        # Objetos - Domínios
+        src/sistema/objetos/dominios/Nome.cpp
+        src/sistema/objetos/dominios/Email.cpp
+        src/sistema/objetos/dominios/Ramal.cpp
+        src/sistema/objetos/dominios/Senha.cpp
+        src/sistema/objetos/dominios/Endereco.cpp
+        src/sistema/objetos/dominios/Cartao.cpp
+        src/sistema/objetos/dominios/Telefone.cpp
+        src/sistema/objetos/dominios/Codigo.cpp
+        src/sistema/objetos/dominios/Numero.cpp
+        src/sistema/objetos/dominios/Capacidade.cpp
+        src/sistema/objetos/dominios/Dinheiro.cpp
+        src/sistema/objetos/dominios/Data.cpp
 
-        # DTO
-        src/sistema/dto/HotelDTO.cpp
-        src/sistema/dto/GerenteDTO.cpp
+        # Objetos - Entidades_DTO
+        src/sistema/objetos/entidades_dto/HotelDTO.cpp
+        src/sistema/objetos/entidades_dto/GerenteDTO.cpp
 
-        # Entidades
-        src/sistema/entidades/Gerente.cpp
-        src/sistema/entidades/Hospede.cpp
-        src/sistema/entidades/Hotel.cpp
-        src/sistema/entidades/Pessoa.cpp
-        src/sistema/entidades/Quarto.cpp
-        src/sistema/entidades/Reserva.cpp
-        src/sistema/entidades/SolicitacaoHospedagem.cpp
+        # Objetos - Entidades
+        src/sistema/objetos/entidades/Gerente.cpp
+        src/sistema/objetos/entidades/Hospede.cpp
+        src/sistema/objetos/entidades/Hotel.cpp
+        src/sistema/objetos/entidades/Pessoa.cpp
+        src/sistema/objetos/entidades/Quarto.cpp
+        src/sistema/objetos/entidades/Reserva.cpp
+        src/sistema/objetos/entidades/SolicitacaoHospedagem.cpp
 
         # Enum
         src/sistema/enum/StatusSolicitacaoHospedagem.cpp
@@ -130,29 +153,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteQuarto.cpp
         testes/testes_entidades/TesteReserva.cpp
 
-        # Libs - Formato
-        libs/formato/Formato.cpp
-
-        # Libs - IO
-        libs/io/IO.cpp
-
-        # Libs - Menu
-        libs/menu/Menu.cpp
-        libs/menu/MenuItem.cpp
-
-        # Libs - Sqlite
-        libs/sqlite/sqlite3.c
-
-        # Libs - Tabela
-        libs/tabela/Tabela.cpp
-        libs/tabela/Linha.cpp
-        libs/tabela/Atributo.cpp
-        libs/tabela/TamanhoAtributo.cpp
-
-        # Libs - teste
-        libs/teste/InterfaceDeTestes.cpp
-        libs/teste/SmokeTeste.cpp
-
         # HACKER
         src/HACKER/SistemaHacker.cpp
 )
@@ -161,12 +161,16 @@ add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
 
 # Diretórios de headers
 target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
-        ${CMAKE_SOURCE_DIR}/docs
-        ${CMAKE_SOURCE_DIR}/docs/diagramas
-        ${CMAKE_SOURCE_DIR}/docs/imagens
+        ${CMAKE_SOURCE_DIR}/libs/formato
+        ${CMAKE_SOURCE_DIR}/libs/io
+        ${CMAKE_SOURCE_DIR}/libs/sqlite
+        ${CMAKE_SOURCE_DIR}/libs/tabela
+        ${CMAKE_SOURCE_DIR}/libs/teste
+        ${CMAKE_SOURCE_DIR}/libs/menu
+
         ${CMAKE_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/include/HACKER
         ${CMAKE_SOURCE_DIR}/include/sistema
+
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_autenticavel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hospede
@@ -174,25 +178,28 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_pessoal
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_reserva
-        ${CMAKE_SOURCE_DIR}/include/sistema/dominios
-        ${CMAKE_SOURCE_DIR}/include/sistema/dto
-        ${CMAKE_SOURCE_DIR}/include/sistema/entidades
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/dominios
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades_dto
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades
+
         ${CMAKE_SOURCE_DIR}/include/sistema/enum
+
         ${CMAKE_SOURCE_DIR}/include/sistema/fabricas
+
         ${CMAKE_SOURCE_DIR}/include/sistema/interfaces
         ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/apresentacoes
         ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/servicos
+
         ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
+
         ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
+
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
-        ${CMAKE_SOURCE_DIR}/libs/formato
-        ${CMAKE_SOURCE_DIR}/libs/io
-        ${CMAKE_SOURCE_DIR}/libs/sqlite
-        ${CMAKE_SOURCE_DIR}/libs/tabela
-        ${CMAKE_SOURCE_DIR}/libs/teste
-        ${CMAKE_SOURCE_DIR}/libs/menu
-        ${CMAKE_SOURCE_DIR}/meta
+
         ${CMAKE_SOURCE_DIR}/testes
         ${CMAKE_SOURCE_DIR}/testes/testes_dominios
         ${CMAKE_SOURCE_DIR}/testes/testes_entidades
+
+        ${CMAKE_SOURCE_DIR}/include/HACKER
 )

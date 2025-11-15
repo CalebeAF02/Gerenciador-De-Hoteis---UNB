@@ -1,9 +1,9 @@
 // NO SEU TestsNome.cpp (Versão Final e Genérica)
 
 #include "TesteNome.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "sistema/dominios/Nome.hpp" // A classe que será testada
-#include "../../libs/formato/Formato.hpp"
+#include "SmokeTeste.hpp"
+#include "Nome.hpp" // A classe que será testada
+#include "Formato.hpp"
 #include <vector>
 
 //------------------------------------------------------------------------------------------------------------------

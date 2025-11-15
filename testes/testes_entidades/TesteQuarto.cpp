@@ -1,10 +1,10 @@
 #include "TesteQuarto.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "sistema/entidades/Quarto.hpp"
-#include "sistema/dominios/Numero.hpp"
-#include "sistema/dominios/Capacidade.hpp"
-#include "sistema/dominios/Dinheiro.hpp"
-#include "../../libs/formato/Formato.hpp"
+#include "SmokeTeste.hpp"
+#include "Quarto.hpp"
+#include "Numero.hpp"
+#include "Capacidade.hpp"
+#include "Dinheiro.hpp"
+#include "Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteQuarto::executar() {

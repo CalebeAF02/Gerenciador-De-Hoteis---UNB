@@ -1,10 +1,10 @@
 #include "TesteHotel.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "sistema/entidades/Hotel.hpp"
-#include "sistema/dominios/Nome.hpp"
-#include "sistema/dominios/Endereco.hpp"
-#include "sistema/dominios/Codigo.hpp"
-#include "../../libs/formato/Formato.hpp"
+#include "SmokeTeste.hpp"
+#include "Hotel.hpp"
+#include "Nome.hpp"
+#include "Endereco.hpp"
+#include "Codigo.hpp"
+#include "Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteHotel::executar() {

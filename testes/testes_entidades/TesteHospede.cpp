@@ -1,7 +1,7 @@
 #include "TesteHospede.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "sistema/entidades/Hospede.hpp" // Sua entidade Hospede
-#include "../../libs/formato/Formato.hpp"
+#include "SmokeTeste.hpp"
+#include "Hospede.hpp" // Sua entidade Hospede
+#include "Formato.hpp"
 
 //------------------------------------------------------------------------------------------------------------------
 void TesteHospede::executar() {
