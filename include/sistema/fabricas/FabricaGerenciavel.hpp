@@ -6,11 +6,11 @@
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_FABRICAGERENCIAVEL_H
 #include <memory>
 
-#include "Menu.hpp"
+#include "../../../libs/menu/Menu.hpp"
 #include "../../../libs/formato/Formato.hpp"
 
 using namespace std;
-
+using namespace VisualizadorDeMenu;
 template<typename T>
 class FabricaGerenciavel {
 public:

@@ -18,7 +18,7 @@
 #include "Tabela.hpp"
 #include "Linha.hpp"
 
-#include "Menu.hpp"
+#include "../../../libs/menu/Menu.hpp"
 #include "MenuItem.hpp"
 
 #include "Hotel.hpp"
@@ -29,6 +29,7 @@
 
 using namespace std;
 using namespace VisualizadorDeTabela;
+using namespace VisualizadorDeMenu;
 
 class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
                                   public InterfaceApresentacaoCRUD {

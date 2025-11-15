@@ -5,7 +5,7 @@
 #include "ControladorInterfaceHospede.hpp"
 
 #include "FabricaGerenciavel.hpp"
-#include "Menu.hpp"
+#include "../../../libs/menu/Menu.hpp"
 #include "PersistenciaHospede.hpp"
 #include "sqlite3.h"
 

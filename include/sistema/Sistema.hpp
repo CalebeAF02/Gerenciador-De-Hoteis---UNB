@@ -11,7 +11,7 @@
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
 
-#include "Menu.hpp"
+#include "../../libs/menu/Menu.hpp"
 
 #include "../../libs/formato/Formato.hpp"
 #include <iostream>
