@@ -17,6 +17,8 @@ Debug/
 Release/
 x64/
 bin/
+html/
+latex/
 
 # Arquivos de simbolo e link
 *.pdb
