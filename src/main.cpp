@@ -51,7 +51,7 @@ void executandoNovoSmoke() {
 
 void executarSistema() {
     BancoDeDados banco;
-    banco.criandoBancoDeDados();
+    banco.iniciar();
 
     Sistema sistema;
     sistema.iniciar();
@@ -59,7 +59,7 @@ void executarSistema() {
 
 void burlandoSistema() {
     BancoDeDados banco;
-    banco.criandoBancoDeDados();
+    banco.iniciar();
 
     SistemaHacker sistema_hacker;
     sistema_hacker.iniciar();
@@ -73,15 +73,12 @@ int main() {
             break;
         }
         case MODO_PRODUCAO: {
-            BancoDeDados bancoModoTestes;
-            bancoModoTestes.criandoBancoDeDados();
-
             executarSistema();
             break;
         }
         case MODO_HACKER: {
             BancoDeDados bancoModoTestes;
-            bancoModoTestes.criandoBancoDeDados();
+            bancoModoTestes.iniciar();
 
             burlandoSistema();
             break;

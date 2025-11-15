@@ -16,6 +16,17 @@ class BancoDeDados {
 private:
     sqlite3 *db = nullptr;
 
+    void tabelaGerente(sqlite3 *db);
+
+    void tabelaHospede(sqlite3 *db);
+
+    void tabelaHotel(sqlite3 *db);
+
+    void tabelaQuarto(sqlite3 *db);
+
+    void tabelaReserva(sqlite3 *db);
+
+    void tabelaSolicitacoesDeHospedagem(sqlite3 *db);
 public:
     sqlite3 *getConexao() const {
         return db;
@@ -25,19 +36,7 @@ public:
 
     bool fechandoConexao();
 
-    void criandoBancoDeDados();
-
-    void criarTabelaGerentes(sqlite3 *db);
-
-    void criarTabelaHospedes(sqlite3 *db);
-
-    void criarTabelaHoteis(sqlite3 *db);
-
-    void criarTabelaQuartos(sqlite3 *db);
-
-    void criarTabelaReservas(sqlite3 *db);
-
-    void criarTabelaSolicitacoesHospedagem(sqlite3 *db);
+    void iniciar();
 };
 
 

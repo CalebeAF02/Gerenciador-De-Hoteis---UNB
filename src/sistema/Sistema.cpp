@@ -8,7 +8,7 @@
 #include "Versao.hpp"
 
 void Sistema::iniciar() {
-    IO::Println("Versao " + Versao::getVersaoCompleta());
+    IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
     while (getExecutandoSistema()) {
         exibirMenu();
     }

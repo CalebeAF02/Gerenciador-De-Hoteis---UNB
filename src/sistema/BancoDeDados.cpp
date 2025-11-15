@@ -34,22 +34,22 @@ bool BancoDeDados::fechandoConexao() {
     //_________________________------------_______________________________
 }
 
-void BancoDeDados::criandoBancoDeDados() {
+void BancoDeDados::iniciar() {
     if (!abrindoConexao())
         return;
 
     // Comandos SQL para criar cada tabela
-    criarTabelaGerentes(db);
-    criarTabelaHospedes(db);
-    criarTabelaHoteis(db);
-    criarTabelaQuartos(db);
-    criarTabelaReservas(db);
-    criarTabelaSolicitacoesHospedagem(db);
+    tabelaGerente(db);
+    tabelaHospede(db);
+    tabelaHotel(db);
+    tabelaQuarto(db);
+    tabelaReserva(db);
+    tabelaSolicitacoesDeHospedagem(db);
 
     fechandoConexao();
 };
 
-void BancoDeDados::criarTabelaGerentes(sqlite3 *db) {
+void BancoDeDados::tabelaGerente(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS gerentes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,7 +71,7 @@ void BancoDeDados::criarTabelaGerentes(sqlite3 *db) {
     }
 }
 
-void BancoDeDados::criarTabelaHospedes(sqlite3 *db) {
+void BancoDeDados::tabelaHospede(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS hospedes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -93,7 +93,7 @@ void BancoDeDados::criarTabelaHospedes(sqlite3 *db) {
     }
 }
 
-void BancoDeDados::criarTabelaHoteis(sqlite3 *db) {
+void BancoDeDados::tabelaHotel(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS hoteis (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -115,7 +115,7 @@ void BancoDeDados::criarTabelaHoteis(sqlite3 *db) {
     }
 }
 
-void BancoDeDados::criarTabelaQuartos(sqlite3 *db) {
+void BancoDeDados::tabelaQuarto(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS quartos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -139,7 +139,7 @@ void BancoDeDados::criarTabelaQuartos(sqlite3 *db) {
     }
 }
 
-void BancoDeDados::criarTabelaReservas(sqlite3 *db) {
+void BancoDeDados::tabelaReserva(sqlite3 *db) {
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS reservas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -164,7 +164,7 @@ void BancoDeDados::criarTabelaReservas(sqlite3 *db) {
     }
 }
 
-void BancoDeDados::criarTabelaSolicitacoesHospedagem(sqlite3 *db) {
+void BancoDeDados::tabelaSolicitacoesDeHospedagem(sqlite3 *db) {
     // Comando SQL para criar a tabela
     const char *sql = R"(
         CREATE TABLE IF NOT EXISTS solicitacoes_hospedagem (
