@@ -152,7 +152,7 @@ void ControladorInterfaceHospede::atualizar() {
     IO::Println("Funcao atualizar ainda nao implementada.");
 }
 
-bool ControladorInterfaceHospede::remover() {
+void ControladorInterfaceHospede::remover() {
     IO::Print("Informe o Email: ");
     string emailStr = IO::LerLinha();
     bool status = true; //persistencia.excluirPorEmail(emailStr);
@@ -162,5 +162,4 @@ bool ControladorInterfaceHospede::remover() {
     } else {
         IO::Println("Hospede nao encontrado!");
     }
-    return status;
 }

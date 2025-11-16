@@ -22,7 +22,7 @@ public:
 
     bool atualizar(int id, const Gerente &gerente);
 
-    static bool excluirPorEmail(Gerente *gerenteLogado);
+    bool excluirPorId(int id);
 
     bool autenticarGerente(const string &email, const string &senha);
 

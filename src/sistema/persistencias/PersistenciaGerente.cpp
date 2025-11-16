@@ -140,33 +140,32 @@ bool PersistenciaGerente::atualizar(int id, const Gerente &gerente) {
     return rc == SQLITE_DONE;
 }
 
-bool PersistenciaGerente::excluirPorEmail(Gerente *gerenteLogado) {
-    if (gerenteLogado == nullptr) {
-        cout << "Nenhum gerente esta logado. Exclusao nao permitida." << endl;
-        return false;
-    }
-
-    string email = gerenteLogado->getEmail();
-
+bool PersistenciaGerente::excluirPorId(int id) {
     BancoDeDados banco;
     if (!banco.abrindoConexao())
         return false;
 
     sqlite3 *db = banco.getConexao(); // metodo que retorna o ponteiro db
 
-    string sql = "DELETE FROM gerentes WHERE email = '" + email + "';";
-    char *mensagemErro = nullptr;
-
-    int rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &mensagemErro);
+    sqlite3_stmt *stmt = nullptr;
+    const char *sql = "DELETE FROM gerentes WHERE id = ?;";
+    int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
     if (rc != SQLITE_OK) {
-        cerr << "Erro ao excluir gerente: " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
+        cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
+        banco.fechandoConexao();
+        return false; // Retorna o optional vazio (falha na busca);
+    }
+    sqlite3_bind_int(stmt, 1, id);
+
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        cerr << "Erro ao executar DELETE: " << sqlite3_errmsg(db) << endl;
+        sqlite3_finalize(stmt);
         banco.fechandoConexao();
         return false;
     }
-
+    sqlite3_finalize(stmt);
     banco.fechandoConexao();
-    cout << "\nSeu cadastro foi excluido com sucesso. Sessao encerrada.\n";
     return true;
 }
 

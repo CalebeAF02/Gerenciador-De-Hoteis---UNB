@@ -54,7 +54,7 @@ public:
 
     void atualizar() override;
 
-    bool remover() override;
+    void remover() override;
 };
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H

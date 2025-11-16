@@ -42,14 +42,13 @@ public:
         objeto->atualizar();
     }
 
-    bool remover() {
+    void remover() {
         //shared_ptr == Classe de compartilhamento de ponteiros por referencia
         //make_shared == criar um objeto de ponteiro compartilhado
         shared_ptr<T> objeto = make_shared<T>();
         // objeto == FabricaGerenciavel do tipo T.
         // se T == GerenteGerenciavel ; Estou criando umafabrica de gerente gerenciavel.
-        bool executando = objeto->remover();
-        return executando;
+        objeto->remover();
     }
 
     void executarMenu(string tituloStr, bool &executando) {

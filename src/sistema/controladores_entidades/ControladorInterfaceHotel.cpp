@@ -228,5 +228,5 @@ void ControladorInterfaceHotel::atualizar() {
     }
 }
 
-bool ControladorInterfaceHotel::remover() {
+void ControladorInterfaceHotel::remover() {
 }

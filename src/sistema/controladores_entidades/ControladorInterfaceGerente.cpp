@@ -243,19 +243,36 @@ void ControladorInterfaceGerente::atualizar() {
     }
 }
 //-----------------------------------------------------------------------------------------------------------
-bool ControladorInterfaceGerente::remover() {
-    /*
-    cout << "Informe o Email: \n";
-    string emailStr = ConsoleIO::LerLinha();
-    bool status = persistencia.excluirPorEmail(gerenteLogado);
+void ControladorInterfaceGerente::remover() {
+    IO::Print("Informe o Id do Gerente: ");
+    string id_gerente = IO::LerLinha();
 
-    if (status == true) {
-        cout << "Foi excluido com sucesso!\n";
-    } else {
-        cout << "Gerente nao encontrado!\n";
+    if (Utils::verificaSeENumero(id_gerente)) {
+        PersistenciaGerente persistencia;
+
+        int id_numero = stoi(id_gerente);
+        optional<GerenteDTO> existe_gerente = persistencia.buscaGerentePorID(id_numero);
+
+        Tabela tab;
+        vector<GerenteDTO> lista;
+        lista.push_back(*existe_gerente);
+
+        for (GerenteDTO item: lista) {
+            Linha *objLinha = tab.criarObj();
+
+            objLinha->atributo("Id", item.getId());
+            objLinha->atributo("Nome", item.getNome());
+            objLinha->atributo("Email", item.getEmail());
+            objLinha->atributo("Ramal", item.getRamal());
+        }
+
+        tab.exibirTabela("Gerente");
+
+        bool sucesso = persistencia.excluirPorId(id_numero);
+        if (sucesso)
+            IO::Println("Gerente excuido com sucesso!");
+        else
+            IO::Println("Erro gerente nao encontrado.");
     }
-    return status;
-    */
-    return false;
 }
 //-----------------------------------------------------------------------------------------------------------

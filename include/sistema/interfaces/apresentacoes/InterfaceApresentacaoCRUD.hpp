@@ -13,7 +13,7 @@ public:
 
     virtual void atualizar() = 0;
 
-    virtual bool remover() = 0;
+    virtual void remover() = 0;
 
     virtual ~InterfaceApresentacaoCRUD() = default;
 };

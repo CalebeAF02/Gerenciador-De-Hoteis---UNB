@@ -47,7 +47,7 @@ public:
 
     void atualizar() override;
 
-    bool remover() override;
+    void remover() override;
 };
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
