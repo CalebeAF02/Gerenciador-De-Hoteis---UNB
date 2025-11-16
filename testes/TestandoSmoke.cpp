@@ -45,6 +45,7 @@ void TestandoSmoke::executarSmokeTest() {
     testes_dominios.push_back(make_unique<TesteCapacidade>());
     testes_dominios.push_back(make_unique<TesteDinheiro>());
     testes_dominios.push_back(make_unique<TestesData>());
+
     // Executa todos os testes_dominios
     for (unique_ptr<InterfaceDeTeste> &teste: testes_dominios) {
         teste->executar();

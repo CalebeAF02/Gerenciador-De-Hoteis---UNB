@@ -13,7 +13,7 @@
 using namespace std;
 
 // Classe responsável pela manipulação de entrada e saída de dados simples.
-namespace  IO {
+namespace IO {
     // Métodos de Input
     string LerLinha();
 

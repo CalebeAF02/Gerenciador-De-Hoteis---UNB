@@ -4,6 +4,20 @@ using namespace std;
 
 //void Data{10,9,2025};
 namespace Hotelaria {
+    Data::Data(const string &dataStr) {
+        int d, m, a;
+        char sepMes, sepAno;
+        istringstream sepDia(dataStr);
+
+        sepDia >> d >> sepMes >> m >> sepAno >> a;
+
+        if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
+            throw invalid_argument("Formato de data invalido. Use DD/MM/AAAA.");
+        }
+
+        setData(d, m, a); // valida e seta
+    }
+
     void Data::validar() {
         if (dia < 1 || dia > 31) {
             throw invalid_argument("Erro: Dia invalido");

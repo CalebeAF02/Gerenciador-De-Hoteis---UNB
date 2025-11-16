@@ -41,7 +41,7 @@ using namespace Hotelaria;
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_PRODUCAO
+#define MODO_ATUAL MODO_SMOKE
 //-----------------------------------------------------------------------------------------------------------
 void executandoNovoSmoke() {
     TestandoSmoke teste;

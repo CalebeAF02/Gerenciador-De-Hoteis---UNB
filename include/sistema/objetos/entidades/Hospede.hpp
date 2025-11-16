@@ -12,6 +12,7 @@
 #include "../../../libs/io/IO.hpp"
 
 using namespace std;
+
 namespace Hotelaria {
     class Hospede : public Pessoa {
     private:
@@ -27,10 +28,6 @@ namespace Hotelaria {
                 emailPessoaObj), endereco(endereco), cartao(cartao) {
         };
 
-        // virtuais ----------------
-        void exibirInfo() const override {
-            IO::Println("Sou um Hospede");
-        };
 
         // seters -----------------
         void setNome(const Nome &newNome) {

@@ -13,6 +13,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Gerente : public Pessoa {
     private:
@@ -26,7 +27,8 @@ namespace Hotelaria {
         };
 
         // Contrutor de Hotel Com todos valores
-        Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
+        Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj,
+                emailPessoaObj),
             ramal(ramal), senha(senha) {
         };
 
@@ -39,10 +41,6 @@ namespace Hotelaria {
         // Obs : exemplo Matricula getMatricula() const;
         //-----------------------------------------------------------------------------------------------------------------
 
-        // virtuais ----------------
-        void exibirInfo() const override {
-            IO::Println("Sou um Gerente");
-        };
 
         // seters -----------------
         void setNome(const Nome &newNome) {

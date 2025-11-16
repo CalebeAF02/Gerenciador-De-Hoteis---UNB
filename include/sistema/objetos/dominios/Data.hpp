@@ -32,19 +32,7 @@ namespace Hotelaria {
         //Construtores
         Data() = default;
 
-        explicit Data(const string &dataStr) {
-            int d, m, a;
-            char sepMes, sepAno;
-            istringstream sepDia(dataStr);
-
-            sepDia >> d >> sepMes >> m >> sepAno >> a;
-
-            if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
-                throw invalid_argument("Formato de data invalido. Use DD/MM/AAAA.");
-            }
-
-            setData(d, m, a); // valida e seta
-        }
+        explicit Data(const string &dataStr);
 
         // Metodo de Impressao
         string toString() {
