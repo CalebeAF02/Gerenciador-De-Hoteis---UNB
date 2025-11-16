@@ -9,27 +9,29 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Cartao {
+    private:
+        string cartaoStr;
 
-class Cartao {
-private:
-    string cartaoStr;
+        void validar(string valor);
 
-    void validar(string valor);
+    public:
+        Cartao() = default;
 
-public:
-    Cartao() = default;
+        explicit Cartao(const string &valor) {
+            setValor(valor);
+        }
 
-    explicit Cartao(const string &valor) {
-        setValor(valor);
-    }
+        void setValor(const string &valor) {
+            validar(valor);
+            this->cartaoStr = valor;
+        }
 
-    void setValor(const string &valor) {
-        validar(valor);
-        this->cartaoStr = valor;
-    }
+        string getValor() const {
+            return cartaoStr;
+        }
+    };
+}
 
-    string getValor() const {
-        return cartaoStr;
-    }
-};
 #endif //GERENCIADOR_HOTEL_UNB_CARTAO_H

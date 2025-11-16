@@ -9,12 +9,12 @@
 #include <string>
 
 using namespace std;
-
-enum class StatusSolicitacaoHospedagem : int {
-    PENDENTE = 0,
-    APROVADO = 1,
-    RECUSADO = 2,
-};
-
+namespace Hotelaria {
+    enum class StatusSolicitacaoHospedagem : int {
+        PENDENTE = 0,
+        APROVADO = 1,
+        RECUSADO = 2,
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_STATUSSOLICITACAOHOSPEDAGEM_H

@@ -17,12 +17,16 @@
 
 using namespace std;
 using namespace VisualizadorDeMenu;
-class ControladoraApresentacaoAcessoGerente : public InterfaceApresentacaoAcesso {
-private:
-    ControladorInterfaceGerente controladorGerente;
-public:
-    void exibirMenu() override;
 
-};
+namespace Hotelaria {
+    class ControladoraApresentacaoAcessoGerente : public InterfaceApresentacaoAcesso {
+    private:
+        ControladorInterfaceGerente controladorGerente;
+    public:
+        void exibirMenu() override;
+
+    };
+}
+
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAI_HPP

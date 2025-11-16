@@ -13,39 +13,42 @@
 #include "../../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
-class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenticavel {
-private:
-    InterfaceServicoAutenticavel *controladora_servico_autenticavel; // Referência para servidor.
-    bool estaAutenticado = false;
-public:
-    void sair() override;
 
-    bool autenticar(Email*) override;
+namespace Hotelaria {
+    class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenticavel {
+    private:
+        InterfaceServicoAutenticavel *controladora_servico_autenticavel; // Referência para servidor.
+        bool estaAutenticado = false;
+    public:
+        void sair() override;
 
-    void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) override;
+        bool autenticar(Email*) override;
 
-    void setEstaAutenticado(bool estaAutenticado) override;
+        void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) override;
 
-    bool getEstaAutenticado() override;
+        void setEstaAutenticado(bool estaAutenticado) override;
 
-    InterfaceServicoAutenticavel* getHacke();
-};
+        bool getEstaAutenticado() override;
 
-void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
-    this->controladora_servico_autenticavel = controladora_servico_autenticavel;
-}
-inline void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
-    this->estaAutenticado = estaAutenticado;
-}
-inline bool ControladoraApresentacaoAutenticavel::getEstaAutenticado() {
-    return estaAutenticado;
-}
-inline void ControladoraApresentacaoAutenticavel::sair() {
-    this->estaAutenticado = false;
-}
+        InterfaceServicoAutenticavel* getHacke();
+    };
 
-inline InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
-    return this->controladora_servico_autenticavel;
+    void inline ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
+        this->controladora_servico_autenticavel = controladora_servico_autenticavel;
+    }
+    inline void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
+        this->estaAutenticado = estaAutenticado;
+    }
+    inline bool ControladoraApresentacaoAutenticavel::getEstaAutenticado() {
+        return estaAutenticado;
+    }
+    inline void ControladoraApresentacaoAutenticavel::sair() {
+        this->estaAutenticado = false;
+    }
+
+    inline InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
+        return this->controladora_servico_autenticavel;
+    }
 }
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAA_HPP

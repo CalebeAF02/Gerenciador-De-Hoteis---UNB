@@ -8,16 +8,18 @@
 #include <iostream>
 #include "ControladorInterfaceGerente.hpp"
 #include "Versao.hpp"
-
 using namespace std;
 
-class SistemaHacker {
-private:
-    ControladorInterfaceGerente controladorGerente;
+namespace Hotelaria {
 
-public:
-    void iniciar();
-};
+    class SistemaHacker {
+    private:
+        ControladorInterfaceGerente controladorGerente;
+
+    public:
+        void iniciar();
+    };
+}
 
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_SISTEMAHACKER_HPP

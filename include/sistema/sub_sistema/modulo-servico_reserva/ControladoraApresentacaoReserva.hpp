@@ -12,17 +12,18 @@
 #include <iostream>
 
 using namespace std;
+namespace Hotelaria {
+    class ControladoraApresentacaoReserva : public InterfaceApresentacaoReserva {
+    public:
+        // Construtor dos servicosReserva
+        ControladorInterfaceReserva();
 
-class ControladoraApresentacaoReserva : public InterfaceApresentacaoReserva {
-public:
-    // Construtor dos servicosReserva
-    ControladorInterfaceReserva();
+        // Acessando servicos
+        void exibirMenu();
 
-    // Acessando servicos
-    void exibirMenu();
-
-    // Menu CRUD
-    void exibirMenuCRUD();
-};
+        // Menu CRUD
+        void exibirMenuCRUD();
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP

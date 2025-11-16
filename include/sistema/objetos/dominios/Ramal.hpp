@@ -9,29 +9,31 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Ramal {
+    private:
+        string ramalStr;
 
-class Ramal {
-private:
-    string ramalStr;
+        void validar(const string &valor); // Metodo de validacao
 
-    void validar(const string &valor); // Metodo de validacao
+    public:
+        Ramal() = default;
 
-public:
-    Ramal() = default;
+        explicit Ramal(const string &valor) {
+            setValor(valor);
+        };
 
-    explicit Ramal(const string &valor) {
-        setValor(valor);
+        void setValor(const string &valor) {
+            validar(valor);
+            this->ramalStr = valor;
+        }
+
+        string getValor() const;
     };
 
-    void setValor(const string &valor) {
-        validar(valor);
-        this->ramalStr = valor;
+    inline string Ramal::getValor() const {
+        return ramalStr;
     }
-
-    string getValor() const;
-};
-
-inline string Ramal::getValor() const {
-    return ramalStr;
 }
+
 #endif //GERENCIADOR_HOTEL_UNB_RAMAL_H

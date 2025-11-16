@@ -6,71 +6,73 @@
 #include <stdexcept>
 
 using namespace std;
+namespace Hotelaria {
+    class Data : public exception {
+    private:
+        void validar();
 
-class Data : public exception {
-private:
-    void validar();
+    public:
+        int dia;
+        int mes;
+        int ano;
 
-public:
-    int dia;
-    int mes;
-    int ano;
+        static int const JAN = 1;
+        static int const FEV = 2;
+        static int const MAR = 3;
+        static int const ABR = 4;
+        static int const MAI = 5;
+        static int const JUN = 6;
+        static int const JUL = 7;
+        static int const AGO = 8;
+        static int const SET = 9;
+        static int const OUT = 10;
+        static int const NOV = 11;
+        static int const DEZ = 12;
 
-    static int const JAN = 1;
-    static int const FEV = 2;
-    static int const MAR = 3;
-    static int const ABR = 4;
-    static int const MAI = 5;
-    static int const JUN = 6;
-    static int const JUL = 7;
-    static int const AGO = 8;
-    static int const SET = 9;
-    static int const OUT = 10;
-    static int const NOV = 11;
-    static int const DEZ = 12;
+        //Construtores
+        Data() = default;
 
-    //Construtores
-    Data() = default;
+        explicit Data(const string &dataStr) {
+            int d, m, a;
+            char sepMes, sepAno;
+            istringstream sepDia(dataStr);
 
-    explicit Data(const string &dataStr) {
-        int d, m, a;
-        char sepMes, sepAno;
-        istringstream sepDia(dataStr);
+            sepDia >> d >> sepMes >> m >> sepAno >> a;
 
-        sepDia >> d >> sepMes >> m >> sepAno >> a;
+            if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
+                throw invalid_argument("Formato de data invalido. Use DD/MM/AAAA.");
+            }
 
-        if (sepDia.fail() || sepMes != '/' || sepAno != '/') {
-            throw invalid_argument("Formato de data invalido. Use DD/MM/AAAA.");
+            setData(d, m, a); // valida e seta
         }
 
-        setData(d, m, a); // valida e seta
+        // Metodo de Impressao
+        string toString() {
+            return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
+        }
+
+        //metodo Setar - Entrada
+        void setData(int d, int m, int a);
+
+        //metodos get - Saida
+        int getDia();
+
+        int getMes();
+
+        int getAno();
+    };
+
+    inline int Data::getDia() {
+        return dia;
     }
 
-    // Metodo de Impressao
-    string toString() {
-        return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
+    inline int Data::getMes() {
+        return mes;
     }
 
-    //metodo Setar - Entrada
-    void setData(int d, int m, int a);
-
-    //metodos get - Saida
-    int getDia();
-
-    int getMes();
-
-    int getAno();
-};
-
-inline int Data::getDia() {
-    return dia;
+    inline int Data::getAno() {
+        return ano;
+    }
 }
 
-inline int Data::getMes() {
-    return mes;
-}
-
-inline int Data::getAno() {
-    return ano;
-}
 #endif

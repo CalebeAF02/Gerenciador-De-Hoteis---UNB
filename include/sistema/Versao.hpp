@@ -7,11 +7,11 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+namespace Hotelaria{
 class Versao {
 private:
-    static constexpr uint64_t valor = 127;
-    static inline const string data = "2025-11-15 19:23";
+    static constexpr uint64_t valor = 128;
+    static inline const string data = "2025-11-16 08:00";
 
 public:
     static uint8_t patch() { return valor % 10; }
@@ -25,5 +25,6 @@ public:
                to_string(patch());
     }
 };
+}
 
 #endif // VERSAO_HPP

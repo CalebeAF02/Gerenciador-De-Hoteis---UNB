@@ -5,6 +5,8 @@
 #include <string>
 
 using namespace Teste;
+using namespace Hotelaria;
+
 class TesteNome : public InterfaceDeTeste {
 public:
     void executar() override;

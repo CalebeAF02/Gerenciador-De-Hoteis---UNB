@@ -3,39 +3,40 @@
 //
 
 #include "ControladoraApresentacaoAutenticavel.hpp"
+namespace Hotelaria {
+    bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
+        bool lacoLogin = false;
+        bool resultado;
 
-bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
-    bool lacoLogin = false;
-    bool resultado;
+        while (!lacoLogin) {
+            string emailCopia;
+            string senhaCopia;
 
-    while (!lacoLogin) {
-        string emailCopia;
-        string senhaCopia;
+            Formato::TituloEmCaixa("Logando com Gerente");
 
-        Formato::TituloEmCaixa("Logando com Gerente");
+            IO::Print("Informe o Email: ");
+            emailCopia = IO::LerLinha();
 
-        IO::Print("Informe o Email: ");
-        emailCopia = IO::LerLinha();
+            IO::Print("Informe a Senha: ");
+            senhaCopia = IO::LerLinha();
 
-        IO::Print("Informe a Senha: ");
-        senhaCopia = IO::LerLinha();
+            try {
+                emailObj->setValor(emailCopia);
+                Senha senhaObj(senhaCopia);
 
-        try {
-            emailObj->setValor(emailCopia);
-            Senha senhaObj(senhaCopia);
+                resultado = controladora_servico_autenticavel->autenticar(*emailObj, senhaObj); // Solicitar autenticação.
 
-            resultado = controladora_servico_autenticavel->autenticar(*emailObj, senhaObj); // Solicitar autenticação.
+                if (!resultado) {
+                    IO::Println("Gerente nao cadastrado");
+                    IO::tentarNovamente();
+                }
+                lacoLogin = true;
 
-            if (!resultado) {
-                IO::Println("Gerente nao cadastrado");
+            } catch (invalid_argument &erro) {
+                cout << "Erro: " << erro.what() << endl;
                 IO::tentarNovamente();
             }
-            lacoLogin = true;
-
-        } catch (invalid_argument &erro) {
-            cout << "Erro: " << erro.what() << endl;
-            IO::tentarNovamente();
         }
+        return resultado; // Informar resultado da autenticação.
     }
-    return resultado; // Informar resultado da autenticação.
 }

@@ -10,17 +10,17 @@
 #include "../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
+namespace Hotelaria {
+    class ControladorInterfaceReserva : public InterfaceApresentacaoExibirMenu {
+    public:
+        // Construtor dos servicosReserva
+        ControladorInterfaceReserva() = default;
 
-class ControladorInterfaceReserva : public InterfaceApresentacaoExibirMenu {
-public:
-    // Construtor dos servicosReserva
-    ControladorInterfaceReserva() = default;
+        // Acessando servicos
+        void exibirMenu() override;
 
-    // Acessando servicos
-    void exibirMenu() override;
-
-    // Menu CRUD
-    void exibirMenuCRUD();
-};
-
+        // Menu CRUD
+        void exibirMenuCRUD();
+    };
+}
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSRESERVA_H

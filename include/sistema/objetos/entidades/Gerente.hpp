@@ -13,66 +13,67 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Gerente : public Pessoa {
+    private:
+        Ramal ramal;
+        Senha senha;
 
-class Gerente : public Pessoa {
-private:
-    Ramal ramal;
-    Senha senha;
+    public:
+        //-----------------------------------------------------------------------------------------------------------------
+        // Contrutor de Hotel sem valores
+        Gerente() : Pessoa(Nome(), Email()) {
+        };
 
-public:
-    //-----------------------------------------------------------------------------------------------------------------
-    // Contrutor de Hotel sem valores
-    Gerente() : Pessoa(Nome(), Email()) {
+        // Contrutor de Hotel Com todos valores
+        Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
+            ramal(ramal), senha(senha) {
+        };
+
+        // construtor com valores do banco de dados
+        // Transforma GerenteDTO em Hotel
+        Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
+            setRamal(Ramal(gerente_dto.getRamal()));
+        };
+
+        // Obs : exemplo Matricula getMatricula() const;
+        //-----------------------------------------------------------------------------------------------------------------
+
+        // virtuais ----------------
+        void exibirInfo() const override {
+            IO::Println("Sou um Gerente");
+        };
+
+        // seters -----------------
+        void setNome(const Nome &newNome) {
+            Pessoa::setPessoaNome(newNome);
+        }
+
+        void setEmail(const Email &newEmail) {
+            Pessoa::setPessoaEmail(newEmail);
+        }
+
+        void setRamal(const Ramal &newRamal) {
+            this->ramal = newRamal;
+        }
+
+        void setSenha(const Senha &newSenha) {
+            this->senha = newSenha;
+        }
+
+        // geters -----------------
+        string getRamal() const;
+
+        string getSenha() const;
     };
 
-    // Contrutor de Hotel Com todos valores
-    Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj, emailPessoaObj),
-        ramal(ramal), senha(senha) {
-    };
-
-    // construtor com valores do banco de dados
-    // Transforma GerenteDTO em Hotel
-    Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
-        setRamal(Ramal(gerente_dto.getRamal()));
-    };
-
-    // Obs : exemplo Matricula getMatricula() const;
-    //-----------------------------------------------------------------------------------------------------------------
-
-    // virtuais ----------------
-    void exibirInfo() const override {
-        IO::Println("Sou um Gerente");
-    };
-
-    // seters -----------------
-    void setNome(const Nome &newNome) {
-        Pessoa::setPessoaNome(newNome);
+    inline string Gerente::getRamal() const {
+        return ramal.getValor();
     }
 
-    void setEmail(const Email &newEmail) {
-        Pessoa::setPessoaEmail(newEmail);
+    inline string Gerente::getSenha() const {
+        return senha.getValor();
     }
-
-    void setRamal(const Ramal &newRamal) {
-        this->ramal = newRamal;
-    }
-
-    void setSenha(const Senha &newSenha) {
-        this->senha = newSenha;
-    }
-
-    // geters -----------------
-    string getRamal() const;
-
-    string getSenha() const;
-};
-
-inline string Gerente::getRamal() const {
-    return ramal.getValor();
-}
-
-inline string Gerente::getSenha() const {
-    return senha.getValor();
 }
 
 #endif

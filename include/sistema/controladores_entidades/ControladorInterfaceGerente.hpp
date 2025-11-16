@@ -21,33 +21,34 @@
 using namespace std;
 using namespace VisualizadorDeTabela;
 
-class ControladorInterfaceGerente : public ControladoraApresentacaoAutenticavel,
-                                    public InterfaceApresentacaoExibirMenu,
-                                    public InterfaceApresentacaoCRUD {
-private:
-    PersistenciaGerente persistencia;
-    bool executando = true;
-    bool estaAutenticado = false;
+namespace Hotelaria {
+    class ControladorInterfaceGerente : public ControladoraApresentacaoAutenticavel,
+                                        public InterfaceApresentacaoExibirMenu,
+                                        public InterfaceApresentacaoCRUD {
+    private:
+        PersistenciaGerente persistencia;
+        bool executando = true;
+        bool estaAutenticado = false;
 
-public:
-    ControladorInterfaceGerente() {
-        InterfaceServicoAutenticavel *controladora_servico_autenticavel = new ControladoraServicoAutenticavel();
-        setControladoraServicoAutenticavel(controladora_servico_autenticavel);
-    }
+    public:
+        ControladorInterfaceGerente() {
+            InterfaceServicoAutenticavel *controladora_servico_autenticavel = new ControladoraServicoAutenticavel();
+            setControladoraServicoAutenticavel(controladora_servico_autenticavel);
+        }
 
-    // Acessando servicos
-    void exibirMenu() override;
+        // Acessando servicos
+        void exibirMenu() override;
 
-    // Menu CRUD
-    void exibirMenuCRUD();
+        // Menu CRUD
+        void exibirMenuCRUD();
 
-    void criar() override;
+        void criar() override;
 
-    void ler() override;
+        void ler() override;
 
-    void atualizar() override;
+        void atualizar() override;
 
-    void remover() override;
-};
-
+        void remover() override;
+    };
+}
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H

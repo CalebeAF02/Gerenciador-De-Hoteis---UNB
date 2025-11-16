@@ -14,18 +14,19 @@
 #include <string>
 #include <sqlite3.h>
 #include <iostream>
+namespace Hotelaria {
+    class PersistenciaSolicitacaoHospedagem {
+    public:
+        static void inicializar();
 
-class PersistenciaSolicitacaoHospedagem {
-public:
-    static void inicializar();
+        static void salvar(const SolicitacaoHospedagem &s);
 
-    static void salvar(const SolicitacaoHospedagem &s);
+        static vector<SolicitacaoHospedagem> buscarPorEmail(const string &email);
 
-    static vector<SolicitacaoHospedagem> buscarPorEmail(const string &email);
+        static vector<SolicitacaoHospedagem> buscarPorStatus(int status);
 
-    static vector<SolicitacaoHospedagem> buscarPorStatus(int status);
-
-    static void atualizar(const SolicitacaoHospedagem &s);
-};
+        static void atualizar(const SolicitacaoHospedagem &s);
+    };
+}
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIASOLICITACAOHOSPEDAGEM_H

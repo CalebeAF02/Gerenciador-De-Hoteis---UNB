@@ -10,17 +10,18 @@
 #include <iostream>
 
 using namespace std;
+namespace Hotelaria {
+    class ControladoraServicoPessoal : public InterfaceServicoPessoal {
+    public:
+        //  por meio dos quais são solicitados os serviços.
+        bool incluir(const Gerente);
 
-class ControladoraServicoPessoal : public InterfaceServicoPessoal {
-public:
-    //  por meio dos quais são solicitados os serviços.
-    bool incluir(const Gerente);
+        bool remover(const Email email);
 
-    bool remover(const Email email);
+        bool pesquisar(Gerente);
 
-    bool pesquisar(Gerente);
-
-    bool editar(const Gerente);
-};
+        bool editar(const Gerente);
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CSP_HPP

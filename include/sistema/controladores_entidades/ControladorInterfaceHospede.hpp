@@ -22,28 +22,28 @@
 #include <fstream>
 
 using namespace std;
+namespace Hotelaria {
+    class ControladorInterfaceHospede : public InterfaceApresentacaoCRUD {
+    private:
+        PersistenciaHospede persistencia;
+        bool executando = true;
 
-class ControladorInterfaceHospede : public InterfaceApresentacaoCRUD {
-private:
-    PersistenciaHospede persistencia;
-    bool executando = true;
+    public:
+        // Construtor dos ServicosHospede
+        ControladorInterfaceHospede() = default;
 
-public:
-    // Construtor dos ServicosHospede
-    ControladorInterfaceHospede() = default;
+        void avaliarSolicitacoes();
 
-    void avaliarSolicitacoes();
+        // Menu CRUD
+        void exibirMenuCRUD();
 
-    // Menu CRUD
-    void exibirMenuCRUD();
+        void criar() override;
 
-    void criar() override;
+        void ler() override;
 
-    void ler() override;
+        void atualizar() override;
 
-    void atualizar() override;
-
-    void remover() override;
-};
-
+        void remover() override;
+    };
+}
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOSPEDE_H

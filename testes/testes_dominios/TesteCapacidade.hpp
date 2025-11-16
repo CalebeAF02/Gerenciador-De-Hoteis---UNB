@@ -14,6 +14,8 @@
 using namespace std;
 
 using namespace Teste;
+using namespace Hotelaria;
+
 class TesteCapacidade : public InterfaceDeTeste {
 public:
     void executar() override;

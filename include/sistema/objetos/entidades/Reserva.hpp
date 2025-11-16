@@ -9,56 +9,58 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Reserva {
+    private:
+        Data chegada;
+        Data partida;
+        Dinheiro dinheiro;
+        Codigo codigo;
 
-class Reserva {
-private:
-    Data chegada;
-    Data partida;
-    Dinheiro dinheiro;
-    Codigo codigo;
+    public:
+        Reserva() = default;
 
-public:
-    Reserva() = default;
+        Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo) {
+            setChegada(chegada);
+            setPartida(partida);
+            setDinheiro(dinheiro);
+            setCodigo(codigo);
+        };
 
-    Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo) {
-        setChegada(chegada);
-        setPartida(partida);
-        setDinheiro(dinheiro);
-        setCodigo(codigo);
+        void setChegada(const Data &newChegada) {
+            this->chegada = newChegada;
+        };
+
+        void setPartida(const Data &newPartida) {
+            this->partida = newPartida;
+        };
+
+        void setDinheiro(const Dinheiro &newDinheiro) {
+            this->dinheiro = newDinheiro;
+        };
+
+        void setCodigo(const Codigo &newCodigo) {
+            this->codigo = newCodigo;
+        };
+
+
+        //Get
+        Data getChegada() const {
+            return chegada;
+        };
+
+        Data getPartida() const {
+            return partida;
+        };
+
+        int getDinheiro() const {
+            return dinheiro.getValor();
+        };
+
+        string getCodigo() const {
+            return codigo.getValor();
+        };
     };
+}
 
-    void setChegada(const Data &newChegada) {
-        this->chegada = newChegada;
-    };
-
-    void setPartida(const Data &newPartida) {
-        this->partida = newPartida;
-    };
-
-    void setDinheiro(const Dinheiro &newDinheiro) {
-        this->dinheiro = newDinheiro;
-    };
-
-    void setCodigo(const Codigo &newCodigo) {
-        this->codigo = newCodigo;
-    };
-
-
-    //Get
-    Data getChegada() const {
-        return chegada;
-    };
-
-    Data getPartida() const {
-        return partida;
-    };
-
-    int getDinheiro() const {
-        return dinheiro.getValor();
-    };
-
-    string getCodigo() const {
-        return codigo.getValor();
-    };
-};
 #endif

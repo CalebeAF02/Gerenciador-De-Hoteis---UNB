@@ -19,6 +19,7 @@ x64/
 bin/
 meta/html/
 meta/latex/
+meta/doxygen_tema_awesome/
 
 # Arquivos de simbolo e link
 *.pdb

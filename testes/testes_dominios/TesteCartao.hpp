@@ -13,6 +13,8 @@
 #include "../../libs/io/IO.hpp"
 
 using namespace Teste;
+using namespace Hotelaria;
+
 class TesteCartao : public InterfaceDeTeste {
 public:
     void executar() override;

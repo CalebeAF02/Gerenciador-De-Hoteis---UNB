@@ -8,10 +8,11 @@
 #include "../../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
-
-class InterfaceServicoHotel {
-public:
-    virtual bool valor() = 0;
-};
+namespace Hotelaria {
+    class InterfaceServicoHotel {
+    public:
+        virtual bool valor() = 0;
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_ISHOTEL_HPP

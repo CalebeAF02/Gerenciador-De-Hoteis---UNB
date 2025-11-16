@@ -11,33 +11,33 @@
 #include "../../libs/formato/Formato.hpp"
 
 using namespace std;
+namespace Hotelaria {
+    class BancoDeDados {
+    private:
+        sqlite3 *db = nullptr;
 
-class BancoDeDados {
-private:
-    sqlite3 *db = nullptr;
+        void tabelaGerente(sqlite3 *db);
 
-    void tabelaGerente(sqlite3 *db);
+        void tabelaHospede(sqlite3 *db);
 
-    void tabelaHospede(sqlite3 *db);
+        void tabelaHotel(sqlite3 *db);
 
-    void tabelaHotel(sqlite3 *db);
+        void tabelaQuarto(sqlite3 *db);
 
-    void tabelaQuarto(sqlite3 *db);
+        void tabelaReserva(sqlite3 *db);
 
-    void tabelaReserva(sqlite3 *db);
+        void tabelaSolicitacoesDeHospedagem(sqlite3 *db);
+    public:
+        sqlite3 *getConexao() const {
+            return db;
+        }
 
-    void tabelaSolicitacoesDeHospedagem(sqlite3 *db);
-public:
-    sqlite3 *getConexao() const {
-        return db;
-    }
+        bool abrindoConexao();
 
-    bool abrindoConexao();
+        bool fechandoConexao();
 
-    bool fechandoConexao();
-
-    void iniciar();
-};
-
+        void iniciar();
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_BANCODEDADOS_H

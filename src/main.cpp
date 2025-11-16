@@ -35,6 +35,7 @@
 #include "ControladoraApresentacaoPessoal.hpp"
 
 using namespace std;
+using namespace Hotelaria;
 
 #define MODO_PRODUCAO 0
 #define MODO_SMOKE 1

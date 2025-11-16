@@ -7,20 +7,20 @@
 
 #include "ControladorInterfaceHospede.hpp"
 #include "InterfaceApresentacaoAcesso.hpp"
+namespace Hotelaria {
+    class ControladoraApresentacaoAcessoHospede : public InterfaceApresentacaoAcesso {
+    private:
+        //ControladorInterfaceHospede controladorHospede;
+    public:
+        void exibirMenu() override;
 
-class ControladoraApresentacaoAcessoHospede : public InterfaceApresentacaoAcesso {
-private:
-    //ControladorInterfaceHospede controladorHospede;
-public:
-    void exibirMenu() override;
+        // Solicitacao de Hospedagem para Gerente
+        void opcoesDeHospedagem();
 
-    // Solicitacao de Hospedagem para Gerente
-    void opcoesDeHospedagem();
+        void solicitandoHospedagem();
 
-    void solicitandoHospedagem();
-
-    void statusDaSolicitandoHospedagem() const;
-};
-
+        void statusDaSolicitandoHospedagem() const;
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORAAPRESENTACAOACESSOHOESPEDE_HPP

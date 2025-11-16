@@ -10,9 +10,12 @@
 #include <iostream>
 using namespace std;
 
-class ControladoraApresentacaoHotel {
-public:
-    string valor;
-};
+namespace Hotelaria {
+    class ControladoraApresentacaoHotel {
+    public:
+        string valor;
+    };
+}
+
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAHOTEL_HPP

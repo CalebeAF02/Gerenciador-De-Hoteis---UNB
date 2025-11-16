@@ -3,54 +3,54 @@
 //
 
 #include "BancoDeDados.hpp"
+namespace Hotelaria {
+    bool BancoDeDados::abrindoConexao() {
+        //_________________________ABRE CONEXÂO_______________________________
+        int rc = sqlite3_open("hotel.db", &db);
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao abrir banco: " << sqlite3_errmsg(db) << endl;
+            return false;
+        }
+        char *mensagemErro = nullptr;
+        sqlite3_exec(db, "PRAGMA foreign_keys = ON;", nullptr, nullptr, &mensagemErro);
 
-bool BancoDeDados::abrindoConexao() {
-    //_________________________ABRE CONEXÂO_______________________________
-    int rc = sqlite3_open("hotel.db", &db);
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao abrir banco: " << sqlite3_errmsg(db) << endl;
-        return false;
-    }
-    char *mensagemErro = nullptr;
-    sqlite3_exec(db, "PRAGMA foreign_keys = ON;", nullptr, nullptr, &mensagemErro);
+        //ConsoleFormatter::MostrarSeparadorCategoria("Banco aberto com sucesso!");
 
-    //ConsoleFormatter::MostrarSeparadorCategoria("Banco aberto com sucesso!");
-
-    return true;
-    //_________________________------------_______________________________
-}
-
-bool BancoDeDados::fechandoConexao() {
-    //_________________________FECHA CONEXÂO_______________________________
-    if (db) {
-        sqlite3_close(db);
-        db = nullptr;
-        //ConsoleFormatter::MostrarSeparadorCategoria("Conexao com o banco encerrada com sucesso!");
         return true;
+        //_________________________------------_______________________________
     }
 
-    cerr << "\nNenhuma conexao ativa para fechar.\n";
-    return false;
-    //_________________________------------_______________________________
-}
+    bool BancoDeDados::fechandoConexao() {
+        //_________________________FECHA CONEXÂO_______________________________
+        if (db) {
+            sqlite3_close(db);
+            db = nullptr;
+            //ConsoleFormatter::MostrarSeparadorCategoria("Conexao com o banco encerrada com sucesso!");
+            return true;
+        }
 
-void BancoDeDados::iniciar() {
-    if (!abrindoConexao())
-        return;
+        cerr << "\nNenhuma conexao ativa para fechar.\n";
+        return false;
+        //_________________________------------_______________________________
+    }
 
-    // Comandos SQL para criar cada tabela
-    tabelaGerente(db);
-    tabelaHospede(db);
-    tabelaHotel(db);
-    tabelaQuarto(db);
-    tabelaReserva(db);
-    tabelaSolicitacoesDeHospedagem(db);
+    void BancoDeDados::iniciar() {
+        if (!abrindoConexao())
+            return;
 
-    fechandoConexao();
-};
+        // Comandos SQL para criar cada tabela
+        tabelaGerente(db);
+        tabelaHospede(db);
+        tabelaHotel(db);
+        tabelaQuarto(db);
+        tabelaReserva(db);
+        tabelaSolicitacoesDeHospedagem(db);
 
-void BancoDeDados::tabelaGerente(sqlite3 *db) {
-    const char *sql = R"(
+        fechandoConexao();
+    };
+
+    void BancoDeDados::tabelaGerente(sqlite3 *db) {
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS gerentes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL DEFAULT '',
@@ -60,19 +60,19 @@ void BancoDeDados::tabelaGerente(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'gerentes': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'gerentes' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'gerentes': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'gerentes' criada com sucesso!" << endl;
+        }
     }
-}
 
-void BancoDeDados::tabelaHospede(sqlite3 *db) {
-    const char *sql = R"(
+    void BancoDeDados::tabelaHospede(sqlite3 *db) {
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS hospedes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL DEFAULT '',
@@ -82,19 +82,19 @@ void BancoDeDados::tabelaHospede(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'hospedes': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'hospedes' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'hospedes': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'hospedes' criada com sucesso!" << endl;
+        }
     }
-}
 
-void BancoDeDados::tabelaHotel(sqlite3 *db) {
-    const char *sql = R"(
+    void BancoDeDados::tabelaHotel(sqlite3 *db) {
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS hoteis (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL DEFAULT '',
@@ -104,19 +104,19 @@ void BancoDeDados::tabelaHotel(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'hoteis': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'hoteis' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'hoteis': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'hoteis' criada com sucesso!" << endl;
+        }
     }
-}
 
-void BancoDeDados::tabelaQuarto(sqlite3 *db) {
-    const char *sql = R"(
+    void BancoDeDados::tabelaQuarto(sqlite3 *db) {
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS quartos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             numero TEXT NOT NULL DEFAULT '',
@@ -128,19 +128,19 @@ void BancoDeDados::tabelaQuarto(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'quartos': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'quartos' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'quartos': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'quartos' criada com sucesso!" << endl;
+        }
     }
-}
 
-void BancoDeDados::tabelaReserva(sqlite3 *db) {
-    const char *sql = R"(
+    void BancoDeDados::tabelaReserva(sqlite3 *db) {
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS reservas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             id_quarto INTEGER,
@@ -153,20 +153,20 @@ void BancoDeDados::tabelaReserva(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'reservas': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'reservas' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'reservas': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'reservas' criada com sucesso!" << endl;
+        }
     }
-}
 
-void BancoDeDados::tabelaSolicitacoesDeHospedagem(sqlite3 *db) {
-    // Comando SQL para criar a tabela
-    const char *sql = R"(
+    void BancoDeDados::tabelaSolicitacoesDeHospedagem(sqlite3 *db) {
+        // Comando SQL para criar a tabela
+        const char *sql = R"(
         CREATE TABLE IF NOT EXISTS solicitacoes_hospedagem (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         email_hospede TEXT NOT NULL,
@@ -179,13 +179,14 @@ void BancoDeDados::tabelaSolicitacoesDeHospedagem(sqlite3 *db) {
         );
     )";
 
-    char *mensagemErro = nullptr;
-    int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
+        char *mensagemErro = nullptr;
+        int rc = sqlite3_exec(db, sql, nullptr, nullptr, &mensagemErro);
 
-    if (rc != SQLITE_OK) {
-        cerr << "\nErro ao criar tabela 'solicitacoes_hospedagem': " << mensagemErro << endl;
-        sqlite3_free(mensagemErro);
-    } else {
-        //cout << "\nTabela 'solicitacoes_hospedagem' criada com sucesso!" << endl;
+        if (rc != SQLITE_OK) {
+            cerr << "\nErro ao criar tabela 'solicitacoes_hospedagem': " << mensagemErro << endl;
+            sqlite3_free(mensagemErro);
+        } else {
+            //cout << "\nTabela 'solicitacoes_hospedagem' criada com sucesso!" << endl;
+        }
     }
 }

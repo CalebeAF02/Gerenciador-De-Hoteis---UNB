@@ -13,20 +13,21 @@
 #include "sqlite3.h"
 
 using namespace std;
+namespace Hotelaria {
+    class PersistenciaGerente {
+    public:
+        bool inserir(Gerente &gerente);
 
-class PersistenciaGerente {
-public:
-    bool inserir(Gerente &gerente);
+        vector<GerenteDTO *> listar();
 
-    vector<GerenteDTO *> listar();
+        bool atualizar(int id, const Gerente &gerente);
 
-    bool atualizar(int id, const Gerente &gerente);
+        bool excluirPorId(int id);
 
-    bool excluirPorId(int id);
+        bool autenticarGerente(const string &email, const string &senha);
 
-    bool autenticarGerente(const string &email, const string &senha);
-
-    optional<GerenteDTO> buscaGerentePorID(int id);
-};
+        optional<GerenteDTO> buscaGerentePorID(int id);
+    };
+}
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H

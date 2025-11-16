@@ -9,27 +9,29 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Endereco {
+    private:
+        string enderecoStr;
 
-class Endereco {
-private:
-    string enderecoStr;
+        void validar(string valor); // Metodo de validacao
 
-    void validar(string valor); // Metodo de validacao
+    public:
+        Endereco() = default;
 
-public:
-    Endereco() = default;
+        explicit Endereco(const string &valor) {
+            setValor(valor);
+        };
 
-    explicit Endereco(const string &valor) {
-        setValor(valor);
+        void setValor(const string &valor) {
+            validar(valor);
+            this->enderecoStr = valor;
+        }
+
+        string getValor() const {
+            return enderecoStr;
+        }
     };
+}
 
-    void setValor(const string &valor) {
-        validar(valor);
-        this->enderecoStr = valor;
-    }
-
-    string getValor() const {
-        return enderecoStr;
-    }
-};
 #endif //GERENCIADOR_HOTEL_UNB_ENDERECO_H

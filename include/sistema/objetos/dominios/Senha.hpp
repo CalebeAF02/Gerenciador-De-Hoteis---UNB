@@ -9,30 +9,32 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Senha {
+    private:
+        string senhaStr;
 
-class Senha {
-private:
-    string senhaStr;
+        void validar(string valor); // Metodo de validacao
 
-    void validar(string valor); // Metodo de validacao
+    public:
+        Senha() = default;
 
-public:
-    Senha() = default;
+        explicit Senha(const string &valor) {
+            setValor(valor);
+        };
 
-    explicit Senha(const string &valor) {
-        setValor(valor);
+        void setValor(const string &valor) {
+            validar(valor);
+            this->senhaStr = valor;
+        }
+
+        string getValor() const;
     };
 
-    void setValor(const string &valor) {
-        validar(valor);
-        this->senhaStr = valor;
+    inline string Senha::getValor() const {
+        return senhaStr;
     }
-
-    string getValor() const;
-};
-
-inline string Senha::getValor() const {
-    return senhaStr;
 }
+
 
 #endif //GERENCIADOR_HOTEL_UNB_SENHA_H

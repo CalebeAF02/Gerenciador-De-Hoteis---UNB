@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace Teste;
+using namespace Hotelaria;
 
 class TestesData : public InterfaceDeTeste {
 public:

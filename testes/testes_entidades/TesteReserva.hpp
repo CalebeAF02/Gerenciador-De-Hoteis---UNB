@@ -5,6 +5,8 @@
 #include <string>
 
 using namespace Teste;
+using namespace Hotelaria;
+
 // A classe TestsReserva testa a integração da Entidade Reserva.
 class TesteReserva : public InterfaceDeTeste {
 public:

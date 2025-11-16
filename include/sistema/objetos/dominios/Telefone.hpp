@@ -9,28 +9,29 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Telefone {
+    private:
+        string telefoneStr;
 
-class Telefone {
-private:
-    string telefoneStr;
+        void validar(string valor);
 
-    void validar(string valor);
+    public:
+        Telefone() = default;
 
-public:
-    Telefone() = default;
+        explicit Telefone(const string &valor) {
+            setValor(valor);
+        }
 
-    explicit Telefone(const string &valor) {
-        setValor(valor);
-    }
+        void setValor(const string &valor) {
+            validar(valor);
+            this->telefoneStr = valor;
+        }
 
-    void setValor(const string &valor) {
-        validar(valor);
-        this->telefoneStr = valor;
-    }
-
-    string getValor() const {
-        return telefoneStr;
-    }
-};
+        string getValor() const {
+            return telefoneStr;
+        }
+    };
+}
 
 #endif //GERENCIADOR_HOTEL_UNB_TELEFONE_H

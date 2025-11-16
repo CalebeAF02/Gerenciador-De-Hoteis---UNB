@@ -5,6 +5,8 @@
 #include <string>
 
 using namespace Teste;
+using namespace Hotelaria;
+
 class TesteHospede : public InterfaceDeTeste {
 public:
     TesteHospede() = default;

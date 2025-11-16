@@ -4,22 +4,23 @@
 
 #include "../../include/HACKER/SistemaHacker.hpp"
 
+namespace Hotelaria {
+    void SistemaHacker::iniciar() {
 
-void SistemaHacker::iniciar() {
+        IO::Println("Versao " + Versao::getVersaoCompleta());
 
-    IO::Println("Versao " + Versao::getVersaoCompleta());
+        Email emailHK;
+        emailHK.setValor("calebe.2324@gmail.com");
+        Email *emailObj = &emailHK;
 
-    Email emailHK;
-    emailHK.setValor("calebe.2324@gmail.com");
-    Email *emailObj = &emailHK;
+        Senha senhaHK("A1!b2");
 
-    Senha senhaHK("A1!b2");
+        bool estaAutenticado = controladorGerente.getHacke()->autenticar(*emailObj, senhaHK);
+        controladorGerente.setEstaAutenticado(estaAutenticado);
+        if (estaAutenticado) {
+            IO::Println("Agora Voce Possui Super-Poderes");
+            controladorGerente.exibirMenu();
+        }
 
-    bool estaAutenticado = controladorGerente.getHacke()->autenticar(*emailObj, senhaHK);
-    controladorGerente.setEstaAutenticado(estaAutenticado);
-    if (estaAutenticado) {
-        IO::Println("Agora Voce Possui Super-Poderes");
-        controladorGerente.exibirMenu();
     }
-
 }

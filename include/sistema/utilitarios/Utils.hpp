@@ -6,7 +6,6 @@
 #define GERENCIADOR_DE_HOTEIS_UNB_VALIDADORNUMERICO_HPP
 
 #include <string>
-
 using namespace std;
 
 namespace Utils {

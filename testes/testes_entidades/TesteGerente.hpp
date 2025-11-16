@@ -14,6 +14,7 @@
 #include "TesteSenha.hpp"
 
 #include <string>
+using namespace Hotelaria;
 
 class TesteGerente : public InterfaceDeTeste {
 public:

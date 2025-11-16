@@ -10,28 +10,29 @@
 #include <iostream>
 
 using namespace std;
+namespace Hotelaria {
+    class ControladoraApresentacaoPessoal : public InterfaceApresentacaoPessoal {
+    private:
+        // Códigos dos serviços.
 
-class ControladoraApresentacaoPessoal : public InterfaceApresentacaoPessoal {
-private:
-    // Códigos dos serviços.
+        const static int INCLUIR = 1;
+        const static int REMOVER = 2;
+        const static int PESQUISAR = 3;
+        const static int EDITAR = 4;
+        const static int RETORNAR = 5;
 
-    const static int INCLUIR = 1;
-    const static int REMOVER = 2;
-    const static int PESQUISAR = 3;
-    const static int EDITAR = 4;
-    const static int RETORNAR = 5;
+        InterfaceServicoPessoal *controladora_servico_pessoal; // Referência para servidor.
 
-    InterfaceServicoPessoal *controladora_servico_pessoal; // Referência para servidor.
+    public:
+        void executar(const Email);
 
-public:
-    void executar(const Email);
+        void setControladoraServicoPessoal(InterfaceServicoPessoal *);
+    };
 
-    void setControladoraServicoPessoal(InterfaceServicoPessoal *);
-};
-
-inline void ControladoraApresentacaoPessoal::setControladoraServicoPessoal(
-    InterfaceServicoPessoal *controladora_servico_pessoal) {
-    this->controladora_servico_pessoal = controladora_servico_pessoal;
-};
+    inline void ControladoraApresentacaoPessoal::setControladoraServicoPessoal(
+        InterfaceServicoPessoal *controladora_servico_pessoal) {
+        this->controladora_servico_pessoal = controladora_servico_pessoal;
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP

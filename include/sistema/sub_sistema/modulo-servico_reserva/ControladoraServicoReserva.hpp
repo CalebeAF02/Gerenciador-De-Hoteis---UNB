@@ -9,8 +9,9 @@
 #include "../../../../libs/io/IO.hpp"
 #include <iostream>
 using namespace std;
-
-class ControladoraServicoReserva : public InterfaceServicoReserva {
-};
+namespace Hotelaria {
+    class ControladoraServicoReserva : public InterfaceServicoReserva {
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CSRESERVA_HPP

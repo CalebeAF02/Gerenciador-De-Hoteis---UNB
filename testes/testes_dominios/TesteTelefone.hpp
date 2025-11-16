@@ -12,6 +12,8 @@
 #include "../../libs/io/IO.hpp"
 
 using namespace Teste;
+using namespace Hotelaria;
+
 class TesteTelefone : public InterfaceDeTeste {
 public:
     void executar() override;

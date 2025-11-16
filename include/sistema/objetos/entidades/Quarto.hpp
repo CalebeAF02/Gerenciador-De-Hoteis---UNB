@@ -10,56 +10,57 @@
 #include <stdexcept>
 
 using namespace std;
+namespace Hotelaria {
+    class Quarto {
+    private:
+        Numero numero;
+        Capacidade capacidade;
+        Dinheiro diaria;
+        Ramal ramal;
 
-class Quarto {
-private:
-    Numero numero;
-    Capacidade capacidade;
-    Dinheiro diaria;
-    Ramal ramal;
+    public:
+        Quarto() = default;
 
-public:
-    Quarto() = default;
+        Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal) {
+            setNumero(numero);
+            setCapacidade(capacidade);
+            setDiaria(diaria);
+            setRamal(ramal);
+        }
 
-    Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal) {
-        setNumero(numero);
-        setCapacidade(capacidade);
-        setDiaria(diaria);
-        setRamal(ramal);
-    }
+        void setNumero(const Numero &newNumero) {
+            this->numero = newNumero;
+        }
 
-    void setNumero(const Numero &newNumero) {
-        this->numero = newNumero;
-    }
+        void setCapacidade(const Capacidade &newCapacidade) {
+            this->capacidade = newCapacidade;
+        }
 
-    void setCapacidade(const Capacidade &newCapacidade) {
-        this->capacidade = newCapacidade;
-    }
+        void setDiaria(const Dinheiro &newDiaria) {
+            this->diaria = newDiaria;
+        }
 
-    void setDiaria(const Dinheiro &newDiaria) {
-        this->diaria = newDiaria;
-    }
+        void setRamal(const Ramal &newRamal) {
+            this->ramal = newRamal;
+        }
 
-    void setRamal(const Ramal &newRamal) {
-        this->ramal = newRamal;
-    }
+        //Get
+        string getNumero() const {
+            return numero.getValor();
+        }
 
-    //Get
-    string getNumero() const {
-        return numero.getValor();
-    }
+        int getCapacidade() const {
+            return capacidade.getValor();
+        }
 
-    int getCapacidade() const {
-        return capacidade.getValor();
-    }
+        int getDiaria() const {
+            return diaria.getValor();
+        }
 
-    int getDiaria() const {
-        return diaria.getValor();
-    }
-
-    string getRamal() const {
-        return ramal.getValor();
-    }
-};
+        string getRamal() const {
+            return ramal.getValor();
+        }
+    };
+}
 
 #endif

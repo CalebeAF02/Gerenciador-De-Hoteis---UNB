@@ -5,8 +5,9 @@
 #include "ControladoraServicoAutenticavel.hpp"
 
 #include "PersistenciaGerente.hpp"
-
-bool ControladoraServicoAutenticavel::autenticar(const Email email, const Senha senha) {
-    PersistenciaGerente pg;
-    return pg.autenticarGerente(email.getValor(), senha.getValor());
+namespace Hotelaria {
+    bool ControladoraServicoAutenticavel::autenticar(const Email email, const Senha senha) {
+        PersistenciaGerente pg;
+        return pg.autenticarGerente(email.getValor(), senha.getValor());
+    }
 }

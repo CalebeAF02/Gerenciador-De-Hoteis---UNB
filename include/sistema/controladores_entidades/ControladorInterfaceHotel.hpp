@@ -30,31 +30,31 @@
 using namespace std;
 using namespace VisualizadorDeTabela;
 using namespace VisualizadorDeMenu;
+namespace Hotelaria {
+    class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
+                                      public InterfaceApresentacaoCRUD {
+    private:
+        PersistenciaHotel persistencia;
+        bool executando = true;
 
-class ControladorInterfaceHotel : public InterfaceApresentacaoExibirMenu,
-                                  public InterfaceApresentacaoCRUD {
-private:
-    PersistenciaHotel persistencia;
-    bool executando = true;
+    public:
+        // Construtor dos servicosHotel
+        ControladorInterfaceHotel() = default;
 
-public:
-    // Construtor dos servicosHotel
-    ControladorInterfaceHotel() = default;
+        // Acessando servicos
+        void exibirMenu() override;
 
-    // Acessando servicos
-    void exibirMenu() override;
+        // Menu CRUD
+        void exibirMenuCRUD();
 
-    // Menu CRUD
-    void exibirMenuCRUD();
+        // Metods CRUD
+        void criar() override;
 
-    // Metods CRUD
-    void criar() override;
+        void ler() override;
 
-    void ler() override;
+        void atualizar() override;
 
-    void atualizar() override;
-
-    void remover() override;
-};
-
+        void remover() override;
+    };
+}
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_SERVICOSHOTEL_H

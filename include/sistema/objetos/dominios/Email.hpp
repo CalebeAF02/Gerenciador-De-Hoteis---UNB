@@ -9,31 +9,31 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Email {
+    private:
+        string emailStr;
 
-class Email {
-private:
-    string emailStr;
+        void validar(const string &valor);
 
-    void validar(const string &valor);
+    public:
+        Email() = default;
 
-public:
-    Email() = default;
+        explicit Email(const string &valor) {
+            setValor(valor);
+        }
 
-    explicit Email(const string &valor) {
-        setValor(valor);
+        void setValor(const string &valor) {
+            validar(valor);
+            this->emailStr = valor;
+        }
+
+        string getValor() const;
+    };
+
+    inline string Email::getValor() const {
+        return emailStr;
     }
-
-    void setValor(const string &valor) {
-        validar(valor);
-        this->emailStr = valor;
-    }
-
-    string getValor() const;
-};
-
-inline string Email::getValor() const {
-    return emailStr;
 }
-
 
 #endif //GERENCIADOR_HOTEL_UNB_EMAIL_H

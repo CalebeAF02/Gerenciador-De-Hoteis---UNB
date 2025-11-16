@@ -13,10 +13,11 @@
 #include "InterfaceApresentacaoAutenticavel.hpp"
 #include "Senha.hpp"
 using namespace std;
-
-class ControladoraServicoAutenticavel : public InterfaceServicoAutenticavel {
-public:
-    bool autenticar(const Email, const Senha) override;
-};
+namespace Hotelaria {
+    class ControladoraServicoAutenticavel : public InterfaceServicoAutenticavel {
+    public:
+        bool autenticar(const Email, const Senha) override;
+    };
+}
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_CSA_HPP

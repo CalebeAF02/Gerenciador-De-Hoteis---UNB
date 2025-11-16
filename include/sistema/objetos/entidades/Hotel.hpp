@@ -10,71 +10,72 @@
 #include <string>
 
 using namespace std;
+namespace Hotelaria {
+    class Hotel {
+    private:
+        Nome nome;
+        Endereco endereco;
+        Telefone telefone;
+        Codigo codigo;
 
-class Hotel {
-private:
-    Nome nome;
-    Endereco endereco;
-    Telefone telefone;
-    Codigo codigo;
+    public:
+        //-----------------------------------------------------------------------------------------------------------------
+        // Contrutor de Hotel sem valores
+        Hotel() = default;
 
-public:
-    //-----------------------------------------------------------------------------------------------------------------
-    // Contrutor de Hotel sem valores
-    Hotel() = default;
+        // Contrutor de Hotel Com todos valores
+        Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo) {
+            setNome(nome);
+            setEndereco(endereco);
+            setTelefone(telefone);
+            setCodigo(codigo);
+        };
 
-    // Contrutor de Hotel Com todos valores
-    Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo) {
-        setNome(nome);
-        setEndereco(endereco);
-        setTelefone(telefone);
-        setCodigo(codigo);
+        // construtor com valores do banco de dados
+        // Transforma HotelDTO em Hotel
+        Hotel(HotelDTO &hotel_dto) {
+            setNome(Nome(hotel_dto.getNome()));
+            setEndereco(Endereco(hotel_dto.getEndereco()));
+            setTelefone(Telefone(hotel_dto.getTelefone()));
+            setCodigo(Codigo(hotel_dto.getCodigo()));
+        };
+
+        //-----------------------------------------------------------------------------------------------------------------
+        // Set
+        void setNome(const Nome &newNome) {
+            this->nome = newNome;
+        };
+
+        void setEndereco(const Endereco &newEndereco) {
+            this->endereco = newEndereco;
+        };
+
+        void setTelefone(const Telefone &newTelefone) {
+            this->telefone = newTelefone;
+        };
+
+        void setCodigo(const Codigo &newCodigo) {
+            this->codigo = newCodigo;
+        };
+        //-----------------------------------------------------------------------------------------------------------------
+        // Get
+        string getNome() const {
+            return nome.getValor();
+        };
+
+        string getEndereco() const {
+            return endereco.getValor();
+        };
+
+        string getTelefone() const {
+            return telefone.getValor();
+        };
+
+        string getCodigo() const {
+            return codigo.getValor();
+        };
+        //-----------------------------------------------------------------------------------------------------------------
     };
-
-    // construtor com valores do banco de dados
-    // Transforma HotelDTO em Hotel
-    Hotel(HotelDTO &hotel_dto) {
-        setNome(Nome(hotel_dto.getNome()));
-        setEndereco(Endereco(hotel_dto.getEndereco()));
-        setTelefone(Telefone(hotel_dto.getTelefone()));
-        setCodigo(Codigo(hotel_dto.getCodigo()));
-    };
-
-    //-----------------------------------------------------------------------------------------------------------------
-    // Set
-    void setNome(const Nome &newNome) {
-        this->nome = newNome;
-    };
-
-    void setEndereco(const Endereco &newEndereco) {
-        this->endereco = newEndereco;
-    };
-
-    void setTelefone(const Telefone &newTelefone) {
-        this->telefone = newTelefone;
-    };
-
-    void setCodigo(const Codigo &newCodigo) {
-        this->codigo = newCodigo;
-    };
-    //-----------------------------------------------------------------------------------------------------------------
-    // Get
-    string getNome() const {
-        return nome.getValor();
-    };
-
-    string getEndereco() const {
-        return endereco.getValor();
-    };
-
-    string getTelefone() const {
-        return telefone.getValor();
-    };
-
-    string getCodigo() const {
-        return codigo.getValor();
-    };
-    //-----------------------------------------------------------------------------------------------------------------
-};
+}
 
 #endif

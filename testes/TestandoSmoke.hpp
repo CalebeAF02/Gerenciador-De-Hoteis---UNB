@@ -21,6 +21,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+using namespace Hotelaria;
 
 class TestandoSmoke {
 public:

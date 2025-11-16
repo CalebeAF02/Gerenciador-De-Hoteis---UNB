@@ -19,7 +19,7 @@ file(WRITE "${OUTPUT_FILE}" "
 #include <iostream>
 #include <string>
 using namespace std;
-
+namespace Hotelaria{
 class Versao {
 private:
     static constexpr uint64_t valor = ${NOVA_VERSAO};
@@ -37,6 +37,7 @@ public:
                to_string(patch());
     }
 };
+}
 
 #endif // VERSAO_HPP
 ")

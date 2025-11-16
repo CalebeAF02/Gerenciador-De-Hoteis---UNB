@@ -5,12 +5,13 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_INTERFACEAPRESENTACAOEXIBIRMENU_H
 #define GERENCIADOR_DE_HOTEIS_UNB_INTERFACEAPRESENTACAOEXIBIRMENU_H
 
-
-class InterfaceApresentacaoExibirMenu {
-public:
-    // Acessando servicos
-    virtual void exibirMenu() = 0;
-};
+namespace Hotelaria {
+    class InterfaceApresentacaoExibirMenu {
+    public:
+        // Acessando servicos
+        virtual void exibirMenu() = 0;
+    };
+}
 
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_INTERFACEAPRESENTACAOEXIBIRMENU_H

@@ -3,7 +3,7 @@
 //
 
 #include "ControladorInterfaceHotel.hpp"
-
+namespace Hotelaria {
 void ControladorInterfaceHotel::exibirMenu() {
 }
 
@@ -229,4 +229,5 @@ void ControladorInterfaceHotel::atualizar() {
 }
 
 void ControladorInterfaceHotel::remover() {
+}
 }

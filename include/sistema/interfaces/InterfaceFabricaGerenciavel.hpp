@@ -9,12 +9,13 @@
 #include "apresentacoes/InterfaceApresentacaoCRUD.hpp"
 
 using namespace std;
+namespace Hotelaria {
+    class InterfaceFabricaGerenciavel {
+    public:
+        virtual unique_ptr<InterfaceApresentacaoCRUD> criar() = 0;
 
-class InterfaceFabricaGerenciavel {
-public:
-    virtual unique_ptr<InterfaceApresentacaoCRUD> criar() = 0;
-
-    virtual ~InterfaceFabricaGerenciavel() = default;
-};
+        virtual ~InterfaceFabricaGerenciavel() = default;
+    };
+}
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_INTERFACEFABRICAGERENCIAVEL_H

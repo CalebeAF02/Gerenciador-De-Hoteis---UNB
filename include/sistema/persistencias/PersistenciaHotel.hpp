@@ -14,17 +14,18 @@
 #include "sqlite3.h"
 
 using namespace std;
+namespace Hotelaria {
+    class PersistenciaHotel {
+    public:
+        bool inserir(Hotel *hotel);
 
-class PersistenciaHotel {
-public:
-    bool inserir(Hotel *hotel);
+        vector<HotelDTO *> listar();
 
-    vector<HotelDTO *> listar();
+        optional<HotelDTO> buscaHotelPorID(int id);
 
-    optional<HotelDTO> buscaHotelPorID(int id);
-
-    bool atualizar(int id, const Hotel &hotel);
-};
+        bool atualizar(int id, const Hotel &hotel);
+    };
+}
 
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_PERSISTENCIAHOTEL_H

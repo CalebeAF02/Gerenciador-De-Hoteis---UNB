@@ -3,11 +3,12 @@
 //
 
 #include "Capacidade.hpp"
-
-void Capacidade::validar(const int valor) {
-    if (valor < 1 || valor > 4) {
-        throw invalid_argument("Erro: Capacidade invalida! Digite um valor entre 1 e 4");
-    } else {
-        //cou << "Senha: Valida! " << endl;
-    }
-};
+namespace Hotelaria {
+    void Capacidade::validar(const int valor) {
+        if (valor < 1 || valor > 4) {
+            throw invalid_argument("Erro: Capacidade invalida! Digite um valor entre 1 e 4");
+        } else {
+            //cou << "Senha: Valida! " << endl;
+        }
+    };
+}
