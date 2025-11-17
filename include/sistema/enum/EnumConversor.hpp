@@ -2,8 +2,8 @@
 // Created by caleb on 01/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_ENUMCONVERSOR_H
-#define GERENCIADOR_DE_HOTEIS_UNB_ENUMCONVERSOR_H
+#ifndef Hotelaria_UnB_TP1_ENUMCONVERSOR_H
+#define Hotelaria_UnB_TP1_ENUMCONVERSOR_H
 
 #include "StatusSolicitacaoHospedagem.hpp"
 
@@ -16,4 +16,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_ENUMCONVERSOR_H
+#endif //Hotelaria_UnB_TP1_ENUMCONVERSOR_H

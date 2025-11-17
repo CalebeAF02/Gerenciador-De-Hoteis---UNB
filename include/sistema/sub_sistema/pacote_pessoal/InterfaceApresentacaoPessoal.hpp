@@ -2,15 +2,16 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_IAP_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_IAP_HPP
+#ifndef Hotelaria_UnB_TP1_IAP_HPP
+#define Hotelaria_UnB_TP1_IAP_HPP
 
 #include "Email.hpp"
 #include "InterfaceServicoPessoal.hpp"
 
-#include "../../../../libs/io/IO.hpp"
+#include "IO.hpp"
 #include <iostream>
 using namespace std;
+
 namespace Hotelaria {
     class InterfaceApresentacaoPessoal {
         virtual void executar(const Email email) = 0; //  por meio do qual é solicitado o serviço.
@@ -21,4 +22,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_IAP_HPP
+#endif //Hotelaria_UnB_TP1_IAP_HPP

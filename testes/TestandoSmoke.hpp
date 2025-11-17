@@ -2,8 +2,8 @@
 // Created by caleb on 02/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_TESTANDOSMOKE_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_TESTANDOSMOKE_HPP
+#ifndef Hotelaria_UnB_TP1_TESTANDOSMOKE_HPP
+#define Hotelaria_UnB_TP1_TESTANDOSMOKE_HPP
 
 #include "Gerente.hpp"
 #include "Hospede.hpp"
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_TESTANDOSMOKE_HPP
+#endif //Hotelaria_UnB_TP1_TESTANDOSMOKE_HPP

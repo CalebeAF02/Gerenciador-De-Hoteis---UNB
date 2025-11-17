@@ -2,17 +2,26 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CAHOSPEDAGEM_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CAHOSPEDAGEM_HPP
+#ifndef Hotelaria_UnB_TP1_CAHOSPEDAGEM_HPP
+#define Hotelaria_UnB_TP1_CAHOSPEDAGEM_HPP
 
-#include "../InterfaceApresentacaoHospede.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfaceApresentacaoHospede.hpp"
+#include "IO.hpp"
 #include <iostream>
+
+#include "InterfaceServicoHotel.hpp"
 using namespace std;
 
 namespace Hotelaria {
     class ControladoraApresentacaoHospede : public InterfaceApresentacaoHospede {
+    private:
+        InterfaceServicoHospede *controladora_servico_hospede;
+
+    public:
+        bool valor() override;
+
+        void setControladoraServicoHospede(InterfaceServicoHospede *) override;
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CAHOSPEDAGEM_HPP
+#endif //Hotelaria_UnB_TP1_CAHOSPEDAGEM_HPP

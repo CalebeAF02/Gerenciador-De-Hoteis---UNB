@@ -4,6 +4,27 @@
 
 #include "ControladoraApresentacaoAutenticavel.hpp"
 namespace Hotelaria {
+    void ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(
+        InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
+        this->controladora_servico_autenticavel = controladora_servico_autenticavel;
+    }
+
+    void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
+        this->estaAutenticado = estaAutenticado;
+    }
+
+    bool ControladoraApresentacaoAutenticavel::getEstaAutenticado() {
+        return estaAutenticado;
+    }
+
+    void ControladoraApresentacaoAutenticavel::sair() {
+        this->estaAutenticado = false;
+    }
+
+    InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
+        return this->controladora_servico_autenticavel;
+    }
+
     bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
         bool lacoLogin = false;
         bool resultado;

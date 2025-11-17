@@ -2,8 +2,8 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP
+#ifndef Hotelaria_UnB_TP1_CARESERVA_HPP
+#define Hotelaria_UnB_TP1_CARESERVA_HPP
 
 #include "../../../../../libs/formato/Formato.hpp"
 #include "InterfaceApresentacaoExibirMenu.hpp"
@@ -11,19 +11,24 @@
 #include "../../../../../libs/io/IO.hpp"
 #include <iostream>
 
+#include "InterfaceServicoReserva.hpp"
+
 using namespace std;
+
 namespace Hotelaria {
     class ControladoraApresentacaoReserva : public InterfaceApresentacaoReserva {
-    public:
-        // Construtor dos servicosReserva
-        ControladorInterfaceReserva();
+    private:
+        InterfaceServicoReserva *controladora_servico_reserva;
 
-        // Acessando servicos
+    public:
+        bool valor() override;
+
+        void setControladoraServicoReserva(InterfaceServicoReserva *) override;
+
         void exibirMenu();
 
-        // Menu CRUD
         void exibirMenuCRUD();
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CARESERVA_HPP
+#endif //Hotelaria_UnB_TP1_CARESERVA_HPP

@@ -2,8 +2,8 @@
 // Created by caleb on 09/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_TAMANHOATRIBUTO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_TAMANHOATRIBUTO_HPP
+#ifndef Hotelaria_UnB_TP1_TAMANHOATRIBUTO_HPP
+#define Hotelaria_UnB_TP1_TAMANHOATRIBUTO_HPP
 
 #include <iostream>
 #include <string>
@@ -33,4 +33,4 @@ namespace VisualizadorDeTabela {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_TAMANHOATRIBUTO_HPP
+#endif //Hotelaria_UnB_TP1_TAMANHOATRIBUTO_HPP

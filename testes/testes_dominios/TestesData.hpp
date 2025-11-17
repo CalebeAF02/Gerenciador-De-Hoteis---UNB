@@ -2,8 +2,8 @@
 // Created by caleb on 03/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_TESTSDATA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_TESTSDATA_HPP
+#ifndef Hotelaria_UnB_TP1_TESTSDATA_HPP
+#define Hotelaria_UnB_TP1_TESTSDATA_HPP
 
 #include <iostream>
 #include "../../libs/teste/InterfaceDeTestes.hpp"
@@ -18,4 +18,4 @@ public:
 };
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_TESTSDATA_HPP
+#endif //Hotelaria_UnB_TP1_TESTSDATA_HPP

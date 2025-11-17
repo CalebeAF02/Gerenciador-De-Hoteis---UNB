@@ -2,17 +2,25 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CAQUARTO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CAQUARTO_HPP
+#ifndef Hotelaria_UnB_TP1_CAQUARTO_HPP
+#define Hotelaria_UnB_TP1_CAQUARTO_HPP
 
-#include "../InterfaceApresentacaoQuarto.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfaceApresentacaoQuarto.hpp"
+#include "InterfaceServicoQuarto.hpp"
+#include "IO.hpp"
 #include <iostream>
 using namespace std;
 
 namespace Hotelaria {
     class ControladoraApresentacaoQuarto : public InterfaceApresentacaoQuarto {
+    private:
+        InterfaceServicoQuarto *controladora_servico_quarto;
+
+    public:
+        bool valor() override;
+
+        void setControladoraServicoQuarto(InterfaceServicoQuarto *) override;
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CAQUARTO_HPP
+#endif //Hotelaria_UnB_TP1_CAQUARTO_HPP

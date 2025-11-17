@@ -2,9 +2,9 @@
 // Created by caleb on 08/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_SISTEMAHACKER_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_SISTEMAHACKER_HPP
-
+#ifndef Hotelaria_UnB_TP1_SISTEMA_HACKER_HPP
+#define Hotelaria_UnB_TP1_SISTEMA_HACKER_HPP
+#include "ControladoraApresentacaoAcessoGerente.hpp"
 #include <iostream>
 #include "ControladorInterfaceGerente.hpp"
 #include "Versao.hpp"
@@ -15,6 +15,7 @@ namespace Hotelaria {
     class SistemaHacker {
     private:
         ControladorInterfaceGerente controladorGerente;
+        ControladoraApresentacaoAcessoGerente controladora_apresentacao_acesso_gerente;
 
     public:
         void iniciar();
@@ -22,4 +23,4 @@ namespace Hotelaria {
 }
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_SISTEMAHACKER_HPP
+#endif

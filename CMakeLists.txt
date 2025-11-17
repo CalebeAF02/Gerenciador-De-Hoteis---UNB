@@ -48,9 +48,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
-        # Sub Sistema
+        ## Sub Sistema - Apresentacao
+        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoGerente.cpp
 
-        ## Apresentacao
+        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoHospede.cpp
+
         src/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel/ControladoraApresentacaoAutenticavel.cpp
 
         src/sistema/sub_sistema/pacote_pessoal/modulo_apresentacao_pessoal/ControladoraApresentacaoPessoal.cpp
@@ -63,11 +65,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladoraApresentacaoReserva.cpp
 
-        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoGerente.cpp
-
-        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoHospede.cpp
-
         ## Servico
+        src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoGerente.cpp
+
+        src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoHospede.cpp
+
         src/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel/ControladoraServicoAutenticavel.cpp
 
         src/sistema/sub_sistema/pacote_pessoal/modulo_servico_pessoal/ControladoraServicoPessoal.cpp
@@ -80,7 +82,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         src/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva/ControladoraServicoReserva.cpp
 
-        # Controladores de Entidades
+        # Sub Sistema - Controladores de Entidades
         src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
         src/sistema/controladores_entidades/ControladorInterfaceHospede.cpp
         src/sistema/controladores_entidades/ControladorInterfaceHotel.cpp
@@ -168,6 +170,7 @@ add_executable(Gerenciador-De-Hoteis---UNB
 
         # HACKER
         src/HACKER/SistemaHacker.cpp
+        include/sistema/sub_sistema/pacote_acesso/InterfaceServicoAcesso.hpp
 )
 
 add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)

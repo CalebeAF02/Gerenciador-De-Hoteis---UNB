@@ -2,7 +2,7 @@
 // Created by caleb on 08/11/2025.
 //
 
-#include "../../include/HACKER/SistemaHacker.hpp"
+#include "SistemaHacker.hpp"
 
 namespace Hotelaria {
     void SistemaHacker::iniciar() {
@@ -19,7 +19,7 @@ namespace Hotelaria {
         controladorGerente.setEstaAutenticado(estaAutenticado);
         if (estaAutenticado) {
             IO::Println("Agora Voce Possui Super-Poderes");
-            controladorGerente.exibirMenu();
+            controladora_apresentacao_acesso_gerente.exibirMenu();
         }
 
     }

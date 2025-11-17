@@ -12,8 +12,8 @@ string(TIMESTAMP DATA_ATUAL "%Y-%m-%d %H:%M")
 # Gera o cabeçalho com valor e data atualizados
 file(WRITE "${OUTPUT_FILE}" "
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_VERSAO_HPP
+#ifndef Hotelaria_UnB_TP1_VERSAO_HPP
+#define Hotelaria_UnB_TP1_VERSAO_HPP
 
 #include <cstdint>
 #include <iostream>
@@ -39,5 +39,5 @@ public:
 };
 }
 
-#endif // VERSAO_HPP
+#endif
 ")

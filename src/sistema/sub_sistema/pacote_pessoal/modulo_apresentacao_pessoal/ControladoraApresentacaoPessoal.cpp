@@ -3,7 +3,13 @@
 //
 
 #include "ControladoraApresentacaoPessoal.hpp"
+
 namespace Hotelaria {
+    void ControladoraApresentacaoPessoal::setControladoraServicoPessoal(
+        InterfaceServicoPessoal *controladora_servico_pessoal) {
+        this->controladora_servico_pessoal = controladora_servico_pessoal;
+    }
+
     void ControladoraApresentacaoPessoal::executar(const Email email) {
         /*
          ComandoIAGerente *comando;

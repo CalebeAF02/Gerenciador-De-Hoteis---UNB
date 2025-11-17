@@ -2,12 +2,13 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_ISRESERVA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_ISRESERVA_HPP
+#ifndef Hotelaria_UnB_TP1_ISRESERVA_HPP
+#define Hotelaria_UnB_TP1_ISRESERVA_HPP
 
-#include "../../../../libs/io/IO.hpp"
+#include "IO.hpp"
 #include <iostream>
 using namespace std;
+
 namespace Hotelaria {
     class InterfaceServicoReserva {
     public:
@@ -15,4 +16,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_ISRESERVA_HPP
+#endif //Hotelaria_UnB_TP1_ISRESERVA_HPP

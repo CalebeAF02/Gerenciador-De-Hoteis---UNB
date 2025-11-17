@@ -2,8 +2,8 @@
 // Created by caleb on 01/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_BANCODEDADOS_H
-#define GERENCIADOR_DE_HOTEIS_UNB_BANCODEDADOS_H
+#ifndef Hotelaria_UnB_TP1_BANCODEDADOS_H
+#define Hotelaria_UnB_TP1_BANCODEDADOS_H
 
 #include "sqlite3.h"
 #include <iostream>
@@ -40,4 +40,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_BANCODEDADOS_H
+#endif //Hotelaria_UnB_TP1_BANCODEDADOS_H

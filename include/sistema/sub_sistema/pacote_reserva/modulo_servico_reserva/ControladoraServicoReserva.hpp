@@ -2,8 +2,8 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CSRESERVA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CSRESERVA_HPP
+#ifndef Hotelaria_UnB_TP1_CSRESERVA_HPP
+#define Hotelaria_UnB_TP1_CSRESERVA_HPP
 
 #include "../InterfaceServicoReserva.hpp"
 #include "../../../../../libs/io/IO.hpp"
@@ -14,4 +14,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CSRESERVA_HPP
+#endif //Hotelaria_UnB_TP1_CSRESERVA_HPP

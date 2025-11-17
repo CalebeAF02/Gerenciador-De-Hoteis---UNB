@@ -12,45 +12,6 @@ namespace Hotelaria {
         setControladoraServicoAutenticavel(controladora_servico_autenticavel);
     }
 
-    void ControladorInterfaceGerente::exibirMenu() {
-        Menu menu;
-
-        const int OPCAO_VOLTAR_AO_SISTEMA = menu.adcionarItens("Voltar");
-        const int OPCAO_GERENCIE_GERENTES = menu.adcionarItens("Gerencie Gerentes");
-        const int OPCAO_GERENCIE_HOSPEDES = menu.adcionarItens("Gerencie Hospedes");
-        const int OPCAO_GERENCIE_HOTEIS = menu.adcionarItens("Gerencie Hoteis");
-        const int OPCAO_GERENCIE_QUARTOS = menu.adcionarItens("Gerencie Quartos");
-        const int OPCAO_GERENCIE_RESERVAS = menu.adcionarItens("Gerencie Reservas");
-        const int OPCAO_AVALIAR_SOLICITACOES = menu.adcionarItens("Avaliar Solicitacoes de Hospedagem");
-
-        while (this->getEstaAutenticado()) {
-            int opcao = menu.executa("Seja bem vindo a central de servicos");
-
-            if (opcao == OPCAO_VOLTAR_AO_SISTEMA) {
-                this->sair();
-                IO::Println("Voce Saiu da Central de servicos e foi deslogado!");
-            } else if (opcao == OPCAO_GERENCIE_GERENTES) {
-                exibirMenuCRUD();
-            } else if (opcao == OPCAO_GERENCIE_HOSPEDES) {
-                ControladorInterfaceHospede servicosHospede;
-                servicosHospede.exibirMenuCRUD();
-            } else if (opcao == OPCAO_GERENCIE_HOTEIS) {
-                ControladorInterfaceHotel servicosHotel;
-                servicosHotel.exibirMenuCRUD();
-            } else if (opcao == OPCAO_GERENCIE_QUARTOS) {
-                ControladorInterfaceQuarto servicosQuarto;
-                servicosQuarto.exibirMenuCRUD();
-            } else if (opcao == OPCAO_GERENCIE_RESERVAS) {
-                ControladorInterfaceReserva servicosReserva;
-                servicosReserva.exibirMenuCRUD();
-            } else if (opcao == OPCAO_AVALIAR_SOLICITACOES) {
-                ControladorInterfaceHospede servicosHospede;
-                servicosHospede.avaliarSolicitacoes();
-            } else {
-                IO::Println("Opcao Invalida!");
-            }
-        };
-    }
 
     void ControladorInterfaceGerente::exibirMenuCRUD() {
         bool executando = true;

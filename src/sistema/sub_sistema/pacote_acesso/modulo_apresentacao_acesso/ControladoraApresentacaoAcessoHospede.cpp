@@ -3,7 +3,13 @@
 //
 
 #include "ControladoraApresentacaoAcessoHospede.hpp"
+
 namespace Hotelaria {
+    void ControladoraApresentacaoAcessoHospede::setControladoraServicoAcesso(
+        InterfaceServicoAcesso *controladora_servico_acesso_hospede) {
+        this->controladora_servico_acesso_hospede = controladora_servico_acesso_hospede;
+    }
+
     void ControladoraApresentacaoAcessoHospede::exibirMenu() {
         bool executando = true;
 

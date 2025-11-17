@@ -2,8 +2,8 @@
 // Created by caleb on 01/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
-#define GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
+#ifndef Hotelaria_UnB_TP1_CONTROLADORINTERFACEGERENTE_H
+#define Hotelaria_UnB_TP1_CONTROLADORINTERFACEGERENTE_H
 
 #include "ControladoraApresentacaoAutenticavel.hpp"
 #include "ControladorInterfaceHospede.hpp"
@@ -23,7 +23,6 @@ using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladorInterfaceGerente : public ControladoraApresentacaoAutenticavel,
-                                        public InterfaceApresentacaoExibirMenu,
                                         public InterfaceApresentacaoCRUD {
     private:
         PersistenciaGerente persistencia;
@@ -32,9 +31,6 @@ namespace Hotelaria {
 
     public:
         ControladorInterfaceGerente();
-
-        // Acessando servicos
-        void exibirMenu() override;
 
         // Menu CRUD
         void exibirMenuCRUD();
@@ -48,4 +44,4 @@ namespace Hotelaria {
         void remover() override;
     };
 }
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORINTERFACEGERENTE_H
+#endif //Hotelaria_UnB_TP1_CONTROLADORINTERFACEGERENTE_H

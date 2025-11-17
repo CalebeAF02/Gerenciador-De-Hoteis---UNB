@@ -2,8 +2,8 @@
 // Created by caleb on 09/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_TABELA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_TABELA_HPP
+#ifndef Hotelaria_UnB_TP1_TABELA_HPP
+#define Hotelaria_UnB_TP1_TABELA_HPP
 
 #include <iostream>
 #include <string>
@@ -26,4 +26,4 @@ namespace VisualizadorDeTabela {
     };
 };
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_TABELA_HPP
+#endif //Hotelaria_UnB_TP1_TABELA_HPP

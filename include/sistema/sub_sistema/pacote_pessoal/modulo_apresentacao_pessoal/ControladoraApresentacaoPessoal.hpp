@@ -2,14 +2,15 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
+#ifndef Hotelaria_UnB_TP1_CAP_HPP
+#define Hotelaria_UnB_TP1_CAP_HPP
 
-#include "../InterfaceApresentacaoPessoal.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfaceApresentacaoPessoal.hpp"
+#include "IO.hpp"
 #include <iostream>
 
 using namespace std;
+
 namespace Hotelaria {
     class ControladoraApresentacaoPessoal : public InterfaceApresentacaoPessoal {
     private:
@@ -26,13 +27,8 @@ namespace Hotelaria {
     public:
         void executar(const Email);
 
-        void setControladoraServicoPessoal(InterfaceServicoPessoal *);
-    };
-
-    inline void ControladoraApresentacaoPessoal::setControladoraServicoPessoal(
-        InterfaceServicoPessoal *controladora_servico_pessoal) {
-        this->controladora_servico_pessoal = controladora_servico_pessoal;
+        void setControladoraServicoPessoal(InterfaceServicoPessoal *) override;
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CAP_HPP
+#endif //Hotelaria_UnB_TP1_CAP_HPP

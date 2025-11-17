@@ -2,8 +2,8 @@
 // Created by caleb on 01/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_PERSISTENCIAHOTEL_H
-#define GERENCIADOR_DE_HOTEIS_UNB_PERSISTENCIAHOTEL_H
+#ifndef Hotelaria_UnB_TP1_PERSISTENCIAHOTEL_H
+#define Hotelaria_UnB_TP1_PERSISTENCIAHOTEL_H
 
 #include "Hotel.hpp"
 #include "BancoDeDados.hpp"
@@ -28,4 +28,4 @@ namespace Hotelaria {
 }
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_PERSISTENCIAHOTEL_H
+#endif //Hotelaria_UnB_TP1_PERSISTENCIAHOTEL_H

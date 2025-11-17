@@ -2,8 +2,8 @@
 // Created by caleb on 02/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP
+#ifndef Hotelaria_UnB_TP1_CONSOLEIO_HPP
+#define Hotelaria_UnB_TP1_CONSOLEIO_HPP
 
 #include <iostream>
 #include <string>
@@ -31,4 +31,4 @@ namespace IO {
     void Print(const string &mensagem);
 };
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CONSOLEIO_HPP
+#endif //Hotelaria_UnB_TP1_CONSOLEIO_HPP

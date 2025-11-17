@@ -2,13 +2,13 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_CAI_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_CAI_HPP
+#ifndef Hotelaria_UnB_TP1_CAI_HPP
+#define Hotelaria_UnB_TP1_CAI_HPP
 
-#include "../../../../libs/io/IO.hpp"
+#include "../../../../../libs/io/IO.hpp"
 #include <iostream>
 #include "Menu.hpp"
-#include "InterfaceApresentacaoAcesso.hpp"
+#include "../InterfaceApresentacaoAcesso.hpp"
 #include "ControladorInterfaceGerente.hpp"
 #include "ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"
@@ -21,12 +21,18 @@ using namespace VisualizadorDeMenu;
 namespace Hotelaria {
     class ControladoraApresentacaoAcessoGerente : public InterfaceApresentacaoAcesso {
     private:
+        InterfaceServicoAcesso *controladora_servico_acesso_gerente;
+
         ControladorInterfaceGerente controladorGerente;
+
     public:
         void exibirMenu() override;
 
+        void setControladoraServicoAcesso(InterfaceServicoAcesso *) override;
+
+        void exibirMenuGerenciador();
     };
 }
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_CAI_HPP
+#endif //Hotelaria_UnB_TP1_CAI_HPP

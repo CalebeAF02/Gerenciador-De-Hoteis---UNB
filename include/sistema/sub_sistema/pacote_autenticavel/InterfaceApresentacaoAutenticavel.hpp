@@ -2,11 +2,11 @@
 // Created by caleb on 14/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
+#ifndef Hotelaria_UnB_TP1_IAA_HPP
+#define Hotelaria_UnB_TP1_IAA_HPP
 
 #include "InterfaceServicoAutenticavel.hpp"
-#include "../../../../libs/io/IO.hpp"
+#include "IO.hpp"
 #include <iostream>
 using namespace std;
 
@@ -15,9 +15,9 @@ namespace Hotelaria {
     public:
         virtual void sair() = 0;
 
-        virtual bool autenticar(Email*) = 0; //  solicitado o serviço.
+        virtual bool autenticar(Email *) = 0; //  solicitado o serviço.
 
-        virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel*) = 0;
+        virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *) = 0;
 
         virtual void setEstaAutenticado(bool estaAutenticado) = 0;
 
@@ -26,4 +26,4 @@ namespace Hotelaria {
 }
 
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_IAA_HPP
+#endif //Hotelaria_UnB_TP1_IAA_HPP

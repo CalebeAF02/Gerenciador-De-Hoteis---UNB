@@ -2,8 +2,8 @@
 // Created by caleb on 08/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_HOTELDTO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_HOTELDTO_HPP
+#ifndef Hotelaria_UnB_TP1_HOTELDTO_HPP
+#define Hotelaria_UnB_TP1_HOTELDTO_HPP
 
 #include <iostream>
 
@@ -69,4 +69,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_HOTELDTO_HPP
+#endif //Hotelaria_UnB_TP1_HOTELDTO_HPP

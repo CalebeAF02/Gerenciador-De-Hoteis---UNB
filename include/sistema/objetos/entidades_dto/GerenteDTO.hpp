@@ -2,8 +2,8 @@
 // Created by caleb on 09/11/2025.
 //
 
-#ifndef GERENCIADOR_DE_HOTEIS_UNB_GERENTEDTO_HPP
-#define GERENCIADOR_DE_HOTEIS_UNB_GERENTEDTO_HPP
+#ifndef Hotelaria_UnB_TP1_GERENTEDTO_HPP
+#define Hotelaria_UnB_TP1_GERENTEDTO_HPP
 
 #include <string>
 
@@ -19,10 +19,7 @@ namespace Hotelaria {
     public:
         GerenteDTO() = default;
 
-        GerenteDTO(int id, string nome, string email, string ramal) : id(id),
-                                                                      nome(nome),
-                                                                      email(email),
-                                                                      ramal(ramal) {
+        GerenteDTO(int id, string nome, string email, string ramal) : id(id), nome(nome), email(email), ramal(ramal) {
         };
 
         int getId() const {
@@ -59,4 +56,4 @@ namespace Hotelaria {
     };
 }
 
-#endif //GERENCIADOR_DE_HOTEIS_UNB_GERENTEDTO_HPP
+#endif //Hotelaria_UnB_TP1_GERENTEDTO_HPP
