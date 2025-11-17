@@ -13,6 +13,7 @@
 # 2. PASTAS E ARQUIVOS DE BUILD DO VISUAL STUDIO
 # =======================================================
 # Pastas de saida (Debug, Release, etc.)
+.idea
 Debug/
 Release/
 x64/

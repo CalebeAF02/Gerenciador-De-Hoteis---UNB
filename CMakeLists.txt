@@ -51,22 +51,34 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Sub Sistema
 
         ## Apresentacao
-        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraApresentacaoAutenticavel.cpp
-        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraApresentacaoPessoal.cpp
-        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraApresentacaoHospede.cpp
-        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraApresentacaoHotel.cpp
-        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraApresentacaoQuarto.cpp
-        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraApresentacaoReserva.cpp
-        src/sistema/sub_sistema/modulo_servico_sistema_acesso/ControladoraApresentacaoAcessoGerente.cpp
-        src/sistema/sub_sistema/modulo_servico_sistema_acesso/ControladoraApresentacaoAcessoHospede.cpp
+        src/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel/ControladoraApresentacaoAutenticavel.cpp
+
+        src/sistema/sub_sistema/pacote_pessoal/modulo_apresentacao_pessoal/ControladoraApresentacaoPessoal.cpp
+
+        src/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede/ControladoraApresentacaoHospede.cpp
+
+        src/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel/ControladoraApresentacaoHotel.cpp
+
+        src/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto/ControladoraApresentacaoQuarto.cpp
+
+        src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladoraApresentacaoReserva.cpp
+
+        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoGerente.cpp
+
+        src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoHospede.cpp
 
         ## Servico
-        src/sistema/sub_sistema/modulo-servico_autenticavel/ControladoraServicoAutenticavel.cpp
-        src/sistema/sub_sistema/modulo-servico_pessoal/ControladoraServicoPessoal.cpp
-        src/sistema/sub_sistema/modulo-servico_hospede/ControladoraServicoHospede.cpp
-        src/sistema/sub_sistema/modulo-servico_hotel/ControladoraServicoHotel.cpp
-        src/sistema/sub_sistema/modulo-servico_quarto/ControladoraServicoQuarto.cpp
-        src/sistema/sub_sistema/modulo-servico_reserva/ControladoraServicoReserva.cpp
+        src/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel/ControladoraServicoAutenticavel.cpp
+
+        src/sistema/sub_sistema/pacote_pessoal/modulo_servico_pessoal/ControladoraServicoPessoal.cpp
+
+        src/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede/ControladoraServicoHospede.cpp
+
+        src/sistema/sub_sistema/pacote_hotel/modulo_servico_hotel/ControladoraServicoHotel.cpp
+
+        src/sistema/sub_sistema/pacote_quarto/modulo_servico_quarto/ControladoraServicoQuarto.cpp
+
+        src/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva/ControladoraServicoReserva.cpp
 
         # Controladores de Entidades
         src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
@@ -173,13 +185,30 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema
 
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_autenticavel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hospede
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_hotel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_pessoal
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_quarto
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo-servico_reserva
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/modulo_servico_sistema_acesso
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal/modulo_apresentacao_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal/modulo_servico_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_servico_hotel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_servico_quarto
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva
 
         ${CMAKE_SOURCE_DIR}/include/sistema/objetos/dominios
         ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades_dto
