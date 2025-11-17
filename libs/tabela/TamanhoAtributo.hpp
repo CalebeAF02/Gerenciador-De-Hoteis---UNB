@@ -31,14 +31,6 @@ namespace VisualizadorDeTabela {
 
         int getTamanho();
     };
-
-    inline string TamanhoAtributo::getNome() {
-        return nome;
-    }
-
-    inline int TamanhoAtributo::getTamanho() {
-        return tamanho;
-    };
 }
 
 #endif //GERENCIADOR_DE_HOTEIS_UNB_TAMANHOATRIBUTO_HPP

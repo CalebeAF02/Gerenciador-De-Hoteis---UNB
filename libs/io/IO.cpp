@@ -8,7 +8,6 @@
 // Created by caleb on 02/11/2025.
 //
 namespace IO {
-    //-----------------------------------------------------------------------------------------------------------
     string LerLinha() {
         string valor = "";
         // Limpa o buffer antes de ler, para evitar lixo (importante em C++ com cin/getline misturado)
@@ -18,20 +17,20 @@ namespace IO {
         getline(cin, valor);
         return valor;
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     string LerOpcao() {
         cout << "Opcao: ";
         return LerLinha();
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void Println(const string &mensagem) {
         cout << mensagem << endl;
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void Print(const string &pergunta) {
         cout << pergunta;
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     bool tentarNovamente() {
         while (true) {
             Println("Deseja :");

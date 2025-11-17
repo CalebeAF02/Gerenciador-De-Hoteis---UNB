@@ -31,13 +31,5 @@ namespace VisualizadorDeTabela {
 
         string getValor();
     };
-
-    inline string Atributo::getNome() {
-        return nome;
-    }
-
-    inline string Atributo::getValor() {
-        return valor;
-    }
 }
 #endif //GERENCIADOR_DE_HOTEIS_UNB_ATRIBUTO_HPP

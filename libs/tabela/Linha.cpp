@@ -5,6 +5,10 @@
 #include "Linha.hpp"
 
 namespace VisualizadorDeTabela {
+    vector<shared_ptr<Atributo> > Linha::getAtributos() {
+        return atributos;
+    };
+
     void Linha::atributo(string nome, string valor) {
         shared_ptr<Atributo> atributo = make_shared<Atributo>(nome, valor);
 

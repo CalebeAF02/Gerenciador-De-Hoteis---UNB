@@ -5,7 +5,6 @@
 #include "Menu.hpp"
 
 namespace VisualizadorDeMenu {
-    //-----------------------------------------------------------------------------------------------------------
     int Menu::adcionarItens(string nome) {
         contador++;
         // emplace_back adiciona ao vinal do vetor.
@@ -13,11 +12,11 @@ namespace VisualizadorDeMenu {
 
         return contador;
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     vector<MenuItem> Menu::listar() {
         return menuItens;
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     int Menu::executa(string tituloStr) {
         Formato::TituloEmCaixa(tituloStr);
         for (int i = 0; i < menuItens.size(); i++) {
@@ -34,5 +33,4 @@ namespace VisualizadorDeMenu {
         }
         return opcaoInt;
     }
-    //-----------------------------------------------------------------------------------------------------------
 }

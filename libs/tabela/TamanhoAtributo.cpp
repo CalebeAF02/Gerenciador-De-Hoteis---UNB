@@ -5,6 +5,14 @@
 #include "TamanhoAtributo.hpp"
 
 namespace VisualizadorDeTabela {
+    string TamanhoAtributo::getNome() {
+        return nome;
+    }
+
+    int TamanhoAtributo::getTamanho() {
+        return tamanho;
+    };
+
     void TamanhoAtributo::setNome(string nome) {
         this->nome = nome;
     };

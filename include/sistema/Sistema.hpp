@@ -37,12 +37,5 @@ namespace Hotelaria {
     public:
         void iniciar();
     };
-
-    inline bool Sistema::getExecutandoSistema() {
-        return executando;
-    };
-    inline void Sistema::sair() {
-        this->executando = false;
-    }
 }
 #endif //GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H

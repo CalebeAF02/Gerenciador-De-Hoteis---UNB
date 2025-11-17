@@ -1,7 +1,6 @@
 #include "SmokeTeste.hpp"
 
 namespace Teste {
-    //-----------------------------------------------------------------------------------------------------------
     void SmokeTeste::testarDominio(
         int esperando_resultado,
         const string &valor_teste,
@@ -43,7 +42,21 @@ namespace Teste {
         }
     }
 
-    //-----------------------------------------------------------------------------------------------------------
+    template<typename T>
+    void SmokeTeste::testarDominio(
+        int esperando_resultado,
+        const T &valor_teste,
+        const string &dominio,
+        function<void()> funcao_validacao) {
+        // Converte o tipo T (int, float, etc.) para string e chama a versão string.
+        this->testarDominio(
+            esperando_resultado,
+            string(valor_teste), // Conversão para string
+            dominio,
+            funcao_validacao
+        );
+    }
+
     void SmokeTeste::testarEntidade(
         int esperando_resultado,
         const string &valor_teste,
@@ -83,5 +96,20 @@ namespace Teste {
             // Registra falha (a contagem de problemas já é feita dentro de checaResultado)
             InterfaceDeTeste::registrarFalha(entidade, valor_teste, erro_capturado);
         }
-    }; //-----------------------------------------------------------------------------------------------------------
+    };
+
+    template<typename T>
+    void SmokeTeste::testarEntidade(
+        int esperando_resultado,
+        const T &valor_teste,
+        const string &entidade,
+        function<void()> funcao_validacao) {
+        // Converte o tipo T (int, float, etc.) para string e chama a versão string.
+        this->testarEntidade(
+            esperando_resultado,
+            string(valor_teste), // Conversão para string
+            entidade,
+            funcao_validacao
+        );
+    }
 }

@@ -4,8 +4,8 @@
 #include <limits>
 
 #include "../io/IO.hpp"
+
 namespace Formato {
-    //-----------------------------------------------------------------------------------------------------------
     string RepetirCaracterMesmaLinha(int qntCaracteres, char c) {
         int i = 0;
         string temp = "";
@@ -24,7 +24,7 @@ namespace Formato {
             i++;
         }
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     void TituloEmCaixa(const string &titulo) {
         const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
@@ -46,7 +46,7 @@ namespace Formato {
         RepetirCaracter(LARGURA, '=');
         cout << "\n";
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     void SeparadorDeCategoria(const string &titulo) {
         const int LARGURA = 70; // Mais largo, ideal para o relatório de teste
 
@@ -68,7 +68,7 @@ namespace Formato {
         RepetirCaracter(LARGURA, '-');
         cout << "\n";
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     void OpcaoEmCaixa(const string &texto, const int &numero) {
         cout << "------------------------------\n";
         cout << "| [" << numero << "] " << texto << "\n";
@@ -80,9 +80,8 @@ namespace Formato {
         cout << "| [" << numero << "] " << texto << "\n";
         cout << "------------------------------\n";
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     void OpcaoSimples(const string &texto, const int &numero) {
         cout << "[" << numero << "] " << texto << "\n";
     };
-    //-----------------------------------------------------------------------------------------------------------
 }

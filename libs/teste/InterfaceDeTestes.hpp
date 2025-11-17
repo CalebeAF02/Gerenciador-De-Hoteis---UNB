@@ -51,17 +51,5 @@ namespace Teste {
 
         static int getTestesProblema();
     };
-
-    inline int InterfaceDeTeste::getTestes() {
-        return contTodalTestes;
-    }
-
-    inline int InterfaceDeTeste::getTestesOk() {
-        return contTodalTestesOk;
-    }
-
-    inline int InterfaceDeTeste::getTestesProblema() {
-        return contTodalTestesProblema;
-    }
 }
 #endif // TESTE_INCLUDE

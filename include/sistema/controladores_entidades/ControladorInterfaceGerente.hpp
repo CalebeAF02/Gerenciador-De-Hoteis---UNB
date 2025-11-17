@@ -31,10 +31,7 @@ namespace Hotelaria {
         bool estaAutenticado = false;
 
     public:
-        ControladorInterfaceGerente() {
-            InterfaceServicoAutenticavel *controladora_servico_autenticavel = new ControladoraServicoAutenticavel();
-            setControladoraServicoAutenticavel(controladora_servico_autenticavel);
-        }
+        ControladorInterfaceGerente();
 
         // Acessando servicos
         void exibirMenu() override;

@@ -5,7 +5,13 @@
 #include "../../../include/sistema/controladores_entidades/ControladorInterfaceGerente.hpp"
 
 #include "ControladorInterfaceGerente.hpp"
+
 namespace Hotelaria {
+    ControladorInterfaceGerente::ControladorInterfaceGerente() {
+        InterfaceServicoAutenticavel *controladora_servico_autenticavel = new ControladoraServicoAutenticavel();
+        setControladoraServicoAutenticavel(controladora_servico_autenticavel);
+    }
+
     void ControladorInterfaceGerente::exibirMenu() {
         Menu menu;
 
@@ -45,19 +51,19 @@ namespace Hotelaria {
             }
         };
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void ControladorInterfaceGerente::exibirMenuCRUD() {
         bool executando = true;
 
         while (this->getEstaAutenticado()) {
-            FabricaGerenciavel<ControladorInterfaceGerente> fabrica;
+            FabricaGerenciavel < ControladorInterfaceGerente > fabrica;
             fabrica.executarMenu("Menu CRUD Gerente", executando);
             if (executando == false) {
                 break;
             }
         };
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void ControladorInterfaceGerente::criar() {
         bool criado = false;
         bool tudoOK = true;
@@ -126,7 +132,7 @@ namespace Hotelaria {
             }
         }
     };
-    //-----------------------------------------------------------------------------------------------------------
+
     void ControladorInterfaceGerente::ler() {
         vector<GerenteDTO *> lista = persistencia.listar();
 
@@ -147,7 +153,7 @@ namespace Hotelaria {
 
         tab.exibirTabela("Lista De Gerentes");
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void ControladorInterfaceGerente::atualizar() {
         IO::Print("Informe o Id do Gerente: ");
         string id_gerente = IO::LerLinha();
@@ -242,7 +248,7 @@ namespace Hotelaria {
             IO::Println("Erro: Id Invalido");
         }
     }
-    //-----------------------------------------------------------------------------------------------------------
+
     void ControladorInterfaceGerente::remover() {
         IO::Print("Informe o Id do Gerente: ");
         string id_gerente = IO::LerLinha();
@@ -275,5 +281,4 @@ namespace Hotelaria {
                 IO::Println("Erro gerente nao encontrado.");
         }
     }
-    //-----------------------------------------------------------------------------------------------------------
 }

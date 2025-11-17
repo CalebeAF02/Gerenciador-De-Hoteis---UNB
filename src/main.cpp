@@ -41,8 +41,8 @@ using namespace Hotelaria;
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_SMOKE
-//-----------------------------------------------------------------------------------------------------------
+#define MODO_ATUAL MODO_PRODUCAO
+
 void executandoNovoSmoke() {
     TestandoSmoke teste;
     teste.executarSmokeTest();
@@ -64,7 +64,7 @@ void burlandoSistema() {
     SistemaHacker sistema_hacker;
     sistema_hacker.iniciar();
 }
-//-----------------------------------------------------------------------------------------------------------
+
 int main() {
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
@@ -81,8 +81,7 @@ int main() {
         }
     }
     return 0;
-}; //-----------------------------------------------------------------------------------------------------------
-/*
+}; /*
  * Edicoes a fazer :
  *
  * Funcionalidades do sistema
@@ -99,4 +98,4 @@ int main() {
  *
  * 3) Nao permite exclusoes que gerem inconcistencias!
  *
- */ //-----------------------------------------------------------------------------------------------------------
+ */

@@ -11,6 +11,7 @@
 #include "../../libs/formato/Formato.hpp"
 
 using namespace std;
+
 namespace Hotelaria {
     class BancoDeDados {
     private:
@@ -27,10 +28,9 @@ namespace Hotelaria {
         void tabelaReserva(sqlite3 *db);
 
         void tabelaSolicitacoesDeHospedagem(sqlite3 *db);
+
     public:
-        sqlite3 *getConexao() const {
-            return db;
-        }
+        sqlite3 *getConexao() const;
 
         bool abrindoConexao();
 

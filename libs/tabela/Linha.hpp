@@ -25,9 +25,7 @@ namespace VisualizadorDeTabela {
 
         void atributo(string nome, int valor);
 
-        vector<shared_ptr<Atributo> > getAtributos() {
-            return atributos;
-        };
+        vector<shared_ptr<Atributo> > getAtributos();
     };
 }
 

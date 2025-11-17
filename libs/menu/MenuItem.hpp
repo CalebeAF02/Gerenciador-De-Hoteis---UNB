@@ -28,18 +28,6 @@ namespace VisualizadorDeMenu {
 
         int getValorConstante();
     };
-
-    inline string MenuItem::getNome() {
-        return nome;
-    }
-
-    inline string MenuItem::getValor() {
-        return valor;
-    }
-
-    inline int MenuItem::getValorConstante() {
-        return valorConstante;
-    }
 }
 
 #endif //ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_MENUITEM_H

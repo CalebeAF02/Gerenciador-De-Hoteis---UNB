@@ -6,13 +6,23 @@
 
 #include "sqlite3.h"
 #include "Versao.hpp"
+
 namespace Hotelaria {
+    bool Sistema::getExecutandoSistema() {
+        return executando;
+    };
+
+    void Sistema::sair() {
+        this->executando = false;
+    }
+
     void Sistema::iniciar() {
         IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
         while (getExecutandoSistema()) {
             exibirMenu();
         }
     }
+
     void Sistema::exibirMenu() {
         Menu menu;
 

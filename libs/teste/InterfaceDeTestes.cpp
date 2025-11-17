@@ -1,14 +1,25 @@
 #include "InterfaceDeTestes.hpp"
 
-namespace Teste
-{
+namespace Teste {
     int InterfaceDeTeste::contTodalTestes = 0;
     int InterfaceDeTeste::contTodalTestesOk = 0;
     int InterfaceDeTeste::contTodalTestesProblema = 0;
 
     vector<string> InterfaceDeTeste::listaFalhas;
 
-    //-----------------------------------------------------------------------------------------------------------
+
+    int InterfaceDeTeste::getTestes() {
+        return contTodalTestes;
+    }
+
+    int InterfaceDeTeste::getTestesOk() {
+        return contTodalTestesOk;
+    }
+
+    int InterfaceDeTeste::getTestesProblema() {
+        return contTodalTestesProblema;
+    }
+
     void InterfaceDeTeste::checaResultado(int esperando_resultado, int resultado_teste) {
         bool sucesso = (esperando_resultado == resultado_teste);
 
@@ -33,7 +44,6 @@ namespace Teste
         }
     }
 
-    //-----------------------------------------------------------------------------------------------------------
     void InterfaceDeTeste::apresentacaoTeste(const string &valor) {
         cout << " > Testando entrada: [" << valor << "]";
         contTodalTestes++;
@@ -44,13 +54,11 @@ namespace Teste
         contTodalTestes++;
     }
 
-    //-----------------------------------------------------------------------------------------------------------
     void InterfaceDeTeste::registrarFalha(const string &dominio, const string &entrada, const string &erro) {
         string falha = "FALHA: " + dominio + " (Entrada: " + entrada + " | Erro: " + erro + ")";
         listaFalhas.push_back(falha);
     }
 
-    //-----------------------------------------------------------------------------------------------------------
     void InterfaceDeTeste::mostrarRelatorioDeTestes() {
         Formato::TituloEmCaixa("RESUMO GERAL DOS TESTES");
         IO::Println(" > Total de Testes Executados: " + to_string(getTestes()));
@@ -72,6 +80,4 @@ namespace Teste
         }
         cout << "======================================================================" << endl;
     }
-
-    //-----------------------------------------------------------------------------------------------------------
 }

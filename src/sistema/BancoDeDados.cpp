@@ -3,7 +3,12 @@
 //
 
 #include "BancoDeDados.hpp"
+
 namespace Hotelaria {
+    sqlite3 *BancoDeDados::getConexao() const {
+        return db;
+    }
+
     bool BancoDeDados::abrindoConexao() {
         //_________________________ABRE CONEXÂO_______________________________
         int rc = sqlite3_open("hotel.db", &db);
