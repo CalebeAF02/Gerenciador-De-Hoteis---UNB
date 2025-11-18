@@ -6,7 +6,7 @@
 
 #include "../../../../../include/sistema/sub_sistema/pacote_fabrica/modulo_apresentacao_fabrica/FabricaGerenciavel.hpp"
 #include "../../../../../libs/menu/Menu.hpp"
-#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaHospede.hpp"
+#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaHospede.hpp"
 #include "sqlite3.h"
 
 namespace Hotelaria {
@@ -25,7 +25,7 @@ namespace Hotelaria {
     void ControladorInterfaceHospede::avaliarSolicitacoes() {
         Formato::TituloEmCaixa("Avaliar Solicitacoes de Hospedagem");
 
-        auto pendentes = PersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
+        auto pendentes = ControladoraPersistenciaSolicitacaoHospedagem::buscarPorStatus(0); // status = pendente
 
         if (pendentes.empty()) {
             IO::Println("Nenhuma solicitacao pendente.");
@@ -46,14 +46,14 @@ namespace Hotelaria {
             if (escolha == "A" || escolha == "a") {
                 solicitacao.setStatus(StatusSolicitacaoHospedagem::APROVADO); // aprovada
                 solicitacao.setMotivoRecusa(""); // limpa motivo
-                PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+                ControladoraPersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
                 IO::Println("Solicitacao aprovada com sucesso.");
             } else if (escolha == "R" || escolha == "r") {
                 IO::Println("Informe o motivo da recusa:");
                 string motivo = IO::LerLinha();
                 solicitacao.setStatus(StatusSolicitacaoHospedagem::RECUSADO); // recusada
                 solicitacao.setMotivoRecusa(motivo);
-                PersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
+                ControladoraPersistenciaSolicitacaoHospedagem::atualizar(solicitacao);
                 IO::Println("Solicitacao recusada.");
             } else {
                 IO::Println("Opcao invalida. Solicitacao nao foi alterada.");
@@ -116,7 +116,7 @@ namespace Hotelaria {
                     IO::Println("Hospede Cadastrado");
                     criado = true;
 
-                    PersistenciaHospede persistencia;
+                    ControladoraPersistenciaHospede persistencia;
                     persistencia.criar(*hospede);
 
                     criado = true;

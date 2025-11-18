@@ -15,7 +15,7 @@
 
 using namespace std;
 namespace Hotelaria {
-    class PersistenciaHotel {
+    class ControladoraPersistenciaHotel {
     public:
         bool inserir(Hotel *hotel);
 

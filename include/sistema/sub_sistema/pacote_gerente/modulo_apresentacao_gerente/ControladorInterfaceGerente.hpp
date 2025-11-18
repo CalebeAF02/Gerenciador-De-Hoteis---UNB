@@ -10,7 +10,7 @@
 #include "../../pacote_hotel/modulo_apresentacao_hotel/ControladorInterfaceHotel.hpp"
 #include "../../pacote_quarto/modulo_apresentacao_quarto/ControladorInterfaceQuarto.hpp"
 #include "../../pacote_reserva/modulo_apresentacao_reserva/ControladorInterfaceReserva.hpp"
-#include "../modulo_persistencia_gerente/PersistenciaGerente.hpp"
+#include "../modulo_persistencia_gerente/ControladoraPersistenciaGerente.hpp"
 #include "ControladoraServicoAutenticavel.hpp"
 #include "../../../../../libs/io/IO.hpp"
 #include "Tabela.hpp"
@@ -25,7 +25,7 @@ namespace Hotelaria {
     class ControladorInterfaceGerente : public ControladoraApresentacaoAutenticavel,
                                         public MenuCRUD {
     private:
-        PersistenciaGerente persistencia;
+        ControladoraPersistenciaGerente persistencia;
         bool executando = true;
         bool estaAutenticado = false;
 

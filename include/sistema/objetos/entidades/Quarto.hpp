@@ -21,45 +21,24 @@ namespace Hotelaria {
     public:
         Quarto() = default;
 
-        Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal) {
-            setNumero(numero);
-            setCapacidade(capacidade);
-            setDiaria(diaria);
-            setRamal(ramal);
-        }
+        Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal);
 
-        void setNumero(const Numero &newNumero) {
-            this->numero = newNumero;
-        }
+        void setNumero(const Numero &newNumero);
 
-        void setCapacidade(const Capacidade &newCapacidade) {
-            this->capacidade = newCapacidade;
-        }
+        void setCapacidade(const Capacidade &newCapacidade);
 
-        void setDiaria(const Dinheiro &newDiaria) {
-            this->diaria = newDiaria;
-        }
+        void setDiaria(const Dinheiro &newDiaria);
 
-        void setRamal(const Ramal &newRamal) {
-            this->ramal = newRamal;
-        }
+        void setRamal(const Ramal &newRamal);
 
         //Get
-        string getNumero() const {
-            return numero.getValor();
-        }
+        string getNumero() const;
 
-        int getCapacidade() const {
-            return capacidade.getValor();
-        }
+        int getCapacidade() const;
 
-        int getDiaria() const {
-            return diaria.getValor();
-        }
+        int getDiaria() const;
 
-        string getRamal() const {
-            return ramal.getValor();
-        }
+        string getRamal() const;
     };
 }
 

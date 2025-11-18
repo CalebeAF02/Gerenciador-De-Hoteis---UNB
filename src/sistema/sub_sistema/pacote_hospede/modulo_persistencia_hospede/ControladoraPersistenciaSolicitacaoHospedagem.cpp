@@ -2,12 +2,12 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaSolicitacaoHospedagem.hpp"
+#include "ControladoraPersistenciaSolicitacaoHospedagem.hpp"
 
 namespace Hotelaria {
     static const char *DB_PATH = "hotel.db";
 
-    void PersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
+    void ControladoraPersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
         BancoDeDados banco;
 
         if (!banco.abrindoConexao())
@@ -38,7 +38,7 @@ namespace Hotelaria {
         banco.fechandoConexao();
     }
 
-    vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorEmail(const string &email) {
+    vector<SolicitacaoHospedagem> ControladoraPersistenciaSolicitacaoHospedagem::buscarPorEmail(const string &email) {
         sqlite3 *db;
         sqlite3_open(DB_PATH, &db);
 
@@ -80,7 +80,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    vector<SolicitacaoHospedagem> PersistenciaSolicitacaoHospedagem::buscarPorStatus(int statusFiltro) {
+    vector<SolicitacaoHospedagem> ControladoraPersistenciaSolicitacaoHospedagem::buscarPorStatus(int statusFiltro) {
         sqlite3 *db;
         sqlite3_open(DB_PATH, &db);
 
@@ -123,7 +123,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    void PersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &s) {
+    void ControladoraPersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &s) {
         sqlite3 *db;
         sqlite3_open(DB_PATH, &db);
 

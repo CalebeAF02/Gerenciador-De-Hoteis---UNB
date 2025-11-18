@@ -85,7 +85,7 @@ void ControladorInterfaceHotel::criar() {
                 }
             }
             if (tudoOK) {
-                PersistenciaHotel persistencia;
+                ControladoraPersistenciaHotel persistencia;
                 bool sucesso = persistencia.inserir(hotel);
 
                 if (sucesso) {
@@ -131,7 +131,7 @@ void ControladorInterfaceHotel::atualizar() {
     string id_hotel = IO::LerLinha();
 
     if (Utils::verificaSeENumero(id_hotel)) {
-        PersistenciaHotel persistencia;
+        ControladoraPersistenciaHotel persistencia;
         bool alterado = false;
 
         int id_numero = stoi(id_hotel);
@@ -212,7 +212,7 @@ void ControladorInterfaceHotel::atualizar() {
 
 
             if (alterado) {
-                PersistenciaHotel persistencia;
+                ControladoraPersistenciaHotel persistencia;
                 bool sucesso = persistencia.atualizar(id_numero, hotel);
                 if (sucesso) {
                     IO::Println("Hotel Atualizado!");

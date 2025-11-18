@@ -10,10 +10,10 @@
 
 #include "../../../../../libs/formato/Formato.hpp"
 #include "../../../../../libs/menu/ExibirMenu.hpp"
-#include "../modulo_persistencia_hospede/PersistenciaHospede.hpp"
+#include "../modulo_persistencia_hospede/ControladoraPersistenciaHospede.hpp"
 #include "../../pacote_fabrica/InterfaceFabricaGerenciavel.hpp"
 #include "SolicitacaoHospedagem.hpp"
-#include "../modulo_persistencia_hospede/PersistenciaSolicitacaoHospedagem.hpp"
+#include "../modulo_persistencia_hospede/ControladoraPersistenciaSolicitacaoHospedagem.hpp"
 #include "../../pacote_fabrica/modulo_apresentacao_fabrica/FabricaGerenciavel.hpp"
 #include "../../../../../libs/io/IO.hpp"
 
@@ -25,7 +25,7 @@ using namespace std;
 namespace Hotelaria {
     class ControladorInterfaceHospede : public MenuCRUD {
     private:
-        PersistenciaHospede persistencia;
+        ControladoraPersistenciaHospede persistencia;
         bool executando = true;
 
     public:

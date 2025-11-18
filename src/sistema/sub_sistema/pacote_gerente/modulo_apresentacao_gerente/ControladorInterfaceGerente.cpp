@@ -75,7 +75,7 @@ namespace Hotelaria {
                     }
                 }
                 if (tudoOK) {
-                    PersistenciaGerente persistencia;
+                    ControladoraPersistenciaGerente persistencia;
                     bool sucesso = persistencia.inserir(*gerente);
 
                     if (sucesso) {
@@ -106,7 +106,7 @@ namespace Hotelaria {
         for (GerenteDTO *item: lista) {
             Linha *objLinha = tab.criarObj();
 
-            objLinha->atributo("id", item->getId());
+            objLinha->atributo("id", item->getGerenteId());
             objLinha->atributo("Nome", item->getNome());
             objLinha->atributo("Email", item->getEmail());
             objLinha->atributo("Ramal", item->getRamal());
@@ -120,7 +120,7 @@ namespace Hotelaria {
         string id_gerente = IO::LerLinha();
 
         if (Utils::verificaSeENumero(id_gerente)) {
-            PersistenciaGerente persistencia;
+            ControladoraPersistenciaGerente persistencia;
             bool alterado = false;
 
             int id_numero = stoi(id_gerente);
@@ -133,7 +133,7 @@ namespace Hotelaria {
             for (GerenteDTO item: lista) {
                 Linha *objLinha = tab.criarObj();
 
-                objLinha->atributo("Id", item.getId());
+                objLinha->atributo("Id", item.getGerenteId());
                 objLinha->atributo("Nome", item.getNome());
                 objLinha->atributo("Email", item.getEmail());
                 objLinha->atributo("Ramal", item.getRamal());
@@ -215,7 +215,7 @@ namespace Hotelaria {
         string id_gerente = IO::LerLinha();
 
         if (Utils::verificaSeENumero(id_gerente)) {
-            PersistenciaGerente persistencia;
+            ControladoraPersistenciaGerente persistencia;
 
             int id_numero = stoi(id_gerente);
             optional<GerenteDTO> existe_gerente = persistencia.buscaGerentePorID(id_numero);
@@ -227,7 +227,7 @@ namespace Hotelaria {
             for (GerenteDTO item: lista) {
                 Linha *objLinha = tab.criarObj();
 
-                objLinha->atributo("Id", item.getId());
+                objLinha->atributo("Id", item.getGerenteId());
                 objLinha->atributo("Nome", item.getNome());
                 objLinha->atributo("Email", item.getEmail());
                 objLinha->atributo("Ramal", item.getRamal());

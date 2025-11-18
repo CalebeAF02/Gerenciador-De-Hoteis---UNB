@@ -2,9 +2,9 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/PersistenciaGerente.hpp"
+#include "../../../../../include/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/ControladoraPersistenciaGerente.hpp"
 namespace Hotelaria {
-    bool PersistenciaGerente::inserir(Gerente &gerente) {
+    bool ControladoraPersistenciaGerente::inserir(Gerente &gerente) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -40,7 +40,7 @@ namespace Hotelaria {
         return true;
     }
 
-    vector<GerenteDTO *> PersistenciaGerente::listar() {
+    vector<GerenteDTO *> ControladoraPersistenciaGerente::listar() {
         vector<GerenteDTO *> lista;
 
         BancoDeDados banco;
@@ -75,7 +75,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    bool PersistenciaGerente::autenticarGerente(const string &email, const string &senha) {
+    bool ControladoraPersistenciaGerente::autenticarGerente(const string &email, const string &senha) {
         BancoDeDados banco;
 
         if (email.empty() || senha.empty())
@@ -111,7 +111,7 @@ namespace Hotelaria {
         return statusAutenticacao;
     }
 
-    bool PersistenciaGerente::atualizar(int id, const Gerente &gerente) {
+    bool ControladoraPersistenciaGerente::atualizar(int id, const Gerente &gerente) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -140,7 +140,7 @@ namespace Hotelaria {
         return rc == SQLITE_DONE;
     }
 
-    bool PersistenciaGerente::excluirPorId(int id) {
+    bool ControladoraPersistenciaGerente::excluirPorId(int id) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -169,7 +169,7 @@ namespace Hotelaria {
         return true;
     }
 
-    optional<GerenteDTO> PersistenciaGerente::buscaGerentePorID(int id) {
+    optional<GerenteDTO> ControladoraPersistenciaGerente::buscaGerentePorID(int id) {
         optional<GerenteDTO> dto = nullopt;
 
         BancoDeDados banco;

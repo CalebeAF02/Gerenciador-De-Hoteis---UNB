@@ -11,7 +11,7 @@ using namespace std;
 namespace Hotelaria {
     class HotelDTO {
     private:
-        int id;
+        int hotelId;
         string nome;
         string endereco;
         string telefone;
@@ -20,51 +20,46 @@ namespace Hotelaria {
     public:
         HotelDTO() = default;
 
-        HotelDTO(int id, string nome, string endereco, string telefone, string codigo) : id(id),
-            nome(nome),
-            endereco(endereco),
-            telefone(telefone),
-            codigo(codigo) {
-        };
+        HotelDTO(int hotelId, string nome, string endereco, string telefone, string codigo) : hotelId(hotelId),nome(nome), endereco(endereco), telefone(telefone), codigo(codigo) {};
 
         int getId() const {
-            return id;
+            return hotelId;
         }
 
-        void setId(int id) {
-            this->id = id;
+        void setId(int valor) {
+            this->hotelId = valor;
         }
 
         string getNome() const {
             return nome;
         }
 
-        void setNome(const string &nome) {
-            this->nome = nome;
+        void setNome(const string &valor) {
+            this->nome = valor;
         }
 
         string getEndereco() const {
             return endereco;
         }
 
-        void setEndereco(const string &endereco) {
-            this->endereco = endereco;
+        void setEndereco(const string &valor) {
+            this->endereco = valor;
         }
 
         string getTelefone() const {
             return telefone;
         }
 
-        void setTelefone(const string &telefone) {
-            this->telefone = telefone;
+        void setTelefone(const string &valor) {
+            this->telefone = valor;
         }
 
         string getCodigo() const {
             return codigo;
         }
 
-        void setCodigo(const string &codigo) {
-            this->codigo = codigo;
+        void setCodigo(const string &valor) {
+            this->codigo = valor;
         }
     };
 }

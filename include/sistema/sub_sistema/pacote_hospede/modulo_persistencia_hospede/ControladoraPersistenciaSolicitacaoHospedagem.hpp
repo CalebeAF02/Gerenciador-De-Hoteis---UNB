@@ -15,7 +15,7 @@
 #include <sqlite3.h>
 #include <iostream>
 namespace Hotelaria {
-    class PersistenciaSolicitacaoHospedagem {
+    class ControladoraPersistenciaSolicitacaoHospedagem {
     public:
         static void inicializar();
 

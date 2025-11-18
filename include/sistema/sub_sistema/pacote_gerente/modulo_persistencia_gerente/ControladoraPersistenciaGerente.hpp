@@ -14,7 +14,7 @@
 
 using namespace std;
 namespace Hotelaria {
-    class PersistenciaGerente {
+    class ControladoraPersistenciaGerente {
     public:
         bool inserir(Gerente &gerente);
 

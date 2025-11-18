@@ -12,7 +12,7 @@
 #include "Utils.hpp"
 #include "../../../../../libs/menu/MenuCRUD.hpp"
 #include "../../../../../libs/menu/ExibirMenu.hpp"
-#include "../modulo_persistencia_hotel/PersistenciaHotel.hpp"
+#include "../modulo_persistencia_hotel/ControladoraPersistenciaHotel.hpp"
 #include "../../../../../libs/io/IO.hpp"
 #include "../../../../../libs/formato/Formato.hpp"
 #include "Tabela.hpp"
@@ -34,7 +34,7 @@ namespace Hotelaria {
     class ControladorInterfaceHotel : public ExibirMenu,
                                       public MenuCRUD {
     private:
-        PersistenciaHotel persistencia;
+        ControladoraPersistenciaHotel persistencia;
         bool executando = true;
 
     public:

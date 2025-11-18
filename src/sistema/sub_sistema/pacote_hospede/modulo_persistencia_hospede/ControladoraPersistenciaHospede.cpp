@@ -2,9 +2,9 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaHospede.hpp"
+#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaHospede.hpp"
 namespace Hotelaria {
-    bool PersistenciaHospede::criar(Hospede &hospede) {
+    bool ControladoraPersistenciaHospede::criar(Hospede &hospede) {
         //_________________________ABRE CONEXÂO_______________________________
         sqlite3 *db;
         char *mensagemErro = nullptr;
@@ -35,7 +35,7 @@ namespace Hotelaria {
         //_________________________------------_______________________________
     }
 
-    vector<Hospede *> PersistenciaHospede::listar() {
+    vector<Hospede *> ControladoraPersistenciaHospede::listar() {
         vector<Hospede *> listarHospedes;
 
         //_________________________ABRE CONEXÂO_______________________________

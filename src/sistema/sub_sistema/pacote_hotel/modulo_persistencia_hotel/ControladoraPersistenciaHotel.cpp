@@ -2,9 +2,9 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/PersistenciaHotel.hpp"
+#include "../../../../../include/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/ControladoraPersistenciaHotel.hpp"
 namespace Hotelaria {
-    bool PersistenciaHotel::inserir(Hotel *hotel) {
+    bool ControladoraPersistenciaHotel::inserir(Hotel *hotel) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -27,7 +27,7 @@ namespace Hotelaria {
         return true;
     }
 
-    vector<HotelDTO *> PersistenciaHotel::listar() {
+    vector<HotelDTO *> ControladoraPersistenciaHotel::listar() {
         vector<HotelDTO *> lista;
 
         BancoDeDados banco;
@@ -63,7 +63,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    optional<HotelDTO> PersistenciaHotel::buscaHotelPorID(int id) {
+    optional<HotelDTO> ControladoraPersistenciaHotel::buscaHotelPorID(int id) {
         optional<HotelDTO> dto = nullopt;
 
         BancoDeDados banco;
@@ -99,7 +99,7 @@ namespace Hotelaria {
         return dto;
     }
 
-    bool PersistenciaHotel::atualizar(int id, const Hotel &hotel) {
+    bool ControladoraPersistenciaHotel::atualizar(int id, const Hotel &hotel) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;

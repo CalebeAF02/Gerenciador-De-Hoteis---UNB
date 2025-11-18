@@ -11,7 +11,7 @@
 
 using namespace std;
 namespace Hotelaria {
-    class PersistenciaHospede {
+    class ControladoraPersistenciaHospede {
         string caminho = "Dados_Hospedes.txt";
 
     public:

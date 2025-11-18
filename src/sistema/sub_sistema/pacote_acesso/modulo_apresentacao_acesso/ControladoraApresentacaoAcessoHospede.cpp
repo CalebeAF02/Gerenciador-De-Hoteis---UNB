@@ -82,7 +82,7 @@ namespace Hotelaria {
 
                 );
 
-                PersistenciaSolicitacaoHospedagem::salvar(solicitacao);
+                ControladoraPersistenciaSolicitacaoHospedagem::salvar(solicitacao);
                 IO::Println("Solicitacao registrada com sucesso!");
             } catch (exception &e) {
                 IO::Println("Erro ao criar solicitacao: " + string(e.what()));
@@ -99,7 +99,7 @@ namespace Hotelaria {
         IO::Print("Informe o Email: ");
         string email = IO::LerLinha();
 
-        const vector<SolicitacaoHospedagem> lista = PersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
+        const vector<SolicitacaoHospedagem> lista = ControladoraPersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
         if (lista.empty()) {
             IO::Println("Nenhuma solicitacao encontrada.");

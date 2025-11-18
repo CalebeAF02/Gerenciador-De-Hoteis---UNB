@@ -81,10 +81,11 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva/ControladoraServicoReserva.cpp
 
         # Sub Sistema - Persistências
-        src/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/PersistenciaGerente.cpp
-        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaHospede.cpp
-        src/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/PersistenciaHotel.cpp
-        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaSolicitacaoHospedagem.cpp
+        src/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/ControladoraPersistenciaGerente.cpp
+        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaHospede.cpp
+        src/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/ControladoraPersistenciaHotel.cpp
+        src/sistema/sub_sistema/pacote_quarto/modulo_persistencia_quarto/ControladoraPersistenciaQuarto.cpp
+        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaSolicitacaoHospedagem.cpp
 
         # Objetos - Domínios
         src/sistema/objetos/dominios/Nome.cpp
@@ -101,8 +102,13 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/objetos/dominios/Data.cpp
 
         # Objetos - Entidades_DTO
-        src/sistema/objetos/entidades_dto/HotelDTO.cpp
+        src/sistema/objetos/entidades_dto/PessoaDTO.cpp
         src/sistema/objetos/entidades_dto/GerenteDTO.cpp
+        src/sistema/objetos/entidades_dto/HospedeDTO.cpp
+        src/sistema/objetos/entidades_dto/HotelDTO.cpp
+        src/sistema/objetos/entidades_dto/QuartoDTO.cpp
+        src/sistema/objetos/entidades_dto/ReservaDTO.cpp
+        src/sistema/objetos/entidades_dto/SolicitacaoHospedagemDTO.cpp
 
         # Objetos - Entidades
         src/sistema/objetos/entidades/Gerente.cpp
