@@ -6,7 +6,7 @@
 #define Hotelaria_UnB_TP1_CARESERVA_HPP
 
 #include "../../../../../libs/formato/Formato.hpp"
-#include "InterfaceApresentacaoExibirMenu.hpp"
+#include "../../../../../libs/menu/ExibirMenu.hpp"
 #include "../InterfaceApresentacaoReserva.hpp"
 #include "../../../../../libs/io/IO.hpp"
 #include <iostream>

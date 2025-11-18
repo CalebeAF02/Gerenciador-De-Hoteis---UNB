@@ -5,10 +5,10 @@
 #ifndef Hotelaria_UnB_TP1_CAI_HPP
 #define Hotelaria_UnB_TP1_CAI_HPP
 
-#include "../../../../../libs/io/IO.hpp"
 #include <iostream>
+#include "IO.hpp"
 #include "Menu.hpp"
-#include "../InterfaceApresentacaoAcesso.hpp"
+#include "InterfaceApresentacaoAcesso.hpp"
 #include "ControladorInterfaceGerente.hpp"
 #include "ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"

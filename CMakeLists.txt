@@ -30,6 +30,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         # Libs - Menu
         libs/menu/Menu.cpp
         libs/menu/MenuItem.cpp
+        libs/menu/ExibirMenu.cpp
+        libs/menu/MenuCRUD.cpp
 
         # Libs - Sqlite
         libs/sqlite/sqlite3.c
@@ -44,51 +46,45 @@ add_executable(Gerenciador-De-Hoteis---UNB
         libs/teste/InterfaceDeTestes.cpp
         libs/teste/SmokeTeste.cpp
 
+        # HACKER
+        src/HACKER/SistemaHacker.cpp
+
         # Sistema
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
+        ## Sub Sistema - para alteracoes
+        src/sistema/sub_sistema/pacote_gerente/modulo_apresentacao_gerente/ControladorInterfaceGerente.cpp
+        src/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede/ControladorInterfaceHospede.cpp
+        src/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel/ControladorInterfaceHotel.cpp
+        src/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto/ControladorInterfaceQuarto.cpp
+        src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladorInterfaceReserva.cpp
+
         ## Sub Sistema - Apresentacao
         src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoGerente.cpp
-
         src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoHospede.cpp
-
         src/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel/ControladoraApresentacaoAutenticavel.cpp
-
-        src/sistema/sub_sistema/pacote_pessoal/modulo_apresentacao_pessoal/ControladoraApresentacaoPessoal.cpp
-
+        src/sistema/sub_sistema/pacote_gerente/modulo_apresentacao_gerente/ControladoraApresentacaoGerente.cpp
         src/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede/ControladoraApresentacaoHospede.cpp
-
         src/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel/ControladoraApresentacaoHotel.cpp
-
         src/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto/ControladoraApresentacaoQuarto.cpp
-
         src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladoraApresentacaoReserva.cpp
 
-        ## Servico
+        ## Sub Sistema - Servico
         src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoGerente.cpp
-
         src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoHospede.cpp
-
         src/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel/ControladoraServicoAutenticavel.cpp
-
-        src/sistema/sub_sistema/pacote_pessoal/modulo_servico_pessoal/ControladoraServicoPessoal.cpp
-
+        src/sistema/sub_sistema/pacote_gerente/modulo_servico_gerente/ControladoraServicoGerente.cpp
         src/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede/ControladoraServicoHospede.cpp
-
         src/sistema/sub_sistema/pacote_hotel/modulo_servico_hotel/ControladoraServicoHotel.cpp
-
         src/sistema/sub_sistema/pacote_quarto/modulo_servico_quarto/ControladoraServicoQuarto.cpp
-
         src/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva/ControladoraServicoReserva.cpp
 
-        # Sub Sistema - Controladores de Entidades
-        src/sistema/controladores_entidades/ControladorInterfaceGerente.cpp
-        src/sistema/controladores_entidades/ControladorInterfaceHospede.cpp
-        src/sistema/controladores_entidades/ControladorInterfaceHotel.cpp
-        src/sistema/controladores_entidades/ControladorInterfaceQuarto.cpp
-        src/sistema/controladores_entidades/ControladorInterfaceReserva.cpp
-
+        # Sub Sistema - Persistências
+        src/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/PersistenciaGerente.cpp
+        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaHospede.cpp
+        src/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/PersistenciaHotel.cpp
+        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/PersistenciaSolicitacaoHospedagem.cpp
 
         # Objetos - Domínios
         src/sistema/objetos/dominios/Nome.cpp
@@ -117,29 +113,15 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/objetos/entidades/Reserva.cpp
         src/sistema/objetos/entidades/SolicitacaoHospedagem.cpp
 
-        # Enum
-        src/sistema/enum/StatusSolicitacaoHospedagem.cpp
-        src/sistema/enum/EnumConversor.cpp
-
         # Fábricas
-        src/sistema/fabricas/FabricaGerenciavel.cpp
-
-        # Interfaces - Apresentações
-        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoExibirMenu.cpp
-        src/sistema/interfaces/apresentacoes/InterfaceApresentacaoCRUD.cpp
-
-
-        # Interfaces - Gerais
-        src/sistema/interfaces/InterfaceFabricaGerenciavel.cpp
-
-        # Persistências
-        src/sistema/persistencias/PersistenciaGerente.cpp
-        src/sistema/persistencias/PersistenciaHospede.cpp
-        src/sistema/persistencias/PersistenciaHotel.cpp
-        src/sistema/persistencias/PersistenciaSolicitacaoHospedagem.cpp
+        src/sistema/sub_sistema/pacote_fabrica/modulo_apresentacao_fabrica/FabricaGerenciavel.cpp
 
         # Utilitários
         src/sistema/utilitarios/Utils.cpp
+
+        # Utilitários - Enum
+        src/sistema/utilitarios/enum/StatusSolicitacaoHospedagem.cpp
+        src/sistema/utilitarios/enum/EnumConversor.cpp
 
         # Versao
         src/sistema/Versao.cpp
@@ -167,10 +149,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteHotel.cpp
         testes/testes_entidades/TesteQuarto.cpp
         testes/testes_entidades/TesteReserva.cpp
-
-        # HACKER
-        src/HACKER/SistemaHacker.cpp
-        include/sistema/sub_sistema/pacote_acesso/InterfaceServicoAcesso.hpp
 )
 
 add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
@@ -185,13 +163,23 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/libs/menu
 
         ${CMAKE_SOURCE_DIR}/include
+
+        ${CMAKE_SOURCE_DIR}/include/HACKER
+
         ${CMAKE_SOURCE_DIR}/include/sistema
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/dominios
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades_dto
+        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades
 
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema
 
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto
@@ -199,41 +187,36 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
 
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal/modulo_apresentacao_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica/modulo_apresentacao_fabrica
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica/modulo_servico_fabrica
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_apresentacao_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva
 
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_pessoal/modulo_servico_pessoal
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_servico_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_servico_hotel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_servico_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva
 
-        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/dominios
-        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades_dto
-        ${CMAKE_SOURCE_DIR}/include/sistema/objetos/entidades
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/enum
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/fabricas
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces
-        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/apresentacoes
-        ${CMAKE_SOURCE_DIR}/include/sistema/interfaces/servicos
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/persistencias
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/controladores_entidades
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_persistencia_quarto
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_persistencia_reserva
 
         ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios
 
+        ${CMAKE_SOURCE_DIR}/include/sistema/utilitarios/enum
+
         ${CMAKE_SOURCE_DIR}/testes
+
         ${CMAKE_SOURCE_DIR}/testes/testes_dominios
         ${CMAKE_SOURCE_DIR}/testes/testes_entidades
-
-        ${CMAKE_SOURCE_DIR}/include/HACKER
 )

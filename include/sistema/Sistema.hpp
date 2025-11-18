@@ -5,20 +5,18 @@
 #ifndef GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 #define GERENCIADOR_HOTEL_UNB_SISTEMAHOTEL_H
 
+#include <iostream>
+#include <string>
+#include "sqlite3.h"
+#include "Menu.hpp"
+#include "Formato.hpp"
+#include "ControladoraApresentacaoAcessoGerente.hpp"
+#include "ControladoraApresentacaoAcessoHospede.hpp"
 #include "ControladorInterfaceGerente.hpp"
 #include "ControladorInterfaceHospede.hpp"
 #include "ControladorInterfaceHotel.hpp"
 #include "ControladorInterfaceQuarto.hpp"
 #include "ControladorInterfaceReserva.hpp"
-
-#include "../../libs/menu/Menu.hpp"
-
-#include "../../libs/formato/Formato.hpp"
-#include <iostream>
-#include <string>
-#include "ControladoraApresentacaoAcessoGerente.hpp"
-#include "ControladoraApresentacaoAcessoHospede.hpp"
-#include "sqlite3.h"
 
 using namespace std;
 

@@ -10,8 +10,8 @@ using namespace std;
 namespace Hotelaria{
 class Versao {
 private:
-    static constexpr uint64_t valor = 133;
-    static inline const string data = "2025-11-17 19:53";
+    static constexpr uint64_t valor = 136;
+    static inline const string data = "2025-11-17 21:56";
 
 public:
     static uint8_t patch() { return valor % 10; }
@@ -27,4 +27,4 @@ public:
 };
 }
 
-#endif // Hotelaria_UnB_TP1_VERSAO_HPP
+#endif

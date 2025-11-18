@@ -4,7 +4,7 @@
 
 #include "ControladoraServicoAutenticavel.hpp"
 
-#include "PersistenciaGerente.hpp"
+#include "../../../../../include/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/PersistenciaGerente.hpp"
 namespace Hotelaria {
     bool ControladoraServicoAutenticavel::autenticar(const Email email, const Senha senha) {
         PersistenciaGerente pg;

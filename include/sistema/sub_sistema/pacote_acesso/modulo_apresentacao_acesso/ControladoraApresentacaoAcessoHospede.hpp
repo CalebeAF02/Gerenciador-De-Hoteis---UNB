@@ -5,7 +5,7 @@
 #ifndef Hotelaria_UnB_TP1_CONTROLADORAAPRESENTACAOACESSOHOESPEDE_HPP
 #define Hotelaria_UnB_TP1_CONTROLADORAAPRESENTACAOACESSOHOESPEDE_HPP
 
-#include "ControladorInterfaceHospede.hpp"
+#include "../../pacote_hospede/modulo_apresentacao_hospede/ControladorInterfaceHospede.hpp"
 #include "../InterfaceApresentacaoAcesso.hpp"
 
 namespace Hotelaria {

@@ -30,9 +30,9 @@
 #include "TesteReserva.hpp"
 
 #include "InterfaceApresentacaoAutenticavel.hpp"
-#include "InterfaceApresentacaoPessoal.hpp"
+#include "InterfaceApresentacaoGerente.hpp"
 #include "ControladoraApresentacaoAutenticavel.hpp"
-#include "ControladoraApresentacaoPessoal.hpp"
+#include "ControladoraApresentacaoGerente.hpp"
 
 using namespace std;
 using namespace Hotelaria;
