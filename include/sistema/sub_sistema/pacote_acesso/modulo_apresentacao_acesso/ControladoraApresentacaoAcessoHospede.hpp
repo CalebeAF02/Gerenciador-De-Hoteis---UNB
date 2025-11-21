@@ -5,20 +5,30 @@
 #ifndef Hotelaria_UnB_TP1_CONTROLADORAAPRESENTACAOACESSOHOESPEDE_HPP
 #define Hotelaria_UnB_TP1_CONTROLADORAAPRESENTACAOACESSOHOESPEDE_HPP
 
-#include "../../pacote_hospede/modulo_apresentacao_hospede/ControladorInterfaceHospede.hpp"
-#include "../InterfaceApresentacaoAcesso.hpp"
+#include "ControladoraPersistenciaSolicitacaoHospedagem.hpp"
+#include "InterfaceApresentacaoAcesso.hpp"
+#include "Data.hpp"
+
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
+#include <string>
+#include <iostream>
+#include <optional>
+#include <vector>
+
+using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoAcessoHospede : public InterfaceApresentacaoAcesso {
-    private:
-        InterfaceServicoAcesso *controladora_servico_acesso_hospede;
-
     public:
         void exibirMenu() override;
 
-        void setControladoraServicoAcesso(InterfaceServicoAcesso *) override;
-
-        // Solicitacao de Hospedagem para Gerente
         void opcoesDeHospedagem();
 
         void solicitandoHospedagem();

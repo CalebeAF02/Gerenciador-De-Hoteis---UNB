@@ -4,20 +4,43 @@
 
 #ifndef Hotelaria_UnB_TP1_CAHOTEL_HPP
 #define Hotelaria_UnB_TP1_CAHOTEL_HPP
+
 #include "InterfaceApresentacaoHotel.hpp"
+#include "InterfaceServicoHotel.hpp"
+
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
 #include "IO.hpp"
+
+#include <string>
 #include <iostream>
+#include <optional>
+#include <vector>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoHotel : public InterfaceApresentacaoHotel {
     private:
-        InterfaceServicoHotel *controladora_servico_hotel;
+        InterfaceServicoHotel *servico;
+        bool executando = false;
 
     public:
-        bool valor() override;
-
         void setControladoraServicoHotel(InterfaceServicoHotel *) override;
+
+        void exibirMenuCRUD() override;
+
+        void criar();
+
+        void listar();
+
+        void atualizar();
+
+        void remover();
     };
 }
 

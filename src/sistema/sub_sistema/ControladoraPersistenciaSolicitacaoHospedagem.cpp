@@ -2,7 +2,8 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "ControladoraPersistenciaSolicitacaoHospedagem.hpp"
+#include "../../../include/sistema/sub_sistema/ControladoraPersistenciaSolicitacaoHospedagem.hpp"
+
 
 namespace Hotelaria {
     static const char *DB_PATH = "hotel.db";

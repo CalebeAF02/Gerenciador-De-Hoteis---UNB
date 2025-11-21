@@ -5,14 +5,35 @@
 #ifndef Hotelaria_UnB_TP1_ISQUARTO_HPP
 #define Hotelaria_UnB_TP1_ISQUARTO_HPP
 
+#include "InterfacePersistenciaQuarto.hpp"
+#include "QuartoDTO.hpp"
+#include "Quarto.hpp"
+
+#include "Menu.hpp"
 #include "IO.hpp"
+
 #include <iostream>
+#include <optional>
+
 using namespace std;
+using namespace VisualizadorDeMenu;
 
 namespace Hotelaria {
     class InterfaceServicoQuarto {
     public:
-        virtual bool valor() = 0;
+        virtual void setControladoraPersistencia(InterfacePersistenciaQuarto *persistencia) = 0;
+
+        virtual bool criar(const Quarto &quarto) = 0;
+
+        virtual bool editar(const int &id, const Quarto &quarto) = 0;
+
+        virtual bool remover(int id) = 0;
+
+        virtual vector<QuartoDTO> listarTodos() = 0;
+
+        virtual optional<QuartoDTO> pesquisar(int id) = 0;
+
+        virtual ~InterfaceServicoQuarto() = default;
     };
 }
 

@@ -5,29 +5,43 @@
 #ifndef Hotelaria_UnB_TP1_CARESERVA_HPP
 #define Hotelaria_UnB_TP1_CARESERVA_HPP
 
-#include "../../../../../libs/formato/Formato.hpp"
-#include "../../../../../libs/menu/ExibirMenu.hpp"
-#include "../InterfaceApresentacaoReserva.hpp"
-#include "../../../../../libs/io/IO.hpp"
-#include <iostream>
-
+#include "InterfaceApresentacaoReserva.hpp"
 #include "InterfaceServicoReserva.hpp"
 
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "ExibirMenu.hpp"
+#include "Tabela.hpp"
+#include "Formato.hpp"
+#include "IO.hpp"
+
+#include <string>
+#include <iostream>
+#include <optional>
+#include <vector>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoReserva : public InterfaceApresentacaoReserva {
     private:
-        InterfaceServicoReserva *controladora_servico_reserva;
+        InterfaceServicoReserva *servico;
 
     public:
-        bool valor() override;
-
         void setControladoraServicoReserva(InterfaceServicoReserva *) override;
 
-        void exibirMenu();
+        void exibirMenuCRUD() override;
 
-        void exibirMenuCRUD();
+        void criar();
+
+        void listar();
+
+        void atualizar();
+
+        void remover();
     };
 }
 

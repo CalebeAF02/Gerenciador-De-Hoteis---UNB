@@ -2,9 +2,10 @@
 // Created by caleb on 01/11/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/ControladoraPersistenciaHotel.hpp"
+#include "ControladoraPersistenciaHotel.hpp"
+
 namespace Hotelaria {
-    bool ControladoraPersistenciaHotel::inserir(Hotel *hotel) {
+    bool ControladoraPersistenciaHotel::inserir(const Hotel &hotel) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -16,10 +17,10 @@ namespace Hotelaria {
         sqlite3_stmt *stmt;
         sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
-        sqlite3_bind_text(stmt, 1, hotel->getNome().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 2, hotel->getEndereco().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 3, hotel->getTelefone().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 4, hotel->getCodigo().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 1, hotel.getNome().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, hotel.getEndereco().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, hotel.getTelefone().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 4, hotel.getCodigo().c_str(), -1, SQLITE_STATIC);
 
         sqlite3_step(stmt);
         sqlite3_finalize(stmt);
@@ -27,8 +28,11 @@ namespace Hotelaria {
         return true;
     }
 
-    vector<HotelDTO *> ControladoraPersistenciaHotel::listar() {
-        vector<HotelDTO *> lista;
+    bool ControladoraPersistenciaHotel::autenticar(const string &email, const string &senha) {
+    }
+
+    vector<HotelDTO> ControladoraPersistenciaHotel::listar() {
+        vector<HotelDTO> lista;
 
         BancoDeDados banco;
         if (!banco.abrindoConexao())
@@ -55,7 +59,7 @@ namespace Hotelaria {
 
             HotelDTO *gerenteObj = new HotelDTO(id, nome, endereco, telefone, codigo);
 
-            lista.push_back(gerenteObj);
+            lista.push_back(*gerenteObj);
         }
 
         sqlite3_finalize(stmt);
@@ -63,7 +67,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    optional<HotelDTO> ControladoraPersistenciaHotel::buscaHotelPorID(int id) {
+    optional<HotelDTO> ControladoraPersistenciaHotel::pesquisar(const int &id) {
         optional<HotelDTO> dto = nullopt;
 
         BancoDeDados banco;
@@ -99,7 +103,7 @@ namespace Hotelaria {
         return dto;
     }
 
-    bool ControladoraPersistenciaHotel::atualizar(int id, const Hotel &hotel) {
+    bool ControladoraPersistenciaHotel::atualizar(const int &id, const Hotel &hotel) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -125,5 +129,8 @@ namespace Hotelaria {
         banco.fechandoConexao();
 
         return rc == SQLITE_DONE;
+    }
+
+    bool ControladoraPersistenciaHotel::excluir(const int &id) {
     }
 }

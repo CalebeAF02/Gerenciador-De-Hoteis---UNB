@@ -8,15 +8,13 @@
 #include <iostream>
 #include "Versao.hpp"
 #include "ControladoraApresentacaoAcessoGerente.hpp"
-#include "ControladorInterfaceGerente.hpp"
 
 using namespace std;
-namespace Hotelaria {
 
+namespace Hotelaria {
     class SistemaHacker {
     private:
-        ControladorInterfaceGerente controladorGerente;
-        ControladoraApresentacaoAcessoGerente controladora_apresentacao_acesso_gerente;
+        ControladoraApresentacaoAcessoGerente *servico;
 
     public:
         void iniciar();

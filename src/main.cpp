@@ -10,7 +10,7 @@
 #include "SmokeTeste.hpp"
 #include "TestandoSmoke.hpp"
 #include "InterfaceDeTestes.hpp"
-
+#include "BancoDeDados.hpp"
 #include "TesteCapacidade.hpp"
 #include "TesteCartao.hpp"
 #include "TesteCodigo.hpp"

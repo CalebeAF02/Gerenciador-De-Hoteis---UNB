@@ -12,9 +12,11 @@ using namespace std;
 namespace Hotelaria {
     class InterfaceApresentacaoQuarto {
     public:
-        virtual bool valor() = 0;
-
         virtual void setControladoraServicoQuarto(InterfaceServicoQuarto *) = 0;
+
+        virtual void exibirMenuCRUD() = 0;
+
+        virtual ~InterfaceApresentacaoQuarto() = default;
     };
 }
 

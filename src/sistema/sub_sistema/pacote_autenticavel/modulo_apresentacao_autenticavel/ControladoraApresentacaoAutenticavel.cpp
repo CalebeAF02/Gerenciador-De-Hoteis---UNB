@@ -3,10 +3,11 @@
 //
 
 #include "ControladoraApresentacaoAutenticavel.hpp"
+
 namespace Hotelaria {
     void ControladoraApresentacaoAutenticavel::setControladoraServicoAutenticavel(
-        InterfaceServicoAutenticavel *controladora_servico_autenticavel) {
-        this->controladora_servico_autenticavel = controladora_servico_autenticavel;
+        InterfaceServicoAutenticavel *servico) {
+        this->servico = servico;
     }
 
     void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
@@ -17,15 +18,11 @@ namespace Hotelaria {
         return estaAutenticado;
     }
 
-    void ControladoraApresentacaoAutenticavel::sair() {
-        this->estaAutenticado = false;
-    }
-
     InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
-        return this->controladora_servico_autenticavel;
+        return this->servico;
     }
 
-    bool ControladoraApresentacaoAutenticavel::autenticar(Email *emailObj) {
+    bool ControladoraApresentacaoAutenticavel::autenticar() {
         bool lacoLogin = false;
         bool resultado;
 
@@ -42,17 +39,17 @@ namespace Hotelaria {
             senhaCopia = IO::LerLinha();
 
             try {
-                emailObj->setValor(emailCopia);
+                Email emalObj(emailCopia);
                 Senha senhaObj(senhaCopia);
 
-                resultado = controladora_servico_autenticavel->autenticar(*emailObj, senhaObj); // Solicitar autenticação.
+                resultado = servico->autenticar(emalObj, senhaObj);
+                // Solicitar autenticação.
 
                 if (!resultado) {
                     IO::Println("Gerente nao cadastrado");
                     IO::tentarNovamente();
                 }
                 lacoLogin = true;
-
             } catch (invalid_argument &erro) {
                 cout << "Erro: " << erro.what() << endl;
                 IO::tentarNovamente();

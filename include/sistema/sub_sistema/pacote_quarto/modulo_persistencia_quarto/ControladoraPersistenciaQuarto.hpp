@@ -5,25 +5,33 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORAPERSISTENCIAQUARTO_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_CONTROLADORAPERSISTENCIAQUARTO_HPP
 
-#include "Quarto.hpp"
-#include "BancoDeDados.hpp"
+#include "InterfacePersistenciaQuarto.hpp"
 #include "QuartoDTO.hpp"
-#include <optional>
+#include "Quarto.hpp"
 
-#include "iostream"
+#include "BancoDeDados.hpp"
+
+#include <iostream>
+#include <vector>
+#include <optional>
 #include "sqlite3.h"
 
 using namespace std;
+
 namespace Hotelaria {
-    class ControladoraPersistenciaQuarto {
+    class ControladoraPersistenciaQuarto : public InterfacePersistenciaQuarto {
     public:
-        bool inserir(Quarto *hotel);
+        bool inserir(const Quarto &quarto) override;
 
-        vector<QuartoDTO *> listar();
+        bool autenticar(const string &email, const string &senha) override;
 
-        //optional<QuartoDTO> buscaHotelPorID(int id);
+        vector<QuartoDTO> listar() override;
 
-        bool atualizar(int id, const Quarto &quarto);
+        optional<QuartoDTO> pesquisar(const int &id) override;
+
+        bool atualizar(const int &id, const Quarto &quarto) override;
+
+        bool excluir(const int &id) override;
     };
 }
 

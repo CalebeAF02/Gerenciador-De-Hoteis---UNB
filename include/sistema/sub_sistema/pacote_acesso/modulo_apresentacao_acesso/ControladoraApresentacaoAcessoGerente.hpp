@@ -5,30 +5,44 @@
 #ifndef Hotelaria_UnB_TP1_CAI_HPP
 #define Hotelaria_UnB_TP1_CAI_HPP
 
-#include <iostream>
-#include "IO.hpp"
-#include "Menu.hpp"
 #include "InterfaceApresentacaoAcesso.hpp"
-#include "ControladorInterfaceGerente.hpp"
-#include "ControladorInterfaceHospede.hpp"
-#include "ControladorInterfaceHotel.hpp"
-#include "ControladorInterfaceQuarto.hpp"
-#include "ControladorInterfaceReserva.hpp"
+#include "ControladoraApresentacaoGerente.hpp"
+#include "InterfaceApresentacaoHospede.hpp"
+#include "InterfaceApresentacaoHotel.hpp"
+#include "InterfaceApresentacaoQuarto.hpp"
+#include "InterfaceApresentacaoReserva.hpp"
+#include "InterfaceApresentacaoAutenticavel.hpp"
+
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
+#include <string>
+#include <iostream>
+#include <optional>
+#include <vector>
 
 using namespace std;
+using namespace Utils;
 using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoAcessoGerente : public InterfaceApresentacaoAcesso {
     private:
-        InterfaceServicoAcesso *controladora_servico_acesso_gerente;
+        InterfaceApresentacaoAutenticavel *apresentacao_autenticavel;
+        InterfaceApresentacaoGerente *apresentacao_gerente;
+        InterfaceApresentacaoHospede *apresentacao_hospede;
+        InterfaceApresentacaoHotel *apresentacao_hotel;
+        InterfaceApresentacaoQuarto *apresentacao_quarto;
+        InterfaceApresentacaoReserva *apresentacao_reserva;
+        //InterfaceapresentacaoSolicitacaoHospedagem *apresentacao_solicitacao_hospedagem;
 
-        ControladorInterfaceGerente controladorGerente;
+        bool estaAutenticado = false;
 
     public:
         void exibirMenu() override;
-
-        void setControladoraServicoAcesso(InterfaceServicoAcesso *) override;
 
         void exibirMenuGerenciador();
     };

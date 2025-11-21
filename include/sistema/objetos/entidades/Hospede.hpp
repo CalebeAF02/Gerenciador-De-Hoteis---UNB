@@ -8,8 +8,9 @@
 #include "Cartao.hpp"
 #include "Endereco.hpp"
 
+#include "HospedeDTO.hpp"
 #include <string>
-#include "../../../libs/io/IO.hpp"
+#include "IO.hpp"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ namespace Hotelaria {
         Cartao cartao;
 
     public:
-        // Construcutor -----------
         Hospede() : Pessoa(Nome(), Email()) {
         };
 
@@ -28,6 +28,9 @@ namespace Hotelaria {
                 emailPessoaObj), endereco(endereco), cartao(cartao) {
         };
 
+        Hospede(HospedeDTO &hospede_dto) : Pessoa(Nome(hospede_dto.getNome()), Email(hospede_dto.getEmail())) {
+            setEndereco(Endereco(hospede_dto.getEndereco()));
+        };
 
         // seters -----------------
         void setNome(const Nome &newNome) {

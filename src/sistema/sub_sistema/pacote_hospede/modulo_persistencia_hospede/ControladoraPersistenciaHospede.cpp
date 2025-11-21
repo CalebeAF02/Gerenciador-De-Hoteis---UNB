@@ -2,10 +2,10 @@
 // Created by caleb on 16/10/2025.
 //
 
-#include "../../../../../include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaHospede.hpp"
+#include "ControladoraPersistenciaHospede.hpp"
+
 namespace Hotelaria {
-    bool ControladoraPersistenciaHospede::criar(Hospede &hospede) {
-        //_________________________ABRE CONEXÂO_______________________________
+    bool ControladoraPersistenciaHospede::inserir(const Hospede &hospede) {
         sqlite3 *db;
         char *mensagemErro = nullptr;
 
@@ -14,10 +14,10 @@ namespace Hotelaria {
             cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << endl;
             return false;
         }
-        //_________________________------------_______________________________
 
         string sql = "INSERT INTO gerentes (nome, email, ramal, senha) VALUES ('" +
-                     hospede.getNome() + "', '" + hospede.getEmail() + "', '" + hospede.getEndereco() + "', '" + hospede.
+                     hospede.getNome() + "', '" + hospede.getEmail() + "', '" + hospede.getEndereco() + "', '" + hospede
+                     .
                      getCartao()
                      +
                      "');";
@@ -29,51 +29,61 @@ namespace Hotelaria {
             sqlite3_close(db);
             return false;
         }
-        //_________________________FECHA CONEXÂO_______________________________
         sqlite3_close(db);
         return true;
-        //_________________________------------_______________________________
     }
 
-    vector<Hospede *> ControladoraPersistenciaHospede::listar() {
-        vector<Hospede *> listarHospedes;
+    bool ControladoraPersistenciaHospede::autenticar(const string &email, const string &senha) {
+    }
 
-        //_________________________ABRE CONEXÂO_______________________________
-        sqlite3 *db;
-        char *mensagemErro = nullptr;
+    vector<HospedeDTO> ControladoraPersistenciaHospede::listar() {
+        vector<HospedeDTO> lista;
 
-        int rc = sqlite3_open("hotel.db", &db);
-        if (rc != SQLITE_OK) {
-            cerr << "Erro ao abrir banco: " << sqlite3_errmsg(db) << endl;
-            return listarHospedes;
+        BancoDeDados banco;
+        if (!banco.abrindoConexao()) {
+            return lista;
         }
-        //_________________________------------_______________________________
 
+        sqlite3 *db = banco.getConexao();
         sqlite3_stmt *stmt = nullptr;
-        const char *sql = "SELECT nome, email, ramal, senha FROM gerentes;";
-        rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        const char *sql = "SELECT id, nome, email, endereco, cartao FROM gerentes;";
+
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
         if (rc != SQLITE_OK) {
-            cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
-            sqlite3_close(db);
-            return listarHospedes;
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return lista;
         }
 
         while (sqlite3_step(stmt) == SQLITE_ROW) {
-            string nome = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 0));
-            string email = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
-            string endereco = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
-            string cartao = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+            int id = sqlite3_column_int(stmt, 0);
 
-            Hospede *hospedeObj = new Hospede(Nome(nome), Email(email), Endereco(endereco), Cartao(cartao));
+            const char *nome_ptr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 1));
+            const char *email_ptr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
+            const char *endereco_ptr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
+            const char *cartao_ptr = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
 
-            listarHospedes.push_back(hospedeObj);
+            string nome = nome_ptr ? nome_ptr : "";
+            string email = email_ptr ? email_ptr : "";
+            string endereco = endereco_ptr ? endereco_ptr : "";
+            string cartao = cartao_ptr ? cartao_ptr : "";
+
+            HospedeDTO hospedeObj(id, nome, email, endereco, cartao);
+
+            lista.push_back(hospedeObj);
         }
 
         sqlite3_finalize(stmt);
+        banco.fechandoConexao();
+        return lista;
+    }
 
-        //_________________________FECHA CONEXÂO_______________________________
-        sqlite3_close(db);
-        //_________________________------------_______________________________
-        return listarHospedes;
+    optional<HospedeDTO> ControladoraPersistenciaHospede::pesquisar(const int &id) {
+    }
+
+    bool ControladoraPersistenciaHospede::atualizar(const Email &emailAntigo, const Hospede &hospede) {
+    }
+
+    bool ControladoraPersistenciaHospede::excluir(const int &id) {
     }
 }

@@ -5,22 +5,38 @@
 #ifndef Hotelaria_UnB_TP1_CSP_HPP
 #define Hotelaria_UnB_TP1_CSP_HPP
 
-#include "../InterfaceServicoGerente.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfaceServicoGerente.hpp"
+#include "InterfacePersistenciaGerente.hpp"
+#include "ControladoraPersistenciaGerente.hpp"
+
+#include "Utils.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
 #include <iostream>
 
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeTabela;
+
 namespace Hotelaria {
     class ControladoraServicoGerente : public InterfaceServicoGerente {
+    private:
+        InterfacePersistenciaGerente *persistencia = nullptr;
+        bool executando = false;
+
     public:
-        //  por meio dos quais são solicitados os serviços.
-        bool incluir(const Gerente);
+        void setControladoraPersistencia(InterfacePersistenciaGerente *persistencia) override;
 
-        bool remover(const Email email);
+        bool criar(const Gerente &gerente) override;
 
-        bool pesquisar(Gerente);
+        bool editar(const Email &email, const Gerente &gerenteAtualizado) override;
 
-        bool editar(const Gerente);
+        bool remover(const int &id) override;
+
+        vector<GerenteDTO> listarTodos() override;
+
+        optional<GerenteDTO> pesquisar(const int &id) override;
     };
 }
 

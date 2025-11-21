@@ -8,26 +8,29 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class GerenteDTO {
     private:
-        int gerenteId;
+        int id_gerente;
         string nome;
         string email;
         string ramal;
+        string senha;
 
     public:
         GerenteDTO() = default;
 
-        GerenteDTO(int gerenteId, string nome, string email, string ramal) : gerenteId(gerenteId), nome(nome), email(email), ramal(ramal) {
+        GerenteDTO(int gerenteId, string nome, string email, string ramal) : id_gerente(gerenteId), nome(nome),
+                                                                             email(email), ramal(ramal) {
         };
 
-        int getGerenteId() const {
-            return gerenteId;
+        int getId() const {
+            return id_gerente;
         }
 
         void setGerenteId(int valor) {
-            this->gerenteId = valor;
+            this->id_gerente = valor;
         }
 
         string getNome() const {
@@ -52,6 +55,14 @@ namespace Hotelaria {
 
         void setRamal(const string &valor) {
             this->ramal = valor;
+        }
+
+        string getSenha() const {
+            return senha;
+        }
+
+        void setSenha(const string &valor) {
+            this->senha = valor;
         }
     };
 }

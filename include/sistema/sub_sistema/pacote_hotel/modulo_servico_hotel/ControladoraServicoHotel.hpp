@@ -5,12 +5,38 @@
 #ifndef Hotelaria_UnB_TP1_CSHOTEL_HPP
 #define Hotelaria_UnB_TP1_CSHOTEL_HPP
 
-#include "../InterfaceServicoHotel.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfacePersistenciaHotel.hpp"
+#include "InterfaceServicoHotel.hpp"
+#include "ControladoraPersistenciaHotel.hpp"
+
+#include "Utils.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
 #include <iostream>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeTabela;
+
 namespace Hotelaria {
     class ControladoraServicoHotel : public InterfaceServicoHotel {
+    private:
+        InterfacePersistenciaHotel *persistencia;
+        bool executando = false;
+
+    public:
+        void setControladoraPersistencia(InterfacePersistenciaHotel *persistencia) override;
+
+        bool criar(const Hotel &hotel) override;
+
+        bool remover(const int &id) override;
+
+        bool editar(const int &id, const Hotel &hotel) override;
+
+        vector<HotelDTO> listarTodos() override;
+
+        optional<HotelDTO> pesquisar(const int &id) override;
     };
 }
 

@@ -53,13 +53,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/Sistema.cpp
         src/sistema/BancoDeDados.cpp
 
-        ## Sub Sistema - para alteracoes
-        src/sistema/sub_sistema/pacote_gerente/modulo_apresentacao_gerente/ControladorInterfaceGerente.cpp
-        src/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede/ControladorInterfaceHospede.cpp
-        src/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel/ControladorInterfaceHotel.cpp
-        src/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto/ControladorInterfaceQuarto.cpp
-        src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladorInterfaceReserva.cpp
-
         ## Sub Sistema - Apresentacao
         src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoGerente.cpp
         src/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso/ControladoraApresentacaoAcessoHospede.cpp
@@ -71,8 +64,6 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva/ControladoraApresentacaoReserva.cpp
 
         ## Sub Sistema - Servico
-        src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoGerente.cpp
-        src/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso/ControladoraServicoAcessoHospede.cpp
         src/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel/ControladoraServicoAutenticavel.cpp
         src/sistema/sub_sistema/pacote_gerente/modulo_servico_gerente/ControladoraServicoGerente.cpp
         src/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede/ControladoraServicoHospede.cpp
@@ -81,11 +72,14 @@ add_executable(Gerenciador-De-Hoteis---UNB
         src/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva/ControladoraServicoReserva.cpp
 
         # Sub Sistema - Persistências
+        src/sistema/sub_sistema/pacote_autenticavel/modulo_persistencia_autenticavel/ControladoraPersistenciaAutenticavel.cpp
         src/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente/ControladoraPersistenciaGerente.cpp
         src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaHospede.cpp
         src/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel/ControladoraPersistenciaHotel.cpp
         src/sistema/sub_sistema/pacote_quarto/modulo_persistencia_quarto/ControladoraPersistenciaQuarto.cpp
-        src/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede/ControladoraPersistenciaSolicitacaoHospedagem.cpp
+        src/sistema/sub_sistema/pacote_reserva/modulo_persistencia_reserva/ControladoraPersistenciaReserva.cpp
+        src/sistema/sub_sistema/ControladoraPersistenciaSolicitacaoHospedagem.cpp
+
 
         # Objetos - Domínios
         src/sistema/objetos/dominios/Nome.cpp
@@ -194,23 +188,22 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_apresentacao_acesso
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_apresentacao_autenticavel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica/modulo_apresentacao_fabrica
-
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_acesso/modulo_servico_acesso
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel
-        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica/modulo_servico_fabrica
-
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_apresentacao_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_apresentacao_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_apresentacao_hotel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_apresentacao_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_apresentacao_reserva
 
+
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_autenticavel/modulo_servico_autenticavel
+        ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_fabrica/modulo_servico_fabrica
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_servico_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_servico_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_servico_hotel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_quarto/modulo_servico_quarto
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_reserva/modulo_servico_reserva
 
+        ${CMAKE_SOURCE_DIR}/ include/sistema/sub_sistema/pacote_autenticavel/modulo_persistencia_autenticavel
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_gerente/modulo_persistencia_gerente
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hospede/modulo_persistencia_hospede
         ${CMAKE_SOURCE_DIR}/include/sistema/sub_sistema/pacote_hotel/modulo_persistencia_hotel

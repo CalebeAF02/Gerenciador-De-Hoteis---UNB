@@ -12,11 +12,6 @@
 #include "Formato.hpp"
 #include "ControladoraApresentacaoAcessoGerente.hpp"
 #include "ControladoraApresentacaoAcessoHospede.hpp"
-#include "ControladorInterfaceGerente.hpp"
-#include "ControladorInterfaceHospede.hpp"
-#include "ControladorInterfaceHotel.hpp"
-#include "ControladorInterfaceQuarto.hpp"
-#include "ControladorInterfaceReserva.hpp"
 
 using namespace std;
 

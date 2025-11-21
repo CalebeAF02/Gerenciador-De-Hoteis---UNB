@@ -5,28 +5,37 @@
 #ifndef Hotelaria_UnB_TP1_CAA_HPP
 #define Hotelaria_UnB_TP1_CAA_HPP
 
-#include "../InterfaceServicoAutenticavel.hpp"
-#include "../InterfaceApresentacaoAutenticavel.hpp"
-
+#include "InterfaceApresentacaoAutenticavel.hpp"
+#include "InterfaceServicoAutenticavel.hpp"
 #include "Email.hpp"
 #include "Senha.hpp"
-#include "../../../../../libs/io/IO.hpp"
+
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
+#include <string>
 #include <iostream>
+#include <optional>
+#include <vector>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoAutenticavel : public InterfaceApresentacaoAutenticavel {
     private:
-        InterfaceServicoAutenticavel *controladora_servico_autenticavel;
+        InterfaceServicoAutenticavel *servico;
 
         bool estaAutenticado = false;
 
     public:
-        void sair() override;
+        void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *servico) override;
 
-        bool autenticar(Email *) override;
-
-        void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *) override;
+        bool autenticar() override;
 
         void setEstaAutenticado(bool estaAutenticado) override;
 

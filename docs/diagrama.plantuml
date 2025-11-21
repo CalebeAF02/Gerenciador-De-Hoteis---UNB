@@ -1,0 +1,433 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+title Hotelaria_UnB_TP1 – Arquitetura (alto nível)
+
+package Sistema {
+  class Sistema {
+    - executando : bool
+    - contoladoraApresentacaoAcessoGerente : ControladoraApresentacaoAcessoGerente
+    - contoladoraApresentacaoAcessoHospede : ControladoraApresentacaoAcessoHospede
+    + iniciar() : void
+    - exibirMenu() : void
+    - getExecutandoSistema() : bool
+    - sair() : void
+  }
+
+  class BancoDeDados {
+    - db : sqlite3*
+    + getConexao() : sqlite3*
+    + abrindoConexao() : bool
+    + fechandoConexao() : bool
+    + iniciar() : void
+    - tabelaGerente(db) : void
+    - tabelaHospede(db) : void
+    - tabelaHotel(db) : void
+    - tabelaQuarto(db) : void
+    - tabelaReserva(db) : void
+    - tabelaSolicitacoesDeHospedagem(db) : void
+  }
+}
+
+package Acesso {
+  interface InterfaceApresentacaoAcesso {
+    + exibirMenu() : void
+    + setControladoraServicoAcesso(servico: InterfaceServicoAcesso) : void
+  }
+
+  interface InterfaceServicoAcesso {
+    + criar() : bool
+    + autenticar() : bool
+  }
+
+  class ControladoraApresentacaoAcessoGerente implements InterfaceApresentacaoAcesso {
+    - servico : InterfaceServicoAcesso*
+    + setControladoraServicoAcesso(s: InterfaceServicoAcesso*) : void
+    + exibirMenu() : void
+    + exibirMenuGerenciador() : void
+  }
+
+  class ControladoraApresentacaoAcessoHospede implements InterfaceApresentacaoAcesso {
+    - servico : InterfaceServicoAcesso*
+    + setControladoraServicoAcesso(s: InterfaceServicoAcesso*) : void
+    + exibirMenu() : void
+    + opcoesDeHospedagem() : void
+    + solicitandoHospedagem() : void
+    + statusDaSolicitandoHospedagem() : void
+  }
+
+  class ControladoraServicoAcessoGerente implements InterfaceServicoAcesso {
+    - persistencia : InterfacePersistenciaGerente*
+    + autenticar() : bool
+  }
+
+  class ControladoraServicoAcessoHospede implements InterfaceServicoAcesso
+}
+
+package Autenticacao {
+  interface InterfaceApresentacaoAutenticavel {
+    + sair() : void
+    + autenticar(email: Email*) : bool
+    + setControladoraServicoAutenticavel(svc: InterfaceServicoAutenticavel*) : void
+    + setEstaAutenticado(flag: bool) : void
+    + getEstaAutenticado() : bool
+  }
+
+  interface InterfaceServicoAutenticavel {
+    + autenticar(email: Email, senha: Senha) : bool
+  }
+
+  class ControladoraApresentacaoAutenticavel implements InterfaceApresentacaoAutenticavel {
+    - controladora_servico_autenticavel : InterfaceServicoAutenticavel*
+    - estaAutenticado : bool
+    + sair() : void
+    + autenticar(email: Email*) : bool
+    + setControladoraServicoAutenticavel(svc: InterfaceServicoAutenticavel*) : void
+    + setEstaAutenticado(flag: bool) : void
+    + getEstaAutenticado() : bool
+    + getHacke() : InterfaceServicoAutenticavel*
+  }
+
+  class ControladoraServicoAutenticavel implements InterfaceServicoAutenticavel {
+    + autenticar(email: Email, senha: Senha) : bool
+  }
+}
+
+package Gerente {
+  interface InterfaceApresentacaoGerente {
+    + setControladoraServicoPessoal(svc: InterfaceServicoGerente*) : void
+    + exibirMenu() : void
+  }
+
+  interface InterfaceServicoGerente {
+    + criar(gerente: Gerente) : bool
+    + editar(emailAntigo: Email, gerenteAtualizado: Gerente) : bool
+    + remover(id: int) : bool
+    + listarTodos() : vector<GerenteDTO>
+    + pesquisar(id: int) : optional<GerenteDTO>
+  }
+
+  interface InterfacePersistenciaGerente {
+    + inserir(gerente: Gerente) : bool
+    + autenticar(email: string, senha: string) : bool
+    + listar() : vector<GerenteDTO>
+    + pesquisar(id: int) : optional<GerenteDTO>
+    + atualizar(emailAntigo: Email, gerente: Gerente) : bool
+    + excluir(id: int) : bool
+  }
+
+  class ControladoraApresentacaoGerente implements InterfaceApresentacaoGerente {
+    - servico : InterfaceServicoGerente*
+    - executando : bool
+    - estaAutenticado : bool
+    + setControladoraServicoPessoal(svc: InterfaceServicoGerente*) : void
+    + exibirMenu() : void
+    + exibirMenuCRUD() : void
+    + criar() : void
+    + listar() : void
+    + atualizar() : void
+    + remover() : void
+  }
+
+  class ControladoraServicoGerente implements InterfaceServicoGerente {
+    - persistencia : InterfacePersistenciaGerente*
+    + setControladoraPersistencia(p: InterfacePersistenciaGerente*) : void
+    + criar(gerente: Gerente) : bool
+    + editar(emailAntigo: Email, gerenteAtualizado: Gerente) : bool
+    + remover(id: int) : bool
+    + listarTodos() : vector<GerenteDTO>
+    + pesquisar(id: int) : optional<GerenteDTO>
+  }
+
+  class ControladoraPersistenciaGerente implements InterfacePersistenciaGerente {
+    + inserir(gerente: Gerente) : bool
+    + autenticar(email: string, senha: string) : bool
+    + listar() : vector<GerenteDTO>
+    + pesquisar(id: int) : optional<GerenteDTO>
+    + atualizar(emailAntigo: Email, gerente: Gerente) : bool
+    + excluir(id: int) : bool
+  }
+
+  class GerenteDTO {
+    - gerenteId : int
+    - nome : string
+    - email : string
+    - ramal : string
+    + getGerenteId() : int
+    + getNome() : string
+    + getEmail() : string
+    + getRamal() : string
+  }
+}
+
+package Hospede {
+  interface InterfaceApresentacaoHospede {
+    + setControladoraServicoHospede(svc: InterfaceServicoHospede*) : void
+    + exibirMenu() : void
+  }
+  interface InterfaceServicoHospede {
+    + criar() : bool
+    + pesquisar() : bool
+    + editar() : bool
+    + remover() : bool
+  }
+  interface InterfacePersistenciaHospede {
+    + inserir(hospede: Hospede) : bool
+    + listar() : vector<Hospede*>
+  }
+
+  class ControladoraApresentacaoHospede implements InterfaceApresentacaoHospede {
+    - servico : InterfaceServicoHospede*
+    + setControladoraServicoHospede(svc: InterfaceServicoHospede*) : void
+    + exibirMenu() : void
+    + exibirMenuCRUD() : void
+    + criar() : void
+    + listar() : void
+    + atualizar() : void
+    + remover() : void
+  }
+  class ControladoraServicoHospede implements InterfaceServicoHospede {
+    - persistencia : InterfacePersistenciaHospede*
+    + exibirMenu() : void
+    + avaliarSolicitacoes() : void
+    + criar() : bool
+    + remover() : bool
+    + editar() : bool
+    + pesquisar() : bool
+  }
+  class ControladoraPersistenciaHospede implements InterfacePersistenciaHospede {
+    + inserir(hospede: Hospede) : bool
+    + listar() : vector<Hospede*>
+  }
+
+  class HospedeDTO
+}
+
+package Hotel {
+  interface InterfaceApresentacaoHotel {
+    + setControladoraServicoHotel(svc: InterfaceServicoHotel*) : void
+    + exibirMenu() : void
+  }
+  interface InterfaceServicoHotel {
+    + criar(hotel: Hotel) : bool
+    + pesquisar() : bool
+    + editar(hotel: Hotel) : bool
+    + remover() : bool
+  }
+  interface InterfacePersistenciaHotel {
+    + inserir(hotel: Hotel*) : bool
+    + listar() : vector<HotelDTO*>
+    + pesquisar(id: int) : optional<HotelDTO>
+    + atualizar(id: int, hotel: Hotel) : bool
+  }
+
+  class ControladoraApresentacaoHotel implements InterfaceApresentacaoHotel {
+    - servico : InterfaceServicoHotel*
+    - executando : bool
+    + setControladoraServicoHotel(svc: InterfaceServicoHotel*) : void
+    + exibirMenu() : void
+    + exibirMenuCRUD() : void
+    + criar() : bool
+    + listar() : bool
+    + atualizar() : bool
+    + remover() : bool
+  }
+  class ControladoraServicoHotel implements InterfaceServicoHotel {
+    - persistencia : InterfacePersistenciaHotel*
+    - executando : bool
+    + setControladoraPersistencia(p: InterfacePersistenciaHotel*) : void
+    + criar(hotel: Hotel) : bool
+    + pesquisar() : bool
+    + editar(hotel: Hotel) : bool
+    + remover() : bool
+    + listarTodos() : vector<HotelDTO*>
+    + buscarPorId() : optional<HotelDTO>
+  }
+  class ControladoraPersistenciaHotel implements InterfacePersistenciaHotel {
+    + inserir(hotel: Hotel*) : bool
+    + listar() : vector<HotelDTO*>
+    + pesquisar(id: int) : optional<HotelDTO>
+    + atualizar(id: int, hotel: Hotel) : bool
+  }
+
+  class HotelDTO {
+    - hotelId : int
+    - nome : string
+    - endereco : string
+    - telefone : string
+    - codigo : string
+  }
+}
+
+package Quarto {
+  interface InterfaceApresentacaoQuarto {
+    + setControladoraServicoQuarto(svc: InterfaceServicoQuarto*) : void
+    + exibirMenu() : void
+  }
+  interface InterfaceServicoQuarto {
+    + criar() : bool
+    + pesquisar() : bool
+    + editar() : bool
+    + remover() : bool
+  }
+  interface InterfacePersistenciaQuarto {
+    + inserir(quarto: Quarto) : bool
+    + listar() : vector<QuartoDTO>
+    + pesquisar(id: int) : optional<QuartoDTO>
+    + atualizar(id: int, quarto: Quarto) : bool
+    + excluir(id: int) : bool
+  }
+
+  class ControladoraApresentacaoQuarto implements InterfaceApresentacaoQuarto
+  class ControladoraServicoQuarto implements InterfaceServicoQuarto
+  class ControladoraPersistenciaQuarto
+  class QuartoDTO
+}
+
+package Reserva {
+  interface InterfaceApresentacaoReserva {
+    + setControladoraServicoReserva(svc: InterfaceServicoReserva*) : void
+    + exibirMenu() : void
+  }
+  interface InterfaceServicoReserva {
+    + criar() : bool
+    + pesquisar() : bool
+    + editar() : bool
+    + remover() : bool
+  }
+  interface InterfacePersistenciaReserva {
+    + inserir(reserva: Reserva) : bool
+    + listar() : vector<ReservaDTO>
+    + pesquisar(id: int) : optional<ReservaDTO>
+    + atualizar(id: int, reserva: Reserva) : bool
+    + excluir(id: int) : bool
+  }
+
+  class ControladoraApresentacaoReserva implements InterfaceApresentacaoReserva
+  class ControladoraServicoReserva implements InterfaceServicoReserva
+  class ControladoraPersistenciaReserva
+  class ReservaDTO
+}
+
+package Solicitacao {
+  class SolicitacaoHospedagem {
+    - hospedeId : string
+    - hotelId : string
+    - quartoId : string
+    - chegada : Data
+    - partida : Data
+    - status : StatusSolicitacaoHospedagem
+    - motivoRecusa : string
+    + set*/get* : ...
+  }
+
+  class ControladoraPersistenciaSolicitacaoHospedagem {
+    + inicializar() : void
+    + salvar(s: SolicitacaoHospedagem) : void
+    + buscarPorEmail(email: string) : vector<SolicitacaoHospedagem>
+    + buscarPorStatus(status: int) : vector<SolicitacaoHospedagem>
+    + atualizar(s: SolicitacaoHospedagem) : void
+  }
+}
+
+package Dominio {
+  class Pessoa {
+    - nome : Nome
+    - email : Email
+    + setPessoaNome(Nome) : void
+    + setPessoaEmail(Email) : void
+    + getNome() : string
+    + getEmail() : string
+  }
+  class Gerente extends Pessoa {
+    - ramal : Ramal
+    - senha : Senha
+  }
+  class Hospede extends Pessoa {
+    - endereco : Endereco
+    - cartao : Cartao
+  }
+  class Hotel {
+    - nome : Nome
+    - endereco : Endereco
+    - telefone : Telefone
+    - codigo : Codigo
+  }
+  class Quarto {
+    - numero : Numero
+    - capacidade : Capacidade
+    - diaria : Dinheiro
+    - ramal : Ramal
+  }
+  class Reserva {
+    - chegada : Data
+    - partida : Data
+    - dinheiro : Dinheiro
+    - codigo : Codigo
+  }
+
+  class Nome
+  class Email
+  class Ramal
+  class Senha
+  class Endereco
+  class Cartao
+  class Telefone
+  class Numero
+  class Capacidade
+  class Dinheiro
+  class Data
+  enum StatusSolicitacaoHospedagem {
+    PENDENTE
+    APROVADO
+    RECUSADO
+  }
+  class EnumConversor {
+    + StatusSolicitacaoHospedagemParaInteiro(status) : int
+    + InteiroParaStatusSolicitacaoHospedagem(v: int) : StatusSolicitacaoHospedagem
+  }
+}
+
+' Relationships
+Sistema --> ControladoraApresentacaoAcessoGerente
+Sistema --> ControladoraApresentacaoAcessoHospede
+ControladoraApresentacaoAcessoGerente --> InterfaceServicoAcesso
+ControladoraApresentacaoAcessoHospede --> InterfaceServicoAcesso
+
+ControladoraServicoAcessoGerente --> InterfacePersistenciaGerente
+ControladoraApresentacaoAutenticavel --> InterfaceServicoAutenticavel
+ControladoraServicoAutenticavel --> ControladoraPersistenciaGerente
+
+ControladoraApresentacaoGerente --> InterfaceServicoGerente
+ControladoraServicoGerente --> InterfacePersistenciaGerente
+ControladoraPersistenciaGerente --> BancoDeDados
+
+ControladoraApresentacaoHotel --> InterfaceServicoHotel
+ControladoraServicoHotel --> InterfacePersistenciaHotel
+ControladoraPersistenciaHotel --> BancoDeDados
+
+ControladoraApresentacaoHospede --> InterfaceServicoHospede
+ControladoraServicoHospede --> InterfacePersistenciaHospede
+ControladoraPersistenciaHospede --> BancoDeDados
+
+ControladoraApresentacaoQuarto --> InterfaceServicoQuarto
+ControladoraServicoQuarto --> InterfacePersistenciaQuarto
+ControladoraPersistenciaQuarto --> BancoDeDados
+
+ControladoraApresentacaoReserva --> InterfaceServicoReserva
+ControladoraServicoReserva --> InterfacePersistenciaReserva
+ControladoraPersistenciaReserva --> BancoDeDados
+
+ControladoraPersistenciaSolicitacaoHospedagem --> BancoDeDados
+ControladoraPersistenciaSolicitacaoHospedagem --> EnumConversor
+
+GerenteDTO ..> Gerente
+HotelDTO ..> Hotel
+ReservaDTO ..> Reserva
+QuartoDTO ..> Quarto
+HospedeDTO ..> Hospede
+
+Pessoa <|-- Gerente
+Pessoa <|-- Hospede
+
+@enduml

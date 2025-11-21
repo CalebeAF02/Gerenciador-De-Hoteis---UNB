@@ -5,25 +5,34 @@
 #ifndef Hotelaria_UnB_TP1_PERSISTENCIAHOTEL_H
 #define Hotelaria_UnB_TP1_PERSISTENCIAHOTEL_H
 
+#include "InterfacePersistenciaHotel.hpp"
 #include "Hotel.hpp"
-#include "BancoDeDados.hpp"
 #include "HotelDTO.hpp"
-#include <optional>
 
-#include "iostream"
+#include "BancoDeDados.hpp"
+
+#include <iostream>
+#include <vector>
+#include <optional>
 #include "sqlite3.h"
 
 using namespace std;
+
+
 namespace Hotelaria {
-    class ControladoraPersistenciaHotel {
+    class ControladoraPersistenciaHotel : public InterfacePersistenciaHotel {
     public:
-        bool inserir(Hotel *hotel);
+        bool inserir(const Hotel &hotel) override;
 
-        vector<HotelDTO *> listar();
+        bool autenticar(const string &email, const string &senha) override;
 
-        optional<HotelDTO> buscaHotelPorID(int id);
+        vector<HotelDTO> listar() override;
 
-        bool atualizar(int id, const Hotel &hotel);
+        optional<HotelDTO> pesquisar(const int &id) override;
+
+        bool atualizar(const int &id, const Hotel &hotel) override;
+
+        bool excluir(const int &id) override;
     };
 }
 

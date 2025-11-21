@@ -7,19 +7,40 @@
 
 #include "InterfaceApresentacaoQuarto.hpp"
 #include "InterfaceServicoQuarto.hpp"
+
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
 #include "IO.hpp"
+
+#include <string>
 #include <iostream>
+#include <optional>
+#include <vector>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraApresentacaoQuarto : public InterfaceApresentacaoQuarto {
     private:
-        InterfaceServicoQuarto *controladora_servico_quarto;
+        InterfaceServicoQuarto *servico;
+        bool executando = false;
 
     public:
-        bool valor() override;
+        void setControladoraServicoQuarto(InterfaceServicoQuarto *servico) override;
 
-        void setControladoraServicoQuarto(InterfaceServicoQuarto *) override;
+        void exibirMenuCRUD() override;
+
+        void criar();
+
+        void listar();
+
+        void atualizar();
+
+        void remover();
     };
 }
 

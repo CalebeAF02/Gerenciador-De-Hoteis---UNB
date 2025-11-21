@@ -6,7 +6,27 @@
 
 namespace Hotelaria {
     void ControladoraApresentacaoQuarto::setControladoraServicoQuarto(
-        InterfaceServicoQuarto *controladora_servico_quarto) {
-        this->controladora_servico_quarto = controladora_servico_quarto;
+        InterfaceServicoQuarto *servico) {
+        this->servico = servico;
     }
+
+    void ControladoraApresentacaoQuarto::exibirMenuCRUD() {
+        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    }
+
+    void ControladoraApresentacaoQuarto::criar() {
+        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    };
+
+    void ControladoraApresentacaoQuarto::listar() {
+        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    };
+
+    void ControladoraApresentacaoQuarto::atualizar() {
+        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    };
+
+    void ControladoraApresentacaoQuarto::remover() {
+        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    };
 }

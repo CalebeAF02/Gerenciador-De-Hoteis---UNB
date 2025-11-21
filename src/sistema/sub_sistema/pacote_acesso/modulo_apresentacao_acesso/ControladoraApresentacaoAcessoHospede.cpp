@@ -5,11 +5,6 @@
 #include "ControladoraApresentacaoAcessoHospede.hpp"
 
 namespace Hotelaria {
-    void ControladoraApresentacaoAcessoHospede::setControladoraServicoAcesso(
-        InterfaceServicoAcesso *controladora_servico_acesso_hospede) {
-        this->controladora_servico_acesso_hospede = controladora_servico_acesso_hospede;
-    }
-
     void ControladoraApresentacaoAcessoHospede::exibirMenu() {
         bool executando = true;
 
@@ -99,7 +94,8 @@ namespace Hotelaria {
         IO::Print("Informe o Email: ");
         string email = IO::LerLinha();
 
-        const vector<SolicitacaoHospedagem> lista = ControladoraPersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
+        const vector<SolicitacaoHospedagem> lista =
+                ControladoraPersistenciaSolicitacaoHospedagem::buscarPorEmail(email);
 
         if (lista.empty()) {
             IO::Println("Nenhuma solicitacao encontrada.");

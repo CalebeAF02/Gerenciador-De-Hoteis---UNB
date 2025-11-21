@@ -6,7 +6,6 @@
 
 namespace Hotelaria {
     void SistemaHacker::iniciar() {
-
         IO::Println("Versao " + Versao::getVersaoCompleta());
 
         Email emailHK;
@@ -14,13 +13,13 @@ namespace Hotelaria {
         Email *emailObj = &emailHK;
 
         Senha senhaHK("A1!b2");
-
-        bool estaAutenticado = controladorGerente.getHacke()->autenticar(*emailObj, senhaHK);
-        controladorGerente.setEstaAutenticado(estaAutenticado);
+        /*
+        bool estaAutenticado = servico.getHacke()->autenticar(*emailObj, senhaHK);
+        servico.setEstaAutenticado(estaAutenticado);
         if (estaAutenticado) {
             IO::Println("Agora Voce Possui Super-Poderes");
-            controladora_apresentacao_acesso_gerente.exibirMenu();
+            servico.exibirMenu();
         }
-
+        */
     }
 }

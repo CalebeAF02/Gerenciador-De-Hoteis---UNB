@@ -21,28 +21,18 @@ namespace Hotelaria {
         Senha senha;
 
     public:
-        //-----------------------------------------------------------------------------------------------------------------
-        // Contrutor de Hotel sem valores
         Gerente() : Pessoa(Nome(), Email()) {
         };
 
-        // Contrutor de Hotel Com todos valores
         Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj,
                 emailPessoaObj),
             ramal(ramal), senha(senha) {
         };
 
-        // construtor com valores do banco de dados
-        // Transforma GerenteDTO em Hotel
         Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
             setRamal(Ramal(gerente_dto.getRamal()));
         };
 
-        // Obs : exemplo Matricula getMatricula() const;
-        //-----------------------------------------------------------------------------------------------------------------
-
-
-        // seters -----------------
         void setNome(const Nome &newNome) {
             Pessoa::setPessoaNome(newNome);
         }

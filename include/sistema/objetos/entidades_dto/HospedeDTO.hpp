@@ -8,10 +8,11 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class HospedeDTO {
     private:
-        int hospedeId;
+        int id_hospede;
         string nome;
         string email;
         string endereco;
@@ -20,15 +21,16 @@ namespace Hotelaria {
     public:
         HospedeDTO() = default;
 
-        HospedeDTO(int hospedeId, string nome, string email, string endereco, string cartao) : hospedeId(hospedeId), nome(nome), email(email), endereco(endereco), cartao(cartao) {
+        HospedeDTO(int id_hospede, string nome, string email, string endereco, string cartao) : id_hospede(id_hospede),
+            nome(nome), email(email), endereco(endereco), cartao(cartao) {
         };
 
         int getId() const {
-            return hospedeId;
+            return id_hospede;
         }
 
         void setId(int valor) {
-            this->hospedeId = valor;
+            this->id_hospede = valor;
         }
 
         string getNome() const {
@@ -36,7 +38,7 @@ namespace Hotelaria {
         }
 
         void setNome(const string &valor) {
-            this->nome = nome;
+            this->nome = valor;
         }
 
         string getEmail() const {
@@ -54,12 +56,13 @@ namespace Hotelaria {
         void setEndereco(const string &valor) {
             this->endereco = valor;
         }
+
         string getCartao() const {
-            return endereco;
+            return cartao;
         }
 
         void setCartao(const string &valor) {
-            this->endereco = valor;
+            this->cartao = valor;
         }
     };
 }

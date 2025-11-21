@@ -5,12 +5,35 @@
 #ifndef Hotelaria_UnB_TP1_CSRESERVA_HPP
 #define Hotelaria_UnB_TP1_CSRESERVA_HPP
 
-#include "../InterfaceServicoReserva.hpp"
-#include "../../../../../libs/io/IO.hpp"
+#include "InterfaceServicoReserva.hpp"
+#include "InterfacePersistenciaReserva.hpp"
+#include "ControladoraServicoReserva.hpp"
+#include "Utils.hpp"
+#include "Tabela.hpp"
+#include "IO.hpp"
+
 #include <iostream>
+
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeTabela;
+
 namespace Hotelaria {
     class ControladoraServicoReserva : public InterfaceServicoReserva {
+    public:
+        bool exibirMenu();
+
+        bool exibirMenuCRUD();
+
+        bool criar(const Reserva &reserva) override;
+
+        bool editar(const int &id, const Reserva &reserva) override;
+
+        bool remover(const int id) override;
+
+        vector<ReservaDTO> listarTodos() override;
+
+        optional<ReservaDTO> pesquisar(const int id) override;
     };
 }
 

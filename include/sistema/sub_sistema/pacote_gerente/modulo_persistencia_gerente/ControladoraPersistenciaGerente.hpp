@@ -5,28 +5,33 @@
 #ifndef ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H
 #define ANTIGO_PROJETO_HOTEL_CLION_MAIN_IML_PERSISTENCIAGERENTE_H
 
+#include "InterfacePersistenciaGerente.hpp"
+#include "GerenteDTO.hpp"
+#include "Gerente.hpp"
+
+#include "BancoDeDados.hpp"
+
+#include <iostream>
 #include <vector>
 #include <optional>
-#include "Gerente.hpp"
-#include "GerenteDTO.hpp"
-#include "BancoDeDados.hpp"
 #include "sqlite3.h"
 
 using namespace std;
+
 namespace Hotelaria {
-    class ControladoraPersistenciaGerente {
+    class ControladoraPersistenciaGerente : public InterfacePersistenciaGerente {
     public:
-        bool inserir(Gerente &gerente);
+        bool inserir(const Gerente &gerente) override;
 
-        vector<GerenteDTO *> listar();
+        bool autenticar(const string &email, const string &senha) override;
 
-        bool atualizar(int id, const Gerente &gerente);
+        vector<GerenteDTO> listar() override;
 
-        bool excluirPorId(int id);
+        optional<GerenteDTO> pesquisar(const int &id) override;
 
-        bool autenticarGerente(const string &email, const string &senha);
+        bool atualizar(const Email &email, const Gerente &gerente) override;
 
-        optional<GerenteDTO> buscaGerentePorID(int id);
+        bool excluir(const int &id) override;
     };
 }
 

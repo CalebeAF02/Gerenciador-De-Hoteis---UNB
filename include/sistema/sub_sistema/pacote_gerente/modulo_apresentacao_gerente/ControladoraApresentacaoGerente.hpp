@@ -6,28 +6,47 @@
 #define Hotelaria_UnB_TP1_CAP_HPP
 
 #include "InterfaceApresentacaoGerente.hpp"
+#include "InterfaceServicoGerente.hpp"
+
+#include "FabricaGerenciavel.hpp"
+#include "Utils.hpp"
+#include "Menu.hpp"
+#include "Tabela.hpp"
 #include "IO.hpp"
+
+#include <string>
 #include <iostream>
+#include <optional>
+#include <vector>
 
 using namespace std;
+using namespace Utils;
+using namespace VisualizadorDeMenu;
+using namespace VisualizadorDeTabela;
+
 
 namespace Hotelaria {
     class ControladoraApresentacaoGerente : public InterfaceApresentacaoGerente {
     private:
-        // Códigos dos serviços.
+        InterfaceServicoGerente *servico;
 
-        const static int INCLUIR = 1;
-        const static int REMOVER = 2;
-        const static int PESQUISAR = 3;
-        const static int EDITAR = 4;
-        const static int RETORNAR = 5;
-
-        InterfaceServicoGerente *controladora_servico_pessoal; // Referência para servidor.
+        bool executando = true;
+        bool estaAutenticado = false;
 
     public:
-        void executar(const Email);
+        void setControladoraServicoPessoal(InterfaceServicoGerente *servico) override;
 
-        void setControladoraServicoPessoal(InterfaceServicoGerente *) override;
+        void exibirMenuCRUD() override;
+
+        void criar();
+
+        void listar();
+
+        void atualizar();
+
+        void remover();
+
+        void avaliarSolicitacoes();
     };
 }
 

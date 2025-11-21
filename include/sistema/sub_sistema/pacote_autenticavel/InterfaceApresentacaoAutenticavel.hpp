@@ -13,15 +13,15 @@ using namespace std;
 namespace Hotelaria {
     class InterfaceApresentacaoAutenticavel {
     public:
-        virtual void sair() = 0;
-
-        virtual bool autenticar(Email *) = 0; //  solicitado o serviço.
-
         virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *) = 0;
+
+        virtual bool autenticar() = 0; //  solicitado o serviço.
 
         virtual void setEstaAutenticado(bool estaAutenticado) = 0;
 
         virtual bool getEstaAutenticado() = 0;
+
+        virtual ~InterfaceApresentacaoAutenticavel() = default;
     };
 }
 
