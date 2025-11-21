@@ -39,9 +39,9 @@ void TesteGerente::executar() {
     // ... CONTINUE ASSIM PARA RAMAL E SENHA ...
 
     // =========================================================================
-    // 3. ATRIBUIÇÃO DE RAMAL (Usando um valor válido de 2 dígitos)
+    // 3. ATRIBUIÇÃO DE RAMAL (Usando um dinheiro válido de 2 dígitos)
     // =========================================================================
-    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
+    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o dinheiro de teste.
     const string ramalStr = "49";
     Formato::SeparadorDeCategoria("3. Atribuicao de Ramal Valido (00-50)");
 
@@ -67,4 +67,5 @@ void TesteGerente::executar() {
         [&gerente1, &senhaStr]() { gerente1.setSenha(Senha(senhaStr)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------

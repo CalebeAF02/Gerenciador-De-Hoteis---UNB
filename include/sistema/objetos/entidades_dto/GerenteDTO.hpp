@@ -25,45 +25,25 @@ namespace Hotelaria {
                                                                              email(email), ramal(ramal) {
         };
 
-        int getId() const {
-            return id_gerente;
-        }
+        int getId() const;
 
-        void setGerenteId(int valor) {
-            this->id_gerente = valor;
-        }
+        void setGerenteId(int valor);
 
-        string getNome() const {
-            return nome;
-        }
+        string getNome() const;
 
-        void setNome(const string &valor) {
-            this->nome = valor;
-        }
+        void setNome(const string &valor);
 
-        string getEmail() const {
-            return email;
-        }
+        string getEmail() const;
 
-        void setEmail(const string &valor) {
-            this->email = valor;
-        }
+        void setEmail(const string &valor);
 
-        string getRamal() const {
-            return ramal;
-        }
+        string getRamal() const;
 
-        void setRamal(const string &valor) {
-            this->ramal = valor;
-        }
+        void setRamal(const string &valor);
 
-        string getSenha() const {
-            return senha;
-        }
+        string getSenha() const;
 
-        void setSenha(const string &valor) {
-            this->senha = valor;
-        }
+        void setSenha(const string &valor);
     };
 }
 

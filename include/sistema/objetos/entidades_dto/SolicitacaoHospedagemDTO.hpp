@@ -5,9 +5,13 @@
 #ifndef GERENCIADOR_DE_HOTEIS_UNB_SOLICITACAOHOSPEDAGEMDTO_HPP
 #define GERENCIADOR_DE_HOTEIS_UNB_SOLICITACAOHOSPEDAGEMDTO_HPP
 
+#include "Data.hpp"
+#include "StatusSolicitacaoHospedagem.hpp"
+
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class SolicitacaoHospedagemDTO {
     private:
@@ -15,78 +19,53 @@ namespace Hotelaria {
         int hospedeId;
         int hotelId;
         int quartoId;
-        string chegada;
-        string partida;
-        string status;
+        Data chegada;
+        Data partida;
+        StatusSolicitacaoHospedagem status;
         string motivoRecusa;
 
     public:
         SolicitacaoHospedagemDTO() = default;
 
-        SolicitacaoHospedagemDTO(int solicitacaoHospedagemId, int hospedeId, int hotelId, int quartoId, string chegada, string partida, string(status), string motivoRecusa) : solicitacaoHospedagemId(solicitacaoHospedagemId), hospedeId(hospedeId), hotelId(hotelId), quartoId(quartoId), chegada(chegada), partida(partida), status(status), motivoRecusa(motivoRecusa) {};
+        SolicitacaoHospedagemDTO(int solicitacaoHospedagemId, int hospedeId, int hotelId, int quartoId, Data chegada,
+                                 Data partida, StatusSolicitacaoHospedagem (status),
+                                 string motivoRecusa) : solicitacaoHospedagemId(solicitacaoHospedagemId),
+                                                        hospedeId(hospedeId), hotelId(hotelId), quartoId(quartoId),
+                                                        chegada(chegada), partida(partida), status(status),
+                                                        motivoRecusa(motivoRecusa) {
+        };
 
-        int getSolicitacaoHospedagemId() const {
-            return solicitacaoHospedagemId;
-        }
+        int getSolicitacaoHospedagemId() const;
 
-        void setSolicitacaoHospedagemId(int valor) {
-            this->solicitacaoHospedagemId = valor;
-        }
+        void setSolicitacaoHospedagemId(int valor);
 
-        int getHospedeId() const {
-            return hospedeId;
-        }
+        int getHospedeId() const;
 
-        void setHospedeId(int valor) {
-            this->hospedeId = valor;
-        }
+        void setHospedeId(int valor);
 
-        int getHotelId() const {
-            return hotelId;
-        }
+        int getHotelId() const;
 
-        void setHotelId(int valor) {
-            this->hotelId = valor;
-        }
+        void setHotelId(int valor);
 
-        int getQuartoId() const {
-            return quartoId;
-        }
+        int getQuartoId() const;
 
-        void setQuartoId(int valor) {
-            this->quartoId = valor;
-        }
+        void setQuartoId(int valor);
 
-        string getChegada() const {
-            return chegada;
-        }
+        Data getChegada() const;
 
-        void setChegada(const string &valor) {
-            this->chegada = valor;
-        }
+        void setChegada(const Data &valor);
 
-        string getPartida() const {
-            return partida;
-        }
+        Data getPartida() const;
 
-        void setPartida(const string &valor) {
-            this->partida = valor;
-        }
+        void setPartida(const Data &valor);
 
-        string getStatus() const {
-            return status;
-        }
+        StatusSolicitacaoHospedagem getStatus() const;
 
-        void setStatus(const string &valor) {
-            this->status = valor;
-        }
-        string getMotivoRecusa() const {
-            return motivoRecusa;
-        }
+        void setStatus(const StatusSolicitacaoHospedagem &valor);
 
-        void setMotivoRecusa(const string &valor) {
-            this->motivoRecusa = valor;
-        }
+        string getMotivoRecusa() const;
+
+        void setMotivoRecusa(const string &valor);
     };
 }
 

@@ -29,6 +29,8 @@ namespace Hotelaria {
     }
 
     bool ControladoraPersistenciaHotel::autenticar(const string &email, const string &senha) {
+        // Ainda não Implementado
+        return true;
     }
 
     vector<HotelDTO> ControladoraPersistenciaHotel::listar() {
@@ -132,5 +134,7 @@ namespace Hotelaria {
     }
 
     bool ControladoraPersistenciaHotel::excluir(const int &id) {
+        // Ainda não Implementado
+        return true;
     }
 }

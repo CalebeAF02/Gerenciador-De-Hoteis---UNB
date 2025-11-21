@@ -4,7 +4,14 @@
 
 #include "ControladoraApresentacaoAcessoHospede.hpp"
 
+#include "InterfaceApresentacaoHospede.hpp"
+
 namespace Hotelaria {
+    void ControladoraApresentacaoAcessoHospede::setControladoraReserva(
+        InterfaceApresentacaoHospede *apresentacao_hospede) {
+        this->apresentacao_hospede = apresentacao_hospede;
+    }
+
     void ControladoraApresentacaoAcessoHospede::exibirMenu() {
         bool executando = true;
 
@@ -67,14 +74,13 @@ namespace Hotelaria {
                 Data partida(partidaStr);
 
                 SolicitacaoHospedagem solicitacao(
-                    email,
-                    idHotel,
-                    idQuarto,
+                    stoi(email),
+                    stoi(idHotel),
+                    stoi(idQuarto),
                     chegada,
                     partida,
                     StatusSolicitacaoHospedagem::PENDENTE,
                     ""
-
                 );
 
                 ControladoraPersistenciaSolicitacaoHospedagem::salvar(solicitacao);

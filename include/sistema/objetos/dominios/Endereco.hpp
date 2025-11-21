@@ -9,28 +9,22 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Endereco {
     private:
         string enderecoStr;
 
-        void validar(string valor); // Metodo de validacao
+        void validar(string valor);
 
     public:
         Endereco() = default;
 
-        explicit Endereco(const string &valor) {
-            setValor(valor);
-        };
+        explicit Endereco(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->enderecoStr = valor;
-        }
+        void setValor(const string &valor);
 
-        string getValor() const {
-            return enderecoStr;
-        }
+        string getValor() const;
     };
 }
 

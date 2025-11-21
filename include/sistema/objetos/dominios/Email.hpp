@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Email {
     private:
@@ -19,21 +20,12 @@ namespace Hotelaria {
     public:
         Email() = default;
 
-        explicit Email(const string &valor) {
-            setValor(valor);
-        }
+        explicit Email(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->emailStr = valor;
-        }
+        void setValor(const string &valor);
 
         string getValor() const;
     };
-
-    inline string Email::getValor() const {
-        return emailStr;
-    }
 }
 
 #endif //GERENCIADOR_HOTEL_UNB_EMAIL_H

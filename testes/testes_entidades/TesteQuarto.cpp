@@ -42,7 +42,7 @@ void TesteQuarto::executar() {
     // =========================================================================
     // 3. ATRIBUIÇÃO DE DIÁRIA (DINHEIRO)
     // =========================================================================
-    // Dinheiro é um valor inteiro (ex: 15000 representa R$150,00)
+    // Dinheiro é um dinheiro inteiro (ex: 15000 representa R$150,00)
     int diariaInt = 25000;
 
     // NOTA: Para Dinheiro, geralmente se usa um tipo numérico (int), então o teste deve ser adaptado.
@@ -55,9 +55,9 @@ void TesteQuarto::executar() {
         [&quarto1, &diariaInt]() { quarto1.setDiaria(Dinheiro(diariaInt)); }
     );
     // =========================================================================
-    // 4. ATRIBUIÇÃO DE RAMAL (Usando um valor válido de 2 dígitos)
+    // 4. ATRIBUIÇÃO DE RAMAL (Usando um dinheiro válido de 2 dígitos)
     // =========================================================================
-    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o valor de teste.
+    // Ramal deve ser 2 dígitos, 00-50. Corrigindo o dinheiro de teste.
     const string ramalStr = "49";
     Formato::SeparadorDeCategoria("3. Atribuicao de Ramal Valido (00-50)");
 
@@ -69,4 +69,5 @@ void TesteQuarto::executar() {
         [&quarto1, &ramalStr]() { quarto1.setRamal(Ramal(ramalStr)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------

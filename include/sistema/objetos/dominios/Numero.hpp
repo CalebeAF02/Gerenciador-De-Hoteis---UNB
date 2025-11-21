@@ -9,28 +9,22 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Numero {
     private:
         string numeroStr;
 
-        void validar(string valor); // Metodo de validacao
+        void validar(string valor);
 
     public:
         Numero() = default;
 
-        explicit Numero(const string &valor) {
-            setValor(valor);
-        };
+        explicit Numero(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->numeroStr = valor;
-        }
+        void setValor(const string &valor);
 
-        string getValor() const {
-            return numeroStr;
-        }
+        string getValor() const;
     };
 }
 

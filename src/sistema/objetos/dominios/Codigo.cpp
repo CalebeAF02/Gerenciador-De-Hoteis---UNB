@@ -3,7 +3,21 @@
 //
 
 #include "Codigo.hpp"
+
 namespace Hotelaria {
+    Codigo::Codigo(const string &valor) {
+        setValor(valor);
+    };
+
+    void Codigo::setValor(const string &valor) {
+        validar(valor);
+        this->codigoStr = valor;
+    }
+
+    string Codigo::getValor() const {
+        return codigoStr;
+    }
+
     void Codigo::validar(const string codigo) {
         int cont_baixo = 0;
         int cont_alto = 0;

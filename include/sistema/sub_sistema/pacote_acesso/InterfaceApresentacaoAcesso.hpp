@@ -10,6 +10,14 @@ namespace Hotelaria {
     public:
         virtual void exibirMenu() = 0;
 
+        virtual void exibirMenuGerenciador() = 0;
+
+        virtual void opcoesDeHospedagem() = 0;
+
+        virtual void solicitandoHospedagem() = 0;
+
+        virtual void statusDaSolicitandoHospedagem() const = 0;
+
         virtual ~InterfaceApresentacaoAcesso() = default;
     };
 }

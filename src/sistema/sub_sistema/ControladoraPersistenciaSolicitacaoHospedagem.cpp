@@ -2,13 +2,13 @@
 // Created by caleb on 26/10/2025.
 //
 
-#include "../../../include/sistema/sub_sistema/ControladoraPersistenciaSolicitacaoHospedagem.hpp"
+#include "ControladoraPersistenciaSolicitacaoHospedagem.hpp"
 
 
 namespace Hotelaria {
     static const char *DB_PATH = "hotel.db";
 
-    void ControladoraPersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &s) {
+    void ControladoraPersistenciaSolicitacaoHospedagem::salvar(const SolicitacaoHospedagem &status) {
         BancoDeDados banco;
 
         if (!banco.abrindoConexao())
@@ -26,13 +26,13 @@ namespace Hotelaria {
         sqlite3_stmt *stmt;
         sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
-        sqlite3_bind_text(stmt, 1, s.getHospedeId().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 2, s.getHotelId().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 3, s.getQuartoId().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 4, s.getChegada().toString().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 5, s.getPartida().toString().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_int(stmt, 6, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
-        sqlite3_bind_text(stmt, 7, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 1, status.getHospedeId());
+        sqlite3_bind_int(stmt, 2, status.getHotelId());
+        sqlite3_bind_int(stmt, 3, status.getQuartoId());
+        sqlite3_bind_text(stmt, 4, status.getChegada().toString().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 5, status.getPartida().toString().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 6, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(status.getStatus()));
+        sqlite3_bind_text(stmt, 7, status.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
 
         sqlite3_step(stmt);
         sqlite3_finalize(stmt);
@@ -66,9 +66,9 @@ namespace Hotelaria {
             string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 6));
 
             lista.emplace_back(
-                email,
-                hotelId,
-                quartoId,
+                stoi(email),
+                stoi(hotelId),
+                stoi(quartoId),
                 Data(chegadaStr),
                 Data(partidaStr),
                 status,
@@ -109,9 +109,9 @@ namespace Hotelaria {
             string motivo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 7));
 
             lista.emplace_back(
-                email,
-                hotelId,
-                quartoId,
+                stoi(email),
+                stoi(hotelId),
+                stoi(quartoId),
                 Data(chegadaStr),
                 Data(partidaStr),
                 status,
@@ -124,7 +124,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    void ControladoraPersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &s) {
+    void ControladoraPersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &status) {
         sqlite3 *db;
         sqlite3_open(DB_PATH, &db);
 
@@ -137,8 +137,8 @@ namespace Hotelaria {
         sqlite3_stmt *stmt;
         sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
 
-        sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(s.getStatus()));
-        sqlite3_bind_text(stmt, 2, s.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(status.getStatus()));
+        sqlite3_bind_text(stmt, 2, status.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
 
         sqlite3_step(stmt);
         sqlite3_finalize(stmt);

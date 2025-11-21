@@ -16,6 +16,14 @@ namespace Hotelaria {
 
         virtual void exibirMenuCRUD() = 0;
 
+        virtual void criar() = 0;
+
+        virtual void listar() = 0;
+
+        virtual void atualizar() = 0;
+
+        virtual void remover() = 0;
+
         virtual ~InterfaceApresentacaoHotel() = default;
     };
 }

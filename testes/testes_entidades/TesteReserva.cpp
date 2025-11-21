@@ -58,7 +58,7 @@ void TesteReserva::executar() {
     // =========================================================================
     // 4. ATRIBUIÇÃO DE VALOR (DINHEIRO)
     // =========================================================================
-    // Dinheiro é um valor inteiro (ex: 15000 representa R$150,00)
+    // Dinheiro é um dinheiro inteiro (ex: 15000 representa R$150,00)
     int DinheiroInt = 75000;
 
     Formato::SeparadorDeCategoria("4. Atribuicao de Valor (Dinheiro) Valido");
@@ -70,4 +70,5 @@ void TesteReserva::executar() {
         [&reserva1, &DinheiroInt]() { reserva1.setDinheiro(Dinheiro(DinheiroInt)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------

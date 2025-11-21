@@ -8,59 +8,42 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class ReservaDTO {
     private:
         int reservaId;
         string chegada;
         string partida;
-        string dinheiro;
+        int dinheiro;
         string codigo;
 
     public:
         ReservaDTO() = default;
 
-        ReservaDTO(int reservaId, string chegada, string partida, string dinheiro, string codigo) : reservaId(reservaId), chegada(chegada), partida(partida), dinheiro(dinheiro), codigo(codigo) {
+        ReservaDTO(int reservaId, string chegada, string partida, int dinheiro, string codigo) : reservaId(reservaId),
+            chegada(chegada), partida(partida), dinheiro(dinheiro), codigo(codigo) {
         };
 
-        int getReservaId() const {
-            return reservaId;
-        }
+        int getReservaId() const;
 
-        void setReservaId(int valor) {
-            this->reservaId = valor;
-        }
+        void setReservaId(int valor);
 
-        string getChegada() const {
-            return chegada;
-        }
+        string getChegada() const;
 
-        void setChegada(const string &valor) {
-            this->chegada = valor;
-        }
+        void setChegada(const string &valor);
 
-        string getPartida() const {
-            return partida;
-        }
+        string getPartida() const;
 
-        void setPartida(const string &valor) {
-            this->partida = valor;
-        }
+        void setPartida(const string &valor);
 
-        string getDinheiro() const {
-            return dinheiro;
-        }
+        int getDinheiro() const;
 
-        void setDinheiro(const string &valor) {
-            this->dinheiro = valor;
-        }
-        string getCodigo() const {
-            return codigo;
-        }
+        void setDinheiro(const int &valor);
 
-        void setCodigo(const string &valor) {
-            this->codigo = valor;
-        }
+        string getCodigo() const;
+
+        void setCodigo(const string &valor);
     };
 }
 

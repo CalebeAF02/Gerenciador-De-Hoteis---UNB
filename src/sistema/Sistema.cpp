@@ -8,17 +8,9 @@
 #include "Versao.hpp"
 
 namespace Hotelaria {
-    bool Sistema::getExecutandoSistema() {
-        return executando;
-    };
-
-    void Sistema::sair() {
-        this->executando = false;
-    }
-
     void Sistema::iniciar() {
         IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
-        while (getExecutandoSistema()) {
+        while (executando) {
             exibirMenu();
         }
     }
@@ -30,16 +22,16 @@ namespace Hotelaria {
         int OPCAO_ENTRAR_COMO_GERENTE = menu.adcionarItens("Entrar como Gerente");
         int OPCAO_ENTRAR_COMO_HOSPEDE = menu.adcionarItens("Entrar como Hospede");
 
-        while (getExecutandoSistema()) {
+        while (executando) {
             int opcao = menu.executa("Seja bem vindo ao Gerenciador de Hoteis");
 
             if (opcao == OPCAO_SAIR_DO_SISTEMA) {
-                sair();
+                this->executando = false;
                 IO::Println("Encerrando o sistema...");
             } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
-                contoladoraApresentacaoAcessoGerente.exibirMenu();
+                this->contoladoraApresentacaoAcessoGerente->exibirMenu();
             } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
-                contoladoraApresentacaoAcessoHospede.exibirMenu();
+                this->contoladoraApresentacaoAcessoHospede->exibirMenu();
             }
         }
     };

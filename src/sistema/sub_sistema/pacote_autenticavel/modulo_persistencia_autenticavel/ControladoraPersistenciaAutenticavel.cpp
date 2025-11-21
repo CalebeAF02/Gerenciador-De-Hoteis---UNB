@@ -6,5 +6,7 @@
 
 namespace Hotelaria {
     bool ControladoraPersistenciaAutenticavel::autenticar(const string &email, const string &senha) {
+        // Ainda não Implementado
+        return true;
     };
 }

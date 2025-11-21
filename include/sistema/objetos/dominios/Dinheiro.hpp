@@ -9,28 +9,22 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Dinheiro {
     private:
-        int valor;
+        int dinheiro;
 
-        void validar(int dinheiroInt); // Metodo de validacao
+        void validar(int valor);
 
     public:
         Dinheiro() = default;
 
-        explicit Dinheiro(const int &dinheiroInt) {
-            setValor(dinheiroInt);
-        };
+        explicit Dinheiro(const int &valor);
 
-        void setValor(int dinheiroInt) {
-            validar(dinheiroInt);
-            this->valor = dinheiroInt;
-        }
+        void setValor(int valor);
 
-        int getValor() const {
-            return valor;
-        }
+        int getValor() const;
     };
 }
 

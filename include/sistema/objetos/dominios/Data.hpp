@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 using namespace std;
+
 namespace Hotelaria {
     class Data : public exception {
     private:
@@ -29,38 +30,20 @@ namespace Hotelaria {
         static int const NOV = 11;
         static int const DEZ = 12;
 
-        //Construtores
         Data() = default;
 
-        explicit Data(const string &dataStr);
+        explicit Data(const string &valor);
 
-        // Metodo de Impressao
-        string toString() {
-            return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
-        }
+        string toString();
 
-        //metodo Setar - Entrada
         void setData(int d, int m, int a);
 
-        //metodos get - Saida
         int getDia();
 
         int getMes();
 
         int getAno();
     };
-
-    inline int Data::getDia() {
-        return dia;
-    }
-
-    inline int Data::getMes() {
-        return mes;
-    }
-
-    inline int Data::getAno() {
-        return ano;
-    }
 }
 
 #endif

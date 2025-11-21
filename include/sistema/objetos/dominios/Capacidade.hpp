@@ -9,28 +9,22 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Capacidade {
     private:
         int capacidadeInt;
 
-        void validar(int valor); // Metodo de validacao
+        void validar(int valor);
 
     public:
         Capacidade() = default;
 
-        explicit Capacidade(const int &valor) {
-            setValor(valor);
-        };
+        explicit Capacidade(const int &valor);
 
-        void setValor(const int &valor) {
-            validar(valor);
-            this->capacidadeInt = valor;
-        }
+        void setValor(const int &valor);
 
-        int getValor() const {
-            return capacidadeInt;
-        }
+        int getValor() const;
     };
 }
 

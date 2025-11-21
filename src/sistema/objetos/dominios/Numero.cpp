@@ -5,6 +5,19 @@
 #include "Numero.hpp"
 
 namespace Hotelaria {
+    Numero::Numero(const string &valor) {
+        setValor(valor);
+    };
+
+    void Numero::setValor(const string &valor) {
+        validar(valor);
+        this->numeroStr = valor;
+    }
+
+    string Numero::getValor() const {
+        return numeroStr;
+    }
+
     void Numero::validar(const string valor) {
         if (valor.length() == 3) {
             if ((isdigit(valor[0]) || isdigit(valor[1]) || isdigit(valor[2])) == false) {

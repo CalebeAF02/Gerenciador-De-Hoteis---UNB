@@ -4,6 +4,35 @@
 #include "ControladoraApresentacaoAcessoGerente.hpp"
 
 namespace Hotelaria {
+    void ControladoraApresentacaoAcessoGerente::setControladoraAutenticavel(
+        InterfaceApresentacaoAutenticavel *apresentacao_autenticavel) {
+        this->apresentacao_autenticavel = apresentacao_autenticavel;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::setControladoraGerente(
+        InterfaceApresentacaoGerente *apresentacao_gerente) {
+        this->apresentacao_gerente = apresentacao_gerente;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::setControladoraHospede(
+        InterfaceApresentacaoHospede *apresentacao_hospede) {
+        this->apresentacao_hospede = apresentacao_hospede;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::setControladoraHotel(InterfaceApresentacaoHotel *apresentacao_hotel) {
+        this->apresentacao_hotel = apresentacao_hotel;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::setControladoraQuarto(
+        InterfaceApresentacaoQuarto *apresentacao_quarto) {
+        this->apresentacao_quarto = apresentacao_quarto;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::setControladoraReserva(
+        InterfaceApresentacaoReserva *apresentacao_reserva) {
+        this->apresentacao_reserva = apresentacao_reserva;
+    }
+
     void ControladoraApresentacaoAcessoGerente::exibirMenu() {
         bool executando = true;
 

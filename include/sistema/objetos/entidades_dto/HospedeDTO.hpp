@@ -25,45 +25,25 @@ namespace Hotelaria {
             nome(nome), email(email), endereco(endereco), cartao(cartao) {
         };
 
-        int getId() const {
-            return id_hospede;
-        }
+        int getId() const;
 
-        void setId(int valor) {
-            this->id_hospede = valor;
-        }
+        void setId(int valor);
 
-        string getNome() const {
-            return nome;
-        }
+        string getNome() const;
 
-        void setNome(const string &valor) {
-            this->nome = valor;
-        }
+        void setNome(const string &valor);
 
-        string getEmail() const {
-            return email;
-        }
+        string getEmail() const;
 
-        void setEmail(const string &valor) {
-            this->email = valor;
-        }
+        void setEmail(const string &valor);
 
-        string getEndereco() const {
-            return endereco;
-        }
+        string getEndereco() const;
 
-        void setEndereco(const string &valor) {
-            this->endereco = valor;
-        }
+        void setEndereco(const string &valor);
 
-        string getCartao() const {
-            return cartao;
-        }
+        string getCartao() const;
 
-        void setCartao(const string &valor) {
-            this->cartao = valor;
-        }
+        void setCartao(const string &valor);
     };
 }
 

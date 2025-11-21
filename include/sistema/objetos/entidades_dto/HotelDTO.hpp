@@ -8,6 +8,7 @@
 #include <iostream>
 
 using namespace std;
+
 namespace Hotelaria {
     class HotelDTO {
     private:
@@ -20,47 +21,29 @@ namespace Hotelaria {
     public:
         HotelDTO() = default;
 
-        HotelDTO(int hotelId, string nome, string endereco, string telefone, string codigo) : hotelId(hotelId),nome(nome), endereco(endereco), telefone(telefone), codigo(codigo) {};
+        HotelDTO(int hotelId, string nome, string endereco, string telefone, string codigo) : hotelId(hotelId),
+            nome(nome), endereco(endereco), telefone(telefone), codigo(codigo) {
+        };
 
-        int getId() const {
-            return hotelId;
-        }
+        int getId() const;
 
-        void setId(int valor) {
-            this->hotelId = valor;
-        }
+        void setId(int valor);
 
-        string getNome() const {
-            return nome;
-        }
+        string getNome() const;
 
-        void setNome(const string &valor) {
-            this->nome = valor;
-        }
+        void setNome(const string &valor);
 
-        string getEndereco() const {
-            return endereco;
-        }
+        string getEndereco() const;
 
-        void setEndereco(const string &valor) {
-            this->endereco = valor;
-        }
+        void setEndereco(const string &valor);
 
-        string getTelefone() const {
-            return telefone;
-        }
+        string getTelefone() const;
 
-        void setTelefone(const string &valor) {
-            this->telefone = valor;
-        }
+        void setTelefone(const string &valor);
 
-        string getCodigo() const {
-            return codigo;
-        }
+        string getCodigo() const;
 
-        void setCodigo(const string &valor) {
-            this->codigo = valor;
-        }
+        void setCodigo(const string &valor);
     };
 }
 

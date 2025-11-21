@@ -13,7 +13,7 @@ void TestesData::executar() {
 
     Formato::TituloEmCaixa("TESTES DE DOMINIO: DATA (DD/MM/AAAA)");
 
-    // O valor de teste deve ser sempre a string completa da data.
+    // O dinheiro de teste deve ser sempre a string completa da data.
     const string DOMINIO = "Data";
 
     // =========================================================================

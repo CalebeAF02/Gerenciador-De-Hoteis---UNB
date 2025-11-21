@@ -8,59 +8,42 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class QuartoDTO {
     private:
         int quartoId;
         string numero;
-        string capacidade;
-        string dinheiro;
+        int capacidade;
+        int dinheiro;
         string ramal;
 
     public:
         QuartoDTO() = default;
 
-        QuartoDTO(int quartoId, string nome, string email, string dinheiro, string ramal) : quartoId(quartoId), numero(numero), capacidade(capacidade), dinheiro(dinheiro), ramal(ramal) {};
+        QuartoDTO(int quartoId, string numero, int capacidade, int dinheiro, string ramal) : quartoId(quartoId),
+            numero(numero), capacidade(capacidade), dinheiro(dinheiro), ramal(ramal) {
+        };
 
-        int getQuartoId() const {
-            return quartoId;
-        }
+        int getQuartoId() const;
 
-        void setQuartoId(int valor) {
-            this->quartoId = valor;
-        }
+        void setQuartoId(int valor);
 
-        string getNumero() const {
-            return numero;
-        }
+        string getNumero() const;
 
-        void setNumero(const string &valor) {
-            this->numero = valor;
-        }
+        void setNumero(const string &valor);
 
-        string getCapacidade() const {
-            return capacidade;
-        }
+        int getCapacidade() const;
 
-        void setCapacidade(const string &valor) {
-            this->capacidade = valor;
-        }
+        void setCapacidade(const int &valor);
 
-        string getDinheiro() const {
-            return dinheiro;
-        }
+        int getDinheiro() const;
 
-        void setDinheiro(const string &valor) {
-            this->dinheiro = valor;
-        }
+        void setDinheiro(const int &valor);
 
-        string getRamal() const {
-            return ramal;
-        }
+        string getRamal() const;
 
-        void setRamal(const string &valor) {
-            this->ramal = valor;
-        }
+        void setRamal(const string &valor);
     };
 }
 

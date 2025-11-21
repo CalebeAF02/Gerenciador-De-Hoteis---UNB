@@ -8,7 +8,7 @@
 #include "Ramal.hpp"
 #include "Senha.hpp"
 #include "GerenteDTO.hpp"
-#include "../../../libs/io/IO.hpp"
+#include "IO.hpp"
 
 #include <string>
 
@@ -25,43 +25,26 @@ namespace Hotelaria {
         };
 
         Gerente(Nome nomePessoaObj, Email emailPessoaObj, Ramal ramal, Senha senha) : Pessoa(nomePessoaObj,
-                emailPessoaObj),
-            ramal(ramal), senha(senha) {
+                emailPessoaObj), ramal(ramal), senha(senha) {
         };
 
         Gerente(GerenteDTO &gerente_dto) : Pessoa(Nome(gerente_dto.getNome()), Email(gerente_dto.getEmail())) {
             setRamal(Ramal(gerente_dto.getRamal()));
         };
 
-        void setNome(const Nome &newNome) {
-            Pessoa::setPessoaNome(newNome);
-        }
+        void setNome(const Nome &newNome);
 
-        void setEmail(const Email &newEmail) {
-            Pessoa::setPessoaEmail(newEmail);
-        }
+        void setEmail(const Email &newEmail);
 
-        void setRamal(const Ramal &newRamal) {
-            this->ramal = newRamal;
-        }
+        void setRamal(const Ramal &newRamal);
 
-        void setSenha(const Senha &newSenha) {
-            this->senha = newSenha;
-        }
+        void setSenha(const Senha &newSenha);
 
         // geters -----------------
         string getRamal() const;
 
         string getSenha() const;
     };
-
-    inline string Gerente::getRamal() const {
-        return ramal.getValor();
-    }
-
-    inline string Gerente::getSenha() const {
-        return senha.getValor();
-    }
 }
 
 #endif

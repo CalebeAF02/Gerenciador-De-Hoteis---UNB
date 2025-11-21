@@ -14,18 +14,17 @@
 #include <string>
 #include <sqlite3.h>
 #include <iostream>
+
 namespace Hotelaria {
     class ControladoraPersistenciaSolicitacaoHospedagem {
     public:
-        static void inicializar();
-
-        static void salvar(const SolicitacaoHospedagem &s);
+        static void salvar(const SolicitacaoHospedagem &status);
 
         static vector<SolicitacaoHospedagem> buscarPorEmail(const string &email);
 
         static vector<SolicitacaoHospedagem> buscarPorStatus(int status);
 
-        static void atualizar(const SolicitacaoHospedagem &s);
+        static void atualizar(const SolicitacaoHospedagem &status);
     };
 }
 

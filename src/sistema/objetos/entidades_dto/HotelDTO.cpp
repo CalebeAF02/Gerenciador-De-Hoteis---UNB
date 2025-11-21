@@ -3,3 +3,45 @@
 //
 
 #include "HotelDTO.hpp"
+
+namespace Hotelaria {
+    int HotelDTO::getId() const {
+        return hotelId;
+    }
+
+    void HotelDTO::setId(int valor) {
+        this->hotelId = valor;
+    }
+
+    string HotelDTO::getNome() const {
+        return nome;
+    }
+
+    void HotelDTO::setNome(const string &valor) {
+        this->nome = valor;
+    }
+
+    string HotelDTO::getEndereco() const {
+        return endereco;
+    }
+
+    void HotelDTO::setEndereco(const string &valor) {
+        this->endereco = valor;
+    }
+
+    string HotelDTO::getTelefone() const {
+        return telefone;
+    }
+
+    void HotelDTO::setTelefone(const string &valor) {
+        this->telefone = valor;
+    }
+
+    string HotelDTO::getCodigo() const {
+        return codigo;
+    }
+
+    void HotelDTO::setCodigo(const string &valor) {
+        this->codigo = valor;
+    }
+}

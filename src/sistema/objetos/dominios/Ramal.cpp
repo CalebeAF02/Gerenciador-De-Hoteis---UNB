@@ -3,7 +3,21 @@
 //
 
 #include "Ramal.hpp"
+
 namespace Hotelaria {
+    Ramal::Ramal(const string &valor) {
+        setValor(valor);
+    };
+
+    void Ramal::setValor(const string &valor) {
+        validar(valor);
+        this->ramalStr = valor;
+    }
+
+    string Ramal::getValor() const {
+        return ramalStr;
+    }
+
     void Ramal::validar(const string &ramal) {
         // 1. TAMANHO
         if (ramal.length() != 2) {

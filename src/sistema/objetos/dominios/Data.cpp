@@ -4,10 +4,26 @@ using namespace std;
 
 //void Data{10,9,2025};
 namespace Hotelaria {
-    Data::Data(const string &dataStr) {
+    string Data::toString() {
+        return to_string(dia) + "/" + to_string(mes) + "/" + to_string(ano);
+    }
+
+    int Data::getDia() {
+        return dia;
+    }
+
+    int Data::getMes() {
+        return mes;
+    }
+
+    int Data::getAno() {
+        return ano;
+    }
+
+    Data::Data(const string &valor) {
         int d, m, a;
         char sepMes, sepAno;
-        istringstream sepDia(dataStr);
+        istringstream sepDia(valor);
 
         sepDia >> d >> sepMes >> m >> sepAno >> a;
 

@@ -1,7 +1,21 @@
 #include "Senha.hpp"
 #include <stdexcept>
 #include <cctype>
+
 namespace Hotelaria {
+    Senha::Senha(const string &valor) {
+        setValor(valor);
+    };
+
+    void Senha::setValor(const string &valor) {
+        validar(valor);
+        this->senhaStr = valor;
+    }
+
+    string Senha::getValor() const {
+        return senhaStr;
+    }
+
     void Senha::validar(const string valor) {
         if (valor.length() != 5) {
             throw invalid_argument("Erro: Senha com tamanho invalido");
@@ -32,9 +46,9 @@ namespace Hotelaria {
             } else if (atual == '\'' || atual == '!' || atual == '?' || atual == '$' ||
                        atual == '%' || atual == '&' || atual == '*' || atual == '.') {
                 tem_especial = true;
-                       } else {
-                           throw invalid_argument("Erro: caracter invalido");
-                       }
+            } else {
+                throw invalid_argument("Erro: caracter invalido");
+            }
         }
 
         if (!tem_maiuscula || !tem_minuscula || !tem_digito || !tem_especial) {

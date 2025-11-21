@@ -36,13 +36,13 @@ namespace Hotelaria {
 
         void exibirMenuCRUD() override;
 
-        void criar();
+        void criar() override;
 
-        void listar();
+        void listar() override;
 
-        void atualizar();
+        void atualizar() override;
 
-        void remover();
+        void remover() override;
     };
 }
 

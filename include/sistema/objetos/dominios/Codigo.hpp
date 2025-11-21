@@ -9,28 +9,22 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Codigo {
     private:
         string codigoStr;
 
-        void validar(string valor); // Metodo de validacao
+        void validar(string valor);
 
     public:
         Codigo() = default;
 
-        explicit Codigo(const string &valor) {
-            setValor(valor);
-        };
+        explicit Codigo(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->codigoStr = valor;
-        }
+        void setValor(const string &valor);
 
-        string getValor() const {
-            return codigoStr;
-        }
+        string getValor() const;
     };
 }
 

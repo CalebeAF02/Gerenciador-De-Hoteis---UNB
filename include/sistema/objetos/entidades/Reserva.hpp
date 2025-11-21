@@ -1,7 +1,8 @@
 #ifndef RESERVA_INCLUDE
 #define RESERVA_INCLUDE
 
-#include "../dominios/Data.hpp"
+#include "ReservaDTO.hpp"
+#include "Data.hpp"
 #include "Dinheiro.hpp"
 #include "Codigo.hpp"
 
@@ -9,6 +10,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Reserva {
     private:
@@ -20,46 +22,25 @@ namespace Hotelaria {
     public:
         Reserva() = default;
 
-        Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo) {
-            setChegada(chegada);
-            setPartida(partida);
-            setDinheiro(dinheiro);
-            setCodigo(codigo);
-        };
+        Reserva(Data chegada, Data partida, Dinheiro dinheiro, Codigo codigo);
 
-        void setChegada(const Data &newChegada) {
-            this->chegada = newChegada;
-        };
+        Reserva(ReservaDTO &reserva_dto);
 
-        void setPartida(const Data &newPartida) {
-            this->partida = newPartida;
-        };
+        void setChegada(const Data &newChegada);
 
-        void setDinheiro(const Dinheiro &newDinheiro) {
-            this->dinheiro = newDinheiro;
-        };
+        void setPartida(const Data &newPartida);
 
-        void setCodigo(const Codigo &newCodigo) {
-            this->codigo = newCodigo;
-        };
+        void setDinheiro(const Dinheiro &newDinheiro);
 
+        void setCodigo(const Codigo &newCodigo);
 
-        //Get
-        Data getChegada() const {
-            return chegada;
-        };
+        Data getChegada() const;
 
-        Data getPartida() const {
-            return partida;
-        };
+        Data getPartida() const;
 
-        int getDinheiro() const {
-            return dinheiro.getValor();
-        };
+        int getDinheiro() const;
 
-        string getCodigo() const {
-            return codigo.getValor();
-        };
+        string getCodigo() const;
     };
 }
 

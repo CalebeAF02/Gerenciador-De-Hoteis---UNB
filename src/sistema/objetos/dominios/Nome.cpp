@@ -3,7 +3,21 @@
 //
 
 #include "Nome.hpp"
+
 namespace Hotelaria {
+    Nome::Nome(const string &valor) {
+        setValor(valor);
+    };
+
+    void Nome::setValor(const string &valor) {
+        validar(valor);
+        this->nomeStr = valor;
+    }
+
+    string Nome::getValor() const {
+        return nomeStr;
+    }
+
     void Nome::validar(const string &nome) {
         int nomeTamanho = nome.length();
         // 1. REGRA DE TAMANHO

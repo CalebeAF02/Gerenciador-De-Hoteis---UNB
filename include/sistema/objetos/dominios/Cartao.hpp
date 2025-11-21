@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Cartao {
     private:
@@ -19,18 +20,11 @@ namespace Hotelaria {
     public:
         Cartao() = default;
 
-        explicit Cartao(const string &valor) {
-            setValor(valor);
-        }
+        explicit Cartao(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->cartaoStr = valor;
-        }
+        void setValor(const string &valor);
 
-        string getValor() const {
-            return cartaoStr;
-        }
+        string getValor() const;
     };
 }
 

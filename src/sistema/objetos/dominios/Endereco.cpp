@@ -11,6 +11,19 @@
 #include "Endereco.hpp"
 
 namespace Hotelaria {
+    Endereco::Endereco(const string &valor) {
+        setValor(valor);
+    };
+
+    void Endereco::setValor(const string &valor) {
+        validar(valor);
+        this->enderecoStr = valor;
+    }
+
+    string Endereco::getValor() const {
+        return enderecoStr;
+    }
+
     void Endereco::validar(const string endereco) {
         int enderecoTamanho = endereco.length();
         if (enderecoTamanho < 5 || enderecoTamanho > 30) {
@@ -21,10 +34,11 @@ namespace Hotelaria {
             throw invalid_argument("Erro: Endereco nao pode comecar com ' ' ou ',' ou '.' !");
         }
 
-        if (endereco[enderecoTamanho - 1] == ' ' || endereco[enderecoTamanho - 1] == ',' || endereco[enderecoTamanho - 1] ==
+        if (endereco[enderecoTamanho - 1] == ' ' || endereco[enderecoTamanho - 1] == ',' || endereco[
+                enderecoTamanho - 1] ==
             '.') {
             throw invalid_argument("Erro: Endereco nao pode terminar com ' ' ou ',' ou '.' !");
-            }
+        }
 
         int cont_branco = 0;
         int contCaracterEspecial = 0;

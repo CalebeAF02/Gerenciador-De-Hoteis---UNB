@@ -35,11 +35,11 @@ namespace Hotelaria {
     public:
         void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *servico) override;
 
-        bool autenticar() override;
-
         void setEstaAutenticado(bool estaAutenticado) override;
 
         bool getEstaAutenticado() override;
+
+        bool autenticar() override;
 
         InterfaceServicoAutenticavel *getHacke();
     };

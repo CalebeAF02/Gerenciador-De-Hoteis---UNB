@@ -5,6 +5,19 @@
 #include "Telefone.hpp"
 
 namespace Hotelaria {
+    Telefone::Telefone(const string &valor) {
+        setValor(valor);
+    }
+
+    void Telefone::setValor(const string &valor) {
+        validar(valor);
+        this->telefoneStr = valor;
+    }
+
+    string Telefone::getValor() const {
+        return telefoneStr;
+    }
+
     void Telefone::validar(const string valor) {
         string ddi = "";
         string ddd = "";

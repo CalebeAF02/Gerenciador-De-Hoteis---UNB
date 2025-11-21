@@ -10,28 +10,31 @@ namespace Hotelaria {
     }
 
     void ControladoraApresentacaoHotel::exibirMenuCRUD() {
+        bool executando = true;
         Menu menu;
 
-        const int OPCAO_VOLTAR_ANTERIOR = menu.adcionarItens("Voltar");
-        const int OPCAO_CRIAR_HOTEL = menu.adcionarItens("Criar Hotel");
-        const int OPCAO_LER_HOTEL = menu.adcionarItens("Ler Hoteis");
-        const int OPCAO_ATUALIZAR_HOTEL = menu.adcionarItens("Atualizar Hotel");
-
-        this->executando = true;
+        const int OPCAO_VOLTAR = menu.adcionarItens("Voltar ao Menu Anterior");
+        const int OPCAO_CRIAR = menu.adcionarItens("Criar Novo Hotel");
+        const int OPCAO_LISTAR = menu.adcionarItens("Listar Todos os Hoteis");
+        const int OPCAO_ATUALIZAR = menu.adcionarItens("Atualizar Hotel (Editar)");
+        const int OPCAO_REMOVER = menu.adcionarItens("Remover Hotel (Excluir)");
 
         while (executando) {
-            int opcao = menu.executa("Seja bem vindo a central de servicos");
+            int opcao = menu.executa("Gerenciamento de Hoteis (CRUD)");
 
-            if (opcao == OPCAO_VOLTAR_ANTERIOR) {
+            if (opcao == OPCAO_VOLTAR) {
                 executando = false;
-            } else if (opcao == OPCAO_CRIAR_HOTEL) {
+                IO::Println("Voltando ao menu de acesso.");
+            } else if (opcao == OPCAO_CRIAR) {
                 criar();
-            } else if (opcao == OPCAO_LER_HOTEL) {
-                //pesquisar();
-            } else if (opcao == OPCAO_ATUALIZAR_HOTEL) {
-                //editar();
+            } else if (opcao == OPCAO_LISTAR) {
+                listar();
+            } else if (opcao == OPCAO_ATUALIZAR) {
+                atualizar();
+            } else if (opcao == OPCAO_REMOVER) {
+                remover();
             } else {
-                IO::Println("Opcao Invalida!");
+                IO::Println("Opcao Invalida! Tente novamente.");
             }
         }
     }

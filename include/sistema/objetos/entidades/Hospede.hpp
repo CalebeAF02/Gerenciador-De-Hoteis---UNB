@@ -32,31 +32,17 @@ namespace Hotelaria {
             setEndereco(Endereco(hospede_dto.getEndereco()));
         };
 
-        // seters -----------------
-        void setNome(const Nome &newNome) {
-            Pessoa::setPessoaNome(newNome);
-        };
+        void setNome(const Nome &newNome);
 
-        void setEmail(const Email &newEmail) {
-            Pessoa::setPessoaEmail(newEmail);
-        };
+        void setEmail(const Email &newEmail);
 
-        void setEndereco(const Endereco &newEndereco) {
-            this->endereco = newEndereco;
-        };
+        void setEndereco(const Endereco &newEndereco);
 
-        void setCartao(const Cartao &newCartao) {
-            this->cartao = newCartao;
-        };
+        void setCartao(const Cartao &newCartao);
 
-        // geters -----------------
-        string getEndereco() const {
-            return endereco.getValor();
-        };
+        string getEndereco() const;
 
-        string getCartao() const {
-            return cartao.getValor();
-        };
+        string getCartao() const;
     };
 }
 

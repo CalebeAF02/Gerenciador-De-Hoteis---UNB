@@ -1,6 +1,7 @@
 #ifndef QUARTO_INCLUDE
 #define QUARTO_INCLUDE
 
+#include "QuartoDTO.hpp"
 #include "Numero.hpp"
 #include "Capacidade.hpp"
 #include "Dinheiro.hpp"
@@ -10,6 +11,7 @@
 #include <stdexcept>
 
 using namespace std;
+
 namespace Hotelaria {
     class Quarto {
     private:
@@ -23,6 +25,8 @@ namespace Hotelaria {
 
         Quarto(Numero numero, Capacidade capacidade, Dinheiro diaria, Ramal ramal);
 
+        Quarto(QuartoDTO &quarto_dto);
+
         void setNumero(const Numero &newNumero);
 
         void setCapacidade(const Capacidade &newCapacidade);
@@ -31,7 +35,6 @@ namespace Hotelaria {
 
         void setRamal(const Ramal &newRamal);
 
-        //Get
         string getNumero() const;
 
         int getCapacidade() const;

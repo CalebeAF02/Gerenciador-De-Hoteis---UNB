@@ -10,6 +10,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Hotel {
     private:
@@ -19,62 +20,27 @@ namespace Hotelaria {
         Codigo codigo;
 
     public:
-        //-----------------------------------------------------------------------------------------------------------------
-        // Contrutor de Hotel sem valores
         Hotel() = default;
 
-        // Contrutor de Hotel Com todos valores
-        Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo) {
-            setNome(nome);
-            setEndereco(endereco);
-            setTelefone(telefone);
-            setCodigo(codigo);
-        };
+        Hotel(Nome nome, Endereco endereco, Telefone telefone, Codigo codigo);
 
-        // construtor com valores do banco de dados
-        // Transforma HotelDTO em Hotel
-        Hotel(HotelDTO &hotel_dto) {
-            setNome(Nome(hotel_dto.getNome()));
-            setEndereco(Endereco(hotel_dto.getEndereco()));
-            setTelefone(Telefone(hotel_dto.getTelefone()));
-            setCodigo(Codigo(hotel_dto.getCodigo()));
-        };
+        Hotel(HotelDTO &hotel_dto);
 
-        //-----------------------------------------------------------------------------------------------------------------
-        // Set
-        void setNome(const Nome &newNome) {
-            this->nome = newNome;
-        };
+        void setNome(const Nome &newNome);
 
-        void setEndereco(const Endereco &newEndereco) {
-            this->endereco = newEndereco;
-        };
+        void setEndereco(const Endereco &newEndereco);
 
-        void setTelefone(const Telefone &newTelefone) {
-            this->telefone = newTelefone;
-        };
+        void setTelefone(const Telefone &newTelefone);
 
-        void setCodigo(const Codigo &newCodigo) {
-            this->codigo = newCodigo;
-        };
-        //-----------------------------------------------------------------------------------------------------------------
-        // Get
-        string getNome() const {
-            return nome.getValor();
-        };
+        void setCodigo(const Codigo &newCodigo);
 
-        string getEndereco() const {
-            return endereco.getValor();
-        };
+        string getNome() const;
 
-        string getTelefone() const {
-            return telefone.getValor();
-        };
+        string getEndereco() const;
 
-        string getCodigo() const {
-            return codigo.getValor();
-        };
-        //-----------------------------------------------------------------------------------------------------------------
+        string getTelefone() const;
+
+        string getCodigo() const;
     };
 }
 

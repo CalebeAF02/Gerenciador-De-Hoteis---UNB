@@ -42,9 +42,21 @@ namespace Hotelaria {
         bool estaAutenticado = false;
 
     public:
+        void setControladoraAutenticavel(InterfaceApresentacaoAutenticavel *apresentacao_autenticavel);
+
+        void setControladoraGerente(InterfaceApresentacaoGerente *apresentacao_gerente);
+
+        void setControladoraHospede(InterfaceApresentacaoHospede *apresentacao_hospede);
+
+        void setControladoraHotel(InterfaceApresentacaoHotel *apresentacao_hotel);
+
+        void setControladoraQuarto(InterfaceApresentacaoQuarto *apresentacao_quarto);
+
+        void setControladoraReserva(InterfaceApresentacaoReserva *apresentacao_reserva);
+
         void exibirMenu() override;
 
-        void exibirMenuGerenciador();
+        void exibirMenuGerenciador() override;
     };
 }
 

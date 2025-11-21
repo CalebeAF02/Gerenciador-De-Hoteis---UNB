@@ -9,31 +9,23 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Nome {
     private:
         string nomeStr;
 
-        void validar(const string &valor); // Metodo de validacao
+        void validar(const string &valor);
 
     public:
         Nome() = default;
 
-        explicit Nome(const string &valor) {
-            setValor(valor);
-        };
+        explicit Nome(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->nomeStr = valor;
-        }
+        void setValor(const string &valor);
 
         string getValor() const;
     };
-
-    inline string Nome::getValor() const {
-        return nomeStr;
-    }
 }
 
 #endif //GERENCIADOR_HOTEL_UNB_NOME_H

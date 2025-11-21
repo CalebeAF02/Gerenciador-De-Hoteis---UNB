@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class PessoaDTO {
     private:
@@ -19,31 +20,20 @@ namespace Hotelaria {
     public:
         PessoaDTO() = default;
 
-        PessoaDTO(int pessoaId, string nome, string email) : pessoaId(pessoaId), nome(nome), email(email) {};
+        PessoaDTO(int pessoaId, string nome, string email) : pessoaId(pessoaId), nome(nome), email(email) {
+        };
 
-        int getPessoaId() const {
-            return pessoaId;
-        }
+        int getPessoaId() const;
 
-        void setPessoaId(int valor) {
-            this->pessoaId = valor;
-        }
+        void setPessoaId(int valor);
 
-        string getNome() const {
-            return nome;
-        }
+        string getNome() const;
 
-        void setNome(const string &valor) {
-            this->nome = valor;
-        }
+        void setNome(const string &valor);
 
-        string getEmail() const {
-            return email;
-        }
+        string getEmail() const;
 
-        void setEmail(const string &valor) {
-            this->email = valor;
-        }
+        void setEmail(const string &valor);
     };
 }
 

@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Telefone {
     private:
@@ -19,18 +20,11 @@ namespace Hotelaria {
     public:
         Telefone() = default;
 
-        explicit Telefone(const string &valor) {
-            setValor(valor);
-        }
+        explicit Telefone(const string &valor);
 
-        void setValor(const string &valor) {
-            validar(valor);
-            this->telefoneStr = valor;
-        }
+        void setValor(const string &valor);
 
-        string getValor() const {
-            return telefoneStr;
-        }
+        string getValor() const;
     };
 }
 

@@ -7,6 +7,7 @@
 #include <string>
 
 using namespace std;
+
 namespace Hotelaria {
     class Pessoa {
     protected:
@@ -14,33 +15,17 @@ namespace Hotelaria {
         Email email;
 
     public:
-        // Construcutor ----------
         Pessoa(Nome nomeObj, Email emailObj) : nome(nomeObj), email(emailObj) {
         };
 
+        void setPessoaNome(const Nome &valor);
 
-        // seters ----------------
-        void setPessoaNome(const Nome &valor) {
-            this->nome = valor;
-        };
+        void setPessoaEmail(const Email &valor);
 
-        void setPessoaEmail(const Email &valor) {
-            this->email = valor;
-        };
-
-        // geters ----------------
         string getNome() const;
 
         string getEmail() const;
     };
-
-    inline string Pessoa::getNome() const {
-        return nome.getValor();
-    }
-
-    inline string Pessoa::getEmail() const {
-        return email.getValor();
-    }
 }
 
 #endif

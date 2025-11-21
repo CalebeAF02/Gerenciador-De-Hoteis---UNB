@@ -5,7 +5,21 @@
 #include "Email.hpp"
 
 using namespace std;
+
 namespace Hotelaria {
+    Email::Email(const string &valor) {
+        setValor(valor);
+    }
+
+    void Email::setValor(const string &valor) {
+        validar(valor);
+        this->emailStr = valor;
+    }
+
+    string Email::getValor() const {
+        return emailStr;
+    }
+
     void Email::validar(const string &email) {
         // logica de validacao do email
         int posicaoArroba = email.find("@");
@@ -64,7 +78,8 @@ namespace Hotelaria {
         int contSimboloParteDominio = 0;
         for (int i = 0; i < parteDominio.length(); i++) {
             // Regra 1
-            if (isalpha(parteDominio[i]) || isdigit(parteDominio[i]) || parteDominio[i] == '.' || parteDominio[i] == '-') {
+            if (isalpha(parteDominio[i]) || isdigit(parteDominio[i]) || parteDominio[i] == '.' || parteDominio[i] ==
+                '-') {
                 // Regra 2
                 if (i == 0 || i == parteDominio.length() - 1) {
                     if (parteDominio[i] == '.' || parteDominio[i] == '-') {
