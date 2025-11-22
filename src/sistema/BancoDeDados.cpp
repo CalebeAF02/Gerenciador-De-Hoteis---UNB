@@ -59,7 +59,7 @@ namespace Hotelaria {
         CREATE TABLE IF NOT EXISTS gerentes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL DEFAULT '',
-            email TEXT NOT NULL DEFAULT '',
+            email TEXT UNIQUE NOT NULL DEFAULT '',
             ramal TEXT NOT NULL DEFAULT '',
             senha TEXT NOT NULL DEFAULT ''
         );

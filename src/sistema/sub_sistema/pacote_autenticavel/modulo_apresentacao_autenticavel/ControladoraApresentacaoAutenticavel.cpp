@@ -43,7 +43,6 @@ namespace Hotelaria {
                 Senha senhaObj(senhaCopia);
 
                 resultado = servico->autenticar(emalObj, senhaObj);
-                IO::Println("Debug----------------------");
                 if (resultado) {
                     this->setEstaAutenticado(true);
                 }

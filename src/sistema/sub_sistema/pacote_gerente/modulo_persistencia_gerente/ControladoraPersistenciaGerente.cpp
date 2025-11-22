@@ -7,7 +7,7 @@
 namespace Hotelaria {
     bool ControladoraPersistenciaGerente::inserir(const Gerente &gerente) {
 
-        if (!existeEmail(gerente.getEmail())) {
+        if (existeEmail(gerente.getEmail())) {
             return false;
         }
 
@@ -221,7 +221,7 @@ namespace Hotelaria {
 
 
         sqlite3_stmt *stmt = nullptr;
-        const char *sql = "SELECT email, nome, email, ramal FROM gerentes WHERE email = ? LIMIT 1;";
+        const char *sql = "SELECT nome FROM gerentes WHERE email = ? LIMIT 1;";
         int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
         if (rc != SQLITE_OK) {
             sqlite3_finalize(stmt);

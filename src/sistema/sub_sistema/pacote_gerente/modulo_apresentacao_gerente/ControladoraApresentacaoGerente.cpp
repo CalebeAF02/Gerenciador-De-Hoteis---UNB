@@ -57,6 +57,7 @@ namespace Hotelaria {
             } catch (invalid_argument &erro) {
                 IO::Println(erro.what());
                 tudoOK = false;
+                break;
             }
             if (tudoOK) {
                 IO::Print("Informe o Email: ");
@@ -66,6 +67,8 @@ namespace Hotelaria {
                 } catch (invalid_argument &erro) {
                     IO::Println(erro.what());
                     tudoOK = false;
+                    break;
+
                 }
             }
             if (tudoOK) {
@@ -76,6 +79,7 @@ namespace Hotelaria {
                 } catch (invalid_argument &erro) {
                     IO::Println(erro.what());
                     tudoOK = false;
+                    break;
                 }
             }
             if (tudoOK) {
@@ -86,6 +90,7 @@ namespace Hotelaria {
                 } catch (invalid_argument &erro) {
                     IO::Println(erro.what());
                     tudoOK = false;
+                    break;
                 }
             }
             if (tudoOK) {
