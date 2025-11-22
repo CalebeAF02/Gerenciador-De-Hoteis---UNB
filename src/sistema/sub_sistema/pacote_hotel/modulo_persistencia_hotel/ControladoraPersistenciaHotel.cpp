@@ -28,11 +28,6 @@ namespace Hotelaria {
         return true;
     }
 
-    bool ControladoraPersistenciaHotel::autenticar(const string &email, const string &senha) {
-        // Ainda não Implementado
-        return true;
-    }
-
     bool ControladoraPersistenciaHotel::atualizar(const int &id, const Hotel &hotel) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())

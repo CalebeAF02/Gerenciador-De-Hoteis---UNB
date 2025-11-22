@@ -67,7 +67,7 @@ using namespace Hotelaria;
 #define MODO_SMOKE 1
 #define MODO_HACKER 2
 
-#define MODO_ATUAL MODO_PRODUCAO
+#define MODO_ATUAL MODO_HACKER
 
 void executandoNovoSmoke() {
     TestandoSmoke teste;
@@ -84,11 +84,12 @@ void executarSistema(ControladoraApresentacaoAcessoGerente *acessoGerente,
     sistema.iniciar();
 }
 
-void burlandoSistema() {
+void burlandoSistema(ControladoraApresentacaoAcessoGerente *acessoGerente,
+                     ControladoraApresentacaoAcessoHospede *acessoHospede) {
     BancoDeDados banco;
     banco.iniciar();
 
-    SistemaHacker sistema_hacker;
+    SistemaHacker sistema_hacker(acessoGerente, acessoHospede);
     sistema_hacker.iniciar();
 }
 
@@ -157,7 +158,7 @@ int main() {
             break;
         }
         case MODO_HACKER: {
-            burlandoSistema();
+            burlandoSistema(&acessoGerente, &acessoHospede);
             break;
         }
     }

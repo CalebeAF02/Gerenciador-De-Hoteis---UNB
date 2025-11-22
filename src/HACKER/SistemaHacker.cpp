@@ -5,6 +5,12 @@
 #include "SistemaHacker.hpp"
 
 namespace Hotelaria {
+    SistemaHacker::SistemaHacker(ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente,
+                 ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede) {
+        this->apresentacao_acesso_gerente = apresentacao_acesso_gerente;
+        this->apresentacao_acesso_hospede = apresentacao_acesso_hospede;
+    }
+
     void SistemaHacker::iniciar() {
         IO::Println("Versao " + Versao::getVersaoCompleta());
 
@@ -13,13 +19,13 @@ namespace Hotelaria {
         Email *emailObj = &emailHK;
 
         Senha senhaHK("A1!b2");
-        /*
-        bool estaAutenticado = servico.getHacke()->autenticar(*emailObj, senhaHK);
-        servico.setEstaAutenticado(estaAutenticado);
+
+        bool estaAutenticado = apresentacao_acesso_gerente->getServicoHacker()->getHacke()->autenticar(*emailObj, senhaHK);
+        apresentacao_acesso_gerente->autenticarHacker();
+        apresentacao_acesso_gerente->getServicoHacker()->setEstaAutenticado(true);
         if (estaAutenticado) {
             IO::Println("Agora Voce Possui Super-Poderes");
-            servico.exibirMenu();
+            apresentacao_acesso_gerente->exibirMenuGerenciador();
         }
-        */
     }
 }

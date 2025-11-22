@@ -21,6 +21,8 @@ namespace Hotelaria {
 
         virtual bool autenticar() = 0;
 
+        virtual InterfaceServicoAutenticavel *getHacke() = 0;
+
         virtual ~InterfaceApresentacaoAutenticavel() = default;
     };
 }

@@ -19,7 +19,7 @@ namespace Hotelaria {
     }
 
     InterfaceServicoAutenticavel *ControladoraApresentacaoAutenticavel::getHacke() {
-        return this->servico;
+        return servico;
     }
 
     bool ControladoraApresentacaoAutenticavel::autenticar() {
@@ -59,4 +59,6 @@ namespace Hotelaria {
         }
         return resultado; // Informar resultado da autenticação.
     }
+
+
 }

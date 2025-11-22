@@ -59,6 +59,10 @@ namespace Hotelaria {
         void exibirMenu() override;
 
         void exibirMenuGerenciador();
+
+        InterfaceApresentacaoAutenticavel * getServicoHacker();
+
+        void autenticarHacker();
     };
 }
 

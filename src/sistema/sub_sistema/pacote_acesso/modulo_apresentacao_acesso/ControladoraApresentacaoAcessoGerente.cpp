@@ -108,4 +108,13 @@ namespace Hotelaria {
             }
         }
     }
+
+    InterfaceApresentacaoAutenticavel * ControladoraApresentacaoAcessoGerente::getServicoHacker() {
+        return apresentacao_autenticavel;
+    }
+
+    void ControladoraApresentacaoAcessoGerente::autenticarHacker() {
+        this->estaAutenticado = true;
+    }
+
 }

@@ -41,7 +41,7 @@ namespace Hotelaria {
 
         bool autenticar() override;
 
-        InterfaceServicoAutenticavel *getHacke();
+        InterfaceServicoAutenticavel *getHacke() override;
     };
 }
 

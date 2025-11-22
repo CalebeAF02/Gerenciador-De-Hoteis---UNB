@@ -75,6 +75,12 @@ namespace Hotelaria {
     }
 
     bool ControladoraPersistenciaGerente::atualizar(const Email &emailAntigo, const Gerente &gerente) {
+
+        if (emailAntigo.getValor() != gerente.getEmail()) {
+            if (existeEmail(gerente.getEmail())) {
+                return false;
+            }
+        }
         BancoDeDados banco;
         if (!banco.abrindoConexao()) {
             return false;

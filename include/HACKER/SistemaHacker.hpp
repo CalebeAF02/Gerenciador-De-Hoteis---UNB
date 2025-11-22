@@ -14,9 +14,14 @@ using namespace std;
 namespace Hotelaria {
     class SistemaHacker {
     private:
-        ControladoraApresentacaoAcessoGerente *servico;
+        bool executando = true;
+        ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente;
+        ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede;
 
     public:
+        SistemaHacker(ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente,
+        ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede);
+
         void iniciar();
     };
 }

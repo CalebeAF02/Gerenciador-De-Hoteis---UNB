@@ -43,21 +43,19 @@ namespace Hotelaria {
         bool criado = false;
         bool tudoOK = true;
 
-        while (!criado) // Enquanto craido esta falso , ele repete
-        {
+        while (!criado) {
             Hotel *hotel = new Hotel();
 
-            if (hotel) {
-                Formato::TituloEmCaixa("Criando Novo Hotel");
-                if (tudoOK) {
-                    IO::Print("Informe o Nome: ");
-                    string valor = IO::LerLinha();
-                    try {
-                        hotel->setNome(Nome(valor));
-                    } catch (invalid_argument &erro) {
-                        IO::Println(erro.what());
-                        tudoOK = false;
-                    }
+            Formato::TituloEmCaixa("Criando Novo Hotel");
+            if (tudoOK) {
+                IO::Print("Informe o Nome: ");
+                string valor = IO::LerLinha();
+                try {
+                    hotel->setNome(Nome(valor));
+                } catch (invalid_argument &erro) {
+                    IO::Println(erro.what());
+                    tudoOK = false;
+                    break;
                 }
                 if (tudoOK) {
                     IO::Print("Informe o Endereco: ");
@@ -67,6 +65,7 @@ namespace Hotelaria {
                     } catch (invalid_argument &erro) {
                         IO::Println(erro.what());
                         tudoOK = false;
+                        break;
                     }
                 }
                 if (tudoOK) {
@@ -77,6 +76,7 @@ namespace Hotelaria {
                     } catch (invalid_argument &erro) {
                         IO::Println(erro.what());
                         tudoOK = false;
+                        break;
                     }
                 }
                 if (tudoOK) {
@@ -87,6 +87,7 @@ namespace Hotelaria {
                     } catch (invalid_argument &erro) {
                         IO::Println(erro.what());
                         tudoOK = false;
+                        break;
                     }
                 }
                 if (tudoOK) {
