@@ -31,7 +31,9 @@ namespace Hotelaria {
 
         vector<GerenteDTO> listar() override;
 
-        optional<GerenteDTO> pesquisar(const int &id) override;
+        optional<GerenteDTO> pesquisarPorID(const int &id) override;
+
+        bool existeEmail(const string &email) override;
     };
 }
 

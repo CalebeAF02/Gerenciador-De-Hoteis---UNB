@@ -6,6 +6,11 @@
 
 namespace Hotelaria {
     bool ControladoraPersistenciaGerente::inserir(const Gerente &gerente) {
+
+        if (!existeEmail(gerente.getEmail())) {
+            return false;
+        }
+
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
@@ -169,7 +174,7 @@ namespace Hotelaria {
         return lista;
     }
 
-    optional<GerenteDTO> ControladoraPersistenciaGerente::pesquisar(const int &id) {
+    optional<GerenteDTO> ControladoraPersistenciaGerente::pesquisarPorID(const int &id) {
         optional<GerenteDTO> dto = nullopt;
 
         BancoDeDados banco;
@@ -202,5 +207,36 @@ namespace Hotelaria {
         sqlite3_finalize(stmt);
         banco.fechandoConexao();
         return dto;
+    }
+
+
+    bool ControladoraPersistenciaGerente::existeEmail(const string &email) {
+        bool valor = false;
+
+        BancoDeDados banco;
+        if (!banco.abrindoConexao())
+            return false;
+
+        sqlite3 *db = banco.getConexao();
+
+
+        sqlite3_stmt *stmt = nullptr;
+        const char *sql = "SELECT email, nome, email, ramal FROM gerentes WHERE email = ? LIMIT 1;";
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_bind_text(stmt, 1, email.c_str(), -1, SQLITE_STATIC);
+
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            valor = true;
+        }
+
+        sqlite3_finalize(stmt);
+        banco.fechandoConexao();
+        return valor;
     }
 }

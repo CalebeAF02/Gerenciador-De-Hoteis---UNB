@@ -24,7 +24,9 @@ namespace Hotelaria {
 
         virtual vector<GerenteDTO> listar() = 0;
 
-        virtual optional<GerenteDTO> pesquisar(const int &id) = 0;
+        virtual optional<GerenteDTO> pesquisarPorID(const int &id) = 0;
+
+        virtual bool existeEmail(const string &email) = 0;
 
         virtual ~InterfacePersistenciaGerente() = default;
     };

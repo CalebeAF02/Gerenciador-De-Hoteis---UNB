@@ -31,6 +31,6 @@ namespace Hotelaria {
 
     optional<GerenteDTO> ControladoraServicoGerente::pesquisar(const int &id) {
         if (!persistencia) persistencia = new ControladoraPersistenciaGerente();
-        return persistencia->pesquisar(id);
+        return persistencia->pesquisarPorID(id);
     }
 }

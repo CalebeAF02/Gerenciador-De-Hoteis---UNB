@@ -92,7 +92,7 @@ namespace Hotelaria {
                 bool sucesso = servico->criar(gerente);
 
                 if (sucesso) IO::Println("Gerente Cadastrado com Sucesso!");
-                else IO::Println("Falha ao cadastrar (Erro de Serviço/Banco).");
+                else IO::Println("Falha ao cadastrar (Erro de Servico/Banco).");
 
                 criado = sucesso;
             }
