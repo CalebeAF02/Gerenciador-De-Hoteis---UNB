@@ -8,6 +8,13 @@
 #include "Versao.hpp"
 
 namespace Hotelaria {
+    Sistema::Sistema(ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente,
+                     ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede) {
+        this->apresentacao_acesso_gerente = apresentacao_acesso_gerente;
+        this->apresentacao_acesso_hospede = apresentacao_acesso_hospede;
+    }
+
+
     void Sistema::iniciar() {
         IO::Println("Versao " + Versao::getVersaoCompleta() + " Compilado em " + Versao::getData());
         while (executando) {
@@ -29,9 +36,9 @@ namespace Hotelaria {
                 this->executando = false;
                 IO::Println("Encerrando o sistema...");
             } else if (opcao == OPCAO_ENTRAR_COMO_GERENTE) {
-                this->contoladoraApresentacaoAcessoGerente->exibirMenu();
+                this->apresentacao_acesso_gerente->exibirMenu();
             } else if (opcao == OPCAO_ENTRAR_COMO_HOSPEDE) {
-                this->contoladoraApresentacaoAcessoHospede->exibirMenu();
+                this->apresentacao_acesso_hospede->exibirMenu();
             }
         }
     };

@@ -33,6 +33,40 @@ namespace Hotelaria {
         return true;
     }
 
+    bool ControladoraPersistenciaHotel::atualizar(const int &id, const Hotel &hotel) {
+        BancoDeDados banco;
+        if (!banco.abrindoConexao())
+            return false;
+
+        sqlite3 *db = banco.getConexao();
+        sqlite3_stmt *stmt = nullptr;
+
+        const char *sql = "UPDATE hoteis SET nome = ?, endereco = ?, telefone = ?, codigo = ? WHERE id = ?;";
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            cerr << "Erro ao preparar atualizacao: " << sqlite3_errmsg(db) << endl;
+            banco.fechandoConexao();
+            return false;
+        }
+        sqlite3_bind_text(stmt, 1, hotel.getNome().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, hotel.getEndereco().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, hotel.getTelefone().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 4, hotel.getCodigo().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 5, id);
+
+        rc = sqlite3_step(stmt);
+        sqlite3_finalize(stmt);
+        banco.fechandoConexao();
+
+        return rc == SQLITE_DONE;
+    }
+
+    bool ControladoraPersistenciaHotel::excluir(const int &id) {
+        // Ainda não Implementado
+        return true;
+    }
+
+
     vector<HotelDTO> ControladoraPersistenciaHotel::listar() {
         vector<HotelDTO> lista;
 
@@ -103,38 +137,5 @@ namespace Hotelaria {
         sqlite3_finalize(stmt);
         banco.fechandoConexao();
         return dto;
-    }
-
-    bool ControladoraPersistenciaHotel::atualizar(const int &id, const Hotel &hotel) {
-        BancoDeDados banco;
-        if (!banco.abrindoConexao())
-            return false;
-
-        sqlite3 *db = banco.getConexao();
-        sqlite3_stmt *stmt = nullptr;
-
-        const char *sql = "UPDATE hoteis SET nome = ?, endereco = ?, telefone = ?, codigo = ? WHERE id = ?;";
-        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-        if (rc != SQLITE_OK) {
-            cerr << "Erro ao preparar atualizacao: " << sqlite3_errmsg(db) << endl;
-            banco.fechandoConexao();
-            return false;
-        }
-        sqlite3_bind_text(stmt, 1, hotel.getNome().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 2, hotel.getEndereco().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 3, hotel.getTelefone().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 4, hotel.getCodigo().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_int(stmt, 5, id);
-
-        rc = sqlite3_step(stmt);
-        sqlite3_finalize(stmt);
-        banco.fechandoConexao();
-
-        return rc == SQLITE_DONE;
-    }
-
-    bool ControladoraPersistenciaHotel::excluir(const int &id) {
-        // Ainda não Implementado
-        return true;
     }
 }

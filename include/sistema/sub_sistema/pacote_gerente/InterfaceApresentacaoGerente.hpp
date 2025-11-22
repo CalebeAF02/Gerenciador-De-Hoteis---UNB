@@ -10,11 +10,11 @@
 namespace Hotelaria {
     class InterfaceApresentacaoGerente {
     public:
-        virtual void setControladoraServicoPessoal(InterfaceServicoGerente *) = 0;
+        virtual void setControladoraServicoGerente(InterfaceServicoGerente *servico) = 0;
 
         virtual void exibirMenuCRUD() = 0;
 
-        virtual void criar() = 0;
+        virtual bool criar() = 0;
 
         virtual void listar() = 0;
 

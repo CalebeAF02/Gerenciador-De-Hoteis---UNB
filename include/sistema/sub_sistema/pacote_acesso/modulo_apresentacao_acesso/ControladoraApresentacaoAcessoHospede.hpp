@@ -32,15 +32,15 @@ namespace Hotelaria {
         InterfaceApresentacaoHospede *apresentacao_hospede;
 
     public:
-        void setControladoraReserva(InterfaceApresentacaoHospede *apresentacao_hospede);
+        void setControladoraApresentacao(InterfaceApresentacaoHospede *apresentacao_hospede);
 
         void exibirMenu() override;
 
-        void opcoesDeHospedagem() override;
+        void opcoesDeHospedagem();
 
-        void solicitandoHospedagem() override;
+        void solicitandoHospedagem();
 
-        void statusDaSolicitandoHospedagem() const override;
+        void statusDaSolicitandoHospedagem() const;
     };
 }
 

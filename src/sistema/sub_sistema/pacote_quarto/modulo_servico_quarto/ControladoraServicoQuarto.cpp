@@ -5,13 +5,34 @@
 #include "ControladoraServicoQuarto.hpp"
 
 namespace Hotelaria {
+    void ControladoraServicoQuarto::setControladoraPersistencia(InterfacePersistenciaQuarto *persistencia) {
+        this->persistencia = persistencia;
+    }
+
     void ControladoraServicoQuarto::exibirMenu() {
-        Formato::TituloEmCaixa("Seja bem vindo a central de servicos");
-        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
     }
 
     void ControladoraServicoQuarto::exibirMenuCRUD() {
-        Formato::TituloEmCaixa("Seja bem vindo a central de servicos Quarto");
-        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
+    }
+
+    bool ControladoraServicoQuarto::criar(const Quarto &quarto) {
+        return true;
+    }
+
+    bool ControladoraServicoQuarto::editar(const int &id, const Quarto &quarto) {
+        return true;
+    }
+
+    bool ControladoraServicoQuarto::remover(const int &id) {
+        return true;
+    }
+
+    vector<QuartoDTO> ControladoraServicoQuarto::listarTodos() {
+        vector<QuartoDTO> lista;
+        return lista;
+    }
+
+    optional<QuartoDTO> ControladoraServicoQuarto::pesquisar(const int &id) {
+        return nullopt;
     }
 }

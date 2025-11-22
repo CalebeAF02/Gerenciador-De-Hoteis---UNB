@@ -4,31 +4,32 @@
 #include "ControladoraApresentacaoAcessoGerente.hpp"
 
 namespace Hotelaria {
-    void ControladoraApresentacaoAcessoGerente::setControladoraAutenticavel(
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoAutenticavel *apresentacao_autenticavel) {
         this->apresentacao_autenticavel = apresentacao_autenticavel;
     }
 
-    void ControladoraApresentacaoAcessoGerente::setControladoraGerente(
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoGerente *apresentacao_gerente) {
         this->apresentacao_gerente = apresentacao_gerente;
     }
 
-    void ControladoraApresentacaoAcessoGerente::setControladoraHospede(
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoHospede *apresentacao_hospede) {
         this->apresentacao_hospede = apresentacao_hospede;
     }
 
-    void ControladoraApresentacaoAcessoGerente::setControladoraHotel(InterfaceApresentacaoHotel *apresentacao_hotel) {
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
+        InterfaceApresentacaoHotel *apresentacao_hotel) {
         this->apresentacao_hotel = apresentacao_hotel;
     }
 
-    void ControladoraApresentacaoAcessoGerente::setControladoraQuarto(
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoQuarto *apresentacao_quarto) {
         this->apresentacao_quarto = apresentacao_quarto;
     }
 
-    void ControladoraApresentacaoAcessoGerente::setControladoraReserva(
+    void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoReserva *apresentacao_reserva) {
         this->apresentacao_reserva = apresentacao_reserva;
     }
@@ -49,12 +50,7 @@ namespace Hotelaria {
                 executando = false;
                 IO::Println("Voltando a selecao de usuario!");
             } else if (opcao == OPCAO_CRIAR_UM_GERENTE) {
-                /*
-                FabricaGerenciavel<ControladoraApresentacaoGerente> fabrica;
-                Gerente gerente = fabrica.criar(); // apenas cria o gerente, sem abrir o menu
-                if (this->servico->criar(gerente)) {
-                }
-                */
+                this->apresentacao_gerente->criar();
             } else if (opcao == OPCAO_FAZER_LOGIN) {
                 if (this->apresentacao_autenticavel->autenticar()) {
                     this->estaAutenticado = true;
@@ -110,27 +106,6 @@ namespace Hotelaria {
             } else {
                 IO::Println("Opcao Invalida!");
             }
-
-            /*
-            // 1. Instancia o Serviço (Quem sabe salvar)
-            ControladoraServicoGerente *servicoGerente = new ControladoraServicoGerente();
-
-            // 2. Instancia a Apresentação (Quem sabe mostrar tela)
-            ControladoraApresentacaoGerente *apresentacaoGerente = new ControladoraApresentacaoGerente();
-
-            // 3. Liga os pontos (Injeção de Dependência conforme o diagrama)
-            apresentacaoGerente->setControladoraServicoPessoal(servicoGerente);
-
-            // 4. Executa o menu de gerentes
-            Email emailDummy; // Se precisar passar o email logado
-            apresentacaoGerente->executar(emailDummy);
-
-            // Limpeza de memória
-            delete apresentacaoGerente;
-            delete servicoGerente;
-            */
-            // Limpeza de memória
-            return;
         }
     }
 }

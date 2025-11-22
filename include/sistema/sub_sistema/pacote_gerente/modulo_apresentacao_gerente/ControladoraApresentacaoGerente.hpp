@@ -34,11 +34,11 @@ namespace Hotelaria {
         bool estaAutenticado = false;
 
     public:
-        void setControladoraServicoPessoal(InterfaceServicoGerente *servico) override;
+        void setControladoraServicoGerente(InterfaceServicoGerente *servico) override;
 
         void exibirMenuCRUD() override;
 
-        void criar() override;
+        bool criar() override;
 
         void listar() override;
 

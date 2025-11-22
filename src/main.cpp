@@ -11,6 +11,8 @@
 #include "TestandoSmoke.hpp"
 #include "InterfaceDeTestes.hpp"
 #include "BancoDeDados.hpp"
+
+// Testes de domínios
 #include "TesteCapacidade.hpp"
 #include "TesteCartao.hpp"
 #include "TesteCodigo.hpp"
@@ -23,16 +25,40 @@
 #include "TesteSenha.hpp"
 #include "TesteTelefone.hpp"
 
+// Testes de entidades
 #include "TesteGerente.hpp"
 #include "TesteHospede.hpp"
 #include "TesteHotel.hpp"
 #include "TesteQuarto.hpp"
 #include "TesteReserva.hpp"
 
-#include "InterfaceApresentacaoAutenticavel.hpp"
-#include "InterfaceApresentacaoGerente.hpp"
+// Controladoras de apresentação
+#include "ControladoraApresentacaoAcessoGerente.hpp"
+#include "ControladoraApresentacaoAcessoHospede.hpp"
 #include "ControladoraApresentacaoAutenticavel.hpp"
 #include "ControladoraApresentacaoGerente.hpp"
+#include "ControladoraApresentacaoHospede.hpp"
+#include "ControladoraApresentacaoHotel.hpp"
+#include "ControladoraApresentacaoQuarto.hpp"
+#include "ControladoraApresentacaoReserva.hpp"
+
+// Controladoras de servico
+#include "ControladoraServicoAutenticavel.hpp"
+#include "ControladoraServicoGerente.hpp"
+#include "ControladoraServicoHospede.hpp"
+#include "ControladoraServicoHotel.hpp"
+#include "ControladoraServicoQuarto.hpp"
+#include "ControladoraServicoReserva.hpp"
+
+// Controladoras de Persistencia
+#include "ControladoraPersistenciaAutenticavel.hpp"
+#include "ControladoraPersistenciaGerente.hpp"
+#include "ControladoraPersistenciaHospede.hpp"
+#include "ControladoraPersistenciaHotel.hpp"
+#include "ControladoraPersistenciaQuarto.hpp"
+#include "ControladoraPersistenciaReserva.hpp"
+#include "ControladoraPersistenciaSolicitacaoHospedagem.hpp"
+
 
 using namespace std;
 using namespace Hotelaria;
@@ -49,11 +75,12 @@ void executandoNovoSmoke() {
     InterfaceDeTeste::mostrarRelatorioDeTestes();
 }
 
-void executarSistema() {
+void executarSistema(ControladoraApresentacaoAcessoGerente *acessoGerente,
+                     ControladoraApresentacaoAcessoHospede *acessoHospede) {
     BancoDeDados banco;
     banco.iniciar();
 
-    Hotelaria::Sistema sistema;
+    Sistema sistema(acessoGerente, acessoHospede);
     sistema.iniciar();
 }
 
@@ -66,13 +93,67 @@ void burlandoSistema() {
 }
 
 int main() {
+    // Instanciando todas as controladoras
+    ControladoraApresentacaoAcessoGerente acessoGerente;
+    ControladoraApresentacaoAutenticavel autenticador;
+    ControladoraApresentacaoGerente apresentacaoGerente;
+    ControladoraApresentacaoHospede apresentacaoHospede;
+    ControladoraApresentacaoHotel apresentacaoHotel;
+    ControladoraApresentacaoQuarto apresentacaoQuarto;
+    ControladoraApresentacaoReserva apresentacaoReserva;
+
+    ControladoraApresentacaoAcessoHospede acessoHospede;
+
+    // Injetando dependências
+    acessoGerente.setControladoraApresentacao(&autenticador);
+    acessoGerente.setControladoraApresentacao(&apresentacaoGerente);
+    acessoGerente.setControladoraApresentacao(&apresentacaoHospede);
+    // aqui é válido porque a classe implementa a interface
+    acessoGerente.setControladoraApresentacao(&apresentacaoHotel);
+    acessoGerente.setControladoraApresentacao(&apresentacaoQuarto);
+    acessoGerente.setControladoraApresentacao(&apresentacaoReserva);
+
+    acessoHospede.setControladoraApresentacao(&apresentacaoHospede);
+
+    // Instanciando serviços e persistências
+    ControladoraServicoAutenticavel servAutenticavel;
+    ControladoraPersistenciaAutenticavel perAutenticavel;
+    servAutenticavel.setControladoraPersistencia(&perAutenticavel);
+    autenticador.setControladoraServicoAutenticavel(&servAutenticavel);
+
+    ControladoraServicoGerente servGerente;
+    ControladoraPersistenciaGerente perGerente;
+    servGerente.setControladoraPersistencia(&perGerente);
+    apresentacaoGerente.setControladoraServicoGerente(&servGerente);
+
+    ControladoraServicoHospede servHospede;
+    ControladoraPersistenciaHospede perHospede;
+    servHospede.setControladoraPersistencia(&perHospede);
+    apresentacaoHospede.setControladoraServicoHospede(&servHospede);
+
+    ControladoraServicoHotel servHotel;
+    ControladoraPersistenciaHotel perHotel;
+    servHotel.setControladoraPersistencia(&perHotel);
+    apresentacaoHotel.setControladoraServicoHotel(&servHotel);
+
+    ControladoraServicoQuarto servQuarto;
+    ControladoraPersistenciaQuarto perQuarto;
+    servQuarto.setControladoraPersistencia(&perQuarto);
+    apresentacaoQuarto.setControladoraServicoQuarto(&servQuarto);
+
+    ControladoraServicoReserva servReserva;
+    ControladoraPersistenciaReserva perReserva;
+    servReserva.setControladoraPersistencia(&perReserva);
+    apresentacaoReserva.setControladoraServicoReserva(&servReserva);
+
+    // Escolhendo modo de execução
     switch (MODO_ATUAL) {
         case MODO_SMOKE: {
             executandoNovoSmoke();
             break;
         }
         case MODO_PRODUCAO: {
-            executarSistema();
+            executarSistema(&acessoGerente, &acessoHospede);
             break;
         }
         case MODO_HACKER: {
@@ -81,21 +162,20 @@ int main() {
         }
     }
     return 0;
-}; /*
+}
+
+/*
  * Edicoes a fazer :
  *
  * Funcionalidades do sistema
  *
  * Conta = LER; EDITAR; EXCLUIR;
- * Hotel = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hoteis;
- * Quarto = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os quartos;
- * Reserva = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos as reservas;
- * Hospede = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hospedes;
+ * Hotel = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hoteis);
+ * Quarto = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os quartos);
+ * Reserva = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todas as reservas);
+ * Hospede = LER; EDITAR; EXCLUIR; CRIAR; LISTAR(Dados de todos os hospedes);
  *
  * 1) Nao pode haver conflitos nas reservas!
- *
  * 2) Nao pode editar as informacoes em CODIGO, que apresenta chave de registro "PK"!
- *
  * 3) Nao permite exclusoes que gerem inconcistencias!
- *
  */

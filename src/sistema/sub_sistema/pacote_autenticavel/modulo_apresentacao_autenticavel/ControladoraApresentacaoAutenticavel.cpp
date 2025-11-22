@@ -24,13 +24,13 @@ namespace Hotelaria {
 
     bool ControladoraApresentacaoAutenticavel::autenticar() {
         bool lacoLogin = false;
-        bool resultado;
+        bool resultado = false;
 
         while (!lacoLogin) {
             string emailCopia;
             string senhaCopia;
 
-            Formato::TituloEmCaixa("Logando com Gerente");
+            Formato::TituloEmCaixa("Logando como Gerente");
 
             IO::Print("Informe o Email: ");
             emailCopia = IO::LerLinha();
@@ -43,7 +43,10 @@ namespace Hotelaria {
                 Senha senhaObj(senhaCopia);
 
                 resultado = servico->autenticar(emalObj, senhaObj);
-                // Solicitar autenticação.
+                IO::Println("Debug----------------------");
+                if (resultado) {
+                    this->setEstaAutenticado(true);
+                }
 
                 if (!resultado) {
                     IO::Println("Gerente nao cadastrado");

@@ -39,6 +39,27 @@ namespace Hotelaria {
         banco.fechandoConexao();
     }
 
+    void ControladoraPersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &status) {
+        sqlite3 *db;
+        sqlite3_open(DB_PATH, &db);
+
+        const char *sql = R"(
+        UPDATE solicitacoes_hospedagem
+        SET status = ?, motivo_recusa = ?
+        WHERE codigo = ?;
+    )";
+
+        sqlite3_stmt *stmt;
+        sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+
+        sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(status.getStatus()));
+        sqlite3_bind_text(stmt, 2, status.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
+
+        sqlite3_step(stmt);
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+    }
+
     vector<SolicitacaoHospedagem> ControladoraPersistenciaSolicitacaoHospedagem::buscarPorEmail(const string &email) {
         sqlite3 *db;
         sqlite3_open(DB_PATH, &db);
@@ -122,26 +143,5 @@ namespace Hotelaria {
         sqlite3_finalize(stmt);
         sqlite3_close(db);
         return lista;
-    }
-
-    void ControladoraPersistenciaSolicitacaoHospedagem::atualizar(const SolicitacaoHospedagem &status) {
-        sqlite3 *db;
-        sqlite3_open(DB_PATH, &db);
-
-        const char *sql = R"(
-        UPDATE solicitacoes_hospedagem
-        SET status = ?, motivo_recusa = ?
-        WHERE codigo = ?;
-    )";
-
-        sqlite3_stmt *stmt;
-        sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-
-        sqlite3_bind_int(stmt, 1, EnumConversor::StatusSolicitacaoHospedagemParaInteiro(status.getStatus()));
-        sqlite3_bind_text(stmt, 2, status.getMotivoRecusa().c_str(), -1, SQLITE_STATIC);
-
-        sqlite3_step(stmt);
-        sqlite3_finalize(stmt);
-        sqlite3_close(db);
     }
 }

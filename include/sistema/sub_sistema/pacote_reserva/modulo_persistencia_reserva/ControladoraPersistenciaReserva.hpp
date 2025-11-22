@@ -27,13 +27,13 @@ namespace Hotelaria {
 
         bool autenticar(const string &email, const string &senha) override;
 
-        vector<ReservaDTO> listar() override;
-
-        optional<ReservaDTO> pesquisar(const int &id) override;
-
         bool atualizar(const int &id, const Reserva &reserva) override;
 
         bool excluir(const int &id) override;
+
+        vector<ReservaDTO> listar() override;
+
+        optional<ReservaDTO> pesquisar(const int &id) override;
     };
 }
 

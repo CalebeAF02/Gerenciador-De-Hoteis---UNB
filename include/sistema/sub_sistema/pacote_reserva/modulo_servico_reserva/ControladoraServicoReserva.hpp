@@ -20,7 +20,12 @@ using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
     class ControladoraServicoReserva : public InterfaceServicoReserva {
+    private:
+        InterfacePersistenciaReserva *persistencia;
+
     public:
+        void setControladoraPersistencia(InterfacePersistenciaReserva *persistencia) override;
+
         bool exibirMenu();
 
         bool exibirMenuCRUD();
@@ -29,11 +34,11 @@ namespace Hotelaria {
 
         bool editar(const int &id, const Reserva &reserva) override;
 
-        bool remover(const int id) override;
+        bool remover(const int &id) override;
 
         vector<ReservaDTO> listarTodos() override;
 
-        optional<ReservaDTO> pesquisar(const int id) override;
+        optional<ReservaDTO> pesquisar(const int &id) override;
     };
 }
 

@@ -18,7 +18,11 @@ using namespace std;
 
 namespace Hotelaria {
     class ControladoraServicoAutenticavel : public InterfaceServicoAutenticavel {
+    private:
+        InterfacePersistenciaAutenticavel *persistencia;
     public:
+        void setControladoraPersistencia(InterfacePersistenciaAutenticavel *persistencia) override;
+
         bool autenticar(const Email &email, const Senha &senha) override;
     };
 }

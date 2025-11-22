@@ -6,6 +6,10 @@
 
 
 namespace Hotelaria {
+    void ControladoraServicoReserva::setControladoraPersistencia(InterfacePersistenciaReserva *persistencia) {
+        this->persistencia = persistencia;
+    }
+
     bool ControladoraServicoReserva::exibirMenu() {
         return true;
     };
@@ -22,11 +26,11 @@ namespace Hotelaria {
         return true;
     };
 
-    bool ControladoraServicoReserva::remover(int id) {
+    bool ControladoraServicoReserva::remover(const int &id) {
         return true;
     };
 
-    optional<ReservaDTO> ControladoraServicoReserva::pesquisar(int id) {
+    optional<ReservaDTO> ControladoraServicoReserva::pesquisar(const int &id) {
         return nullopt;
     };
 

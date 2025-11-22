@@ -17,10 +17,14 @@ using namespace std;
 
 namespace Hotelaria {
     class Sistema {
-    public:
+    private:
         bool executando = true;
-        ControladoraApresentacaoAcessoGerente *contoladoraApresentacaoAcessoGerente;
-        ControladoraApresentacaoAcessoHospede *contoladoraApresentacaoAcessoHospede;
+        ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente;
+        ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede;
+
+    public:
+        Sistema(ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente,
+                ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede);
 
         void exibirMenu();
 

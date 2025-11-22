@@ -23,6 +23,8 @@
 #include <optional>
 #include <vector>
 
+#include "ControladoraApresentacaoAcessoHospede.hpp"
+
 using namespace std;
 using namespace Utils;
 using namespace VisualizadorDeMenu;
@@ -42,21 +44,21 @@ namespace Hotelaria {
         bool estaAutenticado = false;
 
     public:
-        void setControladoraAutenticavel(InterfaceApresentacaoAutenticavel *apresentacao_autenticavel);
+        void setControladoraApresentacao(InterfaceApresentacaoAutenticavel *apresentacao_autenticavel);
 
-        void setControladoraGerente(InterfaceApresentacaoGerente *apresentacao_gerente);
+        void setControladoraApresentacao(InterfaceApresentacaoGerente *apresentacao_gerente);
 
-        void setControladoraHospede(InterfaceApresentacaoHospede *apresentacao_hospede);
+        void setControladoraApresentacao(InterfaceApresentacaoHospede *apresentacao_hospede);
 
-        void setControladoraHotel(InterfaceApresentacaoHotel *apresentacao_hotel);
+        void setControladoraApresentacao(InterfaceApresentacaoHotel *apresentacao_hotel);
 
-        void setControladoraQuarto(InterfaceApresentacaoQuarto *apresentacao_quarto);
+        void setControladoraApresentacao(InterfaceApresentacaoQuarto *apresentacao_quarto);
 
-        void setControladoraReserva(InterfaceApresentacaoReserva *apresentacao_reserva);
+        void setControladoraApresentacao(InterfaceApresentacaoReserva *apresentacao_reserva);
 
         void exibirMenu() override;
 
-        void exibirMenuGerenciador() override;
+        void exibirMenuGerenciador();
     };
 }
 

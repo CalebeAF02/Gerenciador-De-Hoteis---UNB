@@ -9,8 +9,8 @@
 using namespace VisualizadorDeTabela;
 
 namespace Hotelaria {
-    void ControladoraServicoHotel::setControladoraPersistencia(InterfacePersistenciaHotel *p) {
-        this->persistencia = p;
+    void ControladoraServicoHotel::setControladoraPersistencia(InterfacePersistenciaHotel *persistencia) {
+        this->persistencia = persistencia;
     }
 
     bool ControladoraServicoHotel::criar(const Hotel &hotel) {

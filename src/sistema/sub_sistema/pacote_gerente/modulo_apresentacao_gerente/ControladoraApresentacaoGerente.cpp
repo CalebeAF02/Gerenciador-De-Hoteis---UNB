@@ -5,7 +5,7 @@
 #include "ControladoraApresentacaoGerente.hpp"
 
 namespace Hotelaria {
-    void ControladoraApresentacaoGerente::setControladoraServicoPessoal(InterfaceServicoGerente *servico) {
+    void ControladoraApresentacaoGerente::setControladoraServicoGerente(InterfaceServicoGerente *servico) {
         this->servico = servico;
     }
 
@@ -40,7 +40,7 @@ namespace Hotelaria {
         }
     }
 
-    void ControladoraApresentacaoGerente::criar() {
+    bool ControladoraApresentacaoGerente::criar() {
         bool criado = false;
 
         while (!criado) // Enquanto craido esta falso , ele repete
@@ -97,6 +97,7 @@ namespace Hotelaria {
                 criado = sucesso;
             }
         }
+        return criado;
     }
 
     void ControladoraApresentacaoGerente::listar() {

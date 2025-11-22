@@ -20,11 +20,11 @@ namespace Hotelaria {
     public:
         static void salvar(const SolicitacaoHospedagem &status);
 
+        static void atualizar(const SolicitacaoHospedagem &status);
+
         static vector<SolicitacaoHospedagem> buscarPorEmail(const string &email);
 
         static vector<SolicitacaoHospedagem> buscarPorStatus(int status);
-
-        static void atualizar(const SolicitacaoHospedagem &status);
     };
 }
 

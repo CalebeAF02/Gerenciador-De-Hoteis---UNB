@@ -22,22 +22,24 @@ using namespace VisualizadorDeTabela;
 namespace Hotelaria {
     class ControladoraServicoQuarto : public InterfaceServicoQuarto {
     private:
-        InterfaceServicoQuarto *servico;
+        InterfacePersistenciaQuarto *persistencia;
 
     public:
+        void setControladoraPersistencia(InterfacePersistenciaQuarto *persistencia) override;
+
         void exibirMenu();
 
         void exibirMenuCRUD();
 
         bool criar(const Quarto &quarto) override;
 
-        bool remover(int id) override;
-
         bool editar(const int &id, const Quarto &quarto) override;
+
+        bool remover(const int &id) override;
 
         vector<QuartoDTO> listarTodos() override;
 
-        optional<QuartoDTO> pesquisar(int id) override;
+        optional<QuartoDTO> pesquisar(const int &id) override;
     };
 }
 

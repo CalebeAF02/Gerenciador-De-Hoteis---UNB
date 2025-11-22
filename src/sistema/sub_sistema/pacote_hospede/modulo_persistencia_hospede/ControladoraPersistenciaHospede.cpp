@@ -38,6 +38,17 @@ namespace Hotelaria {
         return true;
     }
 
+    bool ControladoraPersistenciaHospede::atualizar(const Email &emailAntigo, const Hospede &hospede) {
+        // Ainda não Implementado
+        return true;
+    }
+
+    bool ControladoraPersistenciaHospede::excluir(const int &id) {
+        // Ainda não Implementado
+        return true;
+    }
+
+
     vector<HospedeDTO> ControladoraPersistenciaHospede::listar() {
         vector<HospedeDTO> lista;
 
@@ -82,15 +93,5 @@ namespace Hotelaria {
 
     optional<HospedeDTO> ControladoraPersistenciaHospede::pesquisar(const int &id) {
         return nullopt;
-    }
-
-    bool ControladoraPersistenciaHospede::atualizar(const Email &emailAntigo, const Hospede &hospede) {
-        // Ainda não Implementado
-        return true;
-    }
-
-    bool ControladoraPersistenciaHospede::excluir(const int &id) {
-        // Ainda não Implementado
-        return true;
     }
 }

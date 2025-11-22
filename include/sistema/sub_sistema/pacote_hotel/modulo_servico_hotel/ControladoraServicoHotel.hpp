@@ -30,9 +30,9 @@ namespace Hotelaria {
 
         bool criar(const Hotel &hotel) override;
 
-        bool remover(const int &id) override;
-
         bool editar(const int &id, const Hotel &hotel) override;
+
+        bool remover(const int &id) override;
 
         vector<HotelDTO> listarTodos() override;
 

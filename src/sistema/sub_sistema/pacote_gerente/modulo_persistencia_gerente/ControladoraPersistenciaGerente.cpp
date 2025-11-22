@@ -69,6 +69,66 @@ namespace Hotelaria {
         return statusAutenticacao;
     }
 
+    bool ControladoraPersistenciaGerente::atualizar(const Email &emailAntigo, const Gerente &gerente) {
+        BancoDeDados banco;
+        if (!banco.abrindoConexao()) {
+            return false;
+        }
+
+        sqlite3 *db = banco.getConexao();
+        sqlite3_stmt *stmt = nullptr;
+
+        const char *sql = "UPDATE gerentes SET nome = ?, email = ?, ramal = ?, senha = ? WHERE email = ?;";
+
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_bind_text(stmt, 1, gerente.getNome().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, gerente.getEmail().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, gerente.getRamal().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 4, gerente.getSenha().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 5, emailAntigo.getValor().c_str(), -1, SQLITE_STATIC);
+
+
+        rc = sqlite3_step(stmt);
+
+        sqlite3_finalize(stmt);
+        banco.fechandoConexao();
+        return rc == SQLITE_DONE;
+    }
+
+    bool ControladoraPersistenciaGerente::excluir(const int &id) {
+        BancoDeDados banco;
+        if (!banco.abrindoConexao())
+            return false;
+
+        sqlite3 *db = banco.getConexao();
+        sqlite3_stmt *stmt = nullptr;
+        const char *sql = "DELETE FROM gerentes WHERE id = ?;";
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_bind_int(stmt, 1, id);;
+        rc = sqlite3_step(stmt);
+        if (rc != SQLITE_DONE) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_finalize(stmt);
+        banco.fechandoConexao();
+        return true;
+    }
+
     vector<GerenteDTO> ControladoraPersistenciaGerente::listar() {
         vector<GerenteDTO> lista;
 
@@ -142,65 +202,5 @@ namespace Hotelaria {
         sqlite3_finalize(stmt);
         banco.fechandoConexao();
         return dto;
-    }
-
-    bool ControladoraPersistenciaGerente::atualizar(const Email &emailAntigo, const Gerente &gerente) {
-        BancoDeDados banco;
-        if (!banco.abrindoConexao()) {
-            return false;
-        }
-
-        sqlite3 *db = banco.getConexao();
-        sqlite3_stmt *stmt = nullptr;
-
-        const char *sql = "UPDATE gerentes SET nome = ?, email = ?, ramal = ?, senha = ? WHERE email = ?;";
-
-        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-        if (rc != SQLITE_OK) {
-            sqlite3_finalize(stmt);
-            banco.fechandoConexao();
-            return false;
-        }
-
-        sqlite3_bind_text(stmt, 1, gerente.getNome().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 2, gerente.getEmail().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 3, gerente.getRamal().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 4, gerente.getSenha().c_str(), -1, SQLITE_STATIC);
-        sqlite3_bind_text(stmt, 5, emailAntigo.getValor().c_str(), -1, SQLITE_STATIC);
-
-
-        rc = sqlite3_step(stmt);
-
-        sqlite3_finalize(stmt);
-        banco.fechandoConexao();
-        return rc == SQLITE_DONE;
-    }
-
-    bool ControladoraPersistenciaGerente::excluir(const int &id) {
-        BancoDeDados banco;
-        if (!banco.abrindoConexao())
-            return false;
-
-        sqlite3 *db = banco.getConexao();
-        sqlite3_stmt *stmt = nullptr;
-        const char *sql = "DELETE FROM gerentes WHERE id = ?;";
-        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
-        if (rc != SQLITE_OK) {
-            sqlite3_finalize(stmt);
-            banco.fechandoConexao();
-            return false;
-        }
-
-        sqlite3_bind_int(stmt, 1, id);;
-        rc = sqlite3_step(stmt);
-        if (rc != SQLITE_DONE) {
-            sqlite3_finalize(stmt);
-            banco.fechandoConexao();
-            return false;
-        }
-
-        sqlite3_finalize(stmt);
-        banco.fechandoConexao();
-        return true;
     }
 }

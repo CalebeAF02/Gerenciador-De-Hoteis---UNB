@@ -27,11 +27,11 @@ namespace Hotelaria {
 
         virtual bool editar(const int &id, const Quarto &quarto) = 0;
 
-        virtual bool remover(int id) = 0;
+        virtual bool remover(const int &id) = 0;
 
         virtual vector<QuartoDTO> listarTodos() = 0;
 
-        virtual optional<QuartoDTO> pesquisar(int id) = 0;
+        virtual optional<QuartoDTO> pesquisar(const int &id) = 0;
 
         virtual ~InterfaceServicoQuarto() = default;
     };

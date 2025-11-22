@@ -7,7 +7,7 @@
 #include "InterfaceApresentacaoHospede.hpp"
 
 namespace Hotelaria {
-    void ControladoraApresentacaoAcessoHospede::setControladoraReserva(
+    void ControladoraApresentacaoAcessoHospede::setControladoraApresentacao(
         InterfaceApresentacaoHospede *apresentacao_hospede) {
         this->apresentacao_hospede = apresentacao_hospede;
     }

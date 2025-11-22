@@ -5,8 +5,11 @@
 #include "ControladoraServicoAutenticavel.hpp"
 
 namespace Hotelaria {
+    void ControladoraServicoAutenticavel::setControladoraPersistencia(InterfacePersistenciaAutenticavel *persistencia) {
+        this->persistencia = persistencia;
+    }
+
     bool ControladoraServicoAutenticavel::autenticar(const Email &email, const Senha &senha) {
-        ControladoraPersistenciaGerente pg;
-        return pg.autenticar(email.getValor(), senha.getValor());
+        return persistencia->autenticar(email.getValor(), senha.getValor());
     }
 }
