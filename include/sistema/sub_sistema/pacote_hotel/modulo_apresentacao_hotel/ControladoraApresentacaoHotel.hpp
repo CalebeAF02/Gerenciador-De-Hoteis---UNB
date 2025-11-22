@@ -28,13 +28,14 @@ namespace Hotelaria {
     private:
         InterfaceServicoHotel *servico;
         bool executando = false;
+        bool estaAutenticado = false;
 
     public:
         void setControladoraServicoHotel(InterfaceServicoHotel *) override;
 
         void exibirMenuCRUD() override;
 
-        void criar() override;
+        void criar(int &gerente_id) override;
 
         void listar() override;
 

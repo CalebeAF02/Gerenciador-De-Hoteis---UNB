@@ -3,6 +3,8 @@
 //
 #include "ControladoraApresentacaoAcessoGerente.hpp"
 
+#include "ControladoraPersistenciaGerente.hpp"
+
 namespace Hotelaria {
     void ControladoraApresentacaoAcessoGerente::setControladoraApresentacao(
         InterfaceApresentacaoAutenticavel *apresentacao_autenticavel) {
@@ -34,6 +36,7 @@ namespace Hotelaria {
         this->apresentacao_reserva = apresentacao_reserva;
     }
 
+
     void ControladoraApresentacaoAcessoGerente::exibirMenu() {
         bool executando = true;
 
@@ -54,6 +57,15 @@ namespace Hotelaria {
             } else if (opcao == OPCAO_FAZER_LOGIN) {
                 if (this->apresentacao_autenticavel->autenticar()) {
                     this->estaAutenticado = true;
+
+                    //this->getSistema()->setGerenteID(id)
+                    string stingEmail = this->apresentacao_autenticavel->getEmailDOGerente();
+                    ControladoraPersistenciaGerente controladora_persistencia_gerente;
+                    optional<GerenteDTO> gerente = controladora_persistencia_gerente.pesquisarPorEmail(
+                        string(stingEmail));
+                    if (gerente.has_value()) {
+                        IO::Println(to_string(gerente->getId()));
+                    }
                 }
                 if (this->estaAutenticado) {
                     IO::Println("Agora Voce Possui Super-Poderes");
@@ -109,12 +121,11 @@ namespace Hotelaria {
         }
     }
 
-    InterfaceApresentacaoAutenticavel * ControladoraApresentacaoAcessoGerente::getServicoHacker() {
+    InterfaceApresentacaoAutenticavel *ControladoraApresentacaoAcessoGerente::getServicoHacker() {
         return apresentacao_autenticavel;
     }
 
     void ControladoraApresentacaoAcessoGerente::autenticarHacker() {
         this->estaAutenticado = true;
     }
-
 }

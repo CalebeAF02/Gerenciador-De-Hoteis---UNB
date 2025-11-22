@@ -5,14 +5,14 @@
 #include "ControladoraPersistenciaHotel.hpp"
 
 namespace Hotelaria {
-    bool ControladoraPersistenciaHotel::inserir(const Hotel &hotel) {
+    bool ControladoraPersistenciaHotel::inserir(const Hotel &hotel, const int &gerente_id) {
         BancoDeDados banco;
         if (!banco.abrindoConexao())
             return false;
 
         sqlite3 *db = banco.getConexao();
 
-        const char *sql = "INSERT INTO hoteis (nome, endereco, telefone, codigo) VALUES (?, ?, ?, ?);";
+        const char *sql = "INSERT INTO hoteis (nome, endereco, telefone, codigo, gerente_id) VALUES (?, ?, ?, ?, ?);";
 
         sqlite3_stmt *stmt;
         sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
@@ -21,6 +21,8 @@ namespace Hotelaria {
         sqlite3_bind_text(stmt, 2, hotel.getEndereco().c_str(), -1, SQLITE_STATIC);
         sqlite3_bind_text(stmt, 3, hotel.getTelefone().c_str(), -1, SQLITE_STATIC);
         sqlite3_bind_text(stmt, 4, hotel.getCodigo().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_int(stmt, 4, gerente_id);
+
 
         sqlite3_step(stmt);
         sqlite3_finalize(stmt);
@@ -57,7 +59,30 @@ namespace Hotelaria {
     }
 
     bool ControladoraPersistenciaHotel::excluir(const int &id) {
-        // Ainda não Implementado
+        BancoDeDados banco;
+        if (!banco.abrindoConexao())
+            return false;
+
+        sqlite3 *db = banco.getConexao();
+        sqlite3_stmt *stmt = nullptr;
+        const char *sql = "DELETE FROM hoteis WHERE id = ?;";
+        int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_bind_int(stmt, 1, id);;
+        rc = sqlite3_step(stmt);
+        if (rc != SQLITE_DONE) {
+            sqlite3_finalize(stmt);
+            banco.fechandoConexao();
+            return false;
+        }
+
+        sqlite3_finalize(stmt);
+        banco.fechandoConexao();
         return true;
     }
 
@@ -73,7 +98,7 @@ namespace Hotelaria {
 
 
         sqlite3_stmt *stmt = nullptr;
-        const char *sql = "SELECT id, nome, endereco, telefone, codigo FROM hoteis;";
+        const char *sql = "SELECT id, nome, endereco, telefone, codigo, gerente_id FROM hoteis;";
         int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
         if (rc != SQLITE_OK) {
             cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
@@ -87,8 +112,9 @@ namespace Hotelaria {
             string endereco = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
             string telefone = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
             string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+            int gerente_id = reinterpret_cast<int>(sqlite3_column_int(stmt, 5));
 
-            HotelDTO *gerenteObj = new HotelDTO(id, nome, endereco, telefone, codigo);
+            HotelDTO *gerenteObj = new HotelDTO(id, nome, endereco, telefone, codigo, gerente_id);
 
             lista.push_back(*gerenteObj);
         }
@@ -109,7 +135,7 @@ namespace Hotelaria {
 
 
         sqlite3_stmt *stmt = nullptr;
-        const char *sql = "SELECT id, nome, endereco, telefone, codigo FROM hoteis WHERE id = ? LIMIT 1;";
+        const char *sql = "SELECT id, nome, endereco, telefone, codigo,gerente_id FROM hoteis WHERE id = ? LIMIT 1;";
         int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
         if (rc != SQLITE_OK) {
             cerr << "Erro ao preparar consulta: " << sqlite3_errmsg(db) << endl;
@@ -125,8 +151,9 @@ namespace Hotelaria {
             string endereco = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 2));
             string telefone = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 3));
             string codigo = reinterpret_cast<const char *>(sqlite3_column_text(stmt, 4));
+            int gerente_id = reinterpret_cast<int>(sqlite3_column_int(stmt, 5));
 
-            dto = HotelDTO(id, nome, endereco, telefone, codigo);
+            dto = HotelDTO(id, nome, endereco, telefone, codigo, gerente_id);
         }
 
         sqlite3_finalize(stmt);

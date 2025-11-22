@@ -100,13 +100,18 @@ namespace Hotelaria {
 
     void BancoDeDados::tabelaHotel(sqlite3 *db) {
         const char *sql = R"(
-        CREATE TABLE IF NOT EXISTS hoteis (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL DEFAULT '',
-            endereco TEXT NOT NULL DEFAULT '',
-            telefone TEXT NOT NULL DEFAULT '',
-            codigo TEXT NOT NULL UNIQUE DEFAULT ''
+        create table if not exists hoteis
+        (
+            id         INTEGER
+                primary key autoincrement,
+            nome       TEXT default '' not null,
+            endereco   TEXT default '' not null,
+            telefone   TEXT default '' not null,
+            codigo     TEXT default '' not null
+                unique,
+            gerente_id integer
         );
+
     )";
 
         char *mensagemErro = nullptr;

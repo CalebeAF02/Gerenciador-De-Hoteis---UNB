@@ -12,6 +12,7 @@ namespace Hotelaria {
         this->apresentacao_hospede = apresentacao_hospede;
     }
 
+
     void ControladoraApresentacaoAcessoHospede::exibirMenu() {
         bool executando = true;
 

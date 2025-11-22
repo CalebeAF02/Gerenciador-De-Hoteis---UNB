@@ -37,12 +37,24 @@ void TesteHotel::executar() {
         "Hotel - Endereco",
         [&hotel1, &enderecoStr]() { hotel1.setEndereco(Endereco(enderecoStr)); }
     );
+    // =========================================================================
+    // 3. ATRIBUIÇÃO DE TELEFONE
+    // =========================================================================
+    const string telefoneStr = "+55611299934567"; // formato válido
+    Formato::SeparadorDeCategoria("3. Atribuicao de Telefone Valido");
+
+    smoke_teste.testarEntidade(
+        InterfaceDeTeste::DEVE_DAR_CERTO,
+        telefoneStr,
+        "Hotel - Telefone",
+        [&hotel1, &telefoneStr]() { hotel1.setTelefone(Telefone(telefoneStr)); }
+    );
 
     // =========================================================================
-    // 3. ATRIBUIÇÃO DE CÓDIGO
+    // 4. ATRIBUIÇÃO DE CÓDIGO
     // =========================================================================
     // Código deve ter 10 caracteres, letras (a-z) ou dígitos (0-9).
-    const string codigoStr = "A1b2C3d4E5";
+    const string codigoStr = "HOTEL12345";
     Formato::SeparadorDeCategoria("3. Atribuicao de Codigo Valido");
 
     smoke_teste.testarEntidade(
@@ -52,4 +64,5 @@ void TesteHotel::executar() {
         [&hotel1, &codigoStr]() { hotel1.setCodigo(Codigo(codigoStr)); }
     );
 }
+
 //------------------------------------------------------------------------------------------------------------------

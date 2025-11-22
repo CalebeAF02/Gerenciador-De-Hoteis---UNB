@@ -1,7 +1,7 @@
 #include "TesteCartao.hpp"
 #include <iostream>
 #include <vector>
-#include "../../libs/teste/SmokeTeste.hpp"
+#include "SmokeTeste.hpp"
 //------------------------------------------------------------------------------------------------------------------
 void TesteCartao::executar() {
     SmokeTeste smoke_teste;
@@ -58,4 +58,5 @@ void TesteCartao::executar() {
         );
     }
 }
+
 //------------------------------------------------------------------------------------------------------------------

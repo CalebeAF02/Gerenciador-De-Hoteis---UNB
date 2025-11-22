@@ -44,4 +44,12 @@ namespace Hotelaria {
     void HotelDTO::setCodigo(const string &valor) {
         this->codigo = valor;
     }
+
+    int HotelDTO::getGerenteID() const {
+        return gerente_id;
+    }
+
+    void HotelDTO::setGerenteID(int valor) {
+        this->gerente_id = valor;
+    }
 }

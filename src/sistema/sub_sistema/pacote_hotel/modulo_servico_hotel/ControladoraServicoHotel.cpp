@@ -13,9 +13,9 @@ namespace Hotelaria {
         this->persistencia = persistencia;
     }
 
-    bool ControladoraServicoHotel::criar(const Hotel &hotel) {
+    bool ControladoraServicoHotel::criar(const Hotel &hotel, const int &gerente_id) {
         if (!persistencia) persistencia = new ControladoraPersistenciaHotel();
-        return persistencia->inserir(hotel);
+        return persistencia->inserir(hotel, gerente_id);
     }
 
     bool ControladoraServicoHotel::editar(const int &id, const Hotel &hotelAtualizado) {

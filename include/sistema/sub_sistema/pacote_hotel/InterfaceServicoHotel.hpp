@@ -22,7 +22,7 @@ namespace Hotelaria {
     public:
         virtual void setControladoraPersistencia(InterfacePersistenciaHotel *persistencia) = 0;
 
-        virtual bool criar(const Hotel &hotel) = 0;
+        virtual bool criar(const Hotel &hotel, const int &gerente_id) = 0;
 
         virtual bool editar(const int &id, const Hotel &hotel) = 0;
 

@@ -26,7 +26,8 @@ namespace Hotelaria {
                 executando = false;
                 IO::Println("Voltando ao menu de acesso.");
             } else if (opcao == OPCAO_CRIAR) {
-                criar();
+                int gerente_id;
+                criar(gerente_id);
             } else if (opcao == OPCAO_LISTAR) {
                 listar();
             } else if (opcao == OPCAO_ATUALIZAR) {
@@ -39,7 +40,7 @@ namespace Hotelaria {
         }
     }
 
-    void ControladoraApresentacaoHotel::criar() {
+    void ControladoraApresentacaoHotel::criar(int &gerente_id) {
         bool criado = false;
         bool tudoOK = true;
 
@@ -91,7 +92,7 @@ namespace Hotelaria {
                     }
                 }
                 if (tudoOK) {
-                    bool sucesso = servico->criar(*hotel);
+                    bool sucesso = servico->criar(*hotel, gerente_id);
 
                     if (sucesso) IO::Println("Hotel Cadastrado com Sucesso!");
                     else IO::Println("Falha ao cadastrar (Erro de Servico/Banco).");
@@ -104,21 +105,22 @@ namespace Hotelaria {
     }
 
     void ControladoraApresentacaoHotel::listar() {
-        vector<HotelDTO *> lista;
+        vector<HotelDTO> lista = servico->listarTodos();
 
         if (lista.empty()) {
-            IO::Println("Nenhum gerente cadastrado.");
+            IO::Println("Nenhum hotel cadastrado.");
         }
         Tabela tab;
 
-        for (HotelDTO *item: lista) {
+        for (HotelDTO item: lista) {
             Linha *objLinha = tab.criarObj();
 
-            objLinha->atributo("id", item->getId());
-            objLinha->atributo("Nome", item->getNome());
-            objLinha->atributo("Endereco", item->getEndereco());
-            objLinha->atributo("Telefone", item->getTelefone());
-            objLinha->atributo("Codigo", item->getCodigo());
+            objLinha->atributo("id", item.getId());
+            objLinha->atributo("Nome", item.getNome());
+            objLinha->atributo("Endereco", item.getEndereco());
+            objLinha->atributo("Telefone", item.getTelefone());
+            objLinha->atributo("Codigo", item.getCodigo());
+            objLinha->atributo("GerenteID", item.getGerenteID());
         }
 
         tab.exibirTabela("Lista De Hoteis");
@@ -137,18 +139,16 @@ namespace Hotelaria {
             // has_value  = verifica se tem valor
             if (existe_hotel.has_value()) {
                 Tabela tab;
-                vector<HotelDTO> lista;
-                lista.push_back(*existe_hotel);
 
-                for (HotelDTO item: lista) {
-                    Linha *objLinha = tab.criarObj();
+                Linha *objLinha = tab.criarObj();
 
-                    objLinha->atributo("Id", item.getId());
-                    objLinha->atributo("Nome", item.getNome());
-                    objLinha->atributo("Endereco", item.getEndereco());
-                    objLinha->atributo("Telefone", item.getTelefone());
-                    objLinha->atributo("Codigo", item.getCodigo());
-                }
+                objLinha->atributo("Id", existe_hotel->getId());
+                objLinha->atributo("Nome", existe_hotel->getNome());
+                objLinha->atributo("Endereco", existe_hotel->getEndereco());
+                objLinha->atributo("Telefone", existe_hotel->getTelefone());
+                objLinha->atributo("Codigo", existe_hotel->getCodigo());
+                objLinha->atributo("GerenteID", existe_hotel->getGerenteID());
+
 
                 tab.exibirTabela("Lista De Hoteis");
 
@@ -225,6 +225,37 @@ namespace Hotelaria {
     };
 
     void ControladoraApresentacaoHotel::remover() {
-        IO::Println("\nEsta opcao ainda nao foi construida!\nRetornando...\n");
-    };
+        IO::Print("Informe o Id do Hotel: ");
+        string idStr = IO::LerLinha();
+
+        if (!Utils::verificaSeENumero(idStr)) {
+            IO::Println("Erro: Id invalido");
+            return;
+        }
+
+        int id = stoi(idStr);
+
+        // Buscar gerente para mostrar antes de excluir
+        auto dto = servico->pesquisar(id);
+        if (!dto.has_value()) {
+            IO::Println("Erro: Hotel nao encontrado.");
+            return;
+        }
+
+        // Exibir dados do gerente encontrado
+        Tabela tab;
+        Linha *objLinha = tab.criarObj();
+        objLinha->atributo("Id", dto->getId());
+        objLinha->atributo("Nome", dto->getNome());
+        objLinha->atributo("Endereco", dto->getEndereco());
+        objLinha->atributo("Telefone", dto->getTelefone());
+        objLinha->atributo("Codigo", dto->getCodigo());
+        objLinha->atributo("GerenteID", dto->getGerenteID());
+
+        tab.exibirTabela("Hotel a Remover");
+
+        // Chamar serviço para remover
+        bool ok = servico->remover(id);
+        IO::Println(ok ? "Hotel excluido com sucesso!" : "Erro ao excluir Hotel.");
+    }
 }

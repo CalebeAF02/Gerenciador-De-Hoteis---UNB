@@ -22,7 +22,7 @@ using namespace std;
 namespace Hotelaria {
     class ControladoraPersistenciaHotel : public InterfacePersistenciaHotel {
     public:
-        bool inserir(const Hotel &hotel) override;
+        bool inserir(const Hotel &hotel, const int &gerente_id) override;
 
         bool atualizar(const int &id, const Hotel &hotel) override;
 

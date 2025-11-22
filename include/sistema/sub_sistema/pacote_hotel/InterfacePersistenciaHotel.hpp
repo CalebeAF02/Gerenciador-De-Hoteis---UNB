@@ -14,7 +14,7 @@
 namespace Hotelaria {
     class InterfacePersistenciaHotel {
     public:
-        virtual bool inserir(const Hotel &hotel) = 0;
+        virtual bool inserir(const Hotel &hotel, const int &gerente_id) = 0;
 
         virtual bool atualizar(const int &id, const Hotel &hotel) = 0;
 

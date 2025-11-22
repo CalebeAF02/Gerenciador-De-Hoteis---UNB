@@ -28,7 +28,7 @@ namespace Hotelaria {
     public:
         void setControladoraPersistencia(InterfacePersistenciaHotel *persistencia) override;
 
-        bool criar(const Hotel &hotel) override;
+        bool criar(const Hotel &hotel, const int &gerente_id) override;
 
         bool editar(const int &id, const Hotel &hotel) override;
 

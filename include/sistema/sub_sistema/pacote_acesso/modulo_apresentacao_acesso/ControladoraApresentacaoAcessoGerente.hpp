@@ -5,6 +5,8 @@
 #ifndef Hotelaria_UnB_TP1_CAI_HPP
 #define Hotelaria_UnB_TP1_CAI_HPP
 
+#include "Sistema.hpp"
+
 #include "InterfaceApresentacaoAcesso.hpp"
 #include "ControladoraApresentacaoGerente.hpp"
 #include "InterfaceApresentacaoHospede.hpp"
@@ -56,11 +58,12 @@ namespace Hotelaria {
 
         void setControladoraApresentacao(InterfaceApresentacaoReserva *apresentacao_reserva);
 
+
         void exibirMenu() override;
 
         void exibirMenuGerenciador();
 
-        InterfaceApresentacaoAutenticavel * getServicoHacker();
+        InterfaceApresentacaoAutenticavel *getServicoHacker();
 
         void autenticarHacker();
     };

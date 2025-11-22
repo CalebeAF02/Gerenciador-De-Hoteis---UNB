@@ -8,6 +8,7 @@
 #include "InterfaceServicoAutenticavel.hpp"
 #include "IO.hpp"
 #include <iostream>
+
 using namespace std;
 
 namespace Hotelaria {
@@ -15,11 +16,16 @@ namespace Hotelaria {
     public:
         virtual void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *) = 0;
 
+        virtual void setEmailDoGerente(const string &email) = 0;
+
+        virtual string getEmailDOGerente() = 0;
+
         virtual void setEstaAutenticado(bool estaAutenticado) = 0;
 
         virtual bool getEstaAutenticado() = 0;
 
         virtual bool autenticar() = 0;
+
 
         virtual InterfaceServicoAutenticavel *getHacke() = 0;
 

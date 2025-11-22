@@ -7,6 +7,7 @@
 
 #include "InterfaceApresentacaoGerente.hpp"
 #include "InterfaceServicoGerente.hpp"
+#include "Sistema.hpp"
 
 #include "FabricaGerenciavel.hpp"
 #include "Utils.hpp"

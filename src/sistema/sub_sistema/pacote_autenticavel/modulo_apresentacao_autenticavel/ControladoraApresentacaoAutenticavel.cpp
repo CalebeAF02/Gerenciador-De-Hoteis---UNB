@@ -10,6 +10,14 @@ namespace Hotelaria {
         this->servico = servico;
     }
 
+    void ControladoraApresentacaoAutenticavel::setEmailDoGerente(const string &valor) {
+        this->gerente_email = valor;
+    }
+
+    string ControladoraApresentacaoAutenticavel::getEmailDOGerente() {
+        return gerente_email;
+    }
+
     void ControladoraApresentacaoAutenticavel::setEstaAutenticado(bool estaAutenticado) {
         this->estaAutenticado = estaAutenticado;
     }
@@ -43,8 +51,10 @@ namespace Hotelaria {
                 Senha senhaObj(senhaCopia);
 
                 resultado = servico->autenticar(emalObj, senhaObj);
+
                 if (resultado) {
                     this->setEstaAutenticado(true);
+                    this->setEmailDoGerente(emailCopia);
                 }
 
                 if (!resultado) {
@@ -59,6 +69,4 @@ namespace Hotelaria {
         }
         return resultado; // Informar resultado da autenticação.
     }
-
-
 }

@@ -1,7 +1,7 @@
 #include "TesteTelefone.hpp"
 #include <iostream>
 #include <vector>
-#include "../../libs/teste/SmokeTeste.hpp"
+#include "SmokeTeste.hpp"
 //------------------------------------------------------------------------------------------------------------------
 void TesteTelefone::executar() {
     SmokeTeste smoke_teste;

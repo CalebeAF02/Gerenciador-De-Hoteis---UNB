@@ -32,8 +32,14 @@ namespace Hotelaria {
 
         bool estaAutenticado = false;
 
+        string gerente_email;
+
     public:
         void setControladoraServicoAutenticavel(InterfaceServicoAutenticavel *servico) override;
+
+        void setEmailDoGerente(const string &email) override;
+
+        string getEmailDOGerente() override;
 
         void setEstaAutenticado(bool estaAutenticado) override;
 

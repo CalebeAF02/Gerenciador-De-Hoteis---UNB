@@ -15,12 +15,9 @@ namespace Hotelaria {
     class SistemaHacker {
     private:
         bool executando = true;
-        ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente;
-        ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede;
 
     public:
-        SistemaHacker(ControladoraApresentacaoAcessoGerente *apresentacao_acesso_gerente,
-        ControladoraApresentacaoAcessoHospede *apresentacao_acesso_hospede);
+        SistemaHacker();
 
         void iniciar();
     };

@@ -1,7 +1,7 @@
 #include "TesteSenha.hpp"
 #include <iostream>
 #include <vector>
-#include "../../libs/teste/SmokeTeste.hpp"
+#include "SmokeTeste.hpp"
 //------------------------------------------------------------------------------------------------------------------
 void TesteSenha::executar() {
     SmokeTeste smoke_teste;

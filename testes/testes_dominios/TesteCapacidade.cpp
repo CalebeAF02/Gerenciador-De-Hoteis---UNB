@@ -1,8 +1,8 @@
 #include "TesteCapacidade.hpp"
 #include <iostream>
 #include <vector>
-#include "../../libs/teste/SmokeTeste.hpp"
-#include "../../libs/teste/SmokeTeste.hpp"
+#include "SmokeTeste.hpp"
+#include "SmokeTeste.hpp"
 //------------------------------------------------------------------------------------------------------------------
 void TesteCapacidade::executar() {
     SmokeTeste smoke_teste;
@@ -56,4 +56,5 @@ void TesteCapacidade::executar() {
         );
     }
 }
+
 //------------------------------------------------------------------------------------------------------------------

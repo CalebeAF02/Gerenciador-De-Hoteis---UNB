@@ -17,12 +17,15 @@ namespace Hotelaria {
         string endereco;
         string telefone;
         string codigo;
+        int gerente_id;
 
     public:
         HotelDTO() = default;
 
-        HotelDTO(int hotelId, string nome, string endereco, string telefone, string codigo) : hotelId(hotelId),
-            nome(nome), endereco(endereco), telefone(telefone), codigo(codigo) {
+        HotelDTO(int hotelId, string nome, string endereco, string telefone, string codigo,
+                 int gerente_id) : hotelId(hotelId),
+                                   nome(nome), endereco(endereco), telefone(telefone), codigo(codigo),
+                                   gerente_id(gerente_id) {
         };
 
         int getId() const;
@@ -44,6 +47,10 @@ namespace Hotelaria {
         string getCodigo() const;
 
         void setCodigo(const string &valor);
+
+        int getGerenteID() const;
+
+        void setGerenteID(int valor);
     };
 }
 

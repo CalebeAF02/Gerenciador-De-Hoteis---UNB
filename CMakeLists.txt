@@ -149,6 +149,8 @@ add_executable(Gerenciador-De-Hoteis---UNB
         testes/testes_entidades/TesteHotel.cpp
         testes/testes_entidades/TesteQuarto.cpp
         testes/testes_entidades/TesteReserva.cpp
+        src/sistema/utilitarios/Modos.cpp
+        src/sistema/utilitarios/Modos.hpp
 )
 
 add_dependencies(Gerenciador-De-Hoteis---UNB gerar_versao)
@@ -218,4 +220,6 @@ target_include_directories(Gerenciador-De-Hoteis---UNB PRIVATE
 
         ${CMAKE_SOURCE_DIR}/testes/testes_dominios
         ${CMAKE_SOURCE_DIR}/testes/testes_entidades
+
+
 )

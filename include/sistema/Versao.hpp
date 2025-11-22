@@ -1,5 +1,3 @@
-
-
 #ifndef Hotelaria_UnB_TP1_VERSAO_HPP
 #define Hotelaria_UnB_TP1_VERSAO_HPP
 
@@ -7,24 +5,26 @@
 #include <iostream>
 #include <string>
 using namespace std;
-namespace Hotelaria{
-class Versao {
-private:
-    static constexpr uint64_t valor = 171;
-    static inline const string data = "2025-11-21 22:01";
 
-public:
-    static uint8_t patch() { return valor % 10; }
-    static uint8_t minor() { return (valor / 10) % 10; }
-    static uint64_t major() { return valor / 100; }
-    static uint64_t getValor() { return valor; }
-    static string getData() { return data; }
-    static string getVersaoCompleta() {
-        return to_string(major()) + "." +
-               to_string(minor()) + "." +
-               to_string(patch());
-    }
-};
+namespace Hotelaria {
+    class Versao {
+    private:
+        static constexpr uint64_t valor = 175;
+        static inline const string data = "2025-11-22 02:46";
+
+    public:
+        static uint8_t patch() { return valor % 10; }
+        static uint8_t minor() { return (valor / 10) % 10; }
+        static uint64_t major() { return valor / 100; }
+        static uint64_t getValor() { return valor; }
+        static string getData() { return data; }
+
+        static string getVersaoCompleta() {
+            return to_string(major()) + "." +
+                   to_string(minor()) + "." +
+                   to_string(patch());
+        }
+    };
 }
 
 #endif
